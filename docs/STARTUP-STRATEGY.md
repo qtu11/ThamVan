@@ -8,9 +8,9 @@ THÁM VĂN giúp người ở TP.HCM và khách tự túc biến một buổi đ
 
 | Gói | Giá định hướng ban đầu | Người mua nhận gì | Mục đích |
 | --- | ---: | --- | --- |
-| City Explorer | Miễn phí | Danh mục, tìm kiếm, bản đồ, điểm dừng mẫu | Tạo niềm tin và nhu cầu |
-| Story Walk | 69.000đ, một lần | Một trong ba bộ hướng dẫn, mở trong tài khoản, tải văn bản | Thử mức sẵn lòng trả tiền |
-| Saigon Collection | 149.000đ, một lần | Cả ba bộ hiện có, tải riêng từng bộ | Tăng giá trị mỗi đơn |
+| City Explorer (111 gói Free) | Miễn phí trọn đời | 111 gói khám phá di sản, danh mục, tìm kiếm, bản đồ, điểm dừng mẫu | Tạo niềm tin và nhu cầu |
+| Bản Premium (Story Walk) | 39.000đ (39k), một lần | Một trong ba bộ hướng dẫn chuyên sâu, mở vĩnh viễn trong tài khoản, tải văn bản | Thử mức sẵn lòng trả tiền |
+| Saigon Collection (Trọn bộ Premium) | 89.000đ, một lần | Cả ba bộ hiện có, tải riêng từng bộ | Tăng giá trị mỗi đơn |
 | Trường học | Báo giá theo đề bài | Tuyến học tập, phiếu quan sát, nội dung thảo luận | Hợp đồng nội dung/dịch vụ |
 | Khách sạn | Báo giá theo phạm vi | City guide, nội dung song ngữ, QR truy cập | Phí triển khai và giấy phép theo hợp đồng |
 | Doanh nghiệp | Báo giá theo nhóm | Hành trình văn hóa và nhiệm vụ nhóm | Phí thiết kế, tổ chức qua đối tác phù hợp |
@@ -50,7 +50,7 @@ Kênh B2B: trang chủ → trang đối tác → đề bài có đồng ý xử 
 - Affiliate/vé: chỉ bổ sung sau khi có thỏa thuận, khai báo tài trợ rõ và giữ gợi ý biên tập độc lập. Hiện chưa triển khai hoặc tính doanh thu.
 - Không bán dữ liệu vị trí, tài khoản hay thông tin liên hệ.
 
-Ví dụ để lập kế hoạch, **không phải dự báo**: 100 Story Walk × 69.000đ = 6,9 triệu; 50 Collection × 149.000đ = 7,45 triệu; hai hợp đồng nội dung giả định 12 triệu/hợp đồng = 24 triệu. Tổng thu gộp giả định 38,35 triệu, trước phí thanh toán, thuế, hoàn tiền, sản xuất, bán hàng và vận hành. Giá B2B 12 triệu chỉ là biến số mô hình, không phải báo giá trên website.
+Ví dụ để lập kế hoạch, **không phải dự báo**: 100 Bản Premium (Story Walk) × 39.000đ = 3,9 triệu; 50 Collection × 89.000đ = 4,45 triệu; hai hợp đồng nội dung giả định 12 triệu/hợp đồng = 24 triệu. Tổng thu gộp giả định 32,35 triệu, trước phí thanh toán, thuế, hoàn tiền, sản xuất, bán hàng và vận hành. Giá B2B 12 triệu chỉ là biến số mô hình, không phải báo giá trên website.
 
 Lợi nhuận đóng góp B2C = giá thực thu − phí cổng thanh toán theo hợp đồng − nghĩa vụ thuế tương ứng − dự phòng hoàn tiền − chi phí hỗ trợ biến đổi − chi phí thu hút người mua. Phân bổ thêm chi phí ảnh, biên tập, kiểm tra thực địa, hosting và nhân sự để tính lợi nhuận thực. Không chạy quảng cáo mở rộng nếu chưa đo được các khoản này.
 

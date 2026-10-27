@@ -7,7 +7,7 @@ Website Next.js App Router + TypeScript + Supabase cho sản phẩm **“Chạm 
 Giao diện mới dùng hệ chữ, màu, thẻ và điều hướng thống nhất; trang chủ 3D đổi cảnh bằng nút Bạch Đằng/Ba Son/Landmark, bộ tìm hành trình theo gu, hộ chiếu tự đánh dấu trên thiết bị, bảng giá và kênh B2B. `/` đi thẳng vào trang chủ theo ngôn ngữ đã chọn; phần giới thiệu vẫn có ở `/vi/welcome`.
 
 - `/vi/experiences`: ba bộ hướng dẫn tự khám phá; nhiệm vụ đầu tiên đọc miễn phí.
-- `/vi/checkout`: Story Walk 69.000đ hoặc Saigon Collection 149.000đ. Giá triển khai ban đầu, chưa kiểm chứng bằng thị trường.
+- `/vi/checkout`: Bản Premium 39.000đ (39k) hoặc Saigon Collection 89.000đ; đi kèm 111 gói khám phá di sản miễn phí trong danh mục. Giá triển khai ban đầu, chưa kiểm chứng bằng thị trường.
 - `/vi/orders/:id`: trạng thái đơn do máy chủ xác nhận; URL quay về không tự mở quyền.
 - `/vi/partners`: nhận đề bài trường học/khách sạn/đội ngũ khi đã có lưu trữ và CAPTCHA; nếu chưa cấu hình thì chỉ tải mẫu cục bộ.
 - `/vi/journey`: hộ chiếu trên trình duyệt, thư viện đã mua và đơn gần đây cho tài khoản đăng nhập.

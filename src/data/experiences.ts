@@ -69,7 +69,7 @@ export function experienceText(value: [string, string, string], locale: Locale) 
 }
 export const findExperience = (slug: string) => experiences.find((item) => item.slug === slug);
 export const products = {
-  walk: { amount: 69000, title: 'THAM VAN Story Walk', routes: 1 },
-  collection: { amount: 149000, title: 'THAM VAN Saigon Collection', routes: 3 },
+  walk: { amount: 39000, title: 'THAM VAN Story Walk (Bản Premium)', routes: 1 },
+  collection: { amount: 89000, title: 'THAM VAN Saigon Collection (Trọn bộ Premium)', routes: 3 },
 } as const;
 export type ProductId = keyof typeof products;

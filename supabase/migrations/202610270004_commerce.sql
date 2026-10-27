@@ -17,7 +17,7 @@ create table public.commerce_orders (
   refund_reference text,
   purchase_terms_version text not null default '2026-10-27-commerce-v1',
   purchase_consented_at timestamptz not null default now(),
-  check ((product_id='walk' and amount=69000 and experience_slug in ('sai-gon-ben-song','nhung-lop-ky-uc','mot-ngay-cho-lon')) or (product_id='collection' and amount=149000 and experience_slug is null))
+  check ((product_id='walk' and amount=39000 and experience_slug in ('sai-gon-ben-song','nhung-lop-ky-uc','mot-ngay-cho-lon')) or (product_id='collection' and amount=89000 and experience_slug is null))
 );
 create index commerce_orders_owner on public.commerce_orders(user_id,status);
 alter table public.commerce_orders enable row level security;
@@ -52,7 +52,7 @@ begin
   select * into result from public.commerce_orders where user_id=p_user and product_id=p_product and experience_slug is not distinct from p_experience and status='pending' and created_at>now()-interval '14 minutes' order by created_at desc limit 1;
   if found then return result; end if;
   if (select count(*) from public.commerce_orders where user_id=p_user and created_at>now()-interval '1 hour') >= 6 then raise exception 'RATE_LIMIT'; end if;
-  insert into public.commerce_orders(user_id,product_id,experience_slug,amount) values(p_user,p_product,p_experience,case p_product when 'walk' then 69000 when 'collection' then 149000 else 0 end) returning * into result;
+  insert into public.commerce_orders(user_id,product_id,experience_slug,amount) values(p_user,p_product,p_experience,case p_product when 'walk' then 39000 when 'collection' then 89000 else 0 end) returning * into result;
   return result;
 end $$;
 revoke all on function public.reserve_commerce_order(uuid,text,text) from public,anon,authenticated;

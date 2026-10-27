@@ -31,7 +31,7 @@ async function reserve(user = alice, product = 'walk', slug: string | null = 'sa
 }
 async function pay(
   code: number,
-  amount = 69000,
+  amount = 39000,
   link = 'link',
   reference = 'bank-reference',
   currency = 'VND',
@@ -47,9 +47,9 @@ async function pay(
 describe('commerce PostgreSQL trust boundaries', () => {
   it('reserves at server prices, reuses pending orders, and rejects invalid products', async () => {
     const order = await reserve();
-    expect(order.amount).toBe(69000);
+    expect(order.amount).toBe(39000);
     expect((await reserve()).id).toBe(order.id);
-    expect((await reserve(alice, 'collection', null)).amount).toBe(149000);
+    expect((await reserve(alice, 'collection', null)).amount).toBe(89000);
     await expect(reserve(alice, 'walk', 'unknown-route')).rejects.toThrow();
     await expect(reserve(alice, 'forged', null)).rejects.toThrow();
   });
@@ -61,8 +61,8 @@ describe('commerce PostgreSQL trust boundaries', () => {
     ]);
     for (const [amount,link,reference,currency] of [
       [1, 'link', 'reference', 'VND'],
-      [69000, 'forged', 'reference', 'VND'],
-      [69000, 'link', 'reference', 'USD'],
+      [39000, 'forged', 'reference', 'VND'],
+      [39000, 'link', 'reference', 'USD'],
     ] as const)
       await expect(pay(order.order_code, amount,link,reference,currency)).rejects.toThrow('PAYMENT_MISMATCH');
     expect(
@@ -74,7 +74,7 @@ describe('commerce PostgreSQL trust boundaries', () => {
       (await db.query('select status from public.commerce_orders where id=$1', [order.id])).rows[0],
     ).toEqual({ status: 'paid' });
     await expect(reserve()).rejects.toThrow('ALREADY_OWNED');
-    await expect(pay(order.order_code, 69000, 'link', 'different-reference')).rejects.toThrow(
+    await expect(pay(order.order_code, 39000, 'link', 'different-reference')).rejects.toThrow(
       'PAYMENT_MISMATCH',
     );
   });
@@ -108,7 +108,7 @@ describe('commerce PostgreSQL trust boundaries', () => {
       "update public.commerce_orders set status='paid'",
       'select * from public.business_leads',
       `select public.reserve_commerce_order('${bob}','collection',null)`,
-      `select public.complete_commerce_payment(100000,69000,'link','ref','VND')`,
+      `select public.complete_commerce_payment(100000,39000,'link','ref','VND')`,
     ]) {
       await db.exec('begin;set local role authenticated');
       try {

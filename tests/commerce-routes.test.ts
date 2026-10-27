@@ -23,7 +23,7 @@ import { POST as lead } from '@/app/api/business-leads/route';
 import { ownsExperience } from '@/lib/commerce';
 import { paymentSignature } from '@/lib/payment-signature';
 const orderId = '50000000-0000-4000-8000-000000000001';
-const order = { id: orderId, order_code: 123456, amount: 69000 };
+const order = { id: orderId, order_code: 123456, amount: 39000 };
 const request = (path: string, body: unknown, origin = 'http://localhost:3000') =>
   new Request(`http://localhost:3000${path}`, {
     method: 'POST',
@@ -33,7 +33,7 @@ const request = (path: string, body: unknown, origin = 'http://localhost:3000') 
 const purchase = { product: 'walk', experience: 'sai-gon-ben-song', locale: 'vi', consent: true };
 const transaction = {
   orderCode: 123456,
-  amount: 69000,
+  amount: 39000,
   paymentLinkId: 'link-1',
   reference: 'bank-001',
   currency: 'VND',
@@ -63,7 +63,7 @@ beforeEach(() => {
     Response.json({
       code: '00',
       data: {
-        amount: 69000,
+        amount: 39000,
         orderCode: 123456,
         checkoutUrl: 'https://pay.payos.vn/web/test',
         paymentLinkId: 'link-1',
@@ -81,9 +81,9 @@ describe('checkout endpoint and fulfilment', () => {
     const response = await checkout(request('/api/checkout', { ...purchase, amount: 1 }));
     expect(response.status).toBe(200);
     const payload = JSON.parse(fake.fetch.mock.calls[0][1].body);
-    expect(payload.amount).toBe(69000);
+    expect(payload.amount).toBe(39000);
     expect(payload.returnUrl).toBe(`http://localhost:3000/vi/orders/${orderId}`);
-    expect(payload.items[0].price).toBe(69000);
+    expect(payload.items[0].price).toBe(39000);
     expect(fake.update).toHaveBeenCalledOnce();
   });
   it('requires same-origin, explicit purchase consent, authenticated account and enabled configuration', async () => {
@@ -108,7 +108,7 @@ describe('checkout endpoint and fulfilment', () => {
         paymentLinkId: 'x',
       },
       {
-        amount: 69000,
+        amount: 39000,
         orderCode: 123456,
         checkoutUrl: 'https://attacker.test/pay',
         paymentLinkId: 'x',
@@ -150,7 +150,7 @@ describe('provider webhook and lead capture', () => {
     expect(await response.json()).toEqual({ received: true, matched: true });
     expect(fake.rpc).toHaveBeenCalledWith('complete_commerce_payment', {
       p_code: 123456,
-      p_amount: 69000,
+      p_amount: 39000,
       p_link: 'link-1',
       p_reference: 'bank-001',
       p_currency: 'VND',
