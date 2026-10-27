@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Ayuntamiento_de_la_Ciudad_de_Ho_Chi_Minh,_Vietnam_(37460385815).jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Ayuntamiento_de_la_Ciudad_de_Ho_Chi_Minh%2C_Vietnam_%2837460385815%29.jpg/1280px-Ayuntamiento_de_la_Ciudad_de_Ho_Chi_Minh%2C_Vietnam_%2837460385815%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Ayuntamiento de la Ciudad de Ho Chi Minh, Vietnam (37460385815).jpg",
+  "author": "Edgardo W. Olivera from Montevideo, Uruguay",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "retrievedAt": "2026-10-27T08:05:25.699Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Lê Thánh Tôn",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 84,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

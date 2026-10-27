@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:%C4%90%C3%ACnh_Ch%C3%AD_H%C3%B2a.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/%C4%90%C3%ACnh_Ch%C3%AD_H%C3%B2a.jpg/1280px-%C4%90%C3%ACnh_Ch%C3%AD_H%C3%B2a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Đình Chí Hòa.jpg",
+  "author": "Bùi Thụy Đào Nguyên",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "retrievedAt": "2026-10-27T08:59:19.918Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Đình Chí Hòa",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 81,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

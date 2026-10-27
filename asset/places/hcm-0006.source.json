@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Ch%C3%B9a_Ho%E1%BA%B1ng_Ph%C3%A1p.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Ch%C3%B9a_Ho%E1%BA%B1ng_Ph%C3%A1p.jpg/1280px-Ch%C3%B9a_Ho%E1%BA%B1ng_Ph%C3%A1p.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Chùa Hoằng Pháp.jpg",
+  "author": "Bùi Thụy Đào Nguyên",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "retrievedAt": "2026-10-27T08:59:19.907Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Chùa Hoằng Pháp",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

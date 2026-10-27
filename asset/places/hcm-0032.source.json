@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Th%C3%A1nh_th%E1%BA%A5t_S%C3%A0i_G%C3%B2n_0714.JPG",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Th%C3%A1nh_th%E1%BA%A5t_S%C3%A0i_G%C3%B2n_0714.JPG/1280px-Th%C3%A1nh_th%E1%BA%A5t_S%C3%A0i_G%C3%B2n_0714.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Thánh thất Sài Gòn 0714.JPG",
+  "author": "Anthony Leekien",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:19.925Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Thánh thất Sài Gòn",
+    "geographicContext": true,
+    "distanceKm": 0.05128074940630639,
+    "score": 91,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

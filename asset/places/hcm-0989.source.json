@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Saigon_Saigon_Rooftop_Bar-March_2014.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Saigon_Saigon_Rooftop_Bar-March_2014.jpg/1280px-Saigon_Saigon_Rooftop_Bar-March_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Saigon Saigon Rooftop Bar-March 2014.jpg",
+  "author": "BaonguyenCaravelas",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:23.407Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Saigon Saigon Rooftop Bar",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

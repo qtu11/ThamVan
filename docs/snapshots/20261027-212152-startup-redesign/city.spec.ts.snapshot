@@ -1,0 +1,226 @@
+import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+
+test('city renders in WebGL, follows scroll, pauses, and recovers without duplicate canvases', async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  test.setTimeout(60000);
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('console', (message) => {
+    if (message.type() === 'error' && /THREE.WebGLProgram|Shader Error/.test(message.text()))
+      errors.push(message.text());
+  });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/vi');
+  const scene = page.locator('.city-canvas-wrap');
+  await expect(scene).toHaveAttribute('data-scene-status', 'ready', { timeout: 15000 });
+  await expect(scene.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('.city-canvas')).toHaveCSS('opacity', '1');
+  const lighting = page.getByRole('group', { name: 'Ánh sáng thành phố' });
+  await expect(lighting.getByRole('button', { name: 'Chạng vạng', exact: true })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await expect(page.locator('.city-canvas')).toHaveAttribute('data-lighting', 'dusk');
+  const originalCanvas = await scene.locator('canvas').elementHandle();
+  await lighting.getByRole('button', { name: 'Ban ngày', exact: true }).click();
+  await expect(page.locator('.city-canvas')).toHaveAttribute('data-lighting', 'day');
+  await expect(page.locator('.city-poster')).toHaveAttribute('src', '/images/hcm-city-day.webp');
+  await expect(scene.locator('canvas')).toHaveCount(1);
+  expect(await originalCanvas!.evaluate((canvas) => canvas.isConnected)).toBe(true);
+  const dayAudit = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+    .analyze();
+  expect(dayAudit.violations).toEqual([]);
+  await lighting.getByRole('button', { name: 'Chạng vạng', exact: true }).click();
+  await expect(page.locator('.city-canvas')).toHaveAttribute('data-lighting', 'dusk');
+  const budget = await page.locator('.city-canvas').evaluate((element) => ({
+    calls: Number(element.getAttribute('data-draw-calls')),
+    triangles: Number(element.getAttribute('data-triangles')),
+  }));
+  expect(budget.calls).toBeGreaterThan(0);
+  expect(budget.calls).toBeLessThanOrEqual(100);
+  expect(budget.triangles).toBeLessThan(200000);
+  await expect
+    .poll(async () =>
+      Number(await page.locator('.city-canvas').getAttribute('data-camera-progress')),
+    )
+    .toBeLessThan(0.05);
+  await page.screenshot({ path: 'test-results/hcm-city-desktop.png', animations: 'disabled' });
+
+  const views = page.getByRole('navigation', { name: 'Chọn góc nhìn thành phố' });
+  await views.getByRole('link', { name: 'Cầu Ba Son', exact: true }).click();
+  await expect(scene).toHaveAttribute('data-city-view', '1');
+  await expect
+    .poll(async () =>
+      Math.abs(
+        Number(await page.locator('.city-canvas').getAttribute('data-camera-progress')) - 0.5,
+      ),
+    )
+    .toBeLessThan(0.03);
+  await expect(page.locator('[data-city-label="bason"]')).toHaveCSS('opacity', '1');
+  await page.screenshot({ path: 'test-results/hcm-city-bason.png', animations: 'disabled' });
+  await views.getByRole('link', { name: 'Landmark 81' }).focus();
+  await page.keyboard.press('Enter');
+  await expect(views.getByRole('link', { name: 'Landmark 81' })).toHaveAttribute(
+    'aria-current',
+    'step',
+  );
+  await expect
+    .poll(async () =>
+      Number(await page.locator('.city-visual').getAttribute('data-scroll-progress')),
+    )
+    .toBeGreaterThan(0.94);
+  await expect
+    .poll(async () =>
+      Number(await page.locator('.city-canvas').getAttribute('data-camera-progress')),
+    )
+    .toBeGreaterThan(0.94);
+  const audit = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+    .analyze();
+  expect(audit.violations).toEqual([]);
+  await expect(page.locator('[data-city-label="landmark81"]')).toHaveCSS('opacity', '1');
+  await page.screenshot({ path: 'test-results/hcm-city-skyline.png', animations: 'disabled' });
+
+  await page.getByRole('button', { name: 'Chuyển động: Bật', exact: true }).click();
+  await expect(scene).toHaveAttribute('data-scene-status', 'static');
+  await expect(scene.locator('canvas')).toHaveCount(0);
+  await lighting.getByRole('button', { name: 'Ban ngày', exact: true }).click();
+  await expect(page.locator('.city-poster')).toHaveAttribute(
+    'src',
+    '/images/hcm-landmark81-day.webp',
+  );
+  await expect
+    .poll(async () =>
+      page
+        .locator('.city-poster')
+        .evaluate(
+          (image) =>
+            (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0,
+        ),
+    )
+    .toBe(true);
+  expect(
+    await page
+      .locator('.city-poster')
+      .evaluate((image) => (image as HTMLImageElement).naturalWidth),
+  ).toBeGreaterThan(0);
+  await page.getByRole('button', { name: 'Chuyển động: Tắt', exact: true }).click();
+  await expect(scene).toHaveAttribute('data-scene-status', 'ready');
+  await expect(scene.locator('canvas')).toHaveCount(1);
+  await expect(page.locator('.city-canvas')).toHaveAttribute('data-lighting', 'day');
+  await scene.locator('canvas').dispatchEvent('webglcontextlost', { cancelable: true });
+  await expect(scene).toHaveAttribute('data-scene-status', 'unavailable');
+  await expect(scene.locator('canvas')).toHaveCount(0);
+  await page.getByRole('link', { name: 'Tiếp tục khám phá', exact: true }).click();
+  await expect(page).toHaveURL('/vi/explore');
+  expect(errors).toEqual([]);
+});
+
+test('city remains readable with reduced motion and with WebGL unavailable', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/en');
+  await expect(page.locator('.home-experience')).toHaveAttribute('data-motion', 'off');
+  await expect(page.locator('.city-canvas canvas')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Reduced motion', exact: true })).toBeDisabled();
+  await page.getByRole('button', { name: 'Day', exact: true }).click();
+  await expect(page.locator('.city-poster')).toHaveAttribute('src', '/images/hcm-city-day.webp');
+  await expect(page.locator('.city-canvas canvas')).toHaveCount(0);
+  await expect
+    .poll(() =>
+      page.locator('.city-poster').evaluate((image) => (image as HTMLImageElement).naturalWidth),
+    )
+    .toBeGreaterThan(0);
+  const views = page.getByRole('navigation', { name: 'Choose a city view' });
+  await views.getByRole('link', { name: 'Landmark 81', exact: true }).click();
+  await expect(
+    page.getByRole('heading', { name: 'Landmark 81. Rising above the park.' }),
+  ).toBeVisible();
+  await expect(page.locator('.city-poster')).toHaveAttribute(
+    'src',
+    '/images/hcm-landmark81-day.webp',
+  );
+  await expect(page.locator('.city-canvas canvas')).toHaveCount(0);
+
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.addInitScript(() => {
+    const original = HTMLCanvasElement.prototype.getContext;
+    Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+      value: function (kind: string, ...args: unknown[]) {
+        if (kind === 'webgl' || kind === 'webgl2') return null;
+        return Reflect.apply(original, this, [kind, ...args]);
+      },
+    });
+  });
+  await page.goto('/vi');
+  await expect(page.locator('.city-canvas-wrap')).toHaveAttribute(
+    'data-scene-status',
+    'unavailable',
+  );
+  await expect(page.locator('.city-canvas canvas')).toHaveCount(0);
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  expect(
+    await page
+      .locator('.city-poster')
+      .evaluate((image) => (image as HTMLImageElement).naturalWidth),
+  ).toBeGreaterThan(0);
+});
+
+test('mobile city navigation, word reveal, and three languages fit narrow screens', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/vi');
+  await expect(page.locator('.city-canvas-wrap')).toHaveAttribute('data-scene-status', 'ready', {
+    timeout: 15000,
+  });
+  await expect(page.locator('.city-canvas')).toHaveCSS('opacity', '1');
+  await page.screenshot({ path: 'test-results/hcm-city-mobile.png', animations: 'disabled' });
+  await page
+    .getByRole('navigation', { name: 'Chọn góc nhìn thành phố' })
+    .getByRole('link', { name: 'Cầu Ba Son' })
+    .click();
+  await expect(
+    page.getByRole('heading', { name: 'Cầu Ba Son, một nét cong trên sông.' }),
+  ).toBeVisible();
+  await page.locator('.scroll-words').scrollIntoViewIfNeeded();
+  await expect(page.locator('.scroll-words span[data-read=true]').first()).toBeVisible();
+  for (const locale of ['vi', 'en', 'zh']) {
+    await page.setViewportSize({ width: 320, height: 900 });
+    await page.goto(`/${locale}`);
+    for (const width of [320, 768, 1024, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+      await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    }
+  }
+});
+
+test('city poster and chapter links work without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({
+    javaScriptEnabled: false,
+    viewport: { width: 390, height: 844 },
+  });
+  const page = await context.newPage();
+  await page.goto('/vi');
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  await expect(page.locator('.city-canvas canvas')).toHaveCount(0);
+  expect(
+    await page
+      .locator('.city-poster')
+      .evaluate((image) => (image as HTMLImageElement).naturalWidth),
+  ).toBeGreaterThan(0);
+  await page
+    .getByRole('navigation', { name: 'Chọn góc nhìn thành phố' })
+    .getByRole('link', { name: 'Landmark 81' })
+    .click();
+  await expect(page).toHaveURL(/#city-stop-2$/);
+  await expect(
+    page.getByRole('heading', { name: 'Landmark 81, vươn lên từ khoảng xanh.' }),
+  ).toBeVisible();
+  await context.close();
+});

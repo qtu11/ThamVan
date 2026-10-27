@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Cau_Kenh_te-ph%C6%B0%E1%BB%9Dng_1,_Qu%E1%BA%ADn_8,_TPHCM,_Vi%E1%BB%87t_Nam_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Cau_Kenh_te-ph%C6%B0%E1%BB%9Dng_1%2C_Qu%E1%BA%ADn_8%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg/1280px-Cau_Kenh_te-ph%C6%B0%E1%BB%9Dng_1%2C_Qu%E1%BA%ADn_8%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Cau Kenh te-phường 1, Quận 8, TPHCM, Việt Nam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:13:02.635Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Cầu Kênh Tẻ",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

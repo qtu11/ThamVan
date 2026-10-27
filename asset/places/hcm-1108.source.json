@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Empire_City,_th%E1%BB%A7_thi%C3%AAm,_th%E1%BB%A7_%C4%91%E1%BB%A9c,_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh.jpg",
+  "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/5/54/Empire_City%2C_th%E1%BB%A7_thi%C3%AAm%2C_th%E1%BB%A7_%C4%91%E1%BB%A9c%2C_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "title": "File:Empire City, thủ thiêm, thủ đức, thành phố hồ chí minh.jpg",
+  "author": "Xuanphuocle",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:23.429Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Empire City Thủ Thiêm",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 84,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

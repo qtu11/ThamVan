@@ -1,0 +1,260 @@
+THÁM VĂN
+CHẠM ĐỂ HIỂU DI SẢN VIỆT
+TÀI LIỆU MÔ TẢ SẢN PHẨM, UX/UI, CHỨC NĂNG VÀ VẬN HÀNH
+Tài liệu định hướng bàn giao cho đội ngũ thiết kế và phát triển ứng dụng
+
+PHẦN 1. TỔNG QUAN DỰ ÁN
+1.1. Tên và định vị
+Tên ứng dụng: THÁM VĂN. Slogan: “Chạm để hiểu di sản Việt”.
+THÁM VĂN là ứng dụng khám phá văn hóa, lịch sử, kiến trúc và nghệ thuật Việt Nam thông qua hình ảnh, bản đồ và trải nghiệm tương tác. Ứng dụng giúp người dùng biến những điều “bắt gặp nhưng không biết” trong đời sống thành cơ hội tìm hiểu câu chuyện, ý nghĩa và bối cảnh văn hóa phía sau.
+1.2. Đối tượng người dùng
+Giới trẻ yêu thích khám phá, trải nghiệm và tìm hiểu văn hóa.
+Người quan tâm đến lịch sử, kiến trúc, nghệ thuật, tín ngưỡng, phong tục và hiện vật.
+Khách du lịch trong nước và quốc tế muốn khám phá văn hóa Việt Nam trước, trong hoặc sau chuyến đi.
+1.3. Giá trị cốt lõi
+Từ hình ảnh đến kiến thức: chụp toàn cảnh hoặc một chi tiết nhỏ để tìm hiểu.
+Khám phá chủ động: gợi ý địa điểm văn hóa gần người dùng theo phạm vi họ chọn.
+Học bằng trải nghiệm: thử thách, huy hiệu và hành trình giúp việc tìm hiểu có tính tương tác.
+Dễ tiếp cận: nội dung từ thông tin nhanh đến chuyên sâu; hỗ trợ tiếng Việt, tiếng Anh và tiếng Trung giản thể.
+1.4. Điểm khác biệt định hướng
+Không chỉ tra cứu địa danh; ưu tiên khám phá chi tiết như hoa văn, mái ngói, tượng, phù điêu, hiện vật và biểu tượng văn hóa.
+Không chỉ chờ người dùng tìm kiếm; có thể gợi ý địa điểm khi ở trong bán kính 3–10 km nếu người dùng cấp quyền vị trí/thông báo.
+Kết nối kiến thức số với trải nghiệm thực tế qua thử thách và hành trình.
+Giữ tên riêng văn hóa Việt Nam khi đổi ngôn ngữ; phần diễn giải được bản địa hóa.
+1.5. Nguyên tắc phạm vi
+Tài liệu mô tả yêu cầu mong muốn, không khẳng định chức năng đã được triển khai. Các chức năng cần API, backend, dữ liệu bản quyền hoặc quyền hệ điều hành phải được kiểm tra và tích hợp thực tế. Nội dung demo phải được phân biệt rõ với dữ liệu đã xác minh.
+PHẦN 2. ĐẶC TẢ UX/UI VÀ CHỨC NĂNG CHI TIẾT
+2.1. Nguyên tắc thiết kế giao diện
+Dùng ảnh giao diện trang chủ đã cung cấp làm tham chiếu bố cục chức năng; dùng hình giới thiệu tổng thể để lấy cảm hứng; sử dụng logo THÁM VĂN chính thức. Không biến poster quảng cáo thành màn hình app.
+Màu
+Mã màu
+Vai trò
+Xanh lá đậm
+#0B4538
+Màu chủ đạo, tiêu đề, nút chính, điều hướng
+Đỏ đất
+#B94F2D
+Nút chụp ảnh và điểm nhấn hành động
+Vàng đất
+#C9953D
+Huy hiệu và chi tiết nhấn
+Kem
+#F6F0E3
+Nền tổng thể
+Trắng
+#FFFFFF
+Thẻ nội dung, vùng cần tương phản
+Quy tắc UI chung
+Thiết kế ưu tiên điện thoại; thích ứng màn hình nhỏ, không tràn chữ hoặc chồng lấn.
+Duy trì hệ thống khoảng cách, bo góc, kiểu chữ, kích thước nút và biểu tượng nhất quán.
+Ưu tiên ảnh thực tế đúng với bản ghi văn hóa; không dùng ảnh minh họa sai đối tượng.
+Mọi nút và thẻ có thể bấm phải thực hiện hành động đúng; không để nút trang trí.
+Danh sách dài nên tải thêm/phân trang; hàng thẻ trang chủ có thể cuộn ngang.
+Mỗi màn hình có trạng thái tải, trống, lỗi và thử lại phù hợp.
+Bảo đảm tương phản chữ, vùng chạm đủ lớn; không chỉ dùng màu để biểu thị trạng thái.
+2.2. Khởi động, onboarding và quyền truy cập
+Mục tiêu: giới thiệu thương hiệu, giải thích quyền trước khi yêu cầu và đưa người dùng tới đăng nhập/đăng ký hoặc chế độ khách nếu được triển khai.
+Màn 1 — Logo
+Hiển thị logo chính thức, tên THÁM VĂN và slogan trên nền kem. Có nút Bắt đầu/Tiếp theo; hiệu ứng nhẹ, không kéo dài.
+Màn 2 — Giới thiệu
+Giới thiệu bằng hình minh họa về chụp để khám phá, khám phá quanh bạn, thử thách và hành trình. Có chỉ báo trang, Tiếp theo và Quay lại.
+Màn 3 — Điều khoản và quyền riêng tư
+Điều khoản và chính sách có thể mở đọc. Người dùng xác nhận điều khoản bắt buộc rõ ràng. Không gộp đồng ý điều khoản với việc cấp mọi quyền thiết bị.
+Màn 4 — Xin quyền theo ngữ cảnh
+Giải thích vị trí dùng để lọc địa điểm/gợi ý gần; thông báo dùng cho địa điểm/thử thách; camera dùng để chụp nhận diện. Cho phép bỏ qua nếu không bắt buộc.
+Màn 5 — Đăng nhập/đăng ký
+Hai lựa chọn rõ ràng; có thể thêm chế độ khách cho nội dung công khai. Sau khi xác thực thành công, chuyển thẳng tới trang chủ.
+Quy tắc quyền: chỉ gọi hộp thoại quyền hệ điều hành sau khi giải thích mục đích. Nếu người dùng từ chối, vẫn cho sử dụng phần không phụ thuộc quyền đó; có nút thử lại/hướng dẫn mở Cài đặt. Không tự bật định vị hoặc thông báo.
+2.3. Đăng ký, đăng nhập và tài khoản
+Đăng nhập
+Dùng phương thức xác thực backend thực tế hỗ trợ; hiển thị lỗi tại đúng trường.
+Có hiện/ẩn mật khẩu nếu dùng mật khẩu; có quên mật khẩu khi hệ thống hỗ trợ.
+Đăng nhập thành công → trang chủ; không bắt buộc liên kết mạng xã hội hoặc dịch vụ bên thứ ba.
+Đăng ký
+Chỉ yêu cầu thông tin tối thiểu cần thiết; kiểm tra định dạng và giải thích lỗi dễ hiểu.
+Không bắt buộc liên kết tài khoản bên thứ ba ngay khi đăng ký.
+Nếu cần xác minh email/OTP, hiển thị đúng quy trình; không giả lập đăng ký thành công.
+Trạng thái tài khoản
+Đăng xuất cần xử lý phiên an toàn.
+Nếu có chế độ khách, chỉ yêu cầu tài khoản khi thao tác cần lưu đồng bộ/xác thực.
+Không lưu mật khẩu dạng văn bản thuần; dùng cơ chế xác thực an toàn của backend.
+2.4. Trang chủ
+Trang chủ bám bố cục ảnh tham chiếu: nền kem, thẻ bo góc, nút chụp lớn, hàng nội dung cuộn ngang và thanh điều hướng cố định phía dưới.
+A. Đầu trang
+Logo nhỏ và tên THÁM VĂN, lời chào; có lối vào hồ sơ/đổi ngôn ngữ nhưng không chiếm nhiều diện tích.
+B. “Chụp để khám phá”
+Thẻ lớn xanh lá đậm, nút camera đỏ đất. Mô tả “Chụp toàn cảnh hoặc cận một chi tiết văn hóa”. Nhấn vào sẽ kiểm tra quyền camera rồi mở camera/chọn ảnh.
+C. “Đang có gì quanh bạn?”
+Nút Dùng vị trí hiện tại, chọn bán kính, danh sách địa điểm gần, nút Xem tất cả trên bản đồ. Thẻ có ảnh đúng, tên, khoảng cách và mô tả ngắn. Nếu chưa cấp vị trí, giải thích và cho chọn khu vực thủ công.
+D. “Dấu vết văn hóa quanh ta”
+Thẻ hoa văn, kiến trúc, biểu tượng, hiện vật hoặc tập quán; ảnh tương ứng, tên, mô tả ngắn và hành động mở chi tiết.
+E. “Tìm hiểu di tích”
+Thẻ địa điểm có ảnh đúng di tích, tên, khu vực và tóm tắt; Xem tất cả mở danh sách đầy đủ.
+F. “Khám phá theo chủ đề”
+Chủ đề có thể gồm hoa văn kiến trúc, di tích và lịch sử, tín ngưỡng, phong tục, nghệ thuật dân gian, hiện vật/nghề thủ công, lễ hội/văn hóa cộng đồng. Mỗi chủ đề mở nội dung liên quan.
+Quy tắc nội dung trang chủ
+Mọi thẻ đề xuất phải có ảnh đúng với tên và nội dung; không dùng chung ảnh cho các địa điểm khác nhau nếu không đúng.
+Trang chủ chỉ hiển thị tóm tắt; trang chi tiết cung cấp nội dung sâu hơn khi dữ liệu có.
+Các hàng thẻ cuộn ngang; nút Xem tất cả và mọi thẻ phải điều hướng đúng.
+Không để ảnh lỗi, tiêu đề bị cắt hoặc thẻ rỗng. Thiếu ảnh xác thực thì không tự gán ảnh không liên quan.
+2.5. Chụp ảnh và nhận diện văn hóa
+Đây là chức năng trọng tâm. Hỗ trợ ảnh toàn cảnh và ảnh cận chi tiết; không giới hạn ở nhận diện tên địa danh.
+Luồng thao tác
+Người dùng bấm Chụp để khám phá.
+Kiểm tra quyền camera; nếu chưa có, giải thích và xin quyền.
+Mở camera thật, cho phép chụp ảnh và chọn ảnh từ thư viện.
+Hiển thị ảnh xem trước; cho phép chụp lại, chọn ảnh khác hoặc xác nhận.
+Gửi ảnh đến dịch vụ nhận diện/tìm kiếm database; hiển thị trạng thái đang phân tích.
+Trả kết quả phù hợp hoặc báo chưa đủ căn cứ, gợi ý chụp lại/chọn vùng ảnh/xem kết quả gần nhất.
+Phạm vi đối tượng
+Công trình kiến trúc và di tích.
+Chi tiết kiến trúc: mái ngói, đầu đao, phù điêu, cột, cửa, hoa văn trang trí.
+Tượng, biểu tượng, hiện vật, đồ thủ công và các chi tiết văn hóa khác.
+Nội dung phi vật thể chỉ được gợi ý theo ngữ cảnh; không tuyên bố camera trực tiếp nhận diện phong tục/sự kiện nếu ảnh không đủ căn cứ.
+Màn hình kết quả
+Tên đối tượng và ảnh tham chiếu phù hợp.
+Tóm tắt dễ hiểu: đối tượng là gì, nhận biết qua đặc điểm nào.
+Thông tin sâu hơn khi có dữ liệu: bối cảnh, niên đại, ý nghĩa và địa điểm liên quan.
+Nguồn thông tin, đơn vị/tác giả nguồn và ngày cập nhật nếu có.
+Nội dung liên quan: địa điểm, chủ đề hoặc thử thách tiếp theo.
+Hành động: lưu vào hành trình, mở chi tiết, xem trên bản đồ hoặc báo thông tin chưa chính xác.
+Độ tin cậy và không nhận diện
+Không khẳng định kết quả khi chưa đủ căn cứ. Chỉ hiển thị điểm tin cậy nếu mô hình thực sự cung cấp; không tự bịa phần trăm. Nếu có nhiều kết quả gần nhau, ghi “Có thể là…” và nêu khác biệt. Nếu không có kết quả, nói rõ dữ liệu chưa đủ và cho phép thử lại/tìm thủ công. Nếu chưa có mô hình AI/API, xây dựng lớp dịch vụ có thể thay thế; phân biệt tìm kiếm gần đúng với nhận diện đã xác minh. Không kết luận chỉ dựa vào tên file ảnh.
+2.6. Bản đồ, định vị và thông báo địa điểm
+Bản đồ
+Hiển thị địa điểm văn hóa có bản ghi và tọa độ hợp lệ.
+Mỗi điểm bản đồ mở đúng thẻ và trang chi tiết.
+Có tìm kiếm/lọc theo loại địa điểm hoặc chủ đề; vẫn cho xem bản đồ khi chưa chia sẻ vị trí hiện tại.
+Có nút chỉ đường nếu nền tảng hỗ trợ; không tự tạo địa chỉ hoặc tọa độ.
+Có trạng thái tải, lỗi mạng, không tìm thấy và quyền vị trí bị từ chối.
+Bán kính 3–10 km
+Cho phép chọn từ 3 km đến 10 km bằng thanh trượt hoặc lựa chọn dễ hiểu.
+Hiển thị đúng giá trị đang chọn và lưu lựa chọn.
+Bán kính phải ảnh hưởng thật đến danh sách địa điểm và logic phát hiện địa điểm gần, không chỉ đổi con số.
+Nếu chưa có quyền vị trí, không giả lập vị trí; cho chọn khu vực thủ công hoặc hướng dẫn bật quyền.
+Thông báo địa điểm gần
+Chỉ hoạt động khi đã cấp quyền phù hợp và hệ điều hành hỗ trợ.
+Có tùy chọn bật/tắt; giải thích loại thông báo có thể nhận.
+Hạn chế thông báo lặp về cùng địa điểm bằng cơ chế tần suất/đánh dấu đã gửi.
+Không gửi thông báo giả khi không phát hiện người dùng ở gần.
+Kiểm thử trên thiết bị thật và ghi rõ giới hạn chạy nền của nền tảng.
+2.7. Thử thách, điểm thưởng và huy hiệu
+Mục tiêu là tạo động lực tìm hiểu văn hóa bằng nhiệm vụ ngắn, mục tiêu rõ và phản hồi dễ hiểu.
+Danh sách thử thách
+Mỗi thử thách có tên, ảnh phù hợp, mô tả, điều kiện hoàn thành, địa điểm/thời gian nếu có và phần thưởng nếu có.
+Có trạng thái: chưa tham gia, đang thực hiện, hoàn thành, hết hạn hoặc không còn khả dụng.
+Có thể lọc theo chủ đề, địa điểm và mức độ nếu dữ liệu hỗ trợ.
+Hoàn thành thử thách
+Câu trả lời, check-in hoặc hành động hoàn thành phải được xác minh theo điều kiện.
+Chỉ cộng điểm/cấp huy hiệu khi backend ghi nhận; tránh cộng lặp do nhấn nhiều lần.
+Nêu rõ lý do nếu chưa đủ điều kiện hoàn thành.
+Voucher, quyền lợi Premium hoặc chiến dịch tài trợ chỉ được hiển thị là quyền lợi thực khi đã có dữ liệu và điều kiện hợp lệ; không tạo voucher giả.
+Huy hiệu và tiến độ
+Hiển thị tên huy hiệu, điều kiện đạt, trạng thái khóa/đã đạt và tiến độ nếu có.
+Không khiến người dùng hiểu nhầm điểm/huy hiệu có giá trị tiền tệ nếu không phải vậy.
+Nếu thử thách chưa có dữ liệu thật, đánh dấu nội dung demo.
+2.8. Hành trình văn hóa
+Hiển thị địa điểm đã lưu, đã ghé thăm và dấu vết đã thu thập theo đúng trạng thái.
+Cho mở lại trang chi tiết của địa điểm/đối tượng.
+Có thể nhóm địa điểm thành hành trình nếu dữ liệu và chức năng hỗ trợ.
+Chỉ hiển thị thời gian lưu/ghé thăm khi có dữ liệu thật.
+Trạng thái mới có hướng dẫn bắt đầu khám phá hoặc lưu địa điểm đầu tiên.
+Không tự đánh dấu đã ghé thăm nếu người dùng chưa thực hiện hành động/bằng chứng phù hợp.
+2.9. Trang cá nhân và cài đặt
+Thông tin tài khoản và chỉnh sửa thông tin cơ bản.
+Chuyển đổi ngôn ngữ.
+Cài đặt bán kính khám phá từ 3–10 km.
+Bật/tắt thông báo và hướng dẫn quản lý quyền thiết bị.
+Nội dung đã lưu, lịch sử thử thách và huy hiệu nếu có.
+Điều khoản, chính sách quyền riêng tư, đăng xuất và quản lý tài khoản mà backend hỗ trợ.
+Cài đặt phải có tác dụng và được lưu. Nếu người dùng tắt thông báo trong app, ứng dụng phải ngừng các thông báo tùy biến trong phạm vi có thể kiểm soát; quyền hệ điều hành vẫn được quản lý riêng.
+2.10. Đa ngôn ngữ Việt – Anh – Trung
+Ba ngôn ngữ chính: tiếng Việt, tiếng Anh và tiếng Trung giản thể. Khi đổi ngôn ngữ, toàn bộ ứng dụng phải đổi ngay mà không cần khởi động lại.
+Phạm vi dịch
+Onboarding, điều khoản, đăng nhập/đăng ký, trang chủ, nút, nhãn và thanh điều hướng.
+Bản đồ, bộ lọc, thông báo trong app, thử thách, hành trình, hồ sơ và cài đặt.
+Mô tả văn hóa, thông báo lỗi, trạng thái tải/trống và hộp thoại.
+Quy tắc tên riêng văn hóa
+Khi dùng tiếng Trung, giữ tên tiếng Việt của địa danh, di tích, công trình, hoa văn, hiện vật, lễ hội và khái niệm văn hóa; thêm bản dịch tiếng Trung trong ngoặc nếu đã xác minh.
+Khi dùng tiếng Anh, giữ tên tiếng Việt và có thể thêm tên tiếng Anh trong ngoặc nếu bản dịch đã xác minh.
+Chưa có bản dịch đáng tin cậy thì giữ nguyên tên tiếng Việt; không tự bịa bản dịch chính thức.
+Dùng hệ thống i18n và từ điển dịch riêng; không viết cứng chuỗi giao diện trong component.
+Lưu lựa chọn ngôn ngữ; rà soát để không sót tiếng Việt trong giao diện Anh/Trung, ngoại trừ tên riêng theo quy tắc.
+Nội dung chưa dịch phải có cơ chế dự phòng; không hiển thị khóa kỹ thuật, null, undefined hoặc vùng chữ trống.
+2.11. Database, ảnh và quản trị nội dung
+Kiểm tra file database được bàn giao trước khi thiết kế cấu trúc. Xác định trường dữ liệu, quan hệ ảnh–bản ghi, nguồn tham khảo và tình trạng dịch. Không mặc định file nén hình ảnh là database.
+Các trường nên hỗ trợ khi nguồn có
+ID duy nhất; tên tiếng Việt; tên tiếng Anh/Trung đã xác minh.
+Loại đối tượng; mô tả ngắn/dài; từ khóa và tên gọi khác.
+Thời kỳ/niên đại, địa điểm, tọa độ và thông tin liên quan khi có căn cứ.
+Ảnh chính/ảnh bổ sung; nguồn ảnh và điều kiện sử dụng.
+Nguồn nội dung, ngày kiểm chứng/cập nhật, trạng thái xác minh.
+Các bản ghi liên quan như chủ đề, di tích, thử thách hoặc hành trình.
+Quy tắc ảnh và nội dung
+Ảnh phải đúng đối tượng và gắn với ID bản ghi rõ ràng.
+Không dùng ảnh Nhà thờ Đức Bà cho Chợ Bến Thành hoặc ảnh kiến trúc chung cho di tích cụ thể.
+Không để URL ảnh hỏng, ảnh vỡ hoặc ảnh sai nội dung xuất hiện trong bản hoàn thiện.
+Ưu tiên tài nguyên được cung cấp và nguồn được phép sử dụng; lưu nguồn ảnh khi cần.
+Thiếu ảnh xác thực thì không tự gán ảnh khác; có thể ẩn thẻ khỏi đề xuất hoặc đánh dấu thiếu ảnh trong quản trị.
+Không tự tạo niên đại, ý nghĩa lịch sử, địa chỉ, tọa độ, nguồn trích dẫn hoặc bản dịch. Cần quy trình cập nhật/sửa/ẩn nội dung sai.
+2.12. Vận hành, trạng thái lỗi và bảo mật
+Trạng thái chuẩn
+Loading: chỉ báo tải/skeleton, tránh màn hình trắng kéo dài.
+Success: xác nhận hành động hoàn tất.
+Empty: giải thích chưa có dữ liệu và gợi ý bước tiếp theo.
+Error: nói rõ vấn đề dễ hiểu, có nút thử lại khi phù hợp.
+Offline: giữ nội dung đã lưu nếu có thể và báo phần cần kết nối.
+Permission denied: giải thích tác động và cách bật lại quyền.
+Bảo mật và quyền riêng tư
+Chỉ thu thập dữ liệu cần thiết cho tính năng đã giải thích.
+Không lưu mật khẩu dạng văn bản thuần; không đưa khóa bí mật vào mã nguồn client.
+Không ghi dữ liệu nhạy cảm vào log hoặc thông báo lỗi.
+Dùng vị trí theo mục đích đã thông báo; người dùng có thể từ chối.
+Ảnh người dùng gửi để nhận diện phải được xử lý theo chính sách đã công bố, không tự ý công khai.
+Điều khoản và chính sách phải đọc được, không chỉ là một ô tick.
+Tích hợp kỹ thuật
+Tôn trọng framework/source code hiện tại nếu phù hợp. Tách lớp UI, điều hướng, trạng thái, xác thực, camera, vị trí, bản đồ, nhận diện, database, bản dịch, thử thách và hành trình. Nếu thiếu backend/API, ghi rõ dịch vụ cần cấu hình và dùng dữ liệu demo có nhãn; không giả vờ chức năng đã kết nối thật.
+2.13. Điều hướng và luồng người dùng
+Mục điều hướng
+Nội dung
+Hành động
+Trang chủ
+Gợi ý khám phá, camera, nội dung gần đây/theo chủ đề
+Về trang tổng quan
+Bản đồ
+Địa điểm văn hóa và bộ lọc bán kính
+Mở bản đồ/chi tiết địa điểm
+Thử thách
+Nhiệm vụ, tiến độ, huy hiệu và phần thưởng hợp lệ
+Tham gia/tiếp tục thử thách
+Hành trình
+Địa điểm đã lưu/ghé thăm và dấu vết văn hóa
+Xem/tiếp tục hành trình
+Cá nhân
+Tài khoản, ngôn ngữ, quyền, thông báo, cài đặt
+Quản lý tùy chọn
+Luồng tổng quát: Mở app → Logo → Giới thiệu → Điều khoản → Giải thích/cấp quyền theo ngữ cảnh → Đăng nhập/đăng ký hoặc khách (nếu có) → Trang chủ → Camera/Bản đồ/Thử thách/Hành trình/Cá nhân → Xem kết quả/chi tiết → Lưu hoặc tiếp tục khám phá.
+Các tab giữ trạng thái được chọn rõ ràng. Nút quay lại không làm mất dữ liệu chưa gửi nếu có thể. Khi đổi ngôn ngữ, giữ màn hình hiện tại và cập nhật toàn bộ chuỗi.
+2.14. Tiêu chí nghiệm thu và bàn giao
+Logo và onboarding đúng thương hiệu; onboarding không lặp lại không cần thiết.
+Điều khoản đọc được; quyền camera, vị trí và thông báo được yêu cầu đúng ngữ cảnh.
+Đăng nhập/đăng ký phản ánh đúng backend; không giả lập thành công.
+Trang chủ theo bố cục tham chiếu, đủ 5 mục điều hướng và các thẻ đều hoạt động.
+Camera mở thật hoặc có luồng chọn ảnh; ảnh đi vào quy trình nhận diện.
+Kết quả nhận diện dựa trên dữ liệu; xử lý rõ trường hợp không chắc chắn.
+Mỗi ảnh đề xuất đúng bản ghi và có quan hệ dữ liệu rõ ràng.
+Bán kính 3–10 km được lưu và ảnh hưởng thật đến lọc địa điểm.
+Bản đồ, thử thách, hành trình và cá nhân điều hướng đúng.
+Chuyển Việt/Anh/Trung cập nhật toàn bộ giao diện; tên riêng đúng quy tắc.
+Có trạng thái loading, empty, error, offline và permission denied.
+Kiểm thử nhiều kích thước màn hình; không có chữ tràn, ảnh lỗi hoặc nút vô tác dụng.
+Chức năng phụ thuộc API/backend được nêu rõ trạng thái và cách cấu hình.
+Bàn giao cuối cùng
+Source code có cấu trúc rõ ràng.
+Hướng dẫn cài đặt và chạy dự án.
+Danh sách API/backend/biến môi trường cần cấu hình.
+Danh sách dữ liệu/ảnh đã tích hợp và nội dung còn thiếu.
+Báo cáo kiểm thử theo từng tiêu chí nghiệm thu.
+Bảng phân biệt tính năng hoạt động thật, tính năng demo và tính năng chờ tích hợp.
+GHI CHÚ CUỐI CHO ĐỘI NGŨ PHÁT TRIỂN
+Ưu tiên cao nhất là độ chính xác văn hóa, ảnh đúng nội dung, trải nghiệm dễ hiểu và sự nhất quán. Không chỉ dựng giao diện đẹp. Mọi nút và cài đặt phải có hành vi thực tế; các giới hạn do dữ liệu, API, hệ điều hành hoặc backend phải được ghi rõ để chủ dự án quyết định bước tiếp theo.

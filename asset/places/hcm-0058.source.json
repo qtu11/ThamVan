@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:H%C3%A0ng_rong_%E1%BB%9F_%C4%91%C6%B0%E1%BB%9Dng_%C4%90%E1%BA%B7ng_V%C4%83n_S%C3%A2m_gi%E1%BB%AFa_C%C3%B4ng_vi%C3%AAn_Gia_%C4%90%E1%BB%8Bnh.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/H%C3%A0ng_rong_%E1%BB%9F_%C4%91%C6%B0%E1%BB%9Dng_%C4%90%E1%BA%B7ng_V%C4%83n_S%C3%A2m_gi%E1%BB%AFa_C%C3%B4ng_vi%C3%AAn_Gia_%C4%90%E1%BB%8Bnh.jpg/1280px-H%C3%A0ng_rong_%E1%BB%9F_%C4%91%C6%B0%E1%BB%9Dng_%C4%90%E1%BA%B7ng_V%C4%83n_S%C3%A2m_gi%E1%BB%AFa_C%C3%B4ng_vi%C3%AAn_Gia_%C4%90%E1%BB%8Bnh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Hàng rong ở đường Đặng Văn Sâm giữa Công viên Gia Định.jpg",
+  "author": "Kwozyn",
+  "license": "CC0",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "retrievedAt": "2026-10-27T08:59:21.050Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Công viên Gia Định",
+    "geographicContext": false,
+    "distanceKm": 0.08134895816157944,
+    "score": 91,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

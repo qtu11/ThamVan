@@ -1,0 +1,14 @@
+{
+  "TotalPlaces": 1505,
+  "HasImages": 346,
+  "Missing": 1159,
+  "VerifiedImages": 0,
+  "PendingReview": 346,
+  "SubjectReviewedImages": 346,
+  "DocumentedLicenseImages": 162,
+  "CoveragePercent": 22.99,
+  "QuarantinedThisRun": 0,
+  "DuplicateAssignments": 0,
+  "AuditedUtc": "2026-10-27T09:24:02.606Z",
+  "CoverageMeaning": "Existing location photos only. Generated title cards and renders are excluded. Presence does not establish identity or usage rights."
+}

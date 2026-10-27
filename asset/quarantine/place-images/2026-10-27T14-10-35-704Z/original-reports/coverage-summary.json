@@ -1,0 +1,15 @@
+{
+  "TotalPlaces": 1505,
+  "HasImages": 399,
+  "Missing": 1106,
+  "VerifiedImages": 0,
+  "PendingReview": 399,
+  "SubjectReviewedImages": 399,
+  "DocumentedLicenseImages": 162,
+  "CoveragePercent": 26.51,
+  "QuarantinedThisRun": 0,
+  "DuplicateAssignments": 0,
+  "AuditedUtc": "2026-10-27T14:06:56.473Z",
+  "CoverageMeaning": "Existing location photos only. Generated title cards and renders are excluded. Presence does not establish identity or usage rights.",
+  "LastArchive": "asset/quarantine/place-images/2026-10-27T14-06-56-473Z"
+}

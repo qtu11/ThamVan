@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Ph%E1%BB%95_Hi%E1%BB%81n_B%E1%BB%93_T%C3%A1t_-_Ch%C3%B9a_V%E1%BA%A1n_Ph%E1%BA%ADt_-_TpHCM_Qu%E1%BA%ADn_5_-_VN.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Ph%E1%BB%95_Hi%E1%BB%81n_B%E1%BB%93_T%C3%A1t_-_Ch%C3%B9a_V%E1%BA%A1n_Ph%E1%BA%ADt_-_TpHCM_Qu%E1%BA%ADn_5_-_VN.jpg/1280px-Ph%E1%BB%95_Hi%E1%BB%81n_B%E1%BB%93_T%C3%A1t_-_Ch%C3%B9a_V%E1%BA%A1n_Ph%E1%BA%ADt_-_TpHCM_Qu%E1%BA%ADn_5_-_VN.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Phổ Hiền Bồ Tát - Chùa Vạn Phật - TpHCM Quận 5 - VN.jpg",
+  "author": "ndoduc",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:21.021Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Chùa Vạn Phật",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 81,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

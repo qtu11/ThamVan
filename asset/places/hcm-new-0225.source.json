@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Ph%C3%BA_m%E1%BB%B9_h%C6%B0ng,_H%E1%BB%92_b%C3%A1n_nguy%E1%BB%87t_q7_tphcm_vietnam_-_panoramio.jpg",
+  "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Ph%C3%BA_m%E1%BB%B9_h%C6%B0ng%2C_H%E1%BB%92_b%C3%A1n_nguy%E1%BB%87t_q7_tphcm_vietnam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "title": "File:Phú mỹ hưng, HỒ bán nguyệt q7 tphcm vietnam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:22.217Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Hồ Bán Nguyệt",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

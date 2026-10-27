@@ -1,0 +1,145 @@
+{
+  "createdAt": "2026-10-27T09:41:22.416Z",
+  "moves": [
+    {
+      "id": "HCM-0040",
+      "original": "/images/hcm-0040-dia-dao-cu-chi.jpg",
+      "sha256": "a4d78d140310f40d6c7f09b11643d5cf06be3b1477257c1571a14166f214028f",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-0040-dia-dao-cu-chi.jpg"
+    },
+    {
+      "id": "HCM-0056",
+      "original": "/images/hcm-0056-cong-vien-bach-tung-diep.jpg",
+      "sha256": "425e3d5c1eb226457aebe6c328e1d6041435515c968273494865aa266da596a1",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-0056-cong-vien-bach-tung-diep.jpg"
+    },
+    {
+      "id": "HCM-VR-0020",
+      "original": "/images/hcm-vr-0020-khu-nong-nghiep-cong-nghe-cao.jpg",
+      "sha256": "87e5c4569a2543af4cff6f61632ea9d71ce4d25f640fe782ad88dbeaf7edc7d0",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-vr-0020-khu-nong-nghiep-cong-nghe-cao.jpg"
+    },
+    {
+      "id": "HCM-NEW-0152",
+      "original": "/images/hcm-new-0152-bep-me-in-le-thanh-ton.jpg",
+      "sha256": "08b1a8116a92dea4a8f5b34fc6b09e08237ed5953d5eeb843414f5574354e3b3",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0152-bep-me-in-le-thanh-ton.jpg"
+    },
+    {
+      "id": "HCM-NEW-0155",
+      "original": "/images/hcm-new-0155-sol-kitchen-bar-ben-thanh.jpg",
+      "sha256": "80ff35df545d11d2b8fdd2fe9ae36ff8bb3c0642eab6c96c7652643127a24d21",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0155-sol-kitchen-bar-ben-thanh.jpg"
+    },
+    {
+      "id": "HCM-NEW-0175",
+      "original": "/images/hcm-new-0175-pho-hung-cau-ong-lanh.jpg",
+      "sha256": "96895e1c78bf361f20340123a0cb4600ad44733f8aef7db21216d38bce947420",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0175-pho-hung-cau-ong-lanh.jpg"
+    },
+    {
+      "id": "HCM-NEW-0180",
+      "original": "/images/hcm-new-0180-xoi-ga-number-one.jpg",
+      "sha256": "5413b4ee8df58c59681a6cdda0362928bf00c1107c5323ba57327930f30b3114",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0180-xoi-ga-number-one.jpg"
+    },
+    {
+      "id": "HCM-NEW-0195",
+      "original": "/images/hcm-new-0195-pho-hoang-nguyen-tri-phuong.jpg",
+      "sha256": "67627f6bf26a6c5f6cca1ddf1f6adc5140d54234152d8d5e47b5ef6c7c2227cd",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0195-pho-hoang-nguyen-tri-phuong.jpg"
+    },
+    {
+      "id": "HCM-NEW-0200",
+      "original": "/images/hcm-new-0200-oc-dao-cau-ong-lanh.jpg",
+      "sha256": "de73aa59bf532b235ed3c7ae17a01b29130c673a4fb3499946da5e21fe89deac",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0200-oc-dao-cau-ong-lanh.jpg"
+    },
+    {
+      "id": "HCM-NEW-0207",
+      "original": "/images/hcm-new-0207-home-saigon-home-vietnamese-restaurant.jpg",
+      "sha256": "04615a6c2d487580e3fa2e9275255134980cdbd5347078ff2296b701862f0e43",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0207-home-saigon-home-vietnamese-restaurant.jpg"
+    },
+    {
+      "id": "HCM-NEW-0211",
+      "original": "/images/hcm-new-0211-cau-thu-thiem.jpg",
+      "sha256": "4f86e581edbaea20486ec3edd511544ab68064f55594ed6a4cf7d46a082b2c5a",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0211-cau-thu-thiem.jpg"
+    },
+    {
+      "id": "HCM-NEW-0215",
+      "original": "/images/hcm-new-0215-cau-kenh-te.jpg",
+      "sha256": "b1a87e93651fb8b19855507594ce282c2fcd17e3ac003ad1589284ce8da33b24",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0215-cau-kenh-te.jpg"
+    },
+    {
+      "id": "HCM-NEW-0229",
+      "original": "/images/hcm-new-0229-ga-ben-thanh-tuyen-metro-so-1.jpg",
+      "sha256": "a3e58bd9431aa010d096c71e51d979c82eddaf5750e65e7a4a5e91b2d12649ba",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0229-ga-ben-thanh-tuyen-metro-so-1.jpg"
+    },
+    {
+      "id": "HCM-NEW-0238",
+      "original": "/images/hcm-new-0238-ga-binh-thai-tuyen-metro-so-1.jpg",
+      "sha256": "429e81989db0f98dd03e793f4b2970a7d3b4a455d1cd4f7c14df86a98b0b853f",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0238-ga-binh-thai-tuyen-metro-so-1.jpg"
+    },
+    {
+      "id": "HCM-NEW-0239",
+      "original": "/images/hcm-new-0239-ga-thu-duc-tuyen-metro-so-1.jpg",
+      "sha256": "a2e84489dabb3a6421b180b690f32e77e1c7a546f5b97423f2a482c148a293b2",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0239-ga-thu-duc-tuyen-metro-so-1.jpg"
+    },
+    {
+      "id": "HCM-NEW-0246",
+      "original": "/images/hcm-new-0246-bai-dau-vung-tau.jpg",
+      "sha256": "2f611c7e38eae643467d1b399b6d4cc923ed038da470e28061b2a0e5dd968b22",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0246-bai-dau-vung-tau.jpg"
+    },
+    {
+      "id": "HCM-NEW-0251",
+      "original": "/images/hcm-new-0251-nui-nho-vung-tau.jpg",
+      "sha256": "3161a4cb2d6cdfb633d0e17586f471edabd5d85813a809458d0048ebb2cd2671",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0251-nui-nho-vung-tau.jpg"
+    },
+    {
+      "id": "HCM-NEW-0254",
+      "original": "/images/hcm-new-0254-dinh-thang-tam.jpg",
+      "sha256": "e84a64eb5f294140fa1b522e50d560342d27888b1f3cace132eb8d72dd4e0b38",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-new-0254-dinh-thang-tam.jpg"
+    },
+    {
+      "id": "HCM-1100",
+      "original": "/images/hcm-1100-masteri-thao-dien.jpg",
+      "sha256": "f6169b525d213a377183385f3bfa515d17265c285d09a69722ef6b0d5a972240",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-1100-masteri-thao-dien.jpg"
+    },
+    {
+      "id": "HCM-1103",
+      "original": "/images/hcm-1103-the-global-city.jpg",
+      "sha256": "8f6d50307abe56c072948e41ae26c39fd720a79f243725c7ddd6384d5d1be88e",
+      "reason": "AWAITING_VISUAL_LOCATION_REVIEW",
+      "destination": "asset/quarantine/place-images/2026-10-27T09-41-22-416Z/images/hcm-1103-the-global-city.jpg"
+    }
+  ]
+}

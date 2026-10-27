@@ -1,0 +1,236 @@
+{
+  "createdAt": "2026-10-27T08:49:35.598Z",
+  "moves": [
+    {
+      "id": "HCM-0040",
+      "original": "/images/hcm-0040-dia-dao-cu-chi.jpg",
+      "sha256": "a4d78d140310f40d6c7f09b11643d5cf06be3b1477257c1571a14166f214028f",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0040-dia-dao-cu-chi.jpg"
+    },
+    {
+      "id": "HCM-0042",
+      "original": "/images/hcm-0042-di-tich-nha-tu-con-dao.jpg",
+      "sha256": "4d1d80875c9322230cca4d92edd35ecc629e0b175676a0aa00696b026c185087",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0042-di-tich-nha-tu-con-dao.jpg"
+    },
+    {
+      "id": "HCM-0067",
+      "original": "/images/hcm-0067-thao-cam-vien-sai-gon.jpg",
+      "sha256": "8d92178ba6043c2e7418fb6b073ab16c61f5c9cb1c533c959babe9f388f61d3c",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0067-thao-cam-vien-sai-gon.jpg"
+    },
+    {
+      "id": "HCM-NEW-0011",
+      "original": "/images/hcm-new-0011-thpt-long-truong.jpg",
+      "sha256": "2971fbf75ac99467c720734e31a2f7b7df31e9308336466a10d5d28435811005",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0011-thpt-long-truong.jpg"
+    },
+    {
+      "id": "HCM-NEW-0056",
+      "original": "/images/hcm-new-0056-truong-dai-hoc-kinh-te-luat-dhqg-tp-hcm.jpg",
+      "sha256": "8192bcf676bf1ee1cfd94ab9b30020b0f8d4b12cf85ec99729acd7e1b17fdfaa",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0056-truong-dai-hoc-kinh-te-luat-dhqg-tp-hcm.jpg"
+    },
+    {
+      "id": "HCM-NEW-0057",
+      "original": "/images/hcm-new-0057-truong-dai-hoc-quoc-te-dhqg-tp-hcm.jpg",
+      "sha256": "e6e9ee852c8a838178d6081875220126bd66e12dbd66a2e7ec6bf19181a78919",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0057-truong-dai-hoc-quoc-te-dhqg-tp-hcm.jpg"
+    },
+    {
+      "id": "HCM-NEW-0060",
+      "original": "/images/hcm-new-0060-truong-dai-hoc-kinh-te-tai-chinh-tp-hcm-uef.jpg",
+      "sha256": "4e5de2777f234a13006837e0560db91fdd2396a40a81ad20abfd8628d90aa150",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0060-truong-dai-hoc-kinh-te-tai-chinh-tp-hcm-uef.jpg"
+    },
+    {
+      "id": "HCM-NEW-0127",
+      "original": "/images/hcm-new-0127-sc-vivocity.jpg",
+      "sha256": "88e4d60c356e3276aa7dddf1834599886905109cf147927712526bf234b9a4f5",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0127-sc-vivocity.jpg"
+    },
+    {
+      "id": "HCM-NEW-0129",
+      "original": "/images/hcm-new-0129-saigon-centre-takashimaya.jpg",
+      "sha256": "f425d231b2480a15389dab922d6fb31386bc38259afd34b7eb129b3a18562550",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0129-saigon-centre-takashimaya.jpg"
+    },
+    {
+      "id": "HCM-NEW-0211",
+      "original": "/images/hcm-new-0211-cau-thu-thiem.jpg",
+      "sha256": "4f86e581edbaea20486ec3edd511544ab68064f55594ed6a4cf7d46a082b2c5a",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0211-cau-thu-thiem.jpg"
+    },
+    {
+      "id": "HCM-NEW-0215",
+      "original": "/images/hcm-new-0215-cau-kenh-te.jpg",
+      "sha256": "b1a87e93651fb8b19855507594ce282c2fcd17e3ac003ad1589284ce8da33b24",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0215-cau-kenh-te.jpg"
+    },
+    {
+      "id": "HCM-NEW-0238",
+      "original": "/images/hcm-new-0238-ga-binh-thai-tuyen-metro-so-1.jpg",
+      "sha256": "429e81989db0f98dd03e793f4b2970a7d3b4a455d1cd4f7c14df86a98b0b853f",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0238-ga-binh-thai-tuyen-metro-so-1.jpg"
+    },
+    {
+      "id": "HCM-NEW-0239",
+      "original": "/images/hcm-new-0239-ga-thu-duc-tuyen-metro-so-1.jpg",
+      "sha256": "a2e84489dabb3a6421b180b690f32e77e1c7a546f5b97423f2a482c148a293b2",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0239-ga-thu-duc-tuyen-metro-so-1.jpg"
+    },
+    {
+      "id": "HCM-NEW-0246",
+      "original": "/images/hcm-new-0246-bai-dau-vung-tau.jpg",
+      "sha256": "2f611c7e38eae643467d1b399b6d4cc923ed038da470e28061b2a0e5dd968b22",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0246-bai-dau-vung-tau.jpg"
+    },
+    {
+      "id": "HCM-NEW-0251",
+      "original": "/images/hcm-new-0251-nui-nho-vung-tau.jpg",
+      "sha256": "3161a4cb2d6cdfb633d0e17586f471edabd5d85813a809458d0048ebb2cd2671",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0251-nui-nho-vung-tau.jpg"
+    },
+    {
+      "id": "HCM-NEW-0254",
+      "original": "/images/hcm-new-0254-dinh-thang-tam.jpg",
+      "sha256": "e84a64eb5f294140fa1b522e50d560342d27888b1f3cace132eb8d72dd4e0b38",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-new-0254-dinh-thang-tam.jpg"
+    },
+    {
+      "id": "HCM-0440",
+      "original": "/images/hcm-0440-benh-vien-cho-ray.jpg",
+      "sha256": "8e734bfdf35a7db9ed423cc655048378b39a96ea8b3d449061e4396b79b2a2f3",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0440-benh-vien-cho-ray.jpg"
+    },
+    {
+      "id": "HCM-0467",
+      "original": "/images/hcm-0467-thpt-thu-khoa-huan.jpg",
+      "sha256": "d78d0252b1ca153e27caa73645163d0721acf5b6b0105b40c465eac4952019cc",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0467-thpt-thu-khoa-huan.jpg"
+    },
+    {
+      "id": "HCM-0479",
+      "original": "/images/hcm-0479-thpt-ha-huy-tap.jpg",
+      "sha256": "c2fc52f7524d3f36209bc6494ea6781b0ce521dc7f4838fb25fa1bbb31c61059",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0479-thpt-ha-huy-tap.jpg"
+    },
+    {
+      "id": "HCM-0668",
+      "original": "/images/hcm-0668-truong-tieu-hoc-nguyen-van-the.jpg",
+      "sha256": "30a51f4c7191d9aa3c4d6c978d3fc0cb66de5582b9ffd9811ac47b1f9a2c4ee9",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0668-truong-tieu-hoc-nguyen-van-the.jpg"
+    },
+    {
+      "id": "HCM-0859",
+      "original": "/images/hcm-0859-the-vintage-emporium-da-kao.jpg",
+      "sha256": "56914569261fbecd8ff9fbfb82055ccccedcf9cf676036d4254f04ff6ab9d20e",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0859-the-vintage-emporium-da-kao.jpg"
+    },
+    {
+      "id": "HCM-0868",
+      "original": "/images/hcm-0868-language-exchange-coffee-house.jpg",
+      "sha256": "da8bfc53482b9af78ce3bc267e0c95b869679f4400177158e3db9253acb060f0",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0868-language-exchange-coffee-house.jpg"
+    },
+    {
+      "id": "HCM-0877",
+      "original": "/images/hcm-0877-mia-beauty-spa-landmark.jpg",
+      "sha256": "35c6037566b18078e1c479bcd6bfbe4cade6c5aa02d093e4525d8c0864af8565",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0877-mia-beauty-spa-landmark.jpg"
+    },
+    {
+      "id": "HCM-0878",
+      "original": "/images/hcm-0878-yen-a-spa.jpg",
+      "sha256": "c1ac99fa0b4df2d9c6459b6bbfb335ed0e2f283a564a7be9c5b26f478ed3d158",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0878-yen-a-spa.jpg"
+    },
+    {
+      "id": "HCM-0936",
+      "original": "/images/hcm-0936-zion-sky-lounge-dining.jpg",
+      "sha256": "942fe741fd1bfa274155ef59730028d2670b85518039c618eb389f8e5142de6d",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0936-zion-sky-lounge-dining.jpg"
+    },
+    {
+      "id": "HCM-0978",
+      "original": "/images/hcm-0978-lexa-beer-house.jpg",
+      "sha256": "3e924ee67d7f98a535a0955258a1a49a70ed16f7f22774563795b1aab14c7998",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0978-lexa-beer-house.jpg"
+    },
+    {
+      "id": "HCM-0998",
+      "original": "/images/hcm-0998-clay-saigon.jpg",
+      "sha256": "f42127dad0b45c6778351d09f2e72081dcad5c515783eeb7c3894b19f655e5f7",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-0998-clay-saigon.jpg"
+    },
+    {
+      "id": "HCM-1001",
+      "original": "/images/hcm-1001-cocotte-ben-thanh.jpg",
+      "sha256": "08319eedd1fe3433d69b043fa40e3cc372addb65a4504a354eaf0a44866aa82e",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-1001-cocotte-ben-thanh.jpg"
+    },
+    {
+      "id": "HCM-1004",
+      "original": "/images/hcm-1004-lagarden-restaurant.jpg",
+      "sha256": "08dafc7499c9f0839ace573b5215355dd8e7a25bc42efe6e9dfcc733487a2381",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-1004-lagarden-restaurant.jpg"
+    },
+    {
+      "id": "HCM-1012",
+      "original": "/images/hcm-1012-la-brasserie-restaurant-hotel-nikko-saigon.jpg",
+      "sha256": "35222dda698f9029fd9f03b5393745ea2df2111dc6059fe82d90ec536e99a2de",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-1012-la-brasserie-restaurant-hotel-nikko-saigon.jpg"
+    },
+    {
+      "id": "HCM-1015",
+      "original": "/images/hcm-1015-marcel-gourmet-burger.jpg",
+      "sha256": "e9670be37638d7150aff40eb58682f9a8a2db176ab48e4186e3fd9213da0e7d3",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-1015-marcel-gourmet-burger.jpg"
+    },
+    {
+      "id": "HCM-1028",
+      "original": "/images/hcm-1028-ngo-8-tra-chanh-lau-rieu-cua-dong-truong-dinh.jpg",
+      "sha256": "533799b951f8ec390018e8d4cdc9c06b1b8f93dc828f85c8b09fabc0e8af6c3e",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-1028-ngo-8-tra-chanh-lau-rieu-cua-dong-truong-dinh.jpg"
+    },
+    {
+      "id": "HCM-1030",
+      "original": "/images/hcm-1030-home-finest-saigon-restaurant.jpg",
+      "sha256": "7aedbf5853b28ffacd51dc08e106bd6240941c57258cd0d635ccb66e36290bc1",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-49-35-598Z/images/hcm-1030-home-finest-saigon-restaurant.jpg"
+    }
+  ]
+}

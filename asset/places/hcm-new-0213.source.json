@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Cau_binh_trieu,_saigon_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Cau_binh_trieu%2C_saigon_-_panoramio.jpg/1280px-Cau_binh_trieu%2C_saigon_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Cau binh trieu, saigon - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:22.227Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Cầu Bình Triệu",
+    "geographicContext": true,
+    "distanceKm": 0.02044341645220491,
+    "score": 92,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Park_Hyatt_Saigon.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Park_Hyatt_Saigon.jpg/1280px-Park_Hyatt_Saigon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Park Hyatt Saigon.jpg",
+  "author": "Joshua Rappeneker from Tokyo, Japan",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "retrievedAt": "2026-10-27T08:59:23.368Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Park Hyatt Saigon",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

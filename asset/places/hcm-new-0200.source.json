@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Nguyen_cong_tru-C%E1%BA%A7u_%C3%94ng_L%C3%A3nh,_Qu%E1%BA%ADn_1,_TPHCM,_Vi%E1%BB%87t_Nam_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Nguyen_cong_tru-C%E1%BA%A7u_%C3%94ng_L%C3%A3nh%2C_Qu%E1%BA%ADn_1%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg/1280px-Nguyen_cong_tru-C%E1%BA%A7u_%C3%94ng_L%C3%A3nh%2C_Qu%E1%BA%ADn_1%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Nguyen cong tru-Cầu Ông Lãnh, Quận 1, TPHCM, Việt Nam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:05:25.548Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Cầu Ông Lãnh",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 84,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

@@ -1,0 +1,300 @@
+import * as THREE from 'three';
+import type { RefObject } from 'react';
+import { buildCity } from './city-model';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { cityLighting, type CityTime } from './city-lighting';
+import { cityPlaces } from './city-places';
+import { createCityBoats } from './city-boats';
+
+export function createCityRenderer(
+  host: HTMLElement,
+  progress: RefObject<number>,
+  onReady: () => void,
+  onUnavailable: () => void,
+) {
+  let renderer: THREE.WebGLRenderer;
+  try {
+    renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: false,
+      powerPreference: 'low-power',
+    });
+  } catch {
+    onUnavailable();
+    return () => {};
+  }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, innerWidth < 900 ? 1.25 : 1.75));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  renderer.shadowMap.enabled = innerWidth >= 900;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
+  // Light and geometry stay fixed while the camera travels. Reuse their shadow
+  // map instead of rendering it again for every scroll frame.
+  renderer.shadowMap.autoUpdate = false;
+  renderer.shadowMap.needsUpdate = true;
+  const canvas = renderer.domElement;
+  host.append(canvas);
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color('#f6f0e3');
+  scene.fog = new THREE.Fog('#f6f0e3', 85, 150);
+  const sky = new THREE.HemisphereLight('#fff5df', '#435b4b', 1.2);
+  scene.add(sky);
+  // A small, generated studio environment gives glass a real reflected light
+  // response without fetching HDR textures or third-party assets.
+  let reflections: THREE.WebGLRenderTarget | undefined;
+  if (innerWidth >= 900) {
+    const room = new RoomEnvironment();
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    try {
+      reflections = pmrem.fromScene(room, 0.04, 0.1, 100, { size: 128 });
+      scene.environment = reflections.texture;
+      scene.environmentIntensity = 0.35;
+    } catch {
+      // Image based lighting is optional on constrained GPUs.
+    } finally {
+      room.dispose();
+      pmrem.dispose();
+    }
+  }
+  const sun = new THREE.DirectionalLight('#ffe4b5', 3.2);
+  sun.position.set(-28, 36, 20);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(1024, 1024);
+  Object.assign(sun.shadow.camera, { left: -35, right: 35, top: 35, bottom: -35, far: 110 });
+  sun.shadow.camera.updateProjectionMatrix();
+  sun.shadow.normalBias = 0.08;
+  scene.add(sun);
+  const city = buildCity();
+  scene.add(city.model);
+  const boats = createCityBoats();
+  scene.add(boats.root);
+  const applyLighting = cityLighting(scene, sun, sky, city.waters);
+  renderer.shadowMap.needsUpdate = true;
+  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 500);
+  const cameraPath = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(12, 19, 69),
+    new THREE.Vector3(-4, 16, 62),
+    new THREE.Vector3(120, 18, 58),
+    new THREE.Vector3(232, 28, 70),
+    new THREE.Vector3(228, 25, 66),
+  ]);
+  const targetPath = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, 10, -3),
+    new THREE.Vector3(0, 10, -3),
+    new THREE.Vector3(100, 7, 24),
+    new THREE.Vector3(210, 22, -9),
+    new THREE.Vector3(210, 24, -9),
+  ]);
+  const target = new THREE.Vector3();
+  const projected = new THREE.Vector3();
+  const labels = cityPlaces.map((anchor) => ({
+    element: host.querySelector<HTMLElement>(`[data-city-label="${anchor.id}"]`),
+    point: new THREE.Vector3(...anchor.point),
+    view: anchor.view,
+  }));
+  let disposed = false,
+    visible = false,
+    running = false,
+    ready = false;
+  let smoothed = progress.current,
+    lastTime = 0;
+  const pointer = new THREE.Vector2(),
+    easedPointer = new THREE.Vector2();
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+  let shadowDistrict = -1;
+
+  function tick(time: number) {
+    if (disposed) return;
+    // Keep normal frames smooth but let a delayed GPU frame catch up. Hidden
+    // tabs reset lastTime in resume(), so their elapsed time never causes a jump.
+    const dt = Math.min(0.1, lastTime ? (time - lastTime) / 1000 : 1 / 60);
+    lastTime = time;
+    // Tăng độ nhạy camera bám mượt mà không bị trễ nặng
+    const amount = 1 - Math.exp(-dt * 9.0);
+    smoothed = THREE.MathUtils.lerp(smoothed, progress.current, amount);
+    easedPointer.lerp(pointer, amount);
+    cameraPath.getPoint(smoothed, camera.position);
+    targetPath.getPoint(smoothed, target);
+
+    // Chuyển màu 3 pha mượt mà
+    const duskFactor = Math.max(0, Math.min(1, smoothed));
+    applyLighting.setDuskProgress(duskFactor);
+
+    // Di chuyển đội thuyền sống động trên sông Sài Gòn
+    boats.update(dt, time / 1000, duskFactor);
+
+    const district = Math.round(smoothed * 2);
+    const centres = [0, 100, 210];
+    city.districts.forEach((group) => {
+      group.visible = true;
+    });
+    if (district !== shadowDistrict) {
+      shadowDistrict = district;
+      sun.position.set(centres[district] - 28, 36, 20);
+      sun.target.position.set(centres[district], 0, 0);
+      sun.target.updateMatrixWorld();
+      renderer.shadowMap.needsUpdate = true;
+    }
+    camera.position.x += easedPointer.x * 1.5;
+    camera.position.y += easedPointer.y * 0.65;
+
+    // Cache kích thước DOM một lần duy nhất ngoài vòng lặp để ngăn chặn Layout Thrashing
+    const hostW = host.clientWidth;
+    const hostH = host.clientHeight;
+    const compact = hostH < 500;
+    if (compact) target.y += 5 + smoothed * 3;
+    camera.fov = compact ? 62 : hostW / hostH < 1.1 ? 51 : 42;
+    camera.updateProjectionMatrix();
+    camera.lookAt(target);
+    camera.updateMatrixWorld();
+
+    const placed: { x: number; y: number }[] = [];
+    const activeView = Math.round(smoothed * 2);
+    const topMargin = compact ? 80 : 120;
+    const bottomMargin = compact ? 65 : 120;
+
+    for (const label of labels) {
+      if (!label.element) continue;
+      if (label.view !== activeView) {
+        if (label.element.style.opacity !== '0') label.element.style.opacity = '0';
+        continue;
+      }
+      projected.copy(label.point).project(camera);
+      const x = ((projected.x + 1) / 2) * hostW;
+      const y = ((1 - projected.y) / 2) * hostH;
+      const shown =
+        x > 55 &&
+        x < hostW - 55 &&
+        y > topMargin &&
+        y < hostH - bottomMargin &&
+        projected.z < 1 &&
+        !placed.some((p) => Math.abs(p.x - x) < 110 && Math.abs(p.y - y) < 32);
+      if (shown) placed.push({ x, y });
+      const nextOpacity = shown ? '1' : '0';
+      if (label.element.style.opacity !== nextOpacity) {
+        label.element.style.opacity = nextOpacity;
+      }
+      if (shown) {
+        label.element.style.transform = `translate(${x}px, ${y - 12}px) translate(-50%, -100%)`;
+      }
+    }
+
+    try {
+      const wavePhase = (time / 1000) * 1.5 + smoothed * 6 + easedPointer.x * 0.25;
+      for (const water of city.waters)
+        water.uniforms.phase.value = wavePhase;
+      renderer.render(scene, camera);
+      host.dataset.cameraProgress = smoothed.toFixed(3);
+      host.dataset.drawCalls = String(renderer.info.render.calls);
+      host.dataset.triangles = String(renderer.info.render.triangles);
+    } catch {
+      onUnavailable();
+      dispose();
+      return;
+    }
+    if (!ready) {
+      ready = true;
+      onReady();
+    }
+  }
+  function resume() {
+    if (disposed || !visible || document.hidden || running) return;
+    running = true;
+    lastTime = 0;
+    renderer.setAnimationLoop(tick);
+  }
+  function resize() {
+    const width = Math.max(1, host.clientWidth),
+      height = Math.max(1, host.clientHeight);
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
+    resume();
+  }
+  function move(event: PointerEvent) {
+    if (!finePointer.matches || event.pointerType === 'touch') return;
+    const rect = host.getBoundingClientRect();
+    pointer.set(
+      (event.clientX - rect.left) / rect.width - 0.5,
+      (event.clientY - rect.top) / rect.height - 0.5,
+    );
+    resume();
+  }
+  function leave() {
+    pointer.set(0, 0);
+    resume();
+  }
+  function visibility() {
+    if (document.hidden || !visible) {
+      renderer.setAnimationLoop(null);
+      running = false;
+    } else resume();
+  }
+  function lost(event: Event) {
+    event.preventDefault();
+    onUnavailable();
+    dispose();
+  }
+  const observer = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    visibility();
+  });
+  const resizeObserver = new ResizeObserver(resize);
+  const progressTarget = host.closest('.city-visual') ?? host;
+  function lighting() {
+    const time: CityTime = progressTarget.getAttribute('data-city-time') === 'day' ? 'day' : 'dusk';
+    host.dataset.lighting = time;
+    resume();
+  }
+  function dispose() {
+    if (disposed) return;
+    disposed = true;
+    observer.disconnect();
+    resizeObserver.disconnect();
+    progressTarget.removeEventListener('city:progress', resume);
+    progressTarget.removeEventListener('city:lighting', lighting);
+    document.removeEventListener('visibilitychange', visibility);
+    host.removeEventListener('pointermove', move);
+    host.removeEventListener('pointerleave', leave);
+    canvas.removeEventListener('webglcontextlost', lost);
+    renderer.setAnimationLoop(null);
+    const geometries = new Set<THREE.BufferGeometry>();
+    const materials = new Set<THREE.Material>();
+    scene.traverse((object) => {
+      if (object instanceof THREE.Mesh || object instanceof THREE.Line) {
+        geometries.add(object.geometry);
+        for (const material of Array.isArray(object.material) ? object.material : [object.material])
+          materials.add(material);
+        if (object instanceof THREE.InstancedMesh) object.dispose();
+      }
+    });
+    geometries.forEach((geometry) => geometry.dispose());
+    materials.forEach((material) => material.dispose());
+    boats.dispose();
+    sun.shadow.dispose();
+    reflections?.dispose();
+    applyLighting.dispose();
+    renderer.dispose();
+    renderer.forceContextLoss();
+    canvas.remove();
+    labels.forEach((label) => {
+      if (label.element) label.element.style.opacity = '0';
+    });
+    delete host.dataset.cameraProgress;
+    delete host.dataset.cameraTarget;
+    delete host.dataset.drawCalls;
+    delete host.dataset.triangles;
+    delete host.dataset.lighting;
+  }
+  observer.observe(host);
+  resizeObserver.observe(host);
+  progressTarget.addEventListener('city:progress', resume);
+  progressTarget.addEventListener('city:lighting', lighting);
+  document.addEventListener('visibilitychange', visibility);
+  host.addEventListener('pointermove', move);
+  host.addEventListener('pointerleave', leave);
+  canvas.addEventListener('webglcontextlost', lost);
+  lighting();
+  resize();
+  return dispose;
+}

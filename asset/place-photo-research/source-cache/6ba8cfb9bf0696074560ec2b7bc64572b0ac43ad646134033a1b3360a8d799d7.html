@@ -1,0 +1,1230 @@
+
+<!DOCTYPE html>
+<html lang="en-GB" prefix="og: https://ogp.me/ns#">
+
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.5",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),this},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||!t.src||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e=window){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();
+</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+
+
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+<!-- Search Engine Optimization by Rank Math - https://rankmath.com/ -->
+<title>SEE &amp; DO - Visit HCMC</title>
+<link data-rocket-prefetch href="https://fonts.googleapis.com" rel="dns-prefetch">
+<link data-rocket-prefetch href="https://widget.localis.vn" rel="dns-prefetch">
+<link data-rocket-preload as="style" href="https://fonts.googleapis.com/css?family=Raleway%3A300%2C400%2C500%2C600%2C700%7COpen%20Sans%3A500%2C600%2C700%7CPlus%20Jakarta%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" rel="preload">
+<link href="https://fonts.googleapis.com/css?family=Raleway%3A300%2C400%2C500%2C600%2C700%7COpen%20Sans%3A500%2C600%2C700%7CPlus%20Jakarta%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" media="print" onload="this.media=&#039;all&#039;" rel="stylesheet">
+<noscript data-wpr-hosted-gf-parameters=""><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway%3A300%2C400%2C500%2C600%2C700%7COpen%20Sans%3A500%2C600%2C700%7CPlus%20Jakarta%20Sans%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap"></noscript><link rel="preload" data-rocket-preload as="image" href="https://visithcmc.vn/wp-content/uploads/2026/05/images1929833_5m1.jpg" fetchpriority="high">
+<meta name="description" content="AI analyzing your search query..."/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://visithcmc.vn/see-do/" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="SEE &amp; DO - Visit HCMC" />
+<meta property="og:description" content="AI analyzing your search query..." />
+<meta property="og:url" content="https://visithcmc.vn/see-do/" />
+<meta property="og:site_name" content="VisitHCMC" />
+<meta property="article:publisher" content="https://www.facebook.com/visitvibranthochiminhcity/" />
+<meta property="og:updated_time" content="2026-10-10T23:55:03+07:00" />
+<meta property="og:image" content="https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp" />
+<meta property="og:image:secure_url" content="https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp" />
+<meta property="og:image:width" content="250" />
+<meta property="og:image:height" content="250" />
+<meta property="og:image:alt" content="Visit-HCMC" />
+<meta property="og:image:type" content="image/png" />
+<meta property="article:published_time" content="2026-03-16T15:13:52+07:00" />
+<meta property="article:modified_time" content="2026-10-10T23:55:03+07:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="SEE &amp; DO - Visit HCMC" />
+<meta name="twitter:description" content="AI analyzing your search query..." />
+<meta name="twitter:image" content="https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp" />
+<meta name="twitter:label1" content="Time to read" />
+<meta name="twitter:data1" content="Less than a minute" />
+<script type="application/ld+json" class="rank-math-schema">{"@context":"https://schema.org","@graph":[{"@type":["Organization","GovernmentOrganization"],"@id":"https://visithcmc.vn/#organization","name":"Ho Chi Minh City Tourism Promotion Center","sameAs":["https://www.facebook.com/visitvibranthochiminhcity/","https://www.instagram.com/visit.hochiminhcity/","https://www.tiktok.com/@visithcmc","https://www.youtube.com/@vibrantHoChiMinhcity"],"logo":{"@type":"ImageObject","@id":"https://visithcmc.vn/#logo","url":"https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp","contentUrl":"https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp","caption":"VisitHCMC","inLanguage":"en-GB","width":"250","height":"250"},"alternateName":["VisitHCMC","visithcmc","HCMC Tourism Promotion Center","Trung t\u00e2m X\u00fac ti\u1ebfn Du l\u1ecbch Th\u00e0nh ph\u1ed1 H\u1ed3 Ch\u00ed Minh"],"url":"https://visithcmc.vn/","address":{"@type":"PostalAddress","streetAddress":"292 \u0110i\u1ec7n Bi\u00ean Ph\u1ee7, Ph\u01b0\u1eddng Xu\u00e2n Ho\u00e0","addressLocality":"TP. H\u1ed3 Ch\u00ed Minh","addressCountry":"VN"},"areaServed":{"@type":"City","name":"Ho Chi Minh City"},"parentOrganization":{"@type":"GovernmentOrganization","name":"Ho Chi Minh City Department of Tourism","url":"https://sodulich.hochiminhcity.gov.vn/"}},{"@type":"WebSite","@id":"https://visithcmc.vn/#website","url":"https://visithcmc.vn","name":"VisitHCMC","alternateName":["Visit HCMC","visithcmc.vn","Ho Chi Minh City official tourism portal"],"publisher":{"@id":"https://visithcmc.vn/#organization"},"inLanguage":"en-GB"},{"@type":"ImageObject","@id":"https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp","url":"https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp","width":"250","height":"250","caption":"Visit-HCMC","inLanguage":"en-GB"},{"@type":"WebPage","@id":"https://visithcmc.vn/see-do/#webpage","url":"https://visithcmc.vn/see-do/","name":"SEE &amp; DO - Visit HCMC","datePublished":"2026-03-16T15:13:52+07:00","dateModified":"2026-10-10T23:55:03+07:00","isPartOf":{"@id":"https://visithcmc.vn/#website"},"primaryImageOfPage":{"@id":"https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp"},"inLanguage":"en-GB"},{"@type":"Person","@id":"https://visithcmc.vn/see-do/#author","name":"VisitHCMC","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/eff0a97e489aa6ca08acf897a471326cb3ecf85cf762baa6b73821e7ef1c07ec?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/eff0a97e489aa6ca08acf897a471326cb3ecf85cf762baa6b73821e7ef1c07ec?s=96&amp;d=mm&amp;r=g","caption":"VisitHCMC","inLanguage":"en-GB"},"sameAs":["https://visithcmc.vn"],"worksFor":{"@id":"https://visithcmc.vn/#organization"}},{"@type":"Article","headline":"SEE &amp; DO - Visit HCMC","datePublished":"2026-03-16T15:13:52+07:00","dateModified":"2026-10-10T23:55:03+07:00","author":{"@id":"https://visithcmc.vn/see-do/#author","name":"VisitHCMC"},"publisher":{"@id":"https://visithcmc.vn/#organization"},"description":"AI analyzing your search query...","name":"SEE &amp; DO - Visit HCMC","@id":"https://visithcmc.vn/see-do/#richSnippet","isPartOf":{"@id":"https://visithcmc.vn/see-do/#webpage"},"image":{"@id":"https://visithcmc.vn/wp-content/uploads/2026/03/Visit-HCMC.webp"},"inLanguage":"en-GB","mainEntityOfPage":{"@id":"https://visithcmc.vn/see-do/#webpage"}}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="HO CHI MINH CITY – YOUR COMPLETE EXPERIENCE HUB &raquo; Feed" href="https://visithcmc.vn/feed/" />
+<link rel="alternate" type="application/rss+xml" title="HO CHI MINH CITY – YOUR COMPLETE EXPERIENCE HUB &raquo; Comments Feed" href="https://visithcmc.vn/comments/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://visithcmc.vn/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvisithcmc.vn%2Fsee-do%2F&#038;lang=en" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://visithcmc.vn/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fvisithcmc.vn%2Fsee-do%2F&#038;format=xml&#038;lang=en" />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-term-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-term-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<link data-minify="1" rel='stylesheet' id='ai-chat-search-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/ai-chat-search/assets/css/ai-search.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='listeo_core-frontend-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/listeo-core/assets/css/frontend.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='listeo-core-fullcalendar-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/listeo-core/assets/css/fullcalendar.min.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-tab-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/visithcmc2-pencil-vn/assets/css/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-affiliate-style-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-affiliate-pro/assets/css/affiliate-style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='swiper-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/npm/swiper@11/swiper-bundle.min.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-cat-carousel-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-category-carousel/assets/css/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-grid-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-content-grid/assets/css/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-event-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-event-calendar_Elementor/assets/css/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-popular-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-popular-contents/assets/css/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-travel-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-travel-offers/assets/css/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-ue-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-upcoming-events/assets/css/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-utility-app-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-utility-apps/assets/css/app-style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-vibrant-css-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-vibrant-experiences/assets/css/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='stl-slider-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/slide-tracking-localis/assets/css/slider.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='vn-slider-blog-style-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-slider-blog/assets/css/vn-slider-blog.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='bootstrap-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/themes/listeo/css/bootstrap-grid.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='font-awesome-5-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/themes/listeo/css/all.css?ver=1792174362' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-5-shims-css' href='https://visithcmc.vn/wp-content/themes/listeo/css/v4-shims.min.css?ver=6.9.10' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='simple-line-icons-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/themes/listeo/css/simple-line-icons.css?ver=1792174362' type='text/css' media='all' />
+<link rel='stylesheet' id='listeo-woocommerce-css' href='https://visithcmc.vn/wp-content/themes/listeo/css/woocommerce.min.css?ver=6.9.10' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='parent-style-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/themes/listeo/style.css?ver=1792174362' type='text/css' media='all' />
+<link data-minify="1" rel='stylesheet' id='listeo-style-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/themes/listeo-child/style.css?ver=1792174362' type='text/css' media='all' />
+<style id='listeo-style-inline-css' type='text/css'>
+.drilldown-menu:not(.fs-container .drilldown-menu) .menu-toggle.dd-active:after {	content: "Close";}        .custom-menu-colors .mobile-navigation-wrapper, .custom-menu-colors #mobile-nav .open-submenu > .sub-menu { background: ; }.custom-menu-colors  .mobile-navigation-list li a, .custom-menu-colors #mobile-nav .sub-menu-back-btn, .custom-menu-colors .textwidget { color: ; }/* Header Background Color  */body.light-dashboard.page-template-template-dashboard .dashboard #header.custom-header,#header.custom-header.cloned,#header.custom-header {  background-color: ;}/* Header Font Color */#header.custom-header .user-name,#header.custom-header #navigation.style-1>ul>li>a {  color: ;}#header.custom-header button.button.border,#header.custom-header a.button.border {    color: ;    border-color: ;}/* Header Hover Color */#header.custom-header #navigation.style-1 > ul > li.current-menu-ancestor > a, #header.custom-header #navigation.style-1 > ul > li.current-menu-item > a, #header.custom-header #navigation.style-1 > ul > li:hover > a {        color: ;}/* Footer Background Color */#footer.custom-footer {  background: ;}/* Footer Headliens Color */#footer.custom-footer ul.menu li:before,#footer.custom-footer h4 { color: ; }/* Footer Text Color */#footer.custom-footer ul.menu li a,#footer.custom-footer, #footer.custom-footer a, #footer.custom-footer .copyrights{ color: ; }#footer.custom-footer .new-footer-social-icons li a,#footer.custom-footer .textwidget, #footer.custom-footer .footer-new-bottom-left { color: ; }.card {    --background-checkbox: #f91942;     --card-shadow: #f91942;}.lbp-ms-state-selected, .lbp-ms-state-selected:hover,input[type='checkbox'].switch_1:checked,.time-slot input:checked ~ label:hover,div.datedropper:before,div.datedropper .pick-submit,div.datedropper .pick-lg-b .pick-sl:before,div.datedropper .pick-m,body.no-map-marker-icon .face.front,body.no-map-marker-icon .face.front:after,div.datedropper .pick-lg-h {  background-color: #f91942 !important;}#booking-date-range-enabler:after,.nav-links div a:hover, #posts-nav li a:hover,.hosted-by-title a:hover,.sort-by-select .select2-container--default .select2-selection--single .select2-selection__arrow b:after,.claim-badge a i,.search-input-icon:hover i,.listing-features.checkboxes a:hover,div.datedropper .pick-y.pick-jump,div.datedropper .pick li span,div.datedropper .pick-lg-b .pick-wke,div.datedropper .pick-btn,#listeo-coupon-link,.total-discounted_costs span,body.light-dashboard.page-template-template-dashboard .dashboard-nav ul li a i,.widget_meta ul li a:hover, .widget_categories ul li a:hover, .widget_archive ul li a:hover, .widget_recent_comments ul li a:hover, .widget_recent_entries ul li a:hover,.booking-estimated-discount-cost span {  color: #f91942 !important;}.comment-by-listing a:hover,.browse-all-user-listings a i,.hosted-by-title h4 a:hover,.style-2 .trigger.active a,.style-2 .ui-accordion .ui-accordion-header-active:hover,.style-2 .ui-accordion .ui-accordion-header-active,.fp-accordion .accordion h3.ui-accordion-header-active i.fa-angle-down,.trigger.active a, .ui-accordion .ui-accordion-header-active:hover, .ui-accordion .ui-accordion-header-active,#posts-nav li a:hover,.plan.featured .listing-badge,.post-content h3 a:hover,.add-review-photos i,.show-more-button i,.listing-details-sidebar li a,.star-rating .rating-counter a:hover,.more-search-options-trigger:after,.header-widget .sign-in:hover,#footer a,#footer .footer-links li a:hover,#navigation.style-1 .current,#navigation.style-1 ul li:hover a,.user-menu.active .user-name:after,.user-menu:hover .user-name:after,.user-menu.active .user-name,.user-menu:hover .user-name,.main-search-input-item.location a:hover,.chosen-container .chosen-results li.highlighted,.input-with-icon.location a i:hover,.sort-by .chosen-container-single .chosen-single div:after,.sort-by .chosen-container-single .chosen-default,.panel-dropdown a:after,.post-content a.read-more,.post-meta li a:hover,.widget-text h5 a:hover,.about-author a,button.button.border.white:hover,a.button.border.white:hover,.icon-box-2 i,button.button.border,a.button.border,.style-2 .ui-accordion .ui-accordion-header:hover,.style-2 .trigger a:hover ,.plan.featured .listing-badges .featured,.list-4 li:before,.list-3 li:before,.list-2 li:before,.list-1 li:before,.info-box h4,.testimonial-carousel .slick-slide.slick-active .testimonial:before,.sign-in-form .tabs-nav li a:hover,.sign-in-form .tabs-nav li.active a,.lost_password:hover a,#top-bar .social-icons li a:hover i,.listing-share .social-icons li a:hover i,.agent .social-icons li a:hover i,#footer .social-icons li a:hover i,.headline span i,vc_tta.vc_tta-style-tabs-style-1 .vc_tta-tab.vc_active a,.vc_tta.vc_tta-style-tabs-style-2 .vc_tta-tab.vc_active a,.tabs-nav li.active a,.wc-tabs li.active a.custom-caption,#backtotop a,.trigger.active a,.post-categories li a,.vc_tta.vc_tta-style-tabs-style-3.vc_general .vc_tta-tab a:hover,.vc_tta.vc_tta-style-tabs-style-3.vc_general .vc_tta-tab.vc_active a,.wc-tabs li a:hover,.tabs-nav li a:hover,.tabs-nav li.active a,.wc-tabs li a:hover,.wc-tabs li.active a,.testimonial-author h4,.widget-button:hover,.widget-text h5 a:hover,a,a.button.border,a.button.border.white:hover,button.button.border,button.button.border.white:hover,.wpb-js-composer .vc_tta.vc_general.vc_tta-style-tabs-style-1 .vc_tta-tab.vc_active>a,.wpb-js-composer .vc_tta.vc_general.vc_tta-style-tabs-style-2 .vc_tta-tab.vc_active>a,#add_payment_method .cart-collaterals .cart_totals tr th,.woocommerce-cart .cart-collaterals .cart_totals tr th, .woocommerce-checkout .cart-collaterals .cart_totals tr th,#add_payment_method table.cart th, .woocommerce-cart table.cart th, .woocommerce-checkout table.cart th,.woocommerce-checkout table.shop_table th,.uploadButton .uploadButton-button:before,.time-slot input ~ label:hover,.time-slot label:hover span,#titlebar.listing-titlebar span.listing-tag a, .rating-box-footer h5 a:hover,.panel-wrapper .drilldown-menu .menu-toggle:before, .drilldown-menu .menu-item:hover .arrow, .drilldown-menu .menu-item:hover .arrow:before, .drilldown-menu .menu-item.selected:after, .category-item:hover .category-name,.category-item.active .category-name,.category-item i.sl,.category-item.active i.sl,.category-item:hover  i.sl,.category-item i.fa,.category-item.active i.fa,.category-item:hover  i.fa,.booking-loading-icon {    color: #f91942;}:root {--primary-color: #f91942;--listeo-primary-color: #f91942;--listeo-primary-color-rgb: 249,25,66;--listeo-primary-color-light: #f919421A;--light-pink-bg: #f9194210;--msf-color-primary:  #f91942;  --msf-color-primary-light-bg:  #f9194210;   }.category-item:hover,.category-item.active {  background-color: #f919420f;}.listing-details li i {    background-color: #f9194226;    color: #f91942;}.child-category:hover .child-category-icon-container, .drilldown-menu .menu-item:hover {    background-color: #f9194210;  color:#f91942;  }.listing-features.checkboxes li.feature-has-icon.faicon i {  color: #f91942;} :root {  --wp-components-color-accent: #f91942; /* Your custom accent color */}body .feature-svg-icon svg g,body .feature-svg-icon svg circle,body .feature-svg-icon svg rect,body .feature-svg-icon svg path,body .icon-box-2 svg g,body .icon-box-2 svg circle,body .icon-box-2 svg rect,body .icon-box-2 svg path,body .listeo-svg-icon-box-grid svg g,body .listeo-svg-icon-box-grid svg circle,body .listeo-svg-icon-box-grid svg rect,body .listeo-svg-icon-box-grid svg path,.listing-type:hover .listing-type-icon svg g,.listing-type:hover .listing-type-icon svg circle,.listing-type:hover .listing-type-icon svg rect,.listing-type:hover .listing-type-icon svg path,.marker-container .front.face svg g,.marker-container .front.face svg circle,.marker-container .front.face svg rect,.marker-container .front.face svg path { fill: #f91942; }.qtyTotal,.mm-menu em.mm-counter,.mm-counter,.category-small-box:hover,.option-set li a.selected,.pricing-list-container h4:after,#backtotop a,.chosen-container-multi .chosen-choices li.search-choice,.select-options li:hover,button.panel-apply,.layout-switcher a:hover,.listing-features.checkboxes li:before,.comment-by a.comment-reply-link:hover,.add-review-photos:hover,.office-address h3:after,.post-img:before,button.button,.booking-confirmation-page a.button.color,input[type="button"],input[type="submit"],a.button,a.button.border:hover,button.button.border:hover,table.basic-table th,.plan.featured .plan-price,mark.color,.style-4 .tabs-nav li.active a,.style-5 .tabs-nav li.active a,.dashboard-list-box .button.gray:hover,.change-photo-btn:hover,.dashboard-list-box  a.rate-review:hover,input:checked + .slider,.add-pricing-submenu.button:hover,.add-pricing-list-item.button:hover,.custom-zoom-in:hover,.custom-zoom-out:hover,#geoLocation:hover,#streetView:hover,#scrollEnabling:hover,.code-button:hover,.category-small-box-alt:hover .category-box-counter-alt,#scrollEnabling.enabled,#mapnav-buttons a:hover,#sign-in-dialog .mfp-close:hover,.button.listeo-booking-widget-apply_new_coupon:before,#small-dialog .mfp-close:hover,#claim-dialog .mfp-close:hover,.numInputWrapper span:hover,.lbp-edit-resources-info__icon,.lbp-edit-resources-info__action .button,.enable-filters-button i,.lbp-guests-total,.lbp-step-indicator.completed .lbp-step-num,.enable-filters-button span,.daterangepicker td.end-date.in-range.available,.radio input[type='radio'] + label .radio-label:after,.radio input[type='radio']:checked + label .radio-label,.daterangepicker .ranges li.active, .day-slot-headline, .add-slot-btn button:hover, .daterangepicker td.available:hover, .daterangepicker th.available:hover, .time-slot input:checked ~ label, .daterangepicker td.active, .daterangepicker td.active:hover, .daterangepicker .drp-buttons button.applyBtn,.uploadButton .uploadButton-button:hover {    background-color: #f91942;}.rangeslider__fill,span.blog-item-tag ,.testimonial-carousel .slick-slide.slick-active .testimonial-box,.listing-item-container.list-layout span.tag,.tip:not(.inside-switch),.search .panel-dropdown.active a:not(.dropdown-menu a),#getDirection:hover,.home-search-slide h3 a:before, .home-search-slide h3 strong:before,.loader-ajax-container,.mfp-arrow:hover {    background: #f91942;}.icon-box-v3 .ibv3-icon i, .icon-box-v3 .ibv3-icon svg g, .icon-box-v3 .ibv3-icon svg circle, .icon-box-v3 .ibv3-icon svg rect, .icon-box-v3 .ibv3-icon svg path{    fill:  #f91942;}#titlebar.listing-titlebar span.listing-tag { background:  #f9194212; }.ibv3-icon {    background:  #f9194210;}.icon-box-v3:hover .ibv3-icon {    background:  #f91942;    box-shadow:  0 3px 8px #f9194250;}.radio input[type='radio']:checked + label .radio-label,.rangeslider__handle { border-color: #f91942; }.layout-switcher a.active {    color: #f91942;    border-color: #f91942;}.lbp-resource-card.selected,.lbp-resource-card:hover,#titlebar.listing-titlebar span.listing-tag a,#titlebar.listing-titlebar span.listing-tag {    border-color: #f91942;  }.woocommerce .widget_price_filter .ui-slider .ui-slider-handle,.woocommerce .widget_price_filter .ui-slider .ui-slider-range,.single-service .qtyInc:hover, .single-service .qtyDec:hover,.services-counter,.listing-slider .slick-next:hover,.listing-slider .slick-prev:hover {    background-color: #f91942;}.single-service .qtyInc:hover, .single-service .qtyDec:hover{    -webkit-text-stroke: 1px #f91942;}.listing-nav-container.cloned .listing-nav li:first-child a.active,.listing-nav-container.cloned .listing-nav li:first-child a:hover,.listing-nav li:first-child a,.listing-nav li a.active,.listing-nav li a:hover {    border-color: #f91942;    color: #f91942;}.pricing-list-container h4 {    color: #f91942;    border-color: #f91942;}.sidebar-textbox ul.contact-details li a { color: #f91942; }button.button.border,a.button.border {    color: #f91942;    border-color: #f91942;}.trigger.active a,.ui-accordion .ui-accordion-header-active:hover,.ui-accordion .ui-accordion-header-active {   }.numbered.color ol > li::before {    border-color: #f91942;;    color: #f91942;}.lbp-resource-card.selected .lbp-resource-check,.numbered.color.filled ol > li::before {    border-color: #f91942;    background-color: #f91942;}.info-box {    border-top: 2px solid #f91942;    background: linear-gradient(to bottom, rgba(255,255,255,0.98), rgba(255,255,255,0.95));    background-color: #f91942;    color: #f91942;}.info-box.no-border {    background: linear-gradient(to bottom, rgba(255,255,255,0.96), rgba(255,255,255,0.93));    background-color: #f91942;}.tabs-nav li a:hover { border-color: #f91942; }.tabs-nav li a:hover,.tabs-nav li.active a {    border-color: #f91942;    color: #f91942;}.calendar-slot.lbp-slot-in-span,.style-3 .tabs-nav li a:hover,.style-3 .tabs-nav li.active a {    border-color: #f91942;    background-color: #f91942;}.woocommerce-cart .woocommerce table.shop_table th,.vc_tta.vc_general.vc_tta-style-style-1 .vc_active .vc_tta-panel-heading,.wpb-js-composer .vc_tta.vc_general.vc_tta-style-tabs-style-2 .vc_tta-tab.vc_active>a,.wpb-js-composer .vc_tta.vc_general.vc_tta-style-tabs-style-2 .vc_tta-tab:hover>a,.wpb-js-composer .vc_tta.vc_general.vc_tta-style-tabs-style-1 .vc_tta-tab.vc_active>a,.wpb-js-composer .vc_tta.vc_general.vc_tta-style-tabs-style-1 .vc_tta-tab:hover>a{        border-bottom-color: #f91942}.checkboxes input[type=checkbox]:checked + label:before {    background-color: #f91942;    border-color: #f91942;}.listing-item-container.compact .listing-item-content span.tag { background-color: #f91942; }.dashboard-nav ul li.current_page_item,.dashboard-nav ul li.active,.dashboard-nav ul li:hover { border-color: #f91942; }.dashboard-list-box .comment-by-listing a:hover { color: #f91942; }.opening-day:hover h5 { color: #f91942 !important; }.map-box h4 a:hover { color: #f91942; }.infoBox-close:hover {    background-color: #f91942;    -webkit-text-stroke: 1px #f91942;}.select2-container--default .select2-selection--multiple .select2-selection__choice,body .select2-container--default .select2-results__option--highlighted[aria-selected], body .select2-container--default .select2-results__option--highlighted[data-selected],body .woocommerce .cart .button, body .woocommerce .cart input.button,body .woocommerce #respond input#submit, body .woocommerce a.button, body .woocommerce button.button, body .woocommerce input.button,body .woocommerce #respond input#submit.alt:hover, body .woocommerce a.button.alt:hover, body .woocommerce button.button.alt:hover, body .woocommerce input.button.alt:hover,.marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div,.cluster-visible {    background-color: #f91942 !important;}.marker-cluster div:before {    border: 7px solid #f91942;    opacity: 0.2;    box-shadow: inset 0 0 0 4px #f91942;}.cluster-visible:before {    border: 7px solid #f91942;    box-shadow: inset 0 0 0 4px #f91942;}.marker-arrow {    border-color: #f91942 transparent transparent;}.face.front {    border-color: #f91942;    color: #f91942;}.face.back {    background: #f91942;    border-color: #f91942;}.custom-zoom-in:hover:before,.custom-zoom-out:hover:before  { -webkit-text-stroke: 1px #f91942;  }.category-box-btn:hover {    background-color: #f91942;    border-color: #f91942;}.message-bubble.me .message-text {    color: #f91942;    background-color: rgba(249,25,66,0.05);}.time-slot input ~ label:hover {    background-color: rgba(249,25,66,0.08);   }.message-bubble.me .message-text:before {    color: rgba(249,25,66,0.05);}.booking-widget i, .opening-hours i, .message-vendor i {    color: #f91942;}.opening-hours.summary li:hover,.opening-hours.summary li.total-costs span { color: #f91942; }.payment-tab-trigger > input:checked ~ label::before { border-color: #f91942; }.payment-tab-trigger > input:checked ~ label::after { background-color: #f91942; }#navigation.style-1 > ul > li.current-menu-ancestor > a,#navigation.style-1 > ul > li.current-menu-item > a,#navigation.style-1 > ul > li:hover > a {     background: rgba(249,25,66, 0.06);    color: #f91942;}.img-box:hover span {  background-color: #f91942; }body #navigation.style-1 ul ul li:hover a:after,body #navigation.style-1 ul li:hover ul li:hover a,body #navigation.style-1 ul li:hover ul li:hover li:hover a,body #navigation.style-1 ul li:hover ul li:hover li:hover li:hover a,body #navigation.style-1 ul ul li:hover ul li a:hover { color: #f91942; }.filter-tabs .filter-tab::after,.headline.headline-box span:before {    background: #f91942;}.main-search-inner .highlighted-category {    background-color:#f91942;    box-shadow: 0 2px 8px rgba(249,25,66, 0.2);}.category-box:hover .category-box-content span {    background-color: #f91942;}.user-menu ul li a:hover {    color: #f91942;}.icon-box-2 i {    background-color: #f91942;}@keyframes iconBoxAnim {    0%,100% {        box-shadow: 0 0 0 9px rgba(249,25,66, 0.08);    }    50% {        box-shadow: 0 0 0 15px rgba(249,25,66, 0.08);    }}.listing-type:hover {box-shadow: 0 3px 12px rgba(0,0,0,0.1);background-color: #f91942;}.listing-type:hover .listing-type-icon {color: #f91942;}.listing-type-icon {background-color: #f91942;box-shadow: 0 0 0 8px rgb(249,25,66, 0.1);}#chart-date-range span:after,#footer ul.menu li a:hover {    color: #f91942;}#booking-date-range span::after, .time-slot label:hover span, .daterangepicker td.in-range, .time-slot input ~ label:hover, .booking-estimated-cost span, .time-slot label:hover span {    color: #f91942;}.daterangepicker td.in-range {    background-color: rgba(249,25,66, 0.05);    color: #f91942;}.leaflet-control-zoom-in:hover, .leaflet-control-zoom-out:hover {    background-color: #f91942;;    -webkit-text-stroke: 1px #f91942;    }.transparent-header #header:not(.cloned) #navigation.style-1 > ul > li.current-menu-ancestor > a, .transparent-header #header:not(.cloned) #navigation.style-1 > ul > li.current-menu-item:first-child > a, .transparent-header #header:not(.cloned) #navigation.style-1 > ul > li:hover > a {    background: #f91942;}.transparent-header #header:not(.cloned) .header-widget .button:hover,.transparent-header #header:not(.cloned) .header-widget .button.border:hover {    background: #f91942;}.transparent-header.user_not_logged_in #header:not(.cloned) .header-widget .sign-in:hover {    background: #f91942;}.best-value-plan .pricing-package-header span,.best-value-plan .pricing-package-header h4,.owned-packages label input:checked+span i:before,.category-small-box-alt i,.category-small-box i {    color: #f91942;}.best-value-plan .pricing-package-header,.owned-packages label input:checked+span i{    background-color: rgba(249,25,66, 0.08);}.best-value-plan,#listeo_otp-inputs input:focus  {    border-color: #f91942;}.account-type input.account-type-radio:checked ~ label {    background-color: #f91942;}.msf-loader-spinner circle,.pricing-package-details ul li svg path{    stroke: #f91942;}.pricing-package-details ul li svg circle{    fill: rgba(249,25,66, 0.08);}.pricing-package [type='radio']:checked+label {    background-color: #f91942;    border-color: #f91942;}.category-small-box:hover {    box-shadow: 0 3px 12px rgba(249,25,66, 0.22);}.transparent-header.user_not_logged_in #header.cloned .header-widget .sign-in:hover,.user_not_logged_in .header-widget .sign-in:hover {    background: #f91942;}.nav-links div.nav-next a:hover:before,.nav-links div.nav-previous a:hover:before,#posts-nav li.next-post a:hover:before,#posts-nav li.prev-post a:hover:before { background: #f91942; }.slick-current .testimonial-author h4 span {   background: rgba(249,25,66, 0.06);   color: #f91942;}body .icon-box-2 i {   background-color: rgba(249,25,66, 0.07);   color: #f91942;}.headline.headline-box:after,.headline.headline-box span:after {background: #f91942;}.listing-item-content span.tag {   background: #f91942;}.message-vendor div.wpcf7 .ajax-loader,body .message-vendor input[type='submit'],body .message-vendor input[type='submit']:focus,body .message-vendor input[type='submit']:active {  background-color: #f91942;}   .message-vendor .wpcf7-form .wpcf7-radio input[type=radio]:checked + span:before {   border-color: #f91942;}.message-vendor .wpcf7-form .wpcf7-radio input[type=radio]:checked + span:after {   background: #f91942;}#show-map-button,.slider-selection {background-color:#f91942;}.listeo-cart-container:hover .mini-cart-button{    color: #f91942;    background: #f919421f;}.listeo-cart-container .mini-cart-button .badge {    background: #f91942;}.transparent-header #header:not(.cloned) .header-widget .woocommerce-mini-cart__buttons a.button.checkout, .listeo-cart-container .woocommerce-mini-cart__buttons a.button.checkout {background: #f91942;}.slider-handle {border-color:#f91942;}.bookable-services .single-service:hover h5,.bookable-services .single-service:hover .single-service-price {    color: #f91942;} .bookable-services .single-service:hover .single-service-price {    background-color: rgba(249,25,66, 0.08);    color: #f91942;}  .classifieds-widget-buttons a.call-btn {    border: 1px solid #f91942;    color: #f91942;}.bookable-services input[type='checkbox'] + label:hover {    background-color: rgba(249,25,66, 0.08);    color: #f91942;}.services-counter,.bookable-services input[type='checkbox']:checked + label {    background-color: #f91942;}.bookable-services input[type='checkbox']:checked + label .single-service-price {    color: #f91942;}.taxonomy-box-wrapper:hover .taxonomy-box-right {        border-color: #f91942;    background:  rgba(249,25,66, 0.1);}.taxonomy-box-wrapper:hover .taxonomy-box-right path {    fill:#f91942;}.bootstrap-select .dropdown-menu li.selected a span.check-mark:before { color:#f91942; }.dropdown-menu>li>a:hover, .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover {    color: #f91942;    background-color:  rgba(249,25,66, 0.1);}.bootstrap-select .dropdown-menu li.selected a span.check-mark:before, .bootstrap-select .dropdown-menu li.selected:hover a span.check-mark:before {  color: #f91942; }input[type='submit'].dokan-btn-theme:hover, a.dokan-btn-theme:hover, .dokan-btn-theme:hover, input[type='submit'].dokan-btn-theme:focus, a.dokan-btn-theme:focus, .dokan-btn-theme:focus, input[type='submit'].dokan-btn-theme:active, a.dokan-btn-theme:active, .dokan-btn-theme:active, input[type='submit'].dokan-btn-theme.active, a.dokan-btn-theme.active, .dokan-btn-theme.active, .open .dropdown-toggleinput[type='submit'].dokan-btn-theme, .open .dropdown-togglea.dokan-btn-theme, .open .dropdown-toggle.dokan-btn-theme {        background-color: #f91942 !important;    border-color: #f91942 !important;}body.dokan-dashboard input[type='submit'].dokan-btn-theme, body.dokan-dashboard a.dokan-btn-theme, body.dokan-dashboard .dokan-btn-theme{        background-color: #f91942 !important;;    border-color: #f91942 !important;;}body input[type='submit'].dokan-btn-theme,body a.dokan-btn-theme, body .dokan-btn-theme {    background-color: #f91942;    border-color: #f91942;}#dokan-store-listing-filter-wrap .right .toggle-view .active {    color: #f91942;}body #dokan-store-listing-filter-wrap .right .toggle-view .active {    border-color: #f91942;}.photo-box:hover .photo-box-content span{  background: #f91942;}#dokan-store-listing-filter-wrap .right .toggle-view .active {    color: #f91942;}.dokan-store-products-ordeby-select .select2-container--default .select2-selection--single .select2-selection__arrow b:after {   color: #f91942;}body, h1, h2, h3, h4, h5, h6, input[type="text"], input[type="password"], input[type="email"], textarea, select, input[type="button"], input[type="submit"], button,  button.button, a.button, #tiptip_content { font-family:   }.main-search-inner {                    text-align: center;                    }body .main-search-container:not(.elementor-main-search-container):before {    background: linear-gradient(to right, rgba(51,51,51,0.99) 20%, rgba(51,51,51,0.7) 70%, rgba(51,51,51,0) 95%)}.solid-bg-home-banner .main-search-container:before,body.transparent-header .main-search-container:not(.elementor-main-search-container):before {background: rgba(51,51,51,0.75) ;}.loader-ajax-container {   box-shadow: 0 0 20px rgba( 249,25,66, 0.4);}.page-id-142 #listeo-registration-btn { display: none; }.main-search-inner {                    text-align: center;                    }@media (min-width: 1240px) { #header:not(.sticky) ul.menu, #header:not(.sticky) .header-widget { margin-top: 0px; margin-bottom: 0px; } } #logo img { transform: translate3d(0,0px,0); } .range-output:after {    content: 'km';}    .budget-range-output:after {        content: "₫";    }.template-file.main-search-container.plain-color { background-color: #ffffff;background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpath fill='%23fffaf5' d='M486 705.8c-109.3-21.8-223.4-32.2-335.3-19.4C99.5 692.1 49 703 0 719.8V800h843.8c-115.9-33.2-230.8-68.1-347.6-92.2C492.8 707.1 489.4 706.5 486 705.8z'/%3E%3Cpath fill='%23fff5ec' d='M1600 0H0v719.8c49-16.8 99.5-27.8 150.7-33.5c111.9-12.7 226-2.4 335.3 19.4c3.4 0.7 6.8 1.4 10.2 2c116.8 24 231.7 59 347.6 92.2H1600V0z'/%3E%3Cpath fill='%23ffefe2' d='M478.4 581c3.2 0.8 6.4 1.7 9.5 2.5c196.2 52.5 388.7 133.5 593.5 176.6c174.2 36.6 349.5 29.2 518.6-10.2V0H0v574.9c52.3-17.6 106.5-27.7 161.1-30.9C268.4 537.4 375.7 554.2 478.4 581z'/%3E%3Cpath fill='%23ffead9' d='M0 0v429.4c55.6-18.4 113.5-27.3 171.4-27.7c102.8-0.8 203.2 22.7 299.3 54.5c3 1 5.9 2 8.9 3c183.6 62 365.7 146.1 562.4 192.1c186.7 43.7 376.3 34.4 557.9-12.6V0H0z'/%3E%3Cpath fill='%23ffe5cf' d='M181.8 259.4c98.2 6 191.9 35.2 281.3 72.1c2.8 1.1 5.5 2.3 8.3 3.4c171 71.6 342.7 158.5 531.3 207.7c198.8 51.8 403.4 40.8 597.3-14.8V0H0v283.2C59 263.6 120.6 255.7 181.8 259.4z'/%3E%3Cpath fill='%23ffead9' d='M1600 0H0v136.3c62.3-20.9 127.7-27.5 192.2-19.2c93.6 12.1 180.5 47.7 263.3 89.6c2.6 1.3 5.1 2.6 7.7 3.9c158.4 81.1 319.7 170.9 500.3 223.2c210.5 61 430.8 49 636.6-16.6V0z'/%3E%3Cpath fill='%23ffefe2' d='M454.9 86.3C600.7 177 751.6 269.3 924.1 325c208.6 67.4 431.3 60.8 637.9-5.3c12.8-4.1 25.4-8.4 38.1-12.9V0H288.1c56 21.3 108.7 50.6 159.7 82C450.2 83.4 452.5 84.9 454.9 86.3z'/%3E%3Cpath fill='%23fff5ec' d='M1600 0H498c118.1 85.8 243.5 164.5 386.8 216.2c191.8 69.2 400 74.7 595 21.1c40.8-11.2 81.1-25.2 120.3-41.7V0z'/%3E%3Cpath fill='%23fffaf5' d='M1397.5 154.8c47.2-10.6 93.6-25.3 138.6-43.8c21.7-8.9 43-18.8 63.9-29.5V0H643.4c62.9 41.7 129.7 78.2 202.1 107.4C1020.4 178.1 1214.2 196.1 1397.5 154.8z'/%3E%3Cpath fill='%23ffffff' d='M1315.3 72.4c75.3-12.6 148.9-37.1 216.8-72.4h-723C966.8 71 1144.7 101 1315.3 72.4z'/%3E%3C/g%3E%3C/svg%3E");	background-attachment: fixed;	background-size: cover; } 
+/*# sourceURL=listeo-style-inline-css */
+</style>
+
+
+<link data-minify="1" rel='stylesheet' id='elementor-icons-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=1792174362' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-frontend-css' href='https://visithcmc.vn/wp-content/uploads/elementor/css/custom-frontend.min.css?ver=1792174361' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-7-css' href='https://visithcmc.vn/wp-content/uploads/elementor/css/post-7.css?ver=1792174361' type='text/css' media='all' />
+<link rel='stylesheet' id='elementor-post-2405-css' href='https://visithcmc.vn/wp-content/uploads/elementor/css/post-2405.css?ver=1792174382' type='text/css' media='all' />
+<style id='rocket-lazyload-inline-css' type='text/css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://visithcmc.vn/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+/*# sourceURL=rocket-lazyload-inline-css */
+</style>
+
+<script type="text/javascript" src="https://visithcmc.vn/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="https://visithcmc.vn/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/foxtool/link/index.js?ver=2.5.3" id="index-ft-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/leaflet.js?ver=6.9.10" id="leaflet.js-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/leaflet-googlemutant.js?ver=2.0.26" id="listeo_core-leaflet-google-maps-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/control.geocoder.js?ver=2.0.26" id="listeo_core-leaflet-geocoder-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/leaflet.markercluster.js?ver=2.0.26" id="listeo_core-leaflet-markercluster-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/leaflet-gesture-handling.min.js?ver=2.0.26" id="listeo_core-leaflet-gesture-handling-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/listeo.leaflet.js?ver=2.0.26" id="listeo_core-leaflet-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/pwstrength-bootstrap.min.js?ver=2.0.26" id="listeo_core-pwstrength-bootstrap-min-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="listeo_core-frontend-js-extra">
+/* <![CDATA[ */
+var listeo_core = {"ajax_url":"/wp-admin/admin-ajax.php","payout_not_valid_email_msg":"The email address is not valid. Please add a valid email address.","is_rtl":"0","lang":"en","wp_locale":"en-gb","currency":"VND","currency_position":"after","currency_symbol":"\u20ab","submitCenterPoint":"-34.397,150.644","centerPoint":"-34.397,150.644","country":"","upload":"https://visithcmc.vn/wp-admin/admin-ajax.php?action=handle_dropped_media","delete":"https://visithcmc.vn/wp-admin/admin-ajax.php?action=handle_delete_media","upload_nonce":"f46c86963c","color":"#f91942","dictDefaultMessage":"Drop files here to upload","dictFallbackMessage":"Your browser does not support drag'n'drop file uploads.","dictFallbackText":"Please use the fallback form below to upload your files like in the olden days.","dictFileTooBig":"File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.","dictInvalidFileType":"You can't upload files of this type.","dictResponseError":"Server responded with {{statusCode}} code.","dictCancelUpload":"Cancel upload","dictCancelUploadConfirmation":"Are you sure you want to cancel this upload?","dictRemoveFile":"Remove file","dictMaxFilesExceeded":"You can not upload any more files.","areyousure":"Are you sure?","stripe_express_nonce":"ca085d3738","maxFiles":"15","maxFilesize":"15","clockformat":"1","prompt_price":"Set price for this date","menu_price":"Price (optional)","menu_desc":"Description","menu_title":"Title","pricing_label_price":"Price","pricing_label_charge_type":"Charge Type","applyLabel":"Apply","cancelLabel":"Cancel","clearLabel":"Clear","fromLabel":"From","toLabel":"To","customRangeLabel":"Custom","next_page_listings_text":"Show next %d listings","infinite_scroll":"off","mmenuTitle":"Menu","pricingTooltip":"Click to make this item bookable in booking widget","today":"Today","tomorrow":"Tomorrow","yesterday":"Yesterday","last_7_days":"Last 7 Days","last_30_days":"Last 30 Days","this_month":"This Month","last_month":"Last Month","show_more_slots":"Show %d more","map_provider":"osm","address_provider":"osm","mapbox_access_token":"","mapbox_retina":"on","mapbox_style_url":"https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}@2x?access_token=","bing_maps_key":"","thunderforest_api_key":"","here_app_id":"","here_app_code":"","maps_reviews_text":"reviews","maps_noreviews_text":"Not rated yet","map_bounds_search":"on","category_title":"Category Title","day_short_su":"Su","day_short_mo":"Mo","day_short_tu":"Tu","day_short_we":"We","day_short_th":"Th","day_short_fr":"Fr","day_short_sa":"Sa","radius_state":"disabled","maps_autofit":"on","maps_autolocate":"","maps_zoom":"9","maps_single_zoom":"9","autologin":"","required_fields":"Please fill all required  fields","exceed_guests_limit":"The total number of adults and children cannot exceed the maximum guest limit","no_results_text":"No results match","no_results_found_text":"No results found","placeholder_text_single":"Select an Option","placeholder_text_multiple":"Select Some Options ","january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December","month_abbrev_jan":"Jan","month_abbrev_feb":"Feb","month_abbrev_mar":"Mar","month_abbrev_apr":"Apr","month_abbrev_may":"May","month_abbrev_jun":"Jun","month_abbrev_jul":"Jul","month_abbrev_aug":"Aug","month_abbrev_sep":"Sep","month_abbrev_oct":"Oct","month_abbrev_nov":"Nov","month_abbrev_dec":"Dec","opening_time":"Opening Time","closing_time":"Closing Time","remove":"Remove","extra_services_options_type":"","onetimefee":"One time fee","bookable_quantity_max":"Max quantity","multiguest":"Multiply by guests","multidays":"Multiply by days","multiguestdays":"Multiply by guest & days","quantitybuttons":"Quantity Buttons","booked_dates":"Those dates are already booked","replied":"Replied","hcaptcha_sitekey":"","turnstile_sitekey":"","elementor_single_gallery":"Gallery","elementor_single_overview":"Overview","elementor_single_details":"Details","elementor_single_pricing":"Pricing","elementor_single_store":"Store","elementor_single_video":"Video","elementor_single_location":"Location","elementor_single_faq":"FAQ","elementor_single_reviews":"Reviews","elementor_single_map":"Location","otp_status":"on","start_time_label":"Start Time","end_time_label":"End Time","back":"Back","search":"Search","copytoalldays":"Copy to all days","selectimefirst":"Please select time first","unblock":"Unblock","block":"Block","setprice":"Set Price","one_date_selected":"1 date selected","dates_selected":" date(s) selected","enterPrice":"Enter price for","leaveBlank":"Leave blank to remove price","selectedTerm":"Selected Term","customField":"Custom Field","customFields":"Custom Fields","customFieldsFor":"Custom fields for","next":"Next","prev":"Previous","radius_unit":"km","user_location_text":"Your Search Location","radius_text":"Search Radius","google_maps_id":"","dateParseError":"Could not determine event date. Please contact support.","_price_min":null,"_price_max":null,"listing_types_config":{"service":{"booking_enabled":true,"booking_type":"single_day","booking_features":["time_slots","services","calendar"],"supports_opening_hours":true,"supports_pricing":false,"supports_time_slots":true,"supports_calendar":true,"supports_guests":false,"supports_services":true},"rental":{"booking_enabled":true,"booking_type":"tickets","booking_features":["tickets","services"],"supports_opening_hours":true,"supports_pricing":false,"supports_time_slots":false,"supports_calendar":false,"supports_guests":false,"supports_services":true},"event":{"booking_enabled":true,"booking_type":"tickets","booking_features":["tickets","services"],"supports_opening_hours":false,"supports_pricing":false,"supports_time_slots":false,"supports_calendar":false,"supports_guests":false,"supports_services":true},"classifieds":{"booking_enabled":true,"booking_type":"disabled","booking_features":[],"supports_opening_hours":false,"supports_pricing":false,"supports_time_slots":false,"supports_calendar":false,"supports_guests":false,"supports_services":false}},"custom_taxonomies":["service_category","rental_category","event_category","classifieds_category"],"review_criteria":"service,value-for-money,location,cleanliness"};
+//# sourceURL=listeo_core-frontend-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/frontend.js?ver=2.0.26" id="listeo_core-frontend-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="listeo_core-bookings-js-extra">
+/* <![CDATA[ */
+var listeoBookings = {"states_nonce":"ed5ba4f4bc","select_state_text":"Select a state\u2026","state_placeholder":"State"};
+//# sourceURL=listeo_core-bookings-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/bookings.js?ver=2.0.26" id="listeo_core-bookings-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/drilldown.js?ver=2.0.26" id="listeo_core-drilldown-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="listeo_core-ajax-login-js-extra">
+/* <![CDATA[ */
+var listeo_login = {"ajaxurl":"https://visithcmc.vn/wp-admin/admin-ajax.php","redirecturl":"https://visithcmc.vn","loadingmessage":"Sending user info, please wait..."};
+//# sourceURL=listeo_core-ajax-login-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/ajax-login-script.js?ver=1.0" id="listeo_core-ajax-login-js" data-rocket-defer defer></script>
+<script type="text/javascript" src="https://visithcmc.vn/wp-content/themes/listeo/js/select2.min.js?ver=1.9.54" id="select2-min-js" data-rocket-defer defer></script>
+<script type="text/javascript" src="https://visithcmc.vn/wp-content/themes/listeo/js/bootstrap-select.min.js?ver=1.9.54" id="bootstrap-select-min-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/counterup.min.js?ver=1.9.54" id="counterup-min-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/datedropper.js?ver=1.9.54" id="datedropper-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/dropzone.js?ver=1.9.54" id="dropzone-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/magnific-popup.min.js?ver=1.9.54" id="magnific-popup-min-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/slick.min.js?ver=1.9.54" id="slick-min-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/quantityButtons.js?ver=1.9.54" id="quantityButtons-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/rangeslider.min.js?ver=1.9.54" id="rangeslider-min-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/timedropper.js?ver=1.9.54" id="timedropper-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/jquery.scrollto.js?ver=1.9.54" id="jquery-scrollto-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/tooltips.min.js?ver=1.9.54" id="tooltips-min-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/waypoints.min.js?ver=1.9.54" id="waypoints-min-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/dist/vendor/moment.min.js?ver=2.30.1" id="moment-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="moment-js-after">
+/* <![CDATA[ */
+moment.updateLocale( 'en_GB', {"months":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthsShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"weekdaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"week":{"dow":1},"longDateFormat":{"LT":"g:i a","LTS":null,"L":null,"LL":"d/m/Y","LLL":"j F Y H:i","LLLL":null}} );
+//# sourceURL=moment-js-after
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/daterangepicker.js?ver=1.9.54" id="daterangerpicker-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/bootstrap-slider.min.js?ver=1.9.54" id="bootstrap-slider-min-js" data-rocket-defer defer></script>
+<link rel="https://api.w.org/" href="https://visithcmc.vn/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://visithcmc.vn/wp-json/wp/v2/pages/2405" /><link rel='shortlink' href='https://visithcmc.vn/?p=2405' />
+    <style>
+        li#wp-admin-bar-listeo-update-available, li#wp-admin-bar-listeo-core-editor, li#wp-admin-bar-listeo-core, li#wp-admin-bar-listeo-health-check, li#wp-admin-bar-listeo-analytics, li#wp-admin-bar-new-content, li#wp-admin-bar-updates, #wp-admin-bar-plugins, #wp-admin-bar-appearance, .update-nag, .notice-warning {
+            display: none;
+            opacity: 0;
+        }
+    </style>
+    <meta name="generator" content="Elementor 3.35.5; features: additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-auto">
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			<link rel="icon" href="https://visithcmc.vn/wp-content/uploads/2026/03/cropped-Visit-HCMC-150x150.webp" sizes="32x32" />
+<link rel="icon" href="https://visithcmc.vn/wp-content/uploads/2026/03/cropped-Visit-HCMC-200x200.webp" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://visithcmc.vn/wp-content/uploads/2026/03/cropped-Visit-HCMC-200x200.webp" />
+<meta name="msapplication-TileImage" content="https://visithcmc.vn/wp-content/uploads/2026/03/cropped-Visit-HCMC-300x300.webp" />
+<style id="visithcmc-mobile-fixes">
+@media (max-width: 767px) {
+  /* Tiêu đề khối (Listeo headline) 49-60px làm chữ tràn/chồng dòng */
+  .elementor-widget-listeo-headline .headline.headline-extra-spacing { font-size: 30px !important; line-height: 1.25 !important; overflow-wrap: break-word; }
+  /* Khối "Hợp tác cùng #VibrantHoChiMinhCity" (Ưu đãi / Travel offers) bị lệch trái -105px */
+  .elementor-element-6076b3d0 .elementor-widget-wrap { margin-left: 0 !important; }
+  .elementor-element-58d14ae8 { margin-left: 0 !important; }
+  /* Lưới bài viết: chữ sát mép màn hình */
+  .elementor-widget-vn_content_grid .vn-grid-wrapper.mode-grid { margin-left: 0 !important; margin-right: 0 !important; }
+  .elementor-widget-vn_content_grid .vn-grid-item.style-card { padding-left: 15px !important; padding-right: 15px !important; }
+  /* Slider đầu trang danh mục: tiêu đề 49px quá lớn */
+  .vnsb-title { font-size: 26px !important; line-height: 1.25 !important; }
+  /* "Trải nghiệm sống động": tiêu đề sát mép */
+  .vn-vib-header { padding-left: 15px; padding-right: 15px; }
+  .vn-vib-title { font-size: 22px !important; line-height: 1.3 !important; }
+  /* FAQ (accordion) đang rộng 60% */
+  .elementor-widget-n-accordion { width: 100% !important; max-width: 100% !important; --container-widget-width: 100% !important; }
+  .elementor-widget-n-accordion .e-n-accordion-item > .e-con { --padding-left: 16px; --padding-right: 16px; }
+  /* Nút AI trong ô tìm kiếm: chữ tràn ra ngoài */
+  .ai-search-button { overflow: hidden; }
+  /* Nội dung bài viết: bớt lề trong để chữ rộng hơn */
+  .single-post .post-content { padding: 22px 18px !important; }
+}
+/* Mọi kích thước màn hình */
+/* Nút năm trước/sau của lịch sự kiện: font Dashicons không tải ngoài admin nên icon trống */
+.vn-year-btn { border: 1px solid #ddd !important; color: #333 !important; }
+.vn-year-btn .dashicons { font-family: inherit !important; font-size: 22px; line-height: 1; width: auto; height: auto; }
+.vn-year-btn .dashicons-arrow-left-alt2::before { content: "\2039"; }
+.vn-year-btn .dashicons-arrow-right-alt2::before { content: "\203A"; }
+/* Mô tả ngắn trong lưới bài viết dạng thẻ: màu #eee trên nền trắng */
+.vn-grid-item.style-card .vn-excerpt { color: #666 !important; opacity: 1 !important; }
+</style>
+    <style id="kirki-inline-styles">#logo img{max-height:43px;}#header.cloned #logo img{max-width:120px;}</style><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+
+<meta name="generator" content="WP Rocket 3.21.0.1" data-wpr-features="wpr_delay_js wpr_defer_js wpr_lazyload_images wpr_lazyload_iframes wpr_preconnect_external_domains wpr_oci wpr_image_dimensions wpr_minify_css wpr_preload_links" /></head>
+
+<body  class="wp-singular page-template-default page page-id-2405 page-parent wp-theme-listeo wp-child-theme-listeo-child user_not_logged_in solid-header slim-mobile-menu light-dashboard PencilChildTheme elementor-default elementor-kit-7 elementor-page elementor-page-2405">
+		<!-- Sign In Popup -->
+	<div  id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+
+		<div  class="small-dialog-header">
+			<h3>Sign In</h3>
+		</div>
+		<!--Tabs -->
+		<div  class="sign-in-form style-1"> 
+			<ul class="tabs-nav">
+	<li id="listeo-logintab-btn" class=""><a href="#tab1">Log In</a></li>
+	<li id="listeo-registration-btn"><a href="#tab2">Register</a></li>
+</ul>
+
+<div  class="tabs-container alt">
+
+	<!-- Login -->
+	<div class="tab-content" id="tab1" style="display: none;">
+						<form method="post" id="login" class="login" action="https://visithcmc.vn/wp-login.php">
+				
+								<p class="form-row form-row-wide">
+					<label for="user_login">
+						<i class="sl sl-icon-user"></i>
+						<input placeholder="Username/Email" type="text" class="input-text" name="log" id="user_login" value="" />
+					</label>
+				</p>
+
+
+				<p class="form-row form-row-wide">
+					<label for="user_pass">
+						<i class="sl sl-icon-lock"></i>
+						<input placeholder="Password" class="input-text" type="password" name="pwd" id="user_pass" />
+
+					</label>
+					<span class="lost_password">
+						<a href="https://visithcmc.vn/wp-login.php?action=lostpassword">Lost Your Password?</a>
+					</span>
+				</p>
+
+				<div class="form-row">
+					<input type="hidden" id="login_security" name="login_security" value="e8c357d93d" /><input type="hidden" name="_wp_http_referer" value="/see-do/" />					<input type="submit" class="button border margin-top-5" name="login" value="Login" />
+					<div class="checkboxes margin-top-10">
+						<input name="rememberme" type="checkbox" id="remember-me" value="forever" />
+						<label for="remember-me">Remember Me</label>
+
+					</div>
+				</div>
+				<div class="notification error closeable" style="display: none; margin-top: 20px; margin-bottom: 0px;">
+					<p></p>
+				</div>
+				</form>
+	</div>
+
+	<!-- Register -->
+	<div class="tab-content" id="tab2" style="display: none;">
+					<div class="notification error closeable" style="display: block">
+				<p>Registration is disabled</p>
+			</div>
+				</div>
+
+</div>
+
+
+		</div>
+	</div>
+	<!-- Sign In Popup / End -->
+<div  class="clearfix"></div>
+	
+				<!-- Wrapper -->
+
+
+				<!-- Mobile Navigation -->
+				<nav class="mobile-navigation-wrapper">
+					<div class="mobile-nav-header">
+						<div class="menu-logo">
+														<a href="https://visithcmc.vn/" class="" title="HO CHI MINH CITY – YOUR COMPLETE EXPERIENCE HUB" rel="home"><img width="142" height="58" id="listeo_logo" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20142%2058'%3E%3C/svg%3E" data-rjs="https://visithcmc.vn/wp-content/uploads/2026/03/Logo-dpzW6O.svg" alt="HO CHI MINH CITY – YOUR COMPLETE EXPERIENCE HUB" data-lazy-src="https://visithcmc.vn/wp-content/uploads/2026/03/Logo-dpzW6O.svg" /><noscript><img width="142" height="58" id="listeo_logo" src="https://visithcmc.vn/wp-content/uploads/2026/03/Logo-dpzW6O.svg" data-rjs="https://visithcmc.vn/wp-content/uploads/2026/03/Logo-dpzW6O.svg" alt="HO CHI MINH CITY – YOUR COMPLETE EXPERIENCE HUB" /></noscript></a>
+
+						</div>
+						<a href="#" class="menu-icon-toggle"></a>
+					</div>
+
+					<div class="mobile-navigation-list">
+						<ul id="mobile-nav" class="menu"><li id="menu-item-2431" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2405 current_page_item menu-item-2431"><a href="https://visithcmc.vn/see-do/" aria-current="page">SEE &#038; DO</a></li>
+<li id="menu-item-2648" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2648"><a href="https://visithcmc.vn/festivals-events/">FESTIVALS &#038; EVENTS</a></li>
+<li id="menu-item-2673" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2673"><a href="https://visithcmc.vn/news/">NEWS</a></li>
+<li id="menu-item-2793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2793"><a href="https://visithcmc.vn/travel-offers/">TRAVEL OFFERS</a></li>
+<li id="menu-item-2826" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2826"><a href="https://visithcmc.vn/useful-information/">USEFUL INFORMATION</a></li>
+<li id="menu-item-2364" class="pll-parent-menu-item menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2364"><a href="#pll_switcher"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2011'%3E%3C/svg%3E" alt="" width="16" height="11" style="width: 16px; height: 11px;" data-lazy-src="" /><noscript><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAt1BMVEWSmb66z+18msdig8La3u+tYX9IaLc7W7BagbmcUW+kqMr/q6n+//+hsNv/lIr/jIGMnNLJyOP9/fyQttT/wb3/////aWn+YWF5kNT0oqz0i4ueqtIZNJjhvt/8gn//WVr/6+rN1+o9RKZwgcMPJpX/VFT9UEn+RUX8Ozv2Ly+FGzdYZrfU1e/8LS/lQkG/mbVUX60AE231hHtcdMb0mp3qYFTFwNu3w9prcqSURGNDaaIUMX5FNW5wYt7AAAAAjklEQVR4AR3HNUJEMQCGwf+L8RR36ajR+1+CEuvRdd8kK9MNAiRQNgJmVDAt1yM6kSzYVJUsPNssAk5N7ZFKjVNFAY4co6TAOI+kyQm+LFUEBEKKzuWUNB7rSH/rSnvOulOGk+QlXTBqMIrfYX4tSe2nP3iRa/KNK7uTmWJ5a9+erZ3d+18od4ytiZdvZyuKWy8o3UpTVAAAAABJRU5ErkJggg==" alt="" width="16" height="11" style="width: 16px; height: 11px;" /></noscript><span style="margin-left:0.3em;">English</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-2364-en" class="lang-item lang-item-108 lang-item-en current-lang lang-item-first menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2364-en"><a href="https://visithcmc.vn/" lang="en-GB" hreflang="en-GB"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2011'%3E%3C/svg%3E" alt="" width="16" height="11" style="width: 16px; height: 11px;" data-lazy-src="" /><noscript><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAt1BMVEWSmb66z+18msdig8La3u+tYX9IaLc7W7BagbmcUW+kqMr/q6n+//+hsNv/lIr/jIGMnNLJyOP9/fyQttT/wb3/////aWn+YWF5kNT0oqz0i4ueqtIZNJjhvt/8gn//WVr/6+rN1+o9RKZwgcMPJpX/VFT9UEn+RUX8Ozv2Ly+FGzdYZrfU1e/8LS/lQkG/mbVUX60AE231hHtcdMb0mp3qYFTFwNu3w9prcqSURGNDaaIUMX5FNW5wYt7AAAAAjklEQVR4AR3HNUJEMQCGwf+L8RR36ajR+1+CEuvRdd8kK9MNAiRQNgJmVDAt1yM6kSzYVJUsPNssAk5N7ZFKjVNFAY4co6TAOI+kyQm+LFUEBEKKzuWUNB7rSH/rSnvOulOGk+QlXTBqMIrfYX4tSe2nP3iRa/KNK7uTmWJ5a9+erZ3d+18od4ytiZdvZyuKWy8o3UpTVAAAAABJRU5ErkJggg==" alt="" width="16" height="11" style="width: 16px; height: 11px;" /></noscript><span style="margin-left:0.3em;">English</span></a></li>
+	<li id="menu-item-2364-vi" class="lang-item lang-item-111 lang-item-vi no-translation menu-item menu-item-type-custom menu-item-object-custom menu-item-2364-vi"><a href="https://visithcmc.vn/vi/trang-chu/" lang="vi" hreflang="vi"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2011'%3E%3C/svg%3E" alt="" width="16" height="11" style="width: 16px; height: 11px;" data-lazy-src="" /><noscript><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAATlBMVEX+AAD2AADvAQH/eXn+cXL9amr8YmL9Wlr8UlL7TkvoAAD8d0f6Pz/3ODf2Ly/0KSf6R0f6wTv60T31IBz6+jr4+Cv3QybzEhL4bizhAADgATv8AAAAW0lEQVR4AQXBgU3DQBRAMb+7jwKVUPefkQEQTYJqByBENpKUGoZslXoN5LPONH8G9WWZ7pGlOn6XZmaGRce1J/seei4dl+7dPWDqkk7+58e3+igdlySPcYbwBG+lPhCjrtt9EgAAAABJRU5ErkJggg==" alt="" width="16" height="11" style="width: 16px; height: 11px;" /></noscript><span style="margin-left:0.3em;">Tiếng Việt</span></a></li>
+</ul>
+</li>
+<li id="menu-item-6225" class="vn-search-trigger menu-item menu-item-type-custom menu-item-object-custom menu-item-6225"><a href="#"><i class="fa fa-search"></i></a></li>
+</ul>					</div>
+
+					<div class="mobile-nav-widgets">
+						<aside id="text-5" class="mobile-menu-widget widget widget_text"><h4>Our Office</h4>			<div class="textwidget"><p>HO CHI MINH CITY TOURISM PROMOTION CENTER<br />
+292 Dien Bien Phu Street, Xuan Hoa Ward, Ho Chi Minh City, Vietnam<br />
+HO CHI MINH CITY DEPARTMENT OF TOURISM<br />
+Department of Tourism Website<br />
+201 Vo Thi Sau Street, Xuan Hoa Ward, Ho Chi Minh City, Vietnam</p>
+<p>Visitor Support<br />
+Hotline: 1022 (ext 8)</p>
+</div>
+		</aside>						<aside id="listeo_side_social_icons" class="mobile-menu-widget widget ">
+							<ul class="new-footer-social-icons"><li><a target="_blank" title="twitter" href="#"><i class="icon-brand-twitter"></i></a></li><li><a target="_blank" title="linkedin" href="#"><i class="icon-brand-linkedin"></i></a></li><li><a target="_blank" title="facebook-messenger" href="#"><i class="icon-brand-facebook-messenger"></i></a></li><li><a target="_blank" title="instagram" href="#"><i class="icon-brand-instagram"></i></a></li></ul>						</aside>
+					</div>
+				</nav>
+				<!-- Mobile Navigation / End-->
+
+
+
+				<div  id="wrapper">
+
+										<!-- Header Container
+================================================== -->
+					<header  id="header-container" class="sticky-header ">
+
+						<!-- Header -->
+						<div  id="header" class="">
+							<div  class="container">
+																<!-- Left Side Content -->
+								<div class="left-side">
+									<div id="logo" data-logo-transparent="https://visithcmc.vn/wp-content/uploads/2026/03/Logo-dpzW6O.svg" data-logo="https://visithcmc.vn/wp-content/uploads/2026/03/visithcmc2-pencil-vn.svg" data-logo-sticky="https://visithcmc.vn/wp-content/uploads/2026/03/visithcmc2-pencil-vn.svg">
+																						<a href="https://visithcmc.vn/" title="HO CHI MINH CITY – YOUR COMPLETE EXPERIENCE HUB" rel="home"><img width="1494" height="612" id="listeo_logo" src="https://visithcmc.vn/wp-content/uploads/2026/03/visithcmc2-pencil-vn.svg" data-rjs="" alt="HO CHI MINH CITY – YOUR COMPLETE EXPERIENCE HUB" /></a>
+																				</div>
+
+
+									<!-- Mobile Navigation -->
+									<div class="mmenu-trigger ">
+										<button class="hamburger hamburger--collapse" type="button">
+											<span class="hamburger-box">
+												<span class="hamburger-inner"></span>
+											</span>
+										</button>
+									</div>
+
+
+
+									<!-- Main Navigation -->
+									<nav id="navigation" class="style-1">
+										<ul id="responsive" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2405 current_page_item menu-item-2431 parentid0 depth0 dropdown"><a href="https://visithcmc.vn/see-do/" >SEE &#038; DO</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2648 parentid0 depth0 dropdown"><a href="https://visithcmc.vn/festivals-events/" >FESTIVALS &#038; EVENTS</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2673 parentid0 depth0 dropdown"><a href="https://visithcmc.vn/news/" >NEWS</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2793 parentid0 depth0 dropdown"><a href="https://visithcmc.vn/travel-offers/" >TRAVEL OFFERS</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2826 parentid0 depth0 dropdown"><a href="https://visithcmc.vn/useful-information/" >USEFUL INFORMATION</a></li>
+<li class="pll-parent-menu-item menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2364 parentid0 depth0 dropdown"><a href="#pll_switcher" ><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2011'%3E%3C/svg%3E" alt="" width="16" height="11" style="width: 16px; height: 11px;" data-lazy-src="" /><noscript><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAt1BMVEWSmb66z+18msdig8La3u+tYX9IaLc7W7BagbmcUW+kqMr/q6n+//+hsNv/lIr/jIGMnNLJyOP9/fyQttT/wb3/////aWn+YWF5kNT0oqz0i4ueqtIZNJjhvt/8gn//WVr/6+rN1+o9RKZwgcMPJpX/VFT9UEn+RUX8Ozv2Ly+FGzdYZrfU1e/8LS/lQkG/mbVUX60AE231hHtcdMb0mp3qYFTFwNu3w9prcqSURGNDaaIUMX5FNW5wYt7AAAAAjklEQVR4AR3HNUJEMQCGwf+L8RR36ajR+1+CEuvRdd8kK9MNAiRQNgJmVDAt1yM6kSzYVJUsPNssAk5N7ZFKjVNFAY4co6TAOI+kyQm+LFUEBEKKzuWUNB7rSH/rSnvOulOGk+QlXTBqMIrfYX4tSe2nP3iRa/KNK7uTmWJ5a9+erZ3d+18od4ytiZdvZyuKWy8o3UpTVAAAAABJRU5ErkJggg==" alt="" width="16" height="11" style="width: 16px; height: 11px;" /></noscript><span style="margin-left:0.3em;">English</span></a>
+<ul class="sub-menu ">
+	<li class="lang-item lang-item-108 lang-item-en current-lang lang-item-first menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2364-en parentid depth1 dropdown"><a href="https://visithcmc.vn/" lang="en-GB" hreflang="en-GB" ><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2011'%3E%3C/svg%3E" alt="" width="16" height="11" style="width: 16px; height: 11px;" data-lazy-src="" /><noscript><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAAt1BMVEWSmb66z+18msdig8La3u+tYX9IaLc7W7BagbmcUW+kqMr/q6n+//+hsNv/lIr/jIGMnNLJyOP9/fyQttT/wb3/////aWn+YWF5kNT0oqz0i4ueqtIZNJjhvt/8gn//WVr/6+rN1+o9RKZwgcMPJpX/VFT9UEn+RUX8Ozv2Ly+FGzdYZrfU1e/8LS/lQkG/mbVUX60AE231hHtcdMb0mp3qYFTFwNu3w9prcqSURGNDaaIUMX5FNW5wYt7AAAAAjklEQVR4AR3HNUJEMQCGwf+L8RR36ajR+1+CEuvRdd8kK9MNAiRQNgJmVDAt1yM6kSzYVJUsPNssAk5N7ZFKjVNFAY4co6TAOI+kyQm+LFUEBEKKzuWUNB7rSH/rSnvOulOGk+QlXTBqMIrfYX4tSe2nP3iRa/KNK7uTmWJ5a9+erZ3d+18od4ytiZdvZyuKWy8o3UpTVAAAAABJRU5ErkJggg==" alt="" width="16" height="11" style="width: 16px; height: 11px;" /></noscript><span style="margin-left:0.3em;">English</span></a></li>
+	<li class="lang-item lang-item-111 lang-item-vi no-translation menu-item menu-item-type-custom menu-item-object-custom menu-item-2364-vi parentid depth1 dropdown"><a href="https://visithcmc.vn/vi/trang-chu/" lang="vi" hreflang="vi" ><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2011'%3E%3C/svg%3E" alt="" width="16" height="11" style="width: 16px; height: 11px;" data-lazy-src="" /><noscript><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAALCAMAAABBPP0LAAAATlBMVEX+AAD2AADvAQH/eXn+cXL9amr8YmL9Wlr8UlL7TkvoAAD8d0f6Pz/3ODf2Ly/0KSf6R0f6wTv60T31IBz6+jr4+Cv3QybzEhL4bizhAADgATv8AAAAW0lEQVR4AQXBgU3DQBRAMb+7jwKVUPefkQEQTYJqByBENpKUGoZslXoN5LPONH8G9WWZ7pGlOn6XZmaGRce1J/seei4dl+7dPWDqkk7+58e3+igdlySPcYbwBG+lPhCjrtt9EgAAAABJRU5ErkJggg==" alt="" width="16" height="11" style="width: 16px; height: 11px;" /></noscript><span style="margin-left:0.3em;">Tiếng Việt</span></a></li>
+
+</ul>
+</li>
+<li class="vn-search-trigger menu-item menu-item-type-custom menu-item-object-custom menu-item-6225 parentid0 depth0 dropdown"><a href="#" ><i class="fa fa-search"></i></a></li>
+</ul>
+									</nav>
+									<div  class="clearfix"></div>
+									<!-- Main Navigation / End -->
+
+								</div>
+
+								<!-- Left Side Content / End -->
+																	<!-- Right Side Content / End -->
+
+									<div class="right-side">
+										<div class="header-widget">
+																						<!--end navbar-right -->
+											
+					<a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
+				
+
+	
+					<a href="https://visithcmc.vn/add-listing/" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a>
+			
+										</div>
+									</div>
+
+									<!-- Right Side Content / End -->
+								
+							</div>
+						</div>
+						<!-- Header / End -->
+
+					</header>
+
+
+					<!-- Header Container / End -->
+			
+
+<div  class="container  content-container full-width">
+
+	<div  class="row">
+
+		<article id="post-2405" class="col-md-12 page-container-col post-2405 page type-page status-publish hentry">
+					<div data-elementor-type="wp-page" data-elementor-id="2405" class="elementor elementor-2405" data-elementor-post-type="page">
+				<div class="elementor-element elementor-element-5b618ad e-con-full e-flex e-con e-parent" data-id="5b618ad" data-element_type="container" data-e-type="container">
+		<div class="elementor-element elementor-element-ff4bc56 e-con-full e-flex e-con e-child" data-id="ff4bc56" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-element elementor-element-536e0ff elementor-widget__width-inherit elementor-widget elementor-widget-listeo-homebanner" data-id="536e0ff" data-element_type="widget" data-e-type="widget" data-widget_type="listeo-homebanner.default">
+				<div class="elementor-widget-container">
+					
+		
+		<div class="main-search-container elementor-main-search-container container-overlay-solid" data-typed-settings="{&quot;enabled&quot;:false,&quot;typeSpeed&quot;:70,&quot;backSpeed&quot;:80,&quot;backDelay&quot;:4000,&quot;startDelay&quot;:1000,&quot;syncedBg&quot;:false,&quot;hideForBots&quot;:false,&quot;showCountdown&quot;:false,&quot;words&quot;:[&quot;&quot;]}">
+
+		
+		<div class="main-search-inner">
+
+
+		
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						
+						<h1><span style="font-size: 42px; font-weight: 550; color: #ffffff; display: block; line-height: 1.2; 1px 0px 0px #ffffff, -1px 0px 0px #ffffff;">     SEE <span style="font-weight: normal; font-size: 30px; none;">&</span> DO </span>  <span class="typed-words"></span></h1>
+						<h4>Dive into the <span style="color: #FFFFFF; font-weight: 800; border-bottom: 2px solid #FFFFFF; padding-bottom: 2px;">vibrant soul</span> and <span style="color: #FFFFFF; font-weight: 800; border-bottom: 2px solid #FFFFFF; padding-bottom: 2px;">authentic culture</span> of Ho Chi Minh City.</h4>						
+															<form action="https://visithcmc.vn/listings/" id="listeo_core-search-form" class="listeo-form-search_on_home_page dynamic   main-search-form ajax-search" method="GET">
+							<div class="main-search-input">
+											<div class="main-search-input-item ai_search">
+							
+<div class=" ">
+            <div class="ai-chat-search-container" data-limit="10" data-types="all" data-debug="false" data-button-action="quick_picks">
+            <!-- Modern Search Bar -->
+            <div class="ai-search-form-wrapper">
+                <div class="search-input-wrapper">
+                    <div class="search-input-icon">
+                        <span class="search-stars">✨</span>
+                    </div>
+                    <input
+                        type="text"
+                        name="ai_search_input"
+                        placeholder="AI Search Field"
+                        value=""
+                        class="ai-search-input">
+                    <input type="text" name="ai_search_hp" tabindex="-1" autocomplete="off">
+                                            <div class="ai-btn-container">
+                            <button type="button" class="ai-search-button" data-action="quick_picks">
+                                                                <i class="fa fa-bolt ai-button-icon"></i>
+                                <span class="button-text">AI Quick Picks</span>
+                            </button>
+                        </div>
+                                    </div>
+
+                <!-- AI Processing Status -->
+                <div class="ai-processing-status">
+                    <div class="processing-step active">
+                        <div class="step-icon"><i class="fa fa-magic"></i></div>
+                        <div class="step-text">AI analyzing your search query...</div>
+                    </div>
+                </div>
+
+                            </div>
+
+            <div class="search-results-container" style="display: none;">
+                <div class="ai-results-header">
+                    <div class="ai-header-gradient">
+                        <div class="ai-header-content">
+                            <h3 class="ai-header-title">AI Top Picks</h3>
+                            <div class="ai-header-subtitle">
+                                <span class="results-count-text">Top 0 listings matching</span>
+                                <span class="query-highlight"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-list-ai"></div>
+            </div>
+
+            <div class="no-results" style="display: none;">
+                <h3>No results found</h3>
+                <p>Try adjusting your search terms or using different keywords.</p>
+            </div>
+        </div>
+</div>
+						</div>
+										<div class="main-search-input-item drilldown-listing-types">
+							
+<!-- Drilldown menu for listing types and categories in search form -->
+<div data-label="Choose Listing Type &amp; Category"  data-single-select="true"  data-name="drilldown-listing-types" id="listeo-drilldown-listing-types" class="drilldown-menu drilldown-listing-types search-field" data-categories='[{&quot;label&quot;:&quot;Service&quot;,&quot;value&quot;:&quot;listing_type_service&quot;,&quot;id&quot;:&quot;type_service&quot;,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Service&quot;,&quot;value&quot;:&quot;listing_type_service&quot;,&quot;id&quot;:&quot;all_service&quot;}]},{&quot;label&quot;:&quot;Venue&quot;,&quot;value&quot;:&quot;listing_type_rental&quot;,&quot;id&quot;:&quot;type_rental&quot;,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Venue&quot;,&quot;value&quot;:&quot;listing_type_rental&quot;,&quot;id&quot;:&quot;all_rental&quot;},{&quot;label&quot;:&quot;HCMD&quot;,&quot;value&quot;:&quot;rental_category:hcmd&quot;,&quot;id&quot;:272,&quot;children&quot;:[{&quot;label&quot;:&quot;All in HCMD&quot;,&quot;value&quot;:&quot;rental_category:hcmd&quot;,&quot;id&quot;:272}]}]},{&quot;label&quot;:&quot;Event&quot;,&quot;value&quot;:&quot;listing_type_event&quot;,&quot;id&quot;:&quot;type_event&quot;,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Event&quot;,&quot;value&quot;:&quot;listing_type_event&quot;,&quot;id&quot;:&quot;all_event&quot;},{&quot;label&quot;:&quot;Culture &amp; History&quot;,&quot;value&quot;:&quot;event_category:culture-history&quot;,&quot;id&quot;:442,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Culture &amp; History&quot;,&quot;value&quot;:&quot;event_category:culture-history&quot;,&quot;id&quot;:442}]},{&quot;label&quot;:&quot;Entertainment&quot;,&quot;value&quot;:&quot;event_category:entertainment&quot;,&quot;id&quot;:234,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Entertainment&quot;,&quot;value&quot;:&quot;event_category:entertainment&quot;,&quot;id&quot;:234}]},{&quot;label&quot;:&quot;Food &amp; Drink&quot;,&quot;value&quot;:&quot;event_category:food-drink&quot;,&quot;id&quot;:235,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Food &amp; Drink&quot;,&quot;value&quot;:&quot;event_category:food-drink&quot;,&quot;id&quot;:235}]},{&quot;label&quot;:&quot;Highlight Event&quot;,&quot;value&quot;:&quot;event_category:highlight-event&quot;,&quot;id&quot;:404,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Highlight Event&quot;,&quot;value&quot;:&quot;event_category:highlight-event&quot;,&quot;id&quot;:404}]},{&quot;label&quot;:&quot;Nature&quot;,&quot;value&quot;:&quot;event_category:nature&quot;,&quot;id&quot;:534,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Nature&quot;,&quot;value&quot;:&quot;event_category:nature&quot;,&quot;id&quot;:534}]},{&quot;label&quot;:&quot;Urban Discovery&quot;,&quot;value&quot;:&quot;event_category:urban-discovery&quot;,&quot;id&quot;:233,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Urban Discovery&quot;,&quot;value&quot;:&quot;event_category:urban-discovery&quot;,&quot;id&quot;:233}]},{&quot;label&quot;:&quot;Workshop\/Exhibition&quot;,&quot;value&quot;:&quot;event_category:workshop-exhibition&quot;,&quot;id&quot;:232,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Workshop\/Exhibition&quot;,&quot;value&quot;:&quot;event_category:workshop-exhibition&quot;,&quot;id&quot;:232}]}]},{&quot;label&quot;:&quot;Classified&quot;,&quot;value&quot;:&quot;listing_type_classifieds&quot;,&quot;id&quot;:&quot;type_classifieds&quot;,&quot;children&quot;:[{&quot;label&quot;:&quot;All in Classified&quot;,&quot;value&quot;:&quot;listing_type_classifieds&quot;,&quot;id&quot;:&quot;all_classifieds&quot;}]}]'>
+                <input type="hidden" class="drilldown-values" name="drilldown-listing-types[]" value="">
+            <div class="menu-toggle">
+        <span class="menu-label">Choose Listing Type &amp; Category</span>
+        <span class="reset-button" style="display:none;">&times;</span>
+    </div>
+    <div class="menu-panel">
+        <div class="menu-levels">
+            <!-- Levels will be injected here by JavaScript -->
+        </div>
+    </div>
+</div>						</div>
+										<div class="main-search-input-item select-taxonomy">
+							
+<div class="  " id="listeo-search-form_tax-listing_category">
+	<select  id="tax-listing_category" 
+			name="tax-listing_category"  class="selectpicker"  data-size="10"
+		title="Any Categories">
+	 		<option value="0">Any Categories</option>
+			<option  value="culture-history">Culture &amp; History</option><option  value="entertainment">Entertainment</option><option  value="food-drink">Food &amp; Drink</option><option  value="nature">Nature</option><option  value="shopping">Shopping</option><option  value="wellness">Wellness</option><option  value="workshops-exhibitions">Workshops/ Exhibitions</option>	</select>
+</div>
+						</div>
+				
+				
+										<input type="hidden" name="action" value="listeo_get_listings" />
+				<!-- More Search Options / End -->
+				
+									<button class="button">Search</button>
+				</div>
+									        <div class="listeo-save-search-wrapper">
+            <div class="listeo-save-search-btn requires-login"
+                 data-url="https://visithcmc.vn/listings/"
+                 data-criteria="[]"
+                 data-logged-in="0"
+                 title="Save Search &amp; Get Alerts">
+                <i class="sl sl-icon-bell"></i> <span>Save Search</span>
+            </div>
+        </div>
+        						</form>
+			
+					</div>
+				</div>
+
+				
+				
+			</div>
+		
+	
+				</div>
+	</div>
+					</div>
+				</div>
+				</div>
+				</div>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-6a05cda6 elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="6a05cda6" data-element_type="section" data-e-type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;gradient&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-646f110f" data-id="646f110f" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-f1da743 elementor-widget elementor-widget-vn_vibrant_experiences" data-id="f1da743" data-element_type="widget" data-e-type="widget" data-widget_type="vn_vibrant_experiences.default">
+				<div class="elementor-widget-container">
+					            
+            <div class="vn-vib-wrapper" data-ppp="6" data-cats="[865,883,907,917]" data-more-action="load_more">
+                
+                <div class="vn-vib-header">
+                    <div class="vn-vib-title-group">
+                        <h2 class="vn-vib-title">Outstanding experience</h2>
+                        
+                        <div class="vn-vib-dropdowns-area">
+                            
+                                                    </div>
+                    </div>
+
+                                    </div>
+
+                <div class="vn-vib-tabs-container">
+                    <div class="vn-vib-tab-arrow prev">&#10094;</div>
+                    <div class="vn-vib-tabs-bar">
+                        <button class="vn-vib-tab-btn active" data-id="0" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> <span>See &amp; Do</span>
+                        </button>
+                                                    <button class="vn-vib-tab-btn" data-id="865" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-5a3 3 0 0 1 6 0v5"></path></svg> <span>Culture &amp; History</span>
+                            </button>
+                                                    <button class="vn-vib-tab-btn" data-id="883" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg> <span>Food &amp; Drink</span>
+                            </button>
+                                                    <button class="vn-vib-tab-btn" data-id="907" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg> <span>Entertainment</span>
+                            </button>
+                                                    <button class="vn-vib-tab-btn" data-id="917" type="button">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 19h20L12 2z"></path><path d="M12 2v17"></path></svg> <span>Nature</span>
+                            </button>
+                                            </div>
+                    <div class="vn-vib-tab-arrow next">&#10095;</div>
+                </div>
+
+                <div class="vn-vib-content">
+                    <div class="vn-vib-loader" style="display: none;"><div class="vn-vib-spinner"></div></div>
+                    <div class="vn-vib-grid"></div>
+                </div>
+
+                                    <div class="vn-vib-mobile-more-wrap" style="display: none;">
+                        <a href="" class="vn-vib-more-link-bottom">Load more</a>
+                    </div>
+                
+            </div>
+            				</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-149d57f2 elementor-section-full_width elementor-section-stretched elementor-section-height-default elementor-section-height-default" data-id="149d57f2" data-element_type="section" data-e-type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-363a091f" data-id="363a091f" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-c4a92b2 elementor-widget elementor-widget-listeo-headline" data-id="c4a92b2" data-element_type="widget" data-e-type="widget" data-widget_type="listeo-headline.default">
+				<div class="elementor-widget-container">
+							<h3 
+		style="text-align:center;" class="headline  headline-aligned-to-center headline-extra-spacing headline-box "> Trending Destinations </h3>
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-5c2fce2 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5c2fce2" data-element_type="section" data-e-type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-ee96f75" data-id="ee96f75" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-73caf86 elementor-widget elementor-widget-listeo-imagebox" data-id="73caf86" data-element_type="widget" data-e-type="widget" data-widget_type="listeo-imagebox.default">
+				<div class="elementor-widget-container">
+							
+					<div class="alternative-imagebox">
+		 
+
+			<a href="https://visithcmc.vn/nguyen-hue-walking-street-beauty-cuisine-and-experience-in-ho-chi-minh-city/" target="_blank" rel="nofollow" class="img-box " 
+				data-background-image="https://visithcmc.vn/wp-content/uploads/2026/03/visithcmc2-pencil-vn-23.jpg" >
+				
+				<div class="img-box-content visible">
+											<h4>Nguyen Hue Walking Street</h4>
+															</div>
+			</a>
+					</div>
+		 
+
+	
+						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-e1c0c53" data-id="e1c0c53" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-fc1ce11 elementor-widget elementor-widget-listeo-imagebox" data-id="fc1ce11" data-element_type="widget" data-e-type="widget" data-widget_type="listeo-imagebox.default">
+				<div class="elementor-widget-container">
+							
+					<div class="alternative-imagebox">
+		 
+
+			<a href="https://visithcmc.vn/independence-palace/" target="_blank" rel="nofollow" class="img-box " 
+				data-background-image="https://visithcmc.vn/wp-content/uploads/2025/04/top-12-most-famous-museums-in-hcm-for-art-lovers-7.jpg" >
+				
+				<div class="img-box-content visible">
+											<h4>Independence Palace</h4>
+															</div>
+			</a>
+					</div>
+		 
+
+	
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-9b2257e elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="9b2257e" data-element_type="section" data-e-type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-18517ad" data-id="18517ad" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-33f5be7 elementor-widget elementor-widget-listeo-imagebox" data-id="33f5be7" data-element_type="widget" data-e-type="widget" data-widget_type="listeo-imagebox.default">
+				<div class="elementor-widget-container">
+							
+					<div class="alternative-imagebox">
+		 
+
+			<a href="https://visithcmc.vn/the-ho-chi-minh-city-fine-arts-museum-enchanting-beauty-captivating-hearts/" target="_blank" rel="nofollow" class="img-box " 
+				data-background-image="https://visithcmc.vn/wp-content/uploads/2026/03/visithcmc2-pencil-vn-25.jpg" >
+				
+				<div class="img-box-content visible">
+											<h4>The Ho Chi Minh City Fine Arts Museum</h4>
+															</div>
+			</a>
+					</div>
+		 
+
+	
+						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-56d5227" data-id="56d5227" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-bafb313 elementor-widget elementor-widget-listeo-imagebox" data-id="bafb313" data-element_type="widget" data-e-type="widget" data-widget_type="listeo-imagebox.default">
+				<div class="elementor-widget-container">
+							
+					<div class="alternative-imagebox">
+		 
+
+			<a href="https://visithcmc.vn/museum-of-ho-chi-minh/" target="_blank" rel="nofollow" class="img-box " 
+				data-background-image="https://visithcmc.vn/wp-content/uploads/2025/04/top-12-most-famous-museums-in-hcm-for-art-lovers-1.jpg" >
+				
+				<div class="img-box-content visible">
+											<h4>Museum of Ho Chi Minh City</h4>
+															</div>
+			</a>
+					</div>
+		 
+
+	
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-54fb9d9 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="54fb9d9" data-element_type="section" data-e-type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-d26aeda" data-id="d26aeda" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-3d8cff7 elementor-widget elementor-widget-listeo-imagebox" data-id="3d8cff7" data-element_type="widget" data-e-type="widget" data-widget_type="listeo-imagebox.default">
+				<div class="elementor-widget-container">
+							
+					<div class="alternative-imagebox">
+		 
+
+			<a href="https://visithcmc.vn/war-remnants-museum/" target="_blank" rel="nofollow" class="img-box " 
+				data-background-image="https://visithcmc.vn/wp-content/uploads/2025/04/top-12-most-famous-museums-in-hcm-for-art-lovers-5.jpg" >
+				
+				<div class="img-box-content visible">
+											<h4>War Remnants Museum</h4>
+															</div>
+			</a>
+					</div>
+		 
+
+	
+						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-1d24119" data-id="1d24119" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-420154b elementor-widget elementor-widget-listeo-imagebox" data-id="420154b" data-element_type="widget" data-e-type="widget" data-widget_type="listeo-imagebox.default">
+				<div class="elementor-widget-container">
+							
+					<div class="alternative-imagebox">
+		 
+
+			<a href="https://visithcmc.vn/explore-ben-thanh-market-an-attractive-destination-for-your-trip-to-ho-chi-minh-city/" target="_blank" rel="nofollow" class="img-box " 
+				data-background-image="https://visithcmc.vn/wp-content/uploads/2025/04/kham-pha-cho-ben-thanh-tphcm-tu-a-z-5-phut-doc-3.jpg" >
+				
+				<div class="img-box-content visible">
+											<h4>Ben Thanh Market</h4>
+															</div>
+			</a>
+					</div>
+		 
+
+	
+						</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-2fef529 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="2fef529" data-element_type="section" data-e-type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-0ebfed1" data-id="0ebfed1" data-element_type="column" data-e-type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+						<div class="elementor-element elementor-element-59dae23 elementor-widget elementor-widget-text-editor" data-id="59dae23" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+									<div id="stl-6957-1" class="stl-slider stl-effect-slide stl-dots-bars stl-nav-inside stl-arrows-circle stl-arrows-onhover stl-arrows-nomobile" style="--stl-ratio:2.1338;--stl-ratio-m:2.1338;--stl-radius:16px;--stl-fit:cover;--stl-accent:#ff5a00;--stl-kb:6600ms;" data-stl="{&quot;id&quot;:6957,&quot;effect&quot;:&quot;slide&quot;,&quot;speed&quot;:800,&quot;easing&quot;:&quot;smooth&quot;,&quot;autoplay&quot;:1,&quot;delay&quot;:5000,&quot;pauseHover&quot;:1,&quot;loop&quot;:1,&quot;swipe&quot;:1,&quot;keyboard&quot;:1,&quot;placement&quot;:&quot;seedo-en&quot;,&quot;lang&quot;:&quot;en&quot;,&quot;pid&quot;:2405,&quot;track&quot;:1}" role="region" aria-roledescription="carousel" aria-label="Localis Ver1">
+    <div class="stl-viewport">
+                <div class="stl-slide is-active" data-key="j0mdhwfa" data-index="0" data-kb="0" role="group" aria-roledescription="slide" aria-label="1 / 2">
+            <a class="stl-link" href="https://localis.vn?utm_source=visithcmc.vn&#038;utm_medium=slider&#038;utm_campaign=localis-visithcmc&#038;utm_content=seedo-en-slide-1" target="_blank" rel="noopener nofollow sponsored" draggable="false">
+                <picture class="stl-media">
+                                        <source media="(max-width: 767px)" srcset="https://visithcmc.vn/wp-content/uploads/2026/10/1-1.webp 1675w, https://visithcmc.vn/wp-content/uploads/2026/10/1-1-300x141.webp 300w, https://visithcmc.vn/wp-content/uploads/2026/10/1-1-1024x480.webp 1024w, https://visithcmc.vn/wp-content/uploads/2026/10/1-1-1200x562.webp 1200w, https://visithcmc.vn/wp-content/uploads/2026/10/1-1-577x270.webp 577w" sizes="100vw">
+                                        <img fetchpriority="high" src="https://visithcmc.vn/wp-content/uploads/2026/10/1-1.webp"
+                        srcset="https://visithcmc.vn/wp-content/uploads/2026/10/1-1.webp 1675w, https://visithcmc.vn/wp-content/uploads/2026/10/1-1-300x141.webp 300w, https://visithcmc.vn/wp-content/uploads/2026/10/1-1-1024x480.webp 1024w, https://visithcmc.vn/wp-content/uploads/2026/10/1-1-1200x562.webp 1200w, https://visithcmc.vn/wp-content/uploads/2026/10/1-1-577x270.webp 577w"
+                        sizes="100vw"
+                        width="1675" height="785"                        alt="adasdasd"
+                        loading="eager"
+                                                decoding="async" draggable="false">
+                </picture>
+            </a>
+        </div>
+                <div class="stl-slide" data-key="0or1ec37" data-index="1" data-kb="1" role="group" aria-roledescription="slide" aria-label="2 / 2" aria-hidden="true" inert>
+            <a class="stl-link" href="https://localis.vn?utm_source=visithcmc.vn&#038;utm_medium=slider&#038;utm_campaign=localis-visithcmc&#038;utm_content=seedo-en-slide-2" target="_blank" rel="noopener nofollow sponsored" draggable="false">
+                <picture class="stl-media">
+                                        <source media="(max-width: 767px)" data-lazy-srcset="https://visithcmc.vn/wp-content/uploads/2026/10/2-1.webp 1675w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-300x141.webp 300w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-1024x480.webp 1024w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-1200x562.webp 1200w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-577x270.webp 577w" sizes="100vw">
+                                        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201675%20785'%3E%3C/svg%3E"
+                        data-lazy-srcset="https://visithcmc.vn/wp-content/uploads/2026/10/2-1.webp 1675w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-300x141.webp 300w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-1024x480.webp 1024w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-1200x562.webp 1200w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-577x270.webp 577w"
+                        data-lazy-sizes="auto, 100vw"
+                        width="1675" height="785"                        alt="ádasdasd"
+                       
+                                                decoding="async" draggable="false" data-lazy-src="https://visithcmc.vn/wp-content/uploads/2026/10/2-1.webp"><noscript><img loading="lazy" src="https://visithcmc.vn/wp-content/uploads/2026/10/2-1.webp"
+                        srcset="https://visithcmc.vn/wp-content/uploads/2026/10/2-1.webp 1675w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-300x141.webp 300w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-1024x480.webp 1024w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-1200x562.webp 1200w, https://visithcmc.vn/wp-content/uploads/2026/10/2-1-577x270.webp 577w"
+                        sizes="auto, 100vw"
+                        width="1675" height="785"                        alt="ádasdasd"
+                        loading="lazy"
+                                                decoding="async" draggable="false"></noscript>
+                </picture>
+            </a>
+        </div>
+            </div>
+
+        <button type="button" class="stl-arrow stl-prev" aria-label="Previous slide" aria-controls="stl-6957-1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button type="button" class="stl-arrow stl-next" aria-label="Next slide" aria-controls="stl-6957-1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+    
+                <div class="stl-dots">
+                    <button type="button" class="stl-dot is-active" data-i="0" aria-label="Go to slide 1" aria-current="true"><span class="stl-dot-fill"></span></button>
+                    <button type="button" class="stl-dot" data-i="1" aria-label="Go to slide 2"><span class="stl-dot-fill"></span></button>
+                </div>
+            </div>								</div>
+				</div>
+					</div>
+		</div>
+					</div>
+		</section>
+				</div>
+		
+			
+			
+		</article>
+
+		
+	</div>
+
+</div>
+<div class="clearfix"></div>
+	<div  class="margin-top-55"></div>
+	<!-- Footer
+================================================== -->
+		<div  id="footer" class="light ">
+		<!-- Main -->
+		<div class="container">
+			<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-12">
+						<aside id="text-2" class="footer-widget widget widget_text">			<div class="textwidget"><p><img decoding="async" class="footer-logo alignnone" src="/wp-content/uploads/2026/03/visithcmc2-pencil-vn.svg" alt="Visit HCMC" width="170" height="70" /></p>
+<div><strong>HO CHI MINH CITY TOURISM PROMOTION CENTER</strong><br />
+292 Dien Bien Phu Street, Xuan Hoa Ward, Ho Chi Minh City, Vietnam</div>
+<div></div>
+<p></br></p>
+<div><strong>HO CHI MINH CITY DEPARTMENT OF TOURISM</strong><br />
+<span style="text-decoration: underline;"><a style="color: #504444;" href="https://sodulich.hochiminhcity.gov.vn/" target="_blank" rel="noopener">Department of Tourism Website</a></span><br />
+201 Vo Thi Sau Street, Xuan Hoa Ward, Ho Chi Minh City, Vietnam</div>
+<div></div>
+<p></br></p>
+<div><strong>Visitor Support</strong><br />
+Hotline: 1022 (ext 8)</div>
+</div>
+		</aside>					</div>
+									<div class="col-md-3 col-sm-6 col-xs-12">
+						<aside id="nav_menu-2" class="footer-widget widget widget_nav_menu"><h4>Helpful Links</h4><div class="menu-helpful-links-en-container"><ul id="menu-helpful-links-en" class="menu"><li id="menu-item-2630" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2630"><a href="/useful-information/">Useful Information</a></li>
+<li id="menu-item-2631" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2631"><a href="/travel-offers/">Travel Offers</a></li>
+<li id="menu-item-2632" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2632"><a href="/festivals-events/">Festivals &#038; Events</a></li>
+<li id="menu-item-2633" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item menu-item-2633"><a href="/see-do/" aria-current="page">See &#038; Do</a></li>
+<li id="menu-item-2634" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2634"><a href="https://map3d.visithcmc.vn/?startscene=scene_ben_bach_dang_ban_ngay_(1)&#038;startactions=lookat(0,0,120,0,0);">Map 3D/360</a></li>
+<li id="menu-item-2635" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2635"><a href="https://www.sodulich-shopeefood.vn/">Culinary Passport</a></li>
+</ul></div></aside>					</div>
+									<div class="col-md-3 col-sm-6 col-xs-12">
+						<aside id="custom_html-2" class="widget_text footer-widget widget widget_custom_html"><h4>Newsletter</h4><div class="textwidget custom-html-widget"><span class="desc-news">Get inspired travel news from #VibrantHoChiMinhCity, delivered right to your inbox!</span>
+<div class="input-group">
+	<input type="text" class="form-control no-radius" placeholder="Enter Your E-mail" aria-label="Enter E-mail" aria-describedby="basic-addon2">
+		<div class="input-group-append">
+			<button type="submit" class="btn btn-red btn-sm no-radius text-uppercase fs-12 px-5 ls-1">Subscribe<i class="fe fe-arrow-right ml-1"></i>
+			</button>
+	</div>
+</div></div></aside>					</div>
+				
+			</div>
+			<!-- Copyright -->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="footer-new-bottom-inner">
+						<div class="footer-new-bottom-left">© Ho Chi Minh City Tourism Promotion Center. All rights reserved.						</div>
+						<div class="footer-new-bottom-right">
+
+							<ul class="new-footer-social-icons"><li><a target="_blank" title="facebook" href="https://www.facebook.com/visitvibranthochiminhcity/"><i class="icon-brand-facebook"></i></a></li><li><a target="_blank" title="instagram" href="https://www.instagram.com/visit.hochiminhcity/"><i class="icon-brand-instagram"></i></a></li><li><a target="_blank" title="youtube" href="https://www.youtube.com/@vibrantHoChiMinhcity"><i class="icon-brand-youtube"></i></a></li><li><a target="_blank" title="tiktok" href="https://www.tiktok.com/@visithcmc"><i class="fa-brands fa-tiktok"></i></a></li></ul>						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Back To Top Button -->
+	<div  id="backtotop"><a href="#"></a></div>
+
+
+	</div> <!-- weof wrapper -->
+
+		<script src="https://widget.localis.vn/v1.js" data-site="ws_zlgpamwnoelozjuj879z" data-bottom="90" async></script>
+	<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/listeo-child/*","/wp-content/themes/listeo/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+    <div  class="vn-search-overlay" id="vn-search-overlay">
+        <div  class="vn-search-close" id="vn-search-close"><i class="fa fa-times"></i></div>
+        <div  class="vn-search-content">
+            
+            <form role="search" method="get" class="vn-search-form" id="vn-fullscreen-search-form" action="https://visithcmc.vn/">
+                
+                <div class="vn-search-input-wrap">
+                    <input type="text" placeholder="What are you looking for?" name="s" id="vn-search-input" autocomplete="off" />
+                    <button type="submit" class="vn-search-submit"><i class="fa fa-search"></i></button>
+                </div>
+                
+                <div class="vn-search-type-selector">
+                    <label class="vn-radio-label">
+                        <input type="radio" name="post_type" value="listing" checked>
+                        <span><i class="fa fa-map-marker"></i> Services &amp; Places</span>
+                    </label>
+                    <label class="vn-radio-label">
+                        <input type="radio" name="post_type" value="post">
+                        <span><i class="fa fa-newspaper-o"></i> News &amp; Articles</span>
+                    </label>
+                </div>
+
+                <div id="vn-search-error" style="color: #ff6b6b; font-size: 14px; margin-top: 15px; text-align: center; opacity: 0; transition: opacity 0.3s; font-weight: 500;">
+                    Please enter a search term!                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/rocketlazyloadscript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var overlay     = document.getElementById('vn-search-overlay');
+            var closeBtn    = document.getElementById('vn-search-close');
+            var searchForm  = document.getElementById('vn-fullscreen-search-form');
+            var searchInput = document.getElementById('vn-search-input');
+            var errorMsg    = document.getElementById('vn-search-error');
+
+            document.body.addEventListener('click', function(e) {
+                var triggerBtn = e.target.closest('.vn-search-trigger') || e.target.closest('a[href="#vn-search-trigger"]');
+                if (triggerBtn) {
+                    e.preventDefault();
+                    overlay.classList.add('is-active');
+                    errorMsg.style.opacity = '0'; 
+                    searchInput.value = '';       
+                    setTimeout(function() { searchInput.focus(); }, 100); 
+                }
+            });
+
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(e) {
+                    var val = searchInput.value.trim(); 
+                    if (!val) {
+                        e.preventDefault(); 
+                        errorMsg.style.opacity = '1'; 
+                        searchInput.focus(); 
+                    }
+                });
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    if (this.value.trim() !== '') {
+                        errorMsg.style.opacity = '0';
+                    }
+                });
+            }
+
+            function closeSearch() { overlay.classList.remove('is-active'); }
+            
+            if(closeBtn) closeBtn.addEventListener('click', closeSearch);
+            
+            document.addEventListener('keyup', function(e) {
+                if (e.key === "Escape") closeSearch();
+            });
+
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay || e.target === document.querySelector('.vn-search-content')) {
+                    closeSearch();
+                }
+            });
+        });
+    </script>
+    			<script type="text/rocketlazyloadscript">
+				const lazyloadRunObserver = () => {
+					const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+					const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+						entries.forEach( ( entry ) => {
+							if ( entry.isIntersecting ) {
+								let lazyloadBackground = entry.target;
+								if( lazyloadBackground ) {
+									lazyloadBackground.classList.add( 'e-lazyloaded' );
+								}
+								lazyloadBackgroundObserver.unobserve( entry.target );
+							}
+						});
+					}, { rootMargin: '200px 0px 200px 0px' } );
+					lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+						lazyloadBackgroundObserver.observe( lazyloadBackground );
+					} );
+				};
+				const events = [
+					'DOMContentLoaded',
+					'elementor/lazyload/observe',
+				];
+				events.forEach( ( event ) => {
+					document.addEventListener( event, lazyloadRunObserver );
+				} );
+			</script>
+			<link data-minify="1" rel='stylesheet' id='vn-blog-widget-css' href='https://visithcmc.vn/wp-content/cache/min/1/wp-content/plugins/vn-blog/assets/css/vn-blog-widget.css?ver=1792174362' type='text/css' media='all' />
+<script type="text/javascript" id="ai-chat-search-js-extra">
+/* <![CDATA[ */
+var listeoAiSearch = {"ajax_url":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"bd1fcdf906","debugMode":"","ai_enabled":"1","max_results":"10","search_url":"https://visithcmc.vn/listings/","default_thumbnail":"https://visithcmc.vn/wp-content/plugins/listeo-core/templates/images/listeo_placeholder.png","strings":{"searching":"Searching...","no_results":"No results found.","error":"Search error occurred.","best_match":"Best Match","type_keywords_first":"Type keywords first","top_listing_singular":"Top 1 listing matching","top_listings_plural":"Top %d listings matching","rateLimitError":"Too many searches. Please wait a moment and try again.","apiUnavailable":"AI search temporarily unavailable. Using basic search instead.","sessionExpired":"Session expired. Please refresh the page.","fallbackNotice":"Showing regular search results instead.","inStock":"In Stock","outOfStock":"Out of Stock"}};
+//# sourceURL=ai-chat-search-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://visithcmc.vn/wp-content/plugins/ai-chat-search/assets/js/search.js?ver=2.2.2" id="ai-chat-search-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/jquery/ui/menu.min.js?ver=1.13.3" id="jquery-ui-menu-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/dist/dom-ready.min.js?ver=f77871ff7694fffea381" id="wp-dom-ready-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1" id="wp-hooks-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="wp-a11y-js-translations">
+/* <![CDATA[ */
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", {"translation-revision-date":"2026-04-17 10:35:12+0000","generator":"GlotPress\/4.0.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n != 1;","lang":"en_GB"},"Notifications":["Notifications"]}},"comment":{"reference":"wp-includes\/js\/dist\/a11y.js"}} );
+//# sourceURL=wp-a11y-js-translations
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/dist/a11y.min.js?ver=cb460b4676c94bd228ed" id="wp-a11y-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/jquery/ui/autocomplete.min.js?ver=1.13.3" id="jquery-ui-autocomplete-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/jquery/ui/mouse.min.js?ver=1.13.3" id="jquery-ui-mouse-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/jquery/ui/sortable.min.js?ver=1.13.3" id="jquery-ui-sortable-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/uploads.min.js?ver=2.0.26" id="uploads-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/ajax.search.min.js?ver=2.0.26" id="ajaxsearch-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="listeo-ad-tracking-js-extra">
+/* <![CDATA[ */
+var adTrackingAjax = {"ajax_url":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"98f052a80e"};
+//# sourceURL=listeo-ad-tracking-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/ad-tracking.js?ver=1.0" id="listeo-ad-tracking-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/qr-scanner.js?ver=1.0" id="qr-scanner-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://cdn.jsdelivr.net/npm/jsqr@1.3.1/dist/jsQR.min.js?ver=1.3.1" id="jsqr-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="listeo-saved-searches-js-extra">
+/* <![CDATA[ */
+var listeoSavedSearches = {"ajaxurl":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"17c5bfa532","login_url":"https://visithcmc.vn/wp-login.php","listings_url":"https://visithcmc.vn/listings/","i18n":{"save_search":"Save Search","saving":"Saving...","saved":"Saved!","error":"Error saving search","delete_confirm":"Are you sure you want to delete this saved search?","enter_name":"Enter a name for this search:","name_required":"Please enter a name for your search.","max_reached":"You have reached the maximum number of saved searches."}};
+//# sourceURL=listeo-saved-searches-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/listeo-core/assets/js/saved-searches.js?ver=1.0.1" id="listeo-saved-searches-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="vn-tab-js-js-extra">
+/* <![CDATA[ */
+var vn_ajax_obj = {"ajax_url":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"eeae6a31c7","lang":"en"};
+//# sourceURL=vn-tab-js-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/visithcmc2-pencil-vn/assets/js/script.js?ver=1793068282" id="vn-tab-js-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="vn-affiliate-tracking-js-extra">
+/* <![CDATA[ */
+var vnAff = {"ajax_url":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"346d344184"};
+//# sourceURL=vn-affiliate-tracking-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-affiliate-pro/assets/js/affiliate-tracking.js?ver=1.0.0" id="vn-affiliate-tracking-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?ver=11.0" id="swiper-js-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-category-carousel/assets/js/script.js?ver=1793068282" id="vn-cat-carousel-js-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/imagesloaded.min.js?ver=5.0.0" id="imagesloaded-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-includes/js/masonry.min.js?ver=4.2.2" id="masonry-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="vn-grid-js-js-extra">
+/* <![CDATA[ */
+var vn_grid_ajax = {"ajax_url":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"28d6d4c36f","loading_text":"Loading...","load_more_text":"Load more"};
+//# sourceURL=vn-grid-js-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-content-grid/assets/js/script.js?ver=1793068282" id="vn-grid-js-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="vn-event-js-js-extra">
+/* <![CDATA[ */
+var vn_event_ajax = {"ajax_url":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"f01ba9774e","l10n":{"no_events_in_year":"There were no events this year.","no_events_in_month":"There are no events this month."}};
+//# sourceURL=vn-event-js-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-event-calendar_Elementor/assets/js/script.js?ver=1793068282" id="vn-event-js-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="vn-travel-js-js-extra">
+/* <![CDATA[ */
+var vn_travel_ajax = {"ajax_url":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"f4ba3afdcc"};
+//# sourceURL=vn-travel-js-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-travel-offers/assets/js/script.js?ver=1793068282" id="vn-travel-js-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-upcoming-events/assets/js/script.js?ver=1793068282" id="vn-ue-js-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-utility-apps/assets/js/app-script.js?ver=1.0.0" id="vn-utility-app-js-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="vn-vibrant-js-js-extra">
+/* <![CDATA[ */
+var vn_vib_ajax = {"ajax_url":"https://visithcmc.vn/wp-admin/admin-ajax.php","nonce":"e260039fe2"};
+//# sourceURL=vn-vibrant-js-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-vibrant-experiences/assets/js/script.js?ver=1793068282" id="vn-vibrant-js-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="pll_cookie_script-js-after">
+/* <![CDATA[ */
+(function() {
+				var expirationDate = new Date();
+				expirationDate.setTime( expirationDate.getTime() + 31536000 * 1000 );
+				document.cookie = "pll_language=en; expires=" + expirationDate.toUTCString() + "; path=/; secure; SameSite=Lax";
+			}());
+
+//# sourceURL=pll_cookie_script-js-after
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-slider-blog/assets/js/vn-slider-blog.js?ver=1.0.0" id="vn-slider-blog-script-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-browser-checker-js-after">
+/* <![CDATA[ */
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" id="rocket-preload-links-js-extra">
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://visithcmc.vn","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="rocket-preload-links-js-after">
+/* <![CDATA[ */
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js?ver=3.0.1" id="js-cookie-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/elementor/assets/lib/flatpickr/flatpickr.min.js?ver=4.6.13" id="flatpickr-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="listeo-custom-js-extra">
+/* <![CDATA[ */
+var wordpress_date_format = {"date":"DD/MM/YYYY","day":"1","raw":"d/m/Y","time":"g:i a"};
+var listeo = {"ajaxurl":"/wp-admin/admin-ajax.php","theme_url":"https://visithcmc.vn/wp-content/themes/listeo","menu_back":"Back","mobile_map_collapsible":"collapsible","mobile_map_show_text":"Show Map ","mobile_map_hide_text":"Hide Map ","coupon_nonce":"d90316f0b9"};
+//# sourceURL=listeo-custom-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="listeo-custom-js-before">
+/* <![CDATA[ */
+            if (window.innerWidth <= 1008) {
+                document.body.className += " mobile-map-collapsible-loading";
+                document.addEventListener("DOMContentLoaded", function() {
+                    setTimeout(function() {
+                        document.body.classList.remove("mobile-map-collapsible-loading");
+                    }, 100);
+                });
+            }
+        
+//# sourceURL=listeo-custom-js-before
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/themes/listeo/js/custom.js?ver=20220821" id="listeo-custom-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.35.5" id="elementor-webpack-runtime-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.35.5" id="elementor-frontend-modules-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="elementor-frontend-js-before">
+/* <![CDATA[ */
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":1700,"default_value":2400,"direction":"min","is_enabled":true}},"hasCustomBreakpoints":true},"version":"3.35.5","is_static":false,"experimentalFeatures":{"additional_custom_breakpoints":true,"container":true,"theme_builder_v2":true,"nested-elements":true,"home_screen":true,"global_classes_should_enforce_capabilities":true,"e_variables":true,"cloud-library":true,"e_opt_in_v4_page":true,"e_components":true,"e_interactions":true,"e_editor_one":true,"import-export-customization":true,"e_pro_variables":true},"urls":{"assets":"https:\/\/visithcmc.vn\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/visithcmc.vn\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/visithcmc.vn\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"89eaaf6183"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet","viewport_widescreen"],"viewport_widescreen":1700,"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":2405,"title":"SEE%20%26%20DO%20-%20Visit%20HCMC","excerpt":"","featuredImage":false}};
+//# sourceURL=elementor-frontend-js-before
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.35.5" id="elementor-frontend-js" data-rocket-defer defer></script>
+<script type="text/javascript" id="stl-slider-js-extra">
+/* <![CDATA[ */
+var STL_CFG = {"endpoint":"https://visithcmc.vn/wp-json/stl/v1/e","dnt":"0","viewMs":"1000"};
+//# sourceURL=stl-slider-js-extra
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/slide-tracking-localis/assets/js/slider.js?ver=1.1.0" id="stl-slider-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/elementor-proX/assets/js/webpack-pro.runtime.min.js?ver=3.35.1" id="elementor-pro-webpack-runtime-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" id="elementor-pro-frontend-js-before">
+/* <![CDATA[ */
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/visithcmc.vn\/wp-admin\/admin-ajax.php","nonce":"e7aee8c92e","urls":{"assets":"https:\/\/visithcmc.vn\/wp-content\/plugins\/elementor-proX\/assets\/","rest":"https:\/\/visithcmc.vn\/wp-json\/"},"settings":{"lazy_load_background_images":true},"popup":{"hasPopUps":false},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"en_GB","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/visithcmc.vn\/wp-content\/plugins\/elementor-proX\/modules\/lottie\/assets\/animations\/default.json"}};
+//# sourceURL=elementor-pro-frontend-js-before
+/* ]]> */
+</script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/elementor-proX/assets/js/frontend.min.js?ver=3.35.1" id="elementor-pro-frontend-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/elementor-proX/assets/js/elements-handlers.min.js?ver=3.35.1" id="pro-elements-handlers-js" data-rocket-defer defer></script>
+<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://visithcmc.vn/wp-content/plugins/vn-blog/assets/js/vn-blog-widget.js?ver=1.0.0" id="vn-blog-widget-js" data-rocket-defer defer></script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://visithcmc.vn/wp-content/plugins/wp-rocket/assets/js/lazyload/17.8.3/lazyload.min.js"></script><script>function lazyLoadThumb(e,alt,l){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="Play Youtube video"></button>';if(l){t=t.replace('data-lazy-','');t=t.replace('loading="lazy"','');t=t.replace(/<noscript>.*?<\/noscript>/g,'');}t=t.replace('alt=""','alt="'+alt+'"');return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?"":"&"+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow","accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var exclusions=[];var e,t,p,u,l,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)(e=document.createElement("div")),(u='https://i.ytimg.com/vi/ID/hqdefault.jpg'),(u=u.replace('ID',a[t].dataset.id)),(l=exclusions.some(exclusion=>u.includes(exclusion))),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query",a[t].dataset.query),e.setAttribute("data-src",a[t].dataset.src),(e.innerHTML=lazyLoadThumb(a[t].dataset.id,a[t].dataset.alt,l)),a[t].appendChild(e),(p=e.querySelector(".play")),(p.onclick=lazyLoadYoutubeIframe)});</script>	<script>(()=>{class RocketElementorPreload{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode-wpr",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}t(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this.i(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this.o(t)}catch(t){}})}o(t){const e=JSON.parse(t.dataset.settings),i=e.m||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let o=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this.l(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(o)})}i(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}l(t,e){this.i().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorPreload;requestAnimationFrame(t.t.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorPreload.run)})();</script></body>
+
+	</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1793068282 -->

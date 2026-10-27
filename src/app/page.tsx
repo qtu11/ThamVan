@@ -1,0 +1,8 @@
+import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
+import { isLocale } from '@/lib/types';
+export default async function Root() {
+  const store = await cookies();
+  const lang = store.get('tv-locale')?.value;
+  redirect(`/${lang && isLocale(lang) ? lang : 'vi'}`);
+}

@@ -1,0 +1,19 @@
+{
+  "createdAt": "2026-10-27T08:36:54.583Z",
+  "moves": [
+    {
+      "id": "HCM-1100",
+      "original": "/images/hcm-1100-masteri-thao-dien.jpg",
+      "sha256": "f6169b525d213a377183385f3bfa515d17265c285d09a69722ef6b0d5a972240",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-36-54-583Z/images/hcm-1100-masteri-thao-dien.jpg"
+    },
+    {
+      "id": "HCM-1103",
+      "original": "/images/hcm-1103-the-global-city.jpg",
+      "sha256": "8f6d50307abe56c072948e41ae26c39fd720a79f243725c7ddd6384d5d1be88e",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-36-54-583Z/images/hcm-1103-the-global-city.jpg"
+    }
+  ]
+}

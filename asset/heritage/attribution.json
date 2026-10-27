@@ -1,0 +1,92 @@
+[
+  {
+    "id": "hue",
+    "image": "/images/hue.jpg",
+    "title": "Đại_nội.jpg",
+    "author": "NguyenThanhBac123",
+    "license": "CC0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:%C4%90%E1%BA%A1i_n%E1%BB%99i.jpg",
+    "coordinates": {
+      "lat": 16.46972222,
+      "lon": 107.57777778
+    },
+    "coordinateSource": "https://en.wikipedia.org/wiki/Imperial_City_of_Hu%E1%BA%BF",
+    "importedAt": "2026-10-26"
+  },
+  {
+    "id": "hoi-an",
+    "image": "/images/hoi-an.jpg",
+    "title": "10549-Hoi-An_(37621348460).jpg",
+    "author": "xiquinhosilva",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:10549-Hoi-An_(37621348460).jpg",
+    "coordinates": {
+      "lat": 15.87972222,
+      "lon": 108.33194444
+    },
+    "coordinateSource": "https://en.wikipedia.org/wiki/Hội_An_(city)",
+    "importedAt": "2026-10-26"
+  },
+  {
+    "id": "my-son",
+    "image": "/images/my-son.jpg",
+    "title": "2024_-_Mỹ_Sơn_Group_B,_C_and_D_-_img_23.jpg",
+    "author": "Chainwit.",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:2024_-_M%E1%BB%B9_S%C6%A1n_Group_B,_C_and_D_-_img_23.jpg",
+    "coordinates": {
+      "lat": 15.76666667,
+      "lon": 108.11666667
+    },
+    "coordinateSource": "https://en.wikipedia.org/wiki/My_Son_Sanctuary",
+    "importedAt": "2026-10-26"
+  },
+  {
+    "id": "ha-long",
+    "image": "/images/ha-long.jpg",
+    "title": "Ha_Long_Bay_in_2019.jpg",
+    "author": "Taewangkorea",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ha_Long_Bay_in_2019.jpg",
+    "coordinates": {
+      "lat": 20.9,
+      "lon": 107.2
+    },
+    "coordinateSource": "https://en.wikipedia.org/wiki/H%E1%BA%A1_Long_Bay",
+    "importedAt": "2026-10-26"
+  },
+  {
+    "id": "thang-long",
+    "image": "/images/thang-long.jpg",
+    "title": "Đoan Môn, Hoàng thành Thăng Long, Hà Nội 001.JPG",
+    "author": "Phan Minh Tuấn",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%C4%90oan_M%C3%B4n,_Ho%C3%A0ng_th%C3%A0nh_Th%C4%83ng_Long,_H%C3%A0_N%E1%BB%99i_001.JPG",
+    "coordinates": {
+      "lat": 21.03944444,
+      "lon": 105.83722222
+    },
+    "coordinateSource": "https://en.wikipedia.org/wiki/Imperial_Citadel_of_Th%C4%83ng_Long",
+    "importedAt": "2026-10-26"
+  },
+  {
+    "id": "trang-an",
+    "image": "/images/trang-an.jpg",
+    "title": "Muaxuantamcoc.jpg",
+    "author": "Kien1980v (thảo luận)",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Muaxuantamcoc.jpg",
+    "coordinates": {
+      "lat": 20.25666667,
+      "lon": 105.89638889
+    },
+    "coordinateSource": "https://en.wikipedia.org/wiki/Tr%C3%A0ng_An_Scenic_Landscape_Complex",
+    "importedAt": "2026-10-26"
+  }
+]

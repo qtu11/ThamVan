@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Cau_nguyen_tri_phuong_,_phuong_6,_Qu%E1%BA%ADn_5,_TPHCM,_Vi%E1%BB%87t_Nam_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Cau_nguyen_tri_phuong_%2C_phuong_6%2C_Qu%E1%BA%ADn_5%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg/1280px-Cau_nguyen_tri_phuong_%2C_phuong_6%2C_Qu%E1%BA%ADn_5%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Cau nguyen tri phuong , phuong 6, Quận 5, TPHCM, Việt Nam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:05:25.607Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Nguyễn Tri Phương",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 83,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

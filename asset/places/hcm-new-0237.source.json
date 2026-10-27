@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Ga_Ph%C6%B0%E1%BB%9Bc_Long,_tr%C6%B0%E1%BB%9Dng_th%E1%BB%8D,_th%E1%BB%A7_%C4%91%E1%BB%A9c,_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh.jpg",
+  "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ga_Ph%C6%B0%E1%BB%9Bc_Long%2C_tr%C6%B0%E1%BB%9Dng_th%E1%BB%8D%2C_th%E1%BB%A7_%C4%91%E1%BB%A9c%2C_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "title": "File:Ga Phước Long, trường thọ, thủ đức, thành phố hồ chí minh.jpg",
+  "author": "Xuanphuocle",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:22.247Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Ga Phước Long",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 85,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

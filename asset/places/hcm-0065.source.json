@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Khu_du_L%E1%BB%8Bch_su%E1%BB%91i_Ti%C3%AAn,_qu%E1%BA%ADn_9,_tp_HO_Chi_Minh_vietnam_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Khu_du_L%E1%BB%8Bch_su%E1%BB%91i_Ti%C3%AAn%2C_qu%E1%BA%ADn_9%2C_tp_HO_Chi_Minh_vietnam_-_panoramio.jpg/1280px-Khu_du_L%E1%BB%8Bch_su%E1%BB%91i_Ti%C3%AAn%2C_qu%E1%BA%ADn_9%2C_tp_HO_Chi_Minh_vietnam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Khu du Lịch suối Tiên, quận 9, tp HO Chi Minh vietnam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:21.012Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Khu du lịch Suối Tiên",
+    "geographicContext": true,
+    "distanceKm": 0.5504131575735577,
+    "score": 92,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

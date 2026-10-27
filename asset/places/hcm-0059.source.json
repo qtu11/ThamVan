@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Hoang_Van_Thu_St_-_Phu_Nhuan_-_Ho_Chi_Minh_City.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Hoang_Van_Thu_St_-_Phu_Nhuan_-_Ho_Chi_Minh_City.jpg/1280px-Hoang_Van_Thu_St_-_Phu_Nhuan_-_Ho_Chi_Minh_City.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Hoang Van Thu St - Phu Nhuan - Ho Chi Minh City.jpg",
+  "author": "HikariTenshi",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:05:24.009Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Công viên Hoàng Văn Thụ",
+    "geographicContext": true,
+    "distanceKm": 1.3592348843620514,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

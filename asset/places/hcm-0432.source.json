@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Benh_Vien_Pham_Ngoc_Thach,_duong_Hong_Bang,_phuong_11,_Qu%E1%BA%ADn_5,_TPHCM,_Vi%E1%BB%87t_Nam,24-07-16-Dyt_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Benh_Vien_Pham_Ngoc_Thach%2C_duong_Hong_Bang%2C_phuong_11%2C_Qu%E1%BA%ADn_5%2C_TPHCM%2C_Vi%E1%BB%87t_Nam%2C24-07-16-Dyt_-_panoramio.jpg/1280px-Benh_Vien_Pham_Ngoc_Thach%2C_duong_Hong_Bang%2C_phuong_11%2C_Qu%E1%BA%ADn_5%2C_TPHCM%2C_Vi%E1%BB%87t_Nam%2C24-07-16-Dyt_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Benh Vien Pham Ngoc Thach, duong Hong Bang, phuong 11, Quận 5, TPHCM, Việt Nam,24-07-16-Dyt - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:23.404Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Bệnh viện Phạm Ngọc Thạch",
+    "geographicContext": true,
+    "distanceKm": 0.1479915202378557,
+    "score": 94,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

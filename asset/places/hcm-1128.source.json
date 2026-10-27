@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Can_ho_Thao_Dien_pearl,_cau_Saigon_,_q2,_Binh_an,_HO_Chi_Minh,_Vietnam_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Can_ho_Thao_Dien_pearl%2C_cau_Saigon_%2C_q2%2C_Binh_an%2C_HO_Chi_Minh%2C_Vietnam_-_panoramio.jpg/1280px-Can_ho_Thao_Dien_pearl%2C_cau_Saigon_%2C_q2%2C_Binh_an%2C_HO_Chi_Minh%2C_Vietnam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Can ho Thao Dien pearl, cau Saigon , q2, Binh an, HO Chi Minh, Vietnam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:23.383Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Thảo Điền Pearl",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 83,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

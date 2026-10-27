@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Vi%E1%BB%87t_Nam_Qu%E1%BB%91c_T%E1%BB%B1_(5873461936).jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Vi%E1%BB%87t_Nam_Qu%E1%BB%91c_T%E1%BB%B1_%285873461936%29.jpg/1280px-Vi%E1%BB%87t_Nam_Qu%E1%BB%91c_T%E1%BB%B1_%285873461936%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Việt Nam Quốc Tự (5873461936).jpg",
+  "author": "Ken Marshall",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "retrievedAt": "2026-10-27T08:59:19.958Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Việt Nam Quốc tự",
+    "geographicContext": false,
+    "distanceKm": 0.13990303566955226,
+    "score": 92,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

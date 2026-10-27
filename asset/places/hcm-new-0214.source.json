@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:C%E1%BA%A7u_R%E1%BA%A1ch_Chi%E1%BA%BFc.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3d/C%E1%BA%A7u_R%E1%BA%A1ch_Chi%E1%BA%BFc.jpg/1280px-C%E1%BA%A7u_R%E1%BA%A1ch_Chi%E1%BA%BFc.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Cầu Rạch Chiếc.jpg",
+  "author": "TuanUt",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "retrievedAt": "2026-10-27T08:59:22.207Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Cầu Rạch Chiếc",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

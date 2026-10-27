@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Ga_B%E1%BA%BFn_Th%C3%A0nh_-_S%C6%A1_%C4%91%E1%BB%93_tuy%E1%BA%BFn_%C4%91%C6%B0%E1%BB%9Dng_s%E1%BA%AFt_%C4%91%C3%B4_th%E1%BB%8B_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Ga_B%E1%BA%BFn_Th%C3%A0nh_-_S%C6%A1_%C4%91%E1%BB%93_tuy%E1%BA%BFn_%C4%91%C6%B0%E1%BB%9Dng_s%E1%BA%AFt_%C4%91%C3%B4_th%E1%BB%8B_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh.jpg/1280px-Ga_B%E1%BA%BFn_Th%C3%A0nh_-_S%C6%A1_%C4%91%E1%BB%93_tuy%E1%BA%BFn_%C4%91%C6%B0%E1%BB%9Dng_s%E1%BA%AFt_%C4%91%C3%B4_th%E1%BB%8B_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Ga Bến Thành - Sơ đồ tuyến đường sắt đô thị Thành phố Hồ Chí Minh.jpg",
+  "author": "Taken by Miyako Fujimiya ( talk · contribs ) with Xiaomi 14 Ultra.",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:05:27.562Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Ga Bến Thành",
+    "geographicContext": true,
+    "distanceKm": 0.11226681561040029,
+    "score": 94,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

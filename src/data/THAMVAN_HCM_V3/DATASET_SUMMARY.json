@@ -1,0 +1,88 @@
+{
+  "count": 1505,
+  "gps": 341,
+  "sourceImageDirect": 26,
+  "topCategories": [
+    [
+      "Tiểu học",
+      302
+    ],
+    [
+      "Ngân hàng / chi nhánh, phòng giao dịch",
+      200
+    ],
+    [
+      "Tên địa điểm từ danh mục tour 3D",
+      84
+    ],
+    [
+      "THPT / liên cấp",
+      64
+    ],
+    [
+      "Giáo dục - đại học/cao đẳng",
+      59
+    ],
+    [
+      "Ẩm thực - quán ăn/nhà hàng",
+      58
+    ],
+    [
+      "Giáo dục - THPT",
+      57
+    ],
+    [
+      "Khu căn hộ / cao ốc nổi bật",
+      53
+    ],
+    [
+      "Spa / massage / thư giãn",
+      41
+    ],
+    [
+      "Quán cà phê / điểm check-in",
+      40
+    ],
+    [
+      "Mua sắm - trung tâm thương mại",
+      34
+    ],
+    [
+      "Bệnh viện",
+      34
+    ],
+    [
+      "Resort / villa / nghỉ dưỡng",
+      30
+    ],
+    [
+      "Điểm vui chơi / thể thao / check-in",
+      30
+    ],
+    [
+      "Khách sạn / khu lưu trú / kiến trúc",
+      28
+    ],
+    [
+      "Nhà hàng / fine dining / ẩm thực",
+      25
+    ],
+    [
+      "Bar / rooftop / nightlife",
+      24
+    ],
+    [
+      "Beer garden / rooftop / tụ tập bạn bè",
+      20
+    ],
+    [
+      "Khu căn hộ / đô thị Novaland",
+      20
+    ],
+    [
+      "Spa / chăm sóc sức khỏe và thư giãn",
+      19
+    ]
+  ],
+  "message": "Coverage on the USER COMPUTER is unknown until running Audit-ThamVanImages.ps1. The archive does not contain 1505 downloaded photos."
+}

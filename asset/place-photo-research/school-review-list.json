@@ -1,0 +1,123 @@
+[
+  {
+    "id": "HCM-0522",
+    "source": "https://ts10.hcm.edu.vn/thong-tin-truong-chi-tiet/590",
+    "url": "https://tracnghiem-anh.sgp1.digitaloceanspaces.com/DEMO/79/790007A2/AFiles/TinTuc/mat-tien-va-schools-binh-thoi975b77d8-6782-468a-9c4c-d26c6649264d.jpg",
+    "title": "Việt Mỹ School Entrance",
+    "name": "Tiểu học Việt Mỹ",
+    "checkedAt": "2026-10-27T09:38:42.777Z",
+    "sha256": "a1b63bceb0bbc23b0d1be130d15bb51244ea4cbd4200ddd4aead49cf39836d90",
+    "image": "asset/place-photo-research/web-photos/hcm-0522-a1b63bceb0bb.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0525",
+    "source": "https://tongdaihoidap.com/truong-tieu-hoc-tan-son-nhi-905-4-au-co-tan-phu/",
+    "url": "https://tongdaihoidap.com/wp-content/uploads/2025/04/truong-tieu-hoc-tan-son-nhi-905-4-au-co-tan-phu.webp",
+    "title": "Trường Tiểu Học Tân Sơn Nhì",
+    "name": "Tiểu học Tân Sơn Nhì",
+    "checkedAt": "2026-10-27T09:38:43.484Z",
+    "sha256": "93873df805d472fff6ace306bf2a01008095236df9b11a1a8b83ea6c4aab617f",
+    "image": "asset/place-photo-research/web-photos/hcm-0525-93873df805d4.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0526",
+    "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-kien-tao-ics-915-nguyen-duy-trinh-phuong-binh-trung-dong-quan-2-31541.html",
+    "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-kien-tao-%28ics%29.jpg",
+    "title": "Cổng Trường Kiến Tạo ICS",
+    "name": "Tiểu học Kiến Tạo",
+    "checkedAt": "2026-10-27T09:38:43.969Z",
+    "sha256": "b163c76fefbefdeea963e0e5b011f71834d2bed6b43ca159641f0f0e29f65ad1",
+    "image": "asset/place-photo-research/web-photos/hcm-0526-b163c76fefbe.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0528",
+    "source": "https://azccons.com/en/renovate-song-ngu-vung-tau-primary-school-2023/",
+    "url": "https://azccons.com/wp-content/uploads/2023/09/1-26.jpg",
+    "title": "Song Ngu Vung Tau Primary School Entrance",
+    "name": "Trường Tiểu học Song ngữ Vũng Tàu",
+    "checkedAt": "2026-10-27T09:38:44.046Z",
+    "sha256": "2d66c7d3bbaf72cf266f3d5b678cef157826e1bba4604a91e0011b7be35f917e",
+    "image": "asset/place-photo-research/web-photos/hcm-0528-2d66c7d3bbaf.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0534",
+    "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-tran-khanh-du-5361-tran-khanh-du-quan-1-31033.html",
+    "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-tran-khanh-du-quan-1.jpg",
+    "title": "Entrance to Trần Khánh Dư Primary School",
+    "name": "Tiểu học Trần Khánh Dư",
+    "checkedAt": "2026-10-27T09:38:44.433Z",
+    "sha256": "a3d77d96dc8ef0e3df804b7a53258467f05d826f1327582fd5a887fd43d55af5",
+    "image": "asset/place-photo-research/web-photos/hcm-0534-a3d77d96dc8e.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0535",
+    "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-duoc-song-02-dinh-cong-trang-phuong-tan-dinh-quan-1-31043.html",
+    "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-duoc-song-quan-1.jpg",
+    "title": "Duoc Song Primary School Entrance",
+    "name": "Trường Tiểu học Đuốc Sống",
+    "checkedAt": "2026-10-27T09:38:44.485Z",
+    "sha256": "36a7a5b38dfd04d03d6944aa9b322f60068ee5b969277eeff8623afba918c262",
+    "image": "asset/place-photo-research/web-photos/hcm-0535-36a7a5b38dfd.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0536",
+    "source": "https://congchungnguyenvietcuong.com/tin-tuc/thong-tin-dia-chi-truong-tieu-hoc-ket-doan-quan-1-tphcm-189-2592.html",
+    "url": "https://congchungnguyenvietcuong.com/Uploaded/Images/Original/2024/04/10/2_1004090226.jpg?v=1307289472",
+    "title": "Kết Đoàn Primary School Entrance",
+    "name": "Tiểu học Kết Đoàn",
+    "checkedAt": "2026-10-27T09:38:44.535Z",
+    "sha256": "a75e03412ff00c207c5b6dd1681cbf14d60896d152e2fca2bdd625fb6539b57d",
+    "image": "asset/place-photo-research/web-photos/hcm-0536-a75e03412ff0.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0537",
+    "source": "https://thuonghieucongluan.com.vn/tp-hcm-de-nghi-kiem-diem-mot-hieu-truong-lien-quan-den-lam-thu-quy-phu-huynh-a283107.html",
+    "url": "https://media.thuonghieucongluan.vn/uploads/2025/10/01/de-nghi-kiem-diem-trach-971759287029-1759292287.jpg",
+    "title": "Lê Ngọc Hân Primary School Entrance",
+    "name": "Trường Tiểu học Lê Ngọc Hân",
+    "checkedAt": "2026-10-27T09:38:45.086Z",
+    "sha256": "a92d87bbb7a60c846f3c68a28b38c0170df8da1d6bed41bec698a8aa932f0575",
+    "image": "asset/place-photo-research/web-photos/hcm-0537-a92d87bbb7a6.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0539",
+    "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-nguyen-thai-hoc-71-tran-hung-dao-phuong-cau-ong-lanh-quan-1-31036.html",
+    "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-nguyen-thai-hoc-quan-1.jpg",
+    "title": "Nguyễn Thái Học Primary School Entrance",
+    "name": "Trường Tiểu học Nguyễn Thái Học",
+    "checkedAt": "2026-10-27T09:38:45.495Z",
+    "sha256": "5dc696c084f5c68570615e721bd0dcfb66268b0c19ae32569a4ba4a5366c22a8",
+    "image": "asset/place-photo-research/web-photos/hcm-0539-5dc696c084f5.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0543",
+    "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-tran-hung-dao-81-tran-dinh-xu-quan-1-31040.html",
+    "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-tran-hung-dao-quan-1.jpg",
+    "title": "Trần Hưng Đạo Primary School Entrance",
+    "name": "Tiểu học Trần Hưng Đạo",
+    "checkedAt": "2026-10-27T09:38:45.537Z",
+    "sha256": "581330d927894a2fb46c8482669c77b59d346523d581ab50180ff9397c8f3677",
+    "image": "asset/place-photo-research/web-photos/hcm-0543-581330d92789.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  },
+  {
+    "id": "HCM-0546",
+    "source": "https://toplist.vn/top-list/truong-tieu-hoc-cong-lap-tot-nhat-tp-hcm-57628.htm",
+    "url": "https://toplist.vn/images/800px/truong-tieu-hoc-luong-dinh-cua-1377036.jpg",
+    "title": "Trường Tiểu học Lương Định Của Facade",
+    "name": "Tiểu học Lương Định Của",
+    "checkedAt": "2026-10-27T09:38:45.602Z",
+    "sha256": "e74dcf18be418575a30a53b8f28d366f1ced0fc9a23cc6a856e39bd641f64358",
+    "image": "asset/place-photo-research/web-photos/hcm-0546-e74dcf18be41.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW"
+  }
+]

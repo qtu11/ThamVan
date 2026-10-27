@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Benh_vien_nhi_dong_1-ph%C6%B0%E1%BB%9Dng_10,_Qu%E1%BA%ADn_10,_TPHCM,_Vi%E1%BB%87t_Nam_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Benh_vien_nhi_dong_1-ph%C6%B0%E1%BB%9Dng_10%2C_Qu%E1%BA%ADn_10%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg/1280px-Benh_vien_nhi_dong_1-ph%C6%B0%E1%BB%9Dng_10%2C_Qu%E1%BA%ADn_10%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Benh vien nhi dong 1-phường 10, Quận 10, TPHCM, Việt Nam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:23.388Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Bệnh viện Nhi đồng 1",
+    "geographicContext": true,
+    "distanceKm": 0.13177149243522496,
+    "score": 94,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

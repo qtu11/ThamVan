@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:B%E1%BB%87nh_vi%E1%BB%87n_nhi_%C4%90%E1%BB%93ng_2,_l%C3%BD_t%E1%BB%B1_tr%E1%BB%8Dng-B%E1%BA%BFn_Ngh%C3%A9,_Qu%E1%BA%ADn_1,_TPHCM,_Vi%E1%BB%87t_Nam_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/B%E1%BB%87nh_vi%E1%BB%87n_nhi_%C4%90%E1%BB%93ng_2%2C_l%C3%BD_t%E1%BB%B1_tr%E1%BB%8Dng-B%E1%BA%BFn_Ngh%C3%A9%2C_Qu%E1%BA%ADn_1%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg/1280px-B%E1%BB%87nh_vi%E1%BB%87n_nhi_%C4%90%E1%BB%93ng_2%2C_l%C3%BD_t%E1%BB%B1_tr%E1%BB%8Dng-B%E1%BA%BFn_Ngh%C3%A9%2C_Qu%E1%BA%ADn_1%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Bệnh viện nhi Đồng 2, lý tự trọng-Bến Nghé, Quận 1, TPHCM, Việt Nam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:23.390Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Bệnh viện Nhi đồng 2",
+    "geographicContext": true,
+    "distanceKm": 0.07110265412835823,
+    "score": 94,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

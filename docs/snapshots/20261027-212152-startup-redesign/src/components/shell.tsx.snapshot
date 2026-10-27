@@ -1,0 +1,173 @@
+'use client';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import {
+  Home,
+  Compass,
+  Map,
+  Trophy,
+  Route,
+  UserRound,
+  Globe,
+  ArrowUpRight,
+  Menu,
+  X,
+  WifiOff,
+} from 'lucide-react';
+import { t, localeName } from '@/lib/i18n';
+import { locales, type Locale } from '@/lib/types';
+const links = [
+  ['home', '', Home],
+  ['explore', '/explore', Compass],
+  ['map', '/map', Map],
+  ['challenges', '/challenges', Trophy],
+  ['journey', '/journey', Route],
+] as const;
+export function Shell({
+  locale,
+  signedIn,
+  children,
+}: {
+  locale: Locale;
+  signedIn: boolean;
+  children: React.ReactNode;
+}) {
+  const path = usePathname(),
+    router = useRouter(),
+    params = useSearchParams();
+  const [menu, setMenu] = useState(false),
+    [offline, setOffline] = useState(false);
+  useEffect(() => {
+    const update = () => setOffline(!navigator.onLine);
+    update();
+    window.addEventListener('online', update);
+    window.addEventListener('offline', update);
+    return () => {
+      window.removeEventListener('online', update);
+      window.removeEventListener('offline', update);
+    };
+  }, []);
+  function changeLanguage(value: string) {
+    document.cookie = `tv-locale=${value};path=/;max-age=31536000;SameSite=Lax`;
+    router.push(`/${value}${path.slice(3)}${params.size ? `?${params.toString()}` : ''}`);
+    router.refresh();
+  }
+  return (
+    <>
+      <a className="skip-link" href="#content">
+        {t(locale, 'open')}
+      </a>
+      <header className="site-header">
+        <div className="header-inner">
+          <Link
+            href={`/${locale}`}
+            className="brand"
+            aria-label={`THÁM VĂN · ${t(locale, 'home')}`}
+          >
+            <Image src="/images/logo.png" alt="" width={38} height={46} />
+            <span>
+              THÁM VĂN<small>{t(locale, 'slogan')}</small>
+            </span>
+          </Link>
+          <nav className="desktop-nav" aria-label={t(locale, 'explore')}>
+            {links.map(([key, to]) => (
+              <Link
+                key={key}
+                className={
+                  path === `/${locale}${to}` || (to && path.startsWith(`/${locale}${to}/`))
+                    ? 'active'
+                    : ''
+                }
+                href={`/${locale}${to}`}
+              >
+                {t(locale, key)}
+              </Link>
+            ))}
+          </nav>
+          <div className="header-actions">
+            <label className="language">
+              <Globe size={16} />
+              <span className="sr-only">{t(locale, 'language')}</span>
+              <select value={locale} onChange={(e) => changeLanguage(e.target.value)}>
+                {locales.map((l) => (
+                  <option value={l} key={l}>
+                    {localeName[l]}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <Link
+              className="button small header-login"
+              href={`/${locale}/${signedIn ? 'profile' : 'auth/login'}`}
+            >
+              {signedIn ? <UserRound size={16} /> : null}
+              {t(locale, signedIn ? 'profile' : 'login')}
+            </Link>
+            <button
+              className="icon-button menu-toggle"
+              aria-label={menu ? t(locale, 'cancel') : t(locale, 'explore')}
+              aria-expanded={menu}
+              onClick={() => setMenu(!menu)}
+            >
+              {menu ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+        {menu && (
+          <nav className="mobile-menu">
+            {[...links, ['profile', '/profile', UserRound] as const].map(([key, to, Icon]) => (
+              <Link key={key} href={`/${locale}${to}`} onClick={() => setMenu(false)}>
+                <Icon size={18} />
+                {t(locale, key)}
+              </Link>
+            ))}
+          </nav>
+        )}
+      </header>
+      {offline && (
+        <div className="offline" role="status">
+          <WifiOff size={16} />
+          {t(locale, 'offline')}
+        </div>
+      )}
+      <main id="content">{children}</main>
+      <footer className="site-footer">
+        <div className="footer-top">
+          <Link href={`/${locale}`} className="brand">
+            <Image src="/images/logo.png" width={38} height={46} alt="" />
+            <span>
+              THÁM VĂN<small>{t(locale, 'footerText')}</small>
+            </span>
+          </Link>
+          <Link href={`/${locale}/welcome`}>
+            {t(locale, 'start')} <ArrowUpRight size={17} />
+          </Link>
+        </div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} THÁM VĂN</span>
+          <div>
+            <Link href={`/${locale}/terms`}>{t(locale, 'terms')}</Link>
+            <Link href={`/${locale}/privacy`}>{t(locale, 'privacy')}</Link>
+            <Link href={`/${locale}/credits`}>{t(locale, 'credits')}</Link>
+          </div>
+        </div>
+      </footer>
+      <nav className="bottom-nav" aria-label={t(locale, 'home')}>
+        {[links[0], links[2], links[3], links[4], ['profile', '/profile', UserRound] as const].map(
+          ([key, to, Icon]) => (
+            <Link
+              key={key}
+              className={path === `/${locale}${to}` ? 'active' : ''}
+              href={`/${locale}${to}`}
+            >
+              <Icon size={21} />
+              <span>{t(locale, key)}</span>
+            </Link>
+          ),
+        )}
+      </nav>
+    </>
+  );
+}

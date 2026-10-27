@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:B%E1%BB%87nh_Vi%E1%BB%87n_Ch%E1%BB%A3_R%E1%BA%A9y-ph%C6%B0%E1%BB%9Dng_12,_Qu%E1%BA%ADn_5,_TPHCM,_Vi%E1%BB%87t_Nam_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/B%E1%BB%87nh_Vi%E1%BB%87n_Ch%E1%BB%A3_R%E1%BA%A9y-ph%C6%B0%E1%BB%9Dng_12%2C_Qu%E1%BA%ADn_5%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg/1280px-B%E1%BB%87nh_Vi%E1%BB%87n_Ch%E1%BB%A3_R%E1%BA%A9y-ph%C6%B0%E1%BB%9Dng_12%2C_Qu%E1%BA%ADn_5%2C_TPHCM%2C_Vi%E1%BB%87t_Nam_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Bệnh Viện Chợ Rẩy-phường 12, Quận 5, TPHCM, Việt Nam - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:13:04.089Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Bệnh viện Chợ Rẫy",
+    "geographicContext": true,
+    "distanceKm": 0.11822706680612302,
+    "score": 92,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

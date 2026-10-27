@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Khu_%C4%91%C3%B4_th%E1%BB%8B_Sunrise_City,_T%C3%A2n_H%C6%B0ng,_Qu%E1%BA%ADn_7,_TPHCM,_Vietnam_-_panoramio_(2).jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Khu_%C4%91%C3%B4_th%E1%BB%8B_Sunrise_City%2C_T%C3%A2n_H%C6%B0ng%2C_Qu%E1%BA%ADn_7%2C_TPHCM%2C_Vietnam_-_panoramio_%282%29.jpg/1280px-Khu_%C4%91%C3%B4_th%E1%BB%8B_Sunrise_City%2C_T%C3%A2n_H%C6%B0ng%2C_Qu%E1%BA%ADn_7%2C_TPHCM%2C_Vietnam_-_panoramio_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Khu đô thị Sunrise City, Tân Hưng, Quận 7, TPHCM, Vietnam - panoramio (2).jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:23.402Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Sunrise City",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

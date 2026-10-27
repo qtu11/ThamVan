@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Grand_Marina_Saigon,_b%E1%BA%BFn_ngh%C3%A9,_qu%E1%BA%ADn_1,_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh_(2).jpg",
+  "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/4/49/Grand_Marina_Saigon%2C_b%E1%BA%BFn_ngh%C3%A9%2C_qu%E1%BA%ADn_1%2C_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "title": "File:Grand Marina Saigon, bến nghé, quận 1, thành phố hồ chí minh (2).jpg",
+  "author": "Xuanphuocle",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:23.433Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Grand Marina Saigon",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

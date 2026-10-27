@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Hinh-anh-benh-vien-thong-nhat.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Hinh-anh-benh-vien-thong-nhat.jpg/1280px-Hinh-anh-benh-vien-thong-nhat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Hinh-anh-benh-vien-thong-nhat.jpg",
+  "author": "Churongcon",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:23.441Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Bệnh viện Thống Nhất",
+    "geographicContext": false,
+    "distanceKm": 0.1089564321008917,
+    "score": 92,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

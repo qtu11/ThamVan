@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Monto_N%C3%BAi_Nh%E1%BB%8F_01.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Monto_N%C3%BAi_Nh%E1%BB%8F_01.jpg/1280px-Monto_N%C3%BAi_Nh%E1%BB%8F_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Monto Núi Nhỏ 01.jpg",
+  "author": "RG72",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T07:31:31.309Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Núi Nhỏ Vũng Tàu",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 84,
+    "provider": "COMMONS_NAME_SEARCH"
+  }
+}

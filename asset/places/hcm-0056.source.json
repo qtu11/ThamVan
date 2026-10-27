@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:C%C3%B4ng_vi%C3%AAn_B%C3%A1ch_T%C3%B9ng_Di%E1%BB%87p,_Qu%E1%BA%ADn_1,_th12n2021_(hoa_ki%E1%BB%83ng)_(2).jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/C%C3%B4ng_vi%C3%AAn_B%C3%A1ch_T%C3%B9ng_Di%E1%BB%87p%2C_Qu%E1%BA%ADn_1%2C_th12n2021_%28hoa_ki%E1%BB%83ng%29_%282%29.jpg/1280px-C%C3%B4ng_vi%C3%AAn_B%C3%A1ch_T%C3%B9ng_Di%E1%BB%87p%2C_Qu%E1%BA%ADn_1%2C_th12n2021_%28hoa_ki%E1%BB%83ng%29_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Công viên Bách Tùng Diệp, Quận 1, th12n2021 (hoa kiểng) (2).jpg",
+  "author": "Phương Huy",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:21.027Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Công viên Bách Tùng Diệp",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 83,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

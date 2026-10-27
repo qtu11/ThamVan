@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:%C4%90%C3%ACnh_B%C3%ACnh_%C4%90%C3%B4ng_(c%C3%A1i_nh%C3%A0_ch%C3%A1nh_%C4%91i%E1%BB%87n)_(2).jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/%C4%90%C3%ACnh_B%C3%ACnh_%C4%90%C3%B4ng_%28c%C3%A1i_nh%C3%A0_ch%C3%A1nh_%C4%91i%E1%BB%87n%29_%282%29.jpg/1280px-%C4%90%C3%ACnh_B%C3%ACnh_%C4%90%C3%B4ng_%28c%C3%A1i_nh%C3%A0_ch%C3%A1nh_%C4%91i%E1%BB%87n%29_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Đình Bình Đông (cái nhà chánh điện) (2).jpg",
+  "author": "Phương Huy",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:19.954Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Đình Bình Đông",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

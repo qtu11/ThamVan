@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:C%C3%B4ng_vi%C3%AAn_Vinhomes_Central_Park,_B%C3%ACnh_Th%E1%BA%A1nh,_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh_25-05-2024_13.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/C%C3%B4ng_vi%C3%AAn_Vinhomes_Central_Park%2C_B%C3%ACnh_Th%E1%BA%A1nh%2C_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh_25-05-2024_13.jpg/1280px-C%C3%B4ng_vi%C3%AAn_Vinhomes_Central_Park%2C_B%C3%ACnh_Th%E1%BA%A1nh%2C_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh_25-05-2024_13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Công viên Vinhomes Central Park, Bình Thạnh, Thành phố Hồ Chí Minh 25-05-2024 13.jpg",
+  "author": "Xuanphuocle",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:22.263Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Công viên Vinhomes Central Park",
+    "geographicContext": true,
+    "distanceKm": 0.1335761589490296,
+    "score": 93,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

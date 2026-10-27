@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:C%C3%B4ng_vi%C3%AAn_%C3%81nh_S%C3%A1ng_Vinhomes_Grand_Park,_th%E1%BB%A7_%C4%91%E1%BB%A9c,_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh_(3).jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/C%C3%B4ng_vi%C3%AAn_%C3%81nh_S%C3%A1ng_Vinhomes_Grand_Park%2C_th%E1%BB%A7_%C4%91%E1%BB%A9c%2C_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh_%283%29.jpg/1280px-C%C3%B4ng_vi%C3%AAn_%C3%81nh_S%C3%A1ng_Vinhomes_Grand_Park%2C_th%E1%BB%A7_%C4%91%E1%BB%A9c%2C_th%C3%A0nh_ph%E1%BB%91_h%E1%BB%93_ch%C3%AD_minh_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Công viên Ánh Sáng Vinhomes Grand Park, thủ đức, thành phố hồ chí minh (3).jpg",
+  "author": "Xuanphuocle",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "retrievedAt": "2026-10-27T08:59:23.439Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Vinhomes Grand Park",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 83,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

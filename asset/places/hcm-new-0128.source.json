@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Trung_tam_thuong_mai_diamond_Plaza,_q1_Saigon_vn_2014_-_panoramio.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Trung_tam_thuong_mai_diamond_Plaza%2C_q1_Saigon_vn_2014_-_panoramio.jpg/1280px-Trung_tam_thuong_mai_diamond_Plaza%2C_q1_Saigon_vn_2014_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Trung tam thuong mai diamond Plaza, q1 Saigon vn 2014 - panoramio.jpg",
+  "author": "trungydang",
+  "license": "CC BY 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+  "retrievedAt": "2026-10-27T08:59:22.223Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Diamond Plaza",
+    "geographicContext": true,
+    "distanceKm": null,
+    "score": 82,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

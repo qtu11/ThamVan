@@ -1,0 +1,74 @@
+[
+  {
+    "id": "hcm-0041",
+    "image": "/images/hcm-0041-dinh-doc-lap.jpg",
+    "title": "Independence Palace, Ho Chi Minh City",
+    "author": "Trung geo",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Independence_Palace,_Ho_Chi_Minh_City.jpg",
+    "coordinates": { "lat": 10.777017, "lon": 106.695403 },
+    "coordinateSource": "https://en.wikipedia.org/wiki/Independence_Palace",
+    "importedAt": "2026-10-27"
+  },
+  {
+    "id": "hcm-0025",
+    "image": "/images/hcm-0025-nha-tho-duc-ba-sai-gon.jpg",
+    "title": "Saigon Notre-Dame Basilica",
+    "author": "Ngô Trung",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Saigon_Notre-Dame_Basilica.jpg",
+    "coordinates": { "lat": 10.779771, "lon": 106.699058 },
+    "coordinateSource": "https://en.wikipedia.org/wiki/Notre-Dame_Cathedral_Basilica_of_Saigon",
+    "importedAt": "2026-10-27"
+  },
+  {
+    "id": "hcm-0049",
+    "image": "/images/hcm-0049-cho-ben-thanh.jpg",
+    "title": "Ben Thanh market",
+    "author": "Riza",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ben_Thanh_market_2.jpg",
+    "coordinates": { "lat": 10.772571, "lon": 106.698017 },
+    "coordinateSource": "https://en.wikipedia.org/wiki/B%E1%BA%BFn_Th%C3%A0nh_Market",
+    "importedAt": "2026-10-27"
+  },
+  {
+    "id": "hcm-0051",
+    "image": "/images/hcm-0051-buu-dien-trung-tam-sai-gon.jpg",
+    "title": "Saigon Central Post Office",
+    "author": "David Stanley",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Saigon_Central_Post_Office_2025.jpg",
+    "coordinates": { "lat": 10.779981, "lon": 106.700021 },
+    "coordinateSource": "https://en.wikipedia.org/wiki/Saigon_Central_Post_Office",
+    "importedAt": "2026-10-27"
+  },
+  {
+    "id": "hcm-0040",
+    "image": "/images/hcm-0040-dia-dao-cu-chi.jpg",
+    "title": "Cu Chi Tunnels",
+    "author": "Andre Hospers",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cu_Chi_Tunnels_Vietnam_war.jpg",
+    "coordinates": { "lat": 11.063044, "lon": 106.529124 },
+    "coordinateSource": "https://en.wikipedia.org/wiki/C%E1%BB%A7_Chi_tunnels",
+    "importedAt": "2026-10-27"
+  },
+  {
+    "id": "hcm-0066",
+    "image": "/images/hcm-0066-nha-hat-thanh-pho-ho-chi-minh.jpg",
+    "title": "Ho Chi Minh City Opera House",
+    "author": "HĐ",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_City_Opera_House.jpg",
+    "coordinates": { "lat": 10.776711, "lon": 106.703219 },
+    "coordinateSource": "https://en.wikipedia.org/wiki/Municipal_Theatre,_Ho_Chi_Minh_City",
+    "importedAt": "2026-10-27"
+  }
+]

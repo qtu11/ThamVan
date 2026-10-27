@@ -1,0 +1,166 @@
+import Link from 'next/link';
+import {
+  ArrowUpRight,
+  ArrowRight,
+  Camera,
+  MapPin,
+  Compass,
+  Landmark,
+  Flower2,
+  Sparkles,
+  Trophy,
+  BookOpen,
+} from 'lucide-react';
+import { getCatalog, getViewer } from '@/lib/data';
+import { isLocale } from '@/lib/types';
+import { t } from '@/lib/i18n';
+import { hasSupabase } from '@/lib/env';
+import { Photo, HeritageCard } from '@/components/ui';
+import { Nearby } from '@/components/discovery';
+import { HomeExperience } from '@/components/experience/home-experience';
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: raw } = await params;
+  const locale = isLocale(raw) ? raw : 'vi';
+  const [entries, user] = await Promise.all([getCatalog(), getViewer()]);
+  return (
+    <>
+      <HomeExperience locale={locale} />
+      <div className="discovery-ribbon">
+        <div className="container ribbon-inner">
+          <span>
+            <Camera />
+            {t(locale, 'camera')}
+          </span>
+          <i />
+          <span>
+            <MapPin />
+            {t(locale, 'nearby')}
+          </span>
+          <i />
+          <span>
+            <Trophy />
+            {t(locale, 'challenges')}
+          </span>
+          <i />
+          <span>
+            <BookOpen />
+            {t(locale, 'journey')}
+          </span>
+        </div>
+      </div>
+      <section className="container section feature-section">
+        <Link href={`/${locale}/camera`} className="camera-promo">
+          <span className="eyebrow light">THÁM VĂN LENS</span>
+          <span className="camera-orbit">
+            <Camera size={36} />
+          </span>
+          <h2>{t(locale, 'camera')}</h2>
+          <p>{t(locale, 'cameraDesc')}</p>
+          <span className="camera-cta">
+            {t(locale, 'cameraHint')}
+            <ArrowUpRight size={24} />
+          </span>
+          <span className="camera-decoration" aria-hidden="true">
+            ✺
+          </span>
+        </Link>
+        <div>
+          <div className="section-heading compact-heading">
+            <div>
+              <p className="eyebrow">
+                <MapPin size={15} /> {t(locale, 'explore')}
+              </p>
+              <h2>{t(locale, 'nearby')}</h2>
+            </div>
+          </div>
+          <Nearby entries={entries} locale={locale} profile={user?.profile} compact />
+        </div>
+      </section>
+      <section className="container section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">
+              <Sparkles size={15} /> {t(locale, 'explore')}
+            </p>
+            <h2>{t(locale, 'featured')}</h2>
+            <p>{t(locale, 'featuredDesc')}</p>
+          </div>
+          <Link className="text-link" href={`/${locale}/explore`}>
+            {t(locale, 'viewAll')}
+            <ArrowUpRight size={18} />
+          </Link>
+        </div>
+        <div className="card-grid">
+          {entries
+            .filter((e) => e.image)
+            .slice(0, 3)
+            .map((e, index) => (
+              <HeritageCard key={e.id} entry={e} locale={locale} index={index} />
+            ))}
+        </div>
+      </section>
+      <section className="traces-section">
+        <div className="container traces-layout">
+          <div>
+            <p className="eyebrow">
+              <Flower2 size={16} /> {t(locale, 'lookCloser')}
+            </p>
+            <h2>{t(locale, 'traces')}</h2>
+            <p>{t(locale, 'tracesDesc')}</p>
+            <Link className="button secondary" href={`/${locale}/explore?kind=architecture`}>
+              {t(locale, 'open')}
+              <ArrowRight size={17} />
+            </Link>
+          </div>
+          {entries
+            .filter((e) => ['hcm-0025', 'hcm-0041'].includes(e.slug))
+            .map((e) => (
+              <Link key={e.id} className="trace-card" href={`/${locale}/explore/${e.slug}`}>
+                <Photo entry={e} />
+                <span>
+                  <small>{e.region}</small>
+                  <strong>{e.name}</strong>
+                  <ArrowUpRight size={20} />
+                </span>
+              </Link>
+            ))}
+        </div>
+      </section>
+      <section className="container section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">THÁM VĂN COLLECTIONS</p>
+            <h2>{t(locale, 'topics')}</h2>
+          </div>
+        </div>
+        <div className="topic-grid">
+          {[
+            ['monument', Landmark],
+            ['architecture', Compass],
+            ['nature', Flower2],
+            ['craft', BookOpen],
+            ['symbol', Sparkles],
+            ['festival', Trophy],
+          ].map(([kind, Icon], index) => {
+            const key = kind as 'monument';
+            const Symbol = Icon as typeof Landmark;
+            return (
+              <Link key={key} href={`/${locale}/explore?kind=${key}`} className="topic">
+                <span className="topic-number">0{index + 1}</span>
+                <Symbol size={28} />
+                <h3>{t(locale, key)}</h3>
+                <ArrowUpRight size={19} />
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+      {!hasSupabase() && (
+        <div className="container preview-note">
+          <span className="dot" />
+          {t(locale, 'preview')}
+        </div>
+      )}
+    </>
+  );
+}

@@ -1,0 +1,2767 @@
+{
+  "candidates": [
+    {
+      "id": "HCM-0008",
+      "source": "https://vietnamnews.vn/a-twist-in-the-tale/347869/is-nothing-sacred.html",
+      "url": "https://image.vietnamnews.vn/uploadvnnews/Article/Thanh_Hai/2016/12/14/1ntnt-1.jpg",
+      "title": "One Pillar Pagoda Over Lotus Pond",
+      "name": "Chùa Một Cột Thủ Đức (Nam Thiên Nhất Trụ)",
+      "checkedAt": "2026-10-27T08:59:08.649Z",
+      "sha256": "87ad5c2a8aff5b4034cbae2a7b91b5a9074a59ddb62e584dc9793b012de186b2",
+      "image": "asset/place-photo-research/web-photos/hcm-0008-87ad5c2a8aff.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "87ad5c2a8aff5b4034cbae2a7b91b5a9074a59ddb62e584dc9793b012de186b2",
+        "at": "2026-10-27T09:01:09.309Z"
+      }
+    },
+    {
+      "id": "HCM-0067",
+      "source": "https://travelshelper.com/vietnam/places-in-vietnam/saigon-zoo-and-botanical-garden/",
+      "url": "https://storage.googleapis.com/vietnam-travel-guide/2023/03/Saigon-Zoo-and-Botanical-Garden-16.jpg",
+      "title": "Saigon Zoo and Botanical Garden Entrance",
+      "name": "Thảo Cầm Viên Sài Gòn",
+      "checkedAt": "2026-10-27T08:59:09.176Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "HTTP 404"
+    },
+    {
+      "id": "HCM-0440",
+      "source": "https://hanoitimes.vn/cho-ray-hospital-in-hcm-city-designated-a-regional-nephrology-training-center.582916.html",
+      "url": "https://cdn-media.hanoitimes.vn/2021/04/07/cho_ray_ava.jpeg",
+      "title": "Cho Ray Hospital Entrance",
+      "name": "Bệnh viện Chợ Rẫy",
+      "checkedAt": "2026-10-27T08:59:10.126Z",
+      "sha256": "a1823457cde40efd48be99a65fe9f6984f911a87ec19723d85dc815746d13602",
+      "image": "asset/place-photo-research/web-photos/hcm-0440-a1823457cde4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "a1823457cde40efd48be99a65fe9f6984f911a87ec19723d85dc815746d13602",
+        "at": "2026-10-27T09:01:09.309Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0011",
+      "source": "https://soha.vn/nu-sinh-otphcm-bi-ban-dan-nguoi-la-vao-truong-hanh-hung-20220928200200187.htm",
+      "url": "https://sohanews.sohacdn.com/thumb_w/640/160588918557773824/2022/9/28/photo1664370044091-1664370044351627309250.jpeg",
+      "title": "Long Trường High School Entrance",
+      "name": "THPT Long Trường",
+      "checkedAt": "2026-10-27T08:59:10.371Z",
+      "sha256": "950c89911654a8999a498ad425b771b6a047496a9de85ad55192c8a7593d7f24",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0011-950c89911654.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "950c89911654a8999a498ad425b771b6a047496a9de85ad55192c8a7593d7f24",
+        "at": "2026-10-27T09:01:09.309Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0127",
+      "source": "https://guland.vn/du-an/sc-vivocity",
+      "url": "https://cdn.guland.vn/photos/shares/vivocity-ly-do-1.jpg",
+      "title": "SC VivoCity Shopping Center",
+      "name": "SC VivoCity",
+      "checkedAt": "2026-10-27T08:59:10.909Z",
+      "sha256": "5f593fd9dcf6df427e1c66ea4edf3accf0f7816be74e9373b270bd2c571fbe10",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0127-5f593fd9dcf6.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "5f593fd9dcf6df427e1c66ea4edf3accf0f7816be74e9373b270bd2c571fbe10",
+        "at": "2026-10-27T09:01:09.309Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0056",
+      "source": "https://dantri.com.vn/giao-duc/co-hoi-nghe-nghiep-rong-mo-voi-cac-chuong-trinh-van-bang-hai-20181015160613366.htm",
+      "url": "https://icdn.dantri.com.vn/thumb_w/960/2018/10/15/11-1539594139573631896805.jpg",
+      "title": "University of Economics and Law Campus Building",
+      "name": "Trường Đại học Kinh tế - Luật - ĐHQG TP.HCM",
+      "checkedAt": "2026-10-27T08:59:11.265Z",
+      "sha256": "0648635861769d28c63932e08f70a09f9cf0dd300d404f7178fa75827081b131",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0056-064863586176.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "0648635861769d28c63932e08f70a09f9cf0dd300d404f7178fa75827081b131",
+        "at": "2026-10-27T09:01:09.309Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0057",
+      "source": "https://www.esb-business-school.de/en/the-esb/partner-universities/detailsite/international-university-viet-nam-national-university-ho-chi-minh-city-iu-vnu",
+      "url": "https://www.esb-business-school.de/fileadmin/ESB/Die_ESB/Partnerhochschulen/esb-business-school_Ho-Chi-Minh-International-University.jpg",
+      "title": "International University Building",
+      "name": "Trường Đại học Quốc tế - ĐHQG TP.HCM",
+      "checkedAt": "2026-10-27T08:59:12.085Z",
+      "sha256": "a0daa84def5726880a3b2ce77e600e74b8d96c108851c6b435d17b37ffa6a65d",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0057-a0daa84def57.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "a0daa84def5726880a3b2ce77e600e74b8d96c108851c6b435d17b37ffa6a65d",
+        "at": "2026-10-27T09:01:09.309Z"
+      }
+    },
+    {
+      "source": "https://znews.vn/nhung-canh-rung-xanh-giua-noi-do-sai-gon-post530227.html",
+      "url": "https://photo.znews.vn/w660/Uploaded/Wagtrb/2015_04_13/cong_vien_hoang_van_thu_1_zing.jpg",
+      "title": "Hoàng Văn Thụ Park Aerial View",
+      "id": "HCM-0059",
+      "name": "Công viên Hoàng Văn Thụ",
+      "checkedAt": "2026-10-27T08:59:16.189Z",
+      "sha256": "d0bba72290ff76f6c7505a439db36445b325dc388ed4311673718569d8ee367d",
+      "image": "asset/place-photo-research/web-photos/hcm-0059-d0bba72290ff.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "d0bba72290ff76f6c7505a439db36445b325dc388ed4311673718569d8ee367d",
+        "at": "2026-10-27T09:01:09.309Z"
+      }
+    },
+    {
+      "name": "The Vintage Emporium Đa Kao",
+      "source": "https://www.saigonshops.com/places/112/the-vintage-emporium-da-kao",
+      "url": "https://www.saigonshops.com/uploads/gallery/the-vintage-emporium-da-kao-7.jpg",
+      "description": "The Vintage Emporium Da Kao Storefront",
+      "id": "HCM-0859",
+      "checkedAt": "2026-10-27T08:59:16.694Z",
+      "sha256": "5e1c58d8f274540f86055e809d7d05ec019253ae343fe9856137fee26d6650d4",
+      "image": "asset/place-photo-research/web-photos/hcm-0859-5e1c58d8f274.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW"
+    },
+    {
+      "id": "HCM-NEW-0129",
+      "source": "https://www.takashimaya.co.jp/corp/info/plan/",
+      "url": "https://www.takashimaya.co.jp/base/corp/info/plan/img/img04_250228.jpg",
+      "title": "Saigon Centre Takashimaya facade",
+      "name": "Saigon Centre - Takashimaya",
+      "checkedAt": "2026-10-27T08:59:16.947Z",
+      "sha256": "c4727f6a96743ca2ab675f4ca7678716c51761d0c8e35c8d310bcd00da87c03d",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0129-c4727f6a9674.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c4727f6a96743ca2ab675f4ca7678716c51761d0c8e35c8d310bcd00da87c03d",
+        "at": "2026-10-27T09:01:09.309Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0052",
+      "source": "https://tuoitre.vn/truong-dh-bach-khoa-tphcm-len-tieng-ve-viec-di-doi-dinh-huong-phat-trien-co-so-moi-20260310204725593.htm",
+      "url": "https://cdn2.tuoitre.vn/thumb_w/1200/471584752817336320/2026/3/10/dhbk-1773150069552968111666-125-0-1061-1788-crop-1773150222839432642073.jpg",
+      "title": "Ho Chi Minh City University of Technology Campus",
+      "name": "Trường Đại học Bách khoa - ĐHQG TP.HCM",
+      "checkedAt": "2026-10-27T09:04:29.467Z",
+      "sha256": "e5521f5597c4b4de864f64eadad6216490c4589fda330e95937b83c05c8bb477",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0052-e5521f5597c4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "e5521f5597c4b4de864f64eadad6216490c4589fda330e95937b83c05c8bb477",
+        "at": "2026-10-27T09:07:08.234Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0053",
+      "source": "https://kenhtuyensinh.vn/dai-hoc-khoa-hoc-tu-nhien-dhqg-tphcm",
+      "url": "https://media.kenhtuyensinh.vn/images/2013/12/dai_hoc_khoa_hoc_tu_nhien_tp_hcm.jpg",
+      "title": "University of Science Campus Entrance",
+      "name": "Trường Đại học Khoa học Tự nhiên - ĐHQG TP.HCM",
+      "checkedAt": "2026-10-27T09:04:30.157Z",
+      "sha256": "5936a1616a2ad0dec7a58beba4f94d3364ce75e6d0062c588264863275081fb9",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0053-5936a1616a2a.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "5936a1616a2ad0dec7a58beba4f94d3364ce75e6d0062c588264863275081fb9",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0055",
+      "source": "https://www.uit.edu.vn/",
+      "url": "https://www.uit.edu.vn/_next/image?q=75&url=%2Fmedia%2Fimage_68800ba31d.png&w=1536",
+      "title": "University of Information Technology Campus Entrance",
+      "name": "Trường Đại học Công nghệ Thông tin - ĐHQG TP.HCM",
+      "checkedAt": "2026-10-27T09:04:32.418Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "fetch failed"
+    },
+    {
+      "id": "HCM-NEW-0060",
+      "source": "https://www.vietnam.vn/en/loat-truong-dai-hoc-cap-nhat-dia-chi-moi-sau-sap-xep-chinh-quyen-2-cap",
+      "url": "https://cdn-i.vtcnews.vn/resize/th/upload/2025/07/02/kinh-te-tai-chinh-tohcm-10592768.jpg",
+      "title": "UEF University Building",
+      "name": "Trường Đại học Kinh tế - Tài chính TP.HCM (UEF)",
+      "checkedAt": "2026-10-27T09:04:43.021Z",
+      "sha256": "be89842e08dbd6a11b772f817fbee1dfa8abdb1de3699a62805e57d1efdf0b0a",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0060-be89842e08db.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "be89842e08dbd6a11b772f817fbee1dfa8abdb1de3699a62805e57d1efdf0b0a",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0061",
+      "source": "https://vnexpress.net/phuong-thuc-to-hop-xet-tuyen-sinh-dai-hoc-luat-tp-hcm-nam-2026-5002066.html",
+      "url": "https://i2-vnexpress.vnecdn.net/2026/01/05/571352938-1269496898557504-786-1467-8579-1767604318.jpg?dpr=1&fit=crop&h=0&q=100&s=-zOTjMxK3uOGfVCJIf0OyQ&w=1200",
+      "title": "Ho Chi Minh City University of Law Campus",
+      "name": "Trường Đại học Luật TP.HCM",
+      "checkedAt": "2026-10-27T09:04:43.498Z",
+      "sha256": "9416c3fe0471a9e4c46322308c6221e9292fad0298447bd5ceb6376af4ff394b",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0061-9416c3fe0471.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "9416c3fe0471a9e4c46322308c6221e9292fad0298447bd5ceb6376af4ff394b",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0062",
+      "source": "https://giaoduc.net.vn/truong-dh-mo-tphcm-bat-ngo-doi-noi-hoc-xa-hon-20km-hon-4000-sv-bi-anh-huong-post237893.gd",
+      "url": "https://cdn.giaoduc.net.vn/images/4567b617dad583be1e7afcde73e8465c1d1a21734bf2552193fff29135f1bce56320cdcc26b999fefed942916243e5b82b6feae7a2f354f9fe1e954ebc2f7376/dhmotphcm-9137.jpg",
+      "title": "Ho Chi Minh City Open University Campus Building",
+      "name": "Trường Đại học Mở TP.HCM",
+      "checkedAt": "2026-10-27T09:04:44.158Z",
+      "sha256": "1167c63354bfbfc86dccf81bf310ae6deb9f327a44ad44b353a6e51363be059f",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0062-1167c63354bf.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "1167c63354bfbfc86dccf81bf310ae6deb9f327a44ad44b353a6e51363be059f",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0063",
+      "source": "https://www.vietnam.vn/es/72-truong-dai-hoc-giao-duc-nghe-nghiep-o-tphcm-thuoc-dien-sap-xep-lai",
+      "url": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2026/03/18/1773797484720_files-ttbc-hcm-gov-vn-2026-03-17-_files-ttbc-hcm-gov-vn-2026-03-17-_cdnphoto-dantri-com-vn-mtuvzcpttuale6zjtlkt5lmmblm-thumb_w-1020-2026-03-17-_dai-hoc-sai-gon-edited-cropped-1773759696101.jpeg",
+      "title": "Saigon University’s Historic Main Building",
+      "name": "Trường Đại học Sài Gòn",
+      "checkedAt": "2026-10-27T09:04:44.640Z",
+      "sha256": "3d8974fcf9a614980f8700bf40b75a44ff0638d1e3fc2eea5fb4ae083959c807",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0063-3d8974fcf9a6.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "3d8974fcf9a614980f8700bf40b75a44ff0638d1e3fc2eea5fb4ae083959c807",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0064",
+      "source": "https://daihoc24h.com/truong-dai-hoc-cong-nghiep-tp-ho-chi-minh/",
+      "url": "https://daihoc24h.com/uploads/photos/shares/247-dai-hoc/dai-hoc-cong-nghiep-tphcm/dai-hoc-cong-nghiep-tphcm-tuyen-sinh.jpg",
+      "title": "Industrial University of Ho Chi Minh City Entrance",
+      "name": "Trường Đại học Công nghiệp TP.HCM",
+      "checkedAt": "2026-10-27T09:04:45.250Z",
+      "sha256": "cf8ac2a2aec1d38f4acd5da212ffbd7163706a145949915faabce34e69bdc028",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0064-cf8ac2a2aec1.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "cf8ac2a2aec1d38f4acd5da212ffbd7163706a145949915faabce34e69bdc028",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0065",
+      "source": "https://iei.huit.edu.vn/",
+      "url": "https://iei.huit.edu.vn/app_web/vqt/images/slide/huitmedia-3879-1.jpg",
+      "title": "Ho Chi Minh City University of Industry and Trade Entrance",
+      "name": "Trường Đại học Công Thương TP.HCM",
+      "checkedAt": "2026-10-27T09:04:46.226Z",
+      "sha256": "8c66598598734317cc0847e77e764b9eeb99792fc00ebf2b31f7543ba58a3f61",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0065-8c6659859873.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "8c66598598734317cc0847e77e764b9eeb99792fc00ebf2b31f7543ba58a3f61",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0067",
+      "source": "https://www.hutech.edu.vn/homepage/tin-hutech/14620546-hutech-vinh-du-dang-cai-to-chuc-olympic-tin-hoc-sinh-vien-viet-nam-procon-va-ky-thi-lap-trinh-quoc-t",
+      "url": "https://file1.hutech.edu.vn/file/news/1_7197361729048356.jpg",
+      "title": "HUTECH Campus Aerial View",
+      "name": "Trường Đại học Công nghệ TP.HCM (HUTECH)",
+      "checkedAt": "2026-10-27T09:04:46.562Z",
+      "sha256": "caf2de1fc659fe34801b3aad09521bc6d41631d5eb584c57930048f9fafa8668",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0067-caf2de1fc659.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "caf2de1fc659fe34801b3aad09521bc6d41631d5eb584c57930048f9fafa8668",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0068",
+      "source": "https://edu2review.com/danh-gia/truong-dai-hoc-cong-nghe-sai-gon",
+      "url": "https://edu2review.com/storage/school-images/6642d267/5c385a36-3209-41e3-88cd-3cbc8f14fd02/768x512_dcaf600e-ecc0-4cf1-a034-ddf178633830.jpg",
+      "title": "Saigon Technology University Main Entrance",
+      "name": "Trường Đại học Công nghệ Sài Gòn",
+      "checkedAt": "2026-10-27T09:04:46.685Z",
+      "sha256": "20af8671ce41631584b9281dcde3239eec181a912ffc562f1775049e535047a8",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0068-20af8671ce41.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "20af8671ce41631584b9281dcde3239eec181a912ffc562f1775049e535047a8",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0069",
+      "source": "https://thanhphongauto.com/co-khi-o-to-hoc-truong-nao-o-ho-chi-minh/",
+      "url": "https://thanhphongauto.com/wp-content/uploads/2022/03/hoc-nghe-co-khi-o-to-3.jpg",
+      "title": "Ho Chi Minh City University of Transport Entrance",
+      "name": "Trường Đại học Giao thông vận tải TP.HCM",
+      "checkedAt": "2026-10-27T09:04:47.077Z",
+      "sha256": "ecd4bff60a0fca2a66628186a302b4bf9b95cba71598afafd23dbc2e0a77e59c",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0069-ecd4bff60a0f.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "ecd4bff60a0fca2a66628186a302b4bf9b95cba71598afafd23dbc2e0a77e59c",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0070",
+      "source": "https://thuvienphapluat.vn/chinh-sach-phap-luat-moi/vn/ho-tro-phap-luat/thong-tin-huu-ich/90628/diem-san-xet-tuyen-truong-dai-kien-truc-tphcm-uah-nam-2025",
+      "url": "https://cdn.thuvienphapluat.vn/uploads/tintuc/2025/07/24/diem-san-cua-cac-truong-kien-truc-tphcm.jpg",
+      "title": "Ho Chi Minh City University of Architecture Entrance",
+      "name": "Trường Đại học Kiến trúc TP.HCM",
+      "checkedAt": "2026-10-27T09:04:49.338Z",
+      "sha256": "943e6f21045998f4b524d7af27ff64cd86b6a11b8b6bd3684ea72f7511f61378",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0070-943e6f210459.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "943e6f21045998f4b524d7af27ff64cd86b6a11b8b6bd3684ea72f7511f61378",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0072",
+      "source": "https://portal-en.hub.edu.vn/why-choose-hub/modern-and-spacious-campus",
+      "url": "https://portal-en.hub.edu.vn/Portals/1001/Thu%20Duc%20campus.jpeg",
+      "title": "Thu Duc Campus of Ho Chi Minh University of Banking",
+      "name": "Trường Đại học Ngân hàng TP.HCM",
+      "checkedAt": "2026-10-27T09:04:49.530Z",
+      "sha256": "9c6cf8f9c9d6154d9324f0b107fe513b5e1d62145758756bab354095f5d59af7",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0072-9c6cf8f9c9d6.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "9c6cf8f9c9d6154d9324f0b107fe513b5e1d62145758756bab354095f5d59af7",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0073",
+      "source": "https://afamily.vn/truong-huflit-thu-thap-chung-cu-thong-tin-tren-mang-ve-sinh-vien-hoc-quan-su-20230112104838261.chn",
+      "url": "https://afamilycdn.com/150157425591193600/2023/1/12/img8131-1673489343601841949691-1673495216069-16734952163271896139958.jpeg",
+      "title": "HUFLIT University Entrance",
+      "name": "Trường Đại học Ngoại ngữ - Tin học TP.HCM",
+      "checkedAt": "2026-10-27T09:04:51.768Z",
+      "sha256": "22acc3310d9088750f62c06737a61a7ecc47bac2165600fab25fe6599199d3ac",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0073-22acc3310d90.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "22acc3310d9088750f62c06737a61a7ecc47bac2165600fab25fe6599199d3ac",
+        "at": "2026-10-27T09:07:08.235Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0074",
+      "source": "https://tuoitre.vn/dai-hoc-hoa-sen-du-kien-tuyen-sinh-nganh-duoc-rang-ham-mat-202101061141448.htm",
+      "url": "https://cdn2.tuoitre.vn/zoom/700_525/2021/1/6/4b982575-f087-4ab6-947b-ea2c423278981201a-16099077565971372641354-crop-1609907856370533066816.jpeg",
+      "title": "Hoa Sen University Entrance",
+      "name": "Trường Đại học Hoa Sen",
+      "checkedAt": "2026-10-27T09:08:28.686Z",
+      "sha256": "aa8527e044e44ef68b4f3c7ecaf2c6b695ad9be007ca190c1829c410db05c8d1",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0074-aa8527e044e4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "aa8527e044e44ef68b4f3c7ecaf2c6b695ad9be007ca190c1829c410db05c8d1",
+        "at": "2026-10-27T09:15:46.481Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0075",
+      "source": "https://daibieunhandan.vn/nhieu-phuong-an-xet-tuyen-tai-truong-dai-hoc-hung-vuong-tp-ho-chi-minh-trong-mua-tuyen-sinh-2026-10410985.html",
+      "url": "https://dbnd.1cdn.vn/2026/03/24/tru-so-dhv.jpg",
+      "title": "Hùng Vương University Ho Chi Minh City Campus",
+      "name": "Trường Đại học Hùng Vương TP.HCM",
+      "checkedAt": "2026-10-27T09:08:28.910Z",
+      "sha256": "d3af2b91581c24b3380b9aa77ae7a2f5fbb8f04670a1b8dca27c1984c017e20f",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0075-d3af2b91581c.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "d3af2b91581c24b3380b9aa77ae7a2f5fbb8f04670a1b8dca27c1984c017e20f",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0076",
+      "source": "https://vietjack.com/thong-tin-tuyen-sinh/dai-hoc-nguyen-tat-thanh-cong-bo-phuong-thuc-tuyen-sinh-dai-hoc-2026-ttts.jsp",
+      "url": "https://vietjack.com/thong-tin-tuyen-sinh/images/dai-hoc-nguyen-tat-thanh-cong-bo-phuong-thuc-tuyen-sinh-dai-hoc-2026-ttts-1.PNG",
+      "title": "Nguyễn Tất Thành University Main Building",
+      "name": "Trường Đại học Nguyễn Tất Thành",
+      "checkedAt": "2026-10-27T09:08:29.548Z",
+      "sha256": "4b8ab300bd9ca941ca564916ee6042eee45609c22eb1d6fbcceee66cbef16860",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0076-4b8ab300bd9c.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "4b8ab300bd9ca941ca564916ee6042eee45609c22eb1d6fbcceee66cbef16860",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0077",
+      "source": "https://www.vietnam.vn/en/70-nam-hanh-trinh-xay-dung-truong-dai-hoc-da-nganh-da-linh-vuc-nghien-cuu-cua-truong-dai-hoc-nong-lam-thanh-pho-ho-chi-minh",
+      "url": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2025/10/28/1761661096351_33-1745660164_20251028203154.jpeg",
+      "title": "Ho Chi Minh City University of Agriculture and Forestry Entrance",
+      "name": "Trường Đại học Nông Lâm TP.HCM",
+      "checkedAt": "2026-10-27T09:08:29.800Z",
+      "sha256": "4359f7b73daec88edccea152262329b27839c902092d8d80ea2f8b78e2a0ac9f",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0077-4359f7b73dae.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "4359f7b73daec88edccea152262329b27839c902092d8d80ea2f8b78e2a0ac9f",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0079",
+      "source": "https://thoibaotaichinhvietnam.vn/truong-dai-hoc-tai-chinh-marketing-duoc-phep-to-chuc-thi-danh-gia-nang-luc-ngoai-ngu-theo-khung-nang-luc-chuan-164092.html",
+      "url": "https://thoibaotaichinhvietnam.vn/stores/news_dataimages/2024/112024/15/10/a-120241115101626.jpg?rt=20241115101629",
+      "title": "University of Finance – Marketing Campus Entrance",
+      "name": "Trường Đại học Tài chính - Marketing",
+      "checkedAt": "2026-10-27T09:08:30.050Z",
+      "sha256": "c056faedd8795301ff64c3f2fe03ae2e86ceefad4fc52eb4bb4271f82aabba2f",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0079-c056faedd879.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c056faedd8795301ff64c3f2fe03ae2e86ceefad4fc52eb4bb4271f82aabba2f",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0080",
+      "source": "https://giaoduc.net.vn/khuyet-hieu-truong-giang-vien-truong-dh-van-hoa-tphcm-bi-cham-luong-post239729.gd",
+      "url": "https://cdn.giaoduc.net.vn/images/4567b617dad583be1e7afcde73e8465c66bf57bd21d30b7df46059a751dace0b58d4023e511d7ba816ba4a12fe487b12917cab3b3334d17e8078fd817d913695/dhvanhoatphcm-4070.jpg",
+      "title": "Ho Chi Minh City University of Culture Entrance",
+      "name": "Trường Đại học Văn hóa TP.HCM",
+      "checkedAt": "2026-10-27T09:08:30.403Z",
+      "sha256": "2622aafb8873a45d891f1c28bab8473391e45ae40c66f4873ebbc05485be0b7b",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0080-2622aafb8873.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "2622aafb8873a45d891f1c28bab8473391e45ae40c66f4873ebbc05485be0b7b",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0081",
+      "source": "https://giaoduc.net.vn/truong-dai-hoc-van-hien-tuyen-11750-chi-tieu-mo-them-5-nganh-moi-post241207.gd",
+      "url": "https://cdn.giaoduc.net.vn/images/30894c8b57db2c79f31f73fb3f6ba642bb3638a5b742669cc405a4dcc00c2971bd9e097764cf3c20485e45568c8f21ba6254ff4abee7699ffccd01ef3e23a67702f8a4c2ebd8c8e5901a5d994b75450d/truong-dh-van-hien-2-7713.jpg",
+      "title": "Văn Hiến University Entrance",
+      "name": "Trường Đại học Văn Hiến",
+      "checkedAt": "2026-10-27T09:08:30.903Z",
+      "sha256": "38b1db1c1babd87e5216b984f98c2c6e1349f1f9b8b643b59544e20c52ff4457",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0081-38b1db1c1bab.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "38b1db1c1babd87e5216b984f98c2c6e1349f1f9b8b643b59544e20c52ff4457",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0083",
+      "source": "https://thanhnien.vn/xet-tuyen-vao-truong-dh-y-duoc-tphcm-bang-diem-ielts-sat-co-de-tho-185240809102150001.htm",
+      "url": "https://images2.thanhnien.vn/528068263637045248/2024/8/9/img5915-17231738111472025634657.jpg",
+      "title": "University of Medicine and Pharmacy Entrance",
+      "name": "Trường Đại học Y Dược TP.HCM",
+      "checkedAt": "2026-10-27T09:08:30.961Z",
+      "sha256": "78058f400da480fdecdae789f41e5ab2ccd85f1b8652875c1781a0a4b6a24119",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0083-78058f400da4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "78058f400da480fdecdae789f41e5ab2ccd85f1b8652875c1781a0a4b6a24119",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0084",
+      "source": "https://pnt.edu.vn/vi/su-kien-hoat-dong/truong-dai-hoc-y-khoa-pham-ngoc-thach-cong-bo-de-an-tuyen-sinh-dai-hoc-nam-2023-1417",
+      "url": "https://pnt.edu.vn/Resources/Images/SubDomain/HomePage/Sukien-Hoatdong/2023/05/27/h1.jpg",
+      "title": "Pham Ngoc Thach University Entrance",
+      "name": "Trường Đại học Y khoa Phạm Ngọc Thạch",
+      "checkedAt": "2026-10-27T09:08:31.303Z",
+      "sha256": "75919abd815453cee55cc7b145ddc93d2ac0b29ea57ea6cd02f50ff9369ee530",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0084-75919abd8154.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "75919abd815453cee55cc7b145ddc93d2ac0b29ea57ea6cd02f50ff9369ee530",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0087",
+      "source": "https://www.sggp.org.vn/chon-hoc-gdu-day-con-cach-quan-ly-tai-chinh-khi-con-ngoi-tren-ghe-nha-truong-post701856.html",
+      "url": "https://image.sggp.org.vn/w1000/Uploaded/2026/bsugpivp/2023_08_16/image001-2455.jpg.webp",
+      "title": "Gia Định University Campus Entrance",
+      "name": "Trường Đại học Gia Định",
+      "checkedAt": "2026-10-27T09:08:31.382Z",
+      "sha256": "47184b8427edc06de791fda7a11a495a5089a42f522945ef920be08d2093018f",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0087-47184b8427ed.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "47184b8427edc06de791fda7a11a495a5089a42f522945ef920be08d2093018f",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0088",
+      "source": "https://dantri.com.vn/giao-duc/hoc-bong-toan-phan-tren-300-trieu-dong-tu-truong-dai-hoc-viet-duc-20230814090601254.htm",
+      "url": "https://cdnphoto.dantri.com.vn/gjSYkyTWqIO4xBcJC7uzM-2eWaE%3D/thumb_w/1020/2023/08/14/1108hoc-bong-toan-phan-tren-300-trieu-dong-tu-truong-dai-hoc-viet-duc-1docx-1691978581169.jpeg",
+      "title": "Khuôn viên Trường Đại học Việt Đức",
+      "name": "Trường Đại học Việt Đức",
+      "checkedAt": "2026-10-27T09:09:11.547Z",
+      "sha256": "6ef14a64420374fd16bd9fefe8793fe88a9a67c3d395a681b01419811a182d01",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0088-6ef14a644203.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "6ef14a64420374fd16bd9fefe8793fe88a9a67c3d395a681b01419811a182d01",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0090",
+      "source": "https://kenhtuyensinh.vn/truong-dai-hoc-su-pham-tphcm-diem-chuan-hau-het-cac-nganh-deu-tang",
+      "url": "https://media.kenhtuyensinh.vn/images/cms/2024/08/dai-hoc-su-pham-tphcm.jpg",
+      "title": "Trường Đại học Sư phạm TP.HCM",
+      "name": "Trường Đại học Sư phạm TP.HCM",
+      "checkedAt": "2026-10-27T09:09:12.480Z",
+      "sha256": "47f3357aeadff3d6fd34dae8516651baefdf620155c47e5b448e371a6ad37df0",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0090-47f3357aeadf.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "47f3357aeadff3d6fd34dae8516651baefdf620155c47e5b448e371a6ad37df0",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0091",
+      "source": "https://thuvienphapluat.vn/hoi-dap-phap-luat/ma-truong-dai-hoc-su-pham-the-duc-the-thao-tp-hcm-la-gi-138057801.html",
+      "url": "https://cdn.thuvienphapluat.vn/uploads/Hoidapphapluat/2025/LNMT/Thang_7/250724/dhsp_tdtt.jpg",
+      "title": "Ho Chi Minh City University of Sport Education Campus",
+      "name": "Trường Đại học Sư phạm Thể dục Thể thao TP.HCM",
+      "checkedAt": "2026-10-27T09:09:12.831Z",
+      "sha256": "ef1c161eca557a8a4ea12752ed086fe0031b521f1caa5db7928e8b1584ff8a64",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0091-ef1c161eca55.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "rejected",
+        "subject": "POSTER_OR_WRONG_BRANCH",
+        "sha256": "ef1c161eca557a8a4ea12752ed086fe0031b521f1caa5db7928e8b1584ff8a64",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0092",
+      "source": "https://ush.edu.vn/tin-nha-truong/truong-dai-hoc-the-duc-the-thao-tp-ho-chi-minh-trien-khai-nghi-quyet-so-71-nq-tw-cua-bo-chinh-tri-ve-dot-pha-phat-trien-giao-duc-va-dao-tao-1316.html",
+      "url": "https://ush.edu.vn/uploads/news/2025_09/image-20250916095844-1.png",
+      "title": "Ho Chi Minh City University of Sports and Physical Education Entrance",
+      "name": "Trường Đại học Thể dục Thể thao TP.HCM",
+      "checkedAt": "2026-10-27T09:09:13.250Z",
+      "sha256": "c1b2ace48b4bad8bf0b6e6d95262aff669ce48b43721c6311678d4552b8e04d7",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0092-c1b2ace48b4b.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c1b2ace48b4bad8bf0b6e6d95262aff669ce48b43721c6311678d4552b8e04d7",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0093",
+      "source": "https://giaoduc.net.vn/kiem-diem-xu-ly-trach-nhiem-nhieu-lanh-dao-truong-dh-san-khau-dien-anh-tphcm-post226719.gd",
+      "url": "https://cdn.giaoduc.net.vn/images/4567b617dad583be1e7afcde73e8465c8451b887392b2aef8920983d3c7d79b2326b16da786b7188604037a2486e6ce7cc2cc1553e60b2837054b68d6fc21b28/truongdhskdatphcm-931.jpg",
+      "title": "Theatre and Cinema University Entrance",
+      "name": "Trường Đại học Sân khấu - Điện ảnh TP.HCM",
+      "checkedAt": "2026-10-27T09:09:13.417Z",
+      "sha256": "9407000c97fb8437c1eb8ecdbc7952987ccb86f56dd854fd8c531af5956ac797",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0093-9407000c97fb.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "9407000c97fb8437c1eb8ecdbc7952987ccb86f56dd854fd8c531af5956ac797",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0094",
+      "source": "https://giaoduc.net.vn/hoc-vien-hang-khong-viet-nam-co-nam-tuyen-vuot-co-nam-tuyen-khong-du-chi-tieu-post239066.gd",
+      "url": "https://cdn.giaoduc.net.vn/images/4567b617dad583be1e7afcde73e8465cfe052134a4da61ddd2c5c70d62909233f899838d8ea042b763c2dd7cc199bd3789e9fa383722c9ec6fc307cd7f433ea007495698083104fe67efe1162c910ebfbcbe7aa4feb7aa9ee2bfa95f756e428e98fb35f3d23cd60eebecc9d65d4db0ae/z4853803996212-64df750c3b203984481bc3c425cab319-551.jpg",
+      "title": "Vietnam Aviation Academy Entrance",
+      "name": "Học viện Hàng không Việt Nam",
+      "checkedAt": "2026-10-27T09:09:13.790Z",
+      "sha256": "c3c60cc810146c3aaa7ce088c5fb02e2ae2eac69117fed429df4775175afd94d",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0094-c3c60cc81014.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c3c60cc810146c3aaa7ce088c5fb02e2ae2eac69117fed429df4775175afd94d",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0095",
+      "source": "https://ihoc.vn/ho-chi-minh/quan-1/hoc-vien-cong-nghe-buu-chinh-vien-thong-tphcm-5387.html",
+      "url": "https://data.ihoc.vn/ihoc-bucket/2023/07/hoc-vien-cong-nghe-buu-chinh-vien-thong-tphcm.jpg",
+      "title": "Entrance to PTIT Ho Chi Minh City",
+      "name": "Học viện Công nghệ Bưu chính Viễn thông - Cơ sở TP.HCM",
+      "checkedAt": "2026-10-27T09:09:14.053Z",
+      "sha256": "8317c569dc8f5c257ff077b7eb2ba5a774345f8f6de985ddecdf99b6000b1470",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0095-8317c569dc8f.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "8317c569dc8f5c257ff077b7eb2ba5a774345f8f6de985ddecdf99b6000b1470",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0096",
+      "source": "https://edu2review.com/reviews/co-gi-dac-sac-ben-trong-harvard-viet-nam---co-so-ii-thanh-pho-ho-chi-minh-2568.html",
+      "url": "https://edu2review.com/storage/article-images/2016/12/2568/1920x1292_488c6ebe-4edc-4ad7-82a1-c43350f16b6b.jpg",
+      "title": "Foreign Trade University Campus II Entrance",
+      "name": "Trường Đại học Ngoại thương - Cơ sở II",
+      "checkedAt": "2026-10-27T09:09:14.218Z",
+      "sha256": "aee65a55d97c52d93bdc0cae05eeb5b5601ac1659132b07d317d367a9fca6b3a",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0096-aee65a55d97c.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "aee65a55d97c52d93bdc0cae05eeb5b5601ac1659132b07d317d367a9fca6b3a",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0098",
+      "source": "https://leaderbook.com/university/nhac-vien-tphcm-nvs",
+      "url": "https://edus3.leaderbook.com/prod/upload/img/6566e89ce10b2a0052ef4a8f-thumbnail-nhac-vien-tp-ho-chi-minh.webp",
+      "title": "HCMC Conservatory of Music Building",
+      "name": "Nhạc viện TP.HCM",
+      "checkedAt": "2026-10-27T09:09:14.768Z",
+      "sha256": "b1aef4a07e20ce13ed0774ca5ad81767e1642a4fcfae702b57038cc5cfce7aed",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0098-b1aef4a07e20.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "b1aef4a07e20ce13ed0774ca5ad81767e1642a4fcfae702b57038cc5cfce7aed",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0099",
+      "source": "https://tphcm.chinhphu.vn/truong-dai-hoc-quan-ly-va-cong-nghe-tphcm-khai-giang-nam-hoc-dau-tien-101221008223151719.htm",
+      "url": "https://tphcm.cdnchinhphu.vn/zoom/700_438/334895287454388224/2022/10/8/dai-hoc-umt-4-16652423463321825534220-58-0-756-1116-crop-1665242360737102532328.jpg",
+      "title": "UMT Ho Chi Minh City Campus Entrance",
+      "name": "Trường Đại học Quản lý và Công nghệ TP.HCM",
+      "checkedAt": "2026-10-27T09:10:08.398Z",
+      "sha256": "213568c7dd2a6183c0061608b1f01d6c2ce28f63aa90e46000b29a1e9a123a8a",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0099-213568c7dd2a.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "213568c7dd2a6183c0061608b1f01d6c2ce28f63aa90e46000b29a1e9a123a8a",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0100",
+      "source": "https://thanhnien.vn/nam-2025-truong-dai-hoc-thu-dau-mot-tuyen-sinh-40-nganh-dao-tao-185250704170940343.htm",
+      "url": "https://images2.thanhnien.vn/zoom/1200_630/528068263637045248/2025/7/4/avatar-17516236069191717880179-155-0-835-1298-crop-175162371666598684558.jpg",
+      "title": "Thu Dau Mot University Campus Entrance",
+      "name": "Trường Đại học Thủ Dầu Một",
+      "checkedAt": "2026-10-27T09:10:09.319Z",
+      "sha256": "9f3695085fe303de01cb48d229b3500b8cc742310b04b62bee165c6cd0a77eb7",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0100-9f3695085fe3.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "9f3695085fe303de01cb48d229b3500b8cc742310b04b62bee165c6cd0a77eb7",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0101",
+      "source": "https://www.bdu.edu.vn/tin-tuc-su-kien/tu-hao-thuong-hieu-truong-dai-hoc-binh-duong-961.html",
+      "url": "https://www.bdu.edu.vn/uploads/news/2021_09/z2783270524526_430d9a90fd6b5b75ac05d804b68b3bea.jpg",
+      "title": "Bình Dương University Campus Entrance",
+      "name": "Trường Đại học Bình Dương",
+      "checkedAt": "2026-10-27T09:10:10.223Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "HTTP 404"
+    },
+    {
+      "id": "HCM-NEW-0102",
+      "source": "https://tuoitrethudo.vn/dai-hoc-quoc-te-mien-dong-ngoi-truong-ly-tuong-thoi-40-143878.html",
+      "url": "https://cdn.tuoitrethudo.vn/stores/news_dataimages/phamhuonggiang/082020/28/10/0011_Quan_cYnh_chung.jpg?rt=20200828155232",
+      "title": "Eastern International University Entrance",
+      "name": "Trường Đại học Quốc tế Miền Đông",
+      "checkedAt": "2026-10-27T09:10:10.283Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "HTTP 410"
+    },
+    {
+      "id": "HCM-NEW-0104",
+      "source": "https://reviewedu.net/school/truong-dai-hoc-dau-khi-viet-nam-pvu",
+      "url": "https://reviewedu.net/wp-content/uploads/2021/08/Truong-dai-hoc-Dau-khi-Viet-Nam-3.jpg",
+      "title": "PetroVietnam University Entrance",
+      "name": "Trường Đại học Dầu khí Việt Nam",
+      "checkedAt": "2026-10-27T09:10:10.704Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "fetch failed"
+    },
+    {
+      "id": "HCM-NEW-0105",
+      "source": "https://caothang.edu.vn/Gioi-thieu-Truong-CDKT-Cao-Thang.html",
+      "url": "https://caothang.edu.vn/uploads/images/gioi_thieu/Cong_truong_Cao_Thang.jpg",
+      "title": "Entrance of Cao Thang Technical College",
+      "name": "Trường Cao đẳng Kỹ thuật Cao Thắng",
+      "checkedAt": "2026-10-27T09:10:12.440Z",
+      "sha256": "6ce7cddd5111d4423675da00aa0a939f58d60a0f0bbd261ead98c801504f83b7",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0105-6ce7cddd5111.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "6ce7cddd5111d4423675da00aa0a939f58d60a0f0bbd261ead98c801504f83b7",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0106",
+      "source": "https://htv.vn/truong-cao-dang-kinh-te-doi-ngoai-tuyen-sinh-16-nganh-hoc-nam-2024-222124327.htm",
+      "url": "https://htv.mediacdn.vn/Images/NEWZ2024/JUL/20/1130/THONG%20TIN%20TUYEN%20SINH%20NHAN%20HO%20SO.jpg1.jpg",
+      "title": "Trường Cao đẳng Kinh tế Đối ngoại Entrance",
+      "name": "Trường Cao đẳng Kinh tế Đối ngoại",
+      "checkedAt": "2026-10-27T09:10:12.564Z",
+      "sha256": "231ba74cf2367591af2a2bcbfc83af442a78515d68fb35b0ba7998b726089eb8",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0106-231ba74cf236.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "231ba74cf2367591af2a2bcbfc83af442a78515d68fb35b0ba7998b726089eb8",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0107",
+      "source": "https://tuyensinhhuongnghiep.vn/diem-chuan-truong-cao-dang-cong-nghe-thu-duc.htm",
+      "url": "https://tuyensinhhuongnghiep.vn/upload/images/2023/05/11/cao-dang-cong-nghe-thu-duc.jpg",
+      "title": "Thu Duc College of Technology Campus",
+      "name": "Trường Cao đẳng Công nghệ Thủ Đức",
+      "checkedAt": "2026-10-27T09:10:13.346Z",
+      "sha256": "7ebbe63ae0dd729c790841e0d534b8d2f8637cb483f847d585f4b61dd494f414",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0107-7ebbe63ae0dd.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "7ebbe63ae0dd729c790841e0d534b8d2f8637cb483f847d585f4b61dd494f414",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0108",
+      "source": "https://tapchitoaan.vn/truong-cao-dang-cong-thuong-thanh-pho-ho-chi-minh8508.html",
+      "url": "https://cdn.tapchitoaan.vn/media/images/HINH%20%E1%BA%A2NH.jpg",
+      "title": "Ho Chi Minh City College of Industry and Trade Campus",
+      "name": "Trường Cao đẳng Công thương TP.HCM",
+      "checkedAt": "2026-10-27T09:10:13.850Z",
+      "sha256": "fa2d7bf1ec5d20e0657d805a9532e770984b36a420f8887a4b11794efe8a59b9",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0108-fa2d7bf1ec5d.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "fa2d7bf1ec5d20e0657d805a9532e770984b36a420f8887a4b11794efe8a59b9",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0109",
+      "source": "https://tuyensinhhuongnghiep.vn/diem-chuan-truong-cao-dang-ly-tu-trong-thanh-pho-ho-chi-minh.htm",
+      "url": "https://tuyensinhhuongnghiep.vn/upload/images/2023/05/11/cd-ly-tu-trong.jpg",
+      "title": "Ly Tự Trọng College Entrance",
+      "name": "Trường Cao đẳng Lý Tự Trọng TP.HCM",
+      "checkedAt": "2026-10-27T09:10:14.477Z",
+      "sha256": "c38bc0020ecdcf6629ed61edbf1a46296603db305ed89fad7af6eb4bbae9ed8b",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0109-c38bc0020ecd.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c38bc0020ecdcf6629ed61edbf1a46296603db305ed89fad7af6eb4bbae9ed8b",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0111",
+      "source": "https://saigoneer.com/saigon-news/14057-photos-the-retail-section-of-vietnam-s-tallest-building%2C-landmark-81%2C-is-now-open",
+      "url": "https://media.urbanistnetwork.com/saigoneer/article-images/2018/07/Vincom/DSC04798b.jpg",
+      "title": "Vincom Center Entrance at Landmark 81",
+      "name": "Vincom Center Landmark 81",
+      "checkedAt": "2026-10-27T09:11:11.802Z",
+      "sha256": "c397ee73bbf4abd2c7d687142bd38ff4cbb15cf69aeeac00e40ac4d324d110d5",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0111-c397ee73bbf4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c397ee73bbf4abd2c7d687142bd38ff4cbb15cf69aeeac00e40ac4d324d110d5",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0112",
+      "source": "https://www.greensm.com/vn-vi/news/vincom-thao-dien",
+      "url": "https://cdn.xanhsm.com/2025/01/9d755614-vincom-thao-dien-thumb.jpg",
+      "title": "Vincom Mega Mall Thảo Điền Aerial Facade",
+      "name": "Vincom Mega Mall Thảo Điền",
+      "checkedAt": "2026-10-27T09:11:12.552Z",
+      "sha256": "c3412e053f7fb550c157f4184ff6a03951eb627dfdfa0842436dd719a24c6cf2",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0112-c3412e053f7f.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c3412e053f7fb550c157f4184ff6a03951eb627dfdfa0842436dd719a24c6cf2",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0113",
+      "source": "https://vtcnews.vn/dem-nguoc-toi-ngay-vincom-mega-mall-grand-park-chinh-thuc-khai-truong-ar884178.html",
+      "url": "https://cdn-i.vtcnews.vn/resize/1200x900/upload/2024/07/19/a1-1-09004714.jpg",
+      "title": "Vincom Mega Mall Grand Park Facade",
+      "name": "Vincom Mega Mall Grand Park",
+      "checkedAt": "2026-10-27T09:11:13.169Z",
+      "sha256": "a094635782d865def0e8cb4e20eee9ec45c5df3ea83a51c583d2e726558d2121",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0113-a094635782d8.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "a094635782d865def0e8cb4e20eee9ec45c5df3ea83a51c583d2e726558d2121",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0114",
+      "source": "https://huttons.com.vn/en/20-dia-diem-vui-choi-tai-thanh-pho-thu-duc-10838",
+      "url": "https://huttons.com.vn/wp-content/uploads/2024/07/vincom-plaza-thu-duc.jpg",
+      "title": "Vincom Plaza Thu Duc",
+      "name": "Vincom Plaza Thủ Đức",
+      "checkedAt": "2026-10-27T09:11:15.331Z",
+      "sha256": "226d48fa6255591bea28e11caed1a65e6be090092857181f45cebb2803f7f8ae",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0114-226d48fa6255.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "226d48fa6255591bea28e11caed1a65e6be090092857181f45cebb2803f7f8ae",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0115",
+      "source": "https://vincom.com.vn/lien-he",
+      "url": "https://statics.vincom.com.vn/containers/vincom_tttm/anh_thumbnail/VCP-Quang-Trung.JPG/3d2f5b4fcf4d8a2b3b72bfdf12773f3f.webp",
+      "title": "Vincom Plaza Quang Trung",
+      "name": "Vincom Plaza Quang Trung",
+      "checkedAt": "2026-10-27T09:11:15.781Z",
+      "sha256": "768d5448ad8ef4d20579645a10456ec871b548395cc9ebb7fc0b26d589133eea",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0115-768d5448ad8e.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "768d5448ad8ef4d20579645a10456ec871b548395cc9ebb7fc0b26d589133eea",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0116",
+      "source": "https://congvienhoangvanthu.com/vincom-plaza-cong-hoa/",
+      "url": "https://congvienhoangvanthu.com/wp-content/uploads/2025/02/Vincom-Plaza-Cong-Hoa-la-gi-Tong-quan-ve-trung-tam-thuong-mai.jpg",
+      "title": "Vincom Plaza Cộng Hòa Facade",
+      "name": "Vincom Plaza Cộng Hòa",
+      "checkedAt": "2026-10-27T09:11:16.152Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "HTTP 404"
+    },
+    {
+      "id": "HCM-NEW-0117",
+      "source": "https://vincom.com.vn/trung-tam-thuong-mai",
+      "url": "https://statics.vincom.com.vn/containers/vincom_tttm/anh_thumbnail/VCP-Phan-Van-Tri.JPG/ceb003e680884b1c0e5e9e51b5b89336.webp",
+      "title": "Vincom Plaza Phan Văn Trị Facade",
+      "name": "Vincom Plaza Phan Văn Trị",
+      "checkedAt": "2026-10-27T09:11:16.506Z",
+      "sha256": "f5d75c2c5c86486fca67d94ac72e52bcf69cd623add172ccae9f35acda01c22c",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0117-f5d75c2c5c86.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "f5d75c2c5c86486fca67d94ac72e52bcf69cd623add172ccae9f35acda01c22c",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0118",
+      "source": "https://vincom.com.vn/lien-he",
+      "url": "https://statics.vincom.com.vn/containers/vincom_tttm/anh_thumbnail/Vincom-Plaza-Le-Van-Viet.jpeg/fbf5e968e3cd0fb6eed17dccc083defa.webp",
+      "title": "Vincom Plaza Lê Văn Việt Facade",
+      "name": "Vincom Plaza Lê Văn Việt",
+      "checkedAt": "2026-10-27T09:11:16.693Z",
+      "sha256": "d71ac034c1f416068180d2759067d986ed745811ad84b3ad00d3795826b68ccf",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0118-d71ac034c1f4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "d71ac034c1f416068180d2759067d986ed745811ad84b3ad00d3795826b68ccf",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0119",
+      "source": "https://guidebold.com/guide/vincom-plaza-saigon-res-binh-thanh-tp-hcm/",
+      "url": "https://i.imgur.com/RPzoo5B.jpg",
+      "title": "Vincom Plaza Saigonres Mall Front",
+      "name": "Vincom Plaza SaigonRes",
+      "checkedAt": "2026-10-27T09:11:16.985Z",
+      "sha256": "9425a7e6def093fa704b0699526ab72b6983a4237e335f201622065370ec920a",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0119-9425a7e6def0.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "9425a7e6def093fa704b0699526ab72b6983a4237e335f201622065370ec920a",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0120",
+      "source": "https://vincom.com.vn/trend/trung-tam-thuong-mai",
+      "url": "https://statics.vincom.com.vn/xu-huong/tttm/Vincom-Nam-Long-trung-tam-thuong-mai.jpg",
+      "title": "Vincom+ Nam Long Grand Opening",
+      "name": "Vincom+ Nam Long",
+      "checkedAt": "2026-10-27T09:11:18.453Z",
+      "sha256": "62ba5f3c71976df299694e776f5c9e118658182695186adfac4786d251979da8",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0120-62ba5f3c7197.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "62ba5f3c71976df299694e776f5c9e118658182695186adfac4786d251979da8",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0121",
+      "source": "https://vincom.com.vn/lien-he",
+      "url": "https://statics.vincom.com.vn/containers/vincom_tttm/anh_thumbnail/VC--Quan-2.jpg/14575ae84c065360e273518c9afa1c89.webp",
+      "title": "Vincom+ Quận 2 Entrance",
+      "name": "Vincom+ Quận 2",
+      "checkedAt": "2026-10-27T09:12:13.237Z",
+      "sha256": "c918e37294ca949919f15c3d29f576c788a60da9c6bf396b3373cbeee8d8b645",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0121-c918e37294ca.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c918e37294ca949919f15c3d29f576c788a60da9c6bf396b3373cbeee8d8b645",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0122",
+      "source": "https://toplist.vn/top-list/trung-tam-thuong-mai-noi-tieng-nhat-quan-tan-binh-36978.htm",
+      "url": "https://toplist.vn/images/800px/tttm-vincom-sky-center-362936.jpg",
+      "title": "Vincom+ Sky Center Shopping Mall",
+      "name": "Vincom+ Sky Center",
+      "checkedAt": "2026-10-27T09:12:13.576Z",
+      "sha256": "d274177be92c4706f420025d6ba83facad718a7b7e54861fe3f4fe86a4f0c090",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0122-d274177be92c.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "d274177be92c4706f420025d6ba83facad718a7b7e54861fe3f4fe86a4f0c090",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0123",
+      "source": "https://www.obayashi.co.jp/en/works/detail/work_1752.html",
+      "url": "https://www.obayashi.co.jp/works/upload/img/1752_01.jpg",
+      "title": "AEON Mall Tan Phu Celadon Facade",
+      "name": "AEON MALL Tân Phú Celadon",
+      "checkedAt": "2026-10-27T09:12:13.640Z",
+      "sha256": "ca7082d2020299fb207720a80adcc595ce993abc3daffe8b945d010761ffbaec",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0123-ca7082d20202.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "ca7082d2020299fb207720a80adcc595ce993abc3daffe8b945d010761ffbaec",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0124",
+      "source": "https://onehousing.vn/blog/nha-mat-pho-tai-duong-ten-lua-quan-binh-tan-co-gia-ban-bao-nhieu-n17t",
+      "url": "https://cdn-merchant.vinid.net/images/gallery/omre_trang_tin_tuc/image_upload_1702009681_2.jpg",
+      "title": "AEON Mall Bình Tân at Dusk",
+      "name": "AEON MALL Bình Tân",
+      "checkedAt": "2026-10-27T09:12:15.449Z",
+      "sha256": "677499635823ac34b503f36c04ad23a90171b26bfb3748b7d9ff3c3dce3ec319",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0124-677499635823.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "677499635823ac34b503f36c04ad23a90171b26bfb3748b7d9ff3c3dce3ec319",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0130",
+      "source": "https://www.behance.net/gallery/120647889/VAN-HANH-MALL-BD-CONSULTANT",
+      "url": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3b197c120647889.60b6094ac706f.jpg",
+      "title": "Vạn Hạnh Mall at Night",
+      "name": "Vạn Hạnh Mall",
+      "checkedAt": "2026-10-27T09:12:16.200Z",
+      "sha256": "65053e10684cb21b25f79929613d1f769abe0de8e011b56783efe965327964fc",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0130-65053e10684c.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "65053e10684cb21b25f79929613d1f769abe0de8e011b56783efe965327964fc",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0131",
+      "source": "https://blog.rever.vn/kham-pha-tttm-gigamall-hot-nhat-quan-thu-duc-vua-duoc-khai-truong",
+      "url": "https://offer.rever.vn/hubfs/gigamall_5-min.jpg",
+      "title": "Gigamall Shopping and Entertainment Complex",
+      "name": "Gigamall Thủ Đức",
+      "checkedAt": "2026-10-27T09:12:16.408Z",
+      "sha256": "0f4ae3235148db8493c34e9f9538ef243708c016701e21c6b3901e6ee5192eed",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0131-0f4ae3235148.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "0f4ae3235148db8493c34e9f9538ef243708c016701e21c6b3901e6ee5192eed",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0132",
+      "source": "https://www.dactin.vn/en/du-an/khu-phuc-hop/estella-heights.html",
+      "url": "https://www.dactin.vn/en/images/Estella-Place-20.jpg",
+      "title": "Estella Place Night Facade",
+      "name": "Estella Place",
+      "checkedAt": "2026-10-27T09:12:17.875Z",
+      "sha256": "2061741d52bd944f34c658c8f564833ac3b7efd4eb1587f8450fb86c0876d926",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0132-2061741d52bd.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "2061741d52bd944f34c658c8f564833ac3b7efd4eb1587f8450fb86c0876d926",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0133",
+      "source": "https://getoccupi.com/malls/thiso-mall",
+      "url": "https://static.getoccupi.com/uploads/mall_photo/photo/74242/lg__Emart_DSC6419_7L3T7HK.jpeg",
+      "title": "Thiso Mall Entrance Plaza",
+      "name": "THISO Mall Sala",
+      "checkedAt": "2026-10-27T09:12:18.157Z",
+      "sha256": "2d47e075d5dcaf1585825c9e2c21d409ba5c71b76987567e8087a9457b062379",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0133-2d47e075d5dc.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "rejected",
+        "subject": "POSTER_OR_WRONG_BRANCH",
+        "sha256": "2d47e075d5dcaf1585825c9e2c21d409ba5c71b76987567e8087a9457b062379",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0134",
+      "source": "https://thanhnien.vn/trung-tam-mua-sam-khach-san-union-square-cua-van-thinh-phat-kinh-doanh-the-nao-1851520253.htm",
+      "url": "https://thanhnien.mediacdn.vn/Uploaded/trantam/2022_11_11/img-20221111-130227-3391.jpg",
+      "title": "Union Square Facade in Ho Chi Minh City",
+      "name": "Union Square Saigon",
+      "checkedAt": "2026-10-27T09:12:18.858Z",
+      "sha256": "e5be206b4c77c509f86bb201329bb849e10c5d0ce350b3afd09fd295732f79c9",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0134-e5be206b4c77.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "e5be206b4c77c509f86bb201329bb849e10c5d0ce350b3afd09fd295732f79c9",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0135",
+      "source": "https://orrohome.vn/diem-hen-cuoi-tuan-tai-nowzone-san-deal-chill-rinh-qua-cuc-hot",
+      "url": "https://bizweb.dktcdn.net/100/404/535/files/nowzone.jpg?v=1775208800476",
+      "title": "Nowzone Fashion Mall Exterior",
+      "name": "Nowzone Fashion Mall",
+      "checkedAt": "2026-10-27T09:12:18.996Z",
+      "sha256": "cbc2e2c250ea6805fa3e45bc914587de05001b7457d16b0ae5b3fe4bc742a37d",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0135-cbc2e2c250ea.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "cbc2e2c250ea6805fa3e45bc914587de05001b7457d16b0ae5b3fe4bc742a37d",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0136",
+      "source": "https://www.xanhsm.com/news/hung-vuong-plaza-quan-5",
+      "url": "https://cdn.xanhsm.com/2025/03/422784a0-hung-vuong-plaza-thumb.jpg",
+      "title": "Hùng Vương Plaza Facade",
+      "name": "Hùng Vương Plaza",
+      "checkedAt": "2026-10-27T09:13:18.058Z",
+      "sha256": "685d0479c077aeca7c65e174979add393e533d8ea6cc840732379f8d123aa245",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0136-685d0479c077.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "685d0479c077aeca7c65e174979add393e533d8ea6cc840732379f8d123aa245",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0137",
+      "source": "https://nhadat.cafeland.vn/tin-nha-dat/top-10-trung-tam-thuong-mai-lon-nhat-tphcm-383.html",
+      "url": "https://static1.cafeland.vn/cafelandnew/hinh-anh/2022/08/29/200/blognhadat12/saigongardentphcm.jpg",
+      "title": "Saigon Garden at Night",
+      "name": "Saigon Garden",
+      "checkedAt": "2026-10-27T09:13:18.733Z",
+      "sha256": "9dcc83a5ecd2c569fa2aad2364055cba83eca7f99220c14957335b79e99c6157",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0137-9dcc83a5ecd2.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "9dcc83a5ecd2c569fa2aad2364055cba83eca7f99220c14957335b79e99c6157",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0138",
+      "source": "https://triphunter.vn/places/thanh-pho-ho-chi-minh/items/saigon-outcast",
+      "url": "https://triphunter.vn/media/W1siZiIsIjIwMTcvMTAvMDIvM2FwendsZG5veF9fRnJlbmVteV8uanBnIl1d/%28Frenemy%29.jpg?sha=280d3beb35a774ea",
+      "title": "Graffiti Art at Saigon Outcast",
+      "name": "Saigon Outcast",
+      "checkedAt": "2026-10-27T09:13:18.869Z",
+      "sha256": "74224d0ae9600ecdaf183dd820d09f79efca4ccde49b98b05b3e55c66f517f6b",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0138-74224d0ae960.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "74224d0ae9600ecdaf183dd820d09f79efca4ccde49b98b05b3e55c66f517f6b",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0139",
+      "source": "https://coopxtra.net/gioi-thieu/",
+      "url": "https://coopxtra.net/asset/uploads/2025/04/z6469038336045_d0a1c6bd4de6cebb2bc4e825ab9f33d1-2048x946.jpg",
+      "title": "Co.opXtra Central Premium Complex",
+      "name": "Central Premium Mall",
+      "checkedAt": "2026-10-27T09:13:19.317Z",
+      "sha256": "110c7a306ebe3e171d9bed5a8ece0b613a50c69fc9d379f78043359dfd6e1593",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0139-110c7a306ebe.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "110c7a306ebe3e171d9bed5a8ece0b613a50c69fc9d379f78043359dfd6e1593",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0140",
+      "source": "https://vanphongchothue.vn/van-phong-cho-thue/peal-plaza-cho-thue-van-phong-quan-binh-thanh/",
+      "url": "https://vanphongchothue.vn/uploads/sanpham/pearl-plaza-jpg-20170817090433QEU9loMw80.webp",
+      "title": "Pearl Plaza Office Tower",
+      "name": "Pearl Plaza",
+      "checkedAt": "2026-10-27T09:13:20.084Z",
+      "sha256": "0d2c21dcc515f81eeb371df595209e2967493f1fcfe984c7403c1cd0de06a153",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0140-0d2c21dcc515.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "0d2c21dcc515f81eeb371df595209e2967493f1fcfe984c7403c1cd0de06a153",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0141",
+      "source": "https://4travel.jp/overseas/area/asia/vietnam/ho_chi_minh/department",
+      "url": "https://cdn.4travel.jp/img/thumbnails/imk/tips_pict/11/15/59/650x450_11155923.jpg?updated_at=1377432798",
+      "title": "Parkson Saigon Tourist Plaza in Ho Chi Minh City",
+      "name": "Parkson Saigon Tourist Plaza",
+      "checkedAt": "2026-10-27T09:13:20.255Z",
+      "sha256": "583bfd1f3e3f6cc86f6b5a12c97aa195863a33c2c9f7849a9368edb4430fdd62",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0141-583bfd1f3e3f.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "583bfd1f3e3f6cc86f6b5a12c97aa195863a33c2c9f7849a9368edb4430fdd62",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0142",
+      "source": "https://scid.vn/bat-dong-san/sensecity-pham-van-dong/",
+      "url": "https://scid.vn/wp-content/uploads/2022/09/z3726435866105_659eb9a5cee904da37883a5b82de074e.jpg",
+      "title": "Sense City Phạm Văn Đồng Mall at Night",
+      "name": "Sense City Phạm Văn Đồng",
+      "checkedAt": "2026-10-27T09:13:20.918Z",
+      "sha256": "055962574687b4fc847c582a8d28819791103f4c055a3ede08c1feff21a7d3cc",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0142-055962574687.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "055962574687b4fc847c582a8d28819791103f4c055a3ede08c1feff21a7d3cc",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-1439",
+      "source": "https://dantri.com.vn/kinh-doanh/to-hop-thuong-mai-dich-vu-thiso-mall-sala-diem-den-all-in-one-tai-thu-thiem-20230105142546557.htm",
+      "url": "https://icdn.dantri.com.vn/thumb_w/1020/2023/01/05/mall-saladocx-1672903308069.jpeg",
+      "title": "Thiso Mall Sala Exterior",
+      "name": "SALA Shopping Mall – Thiso Mall",
+      "checkedAt": "2026-10-27T09:13:21.157Z",
+      "sha256": "534eb4174b4673494ff8672c2ac038b7b22cb758ea756c463ea8932acd2f8521",
+      "image": "asset/place-photo-research/web-photos/hcm-1439-534eb4174b46.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "534eb4174b4673494ff8672c2ac038b7b22cb758ea756c463ea8932acd2f8521",
+        "at": "2026-10-27T09:15:46.482Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0091",
+      "source": "https://www.diendantuyensinh24h.com/dai-hoc-su-pham-the-duc-the-thao-tp-hcm-tuyen-sinh/",
+      "url": "https://www.diendantuyensinh24h.com/uploads/photos/shares/dai-hoc/dai-hoc-khu-vuc-ho-chi-minh/dai-hoc-su-pham-the-duc-the-thao-tphcm/dai-hoc-su-pham-the-duc-the-thao-tphcm1.jpg",
+      "title": "Ho Chi Minh City University of Sports and Physical Education Entrance",
+      "name": "Trường Đại học Sư phạm Thể dục Thể thao TP.HCM",
+      "checkedAt": "2026-10-27T09:15:39.336Z",
+      "sha256": "e0234127f90a8dc94375ceb24cede6f8411295adcbab3f7091499da9182ad06c",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0091-e0234127f90a.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "e0234127f90a8dc94375ceb24cede6f8411295adcbab3f7091499da9182ad06c",
+        "at": "2026-10-27T09:19:11.261Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0102",
+      "source": "https://leaderbook.com/university/dai-hoc-quoc-te-mien-dong-eiu",
+      "url": "https://leaderbook.com/_next/image?q=75&url=https%3A%2F%2Fedus3.leaderbook.com%2Fprod%2Fupload%2Fimg%2F6566e8abe10b2a0052ef4bc6-thumbnail-dai-hoc-quoc-te-mien-dong.webp&w=3840",
+      "title": "Eastern International University Entrance",
+      "name": "Trường Đại học Quốc tế Miền Đông",
+      "checkedAt": "2026-10-27T09:15:40.410Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "fetch failed"
+    },
+    {
+      "id": "HCM-NEW-0104",
+      "source": "https://huongnghiep.hocmai.vn/de-an/truong-dai-hoc-dau-khi-viet-nam",
+      "url": "https://diemthi.tuyensinh247.com/images/simages/PVU.jpg",
+      "title": "PetroVietnam University Main Building",
+      "name": "Trường Đại học Dầu khí Việt Nam",
+      "checkedAt": "2026-10-27T09:15:40.717Z",
+      "sha256": "b2517d0d57ea0a79bc433d1cc9f4f28774334b34fd61af6fb80f1f204ff814a4",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0104-b2517d0d57ea.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "b2517d0d57ea0a79bc433d1cc9f4f28774334b34fd61af6fb80f1f204ff814a4",
+        "at": "2026-10-27T09:19:11.262Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0133",
+      "source": "https://minhshop.vn/bai-viet/top-15-trung-tam-thuong-mai-lon-nhat-sai-gon-hien-nay/1226",
+      "url": "https://assets.storims.com/storims_cdn/storims/uploads/d0facd5cfd11804b82d88f9c70654537.jpg",
+      "title": "Thiso Mall Sala Shopping Center",
+      "name": "THISO Mall Sala",
+      "checkedAt": "2026-10-27T09:15:40.998Z",
+      "sha256": "f1dce5750544f4bbd93c80ed8dd8cc3614d9aecb15c6c54da9a376537e88c8c7",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0133-f1dce5750544.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "rejected",
+        "subject": "WRONG_BRANCH",
+        "sha256": "f1dce5750544f4bbd93c80ed8dd8cc3614d9aecb15c6c54da9a376537e88c8c7",
+        "at": "2026-10-27T09:19:11.262Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0101",
+      "source": "https://www.vietnam.vn/en/diem-chuan-truong-dai-hoc-binh-duong-2025",
+      "url": "https://vstatic.vietnam.vn/vietnam/resource/IMAGE/2025/7/21/c7921f4856bc4c9e84d8cdf70cdf1570",
+      "title": "Binh Duong University Entrance",
+      "name": "Trường Đại học Bình Dương",
+      "checkedAt": "2026-10-27T09:15:42.904Z",
+      "sha256": "f5f7b8254cc0b6bae271ce56f2d4bbbb5fa878f397cf255de986c2532908012b",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0101-f5f7b8254cc0.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "f5f7b8254cc0b6bae271ce56f2d4bbbb5fa878f397cf255de986c2532908012b",
+        "at": "2026-10-27T09:19:11.262Z"
+      }
+    },
+    {
+      "id": "HCM-0067",
+      "source": "https://www.vietnamairlines.com/nl/en/plan-book/travel/travel-guide/zoo-and-botnical-gardens-hcm",
+      "url": "https://www.vietnamairlines.com/content/dam/legacy-site-assets/SEO-images/2025%20SEO/Thay%20Anh%20Traffic%20Tieng%20Anh/zoo%20and%20botanical%20gardens%20ho%20chi%20minh/a-tourist-attraction-with-fresh-air.jpeg",
+      "title": "Saigon Zoo and Botanical Gardens Entrance",
+      "name": "Thảo Cầm Viên Sài Gòn",
+      "checkedAt": "2026-10-27T09:15:43.549Z",
+      "sha256": "6827ef60c1809f744512598b3efe76221c34070554100e13a2578f92c0779adf",
+      "image": "asset/place-photo-research/web-photos/hcm-0067-6827ef60c180.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "6827ef60c1809f744512598b3efe76221c34070554100e13a2578f92c0779adf",
+        "at": "2026-10-27T09:19:11.262Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0055",
+      "source": "https://giaoduc.net.vn/tong-thu-cua-truong-dh-cong-nghe-thong-tin-dhqg-tphcm-tang-nhung-nguon-thu-tu-khcn-giam-post254065.gd",
+      "url": "https://cdn.giaoduc.net.vn/images/76e22de3e4bc56885cf25f643ff251f16b68018ff55ed30aff0f460de50a845cb47c30e6ee2325d9b33feb2896d159e2/thumb-uit.jpg",
+      "title": "University of Information Technology Campus Entrance",
+      "name": "Trường Đại học Công nghệ Thông tin - ĐHQG TP.HCM",
+      "checkedAt": "2026-10-27T09:15:44.243Z",
+      "sha256": "823801cd7ff306c3c20b2a8198c28e98154429b2ad2f579fffe505f3f0d0cdab",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0055-823801cd7ff3.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "823801cd7ff306c3c20b2a8198c28e98154429b2ad2f579fffe505f3f0d0cdab",
+        "at": "2026-10-27T09:19:11.262Z"
+      }
+    },
+    {
+      "id": "HCM-NEW-0089",
+      "source": "https://dhcsnd.edu.vn/nhung-dieu-thi-sinh-can-luu-y-khi-tham-gia-ky-thi-danh-gia-tai-truong-dai-hoc-csnd",
+      "url": "https://dhcsnd.edu.vn/upload/images/images3/images/29-6-7.png",
+      "title": "Entrance to People’s Police University",
+      "name": "Trường Đại học Cảnh sát nhân dân",
+      "checkedAt": "2026-10-27T09:21:00.625Z",
+      "sha256": "1f86b78d6385f100928b535a4e04dfad4932dccc8f1c3cc489381226b4c06e15",
+      "image": "asset/place-photo-research/web-photos/hcm-new-0089-1f86b78d6385.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "1f86b78d6385f100928b535a4e04dfad4932dccc8f1c3cc489381226b4c06e15",
+        "at": "2026-10-27T09:23:55.812Z"
+      }
+    },
+    {
+      "id": "HCM-0522",
+      "source": "https://ts10.hcm.edu.vn/thong-tin-truong-chi-tiet/590",
+      "url": "https://tracnghiem-anh.sgp1.digitaloceanspaces.com/DEMO/79/790007A2/AFiles/TinTuc/mat-tien-va-schools-binh-thoi975b77d8-6782-468a-9c4c-d26c6649264d.jpg",
+      "title": "Việt Mỹ School Entrance",
+      "name": "Tiểu học Việt Mỹ",
+      "checkedAt": "2026-10-27T09:38:42.777Z",
+      "sha256": "a1b63bceb0bbc23b0d1be130d15bb51244ea4cbd4200ddd4aead49cf39836d90",
+      "image": "asset/place-photo-research/web-photos/hcm-0522-a1b63bceb0bb.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "a1b63bceb0bbc23b0d1be130d15bb51244ea4cbd4200ddd4aead49cf39836d90",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0525",
+      "source": "https://tongdaihoidap.com/truong-tieu-hoc-tan-son-nhi-905-4-au-co-tan-phu/",
+      "url": "https://tongdaihoidap.com/wp-content/uploads/2025/04/truong-tieu-hoc-tan-son-nhi-905-4-au-co-tan-phu.webp",
+      "title": "Trường Tiểu Học Tân Sơn Nhì",
+      "name": "Tiểu học Tân Sơn Nhì",
+      "checkedAt": "2026-10-27T09:38:43.484Z",
+      "sha256": "93873df805d472fff6ace306bf2a01008095236df9b11a1a8b83ea6c4aab617f",
+      "image": "asset/place-photo-research/web-photos/hcm-0525-93873df805d4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "93873df805d472fff6ace306bf2a01008095236df9b11a1a8b83ea6c4aab617f",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0526",
+      "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-kien-tao-ics-915-nguyen-duy-trinh-phuong-binh-trung-dong-quan-2-31541.html",
+      "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-kien-tao-%28ics%29.jpg",
+      "title": "Cổng Trường Kiến Tạo ICS",
+      "name": "Tiểu học Kiến Tạo",
+      "checkedAt": "2026-10-27T09:38:43.969Z",
+      "sha256": "b163c76fefbefdeea963e0e5b011f71834d2bed6b43ca159641f0f0e29f65ad1",
+      "image": "asset/place-photo-research/web-photos/hcm-0526-b163c76fefbe.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "rejected",
+        "subject": "ARCHITECTURAL_RENDER",
+        "sha256": "b163c76fefbefdeea963e0e5b011f71834d2bed6b43ca159641f0f0e29f65ad1",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0528",
+      "source": "https://azccons.com/en/renovate-song-ngu-vung-tau-primary-school-2023/",
+      "url": "https://azccons.com/wp-content/uploads/2023/09/1-26.jpg",
+      "title": "Song Ngu Vung Tau Primary School Entrance",
+      "name": "Trường Tiểu học Song ngữ Vũng Tàu",
+      "checkedAt": "2026-10-27T09:38:44.046Z",
+      "sha256": "2d66c7d3bbaf72cf266f3d5b678cef157826e1bba4604a91e0011b7be35f917e",
+      "image": "asset/place-photo-research/web-photos/hcm-0528-2d66c7d3bbaf.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "2d66c7d3bbaf72cf266f3d5b678cef157826e1bba4604a91e0011b7be35f917e",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0534",
+      "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-tran-khanh-du-5361-tran-khanh-du-quan-1-31033.html",
+      "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-tran-khanh-du-quan-1.jpg",
+      "title": "Entrance to Trần Khánh Dư Primary School",
+      "name": "Tiểu học Trần Khánh Dư",
+      "checkedAt": "2026-10-27T09:38:44.433Z",
+      "sha256": "a3d77d96dc8ef0e3df804b7a53258467f05d826f1327582fd5a887fd43d55af5",
+      "image": "asset/place-photo-research/web-photos/hcm-0534-a3d77d96dc8e.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "a3d77d96dc8ef0e3df804b7a53258467f05d826f1327582fd5a887fd43d55af5",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0535",
+      "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-duoc-song-02-dinh-cong-trang-phuong-tan-dinh-quan-1-31043.html",
+      "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-duoc-song-quan-1.jpg",
+      "title": "Duoc Song Primary School Entrance",
+      "name": "Trường Tiểu học Đuốc Sống",
+      "checkedAt": "2026-10-27T09:38:44.485Z",
+      "sha256": "36a7a5b38dfd04d03d6944aa9b322f60068ee5b969277eeff8623afba918c262",
+      "image": "asset/place-photo-research/web-photos/hcm-0535-36a7a5b38dfd.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "36a7a5b38dfd04d03d6944aa9b322f60068ee5b969277eeff8623afba918c262",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0536",
+      "source": "https://congchungnguyenvietcuong.com/tin-tuc/thong-tin-dia-chi-truong-tieu-hoc-ket-doan-quan-1-tphcm-189-2592.html",
+      "url": "https://congchungnguyenvietcuong.com/Uploaded/Images/Original/2024/04/10/2_1004090226.jpg?v=1307289472",
+      "title": "Kết Đoàn Primary School Entrance",
+      "name": "Tiểu học Kết Đoàn",
+      "checkedAt": "2026-10-27T09:38:44.535Z",
+      "sha256": "a75e03412ff00c207c5b6dd1681cbf14d60896d152e2fca2bdd625fb6539b57d",
+      "image": "asset/place-photo-research/web-photos/hcm-0536-a75e03412ff0.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "a75e03412ff00c207c5b6dd1681cbf14d60896d152e2fca2bdd625fb6539b57d",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0537",
+      "source": "https://thuonghieucongluan.com.vn/tp-hcm-de-nghi-kiem-diem-mot-hieu-truong-lien-quan-den-lam-thu-quy-phu-huynh-a283107.html",
+      "url": "https://media.thuonghieucongluan.vn/uploads/2025/10/01/de-nghi-kiem-diem-trach-971759287029-1759292287.jpg",
+      "title": "Lê Ngọc Hân Primary School Entrance",
+      "name": "Trường Tiểu học Lê Ngọc Hân",
+      "checkedAt": "2026-10-27T09:38:45.086Z",
+      "sha256": "a92d87bbb7a60c846f3c68a28b38c0170df8da1d6bed41bec698a8aa932f0575",
+      "image": "asset/place-photo-research/web-photos/hcm-0537-a92d87bbb7a6.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "a92d87bbb7a60c846f3c68a28b38c0170df8da1d6bed41bec698a8aa932f0575",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0538",
+      "source": "https://thkhaiminh.hcm.edu.vn/",
+      "url": "https://fileth.hcm.edu.vn/uploadimages/news/2025/thkhaiminh/anh-truong-km-moi-2_1222025946.jpg?w=600",
+      "title": "Khai Minh Primary School Entrance",
+      "name": "Trường Tiểu học Khai Minh",
+      "checkedAt": "2026-10-27T09:38:45.357Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "HTTP 404"
+    },
+    {
+      "id": "HCM-0539",
+      "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-nguyen-thai-hoc-71-tran-hung-dao-phuong-cau-ong-lanh-quan-1-31036.html",
+      "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-nguyen-thai-hoc-quan-1.jpg",
+      "title": "Nguyễn Thái Học Primary School Entrance",
+      "name": "Trường Tiểu học Nguyễn Thái Học",
+      "checkedAt": "2026-10-27T09:38:45.495Z",
+      "sha256": "5dc696c084f5c68570615e721bd0dcfb66268b0c19ae32569a4ba4a5366c22a8",
+      "image": "asset/place-photo-research/web-photos/hcm-0539-5dc696c084f5.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "5dc696c084f5c68570615e721bd0dcfb66268b0c19ae32569a4ba4a5366c22a8",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0543",
+      "source": "https://iwater.vn/tin-doanh-nghiep/truong-tieu-hoc-tran-hung-dao-81-tran-dinh-xu-quan-1-31040.html",
+      "url": "https://iwater.vn/Image/Picture/New/truong-tieu-hoc-tran-hung-dao-quan-1.jpg",
+      "title": "Trần Hưng Đạo Primary School Entrance",
+      "name": "Tiểu học Trần Hưng Đạo",
+      "checkedAt": "2026-10-27T09:38:45.537Z",
+      "sha256": "581330d927894a2fb46c8482669c77b59d346523d581ab50180ff9397c8f3677",
+      "image": "asset/place-photo-research/web-photos/hcm-0543-581330d92789.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "581330d927894a2fb46c8482669c77b59d346523d581ab50180ff9397c8f3677",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0546",
+      "source": "https://toplist.vn/top-list/truong-tieu-hoc-cong-lap-tot-nhat-tp-hcm-57628.htm",
+      "url": "https://toplist.vn/images/800px/truong-tieu-hoc-luong-dinh-cua-1377036.jpg",
+      "title": "Trường Tiểu học Lương Định Của Facade",
+      "name": "Tiểu học Lương Định Của",
+      "checkedAt": "2026-10-27T09:38:45.602Z",
+      "sha256": "e74dcf18be418575a30a53b8f28d366f1ced0fc9a23cc6a856e39bd641f64358",
+      "image": "asset/place-photo-research/web-photos/hcm-0546-e74dcf18be41.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "e74dcf18be418575a30a53b8f28d366f1ced0fc9a23cc6a856e39bd641f64358",
+        "at": "2026-10-27T09:41:14.244Z"
+      }
+    },
+    {
+      "id": "HCM-0040",
+      "source": "https://phanvantravel.com/kinh-nghiem-du-lich-dia-dao-cu-chi",
+      "url": "https://bizweb.dktcdn.net/100/514/927/files/kinh-nghiem-du-lich-dia-dao-cu-chi-phan-van-travel-4.webp?v=1764841524597",
+      "title": "Củ Chi Bến Đình Tunnel Entrance",
+      "name": "Địa đạo Củ Chi",
+      "checkedAt": "2026-10-27T13:55:30.982Z",
+      "sha256": "8998831320655237d63ee68cebba3872f6dbce109f4ba89ee77511cb38bd75b5",
+      "image": "asset/place-photo-research/web-photos/hcm-0040-899883132065.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "8998831320655237d63ee68cebba3872f6dbce109f4ba89ee77511cb38bd75b5",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0056",
+      "source": "https://tienphong.vn/nhin-gan-cong-vien-se-tro-thanh-vuon-nghe-thuat-giua-trung-tam-tphcm-post1550843.tpo",
+      "url": "https://cdn.tienphong.vn/images/a6bf4f60924201126af6849ca45a3980f2f21035fb5e0e5162b126503948daf48ed912d1afc9e64d67e05acb5c71065b/2-1-8791.jpg",
+      "title": "Urban Park Stroll",
+      "name": "Công viên Bách Tùng Diệp",
+      "checkedAt": "2026-10-27T13:55:31.285Z",
+      "sha256": "ea09c53c4018da86494f055cf67a797cd61e7424bb332b2903096838f85c94ce",
+      "image": "asset/place-photo-research/web-photos/hcm-0056-ea09c53c4018.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "ea09c53c4018da86494f055cf67a797cd61e7424bb332b2903096838f85c94ce",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0002",
+      "source": "https://www.greensm.com/vn-vi/news/can-cu-vung-bung-6-xa-thu-duc",
+      "url": "https://cdn.xanhsm.com/2024/12/67558da8-can-cu-vung-bung-6-xa-3.jpg",
+      "title": "Di tích Căn cứ Vùng Bưng 6 Xã",
+      "name": "Di tích lịch sử Căn cứ Vùng Bưng Sáu Xã",
+      "checkedAt": "2026-10-27T13:55:32.250Z",
+      "sha256": "09bbe2145ad05f3114048f2e71f627b8cfcd4acf769f0ac9251d7c1ade1ac17d",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0002-09bbe2145ad0.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "09bbe2145ad05f3114048f2e71f627b8cfcd4acf769f0ac9251d7c1ade1ac17d",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0005",
+      "source": "https://www.xanhsm.com/news/bao-tang-khong-quan-phia-nam",
+      "url": "https://cdn.xanhsm.com/2024/12/222bd47f-bao-tang-khong-quan-phia-nam-2.jpg",
+      "title": "Southern Air Force Museum Entrance",
+      "name": "Bảo Tàng Không Quân Phía Nam",
+      "checkedAt": "2026-10-27T13:55:33.024Z",
+      "sha256": "e0b246393092a34052c78f6aa171856502674dc2060cfa3789310e7308902838",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0005-e0b246393092.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "e0b246393092a34052c78f6aa171856502674dc2060cfa3789310e7308902838",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0009",
+      "source": "https://giacngo.vn/chua-thanh-tam-phat-co-don-tu-diem-tin-nguong-den-dao-trang-tu-hoc-post52433.html",
+      "url": "https://image.giacngo.vn/w950/UserImages/2020/07/24/9/BTN_0048.JPG",
+      "title": "Chùa Thanh Tâm Courtyard",
+      "name": "Bát Bửu Phật Đài - Chùa Thanh Tâm (Phật Cô Đơn)",
+      "checkedAt": "2026-10-27T13:55:33.236Z",
+      "sha256": "35793c7110b0334355c54e4551dba1b1b9be7d9706abb1fe1bc714dcabd362e2",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0009-35793c7110b0.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "35793c7110b0334355c54e4551dba1b1b9be7d9706abb1fe1bc714dcabd362e2",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0011",
+      "source": "https://www.vietourist.com.vn/vn/news/thong-tin-du-lich-trong-nuoc/khu-du-lich-vam-sat-can-gio-1627.html",
+      "url": "https://www.vietourist.com.vn/public/frontend/uploads/kceditor/images/szvdvd-min.jpg",
+      "title": "Vàm Sát Mangrove Observation Tower",
+      "name": "Khu du lịch sinh thái rừng ngập mặn Vàm Sát",
+      "checkedAt": "2026-10-27T13:55:33.396Z",
+      "sha256": "2d39c117240725cde983041aa49c212d461ff7080ba7b66226fc8839518178a4",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0011-2d39c1172407.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "2d39c117240725cde983041aa49c212d461ff7080ba7b66226fc8839518178a4",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0018",
+      "source": "https://tuoitre.vn/gem-center-trung-tam-su-kien-voi-khong-gian-va-dich-vu-da-dang-20230222171103964.htm",
+      "url": "https://cdn2.tuoitre.vn/thumb_w/1200/471584752817336320/2023/2/22/photo1677060435847-16770604359161359640903.jpg",
+      "title": "GEM Center Facade in Ho Chi Minh City",
+      "name": "Trung tâm hội nghị Gem Center",
+      "checkedAt": "2026-10-27T13:55:34.004Z",
+      "sha256": "6a3870d7d888525b50a4a206d45f768f668d233b061a9ab7480907ffe1fddc01",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0018-6a3870d7d888.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "6a3870d7d888525b50a4a206d45f768f668d233b061a9ab7480907ffe1fddc01",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0022",
+      "source": "https://ttvhtpthuduc.vn/ban-tin/dinh-phong-phu-di-tich-lich-su-van-hoa-cach-mang-cap-quoc-gia/",
+      "url": "https://i0.wp.com/ttvhtpthuduc.vn/wp-content/uploads/2021/10/%C4%91%C3%ACnh-pp-3.jpg?ssl=1&w=640",
+      "title": "Đình Phong Phú Communal House",
+      "name": "Đình Phong Phú",
+      "checkedAt": "2026-10-27T13:55:34.086Z",
+      "sha256": "838e7e914364f67c7c839c19fcd24d07f863dad23e35d238904184f7dbefdd30",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0022-838e7e914364.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "838e7e914364f67c7c839c19fcd24d07f863dad23e35d238904184f7dbefdd30",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0012",
+      "source": "https://plo.vn/cong-vien-van-hoa-lang-le-ra-sao-sau-khi-huyen-binh-chanh-chi-46-ti-dong-de-sua-chua-post846340.html",
+      "url": "https://image.plo.vn/w1000/Uploaded/2026/xqeioxmrke/2025_04_24/cong-vien-van-hoa-lang-le-2-6182-2437.jpg.webp",
+      "title": "Láng Le Cultural Park Conference Center",
+      "name": "Công viên Văn hóa Láng Le",
+      "checkedAt": "2026-10-27T13:57:29.230Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "fetch failed"
+    },
+    {
+      "id": "HCM-VR-0024",
+      "source": "https://plo.vn/noi-yen-giac-cua-nha-yeu-nuoc-canh-tan-phan-chau-trinh-o-tphcm-post697894.html",
+      "url": "https://image.plo.vn/w1000/Uploaded/2026/pwivotiv/2022_09_09/mo-cu-phan-chau-trinh-476.jpg.webp",
+      "title": "Memorial Pavilion of Phan Châu Trinh",
+      "name": "Khu lưu niệm Mộ Cụ Phan Châu Trinh",
+      "checkedAt": "2026-10-27T13:57:29.288Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "fetch failed"
+    },
+    {
+      "id": "HCM-VR-0031",
+      "source": "https://vinpearl.com/vi/nong-trang-xanh-diem-du-lich-sinh-thai-vua-re-vua-vui-tai-sai-gon",
+      "url": "https://statics.vinpearl.com/nong-trang-xanh-1_1630077734.jpg",
+      "title": "Green Noen Farm Entrance",
+      "name": "Nông Trang Xanh Green Noen",
+      "checkedAt": "2026-10-27T13:57:29.291Z",
+      "sha256": "fb032b7c3a4061a840dbd399955d1998fc0ea55ea43220d5aeb0a0cac30e7167",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0031-fb032b7c3a40.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "fb032b7c3a4061a840dbd399955d1998fc0ea55ea43220d5aeb0a0cac30e7167",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0035",
+      "source": "https://vinwonders.com/en/wonderpedia/news/district-9-ho-chi-minh-city/",
+      "url": "https://static.vinwonders.com/production/Tam-Da-Lotus-Lake.jpeg",
+      "title": "Tam Da Lotus Lake",
+      "name": "Đầm sen Tam Đa",
+      "checkedAt": "2026-10-27T13:57:29.509Z",
+      "sha256": "cd74fcdda405131eec791120a80688ae936588ee6920d69e2ff817709ee316c8",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0035-cd74fcdda405.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "cd74fcdda405131eec791120a80688ae936588ee6920d69e2ff817709ee316c8",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0039",
+      "source": "https://tripzone.vn/ck9934-pho-nhat-ban-oshi-town",
+      "url": "https://tripzone.vn/uploads/202105/19/14/092328-khu--m-th-c-th-c-t-i-ph--nh-t-b-n-oishi-town-fb.ph--nh-t-b-n-oishi-town.jpg",
+      "title": "Oishi Town Japanese Street Dining",
+      "name": "Phố Nhật Bản Oishi Town",
+      "checkedAt": "2026-10-27T13:57:29.957Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "fetch failed"
+    },
+    {
+      "id": "HCM-VR-0048",
+      "source": "https://saigontourist.com.vn/en/news/132-secc-honoured-with-vietnam-s-best-convention-centre-2021-from-world-mice-awards",
+      "url": "https://saigontourist.com.vn/files/images/giai-tri/1-mat-tien-trung-tam-secc-copy.jpg",
+      "title": "Saigon Exhibition and Convention Center Entrance",
+      "name": "Trung tâm Hội chợ và Triển lãm Sài Gòn",
+      "checkedAt": "2026-10-27T13:57:33.606Z",
+      "sha256": "2593fcd2719c15fa87140b713c0ede5ff52ae8e3a8dc2b2246a4e8984a43131b",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0048-2593fcd2719c.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "2593fcd2719c15fa87140b713c0ede5ff52ae8e3a8dc2b2246a4e8984a43131b",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0070",
+      "source": "https://phuongnam.vanhoavaphattrien.vn/noi-luu-lai-nhieu-su-kien-dau-tranh-noi-bat-suot-chang-duong-dai-lich-su-tu-nam-1885-den-ngay-giai-phong-mien-nam-a26036.html",
+      "url": "https://phuongnam.vanhoavaphattrien.vn/uploads/images/blog/hoand/2023/07/18/dinh-quan-1689652719.jpg",
+      "title": "Tượng Nam Kỳ Hội Nghĩa tại Dinh quận Hóc Môn",
+      "name": "Dinh Quận Hóc Môn",
+      "checkedAt": "2026-10-27T13:57:33.900Z",
+      "sha256": "98642a18afd7349bc79a971976c339ad3058356679301d239731aaf30d780017",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0070-98642a18afd7.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "98642a18afd7349bc79a971976c339ad3058356679301d239731aaf30d780017",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0073",
+      "source": "https://vietnamtourism.vn/index.php/tourism/items/277/7",
+      "url": "https://vietnamtourism.vn/imguploads/tourist/30BTphunu02JPG.jpg",
+      "title": "Southern Women’s Museum Courtyard",
+      "name": "Bảo tàng phụ nữ Nam bộ",
+      "checkedAt": "2026-10-27T13:57:34.145Z",
+      "sha256": "ee2f301df14a0bbabbba175d4531d427f205d26db8ce07769d46a3d30397c84b",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0073-ee2f301df14a.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "ee2f301df14a0bbabbba175d4531d427f205d26db8ce07769d46a3d30397c84b",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0071",
+      "source": "https://thaiviet.vn/project/white-palace-pham-van-dong-165.html",
+      "url": "https://thaiviet.vn/upload/hinhthem/1278x800-21-7793.jpg",
+      "title": "White Palace Pham Van Dong",
+      "name": "Trung tâm sự kiện White Palace Phạm Văn Đồng",
+      "checkedAt": "2026-10-27T13:57:34.980Z",
+      "sha256": "ed831513828f669ce21f3e40d36be3e756f01880ebf81dc0c89a5ac258d989ad",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0071-ed831513828f.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "ed831513828f669ce21f3e40d36be3e756f01880ebf81dc0c89a5ac258d989ad",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0072",
+      "source": "https://mapstore.vn/doanh-nghiep/white-palace-trung-tam-hoi-nghi-va-su-kien-hoang-van-thu-194-hoang-van-thu-duc-nhuan-ho-chi-minh",
+      "url": "https://images.mapstore.vn/media/businesses/2026/01/1e648736-616c-456f-9ac5-1560ae38f01a/White-Palace.jpg",
+      "title": "White Palace Event Center Entrance",
+      "name": "Trung tâm sự kiện White Palace Hoàng Văn Thụ",
+      "checkedAt": "2026-10-27T13:57:35.682Z",
+      "sha256": "a841ef63ed74bfcdcb4f4372102d37d34dee5e60a5641ddc612b1274ab95a914",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0072-a841ef63ed74.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "a841ef63ed74bfcdcb4f4372102d37d34dee5e60a5641ddc612b1274ab95a914",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0076",
+      "source": "https://www.mangrovevn.com/post/l%C4%83ng-c%C3%A1-%C3%B4ng-c%E1%BA%A7n-gi%E1%BB%9D-%C4%91i%E1%BB%83m-%C4%91%E1%BA%BFn-t%C3%A2m-linh-kh%C3%B4ng-th%E1%BB%83-b%E1%BB%8F-l%E1%BB%A1-khi-du-l%E1%BB%8Bch-c%E1%BA%A7n-gi%E1%BB%9D",
+      "url": "https://static.wixstatic.com/media/18cef3_de99e74652df4c0c8dd3e55a2a06c40a~mv2.png/v1/fill/w_980%2Ch_735%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/18cef3_de99e74652df4c0c8dd3e55a2a06c40a~mv2.png",
+      "title": "Lăng Ông Thủy Tướng Entrance",
+      "name": "Lăng Ông Thủy Tướng",
+      "checkedAt": "2026-10-27T13:57:35.781Z",
+      "sha256": "be4488ab5a043834ebb244040807c55c07a3697240d7081942fb7a553b43780c",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0076-be4488ab5a04.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "rejected",
+        "subject": "UNSUITABLE",
+        "sha256": "be4488ab5a043834ebb244040807c55c07a3697240d7081942fb7a553b43780c",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Gate says Xa Thanh An; this is not the Can Thanh shrine"
+      }
+    },
+    {
+      "id": "HCM-VR-0081",
+      "source": "https://ngaymoionline.com.vn/lang-le-bau-co-mot-thoi-oanh-liet-52001.html",
+      "url": "https://ngaymoionline.com.vn/stores/news_dataimages/2024/042024/26/22/in_article/hinh-1-cong-khu-di-tich20240426223559.jpg?rt=20240426223601",
+      "title": "Láng Le - Bàu Cò Historical Site Entrance",
+      "name": "Khu Di tích lịch sử Láng Le - Bàu Cò",
+      "checkedAt": "2026-10-27T13:57:37.411Z",
+      "sha256": "6083eb82b8e54d73db7f24f27e27ab934c9a327d3c573f3f74673bef474ebc3d",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0081-6083eb82b8e5.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "6083eb82b8e54d73db7f24f27e27ab934c9a327d3c573f3f74673bef474ebc3d",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0082",
+      "source": "https://danviet.vn/kham-pha-vung-dat-chet-rung-sac-noi-chien-cong-doan-10-anh-hung-trong-khang-chien-chong-my-20241222113927276-d1201710.html",
+      "url": "https://danviet.ex-cdn.com/files/f1/296231569849192448/2024/12/22/1-17348422193531252730019.jpeg",
+      "title": "Chiến Khu Rừng Sác – Cần Giờ Entrance",
+      "name": "Di tích lịch sử Chiến khu Rừng Sác",
+      "checkedAt": "2026-10-27T13:57:37.680Z",
+      "sha256": "62396b18f1b8e4a30dab5bf995f8d575d80680fd9194c6cf29a6c2b41d6781a9",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0082-62396b18f1b8.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "62396b18f1b8e4a30dab5bf995f8d575d80680fd9194c6cf29a6c2b41d6781a9",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0084",
+      "source": "https://tcdulichtphcm.vn/chuyen-dong/bao-tang-ao-dai-to-chuc-ngay-hoi-di-san-kich-cau-du-lich-noi-dia-c2a19801.html",
+      "url": "https://cdn.tcdulichtphcm.vn/upload/4-2021/images/2021-11-16/1637031286-travel-blogger-iamkoo-hoang-anh-bao-tang-ao-dai-quan-9-16.jpg",
+      "title": "Áo dài Museum Heritage Corridor",
+      "name": "Bảo tàng Áo Dài",
+      "checkedAt": "2026-10-27T13:57:37.990Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "HCM-VR-0044",
+      "source": "https://mia.vn/cam-nang-du-lich/khu-du-lich-sinh-thai-dan-xay-13277",
+      "url": "https://mia.vn/media/uploads/blog-du-lich/khu-du-lich-sinh-thai-dan-xay-tu-tren-cao-1699338366.jpg",
+      "title": "Dần Xây Ecotourism Aerial Overview",
+      "name": "Khu du lịch sinh thái Dần Xây",
+      "checkedAt": "2026-10-27T13:57:38.171Z",
+      "sha256": "5d8059b7dc3c7304f800a4b9ebb66e126616d002c337f00a7fdbb759f3616991",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0044-5d8059b7dc3c.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "5d8059b7dc3c7304f800a4b9ebb66e126616d002c337f00a7fdbb759f3616991",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0056",
+      "source": "https://luhanhvietnam.com.vn/du-lich/toi-khu-du-lich-ben-xua-hoai-co-giua-sai-gon.html",
+      "url": "https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/11_2019/khu-du-lich-ben-xua.jpg",
+      "title": "Bến Xưa Riverside Pavilion",
+      "name": "Khu du lịch Bến Xưa",
+      "checkedAt": "2026-10-27T13:57:38.264Z",
+      "sha256": "5148003ac86044e4d8e66ce588373029df648f7e0fb0f09c55bd99eba30fcf5b",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0056-5148003ac860.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "5148003ac86044e4d8e66ce588373029df648f7e0fb0f09c55bd99eba30fcf5b",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0421",
+      "source": "https://www.pharmart.vn/care/benh-vien-phu-san-quoc-te-sai-gon",
+      "url": "https://www.pharmart.vn/images/clinic/origin/benh-vien-phu-san-quoc-te-sai-gon-67b5a0d471b6b.jpg",
+      "title": "Saigon International Maternity Hospital Exterior",
+      "name": "Bệnh viện Phụ sản Quốc tế Sài Gòn",
+      "checkedAt": "2026-10-27T13:59:30.406Z",
+      "sha256": "0a35cdaccb5704e486f1d548b28b61d8290a2a3f36bad316aa477ee5e9fb8f20",
+      "image": "asset/place-photo-research/web-photos/hcm-0421-0a35cdaccb57.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "0a35cdaccb5704e486f1d548b28b61d8290a2a3f36bad316aa477ee5e9fb8f20",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0424",
+      "source": "https://dantri.com.vn/suc-khoe/vi-sao-benh-vien-tri-ung-thu-dau-nganh-o-tphcm-chua-the-ghep-te-bao-goc-20230512121812641.htm",
+      "url": "https://cdnphoto.dantri.com.vn/hMVKxVHPmhD6EAy0ZPyonz0kGlc%3D/thumb_w/1020/2023/05/12/dscf0676-edited-1683868236772.jpeg",
+      "title": "Blood Transfusion–Hematology Hospital Building",
+      "name": "Bệnh viện Truyền máu Huyết học TP.HCM",
+      "checkedAt": "2026-10-27T13:59:31.114Z",
+      "sha256": "c2a9a6fbb67d16292bf11b4f1c103b6595a0f36cfd77fc538f6417cb281af060",
+      "image": "asset/place-photo-research/web-photos/hcm-0424-c2a9a6fbb67d.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c2a9a6fbb67d16292bf11b4f1c103b6595a0f36cfd77fc538f6417cb281af060",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0426",
+      "source": "https://tttcable.com/du-an/benh-vien-nguyen-tri-phuong-tp-hcm/",
+      "url": "https://tttcable.com/wp-content/uploads/2023/07/bv-nguyen-tri-phuong-1.jpg",
+      "title": "Nguyễn Tri Phương Hospital Entrance",
+      "name": "Bệnh viện Nguyễn Tri Phương",
+      "checkedAt": "2026-10-27T13:59:32.424Z",
+      "sha256": "75ffb8a7db0623a90c33dfbe79ed4285fd2293a9127bb759f6294e3737e410e1",
+      "image": "asset/place-photo-research/web-photos/hcm-0426-75ffb8a7db06.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "75ffb8a7db0623a90c33dfbe79ed4285fd2293a9127bb759f6294e3737e410e1",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0427",
+      "source": "https://diadiem247.com/tp-ho-chi-minh/benh-vien-tam-than-tp-ho-chi-minh-l41467.html",
+      "url": "https://media.diadiem247.com/uploads/w900/2019/03/13/benh-vien-tam-than-tp-ho-chi-minh-6364745514011201015c87f8d76ed99.jpg",
+      "title": "Ho Chi Minh City Psychiatric Hospital Entrance",
+      "name": "Bệnh viện Tâm thần TP.HCM",
+      "checkedAt": "2026-10-27T13:59:33.177Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "HTTP 403"
+    },
+    {
+      "id": "HCM-0429",
+      "source": "https://ansinh.tapchikinhtetaichinh.vn/tp-ho-chi-minh-co-585-co-so-y-te-du-dieu-kien-dang-ky-kham-chua-benh-bhyt-ban-dau-101693.html",
+      "url": "https://ansinh.tapchikinhtetaichinh.vn/stores/news_dataimages/bhxh/2025/11/10/f591d85e-9672-4291-b2ee-c5a579c2be92.png",
+      "title": "An Bình Hospital Gate No. 2",
+      "name": "Bệnh viện An Bình",
+      "checkedAt": "2026-10-27T13:59:34.191Z",
+      "sha256": "b653f7bc30f4d137d455b2e7f113499db8bf8877d7c69883a0184495ab81cef3",
+      "image": "asset/place-photo-research/web-photos/hcm-0429-b653f7bc30f4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "b653f7bc30f4d137d455b2e7f113499db8bf8877d7c69883a0184495ab81cef3",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0430",
+      "source": "https://giatuixanh.vn/en/hospital-for-traumatology-and-orthopaedics-prj/",
+      "url": "https://giatuixanh.vn/wp-content/uploads/2025/08/snapedit_1755827495202.jpeg",
+      "title": "Hospital for Traumatology and Orthopaedics Entrance",
+      "name": "Bệnh viện Chấn thương Chỉnh hình TP.HCM",
+      "checkedAt": "2026-10-27T13:59:36.416Z",
+      "sha256": "2555007e5181402465758362475262fe4227da2d1492e59673f6ce28e44b9396",
+      "image": "asset/place-photo-research/web-photos/hcm-0430-2555007e5181.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "2555007e5181402465758362475262fe4227da2d1492e59673f6ce28e44b9396",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0431",
+      "source": "https://vietq.vn/benh-vien-mat-cao-thang-va-loat-co-so-tham-my-bi-xu-phat-d226448.html",
+      "url": "https://media.vietq.vn/files/filesmoi/mat_cao_thang.jpg",
+      "title": "Cao Thắng Eye Hospital Facade",
+      "name": "Bệnh viện Mắt Cao Thắng",
+      "checkedAt": "2026-10-27T13:59:36.804Z",
+      "sha256": "9c395f05af692e911783dd85a304dfc3f738917f7da84d3b993b8d003a7361ec",
+      "image": "asset/place-photo-research/web-photos/hcm-0431-9c395f05af69.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "9c395f05af692e911783dd85a304dfc3f738917f7da84d3b993b8d003a7361ec",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0433",
+      "source": "https://inkdtex.com/benh-vien/dia-chi-benh-vien-hung-vuong-128-hong-bang-phuong-12-quan-5-tp-ho-chi-minh-30422.html",
+      "url": "https://inkdtex.com/Image/Picture/New/Benh-Vien/Benh-Vien-Hung-Vuong.jpg",
+      "title": "Bệnh viện Hùng Vương Entrance",
+      "name": "Bệnh viện Hùng Vương",
+      "checkedAt": "2026-10-27T13:59:37.289Z",
+      "sha256": "7dd4783be09134911166b32027083ba1695d9d81c5314a4caf11300ef5a643c0",
+      "image": "asset/place-photo-research/web-photos/hcm-0433-7dd4783be091.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "7dd4783be09134911166b32027083ba1695d9d81c5314a4caf11300ef5a643c0",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0434",
+      "source": "https://thanhnien.vn/tong-giam-doc-thomson-se-cung-benh-vien-fv-nang-tam-tieu-chuan-y-te-khu-vuc-185240131140316619.htm",
+      "url": "https://images2.thanhnien.vn/528068263637045248/2024/1/31/fv-4-17066841917231888927261.jpg",
+      "title": "FV Hospital Building in Phu My Hung",
+      "name": "Bệnh viện FV",
+      "checkedAt": "2026-10-27T13:59:37.601Z",
+      "sha256": "3b4d8ad53e1ee9f1695c3ba8046cee21f426164bdeb9e6202ef5af0c46abe12c",
+      "image": "asset/place-photo-research/web-photos/hcm-0434-3b4d8ad53e1e.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "3b4d8ad53e1ee9f1695c3ba8046cee21f426164bdeb9e6202ef5af0c46abe12c",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0435",
+      "source": "https://tuongviet.vn/en/projects/trung-vuong-hospital.d30/",
+      "url": "https://tuongviet.vn/uploads/projects/BVTrungVuong.jpg",
+      "title": "Trung Vuong Hospital Entrance",
+      "name": "Bệnh viện Trưng Vương",
+      "checkedAt": "2026-10-27T13:59:37.799Z",
+      "sha256": "b23679a21f385723dc8f680f456954d9d30b55bf0e944c19912c3028442ebcf4",
+      "image": "asset/place-photo-research/web-photos/hcm-0435-b23679a21f38.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "b23679a21f385723dc8f680f456954d9d30b55bf0e944c19912c3028442ebcf4",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0436",
+      "source": "https://toplist.vn/top-list/dia-chi-kham-va-dieu-tri-huyet-ap-thap-uy-tin-nhat-tp-ho-chi-minh-52527.htm",
+      "url": "https://toplist.vn/images/800px/benh-vien-nhan-dan-115-1300199.jpg",
+      "title": "Bệnh viện Nhân dân 115 Entrance",
+      "name": "Bệnh viện Nhân dân 115",
+      "checkedAt": "2026-10-27T13:59:37.869Z",
+      "sha256": "4dbc0e4f903aabf874d1b4615f7e922a4b502a9b219a95a2282c601029578596",
+      "image": "asset/place-photo-research/web-photos/hcm-0436-4dbc0e4f903a.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "4dbc0e4f903aabf874d1b4615f7e922a4b502a9b219a95a2282c601029578596",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0438",
+      "source": "https://www.vietnamplus.vn/dieu-tra-vu-mot-phu-nu-hon-me-sau-sau-ca-phau-thuat-tham-my-post920676.vnp",
+      "url": "https://media.vietnamplus.vn/images/7255a701687d11cb8c6bbc58a6c80785dfd44992b1261e021cba915fa7a4ef5a7771e022b0f957d46740773a3c5645afc39740a673ffa5397145c0a7966b20e9/1201vanhanh-8904.jpg",
+      "title": "Van Hanh General Hospital Entrance",
+      "name": "Bệnh viện Đa khoa Vạn Hạnh",
+      "checkedAt": "2026-10-27T13:59:37.931Z",
+      "sha256": "82fcafd0eeb192909c3ff1726c1b8dc429b7b812dd29f042b0cb666cd7139774",
+      "image": "asset/place-photo-research/web-photos/hcm-0438-82fcafd0eeb1.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "82fcafd0eeb192909c3ff1726c1b8dc429b7b812dd29f042b0cb666cd7139774",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0441",
+      "source": "https://tongdaihoidap.com/benh-vien-quan-y-175-786-nguyen-kiem-quan-go-vap/",
+      "url": "https://tongdaihoidap.com/wp-content/uploads/2025/04/benh-vien-quan-y-175-786-nguyen-kiem-quan-go-vap.webp",
+      "title": "Bệnh viện Quân Y 175 – 786 Nguyễn Kiệm, Quận Gò Vấp",
+      "name": "Bệnh viện Quân y 175",
+      "checkedAt": "2026-10-27T13:59:38.370Z",
+      "sha256": "69a835cfb881cd2b1195dd5e27c72ac6b21dd59a49a4c442f4d48ba555e236ec",
+      "image": "asset/place-photo-research/web-photos/hcm-0441-69a835cfb881.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "69a835cfb881cd2b1195dd5e27c72ac6b21dd59a49a4c442f4d48ba555e236ec",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0442",
+      "source": "https://thanhnien.vn/khu-y-te-ky-thuat-cao-hoa-lam-shangri-la-tai-tphcm-xay-dung-dung-giay-phep-185240605175704735.htm",
+      "url": "https://images2.thanhnien.vn/528068263637045248/2024/6/5/hoa-lam-2-17175851797382071262687.jpg",
+      "title": "Gia An 115 Hospital in Hoa Lâm Shangri-La Medical Zone",
+      "name": "Bệnh viện Gia An 115",
+      "checkedAt": "2026-10-27T13:59:38.847Z",
+      "sha256": "235493f19bf26332f4bf9b9afd9c504cb5775d04c449f8242addfeec76851096",
+      "image": "asset/place-photo-research/web-photos/hcm-0442-235493f19bf2.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "235493f19bf26332f4bf9b9afd9c504cb5775d04c449f8242addfeec76851096",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0443",
+      "source": "https://www.etic-cnavn.com/cih-city-international-hospital.html",
+      "url": "https://www.etic-cnavn.com/images/upload/PROJECTS/SIGNS/CIH-City-International-Hospital/cna-hte-cih-3.jpg",
+      "title": "City International Hospital Signage",
+      "name": "Bệnh viện Quốc tế City",
+      "checkedAt": "2026-10-27T13:59:39.001Z",
+      "sha256": "66860a2e04986b7003d14f6d44642990d7924c2e39d94420644145bac33a6459",
+      "image": "asset/place-photo-research/web-photos/hcm-0443-66860a2e0498.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "66860a2e04986b7003d14f6d44642990d7924c2e39d94420644145bac33a6459",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0444",
+      "source": "https://tuoitre.vn/toan-canh-benh-vien-mat-tp-hcm-noi-duoc-de-xuat-xep-hang-di-tich-kien-truc-nghe-thuat-20230908130325956.htm",
+      "url": "https://cdn2.tuoitre.vn/471584752817336320/2023/9/8/base64-16941569147451883981276.png",
+      "title": "Eye Hospital of Ho Chi Minh City",
+      "name": "Bệnh viện Mắt TP.HCM",
+      "checkedAt": "2026-10-27T13:59:39.781Z",
+      "sha256": "bc224feae5aefe0e401b6ef18ec8b4eb04074a1eb7b117e25b7ccea54b2e8810",
+      "image": "asset/place-photo-research/web-photos/hcm-0444-bc224feae5ae.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "bc224feae5aefe0e401b6ef18ec8b4eb04074a1eb7b117e25b7ccea54b2e8810",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0012",
+      "source": "https://www.phunuonline.com.vn/cong-vien-van-hoa-lang-le-thay-ao-moi-don-dai-le-30-4-a1548176.html",
+      "url": "https://image.phunuonline.com.vn/fckeditor/upload/2025/20250425/images/cong-vien-van-hoa-lang-le-thay-_521745554075.jpg",
+      "title": "Renovated Láng Le Cultural Park",
+      "name": "Công viên Văn hóa Láng Le",
+      "checkedAt": "2026-10-27T13:59:40.398Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "fetch failed"
+    },
+    {
+      "id": "HCM-VR-0024",
+      "source": "https://danviet.vn/chon-dung-chan-yen-binh-rop-bong-cay-cua-cu-phan-chau-trinh-20220304152411289-d1005079.html",
+      "url": "https://danviet.ex-cdn.com/files/f1/296231569849192448/2022/3/4/image6483441-12-1646385681026616278675.jpg",
+      "title": "Memorial of Phan Châu Trinh",
+      "name": "Khu lưu niệm Mộ Cụ Phan Châu Trinh",
+      "checkedAt": "2026-10-27T13:59:40.408Z",
+      "sha256": "3fe4ebfb9b40f3b7e5c547a411188a0ac1598951dcc5028321c0ceb9fb05f3bf",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0024-3fe4ebfb9b40.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "3fe4ebfb9b40f3b7e5c547a411188a0ac1598951dcc5028321c0ceb9fb05f3bf",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0039",
+      "source": "https://thuduc.iwater.vn/oishi-town-28-thao-dien-phuong-thao-dien-quan-2/",
+      "url": "https://thuduc.iwater.vn/media/4992/file/tieu-canh-oishi-town.jpeg?size=780",
+      "title": "Japanese‐Style Garden Seating",
+      "name": "Phố Nhật Bản Oishi Town",
+      "checkedAt": "2026-10-27T13:59:41.433Z",
+      "sha256": "606648e97cd5599892e877ff1e8eae6a1170fa373e84876d8547898c8d102bf0",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0039-606648e97cd5.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "606648e97cd5599892e877ff1e8eae6a1170fa373e84876d8547898c8d102bf0",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0084",
+      "source": "https://www.traveloka.com/vi-vn/explore/destination/bao-tang-ao-dai-acc/192704",
+      "url": "https://ik.imagekit.io/tvlk/blog/2023/01/bao-tang-ao-dai-4.jpg?tr=q-70%2Cc-at_max%2Cw-1000%2Ch-600",
+      "title": "Bảo tàng Áo dài Quận 9",
+      "name": "Bảo tàng Áo Dài",
+      "checkedAt": "2026-10-27T13:59:42.118Z",
+      "sha256": "2d80e6db9d818716cd162bd8e6a61782c10931d3c33d469dad20d716ce5c8c83",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0084-2d80e6db9d81.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "rejected",
+        "subject": "UNSUITABLE",
+        "sha256": "2d80e6db9d818716cd162bd8e6a61782c10931d3c33d469dad20d716ce5c8c83",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Prefer a wider venue view instead of a posed visitor portrait"
+      }
+    },
+    {
+      "id": "HCM-0445",
+      "source": "https://songkhoe.medplus.vn/cap-nhat-bang-gia-benh-vien-nguyen-trai-tp-hcm/",
+      "url": "https://songkhoe.medplus.vn/wp-content/uploads/2019/10/benh-vien-nguyen-trai-1.jpg",
+      "title": "Nguyễn Trãi Hospital Entrance",
+      "name": "Bệnh viện Nguyễn Trãi",
+      "checkedAt": "2026-10-27T14:03:36.335Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "fetch failed"
+    },
+    {
+      "id": "HCM-0446",
+      "source": "https://suckhoedoisong.vn/7-dia-chi-tam-soat-ung-thu-gan-tai-tp-ho-chi-minh-169221202114704764.htm",
+      "url": "https://suckhoedoisong.qltns.mediacdn.vn/324455921873985536/2022/12/2/z2562526911709164e10f5e7fbf4d3301176fb304fb79fzwwb-1669955836170560334238.jpg",
+      "title": "University Medical Center Entrance",
+      "name": "Bệnh viện Đại học Y Dược TP.HCM",
+      "checkedAt": "2026-10-27T14:03:36.395Z",
+      "sha256": "c84e25aead7f89942f02fbf33503a3cf0f6e5b02bb142fd7abcabc52313d2407",
+      "image": "asset/place-photo-research/web-photos/hcm-0446-c84e25aead7f.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "c84e25aead7f89942f02fbf33503a3cf0f6e5b02bb142fd7abcabc52313d2407",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0447",
+      "source": "https://znews.vn/can-canh-khoi-nha-tram-ty-moi-cua-benh-vien-lau-doi-o-tphcm-post1631093.html",
+      "url": "https://photo.znews.vn/w1250/Uploaded/ovhpihv/2026_03_03/PANO0001_Panorama_copy.jpg",
+      "title": "New Central Building of Bệnh viện Bình Dân",
+      "name": "Bệnh viện Bình Dân",
+      "checkedAt": "2026-10-27T14:03:36.563Z",
+      "sha256": "54454567204bb962e728b5d2c42771de604b14dc5944876ea57f6a03c5d4ccd8",
+      "image": "asset/place-photo-research/web-photos/hcm-0447-54454567204b.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW"
+    },
+    {
+      "id": "HCM-0449",
+      "source": "https://nld.com.vn/thoi-su/kich-ban-giang-ho-truy-sat-vao-tan-ben-trong-bv-gia-dinh-tp-hcm-20191130122318401.htm",
+      "url": "https://nld.mediacdn.vn/2019/11/30/7884613811128936024352174814055316817707008n-15750905714652135776305.jpg",
+      "title": "Gia Định People’s Hospital Entrance",
+      "name": "Bệnh viện Nhân dân Gia Định",
+      "checkedAt": "2026-10-27T14:03:37.209Z",
+      "sha256": "4b6595ce4ce2c8655e0b000e7af79990059f2b674200bdf31a353b557ede020f",
+      "image": "asset/place-photo-research/web-photos/hcm-0449-4b6595ce4ce2.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "4b6595ce4ce2c8655e0b000e7af79990059f2b674200bdf31a353b557ede020f",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0450",
+      "source": "https://dantri.com.vn/suc-khoe/bv-ung-buou-tphcm-noi-gi-truoc-viec-bi-to-dua-benh-nhan-ra-ngoai-mo-20220317150337616.htm",
+      "url": "https://cdnphoto.dantri.com.vn/vsSIIjxjCnb6LTNf3dOgBkXlwRo%3D/thumb_w/1155/2022/03/17/ub2-1647503724992.jpeg",
+      "title": "Ho Chi Minh City Oncology Hospital Entrance",
+      "name": "Bệnh viện Ung Bướu TP.HCM",
+      "checkedAt": "2026-10-27T14:03:37.405Z",
+      "sha256": "8420f1a02b3450cdd91b2d2cd1974752e97d94199b3938d9517674ba5bd73e39",
+      "image": "asset/place-photo-research/web-photos/hcm-0450-8420f1a02b34.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "8420f1a02b3450cdd91b2d2cd1974752e97d94199b3938d9517674ba5bd73e39",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0451",
+      "source": "https://tienphong.vn/bac-si-to-benh-vien-ep-chi-tieu-xet-nghiem-post1133378.tpo",
+      "url": "https://cdn.tienphong.vn/images/a7a4eb175a75567c9a7ae09768d709488c3f635acdf22a732519b5b4b84ece81b27c8f7c54d15681754eec199a7ac812eccaf3a4036ce3e2fde5daf5d17e20f4/IMG_1503_AGIT.jpg",
+      "title": "HCMC Dermatology Hospital Entrance",
+      "name": "Bệnh viện Da Liễu TP.HCM",
+      "checkedAt": "2026-10-27T14:03:38.142Z",
+      "sha256": "b81c94e776c399457de6d390259340a73464518bfa0e2c878c78f89e6d769278",
+      "image": "asset/place-photo-research/web-photos/hcm-0451-b81c94e776c3.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "b81c94e776c399457de6d390259340a73464518bfa0e2c878c78f89e6d769278",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-0452",
+      "source": "https://dentalinvietnam.com/dental-care-services-in-vietnam/",
+      "url": "https://cdn.diemnhangroup.com/dentalinvietnam.com/2025/07/Dental-care-services-in-Vietnam-9-768x576.webp",
+      "title": "National Hospital of Odonto-Stomatology, Ho Chi Minh City",
+      "name": "Bệnh viện Răng Hàm Mặt Trung ương TP.HCM",
+      "checkedAt": "2026-10-27T14:03:38.306Z",
+      "sha256": "1bfb55b38ad667cfc6cbf7426c8f164092ee6751ee8da325ed56efffbb8e3376",
+      "image": "asset/place-photo-research/web-photos/hcm-0452-1bfb55b38ad6.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "1bfb55b38ad667cfc6cbf7426c8f164092ee6751ee8da325ed56efffbb8e3376",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0083",
+      "source": "https://nashaplaneta.net/asia/vietnam/saigon-fito-museum_en",
+      "url": "https://nashaplaneta.net/asia/vietnam/saigon_img/hochiminh-fito-museum.jpg",
+      "title": "FITO Museum Building in Ho Chi Minh City",
+      "name": "Bảo tàng Y học Cổ truyền Việt Nam",
+      "checkedAt": "2026-10-27T14:03:38.465Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "The operation was aborted due to timeout"
+    },
+    {
+      "id": "HCM-VR-0076",
+      "source": "https://svhtt.hochiminhcity.gov.vn/tin-chi-tiet/-/chi-tiet/le-hoi-nghinh-ong-huyen-can-gio-thanh-pho-ho-chi-minh-22374-1.html",
+      "url": "https://svhtt.hochiminhcity.gov.vn/documents/10184/284920/le%2Bhoi%2Bnghinh%2Bong%2B1.jpg/d5013d6b-5d18-4948-ab88-6e674a730b70?t=1541581009304",
+      "title": "Miếu Hải Thần Lăng Ông Thủy Tướng",
+      "name": "Lăng Ông Thủy Tướng",
+      "checkedAt": "2026-10-27T14:03:58.479Z",
+      "sha256": "3f409193311add23bfc403370372089de5480ac409d28c136458e2e69b4c1dd2",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0076-3f409193311a.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "3f409193311add23bfc403370372089de5480ac409d28c136458e2e69b4c1dd2",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0012",
+      "source": "https://news.laodong.vn/xa-hoi/cong-vien-lang-le-rong-22-ha-o-tphcm-thay-ao-moi-don-mung-304-1496932.ldo",
+      "url": "https://media-cdn-v2.laodong.vn/storage/newsportal/2025/4/25/1496932/Cong-Vien-Lang-Le-15.jpg",
+      "title": "Lang Le Park’s New Look",
+      "name": "Công viên Văn hóa Láng Le",
+      "checkedAt": "2026-10-27T14:03:58.590Z",
+      "sha256": "0b7cce6712e439ac810e4e081fa304432b56bd6e58e7c2cdce5ce9eb6174aefc",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0012-0b7cce6712e4.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "0b7cce6712e439ac810e4e081fa304432b56bd6e58e7c2cdce5ce9eb6174aefc",
+        "at": "2026-10-27T14:06:37.055Z",
+        "note": "Viewed staged file in continue-review/contact sheets; facade, grounds or venue interior. Identity and rights remain pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0084",
+      "source": "https://news.tuoitre.vn/whats-in-ao-dai-museum-named-among-ho-chi-minh-citys-100-most-interesting-things-10377318.htm",
+      "url": "https://cdn2.tuoitre.vn/ttnew/r/2023/12/15/anh2-1702630293.jpg",
+      "title": "Ao Dai Museum Panoramic Grounds",
+      "name": "Bảo tàng Áo Dài",
+      "checkedAt": "2026-10-27T14:08:26.306Z",
+      "sha256": "3afd8dbb3e9100d0eda4415efc6d99e82cea5208dbcc7791f6dc330d5bcd7f5c",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0084-3afd8dbb3e91.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "3afd8dbb3e9100d0eda4415efc6d99e82cea5208dbcc7791f6dc330d5bcd7f5c",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0083",
+      "source": "https://www.traveloka.com/vi-vn/activities/vietnam/product/fito-museum-ticket-in-ho-chi-minh-city-6191086972432",
+      "url": "https://ik.imagekit.io/tvlk/image/imageResource/2023/12/29/1703825854173-bbc96979ed087d9e8288c9c655a2e0b8.webp",
+      "title": "Fito Museum Entrance",
+      "name": "Bảo tàng Y học Cổ truyền Việt Nam",
+      "checkedAt": "2026-10-27T14:08:26.631Z",
+      "sha256": "9e673e0b0af11a85144fd94622b2694223fb31a70c5c55b47ac14f465138d9ae",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0083-9e673e0b0af1.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "9e673e0b0af11a85144fd94622b2694223fb31a70c5c55b47ac14f465138d9ae",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0026",
+      "source": "https://vanhoavaphattrien.vn/chua-phung-son-vien-ngoc-tam-linh-di-san-van-hoa-va-danh-lam-thang-canh-doc-dao-cua-nam-bo-a27104.html",
+      "url": "https://vanhoavaphattrien.vn/uploads/images/blog/vietmox/2024/10/28/picture-002-1730095992.jpg",
+      "title": "Phụng Sơn Temple Gate",
+      "name": "Di tích kiến trúc - Nghệ thuật chùa Phụng Sơn",
+      "checkedAt": "2026-10-27T14:08:26.833Z",
+      "sha256": "275a2cd09bdb38c8f9ee5a411b831ab33ea54859420d3fb36bae7c425074119a",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0026-275a2cd09bdb.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "275a2cd09bdb38c8f9ee5a411b831ab33ea54859420d3fb36bae7c425074119a",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0043",
+      "source": "https://www.bachhoaxanh.com/kinh-nghiem-hay/dot-nhap-10-dia-diem-vui-choi-tai-hoc-mon-duoc-yeu-thich-1514448",
+      "url": "https://cdn.tgdd.vn/Files/2023/03/03/1514448/dot-nhap-10-dia-diem-vui-choi-tai-hoc-mon-duoc-yeu-thich-202303031145549603.jpg",
+      "title": "Cánh đồng hoa Nhị Bình",
+      "name": "Cánh đồng hoa Nhị Bình",
+      "checkedAt": "2026-10-27T14:08:26.925Z",
+      "sha256": "e2482c77714a9a2574e561784d24744820b897c824c69e7e510e8a680cfeea72",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0043-e2482c77714a.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "e2482c77714a9a2574e561784d24744820b897c824c69e7e510e8a680cfeea72",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0050",
+      "source": "https://nhaduonglao.com/lang-nghi-duong-les-hameaux-de-lorient/",
+      "url": "https://nhaduonglao.com/wp-content/uploads/2023/11/Les-Hameaux-de-lOrient.jpg",
+      "title": "Les Hameaux de l’Orient Entrance",
+      "name": "Làng nghỉ dưỡng Thôn Kinh Dông",
+      "checkedAt": "2026-10-27T14:08:27.336Z",
+      "sha256": "2679f89aaa73e0a1b6688fa727459284b66352ba3d2c4a3aead8adbf5bc20fde",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0050-2679f89aaa73.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "2679f89aaa73e0a1b6688fa727459284b66352ba3d2c4a3aead8adbf5bc20fde",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0074",
+      "source": "https://vietnamphotographer.net/detail/khu-du-lich-phuong-nam-can-gio",
+      "url": "https://adminnhh.vietnamphotographer.net/storage/photos/17/du-lich-can-gio/khu-du-lich-phuong-nam-can-gio/ho-boi-rong.jpg",
+      "title": "Phương Nam Pearl Resort Pool",
+      "name": "Khu du lịch Sinh thái biển Phương Nam Cần Giờ",
+      "checkedAt": "2026-10-27T14:08:28.193Z",
+      "sha256": "fbab3427b184edffd9d2e14a821db2bbfba96d2c7d6f8869e1e08d97d4510abc",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0074-fbab3427b184.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "fbab3427b184edffd9d2e14a821db2bbfba96d2c7d6f8869e1e08d97d4510abc",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-VR-0015",
+      "source": "https://www.xanhsm.com/news/cong-vien-sa-la-ho-chi-minh",
+      "url": "https://cdn.xanhsm.com/2024/12/4cdeb438-cong-vien-sala.jpg",
+      "title": "Sala Park’s Iconic Pink Flower Bridge",
+      "name": "Khu đô thị Sala",
+      "checkedAt": "2026-10-27T14:08:28.588Z",
+      "sha256": "e1772c34cef364da7050bddc32e5710224187962fa04af6a354142ace26f8a85",
+      "image": "asset/place-photo-research/web-photos/hcm-vr-0015-e1772c34cef3.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "e1772c34cef364da7050bddc32e5710224187962fa04af6a354142ace26f8a85",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-0453",
+      "source": "https://www.foody.vn/ho-chi-minh/benh-vien-rang-ham-mat",
+      "url": "https://down-vn.img.susercontent.com/vn-11134259-7r98o-lw8yxxbaodsr53%40resize_ss640x400",
+      "title": "Bệnh Viện Răng Hàm Mặt, Quận 1",
+      "name": "Bệnh viện Răng Hàm Mặt TP.HCM",
+      "checkedAt": "2026-10-27T14:08:29.343Z",
+      "status": "SOURCE_UNAVAILABLE",
+      "error": "Image is too small or not a supported photo"
+    },
+    {
+      "id": "HCM-0454",
+      "source": "https://nld.com.vn/benh-vien-tai-mui-hong-tphcm-mo-rong-khong-gian-trien-khai-nhieu-ky-thuat-chuyen-sau-196260428094524859.htm",
+      "url": "https://nld.mediacdn.vn/291774122806476800/2026/4/28/photo-1777343410159-17773434111711891030465.png",
+      "title": "Bệnh viện Tai Mũi Họng TP.HCM khánh thành khu nhà mới",
+      "name": "Bệnh viện Tai Mũi Họng TP.HCM",
+      "checkedAt": "2026-10-27T14:08:29.507Z",
+      "sha256": "81a4939d755713f285c73cd566c8a9b78f16b1f50971b3c220b187b48429ef3e",
+      "image": "asset/place-photo-research/web-photos/hcm-0454-81a4939d7557.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "81a4939d755713f285c73cd566c8a9b78f16b1f50971b3c220b187b48429ef3e",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-0445",
+      "source": "https://dantri.com.vn/suc-khoe/ben-trong-khu-dieu-tri-ky-thuat-cao-tai-benh-vien-130-nam-tuoi-o-tphcm-20230221121752892.htm",
+      "url": "https://cdnphoto.dantri.com.vn/X8aUNUcC9YjFV3vfZyH8tfji1HA%3D/thumb_w/1020/2023/02/21/benh-vien-nguyen-trai-1-edited-1676955938196.jpeg",
+      "title": "Nguyễn Trãi Hospital’s High-Tech Treatment Wing",
+      "name": "Bệnh viện Nguyễn Trãi",
+      "checkedAt": "2026-10-27T14:08:29.664Z",
+      "sha256": "b0de586d429e3af4941201d4153bfafcbbf23b852fd1cd3efa8e1f391ccbea75",
+      "image": "asset/place-photo-research/web-photos/hcm-0445-b0de586d429e.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "b0de586d429e3af4941201d4153bfafcbbf23b852fd1cd3efa8e1f391ccbea75",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    },
+    {
+      "id": "HCM-0447",
+      "source": "https://onehousing.vn/blog/nha-rieng-gan-benh-vien-binh-dan-quan-3-co-gia-ban-bao-nhieu-n17t",
+      "url": "https://cdn-merchant.vinid.net/images/gallery/omre_trang_tin_tuc/image_upload_1700813351_2.png",
+      "title": "Bệnh viện Bình Dân Facade",
+      "name": "Bệnh viện Bình Dân",
+      "checkedAt": "2026-10-27T14:08:31.012Z",
+      "sha256": "d9a724b3170d6adefd8a569946af6c124555030ff8c0c4b2760558d5b10c3bd2",
+      "image": "asset/place-photo-research/web-photos/hcm-0447-d9a724b3170d.jpg",
+      "status": "STAGED_AWAITING_VISUAL_REVIEW",
+      "visualReview": {
+        "decision": "accepted",
+        "subject": "LOCATION_VIEW",
+        "sha256": "d9a724b3170d6adefd8a569946af6c124555030ff8c0c4b2760558d5b10c3bd2",
+        "at": "2026-10-27T14:10:16.639Z",
+        "note": "Viewed actual file in continue-review-final.jpg. Venue facade, grounds, pool, architecture or landscape; identity and rights pending."
+      }
+    }
+  ]
+}

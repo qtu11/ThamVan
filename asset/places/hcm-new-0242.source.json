@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:Ga_B%E1%BA%BFn_xe_Su%E1%BB%91i_Ti%C3%AAn.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Ga_B%E1%BA%BFn_xe_Su%E1%BB%91i_Ti%C3%AAn.jpg/1280px-Ga_B%E1%BA%BFn_xe_Su%E1%BB%91i_Ti%C3%AAn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Ga Bến xe Suối Tiên.jpg",
+  "author": "Lý Kiến Quốc",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:22.278Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Ga Bến xe Suối Tiên",
+    "geographicContext": true,
+    "distanceKm": 0.023271939440007133,
+    "score": 95,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

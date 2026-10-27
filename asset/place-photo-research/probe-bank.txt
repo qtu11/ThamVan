@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#2547B0">
+	<script>document.documentElement.className += " js";</script>
+	<title>Tra cứu chi nhánh, ATM ngân hàng 2026: 23.689 điểm – CBBank</title>
+	<meta name="robots" content="max-image-preview:large">
+	<script id="tbp-ga-js" src="/assets/js/ga.js?ver=1792816071" data-ga="G-7YEWTPY1ND" defer></script>
+	<link rel="preload" href="/assets/fonts/roboto/roboto-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/assets/fonts/roboto/roboto-vietnamese-normal.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" id="tbp-css" href="/assets/b/wp-core.fonts.style.tokens.main.site-extra.lender.compare.places.f8e21173ad.css" media="all">
+	<link rel="alternate" type="application/rss+xml" title="Dòng thông tin CBBank »" href="https://cbbank.vn/feed/">
+	<link rel="canonical" href="https://cbbank.vn/ngan-hang/">
+	<meta name="description" content="9.982 chi nhánh, phòng giao dịch và 13.707 ATM của Agribank, VietinBank, BIDV, Vietcombank, Sacombank, LPBank, Techcombank, ACB, VPBank, TPBank, MSB…">
+	<meta property="og:site_name" content="CBBank">
+	<meta property="og:locale" content="vi_VN">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Tra cứu chi nhánh, ATM ngân hàng 2026: 23.689 điểm">
+	<meta property="og:description" content="9.982 chi nhánh, phòng giao dịch và 13.707 ATM của Agribank, VietinBank, BIDV, Vietcombank, Sacombank, LPBank, Techcombank, ACB, VPBank, TPBank, MSB…">
+	<meta property="og:url" content="https://cbbank.vn/ngan-hang/">
+	<meta property="og:image" content="https://img.cbbank.vn/cbbank/wp-content/uploads/2026/09/cb-icon.webp">
+	<meta name="twitter:card" content="summary_large_image">
+	<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://cbbank.vn/#to-chuc","name":"Ngân hàng Ngoại thương Công nghệ số (VCBNeo)","legalName":"Ngân hàng Thương mại Trách nhiệm hữu hạn Một thành viên Ngoại thương Công nghệ số","alternateName":["VCBNeo","Ngân hàng Xây dựng (CBBank)"],"url":"https://cbbank.vn/","email":"hotro@cbbank.vn","parentOrganization":{"@type":"Organization","name":"Ngân hàng TMCP Ngoại thương Việt Nam (Vietcombank)","url":"https://www.vietcombank.com.vn/"},"address":{"@type":"PostalAddress","streetAddress":"Số 10 Thiền Quang","addressLocality":"Phường Hai Bà Trưng","addressRegion":"Hà Nội","addressCountry":"VN"},"telephone":"+842723524639","faxNumber":"(+84) (272) 3524 900","contactPoint":[{"@type":"ContactPoint","contactType":"customer support","telephone":"1900 18 16","availableLanguage":"Vietnamese","hoursAvailable":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"21:00"}}],"location":{"@type":"Place","name":"Bộ phận vận hành CBBank","address":{"@type":"PostalAddress","streetAddress":"145-147-149 Hùng Vương","addressLocality":"Phường Long An","addressRegion":"Tây Ninh","addressCountry":"VN"}},"sameAs":["https://vcbneo.com.vn/"],"logo":{"@type":"ImageObject","url":"https://img.cbbank.vn/cbbank/wp-content/uploads/2026/09/cbbank-logo.webp"},"publishingPrinciples":"https://cbbank.vn/nguyen-tac-bien-tap/","knowsAbout":["Thẻ tín dụng","Lãi suất tiền gửi tiết kiệm","Thẻ ghi nợ và tài khoản thanh toán"]}</script>
+	<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://cbbank.vn/#website","name":"CBBank","url":"https://cbbank.vn/","inLanguage":"vi","publisher":{"@id":"https://cbbank.vn/#to-chuc"},"description":"Trang thông tin tài chính – ngân hàng của VCBNeo","publishingPrinciples":"https://cbbank.vn/nguyen-tac-bien-tap/"}</script>
+	<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Trang chủ","item":"https://cbbank.vn/"},{"@type":"ListItem","position":2,"name":"Mạng lưới ngân hàng","item":"https://cbbank.vn/ngan-hang/"}]}</script>
+	<link rel="icon" href="https://img.cbbank.vn/cbbank/wp-content/uploads/2026/09/cb-icon.webp" sizes="32x32">
+	<link rel="icon" href="https://img.cbbank.vn/cbbank/wp-content/uploads/2026/09/cb-icon.webp" sizes="192x192">
+	<link rel="apple-touch-icon" href="https://img.cbbank.vn/cbbank/wp-content/uploads/2026/09/cb-icon.webp">
+	<meta name="msapplication-TileImage" content="https://img.cbbank.vn/cbbank/wp-content/uploads/2026/09/cb-icon.webp">
+	
+</head>
+
+<body class="places places-hub wp-custom-logo wp-embed-responsive wp-theme-thebank">
+
+<a class="skip-link" href="#main">Bỏ qua tới nội dung</a>
+
+<header class="site-head" id="site-head">
+
+	<div class="topbar">
+		<div class="shell topbar__inner">
+
+			<a class="brand" href="/" rel="home">
+	<img width="96" height="96" src="https://img.cbbank.vn/cbbank/wp-content/uploads/2026/09/cb-icon.webp" class="brand__icon" alt="" decoding="async" /><span class="brand__text">
+				<span class="brand__name">CBBank</span>
+				<span class="brand__tag">Trang thông tin tài chính</span>
+			</span>
+		
+</a>
+
+			<form class="topsearch" role="search" method="get" action="/">
+				<label class="screen-reader-text" for="tbp-s">Tìm kiếm</label>
+				<svg class="ico topsearch__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.6"/><path d="m16.1 16.1 4.4 4.4"/></svg>
+				<input type="search" id="tbp-s" name="s" value placeholder="Tìm thẻ, khoản vay, bảo hiểm…">
+				<button type="submit">
+					<span>Tìm</span>
+				</button>
+			</form>
+
+			<div class="head-right">
+
+				<a class="head-cta" href="/#tu-van">
+					<span>Tư vấn miễn phí</span>
+				</a>
+
+				<a class="head-login" href="/admin/">
+					<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8.4" r="3.8"/><path d="M4.8 20.2a7.2 7.2 0 0 1 14.4 0"/></svg>
+					<span>Đăng nhập</span>
+				</a>
+
+				<button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Mở menu">
+					<svg class="ico ico--menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.6 7h16.8M3.6 12h16.8M3.6 17h10.8"/></svg><svg class="ico ico--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+				</button>
+
+			</div>
+		</div>
+	</div>
+
+	<nav class="mainbar" id="site-nav" aria-label="Menu chính">
+		<div class="shell">
+			<ul id="primary-menu" class="mainnav"><li class="mainnav__item"><a class="mainnav__link" href="/"><span>Trang chủ</span></a></li><li class="mainnav__item mainnav__item--parent"><a class="mainnav__link" href="/the-tin-dung/"><span>Thẻ tín dụng</span></a><ul class="subnav"><li class="subnav__item"><a class="subnav__link" href="/the-tin-dung-ngan-hang/hsbc/"><span>HSBC</span></a></li><li class="subnav__item"><a class="subnav__link" href="/the-tin-dung-ngan-hang/shbvn/"><span>Shinhan Bank</span></a></li><li class="subnav__item"><a class="subnav__link" href="/the-tin-dung-ngan-hang/scbvl/"><span>Standard Chartered (SCBVL)</span></a></li><li class="subnav__item"><a class="subnav__link" href="/the-tin-dung-ngan-hang/hdbank/"><span>HDBank</span></a></li><li class="subnav__item"><a class="subnav__link" href="/the-tin-dung-ngan-hang/msb/"><span>MSB</span></a></li><li class="subnav__item"><a class="subnav__link" href="/the-tin-dung-ngan-hang/seabank/"><span>SeABank</span></a></li><li class="subnav__item"><a class="subnav__link" href="/the-tin-dung/"><span>Tất cả ngân hàng</span></a></li><li class="subnav__item"><a class="subnav__link" href="/the-ghi-no/"><span>Thẻ ghi nợ</span></a></li></ul></li><li class="mainnav__item mainnav__item--parent"><a class="mainnav__link" href="/gui-tiet-kiem/"><span>Gửi tiết kiệm</span></a><ul class="subnav"><li class="subnav__item"><a class="subnav__link" href="/nhom-ngan-hang/co-phan-tu-nhan/"><span>Ngân hàng cổ phần</span></a></li><li class="subnav__item"><a class="subnav__link" href="/nhom-ngan-hang/nuoc-ngoai/"><span>Ngân hàng nước ngoài</span></a></li><li class="subnav__item"><a class="subnav__link" href="/nhom-ngan-hang/quoc-doanh/"><span>Ngân hàng quốc doanh</span></a></li><li class="subnav__item"><a class="subnav__link" href="/nhom-ngan-hang/ngan-hang-so/"><span>Ngân hàng số</span></a></li></ul></li><li class="mainnav__item mainnav__item--parent"><a class="mainnav__link" href="/vay-ngan-hang/"><span>Vay vốn</span></a><ul class="subnav"><li class="subnav__item"><a class="subnav__link" href="/vay-tin-chap/"><span>Vay tín chấp</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-the-chap/"><span>Vay thế chấp</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-tra-gop/"><span>Vay trả góp</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-tieu-dung/"><span>Vay tiêu dùng</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-mua-nha/"><span>Vay mua nhà</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-mua-xe/"><span>Vay mua xe</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-kinh-doanh/"><span>Vay kinh doanh</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-du-hoc/"><span>Vay du học</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-tien-online/"><span>App vay online</span></a></li><li class="subnav__item"><a class="subnav__link" href="/vay-tien-mat-nhanh/"><span>Vay tiền mặt nhanh</span></a></li></ul></li><li class="mainnav__item mainnav__item--parent"><a class="mainnav__link" href="/bao-hiem/"><span>Bảo hiểm</span></a><ul class="subnav"><li class="subnav__item"><a class="subnav__link" href="/bao-hiem-nhan-tho/"><span>Bảo hiểm nhân thọ</span></a></li><li class="subnav__item"><a class="subnav__link" href="/bao-hiem-suc-khoe/"><span>Bảo hiểm sức khỏe</span></a></li><li class="subnav__item"><a class="subnav__link" href="/bao-hiem-du-lich/"><span>Bảo hiểm du lịch</span></a></li><li class="subnav__item"><a class="subnav__link" href="/bao-hiem-o-to/"><span>Bảo hiểm ô tô</span></a></li><li class="subnav__item"><a class="subnav__link" href="/bao-hiem-nha/"><span>Bảo hiểm nhà</span></a></li><li class="subnav__item"><a class="subnav__link" href="/bao-hiem-tu-ky/"><span>Bảo hiểm tử kỳ</span></a></li></ul></li><li class="mainnav__item"><a class="mainnav__link" href="/giao-dich/"><span>Giao dịch</span></a></li><li class="mainnav__item"><a class="mainnav__link" href="/kien-thuc/"><span>Kiến thức</span></a></li></ul>
+
+			<a class="mainbar__cta" href="#cong-cu">
+				<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4.6" y="3" width="14.8" height="18" rx="2.2"/><rect x="7.4" y="6" width="9.2" height="3.2" rx=".8"/><path d="M8.2 12.6h.01M12 12.6h.01M15.8 12.6h.01M8.2 16.4h.01M12 16.4h.01M15.8 16.4h.01"/></svg>
+				<span>Công cụ tính toán</span>
+			</a>
+		</div>
+	</nav>
+
+</header>
+
+<main id="main">
+	
+<div class="parc lender places">
+
+	<section class="parc__hero phero">
+	<div class="shell">
+		<nav class="crumbs" aria-label="Đường dẫn">
+			<a href="/">Trang chủ</a><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg><span>Mạng lưới ngân hàng</span>
+		</nav>
+		<div class="parc__grid">
+			<div class="parc__copy">
+				<h1 class="parc__title phero__title">Tra cứu <span class="parc__hl">chi nhánh, phòng giao dịch và ATM</span> ngân hàng</h1>
+				<p class="parc__lead">Địa chỉ, giờ làm việc và số điện thoại của 23.689 điểm giao dịch thuộc 31 ngân hàng, xếp theo tỉnh/thành và phường/xã mới. Dữ liệu đọc thẳng từ trang mạng lưới chính thức của từng ngân hàng.</p>
+				<p class="verified psource">
+						<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 2.9 4.8 6v6c0 4.1 3 7.4 7.2 9 4.2-1.6 7.2-4.9 7.2-9V6z"/><path d="m9.2 12 2.1 2.1 3.8-4.1"/></svg>
+						<span>
+							Nguồn: <a href="https://www.agribank.com.vn/vn/atm-chi-nhanh" rel="nofollow noopener" target="_blank">Agribank</a> · <a href="https://www.vietinbank.vn/mang-luoi-chi-nhanh-atm" rel="nofollow noopener" target="_blank">VietinBank</a> · <a href="https://bidv.com.vn/vn/atm-chi-nhanh" rel="nofollow noopener" target="_blank">BIDV</a> · <a href="https://www.vietcombank.com.vn/vi-VN/Mang-luoi" rel="nofollow noopener" target="_blank">Vietcombank</a> · <a href="https://www.sacombank.com.vn/trang-chu/danh-sach-atm-dgd.html" rel="nofollow noopener" target="_blank">Sacombank</a> · <a href="https://lpbank.com.vn/mang-luoi" rel="nofollow noopener" target="_blank">LPBank</a> · <a href="https://techcombank.com/lien-he" rel="nofollow noopener" target="_blank">Techcombank</a> · <a href="https://acb.com.vn/lien-he" rel="nofollow noopener" target="_blank">ACB</a> · <a href="https://www.vpbank.com.vn/chi-nhanh-va-atm" rel="nofollow noopener" target="_blank">VPBank</a> · <a href="https://tpb.vn/tim-diem-giao-dich" rel="nofollow noopener" target="_blank">TPBank</a> · <a href="https://www.msb.com.vn/lien-he-ho-tro/#mang-luoi" rel="nofollow noopener" target="_blank">MSB</a> · <a href="https://www.seabank.com.vn/mang-luoi" rel="nofollow noopener" target="_blank">SeABank</a> · <a href="https://eximbank.com.vn/lien-he" rel="nofollow noopener" target="_blank">Eximbank</a> · <a href="https://www.vib.com.vn/vn/atm-chinhanh" rel="nofollow noopener" target="_blank">VIB</a> · <a href="https://kienlongbank.com/diem-giao-dich" rel="nofollow noopener" target="_blank">Kienlongbank</a> · <a href="https://www.pvcombank.com.vn/mang-luoi" rel="nofollow noopener" target="_blank">PVcomBank</a> · <a href="https://www.baca-bank.vn/SitePages/website/mang-luoi.aspx" rel="nofollow noopener" target="_blank">Bac A Bank</a> · <a href="https://bvbank.net.vn/diem-giao-dich-atm/" rel="nofollow noopener" target="_blank">BVBank</a> · <a href="https://shinhan.com.vn/vi/branches" rel="nofollow noopener" target="_blank">Shinhan Bank</a> · <a href="https://abbank.vn/chi-nhanh" rel="nofollow noopener" target="_blank">ABBANK</a> · <a href="https://www.vietbank.com.vn/chi-nhanh" rel="nofollow noopener" target="_blank">VietBank</a> · <a href="https://www.namabank.com.vn/chi-nhanh-1" rel="nofollow noopener" target="_blank">Nam A Bank</a> · <a href="https://www.vietabank.com.vn/mang-luoi-atm/danh-sach-cnpgd.html" rel="nofollow noopener" target="_blank">Viet A Bank</a> · <a href="https://baovietbank.vn/vn/mang-luoi-hoat-dong" rel="nofollow noopener" target="_blank">BaoViet Bank</a> · <a href="https://www.mbv.com.vn/lien-he" rel="nofollow noopener" target="_blank">MBV</a> · <a href="https://woori.com.vn/chi-nhanh/" rel="nofollow noopener" target="_blank">Woori Bank</a> · <a href="https://www.gpbank.com.vn/chi-nhanh-va-atm" rel="nofollow noopener" target="_blank">GPBank</a> · <a href="https://vcbneo.com.vn/Pages/OperationNetwork.aspx" rel="nofollow noopener" target="_blank">VCBNeo</a> · <a href="https://www.scb.com.vn/vie/mang-luoi" rel="nofollow noopener" target="_blank">SCB</a> · <a href="https://www.sc.com/vn/atm-branch-locator/" rel="nofollow noopener" target="_blank">Standard Chartered</a> · <a href="https://www.cimbbank.com.vn/vi/personal/help-and-support/locate-us.html" rel="nofollow noopener" target="_blank">CIMB</a> · cập nhật 27/10/2026
+						</span>
+					</p>
+			</div>
+			<ul class="parc__stats">
+					<li class="cstat2">
+							<span class="cstat2__icon"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.2 9.6 12 4.4l8.8 5.2"/><path d="M4.8 9.6v9M9.6 9.6v9M14.4 9.6v9M19.2 9.6v9"/><path d="M2.8 20.6h18.4"/></svg></span>
+							<span class="cstat2__body">
+								<span class="cstat2__value">9.982</span>
+								<span class="cstat2__label">chi nhánh, phòng giao dịch</span>
+							</span>
+						</li><li class="cstat2">
+							<span class="cstat2__icon"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4.4" y="3.4" width="15.2" height="17.2" rx="2.2"/><rect x="7.4" y="6.6" width="9.2" height="5.4" rx="1"/><path d="M7.6 15.4h3M13.4 15.4h3M7.6 18h3"/></svg></span>
+							<span class="cstat2__body">
+								<span class="cstat2__value">13.707</span>
+								<span class="cstat2__label">ATM (2.965 máy nộp tiền)</span>
+							</span>
+						</li><li class="cstat2">
+							<span class="cstat2__icon"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 4.6-5.6 2.2v12.6L9 17.2l6 2.2 5.6-2.2V4.6L15 6.8z"/><path d="M9 4.6v12.6M15 6.8v12.6"/></svg></span>
+							<span class="cstat2__body">
+								<span class="cstat2__value">34</span>
+								<span class="cstat2__label">tỉnh, thành có dữ liệu</span>
+							</span>
+						</li><li class="cstat2">
+							<span class="cstat2__icon"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.6" y="5" width="16.8" height="15.4" rx="2.2"/><path d="M3.6 9.8h16.8M8.2 3v4M15.8 3v4"/><path d="M7.6 13.4h.01M12 13.4h.01M16.4 13.4h.01M7.6 16.8h.01M12 16.8h.01"/></svg></span>
+							<span class="cstat2__body">
+								<span class="cstat2__value">27/10/2026</span>
+								<span class="cstat2__label">lần cập nhật gần nhất</span>
+							</span>
+						</li>
+				</ul>
+		</div>
+		
+	</div>
+</section>
+
+	
+			<section class="section-w psec psec--near"><div class="shell"><section class="pnear" data-near data-bank aria-labelledby="pnear-title">
+	<div class="pnear__head">
+		<span class="pnear__icon"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></span>
+		<div class="pnear__copy">
+			<h2 class="pnear__title" id="pnear-title">Tìm ATM, chi nhánh gần bạn</h2>
+			<p class="pnear__text">Dùng vị trí hiện tại để xem tối đa 30 điểm gần nhất kèm khoảng cách. Vị trí chỉ dùng cho lần tìm này, không được lưu.</p>
+		</div>
+	</div>
+	<div class="pnear__bar">
+		<label class="cfilter__sort pnear__sel">
+				<span class="screen-reader-text">Ngân hàng</span>
+				<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9.4 12 4l9 5.4"/><path d="M4.6 9.4h14.8"/><path d="M6.2 12.2v5.4M10.1 12.2v5.4M13.9 12.2v5.4M17.8 12.2v5.4"/><path d="M3.6 20.4h16.8"/></svg>
+				<select data-near-bank>
+					<option value="">Mọi ngân hàng</option>
+					<option value="agribank">Agribank</option><option value="vietinbank">VietinBank</option><option value="bidv">BIDV</option><option value="vietcombank">Vietcombank</option><option value="sacombank">Sacombank</option><option value="lpbank">LPBank</option><option value="techcombank">Techcombank</option><option value="acb">ACB</option><option value="vpbank">VPBank</option><option value="tpbank">TPBank</option><option value="msb">MSB</option><option value="seabank">SeABank</option><option value="eximbank">Eximbank</option><option value="vib">VIB</option><option value="kienlongbank">Kienlongbank</option><option value="pvcombank">PVcomBank</option><option value="bacabank">Bac A Bank</option><option value="bvbank">BVBank</option><option value="shinhan">Shinhan Bank</option><option value="abbank">ABBANK</option><option value="vietbank">VietBank</option><option value="namabank">Nam A Bank</option><option value="vietabank">Viet A Bank</option><option value="baovietbank">BaoViet Bank</option><option value="mbv">MBV</option><option value="woori">Woori Bank</option><option value="gpbank">GPBank</option><option value="vcbneo">VCBNeo</option><option value="scb">SCB</option><option value="standardchartered">Standard Chartered</option><option value="cimb">CIMB</option>
+				</select>
+			</label>
+		<label class="cfilter__sort pnear__sel">
+			<span class="screen-reader-text">Loại điểm</span>
+			<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3.6 5.4h16.8l-6.4 7.6v5.8l-4 1.8v-7.6z"/></svg>
+			<select data-near-kind>
+				<option value="" selected>ATM và chi nhánh</option>
+				<option value="atm">Chỉ ATM</option>
+				<option value="chi-nhanh">Chỉ chi nhánh, PGD</option>
+			</select>
+		</label>
+		<button type="button" class="pnear__btn" data-near-go>
+			<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><span>Dùng vị trí của tôi</span>
+		</button>
+	</div>
+	<p class="pnear__status" data-near-status role="status" aria-live="polite"></p>
+	<ol class="ploclist pnear__list" data-near-list hidden></ol>
+	<noscript><p class="pnear__status">Cần bật JavaScript để tìm theo vị trí. Bạn vẫn có thể chọn tỉnh/thành và phường/xã ở danh sách bên dưới.</p></noscript>
+</section></div></section>
+			<section class="section-g psec">
+				<div class="shell">
+					<h2 class="psec__title">Chọn ngân hàng</h2>
+					<ul class="pbanks">
+						<li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/agribank/">
+									<span class="pbank__logo" aria-hidden="true">AGR</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Agribank</span>
+										<span class="pbank__full">Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam (Agribank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/agribank/chi-nhanh/">2.151</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/agribank/atm/">1.801</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>34</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/vietinbank/">
+									<span class="pbank__logo" aria-hidden="true">CTG</span>
+									<span class="pbank__body">
+										<span class="pbank__name">VietinBank</span>
+										<span class="pbank__full">Ngân hàng TMCP Công Thương Việt Nam (VietinBank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/vietinbank/chi-nhanh/">977</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/vietinbank/atm/">2.238</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>276</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>34</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/bidv/">
+									<span class="pbank__logo" aria-hidden="true">BIDV</span>
+									<span class="pbank__body">
+										<span class="pbank__name">BIDV</span>
+										<span class="pbank__full">Ngân hàng TMCP Đầu tư và Phát triển Việt Nam (BIDV)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/bidv/chi-nhanh/">1.104</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/bidv/atm/">2.092</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>726</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>34</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/vietcombank/">
+									<span class="pbank__logo" aria-hidden="true">VCB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Vietcombank</span>
+										<span class="pbank__full">Ngân hàng TMCP Ngoại thương Việt Nam (Vietcombank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/vietcombank/chi-nhanh/">685</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/vietcombank/atm/">1.911</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>369</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>31</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/sacombank/">
+									<span class="pbank__logo" aria-hidden="true">STB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Sacombank</span>
+										<span class="pbank__full">Ngân hàng TMCP Sài Gòn Thương Tín (Sacombank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/sacombank/chi-nhanh/">531</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/sacombank/atm/">941</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>254</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>28</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/lpbank/">
+									<span class="pbank__logo" aria-hidden="true">LPB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">LPBank</span>
+										<span class="pbank__full">Ngân hàng TMCP Lộc Phát Việt Nam (LPBank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/lpbank/chi-nhanh/">1.053</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/lpbank/atm/">206</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>9</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>34</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/techcombank/">
+									<span class="pbank__logo" aria-hidden="true">TCB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Techcombank</span>
+										<span class="pbank__full">Ngân hàng TMCP Kỹ Thương Việt Nam (Techcombank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/techcombank/chi-nhanh/">306</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/techcombank/atm/">685</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>361</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>29</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/acb/">
+									<span class="pbank__logo" aria-hidden="true">ACB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">ACB</span>
+										<span class="pbank__full">Ngân hàng TMCP Á Châu (ACB)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/acb/chi-nhanh/">393</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/acb/atm/">475</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>27</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/vpbank/">
+									<span class="pbank__logo" aria-hidden="true">VPB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">VPBank</span>
+										<span class="pbank__full">Ngân hàng TMCP Việt Nam Thịnh Vượng (VPBank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/vpbank/chi-nhanh/">288</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/vpbank/atm/">573</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>336</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>30</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/tpbank/">
+									<span class="pbank__logo" aria-hidden="true">TPB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">TPBank</span>
+										<span class="pbank__full">Ngân hàng TMCP Tiên Phong (TPBank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/tpbank/chi-nhanh/">140</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/tpbank/atm/">609</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>467</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>26</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/msb/">
+									<span class="pbank__logo" aria-hidden="true">MSB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">MSB</span>
+										<span class="pbank__full">Ngân hàng TMCP Hàng Hải Việt Nam (MSB)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/msb/chi-nhanh/">258</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/msb/atm/">407</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>29</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/seabank/">
+									<span class="pbank__logo" aria-hidden="true">SSB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">SeABank</span>
+										<span class="pbank__full">Ngân hàng TMCP Đông Nam Á (SeABank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/seabank/chi-nhanh/">182</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/seabank/atm/">308</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>24</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/eximbank/">
+									<span class="pbank__logo" aria-hidden="true">EIB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Eximbank</span>
+										<span class="pbank__full">Ngân hàng TMCP Xuất Nhập khẩu Việt Nam (Eximbank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/eximbank/chi-nhanh/">216</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/eximbank/atm/">241</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>19</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/vib/">
+									<span class="pbank__logo" aria-hidden="true">VIB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">VIB</span>
+										<span class="pbank__full">Ngân hàng TMCP Quốc tế Việt Nam (VIB)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/vib/chi-nhanh/">198</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/vib/atm/">213</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>25</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/kienlongbank/">
+									<span class="pbank__logo" aria-hidden="true">KLB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Kienlongbank</span>
+										<span class="pbank__full">Ngân hàng TMCP Kiên Long (Kienlongbank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/kienlongbank/chi-nhanh/">134</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/kienlongbank/atm/">227</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>79</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>15</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/pvcombank/">
+									<span class="pbank__logo" aria-hidden="true">PVB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">PVcomBank</span>
+										<span class="pbank__full">Ngân hàng TMCP Đại Chúng Việt Nam (PVcomBank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/pvcombank/chi-nhanh/">109</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/pvcombank/atm/">156</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>22</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/bacabank/">
+									<span class="pbank__logo" aria-hidden="true">BAB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Bac A Bank</span>
+										<span class="pbank__full">Ngân hàng TMCP Bắc Á (Bac A Bank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/bacabank/chi-nhanh/">176</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/bacabank/atm/">75</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>29</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/bvbank/">
+									<span class="pbank__logo" aria-hidden="true">BVBK</span>
+									<span class="pbank__body">
+										<span class="pbank__name">BVBank</span>
+										<span class="pbank__full">Ngân hàng TMCP Bản Việt (BVBank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/bvbank/chi-nhanh/">126</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/bvbank/atm/">126</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>29</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>22</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/shinhan/">
+									<span class="pbank__logo" aria-hidden="true">SHN</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Shinhan Bank</span>
+										<span class="pbank__full">Ngân hàng TNHH MTV Shinhan Việt Nam</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/shinhan/chi-nhanh/">56</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/shinhan/atm/">162</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>5</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>14</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/abbank/">
+									<span class="pbank__logo" aria-hidden="true">ABB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">ABBANK</span>
+										<span class="pbank__full">Ngân hàng TMCP An Bình (ABBANK)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/abbank/chi-nhanh/">165</a></dd></div>
+									<div><dt>ATM</dt><dd>—</dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>25</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/vietbank/">
+									<span class="pbank__logo" aria-hidden="true">VBB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">VietBank</span>
+										<span class="pbank__full">Ngân hàng TMCP Việt Nam Thương Tín (VietBank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/vietbank/chi-nhanh/">132</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/vietbank/atm/">32</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>20</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/namabank/">
+									<span class="pbank__logo" aria-hidden="true">NAB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Nam A Bank</span>
+										<span class="pbank__full">Ngân hàng TMCP Nam Á (Nam A Bank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/namabank/chi-nhanh/">152</a></dd></div>
+									<div><dt>ATM</dt><dd>—</dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>21</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/vietabank/">
+									<span class="pbank__logo" aria-hidden="true">VAB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Viet A Bank</span>
+										<span class="pbank__full">Ngân hàng TMCP Việt Á (Viet A Bank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/vietabank/chi-nhanh/">99</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/vietabank/atm/">47</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>14</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/baovietbank/">
+									<span class="pbank__logo" aria-hidden="true">BVB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">BaoViet Bank</span>
+										<span class="pbank__full">Ngân hàng TMCP Bảo Việt (BaoViet Bank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/baovietbank/chi-nhanh/">57</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/baovietbank/atm/">74</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>46</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>24</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/mbv/">
+									<span class="pbank__logo" aria-hidden="true">MBV</span>
+									<span class="pbank__body">
+										<span class="pbank__name">MBV</span>
+										<span class="pbank__full">Ngân hàng TNHH MTV Việt Nam Hiện Đại (MBV)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/mbv/chi-nhanh/">112</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/mbv/atm/">17</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>8</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>16</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/woori/">
+									<span class="pbank__logo" aria-hidden="true">WRB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Woori Bank</span>
+										<span class="pbank__full">Ngân hàng TNHH MTV Woori Việt Nam</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/woori/chi-nhanh/">29</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/woori/atm/">74</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>10</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/gpbank/">
+									<span class="pbank__logo" aria-hidden="true">GPB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">GPBank</span>
+										<span class="pbank__full">Ngân hàng TM TNHH MTV Dầu Khí Toàn Cầu (GPBank)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/gpbank/chi-nhanh/">84</a></dd></div>
+									<div><dt>ATM</dt><dd>—</dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>9</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/vcbneo/">
+									<span class="pbank__logo" aria-hidden="true">NEO</span>
+									<span class="pbank__body">
+										<span class="pbank__name">VCBNeo</span>
+										<span class="pbank__full">Ngân hàng TNHH MTV Ngoại thương Công nghệ số (VCBNeo)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/vcbneo/chi-nhanh/">55</a></dd></div>
+									<div><dt>ATM</dt><dd>—</dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>8</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/scb/">
+									<span class="pbank__logo" aria-hidden="true">SCB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">SCB</span>
+										<span class="pbank__full">Ngân hàng TMCP Sài Gòn (SCB)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/scb/chi-nhanh/">8</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/scb/atm/">8</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>6</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/standardchartered/">
+									<span class="pbank__logo" aria-hidden="true">SC</span>
+									<span class="pbank__body">
+										<span class="pbank__name">Standard Chartered</span>
+										<span class="pbank__full">Ngân hàng TNHH MTV Standard Chartered (Việt Nam)</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/standardchartered/chi-nhanh/">4</a></dd></div>
+									<div><dt>ATM</dt><dd><a href="/ngan-hang/standardchartered/atm/">9</a></dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>3</dd></div>
+								</dl>
+							</li><li class="pbank">
+								<a class="pbank__main" href="/ngan-hang/cimb/">
+									<span class="pbank__logo" aria-hidden="true">CIMB</span>
+									<span class="pbank__body">
+										<span class="pbank__name">CIMB</span>
+										<span class="pbank__full">Ngân hàng TNHH MTV CIMB Việt Nam</span>
+									</span>
+								</a>
+								<dl class="pbank__facts">
+									<div><dt>CN/PGD</dt><dd><a href="/ngan-hang/cimb/chi-nhanh/">2</a></dd></div>
+									<div><dt>ATM</dt><dd>—</dd></div>
+									<div><dt>Nộp tiền</dt><dd>0</dd></div>
+									<div><dt>Tỉnh, thành</dt><dd>2</dd></div>
+								</dl>
+							</li>
+					</ul>
+				</div>
+			</section>
+			<section class="section-w psec">
+				<div class="shell">
+					<h2 class="psec__title">Tra theo tỉnh, thành phố</h2>
+					<p class="psec__lead">Số điểm giao dịch và ATM của mọi ngân hàng có dữ liệu trong từng tỉnh/thành (34 đơn vị hành chính mới).</p>
+					<ul class="pprov">
+						<li><a class="pprov__item" href="/atm/ha-noi/"><span>Hà Nội</span><b>3.598</b></a></li><li><a class="pprov__item" href="/atm/ho-chi-minh/"><span>TP.HCM</span><b>5.032</b></a></li><li><a class="pprov__item" href="/atm/an-giang/"><span>An Giang</span><b>739</b></a></li><li><a class="pprov__item" href="/atm/bac-ninh/"><span>Bắc Ninh</span><b>642</b></a></li><li><a class="pprov__item" href="/atm/ca-mau/"><span>Cà Mau</span><b>330</b></a></li><li><a class="pprov__item" href="/atm/cao-bang/"><span>Cao Bằng</span><b>92</b></a></li><li><a class="pprov__item" href="/atm/can-tho/"><span>Cần Thơ</span><b>720</b></a></li><li><a class="pprov__item" href="/atm/da-nang/"><span>Đà Nẵng</span><b>822</b></a></li><li><a class="pprov__item" href="/atm/dak-lak/"><span>Đắk Lắk</span><b>514</b></a></li><li><a class="pprov__item" href="/atm/dien-bien/"><span>Điện Biên</span><b>87</b></a></li><li><a class="pprov__item" href="/atm/dong-nai/"><span>Đồng Nai</span><b>850</b></a></li><li><a class="pprov__item" href="/atm/dong-thap/"><span>Đồng Tháp</span><b>558</b></a></li><li><a class="pprov__item" href="/atm/gia-lai/"><span>Gia Lai</span><b>575</b></a></li><li><a class="pprov__item" href="/atm/ha-tinh/"><span>Hà Tĩnh</span><b>271</b></a></li><li><a class="pprov__item" href="/atm/hai-phong/"><span>Hải Phòng</span><b>1.019</b></a></li><li><a class="pprov__item" href="/atm/hue/"><span>Huế</span><b>256</b></a></li><li><a class="pprov__item" href="/atm/hung-yen/"><span>Hưng Yên</span><b>502</b></a></li><li><a class="pprov__item" href="/atm/khanh-hoa/"><span>Khánh Hòa</span><b>466</b></a></li><li><a class="pprov__item" href="/atm/lai-chau/"><span>Lai Châu</span><b>68</b></a></li><li><a class="pprov__item" href="/atm/lang-son/"><span>Lạng Sơn</span><b>136</b></a></li><li><a class="pprov__item" href="/atm/lao-cai/"><span>Lào Cai</span><b>293</b></a></li><li><a class="pprov__item" href="/atm/lam-dong/"><span>Lâm Đồng</span><b>633</b></a></li><li><a class="pprov__item" href="/atm/nghe-an/"><span>Nghệ An</span><b>556</b></a></li><li><a class="pprov__item" href="/atm/ninh-binh/"><span>Ninh Bình</span><b>666</b></a></li><li><a class="pprov__item" href="/atm/phu-tho/"><span>Phú Thọ</span><b>680</b></a></li><li><a class="pprov__item" href="/atm/quang-ngai/"><span>Quảng Ngãi</span><b>348</b></a></li><li><a class="pprov__item" href="/atm/quang-ninh/"><span>Quảng Ninh</span><b>530</b></a></li><li><a class="pprov__item" href="/atm/quang-tri/"><span>Quảng Trị</span><b>323</b></a></li><li><a class="pprov__item" href="/atm/son-la/"><span>Sơn La</span><b>116</b></a></li><li><a class="pprov__item" href="/atm/tay-ninh/"><span>Tây Ninh</span><b>611</b></a></li><li><a class="pprov__item" href="/atm/thai-nguyen/"><span>Thái Nguyên</span><b>356</b></a></li><li><a class="pprov__item" href="/atm/thanh-hoa/"><span>Thanh Hóa</span><b>545</b></a></li><li><a class="pprov__item" href="/atm/tuyen-quang/"><span>Tuyên Quang</span><b>227</b></a></li><li><a class="pprov__item" href="/atm/vinh-long/"><span>Vĩnh Long</span><b>521</b></a></li>
+					</ul>
+					<p class="psec__more"><a class="pgroup__all" href="/atm/"><span>Bảng ATM theo tỉnh và ngân hàng</span><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.6 12h14.2"/><path d="m12.8 6 6 6-6 6"/></svg></a></p>
+				</div>
+			</section>
+		
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	<section class="pfaq pfaq--places" id="faq">
+		<div class="shell">
+			<h2 class="pfaq__title">Câu hỏi thường gặp</h2>
+			<div class="faq__list">
+				<div class="faq__item">
+						<h3>
+							<button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-0">
+								<span class="faq__num">1</span>
+								<span class="faq__text">CBBank có dữ liệu mạng lưới của những ngân hàng nào?</span>
+								<svg class="ico faq__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9.2 6 6 6-6"/></svg>
+							</button>
+						</h3>
+						<div class="faq__a" id="faq-0" hidden>
+							<p>Hiện có 31 ngân hàng: Agribank (3.952 điểm), VietinBank (3.215 điểm), BIDV (3.196 điểm), Vietcombank (2.596 điểm), Sacombank (1.472 điểm), LPBank (1.259 điểm), Techcombank (991 điểm), ACB (868 điểm), VPBank (861 điểm), TPBank (749 điểm), MSB (665 điểm), SeABank (490 điểm), Eximbank (457 điểm), VIB (411 điểm), Kienlongbank (361 điểm), PVcomBank (265 điểm), Bac A Bank (251 điểm), BVBank (252 điểm), Shinhan Bank (218 điểm), ABBANK (165 điểm), VietBank (164 điểm), Nam A Bank (152 điểm), Viet A Bank (146 điểm), BaoViet Bank (131 điểm), MBV (129 điểm), Woori Bank (103 điểm), GPBank (84 điểm), VCBNeo (55 điểm), SCB (16 điểm), Standard Chartered (13 điểm), CIMB (2 điểm). Dữ liệu lấy từ trang mạng lưới chính thức của từng ngân hàng, cập nhật hằng ngày.</p>
+						</div>
+					</div><div class="faq__item">
+						<h3>
+							<button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-1">
+								<span class="faq__num">2</span>
+								<span class="faq__text">Làm sao tìm ATM hoặc chi nhánh gần tôi nhất?</span>
+								<svg class="ico faq__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9.2 6 6 6-6"/></svg>
+							</button>
+						</h3>
+						<div class="faq__a" id="faq-1" hidden>
+							<p>Bấm nút &quot;Dùng vị trí của tôi&quot; ở đầu trang và cho phép trình duyệt chia sẻ vị trí. Vị trí chỉ dùng để tính khoảng cách trong lần tìm đó, không được lưu lại. Bạn cũng có thể chọn tỉnh/thành và phường/xã ở danh sách bên dưới.</p>
+						</div>
+					</div><div class="faq__item">
+						<h3>
+							<button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-2">
+								<span class="faq__num">3</span>
+								<span class="faq__text">Tỉnh, thành nào có nhiều điểm giao dịch nhất?</span>
+								<svg class="ico faq__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9.2 6 6 6-6"/></svg>
+							</button>
+						</h3>
+						<div class="faq__a" id="faq-2" hidden>
+							<p>TP.HCM (5.032 điểm), Hà Nội (3.598 điểm) và Hải Phòng (1.019 điểm) — tính trên 31 ngân hàng có dữ liệu.</p>
+						</div>
+					</div><div class="faq__item">
+						<h3>
+							<button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-3">
+								<span class="faq__num">4</span>
+								<span class="faq__text">Địa chỉ đã theo tên phường/xã mới chưa?</span>
+								<svg class="ico faq__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9.2 6 6 6-6"/></svg>
+							</button>
+						</h3>
+						<div class="faq__a" id="faq-3" hidden>
+							<p>Địa chỉ giữ đúng như ngân hàng công bố; phường/xã hiển thị theo đơn vị hành chính mới (34 tỉnh, bỏ cấp huyện từ 1/7/2025). Trang phường/xã ghi kèm tên phường/xã, quận/huyện cũ trước sáp nhập.</p>
+						</div>
+					</div>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+</main>
+
+<footer class="site-foot">
+	<span class="site-foot__glow" aria-hidden="true"></span>
+
+	<div class="shell">
+
+		<div class="foot-top">
+
+			<div class="foot-brand">
+				<a class="brand" href="/" rel="home">
+	<img width="96" height="96" src="https://img.cbbank.vn/cbbank/wp-content/uploads/2026/09/cb-icon.webp" class="brand__icon" alt="" decoding="async" loading="lazy" /><span class="brand__text">
+				<span class="brand__name">CBBank</span>
+				<span class="brand__tag">Trang thông tin tài chính</span>
+			</span>
+		
+</a>
+
+				<p class="foot-desc">Trang thông tin tổng hợp về tài chính – ngân hàng. Thông tin trên trang miễn phí và mang tính tham khảo.</p>
+
+				<ul class="foot-contact">
+					<li class="fcontact">
+							<span class="fcontact__icon"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2.8" y="5" width="18.4" height="14" rx="2.4"/><path d="m3.6 7 8.4 6 8.4-6"/></svg></span>
+							<span class="fcontact__body">
+								<span class="fcontact__label">Thư điện tử</span>
+								<a class="fcontact__value" href="mailto:hotro@cbbank.vn">hotro@cbbank.vn</a>
+							</span>
+						</li><li class="fcontact">
+							<span class="fcontact__icon"><svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.6"/><path d="M12 7.2V12l3.2 1.9"/></svg></span>
+							<span class="fcontact__body">
+								<span class="fcontact__label">Giờ làm việc</span>
+								<span class="fcontact__value">8:00 – 21:00, tất cả các ngày</span>
+							</span>
+						</li>
+				</ul>
+			</div>
+
+			<nav class="foot-col" aria-label="Sản phẩm">
+					<p class="foot-col__title">Sản phẩm</p>
+					<ul>
+						<li>
+								<a href="/the-tin-dung/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Thẻ tín dụng</span>
+								</a>
+							</li><li>
+								<a href="/gui-tiet-kiem/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Gửi tiết kiệm</span>
+								</a>
+							</li><li>
+								<a href="/vay-tin-chap/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Vay tín chấp</span>
+								</a>
+							</li><li>
+								<a href="/vay-the-chap/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Vay thế chấp</span>
+								</a>
+							</li><li>
+								<a href="/vay-mua-nha/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Vay mua nhà</span>
+								</a>
+							</li><li>
+								<a href="/bao-hiem-nhan-tho/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Bảo hiểm nhân thọ</span>
+								</a>
+							</li>
+					</ul>
+				</nav><nav class="foot-col" aria-label="Công cụ">
+					<p class="foot-col__title">Công cụ</p>
+					<ul>
+						<li>
+								<a href="/ngan-hang/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Mạng lưới ATM &amp; chi nhánh</span>
+								</a>
+							</li>
+					</ul>
+				</nav><nav class="foot-col" aria-label="Về chúng tôi">
+					<p class="foot-col__title">Về chúng tôi</p>
+					<ul>
+						<li>
+								<a href="/gioi-thieu/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Giới thiệu</span>
+								</a>
+							</li><li>
+								<a href="/kien-thuc/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Kiến thức tài chính</span>
+								</a>
+							</li><li>
+								<a href="/cau-hoi-thuong-gap/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Câu hỏi thường gặp</span>
+								</a>
+							</li><li>
+								<a href="/lien-he/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Liên hệ</span>
+								</a>
+							</li><li>
+								<a href="/hop-tac/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Hợp tác</span>
+								</a>
+							</li><li>
+								<a href="/nguyen-tac-bien-tap/">
+									<svg class="ico foot-col__caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+									<span>Nguyên tắc biên tập</span>
+								</a>
+							</li>
+					</ul>
+				</nav>
+
+		</div>
+
+		<p class="foot-note">
+			<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.6"/><path d="M12 11v5.2"/><circle cx="12" cy="8" r=".9" fill="currentColor" stroke="none"/></svg>
+			<span>Lãi suất, phí và điều kiện sản phẩm hiển thị trên trang mang tính tham khảo và có thể thay đổi theo chính sách từng thời kỳ của tổ chức phát hành. Vui lòng xác nhận lại với ngân hàng hoặc công ty bảo hiểm trước khi quyết định.</span>
+		</p>
+
+		<details class="foot-addr foot-addr--fold">
+				<summary class="foot-addr__toggle">
+					<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21.2s6.6-5.9 6.6-10.6a6.6 6.6 0 1 0-13.2 0c0 4.7 6.6 10.6 6.6 10.6z"/><circle cx="12" cy="10.4" r="2.6"/></svg>
+					<span>Đơn vị vận hành &amp; địa chỉ</span>
+					<svg class="ico foot-addr__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5.4 6.6 6.6L9 18.6"/></svg>
+				</summary>
+				<address class="foot-addr__body">
+					<strong>Vận hành cbbank.vn:</strong>
+					145-147-149 Hùng Vương - P. Long An - Tây Ninh
+					- Tel:
+					<a href="tel:+842723524639">(+84) (272) 3524 639</a>
+					- Fax: (+84) (272) 3524 900
+					<br><strong>Trụ sở chính VCBNeo:</strong> Số 10 Thiền Quang, P. Hai Bà Trưng, Hà Nội - Tổng đài: <a href="tel:19001816">1900 18 16</a> - <a href="https://vcbneo.com.vn/" rel="noopener" target="_blank">vcbneo.com.vn</a>
+				</address>
+			</details>
+
+		<div class="foot-bottom">
+			<p class="foot-copy">© 2026 CBBank. Bảo lưu mọi quyền.</p>
+
+			<nav class="foot-legal" aria-label="Liên kết pháp lý">
+				
+			</nav>
+
+			<a class="foot-top-link" href="#main">
+				<span>Lên đầu trang</span>
+				<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4.6 12h14.2"/><path d="m12.8 6 6 6-6 6"/></svg>
+			</a>
+		</div>
+
+	</div>
+</footer>
+
+<a class="hotline-float" href="/#tu-van">
+	<svg class="ico " viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.6 12c0 4.2-3.85 7.6-8.6 7.6a9.9 9.9 0 0 1-2.9-.43L4.2 20.6l1.2-3.65A7.2 7.2 0 0 1 3.4 12c0-4.2 3.85-7.6 8.6-7.6s8.6 3.4 8.6 7.6z"/></svg>
+	<span>Tư vấn</span>
+</a>
+
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://cbbank.vn/ngan-hang/#faq","mainEntity":[{"@type":"Question","name":"CBBank có dữ liệu mạng lưới của những ngân hàng nào?","acceptedAnswer":{"@type":"Answer","text":"Hiện có 31 ngân hàng: Agribank (3.952 điểm), VietinBank (3.215 điểm), BIDV (3.196 điểm), Vietcombank (2.596 điểm), Sacombank (1.472 điểm), LPBank (1.259 điểm), Techcombank (991 điểm), ACB (868 điểm), VPBank (861 điểm), TPBank (749 điểm), MSB (665 điểm), SeABank (490 điểm), Eximbank (457 điểm), VIB (411 điểm), Kienlongbank (361 điểm), PVcomBank (265 điểm), Bac A Bank (251 điểm), BVBank (252 điểm), Shinhan Bank (218 điểm), ABBANK (165 điểm), VietBank (164 điểm), Nam A Bank (152 điểm), Viet A Bank (146 điểm), BaoViet Bank (131 điểm), MBV (129 điểm), Woori Bank (103 điểm), GPBank (84 điểm), VCBNeo (55 điểm), SCB (16 điểm), Standard Chartered (13 điểm), CIMB (2 điểm). Dữ liệu lấy từ trang mạng lưới chính thức của từng ngân hàng, cập nhật hằng ngày."}},{"@type":"Question","name":"Làm sao tìm ATM hoặc chi nhánh gần tôi nhất?","acceptedAnswer":{"@type":"Answer","text":"Bấm nút \"Dùng vị trí của tôi\" ở đầu trang và cho phép trình duyệt chia sẻ vị trí. Vị trí chỉ dùng để tính khoảng cách trong lần tìm đó, không được lưu lại. Bạn cũng có thể chọn tỉnh/thành và phường/xã ở danh sách bên dưới."}},{"@type":"Question","name":"Tỉnh, thành nào có nhiều điểm giao dịch nhất?","acceptedAnswer":{"@type":"Answer","text":"TP.HCM (5.032 điểm), Hà Nội (3.598 điểm) và Hải Phòng (1.019 điểm) — tính trên 31 ngân hàng có dữ liệu."}},{"@type":"Question","name":"Địa chỉ đã theo tên phường/xã mới chưa?","acceptedAnswer":{"@type":"Answer","text":"Địa chỉ giữ đúng như ngân hàng công bố; phường/xã hiển thị theo đơn vị hành chính mới (34 tỉnh, bỏ cấp huyện từ 1/7/2025). Trang phường/xã ghi kèm tên phường/xã, quận/huyện cũ trước sáp nhập."}}]}</script>
+<script id="tbp-main-js" src="/assets/js/main.js?ver=1792816071"></script>
+<script id="tbp-places-js" src="/assets/js/places.js?ver=1792816071"></script>
+<script id="tbp-lead-js" src="/assets/js/tbp-lead.js?ver=1792816071" defer></script>
+</body>
+</html>

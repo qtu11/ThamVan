@@ -1,0 +1,17 @@
+{
+  "source": "https://commons.wikimedia.org/wiki/File:B%E1%BA%A3o_t%C3%A0ng_T%C3%B4n_%C4%90%E1%BB%A9c_Th%E1%BA%AFng_02.jpg",
+  "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/B%E1%BA%A3o_t%C3%A0ng_T%C3%B4n_%C4%90%E1%BB%A9c_Th%E1%BA%AFng_02.jpg/1280px-B%E1%BA%A3o_t%C3%A0ng_T%C3%B4n_%C4%90%E1%BB%A9c_Th%E1%BA%AFng_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "title": "File:Bảo tàng Tôn Đức Thắng 02.jpg",
+  "author": "Nam pahm",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "retrievedAt": "2026-10-27T08:59:21.045Z",
+  "evidence": {
+    "method": "EXACT_NAME_AND_GEOGRAPHY",
+    "matchedAlias": "Bảo tàng Tôn Đức Thắng",
+    "geographicContext": false,
+    "distanceKm": 0.05286498480889167,
+    "score": 94,
+    "provider": "PROVIDED_SOURCE_LINK"
+  }
+}

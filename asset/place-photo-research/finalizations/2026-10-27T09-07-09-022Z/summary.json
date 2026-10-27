@@ -1,0 +1,18 @@
+{
+  "recovered": 0,
+  "imported": 14,
+  "TotalPlaces": 1505,
+  "HasImages": 290,
+  "Missing": 1215,
+  "VerifiedImages": 0,
+  "PendingReview": 290,
+  "DocumentedLicenseImages": 163,
+  "CoveragePercent": 19.27,
+  "QuarantinedThisRun": 0,
+  "DuplicateAssignments": 0,
+  "AuditedUtc": "2026-10-27T09:07:14.552Z",
+  "CoverageMeaning": "Existing location photos only. Generated title cards and renders are excluded. Presence does not establish identity or usage rights.",
+  "SourcePagesChecked": 523,
+  "SourcePhotosCollected": 132,
+  "SourcePhotosVisuallyAccepted": 130
+}

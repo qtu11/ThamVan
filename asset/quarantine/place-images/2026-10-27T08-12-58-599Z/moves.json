@@ -1,0 +1,75 @@
+{
+  "createdAt": "2026-10-27T08:12:58.599Z",
+  "moves": [
+    {
+      "id": "HCM-0059",
+      "original": "/images/hcm-0059-cong-vien-hoang-van-thu.jpg",
+      "sha256": "439679c325f7eb74b32c212bc2d77f5cb363ae7d7a3163b3988c704d3c70dd8b",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-0059-cong-vien-hoang-van-thu.jpg"
+    },
+    {
+      "id": "HCM-NEW-0084",
+      "original": "/images/hcm-new-0084-truong-dai-hoc-y-khoa-pham-ngoc-thach.jpg",
+      "sha256": "1bb3d516bf0407f802214bc7aa8a3ef957d92bd9d717a8858fac4e0b85180ac2",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0084-truong-dai-hoc-y-khoa-pham-ngoc-thach.jpg"
+    },
+    {
+      "id": "HCM-NEW-0094",
+      "original": "/images/hcm-new-0094-hoc-vien-hang-khong-viet-nam.jpg",
+      "sha256": "3786a3421b846b6206b25b646f2b91bc6b9a9f1b40992803652379e7f6b79b4e",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0094-hoc-vien-hang-khong-viet-nam.jpg"
+    },
+    {
+      "id": "HCM-NEW-0152",
+      "original": "/images/hcm-new-0152-bep-me-in-le-thanh-ton.jpg",
+      "sha256": "08b1a8116a92dea4a8f5b34fc6b09e08237ed5953d5eeb843414f5574354e3b3",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0152-bep-me-in-le-thanh-ton.jpg"
+    },
+    {
+      "id": "HCM-NEW-0155",
+      "original": "/images/hcm-new-0155-sol-kitchen-bar-ben-thanh.jpg",
+      "sha256": "80ff35df545d11d2b8fdd2fe9ae36ff8bb3c0642eab6c96c7652643127a24d21",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0155-sol-kitchen-bar-ben-thanh.jpg"
+    },
+    {
+      "id": "HCM-NEW-0175",
+      "original": "/images/hcm-new-0175-pho-hung-cau-ong-lanh.jpg",
+      "sha256": "96895e1c78bf361f20340123a0cb4600ad44733f8aef7db21216d38bce947420",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0175-pho-hung-cau-ong-lanh.jpg"
+    },
+    {
+      "id": "HCM-NEW-0195",
+      "original": "/images/hcm-new-0195-pho-hoang-nguyen-tri-phuong.jpg",
+      "sha256": "67627f6bf26a6c5f6cca1ddf1f6adc5140d54234152d8d5e47b5ef6c7c2227cd",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0195-pho-hoang-nguyen-tri-phuong.jpg"
+    },
+    {
+      "id": "HCM-NEW-0200",
+      "original": "/images/hcm-new-0200-oc-dao-cau-ong-lanh.jpg",
+      "sha256": "de73aa59bf532b235ed3c7ae17a01b29130c673a4fb3499946da5e21fe89deac",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0200-oc-dao-cau-ong-lanh.jpg"
+    },
+    {
+      "id": "HCM-NEW-0207",
+      "original": "/images/hcm-new-0207-home-saigon-home-vietnamese-restaurant.jpg",
+      "sha256": "04615a6c2d487580e3fa2e9275255134980cdbd5347078ff2296b701862f0e43",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0207-home-saigon-home-vietnamese-restaurant.jpg"
+    },
+    {
+      "id": "HCM-NEW-0229",
+      "original": "/images/hcm-new-0229-ga-ben-thanh-tuyen-metro-so-1.jpg",
+      "sha256": "a3e58bd9431aa010d096c71e51d979c82eddaf5750e65e7a4a5e91b2d12649ba",
+      "reason": "IDENTITY_REJECTED",
+      "destination": "asset/quarantine/place-images/2026-10-27T08-12-58-599Z/images/hcm-new-0229-ga-ben-thanh-tuyen-metro-so-1.jpg"
+    }
+  ]
+}

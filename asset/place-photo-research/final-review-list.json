@@ -1,0 +1,1482 @@
+[
+  {
+    "id": "HCM-0008",
+    "source": "https://vietnamnews.vn/a-twist-in-the-tale/347869/is-nothing-sacred.html",
+    "url": "https://image.vietnamnews.vn/uploadvnnews/Article/Thanh_Hai/2016/12/14/1ntnt-1.jpg",
+    "title": "One Pillar Pagoda Over Lotus Pond",
+    "name": "Chùa Một Cột Thủ Đức (Nam Thiên Nhất Trụ)",
+    "checkedAt": "2026-10-27T08:59:08.649Z",
+    "sha256": "87ad5c2a8aff5b4034cbae2a7b91b5a9074a59ddb62e584dc9793b012de186b2",
+    "image": "asset/place-photo-research/web-photos/hcm-0008-87ad5c2a8aff.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-0008 WEB"
+  },
+  {
+    "id": "HCM-0440",
+    "source": "https://hanoitimes.vn/cho-ray-hospital-in-hcm-city-designated-a-regional-nephrology-training-center.582916.html",
+    "url": "https://cdn-media.hanoitimes.vn/2021/04/07/cho_ray_ava.jpeg",
+    "title": "Cho Ray Hospital Entrance",
+    "name": "Bệnh viện Chợ Rẫy",
+    "checkedAt": "2026-10-27T08:59:10.126Z",
+    "sha256": "a1823457cde40efd48be99a65fe9f6984f911a87ec19723d85dc815746d13602",
+    "image": "asset/place-photo-research/web-photos/hcm-0440-a1823457cde4.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-0440 WEB"
+  },
+  {
+    "id": "HCM-NEW-0011",
+    "source": "https://soha.vn/nu-sinh-otphcm-bi-ban-dan-nguoi-la-vao-truong-hanh-hung-20220928200200187.htm",
+    "url": "https://sohanews.sohacdn.com/thumb_w/640/160588918557773824/2022/9/28/photo1664370044091-1664370044351627309250.jpeg",
+    "title": "Long Trường High School Entrance",
+    "name": "THPT Long Trường",
+    "checkedAt": "2026-10-27T08:59:10.371Z",
+    "sha256": "950c89911654a8999a498ad425b771b6a047496a9de85ad55192c8a7593d7f24",
+    "image": "asset/place-photo-research/web-photos/hcm-new-0011-950c89911654.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-NEW-0011 WEB"
+  },
+  {
+    "id": "HCM-NEW-0127",
+    "source": "https://guland.vn/du-an/sc-vivocity",
+    "url": "https://cdn.guland.vn/photos/shares/vivocity-ly-do-1.jpg",
+    "title": "SC VivoCity Shopping Center",
+    "name": "SC VivoCity",
+    "checkedAt": "2026-10-27T08:59:10.909Z",
+    "sha256": "5f593fd9dcf6df427e1c66ea4edf3accf0f7816be74e9373b270bd2c571fbe10",
+    "image": "asset/place-photo-research/web-photos/hcm-new-0127-5f593fd9dcf6.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-NEW-0127 WEB"
+  },
+  {
+    "id": "HCM-NEW-0056",
+    "source": "https://dantri.com.vn/giao-duc/co-hoi-nghe-nghiep-rong-mo-voi-cac-chuong-trinh-van-bang-hai-20181015160613366.htm",
+    "url": "https://icdn.dantri.com.vn/thumb_w/960/2018/10/15/11-1539594139573631896805.jpg",
+    "title": "University of Economics and Law Campus Building",
+    "name": "Trường Đại học Kinh tế - Luật - ĐHQG TP.HCM",
+    "checkedAt": "2026-10-27T08:59:11.265Z",
+    "sha256": "0648635861769d28c63932e08f70a09f9cf0dd300d404f7178fa75827081b131",
+    "image": "asset/place-photo-research/web-photos/hcm-new-0056-064863586176.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-NEW-0056 WEB"
+  },
+  {
+    "id": "HCM-NEW-0057",
+    "source": "https://www.esb-business-school.de/en/the-esb/partner-universities/detailsite/international-university-viet-nam-national-university-ho-chi-minh-city-iu-vnu",
+    "url": "https://www.esb-business-school.de/fileadmin/ESB/Die_ESB/Partnerhochschulen/esb-business-school_Ho-Chi-Minh-International-University.jpg",
+    "title": "International University Building",
+    "name": "Trường Đại học Quốc tế - ĐHQG TP.HCM",
+    "checkedAt": "2026-10-27T08:59:12.085Z",
+    "sha256": "a0daa84def5726880a3b2ce77e600e74b8d96c108851c6b435d17b37ffa6a65d",
+    "image": "asset/place-photo-research/web-photos/hcm-new-0057-a0daa84def57.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-NEW-0057 WEB"
+  },
+  {
+    "source": "https://znews.vn/nhung-canh-rung-xanh-giua-noi-do-sai-gon-post530227.html",
+    "url": "https://photo.znews.vn/w660/Uploaded/Wagtrb/2015_04_13/cong_vien_hoang_van_thu_1_zing.jpg",
+    "title": "Hoàng Văn Thụ Park Aerial View",
+    "id": "HCM-0059",
+    "name": "Công viên Hoàng Văn Thụ",
+    "checkedAt": "2026-10-27T08:59:16.189Z",
+    "sha256": "d0bba72290ff76f6c7505a439db36445b325dc388ed4311673718569d8ee367d",
+    "image": "asset/place-photo-research/web-photos/hcm-0059-d0bba72290ff.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-0059 WEB"
+  },
+  {
+    "name": "The Vintage Emporium Đa Kao",
+    "source": "https://www.saigonshops.com/places/112/the-vintage-emporium-da-kao",
+    "url": "https://www.saigonshops.com/uploads/gallery/the-vintage-emporium-da-kao-7.jpg",
+    "description": "The Vintage Emporium Da Kao Storefront",
+    "id": "HCM-0859",
+    "checkedAt": "2026-10-27T08:59:16.694Z",
+    "sha256": "5e1c58d8f274540f86055e809d7d05ec019253ae343fe9856137fee26d6650d4",
+    "image": "asset/place-photo-research/web-photos/hcm-0859-5e1c58d8f274.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-0859 WEB"
+  },
+  {
+    "id": "HCM-NEW-0129",
+    "source": "https://www.takashimaya.co.jp/corp/info/plan/",
+    "url": "https://www.takashimaya.co.jp/base/corp/info/plan/img/img04_250228.jpg",
+    "title": "Saigon Centre Takashimaya facade",
+    "name": "Saigon Centre - Takashimaya",
+    "checkedAt": "2026-10-27T08:59:16.947Z",
+    "sha256": "c4727f6a96743ca2ab675f4ca7678716c51761d0c8e35c8d310bcd00da87c03d",
+    "image": "asset/place-photo-research/web-photos/hcm-new-0129-c4727f6a9674.jpg",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "label": "HCM-NEW-0129 WEB"
+  },
+  {
+    "id": "HCM-VR-0013",
+    "name": "Cầu Sài Gòn",
+    "candidates": [
+      {
+        "title": "File:Cầu Sài Gòn.jpg",
+        "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/C%E1%BA%A7u_S%C3%A0i_G%C3%B2n.jpg/1280px-C%E1%BA%A7u_S%C3%A0i_G%C3%B2n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "source": "https://commons.wikimedia.org/wiki/File:C%E1%BA%A7u_S%C3%A0i_G%C3%B2n.jpg",
+        "author": "Matt Mordfin",
+        "license": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "evidence": {
+          "method": "PROVIDED_SOURCE_LINK",
+          "sourceTitle": "File:Cầu Sài Gòn.jpg",
+          "score": 90
+        },
+        "method": "PROVIDED_SOURCE_LINK",
+        "width": 3648,
+        "height": 2736
+      }
+    ],
+    "checkedAt": "2026-10-27T08:59:23.982Z",
+    "status": "STAGED_AWAITING_VISUAL_REVIEW",
+    "wikipediaChecked": true,
+    "stagedImage": "asset/place-photo-research/commons-photos/hcm-vr-0013-cau-sai-gon.jpg",
+    "sha256": "dfa7fd9a19891daab5941d940a9b0ace424ca2fd2a6dd84adebc27e782c1b49f",
+    "selected": {
+      "source": "https://commons.wikimedia.org/wiki/File:C%E1%BA%A7u_S%C3%A0i_G%C3%B2n.jpg",
+      "sourceImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/C%E1%BA%A7u_S%C3%A0i_G%C3%B2n.jpg/1280px-C%E1%BA%A7u_S%C3%A0i_G%C3%B2n.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "title": "File:Cầu Sài Gòn.jpg",
+      "author": "Matt Mordfin",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "retrievedAt": "2026-10-27T08:59:24.825Z",
+      "evidence": {
+        "method": "PROVIDED_SOURCE_LINK",
+        "sourceTitle": "File:Cầu Sài Gòn.jpg",
+        "score": 90,
+        "provider": "PROVIDED_SOURCE_LINK"
+      }
+    },
+    "image": "asset/place-photo-research/commons-photos/hcm-vr-0013-cau-sai-gon.jpg",
+    "label": "HCM-VR-0013 COMMONS"
+  },
+  {
+    "id": "HCM-0859",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0859-215971af05e6.jpg",
+    "sha256": "215971af05e693c57b6690da25a318dc5df89e1a2c9780f121c0c138e7bd478b",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/the-vintage-emporium-da-kao-1.jpg",
+      "alt": "The Vintage Emporium Da Kao",
+      "title": "",
+      "at": 32634,
+      "sourcePage": "https://www.zonevietnam.com/food/112/the-vintage-emporium-da-kao",
+      "sourceTitle": "The Vintage Emporium Da Kao ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0859 #1"
+  },
+  {
+    "id": "HCM-0859",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0859-04c6dc5151da.jpg",
+    "sha256": "04c6dc5151da287366e6855b1eec01d53bf3c2771058dd1ce2db1d7a30e941a8",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/the-vintage-emporium-da-kao-2.jpg",
+      "alt": "The Vintage Emporium Da Kao",
+      "title": "",
+      "at": 33754,
+      "sourcePage": "https://www.zonevietnam.com/food/112/the-vintage-emporium-da-kao",
+      "sourceTitle": "The Vintage Emporium Da Kao ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0859 #2"
+  },
+  {
+    "id": "HCM-0859",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0859-2376f188a2e6.jpg",
+    "sha256": "2376f188a2e6b528b0a2281e13a7caa6587b68b857561b4ae8f878215dfa1fbb",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/the-vintage-emporium-da-kao-3.jpg",
+      "alt": "The Vintage Emporium Da Kao",
+      "title": "",
+      "at": 34874,
+      "sourcePage": "https://www.zonevietnam.com/food/112/the-vintage-emporium-da-kao",
+      "sourceTitle": "The Vintage Emporium Da Kao ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0859 #3"
+  },
+  {
+    "id": "HCM-0859",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0859-0c9fb84ad1ee.jpg",
+    "sha256": "0c9fb84ad1eea97f2d54767295ef8e321c5976dd17cd7a35c95ce58264b32bc7",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/the-vintage-emporium-da-kao-4.jpg",
+      "alt": "The Vintage Emporium Da Kao",
+      "title": "",
+      "at": 35995,
+      "sourcePage": "https://www.zonevietnam.com/food/112/the-vintage-emporium-da-kao",
+      "sourceTitle": "The Vintage Emporium Da Kao ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0859 #4"
+  },
+  {
+    "id": "HCM-0859",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0859-f0fbe6a73604.jpg",
+    "sha256": "f0fbe6a73604e1bf3f97af540812cb2f3e190e7e369e06c769d4c758bcbab090",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/the-vintage-emporium-da-kao-5.jpg",
+      "alt": "The Vintage Emporium Da Kao",
+      "title": "",
+      "at": 37116,
+      "sourcePage": "https://www.zonevietnam.com/food/112/the-vintage-emporium-da-kao",
+      "sourceTitle": "The Vintage Emporium Da Kao ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 5,
+    "label": "HCM-0859 #5"
+  },
+  {
+    "id": "HCM-1028",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1028-227e96eef811.jpg",
+    "sha256": "227e96eef811c7ffeb41cf9df91464a80fbe4500133089ce12e849bfbbd9bb2d",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/ng-8-tr-chanh-lu-riu-cua-ng-trng-nh-1.jpg",
+      "alt": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định",
+      "title": "",
+      "at": 32961,
+      "sourcePage": "https://www.zonevietnam.com/food/2/ngo-8-tra-chanh-and-lau-rieu-cua-dong-truong-dinh",
+      "sourceTitle": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-1028 #1"
+  },
+  {
+    "id": "HCM-1028",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1028-9dca2b179b8c.jpg",
+    "sha256": "9dca2b179b8c23aa0d6b11dcf5faaef5d52f951a1896d8c57103c0833b9b6e23",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/ng-8-tr-chanh-lu-riu-cua-ng-trng-nh-2.jpg",
+      "alt": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định",
+      "title": "",
+      "at": 34155,
+      "sourcePage": "https://www.zonevietnam.com/food/2/ngo-8-tra-chanh-and-lau-rieu-cua-dong-truong-dinh",
+      "sourceTitle": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-1028 #2"
+  },
+  {
+    "id": "HCM-1028",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1028-0f63f7ae93be.jpg",
+    "sha256": "0f63f7ae93bed202dc058e19d63d145ce0a058f58ad2ffdfabeb559b24d1d57d",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/ng-8-tr-chanh-lu-riu-cua-ng-trng-nh-3.jpg",
+      "alt": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định",
+      "title": "",
+      "at": 35348,
+      "sourcePage": "https://www.zonevietnam.com/food/2/ngo-8-tra-chanh-and-lau-rieu-cua-dong-truong-dinh",
+      "sourceTitle": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-1028 #3"
+  },
+  {
+    "id": "HCM-1028",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1028-abb99b8d4c70.jpg",
+    "sha256": "abb99b8d4c707e663487b0897f95c6ef72c0a986740ea33e8594bf51b2a3e97b",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/ng-8-tr-chanh-lu-riu-cua-ng-trng-nh-4.jpg",
+      "alt": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định",
+      "title": "",
+      "at": 36540,
+      "sourcePage": "https://www.zonevietnam.com/food/2/ngo-8-tra-chanh-and-lau-rieu-cua-dong-truong-dinh",
+      "sourceTitle": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-1028 #4"
+  },
+  {
+    "id": "HCM-1028",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1028-6763046bfe16.jpg",
+    "sha256": "6763046bfe1687862dfed2b8f4cba208b1518a76d95f8cc15c9f6d5a15e738a4",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/ng-8-tr-chanh-lu-riu-cua-ng-trng-nh-5.jpg",
+      "alt": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định",
+      "title": "",
+      "at": 37732,
+      "sourcePage": "https://www.zonevietnam.com/food/2/ngo-8-tra-chanh-and-lau-rieu-cua-dong-truong-dinh",
+      "sourceTitle": "Ngõ 8 - Trà Chanh & Lẩu Riêu Cua Đồng - Trương Định ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 5,
+    "label": "HCM-1028 #5"
+  },
+  {
+    "id": "HCM-1030",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1030-0cab9e218ef1.jpg",
+    "sha256": "0cab9e218ef1d24219b083be7a2519cb9abf63ce7283cfad960d9f991ce28fb6",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/home-finest-saigon-restaurant-1.jpg",
+      "alt": "Home Finest Saigon Restaurant",
+      "title": "",
+      "at": 32543,
+      "sourcePage": "https://www.zonevietnam.com/food/320/home-finest-saigon-restaurant",
+      "sourceTitle": "Home Finest Saigon Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-1030 #1"
+  },
+  {
+    "id": "HCM-1030",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1030-0405b3cfb7a3.jpg",
+    "sha256": "0405b3cfb7a3afad989cb1ca28d35f77ff40e115d194057aa594130b4a38d136",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/home-finest-saigon-restaurant-2.jpg",
+      "alt": "Home Finest Saigon Restaurant",
+      "title": "",
+      "at": 33673,
+      "sourcePage": "https://www.zonevietnam.com/food/320/home-finest-saigon-restaurant",
+      "sourceTitle": "Home Finest Saigon Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-1030 #2"
+  },
+  {
+    "id": "HCM-1030",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1030-4964045296c5.jpg",
+    "sha256": "4964045296c59acd524d84e79361f4a2c0871094e04775db33726baa92197e9b",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/home-finest-saigon-restaurant-3.jpg",
+      "alt": "Home Finest Saigon Restaurant",
+      "title": "",
+      "at": 34800,
+      "sourcePage": "https://www.zonevietnam.com/food/320/home-finest-saigon-restaurant",
+      "sourceTitle": "Home Finest Saigon Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-1030 #3"
+  },
+  {
+    "id": "HCM-1030",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1030-ef01bc7e9635.jpg",
+    "sha256": "ef01bc7e9635a7a4445ac0d7172c7ebe030c9797bdafab1bb54cf17c6dbfd5ee",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/home-finest-saigon-restaurant-4.jpg",
+      "alt": "Home Finest Saigon Restaurant",
+      "title": "",
+      "at": 35928,
+      "sourcePage": "https://www.zonevietnam.com/food/320/home-finest-saigon-restaurant",
+      "sourceTitle": "Home Finest Saigon Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-1030 #4"
+  },
+  {
+    "id": "HCM-1030",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1030-d2eaf23bd7c7.jpg",
+    "sha256": "d2eaf23bd7c72b5c36e296b2abe1841f522fb377539c579f3c881e5e3eff3347",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/home-finest-saigon-restaurant-5.jpg",
+      "alt": "Home Finest Saigon Restaurant",
+      "title": "",
+      "at": 37056,
+      "sourcePage": "https://www.zonevietnam.com/food/320/home-finest-saigon-restaurant",
+      "sourceTitle": "Home Finest Saigon Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 5,
+    "label": "HCM-1030 #5"
+  },
+  {
+    "id": "HCM-0877",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0877-eab840d37219.jpg",
+    "sha256": "eab840d37219118842ab654612212b77c3dff7c7e609bf0af26696e64f4b53f3",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/mia-beauty-spa-landmark-6405e4ed8db04.jpg",
+      "alt": "MIA Beauty Spa Landmark",
+      "title": "",
+      "at": 32522,
+      "sourcePage": "https://www.zonevietnam.com/food/18201/mia-beauty-spa-landmark",
+      "sourceTitle": "MIA Beauty Spa Landmark ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0877 #1"
+  },
+  {
+    "id": "HCM-0877",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0877-275bddd957ad.jpg",
+    "sha256": "275bddd957adfe57ddeb60f757eed8d176f6ed7653866f62fe41f832040e22b1",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/mia-beauty-spa-landmark-6405e9afe001a.jpg",
+      "alt": "MIA Beauty Spa Landmark",
+      "title": "",
+      "at": 33650,
+      "sourcePage": "https://www.zonevietnam.com/food/18201/mia-beauty-spa-landmark",
+      "sourceTitle": "MIA Beauty Spa Landmark ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0877 #2"
+  },
+  {
+    "id": "HCM-0877",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0877-c2d0d9633962.jpg",
+    "sha256": "c2d0d963396246cd7586bebf4315dd39d754d31d4e9d98d76dcb49ff9a096c89",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/mia-beauty-spa-landmark-6405e9b11e608.jpg",
+      "alt": "MIA Beauty Spa Landmark",
+      "title": "",
+      "at": 34778,
+      "sourcePage": "https://www.zonevietnam.com/food/18201/mia-beauty-spa-landmark",
+      "sourceTitle": "MIA Beauty Spa Landmark ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0877 #3"
+  },
+  {
+    "id": "HCM-0877",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0877-34c72d159b87.jpg",
+    "sha256": "34c72d159b8767ef1a714c8d296b01ea224925bc575348303b2ec61d50958742",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/mia-beauty-spa-landmark-6405e9b14f69e.jpg",
+      "alt": "MIA Beauty Spa Landmark",
+      "title": "",
+      "at": 35906,
+      "sourcePage": "https://www.zonevietnam.com/food/18201/mia-beauty-spa-landmark",
+      "sourceTitle": "MIA Beauty Spa Landmark ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0877 #4"
+  },
+  {
+    "id": "HCM-0877",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0877-2ef8449d8940.jpg",
+    "sha256": "2ef8449d894031c903483d7a2bf5ba86360c43bc72939f6ffa0d9cb324451b07",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/mia-beauty-spa-landmark-6405e9b15eea3.jpg",
+      "alt": "MIA Beauty Spa Landmark",
+      "title": "",
+      "at": 37035,
+      "sourcePage": "https://www.zonevietnam.com/food/18201/mia-beauty-spa-landmark",
+      "sourceTitle": "MIA Beauty Spa Landmark ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 5,
+    "label": "HCM-0877 #5"
+  },
+  {
+    "id": "HCM-0878",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0878-96766ebd2e2b.jpg",
+    "sha256": "96766ebd2e2b9a082cf82152d2ec598701966cc4a8fe51fc5eaa0ffcb08d3453",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/yen-a-spa-massage-tri-lieu-duong-sinh-643927f758a41.jpg",
+      "alt": "Yên ả spa ( massage trị liệu & dưỡng sinh)",
+      "title": "",
+      "at": 32646,
+      "sourcePage": "https://www.zonevietnam.com/food/18203/yen-a-spa-massage-tri-lieu-duong-sinh",
+      "sourceTitle": "Yên ả spa ( massage trị liệu & dưỡng sinh) ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0878 #1"
+  },
+  {
+    "id": "HCM-0878",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0878-e8d3ed554f6d.jpg",
+    "sha256": "e8d3ed554f6d6bef58145deb92ef7d889c191a316da1673901b8b0cc876bf54a",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/yen-a-spa-massage-tri-lieu-duong-sinh-643927f75f277.jpg",
+      "alt": "Yên ả spa ( massage trị liệu & dưỡng sinh)",
+      "title": "",
+      "at": 33849,
+      "sourcePage": "https://www.zonevietnam.com/food/18203/yen-a-spa-massage-tri-lieu-duong-sinh",
+      "sourceTitle": "Yên ả spa ( massage trị liệu & dưỡng sinh) ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0878 #2"
+  },
+  {
+    "id": "HCM-0878",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0878-189e036ccccd.jpg",
+    "sha256": "189e036ccccd6a87a00d2cd06da4d733ac51cafc0bf8c12ac5f45608c321183d",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/yen-a-spa-massage-tri-lieu-duong-sinh-643927facc0d3.jpg",
+      "alt": "Yên ả spa ( massage trị liệu & dưỡng sinh)",
+      "title": "",
+      "at": 35050,
+      "sourcePage": "https://www.zonevietnam.com/food/18203/yen-a-spa-massage-tri-lieu-duong-sinh",
+      "sourceTitle": "Yên ả spa ( massage trị liệu & dưỡng sinh) ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0878 #3"
+  },
+  {
+    "id": "HCM-0878",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0878-90d08e0badc4.jpg",
+    "sha256": "90d08e0badc4aba380b5b4d8466cfca8a75f53e14260c148a51249e18d0f8edb",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/yen-a-spa-massage-tri-lieu-duong-sinh-643927fad64d9.jpg",
+      "alt": "Yên ả spa ( massage trị liệu & dưỡng sinh)",
+      "title": "",
+      "at": 36253,
+      "sourcePage": "https://www.zonevietnam.com/food/18203/yen-a-spa-massage-tri-lieu-duong-sinh",
+      "sourceTitle": "Yên ả spa ( massage trị liệu & dưỡng sinh) ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0878 #4"
+  },
+  {
+    "id": "HCM-0936",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0936-3103e2f9d083.jpg",
+    "sha256": "3103e2f9d0832b6da822ea353e7caad920fe64c8f6e1f83e8e16b9a5f508a11e",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/zion-sky-lounge-dining-644e0b6f3289d.jpg",
+      "alt": "Zion Sky Lounge & Dining",
+      "title": "",
+      "at": 32399,
+      "sourcePage": "https://www.zonevietnam.com/food/18075/zion-sky-lounge-and-dining",
+      "sourceTitle": "Zion Sky Lounge & Dining ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0936 #1"
+  },
+  {
+    "id": "HCM-0936",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0936-c2457383119b.jpg",
+    "sha256": "c2457383119b419b138bee75206d7da773b6f9c110fae9ceb566deed03bc32d7",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/zion-sky-lounge-dining-644e0b6f3b4b7.jpg",
+      "alt": "Zion Sky Lounge & Dining",
+      "title": "",
+      "at": 33536,
+      "sourcePage": "https://www.zonevietnam.com/food/18075/zion-sky-lounge-and-dining",
+      "sourceTitle": "Zion Sky Lounge & Dining ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0936 #2"
+  },
+  {
+    "id": "HCM-0936",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0936-4847e9e9b768.jpg",
+    "sha256": "4847e9e9b768668fb74a199f6b3c61d9b7da01ba1ace3e534fddf130443ba009",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/zion-sky-lounge-dining-644e0b6f5309f.jpg",
+      "alt": "Zion Sky Lounge & Dining",
+      "title": "",
+      "at": 34671,
+      "sourcePage": "https://www.zonevietnam.com/food/18075/zion-sky-lounge-and-dining",
+      "sourceTitle": "Zion Sky Lounge & Dining ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0936 #3"
+  },
+  {
+    "id": "HCM-0936",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0936-d91e3a203690.jpg",
+    "sha256": "d91e3a2036902658fd4aa73fdbaedd334e77246162faf3741e5ebc9edbc8ddf6",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/zion-sky-lounge-dining-644e0b6f597ee.jpg",
+      "alt": "Zion Sky Lounge & Dining",
+      "title": "",
+      "at": 35807,
+      "sourcePage": "https://www.zonevietnam.com/food/18075/zion-sky-lounge-and-dining",
+      "sourceTitle": "Zion Sky Lounge & Dining ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0936 #4"
+  },
+  {
+    "id": "HCM-0955",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0955-43d1ea1cb34a.jpg",
+    "sha256": "43d1ea1cb34a8bd5a50ab858dea728c74213da216c37816424d9bc4751895b8a",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/sorae-restaurant-lounge-1.jpg",
+      "alt": "Sorae Restaurant - Lounge",
+      "title": "",
+      "at": 32560,
+      "sourcePage": "https://www.zonevietnam.com/food/4985/sorae-restaurant---lounge",
+      "sourceTitle": "Sorae Restaurant - Lounge ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0955 #1"
+  },
+  {
+    "id": "HCM-0955",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0955-d957f9ae3ab0.jpg",
+    "sha256": "d957f9ae3ab05472b0b076f2ee901cb3a8ffe0d380c5e8ad203ce26bd39406fd",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/sorae-restaurant-lounge-3.jpg",
+      "alt": "Sorae Restaurant - Lounge",
+      "title": "",
+      "at": 34779,
+      "sourcePage": "https://www.zonevietnam.com/food/4985/sorae-restaurant---lounge",
+      "sourceTitle": "Sorae Restaurant - Lounge ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0955 #2"
+  },
+  {
+    "id": "HCM-0955",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0955-22cc2ef8838e.jpg",
+    "sha256": "22cc2ef8838ea0a73a72a69bbd12441040c09f8b3d33877b09dc2fae091a1876",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/sorae-restaurant-lounge-4.jpg",
+      "alt": "Sorae Restaurant - Lounge",
+      "title": "",
+      "at": 35887,
+      "sourcePage": "https://www.zonevietnam.com/food/4985/sorae-restaurant---lounge",
+      "sourceTitle": "Sorae Restaurant - Lounge ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0955 #3"
+  },
+  {
+    "id": "HCM-0955",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0955-6543566549f4.jpg",
+    "sha256": "6543566549f411dac831e65c75ac693d31c67f72e1e6783a5ba95f974630db54",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/sorae-restaurant-lounge-5.jpg",
+      "alt": "Sorae Restaurant - Lounge",
+      "title": "",
+      "at": 36993,
+      "sourcePage": "https://www.zonevietnam.com/food/4985/sorae-restaurant---lounge",
+      "sourceTitle": "Sorae Restaurant - Lounge ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0955 #4"
+  },
+  {
+    "id": "HCM-0957",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0957-0867b662fbc3.jpg",
+    "sha256": "0867b662fbc3514043939ccc9d70c50a2befca141744cb2306fc975d27565b61",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/shri-restaurant-lounge-1.jpg",
+      "alt": "Shri Restaurant & Lounge",
+      "title": "",
+      "at": 32498,
+      "sourcePage": "https://www.zonevietnam.com/food/340/shri-restaurant-and-lounge",
+      "sourceTitle": "Shri Restaurant & Lounge ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0957 #1"
+  },
+  {
+    "id": "HCM-0957",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0957-d0bacfbe8d03.jpg",
+    "sha256": "d0bacfbe8d03ec5bdf52826fd25b526acef7fa7836cc0b1e79561c8068b26185",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/shri-restaurant-lounge-2.jpg",
+      "alt": "Shri Restaurant & Lounge",
+      "title": "",
+      "at": 33611,
+      "sourcePage": "https://www.zonevietnam.com/food/340/shri-restaurant-and-lounge",
+      "sourceTitle": "Shri Restaurant & Lounge ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0957 #2"
+  },
+  {
+    "id": "HCM-0957",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0957-0f02beded056.jpg",
+    "sha256": "0f02beded0563d0a898a576aecea5140e631cf58ee2685c8c6b55c90dcbf1617",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/shri-restaurant-lounge-4.jpg",
+      "alt": "Shri Restaurant & Lounge",
+      "title": "",
+      "at": 35836,
+      "sourcePage": "https://www.zonevietnam.com/food/340/shri-restaurant-and-lounge",
+      "sourceTitle": "Shri Restaurant & Lounge ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0957 #3"
+  },
+  {
+    "id": "HCM-0957",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0957-5e14ed728c81.jpg",
+    "sha256": "5e14ed728c819ea20bcbcc29e8c69372bcbfdefdfe70b68dadaf23b91cfe5ffe",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/shri-restaurant-lounge-5.jpg",
+      "alt": "Shri Restaurant & Lounge",
+      "title": "",
+      "at": 36948,
+      "sourcePage": "https://www.zonevietnam.com/food/340/shri-restaurant-and-lounge",
+      "sourceTitle": "Shri Restaurant & Lounge ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0957 #4"
+  },
+  {
+    "id": "HCM-0962",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0962-5adc8788ae3a.jpg",
+    "sha256": "5adc8788ae3a28bec23999cc800322f7eff2a959bcacb2ecdf09161bded2e2c2",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/vechai-bistro-beer-garden-1.jpg",
+      "alt": "Vechai Bistro - Beer Garden",
+      "title": "",
+      "at": 32655,
+      "sourcePage": "https://www.zonevietnam.com/food/1612/vechai-bistro---beer-garden",
+      "sourceTitle": "Vechai Bistro - Beer Garden ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0962 #1"
+  },
+  {
+    "id": "HCM-0962",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0962-bc7635385427.jpg",
+    "sha256": "bc7635385427f4bd28f50bcdc13989e027d7ac19270cb54679e2b5ccf7eba728",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/vechai-bistro-beer-garden-2.jpg",
+      "alt": "Vechai Bistro - Beer Garden",
+      "title": "",
+      "at": 33771,
+      "sourcePage": "https://www.zonevietnam.com/food/1612/vechai-bistro---beer-garden",
+      "sourceTitle": "Vechai Bistro - Beer Garden ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0962 #2"
+  },
+  {
+    "id": "HCM-0962",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0962-2d74f9062c0a.jpg",
+    "sha256": "2d74f9062c0ad98b68a157cfe8bd6fde1fae4886b71330d27e9727ff4756038a",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/vechai-bistro-beer-garden-3.jpg",
+      "alt": "Vechai Bistro - Beer Garden",
+      "title": "",
+      "at": 34887,
+      "sourcePage": "https://www.zonevietnam.com/food/1612/vechai-bistro---beer-garden",
+      "sourceTitle": "Vechai Bistro - Beer Garden ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0962 #3"
+  },
+  {
+    "id": "HCM-0962",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0962-3aa7e615626e.jpg",
+    "sha256": "3aa7e615626eb3cd9ecda5ee3eebbbdc9d964751b385aa0639af37a138a38538",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/vechai-bistro-beer-garden-5.jpg",
+      "alt": "Vechai Bistro - Beer Garden",
+      "title": "",
+      "at": 37117,
+      "sourcePage": "https://www.zonevietnam.com/food/1612/vechai-bistro---beer-garden",
+      "sourceTitle": "Vechai Bistro - Beer Garden ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0962 #4"
+  },
+  {
+    "id": "HCM-0966",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0966-654fa5214363.jpg",
+    "sha256": "654fa5214363436c32bb736a4ffba18d8670ed5dd632a3a7d1881edef7611f71",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/runam-bistro-1.jpg",
+      "alt": "RuNam Bistro",
+      "title": "",
+      "at": 32182,
+      "sourcePage": "https://www.zonevietnam.com/food/664/runam-bistro",
+      "sourceTitle": "RuNam Bistro ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0966 #1"
+  },
+  {
+    "id": "HCM-0966",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0966-b64e6dc754d7.jpg",
+    "sha256": "b64e6dc754d7d79275830c8e54a8ef6c2e6889511512429f0326c39a95bf30ea",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/runam-bistro-2.jpg",
+      "alt": "RuNam Bistro",
+      "title": "",
+      "at": 33244,
+      "sourcePage": "https://www.zonevietnam.com/food/664/runam-bistro",
+      "sourceTitle": "RuNam Bistro ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0966 #2"
+  },
+  {
+    "id": "HCM-0966",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0966-7e1357aef168.jpg",
+    "sha256": "7e1357aef1687f98428db2ea92957b69764a11a05b15465e7ec2c9abc2f12cd3",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/runam-bistro-4.jpg",
+      "alt": "RuNam Bistro",
+      "title": "",
+      "at": 35363,
+      "sourcePage": "https://www.zonevietnam.com/food/664/runam-bistro",
+      "sourceTitle": "RuNam Bistro ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0966 #3"
+  },
+  {
+    "id": "HCM-0966",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0966-2d0b8cc8182c.jpg",
+    "sha256": "2d0b8cc8182c8b55f820027e5eb4a11f01cf2d5b1a1c2f8dd07d5c7d35125cd1",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/runam-bistro-5.jpg",
+      "alt": "RuNam Bistro",
+      "title": "",
+      "at": 36424,
+      "sourcePage": "https://www.zonevietnam.com/food/664/runam-bistro",
+      "sourceTitle": "RuNam Bistro ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0966 #4"
+  },
+  {
+    "id": "HCM-0968",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0968-d42f510f176d.jpg",
+    "sha256": "d42f510f176d6673ecf96edf9b109a8407e5d0e06d481c801cee87439ee3177c",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/rang-chieu-rooftop-64d5a6d81d4eb.jpg",
+      "alt": "Ráng Chiều Rooftop",
+      "title": "",
+      "at": 32280,
+      "sourcePage": "https://www.zonevietnam.com/food/18173/rang-chieu-rooftop",
+      "sourceTitle": "Ráng Chiều Rooftop ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0968 #1"
+  },
+  {
+    "id": "HCM-0968",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0968-d2f7ba4ddd4f.jpg",
+    "sha256": "d2f7ba4ddd4fbb2852687e801de3307e17cfcdf27c2cd0e90e92774e2cf8534d",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/rang-chieu-rooftop-64d5a6d82f574.jpg",
+      "alt": "Ráng Chiều Rooftop",
+      "title": "",
+      "at": 33388,
+      "sourcePage": "https://www.zonevietnam.com/food/18173/rang-chieu-rooftop",
+      "sourceTitle": "Ráng Chiều Rooftop ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0968 #2"
+  },
+  {
+    "id": "HCM-0968",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0968-0dada6d6df54.jpg",
+    "sha256": "0dada6d6df54a9e30e549bc1431afd84c6641cdc104b12d8fd27ee3fa325cb61",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/rang-chieu-rooftop-64d5a6d838f60.jpg",
+      "alt": "Ráng Chiều Rooftop",
+      "title": "",
+      "at": 34497,
+      "sourcePage": "https://www.zonevietnam.com/food/18173/rang-chieu-rooftop",
+      "sourceTitle": "Ráng Chiều Rooftop ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0968 #3"
+  },
+  {
+    "id": "HCM-0968",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0968-47dbca9360be.jpg",
+    "sha256": "47dbca9360bec658d1be9a3cf1d048dec5b89e59b8d2f33732f070f27591f4f4",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/rang-chieu-rooftop-64d5a6d85afd3.jpg",
+      "alt": "Ráng Chiều Rooftop",
+      "title": "",
+      "at": 35606,
+      "sourcePage": "https://www.zonevietnam.com/food/18173/rang-chieu-rooftop",
+      "sourceTitle": "Ráng Chiều Rooftop ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0968 #4"
+  },
+  {
+    "id": "HCM-0971",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0971-403f1b3d38c2.jpg",
+    "sha256": "403f1b3d38c2ac0f6426abe001a48962510517d816ab31d3c0f328fd7351aae4",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/chanh-bistro-rooftop-saigon-ltt-2.jpg",
+      "alt": "Chanh Bistro Rooftop Saigon LTT",
+      "title": "",
+      "at": 33744,
+      "sourcePage": "https://www.zonevietnam.com/food/66/chanh-bistro-rooftop-saigon-ltt",
+      "sourceTitle": "Chanh Bistro Rooftop Saigon LTT ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0971 #1"
+  },
+  {
+    "id": "HCM-0971",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0971-25b77690a349.jpg",
+    "sha256": "25b77690a34925a77460673152589b8378aee61dd1faec405e14f8ce0780ab05",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/chanh-bistro-rooftop-saigon-ltt-3.jpg",
+      "alt": "Chanh Bistro Rooftop Saigon LTT",
+      "title": "",
+      "at": 34878,
+      "sourcePage": "https://www.zonevietnam.com/food/66/chanh-bistro-rooftop-saigon-ltt",
+      "sourceTitle": "Chanh Bistro Rooftop Saigon LTT ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0971 #2"
+  },
+  {
+    "id": "HCM-0971",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0971-bf2c92819226.jpg",
+    "sha256": "bf2c9281922647a6ca1ffb586f28bd99fb18a96c7df405cf43f4195aeda47171",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/chanh-bistro-rooftop-saigon-ltt-4.jpg",
+      "alt": "Chanh Bistro Rooftop Saigon LTT",
+      "title": "",
+      "at": 36014,
+      "sourcePage": "https://www.zonevietnam.com/food/66/chanh-bistro-rooftop-saigon-ltt",
+      "sourceTitle": "Chanh Bistro Rooftop Saigon LTT ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0971 #3"
+  },
+  {
+    "id": "HCM-0971",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0971-8b25b0e8b706.jpg",
+    "sha256": "8b25b0e8b7066930b15ff2ad28cc2344d9ff118d8a4d8ba94bcc5631660a51b2",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/chanh-bistro-rooftop-saigon-ltt-5.jpg",
+      "alt": "Chanh Bistro Rooftop Saigon LTT",
+      "title": "",
+      "at": 37151,
+      "sourcePage": "https://www.zonevietnam.com/food/66/chanh-bistro-rooftop-saigon-ltt",
+      "sourceTitle": "Chanh Bistro Rooftop Saigon LTT ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0971 #4"
+  },
+  {
+    "id": "HCM-0972",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0972-b7826e0fa8fd.jpg",
+    "sha256": "b7826e0fa8fd27f0fac54e9317987c10311e3f556783e397e2b562f2fefbf875",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/east-west-brewing-co-2.jpg",
+      "alt": "East West Brewing Co.",
+      "title": "",
+      "at": 33134,
+      "sourcePage": "https://www.zonevietnam.com/food/90/east-west-brewing-co.",
+      "sourceTitle": "East West Brewing Co. ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0972 #1"
+  },
+  {
+    "id": "HCM-0972",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0972-1bf3f9c8ccd5.jpg",
+    "sha256": "1bf3f9c8ccd51aa20b554b36413a67f538b147a108b1915d6a663cf3848943a5",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/east-west-brewing-co-3.jpg",
+      "alt": "East West Brewing Co.",
+      "title": "",
+      "at": 34228,
+      "sourcePage": "https://www.zonevietnam.com/food/90/east-west-brewing-co.",
+      "sourceTitle": "East West Brewing Co. ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0972 #2"
+  },
+  {
+    "id": "HCM-0972",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0972-1d4750fdae4f.jpg",
+    "sha256": "1d4750fdae4f0d2d3267721b69786283ee8b4ef1a164fc1f6bd2456ce361d09b",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/east-west-brewing-co-4.jpg",
+      "alt": "East West Brewing Co.",
+      "title": "",
+      "at": 35322,
+      "sourcePage": "https://www.zonevietnam.com/food/90/east-west-brewing-co.",
+      "sourceTitle": "East West Brewing Co. ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0972 #3"
+  },
+  {
+    "id": "HCM-0972",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0972-fb5373ef8050.jpg",
+    "sha256": "fb5373ef80507343eaf44332b873eb01808a73f92f93328b3bda69104e56d7ba",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/east-west-brewing-co-5.jpg",
+      "alt": "East West Brewing Co.",
+      "title": "",
+      "at": 36416,
+      "sourcePage": "https://www.zonevietnam.com/food/90/east-west-brewing-co.",
+      "sourceTitle": "East West Brewing Co. ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0972 #4"
+  },
+  {
+    "id": "HCM-0978",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0978-675c7e7fde07.jpg",
+    "sha256": "675c7e7fde071189578e3c176b8310346c2f60421760879afefd0156fffc2874",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lexa-beer-house-2.jpg",
+      "alt": "LEXA - Beer House",
+      "title": "",
+      "at": 32873,
+      "sourcePage": "https://www.zonevietnam.com/food/3698/lexa---beer-house",
+      "sourceTitle": "LEXA - Beer House ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0978 #1"
+  },
+  {
+    "id": "HCM-0978",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0978-a68065d9059e.jpg",
+    "sha256": "a68065d9059e7cbec7eb3cdafc95c33ab9cb477f04e90e02ba54ac9719c72290",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lexa-beer-house-3.jpg",
+      "alt": "LEXA - Beer House",
+      "title": "",
+      "at": 33948,
+      "sourcePage": "https://www.zonevietnam.com/food/3698/lexa---beer-house",
+      "sourceTitle": "LEXA - Beer House ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0978 #2"
+  },
+  {
+    "id": "HCM-0978",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0978-6a0a7e82f3b8.jpg",
+    "sha256": "6a0a7e82f3b83fd758da2f60c25293e160fac0327acff793ba5ff1f0d75a8c87",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lexa-beer-house-4.jpg",
+      "alt": "LEXA - Beer House",
+      "title": "",
+      "at": 35024,
+      "sourcePage": "https://www.zonevietnam.com/food/3698/lexa---beer-house",
+      "sourceTitle": "LEXA - Beer House ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0978 #3"
+  },
+  {
+    "id": "HCM-0978",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0978-b58ac4dbe3e7.jpg",
+    "sha256": "b58ac4dbe3e7fd76287bfd521c9146b0acf369ed229bf4fcc2aebbf8a727a29b",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lexa-beer-house-5.jpg",
+      "alt": "LEXA - Beer House",
+      "title": "",
+      "at": 36100,
+      "sourcePage": "https://www.zonevietnam.com/food/3698/lexa---beer-house",
+      "sourceTitle": "LEXA - Beer House ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0978 #4"
+  },
+  {
+    "id": "HCM-0998",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0998-ea7f6deed3fc.jpg",
+    "sha256": "ea7f6deed3fc48f755f1ab4d683f2cf472d2b9b73042a595f959a971e8fa0025",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/clay-saigon-653db5b96c089.jpg",
+      "alt": "CLAY Saigon",
+      "title": "",
+      "at": 32008,
+      "sourcePage": "https://www.zonevietnam.com/food/18200/clay-saigon",
+      "sourceTitle": "CLAY Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-0998 #1"
+  },
+  {
+    "id": "HCM-0998",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0998-74ef158d7f7a.jpg",
+    "sha256": "74ef158d7f7a985a9cacead48431090c2384f120db42bf87ff11b8e3e1bb2e3d",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/clay-saigon-653db5b9783bc.jpg",
+      "alt": "CLAY Saigon",
+      "title": "",
+      "at": 33090,
+      "sourcePage": "https://www.zonevietnam.com/food/18200/clay-saigon",
+      "sourceTitle": "CLAY Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-0998 #2"
+  },
+  {
+    "id": "HCM-0998",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0998-d0573f252b18.jpg",
+    "sha256": "d0573f252b185cc6870ac805fdd1fe54fd225f854c86aea25ea34f6baf76fbc2",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/clay-saigon-653db5b9a92be.jpg",
+      "alt": "CLAY Saigon",
+      "title": "",
+      "at": 34170,
+      "sourcePage": "https://www.zonevietnam.com/food/18200/clay-saigon",
+      "sourceTitle": "CLAY Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-0998 #3"
+  },
+  {
+    "id": "HCM-0998",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-0998-51dc7cf54b41.jpg",
+    "sha256": "51dc7cf54b41012b2a53206620e19dc5bfdeba55b9dd133e0933ae8d0b3c30d2",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/clay-saigon-653db5b9b1ccf.jpg",
+      "alt": "CLAY Saigon",
+      "title": "",
+      "at": 35251,
+      "sourcePage": "https://www.zonevietnam.com/food/18200/clay-saigon",
+      "sourceTitle": "CLAY Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-0998 #4"
+  },
+  {
+    "id": "HCM-1001",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1001-a9d54523c499.jpg",
+    "sha256": "a9d54523c499aa761a42c4e6dfb6f1ac538b6b735b042d20edbcd4a954ef729d",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/cocotte-ben-thanh-1.jpg",
+      "alt": "Cocotte - Ben Thanh",
+      "title": "",
+      "at": 32268,
+      "sourcePage": "https://www.zonevietnam.com/food/6/cocotte-ben-thanh",
+      "sourceTitle": "Cocotte - Ben Thanh ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-1001 #1"
+  },
+  {
+    "id": "HCM-1001",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1001-dcf3308a21e8.jpg",
+    "sha256": "dcf3308a21e82ea61e8373e89a346128c5e80f43106732e6c67cfb8b8736f5a8",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/cocotte-ben-thanh-2.jpg",
+      "alt": "Cocotte - Ben Thanh",
+      "title": "",
+      "at": 33354,
+      "sourcePage": "https://www.zonevietnam.com/food/6/cocotte-ben-thanh",
+      "sourceTitle": "Cocotte - Ben Thanh ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-1001 #2"
+  },
+  {
+    "id": "HCM-1001",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1001-cfe2061e4cfb.jpg",
+    "sha256": "cfe2061e4cfbd249ab610df1b94e72ee01985baf2b4c9fd144f25e50353698e6",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/cocotte-ben-thanh-3.jpg",
+      "alt": "Cocotte - Ben Thanh",
+      "title": "",
+      "at": 34437,
+      "sourcePage": "https://www.zonevietnam.com/food/6/cocotte-ben-thanh",
+      "sourceTitle": "Cocotte - Ben Thanh ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-1001 #3"
+  },
+  {
+    "id": "HCM-1001",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1001-58338b192f07.jpg",
+    "sha256": "58338b192f0771719963efc28cf85756e4d8cdcd35d5a9c86737f7f64df72088",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/cocotte-ben-thanh-4.jpg",
+      "alt": "Cocotte - Ben Thanh",
+      "title": "",
+      "at": 35521,
+      "sourcePage": "https://www.zonevietnam.com/food/6/cocotte-ben-thanh",
+      "sourceTitle": "Cocotte - Ben Thanh ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-1001 #4"
+  },
+  {
+    "id": "HCM-1001",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1001-c8b0dcec8b46.jpg",
+    "sha256": "c8b0dcec8b4649e736c898c18ea59a14e86a6ddb670f72d0d75881317ec73695",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/cocotte-ben-thanh-5.jpg",
+      "alt": "Cocotte - Ben Thanh",
+      "title": "",
+      "at": 36604,
+      "sourcePage": "https://www.zonevietnam.com/food/6/cocotte-ben-thanh",
+      "sourceTitle": "Cocotte - Ben Thanh ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 5,
+    "label": "HCM-1001 #5"
+  },
+  {
+    "id": "HCM-1004",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1004-2fa3bb7ce1ba.jpg",
+    "sha256": "2fa3bb7ce1ba74926d93af4cbb680a203e1775ffd414adb9968c84d0eb1ca3ea",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lagarden-restaurant-64f5b22e46754.jpg",
+      "alt": "LAGarden Restaurant",
+      "title": "",
+      "at": 32189,
+      "sourcePage": "https://www.zonevietnam.com/food/18146/lagarden-restaurant",
+      "sourceTitle": "LAGarden Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-1004 #1"
+  },
+  {
+    "id": "HCM-1004",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1004-c37be665fbce.jpg",
+    "sha256": "c37be665fbce86f74a8de14c72e2dd9d71b70072ba9c9cf8b669f72f4c221215",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lagarden-restaurant-64f5b22e49a8f.jpg",
+      "alt": "LAGarden Restaurant",
+      "title": "",
+      "at": 33302,
+      "sourcePage": "https://www.zonevietnam.com/food/18146/lagarden-restaurant",
+      "sourceTitle": "LAGarden Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-1004 #2"
+  },
+  {
+    "id": "HCM-1004",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1004-27ee32d2e765.jpg",
+    "sha256": "27ee32d2e765d10b62f5542a3af47c1ed128df43e555eda1c2fa977de4bca733",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lagarden-restaurant-64f5b22e61121.jpg",
+      "alt": "LAGarden Restaurant",
+      "title": "",
+      "at": 34412,
+      "sourcePage": "https://www.zonevietnam.com/food/18146/lagarden-restaurant",
+      "sourceTitle": "LAGarden Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-1004 #3"
+  },
+  {
+    "id": "HCM-1004",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1004-7133f0636b68.jpg",
+    "sha256": "7133f0636b68504341c7f460a5819c7374f27efbd8502e2f92831ae195a3c797",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lagarden-restaurant-64f5b22e64812.jpg",
+      "alt": "LAGarden Restaurant",
+      "title": "",
+      "at": 35525,
+      "sourcePage": "https://www.zonevietnam.com/food/18146/lagarden-restaurant",
+      "sourceTitle": "LAGarden Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-1004 #4"
+  },
+  {
+    "id": "HCM-1004",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1004-5e1d444e9b7d.jpg",
+    "sha256": "5e1d444e9b7d46431047ea04c5c0a7dbf580027a9e137d33a153d12469a78084",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/lagarden-restaurant-64f5b22e804d4.jpg",
+      "alt": "LAGarden Restaurant",
+      "title": "",
+      "at": 36638,
+      "sourcePage": "https://www.zonevietnam.com/food/18146/lagarden-restaurant",
+      "sourceTitle": "LAGarden Restaurant ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 5,
+    "label": "HCM-1004 #5"
+  },
+  {
+    "id": "HCM-1012",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1012-f426fca01bee.jpg",
+    "sha256": "f426fca01beee0463ae27e786808dc29b823f7749731ec2609a376d582d8b360",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/la-brasserie-restaurant-hotel-nikko-saigon-1.jpg",
+      "alt": "La Brasserie Restaurant - Hotel Nikko Saigon",
+      "title": "",
+      "at": 32838,
+      "sourcePage": "https://www.zonevietnam.com/food/1/la-brasserie-restaurant-hotel-nikko-saigon",
+      "sourceTitle": "La Brasserie Restaurant - Hotel Nikko Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-1012 #1"
+  },
+  {
+    "id": "HCM-1012",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1012-0db39a09f8bb.jpg",
+    "sha256": "0db39a09f8bbbe77e737c4e665a6b7f77ff0f366e5f4622d2884c82665db22e5",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/la-brasserie-restaurant-hotel-nikko-saigon-2.jpg",
+      "alt": "La Brasserie Restaurant - Hotel Nikko Saigon",
+      "title": "",
+      "at": 34023,
+      "sourcePage": "https://www.zonevietnam.com/food/1/la-brasserie-restaurant-hotel-nikko-saigon",
+      "sourceTitle": "La Brasserie Restaurant - Hotel Nikko Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-1012 #2"
+  },
+  {
+    "id": "HCM-1012",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1012-e22a0f761556.jpg",
+    "sha256": "e22a0f7615563f7e4bb96d3baff58076c51d55ffadf7597dcbd4ce1c445e57e5",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/la-brasserie-restaurant-hotel-nikko-saigon-3.jpg",
+      "alt": "La Brasserie Restaurant - Hotel Nikko Saigon",
+      "title": "",
+      "at": 35207,
+      "sourcePage": "https://www.zonevietnam.com/food/1/la-brasserie-restaurant-hotel-nikko-saigon",
+      "sourceTitle": "La Brasserie Restaurant - Hotel Nikko Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-1012 #3"
+  },
+  {
+    "id": "HCM-1012",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1012-5243d1b94b64.jpg",
+    "sha256": "5243d1b94b648ed27512f1c74b7b1f620fcaef4cc5cbfe7a487c7e0ea3ea352b",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/la-brasserie-restaurant-hotel-nikko-saigon-4.jpg",
+      "alt": "La Brasserie Restaurant - Hotel Nikko Saigon",
+      "title": "",
+      "at": 36392,
+      "sourcePage": "https://www.zonevietnam.com/food/1/la-brasserie-restaurant-hotel-nikko-saigon",
+      "sourceTitle": "La Brasserie Restaurant - Hotel Nikko Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-1012 #4"
+  },
+  {
+    "id": "HCM-1012",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1012-d9e290ed425a.jpg",
+    "sha256": "d9e290ed425aa55177d020d81bffe53da96c28a736bcdf7acf98e798c7f05fb4",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/la-brasserie-restaurant-hotel-nikko-saigon-5.jpg",
+      "alt": "La Brasserie Restaurant - Hotel Nikko Saigon",
+      "title": "",
+      "at": 37575,
+      "sourcePage": "https://www.zonevietnam.com/food/1/la-brasserie-restaurant-hotel-nikko-saigon",
+      "sourceTitle": "La Brasserie Restaurant - Hotel Nikko Saigon ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 5,
+    "label": "HCM-1012 #5"
+  },
+  {
+    "id": "HCM-1015",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1015-b5afb5ee7f4d.jpg",
+    "sha256": "b5afb5ee7f4df8ea4dc35160a442fb5c3cacce17a4a9ac167ffc5f4fbbe006a1",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/marcel-gourmet-burger-1.jpg",
+      "alt": "Marcel Gourmet Burger",
+      "title": "",
+      "at": 32416,
+      "sourcePage": "https://www.zonevietnam.com/food/334/marcel-gourmet-burger",
+      "sourceTitle": "Marcel Gourmet Burger ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 1,
+    "label": "HCM-1015 #1"
+  },
+  {
+    "id": "HCM-1015",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1015-448422fcbb91.jpg",
+    "sha256": "448422fcbb919c4ec489c28a52e582baf27092cd3abde2756a368dcda828078d",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/marcel-gourmet-burger-2.jpg",
+      "alt": "Marcel Gourmet Burger",
+      "title": "",
+      "at": 33513,
+      "sourcePage": "https://www.zonevietnam.com/food/334/marcel-gourmet-burger",
+      "sourceTitle": "Marcel Gourmet Burger ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 2,
+    "label": "HCM-1015 #2"
+  },
+  {
+    "id": "HCM-1015",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1015-3b0c87d53da9.jpg",
+    "sha256": "3b0c87d53da9c0f4b56463c9d8315c1627f2210b75c8fcd21067606680a09952",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/marcel-gourmet-burger-3.jpg",
+      "alt": "Marcel Gourmet Burger",
+      "title": "",
+      "at": 34610,
+      "sourcePage": "https://www.zonevietnam.com/food/334/marcel-gourmet-burger",
+      "sourceTitle": "Marcel Gourmet Burger ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 3,
+    "label": "HCM-1015 #3"
+  },
+  {
+    "id": "HCM-1015",
+    "image": "asset/place-photo-research/gallery-candidates/hcm-1015-dfbed3025c00.jpg",
+    "sha256": "dfbed3025c0083a4648f4a2413ad80a8efa5e42d16ac8f62e2d09f3bcf140949",
+    "selected": {
+      "url": "https://www.zonevietnam.com/uploads/gallery/marcel-gourmet-burger-5.jpg",
+      "alt": "Marcel Gourmet Burger",
+      "title": "",
+      "at": 36804,
+      "sourcePage": "https://www.zonevietnam.com/food/334/marcel-gourmet-burger",
+      "sourceTitle": "Marcel Gourmet Burger ở Hồ Chí Minh - Sài Gòn — ZoneVietnam",
+      "evidence": "PLACE_DETAIL_GALLERY"
+    },
+    "number": 4,
+    "label": "HCM-1015 #4"
+  }
+]
