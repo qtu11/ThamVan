@@ -55,12 +55,31 @@ export async function GET(request: Request) {
           defaultType: 'image/jpeg',
         },
       ];
-    } else {
-      // Default & esriStreet: Esri World Street Map (rich street labels, highly reliable, zero watermark)
+    } else if (layer === 'heritageLight') {
       urls = [
         {
-          url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/${z}/${y}/${x}`,
+          url: `https://a.basemaps.cartocdn.com/light_all/${z}/${x}/${y}@2x.png`,
+          defaultType: 'image/png',
+        },
+        {
+          url: `https://b.basemaps.cartocdn.com/light_all/${z}/${x}/${y}.png`,
+          defaultType: 'image/png',
+        },
+        {
+          url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/${z}/${y}/${x}`,
           defaultType: 'image/jpeg',
+        },
+      ];
+    } else {
+      // Default & esriStreet: Crisp Carto Voyager @2x retina map with Esri Topo fallback
+      urls = [
+        {
+          url: `https://a.basemaps.cartocdn.com/rastertiles/voyager/${z}/${x}/${y}@2x.png`,
+          defaultType: 'image/png',
+        },
+        {
+          url: `https://b.basemaps.cartocdn.com/rastertiles/voyager/${z}/${x}/${y}.png`,
+          defaultType: 'image/png',
         },
         {
           url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/${z}/${y}/${x}`,

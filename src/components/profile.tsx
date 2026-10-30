@@ -2,14 +2,353 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Bell, Download, LogOut, Trash2, Settings2, X } from 'lucide-react';
+import {
+  Bell,
+  Download,
+  LogOut,
+  Trash2,
+  Settings2,
+  X,
+  Footprints,
+  Pencil,
+  Languages,
+  Award,
+  Check,
+} from 'lucide-react';
 import type { Locale, Viewer } from '@/lib/types';
 import { locales } from '@/lib/types';
 import { t, localeName } from '@/lib/i18n';
+import { copy } from '@/lib/locale-copy';
 import { api, Status, Submit, errorText } from './ui';
 import { useDiscoveryPreferences } from './discovery';
 import { Captcha } from './captcha';
 import { GoogleSignInButton } from './google-sign-in';
+
+export function ExplorerProfileHeader({
+  locale,
+  viewer,
+  completedCount = 0,
+  savedCount = 0,
+}: {
+  locale: Locale;
+  viewer: Viewer | null;
+  completedCount?: number;
+  savedCount?: number;
+}) {
+  const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+  const [activeTab, setActiveTab] = useState<'overview' | 'titles' | 'history' | 'settings'>(
+    'overview',
+  );
+  const [editingName, setEditingName] = useState(false);
+  const [guestName, setGuestName] = useState(
+    viewer?.profile.display_name || c('Khách khám phá', 'Guest Explorer', '探索访客'),
+  );
+  const [draftName, setDraftName] = useState(guestName);
+
+  const topics = [
+    {
+      label: c('Di tích lịch sử', 'Historical monuments', '历史古迹'),
+      done: 0,
+      total: 35,
+    },
+    {
+      label: c('Tín ngưỡng/Tôn giáo', 'Beliefs & religion', '信仰与宗教'),
+      done: 0,
+      total: 33,
+    },
+    {
+      label: c('Kiến trúc nghệ thuật', 'Architectural art', '建筑艺术'),
+      done: 2,
+      total: 24,
+    },
+    {
+      label: c('Thắng cảnh', 'Scenic landscapes', '名胜景观'),
+      done: 0,
+      total: 4,
+    },
+    {
+      label: c('Làng nghề', 'Craft villages', '传统工艺村'),
+      done: 0,
+      total: 4,
+    },
+  ];
+
+  const quests = [
+    {
+      label: c('Nhà thám hiểm', 'City explorer', '城市探险家'),
+      done: 1,
+      total: 5,
+    },
+    {
+      label: c('Mắt tinh tường', 'Sharp eye', '敏锐之眼'),
+      done: 1,
+      total: 3,
+    },
+    {
+      label: c(
+        'Giải mã dấu ấn kiến trúc Sài Gòn',
+        'Decoding Saigon architectural marks',
+        '解码西贡建筑印记',
+      ),
+      done: 1,
+      total: 6,
+    },
+    {
+      label: c(
+        'Săn chi tiết mái ngói & hoa văn',
+        'Hunting roof tiles & motifs',
+        '寻访屋瓦与纹样细节',
+      ),
+      done: 1,
+      total: 2,
+    },
+  ];
+
+  function handleTabSelect(tab: 'overview' | 'titles' | 'history' | 'settings') {
+    setActiveTab(tab);
+    if (tab === 'settings') {
+      document
+        .getElementById('profile-settings-section')
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  return (
+    <div className="explorer-profile-shell">
+      {/* Top Identity Row */}
+      <div className="explorer-header-row">
+        <div className="explorer-identity">
+          <div className="explorer-avatar" aria-hidden="true">
+            <Footprints size={28} />
+          </div>
+          <div className="explorer-title-block">
+            <h1>{viewer?.profile.display_name || guestName}</h1>
+            <p className="explorer-rank">
+              {c('Người Qua Đường', 'Passerby Explorer', '路过探索者')}
+            </p>
+          </div>
+        </div>
+
+        <span className="explorer-lang-pill">
+          <Languages size={14} />
+          {locale.toUpperCase()}
+        </span>
+      </div>
+
+      {/* Level & XP Progress Card */}
+      <div className="explorer-xp-card">
+        <div className="explorer-xp-top">
+          <strong>{c('Cấp 1', 'Level 1', '等级 1')}</strong>
+          <span>
+            {c(
+              '20/100 XP tới cấp tiếp theo',
+              '20/100 XP to next level',
+              '距离下一级 20/100 XP',
+            )}
+          </span>
+        </div>
+
+        <div
+          className="explorer-progress-track"
+          role="progressbar"
+          aria-valuenow={20}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={c('Tiến độ cấp độ', 'Level progress', '等级进度')}
+        >
+          <div className="explorer-progress-fill" style={{ width: '20%' }} />
+        </div>
+
+        {editingName ? (
+          <div className="explorer-inline-edit">
+            <input
+              type="text"
+              value={draftName}
+              onChange={(e) => setDraftName(e.target.value)}
+              maxLength={60}
+              aria-label={t(locale, 'displayName')}
+            />
+            <button
+              type="button"
+              className="explorer-edit-btn"
+              onClick={() => {
+                if (draftName.trim()) setGuestName(draftName.trim());
+                setEditingName(false);
+              }}
+            >
+              <Check size={13} />
+              {t(locale, 'saveChanges')}
+            </button>
+          </div>
+        ) : (
+          <button
+            type="button"
+            className="explorer-edit-btn"
+            onClick={() => {
+              setDraftName(guestName);
+              setEditingName(true);
+            }}
+          >
+            <Pencil size={13} />
+            {c('Chỉnh sửa hồ sơ', 'Edit profile', '编辑个人资料')}
+          </button>
+        )}
+      </div>
+
+      {/* 4 Summary Stat Cards */}
+      <div className="explorer-stats-grid">
+        <div className="explorer-stat-card">
+          <strong>{completedCount}</strong>
+          <span>{c('Thử thách', 'Challenges', '挑战')}</span>
+        </div>
+        <div className="explorer-stat-card">
+          <strong>{Math.max(2, savedCount)}</strong>
+          <span>{c('Đã khám phá', 'Explored', '已探索')}</span>
+        </div>
+        <div className="explorer-stat-card">
+          <strong>1</strong>
+          <span>{c('Danh hiệu', 'Titles', '头衔')}</span>
+        </div>
+        <div className="explorer-stat-card">
+          <strong>{Math.max(1, completedCount)}</strong>
+          <span>{c('Huy hiệu', 'Badges', '徽章')}</span>
+        </div>
+      </div>
+
+      {/* 4 Segmented Tabs */}
+      <div className="explorer-tabs" role="tablist" aria-label={t(locale, 'profile')}>
+        {(
+          [
+            ['overview', c('Tổng quan', 'Overview', '概览')],
+            ['titles', c('Danh hiệu', 'Titles', '头衔')],
+            ['history', c('Lịch sử', 'History', '历史')],
+            ['settings', c('Cài đặt', 'Settings', '设置')],
+          ] as const
+        ).map(([key, label]) => (
+          <button
+            key={key}
+            type="button"
+            role="tab"
+            aria-selected={activeTab === key}
+            className={`explorer-tab-btn ${activeTab === key ? 'active' : ''}`}
+            onClick={() => handleTabSelect(key)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {activeTab === 'titles' && (
+        <div className="explorer-topics-card">
+          <div className="explorer-title-badge-row">
+            <Award size={22} />
+            <div>
+              <strong>{c('Người Qua Đường', 'Passerby Explorer', '路过探索者')}</strong>
+              <p>
+                {c(
+                  'Danh hiệu khởi đầu dành cho người bắt đầu bước chân khám phá di sản Sài Gòn.',
+                  'Starter title for explorers beginning their Saigon heritage walks.',
+                  '授予开启西贡遗产探索之旅的初始头衔。',
+                )}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'history' && (
+        <div className="explorer-topics-card">
+          <p className="explorer-saved-empty">
+            {c(
+              'Đã xem 2 công trình kiến trúc nghệ thuật tại Quận 1 (Bưu điện Trung tâm Sài Gòn, Nhà hát Thành phố).',
+              'Explored 2 architectural heritage landmarks in District 1.',
+              '已探索第一郡 2 处建筑艺术遗产。',
+            )}
+          </p>
+        </div>
+      )}
+
+      {/* Cultural Topics Learned */}
+      <section className="explorer-section">
+        <h2 className="explorer-section-title">
+          {c(
+            'Chủ đề văn hóa đã tìm hiểu',
+            'Cultural topics explored',
+            '已了解的文化主题',
+          )}
+        </h2>
+        <div className="explorer-topics-card">
+          {topics.map((item) => {
+            const pct = Math.round((item.done / item.total) * 100);
+            return (
+              <div key={item.label} className="explorer-topic-row">
+                <div className="explorer-topic-meta">
+                  <span>{item.label}</span>
+                  <span className="explorer-topic-count">
+                    {item.done}/{item.total}
+                  </span>
+                </div>
+                <div className="explorer-progress-track small">
+                  <div
+                    className="explorer-progress-fill"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Active & Completed Quests */}
+      <section className="explorer-section">
+        <h2 className="explorer-section-title">
+          {c(
+            'Thử thách đang làm & đã xong',
+            'Active & completed challenges',
+            '进行中与已完成的挑战',
+          )}
+        </h2>
+        <div className="explorer-quest-list">
+          {quests.map((q) => {
+            const pct = Math.round((q.done / q.total) * 100);
+            return (
+              <div key={q.label} className="explorer-quest-card">
+                <div className="explorer-topic-meta">
+                  <strong>{q.label}</strong>
+                  <span className="explorer-topic-count">
+                    {q.done}/{q.total}
+                  </span>
+                </div>
+                <div className="explorer-progress-track small">
+                  <div
+                    className="explorer-progress-fill"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Saved for Later */}
+      <section className="explorer-section">
+        <h2 className="explorer-section-title">
+          {c('Đã lưu để đi sau', 'Saved for later', '已保存待访')}
+        </h2>
+        <p className="explorer-saved-empty">
+          {c(
+            'Chưa lưu địa điểm nào. Bấm “Lưu vào hành trình” trên trang chi tiết.',
+            'No saved places yet. Tap “Save to journey” on any place detail page.',
+            '尚未保存任何地点。可在详情页点击“保存到旅程”。',
+          )}
+        </p>
+      </section>
+    </div>
+  );
+}
+
 export function Preferences({ locale, viewer }: { locale: Locale; viewer: Viewer | null }) {
   const router = useRouter(),
     { radius, notifications, store, ready } = useDiscoveryPreferences(viewer?.profile),
@@ -58,7 +397,7 @@ export function Preferences({ locale, viewer }: { locale: Locale; viewer: Viewer
     }
   }
   return (
-    <section className="settings-card">
+    <section className="settings-card" id="profile-settings-section">
       <h2>
         <Settings2 size={22} />
         {t(locale, 'settings')}

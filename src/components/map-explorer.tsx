@@ -1,6 +1,6 @@
 'use client';
 import dynamic from 'next/dynamic';
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   LocateFixed,
@@ -14,7 +14,6 @@ import {
   Navigation,
   Info,
   Compass,
-  Globe,
 } from 'lucide-react';
 import type { Heritage, Locale, Profile } from '@/lib/types';
 import { distanceKm, normalizeSearch, type Coordinates } from '@/lib/geo';
@@ -44,16 +43,15 @@ export function MapExplorer({
   const [query, setQuery] = useState('');
   const [categoryGroup, setCategoryGroup] = useState('');
   const [region, setRegion] = useState(
-    focus ? entries.find((e) => e.slug === focus || e.id.toLowerCase() === focus.toLowerCase())?.region || '' : '',
+    focus
+      ? entries.find((e) => e.slug === focus || e.id.toLowerCase() === focus.toLowerCase())
+          ?.region || ''
+      : '',
   );
   const [photoFilter, setPhotoFilter] = useState<'all' | 'with-photo' | 'without-photo'>('all');
   const [position, setPosition] = useState<Coordinates | null>(null);
-  const [userIpInfo, setUserIpInfo] = useState<{
-    ip: string;
-    city: string;
-    region?: string;
-    isp?: string;
-  } | null>(null);
+  const [accuracyMeters, setAccuracyMeters] = useState<number | null>(null);
+  const [locateTrigger, setLocateTrigger] = useState(0);
   const [routeCoordinates, setRouteCoordinates] = useState<[number, number][]>([]);
   const [routeInfo, setRouteInfo] = useState<{
     distanceKm: number;
@@ -73,7 +71,140 @@ export function MapExplorer({
   const [detailModal, setDetailModal] = useState<Heritage | null>(null);
   const [displayCount, setDisplayCount] = useState(PAGE_SIZE);
 
+  const watchIdRef = useRef<number | null>(null);
+  const gpsActiveRef = useRef<boolean>(!focus);
+  const bestAccuracyRef = useRef<number>(Infinity);
+
   const { radius, store, ready } = useDiscoveryPreferences(profile);
+
+  const stopGpsWatch = useCallback(() => {
+    if (
+      watchIdRef.current !== null &&
+      typeof navigator !== 'undefined' &&
+      navigator.geolocation &&
+      typeof navigator.geolocation.clearWatch === 'function'
+    ) {
+      navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+    }
+  }, []);
+
+  const applyGpsFix = useCallback((coords: GeolocationCoordinates, forceCenter = false) => {
+    if (!gpsActiveRef.current) return;
+    const accuracy = typeof coords.accuracy === 'number' && coords.accuracy > 0 ? coords.accuracy : 50;
+    // Ignore sudden degraded coarse network fixes if we already have a much sharper GPS lock
+    if (!forceCenter && accuracy > bestAccuracyRef.current * 2.5 && bestAccuracyRef.current < 100) {
+      return;
+    }
+    if (accuracy < bestAccuracyRef.current) {
+      bestAccuracyRef.current = accuracy;
+    }
+    setPosition({
+      latitude: coords.latitude,
+      longitude: coords.longitude,
+    });
+    setAccuracyMeters(accuracy);
+    if (forceCenter) {
+      setLocateTrigger((n) => n + 1);
+    }
+  }, []);
+
+  const startGpsWatch = useCallback(() => {
+    if (
+      typeof navigator === 'undefined' ||
+      !navigator.geolocation ||
+      typeof navigator.geolocation.watchPosition !== 'function'
+    ) {
+      return;
+    }
+    stopGpsWatch();
+    try {
+      watchIdRef.current = navigator.geolocation.watchPosition(
+        (p) => {
+          applyGpsFix(p.coords, false);
+        },
+        () => {
+          // Keep current fix if watch encounters a transient timeout
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 0,
+          timeout: 20000,
+        },
+      );
+    } catch {
+      // Ignore if watchPosition is unsupported in test mocks
+    }
+  }, [applyGpsFix, stopGpsWatch]);
+
+  // Acquire true hardware/browser GPS location (never overwrite with coarse ISP IP)
+  const locateDevice = useCallback(
+    (isManual = true) => {
+      if (typeof navigator === 'undefined' || !navigator.geolocation) {
+        if (isManual) {
+          setMessage(t(locale, 'locationDenied'));
+        }
+        return;
+      }
+
+      gpsActiveRef.current = true;
+      bestAccuracyRef.current = Infinity;
+      if (isManual) {
+        setPending(true);
+        setMessage('');
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (p) => {
+          setRegion('');
+          setMessage('');
+          applyGpsFix(p.coords, true);
+          setPending(false);
+          startGpsWatch();
+        },
+        () => {
+          setPending(false);
+          if (isManual) {
+            setMessage(t(locale, 'locationDenied'));
+          }
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 12000,
+          maximumAge: 0,
+        },
+      );
+    },
+    [locale, applyGpsFix, startGpsWatch],
+  );
+
+  // Auto-request real GPS on mount when not focusing a specific place
+  useEffect(() => {
+    if (focus) return;
+    if (typeof navigator === 'undefined' || !navigator.geolocation) return;
+
+    let cancelled = false;
+    navigator.geolocation.getCurrentPosition(
+      (p) => {
+        if (cancelled || !gpsActiveRef.current) return;
+        applyGpsFix(p.coords, true);
+        startGpsWatch();
+      },
+      () => {
+        // Silent on initial mount; user can click the GPS icon or pick a district
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 12000,
+        maximumAge: 0,
+      },
+    );
+
+    return () => {
+      cancelled = true;
+      stopGpsWatch();
+    };
+  }, [focus, applyGpsFix, startGpsWatch, stopGpsWatch]);
 
   // Extract distinct regions
   const allRegions = useMemo(() => {
@@ -85,25 +216,20 @@ export function MapExplorer({
   const filtered = useMemo(() => {
     const q = normalizeSearch(query.trim());
     return entries.filter((e) => {
-      // Must have valid coordinates
       if (e.latitude === null || e.longitude === null) return false;
 
-      // Photo status filter
       const hasPhoto = Boolean(e.hasImage || e.image);
       if (photoFilter === 'with-photo' && !hasPhoto) return false;
       if (photoFilter === 'without-photo' && hasPhoto) return false;
 
-      // Category group filter
       if (categoryGroup && categoryGroup !== 'Tất cả' && e.categoryGroup !== categoryGroup) {
         return false;
       }
 
-      // Region filter
       if (region && e.region !== region) {
         return false;
       }
 
-      // Text search
       if (q) {
         const target = normalizeSearch(
           `${e.name} ${e.address || ''} ${e.category || ''} ${e.region} ${(e.aliases || []).join(' ')}`,
@@ -111,7 +237,6 @@ export function MapExplorer({
         if (!target.includes(q)) return false;
       }
 
-      // Geo radius filter
       if (position) {
         const d = distanceKm(position, { latitude: e.latitude, longitude: e.longitude });
         if (d > radius) return false;
@@ -139,112 +264,35 @@ export function MapExplorer({
     [filtered],
   );
 
-  // Auto-detect IP and device location quietly on mount
-  useEffect(() => {
-    fetch('/api/locate')
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => {
-        if (!data) return;
-        if (data.ip) {
-          setUserIpInfo({
-            ip: data.ip,
-            city: data.city || 'TP. Hồ Chí Minh',
-            region: data.region,
-            isp: data.isp,
-          });
-        }
-        if (typeof data.latitude === 'number' && typeof data.longitude === 'number') {
-          setPosition({ latitude: data.latitude, longitude: data.longitude });
-        }
-      })
-      .catch(() => {});
-  }, []);
-
-  // Detect IP and device location
-  const locateDevice = useCallback(async () => {
-    setPending(true);
-    setMessage('');
-
-    let foundCoords: Coordinates | null = null;
-
-    // Fetch IP and Geo from /api/locate
-    try {
-      const res = await fetch('/api/locate');
-      if (res.ok) {
-        const data = await res.json();
-        if (data.ip) {
-          setUserIpInfo({
-            ip: data.ip,
-            city: data.city || 'TP. Hồ Chí Minh',
-            region: data.region,
-            isp: data.isp,
-          });
-        }
-        if (typeof data.latitude === 'number' && typeof data.longitude === 'number') {
-          foundCoords = { latitude: data.latitude, longitude: data.longitude };
-          setPosition(foundCoords);
-          setRegion('');
-        }
-      }
-    } catch {
-      // Continue to try browser geolocation
-    }
-
-    // Try browser GPS for higher precision
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (p) => {
-          const highPrecisionCoords = {
-            latitude: p.coords.latitude,
-            longitude: p.coords.longitude,
-          };
-          setPosition(highPrecisionCoords);
-          setRegion('');
-          setPending(false);
-        },
-        () => {
-          // If browser denied but we got IP coords, keep IP coords
-          if (!foundCoords) {
-            setMessage(t(locale, 'locationDenied'));
-          }
-          setPending(false);
-        },
-        { timeout: 8000, maximumAge: 60000, enableHighAccuracy: true },
-      );
-    } else {
-      setPending(false);
-    }
-  }, [locale]);
-
-  // Request actual driving route to destination
+  // Request actual driving route to destination using accurate GPS first
   const handleRequestRoute = useCallback(
     async (place: Heritage) => {
       if (!place.latitude || !place.longitude) return;
 
-      // If user has no position yet, locate device first
       let currentPos = position;
-      if (!currentPos) {
+      if (!currentPos && typeof navigator !== 'undefined' && navigator.geolocation) {
         setRoutingPending(true);
-        try {
-          const res = await fetch('/api/locate');
-          if (res.ok) {
-            const data = await res.json();
-            currentPos = { latitude: data.latitude, longitude: data.longitude };
-            setPosition(currentPos);
-            setUserIpInfo({
-              ip: data.ip,
-              city: data.city,
-              isp: data.isp,
-            });
-          }
-        } catch {
-          currentPos = { latitude: 10.822, longitude: 106.6257 };
-          setPosition(currentPos);
-        }
+        currentPos = await new Promise<Coordinates | null>((resolve) => {
+          navigator.geolocation.getCurrentPosition(
+            (p) => {
+              const coords = {
+                latitude: p.coords.latitude,
+                longitude: p.coords.longitude,
+              };
+              gpsActiveRef.current = true;
+              applyGpsFix(p.coords, true);
+              startGpsWatch();
+              resolve(coords);
+            },
+            () => resolve(null),
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 },
+          );
+        });
       }
 
       if (!currentPos) {
         setRoutingPending(false);
+        setMessage(t(locale, 'locationDenied'));
         return;
       }
 
@@ -270,7 +318,7 @@ export function MapExplorer({
         setRoutingPending(false);
       }
     },
-    [position],
+    [position, locale, applyGpsFix, startGpsWatch],
   );
 
   function clearRoute() {
@@ -368,8 +416,12 @@ export function MapExplorer({
           <select
             value={region}
             onChange={(e) => {
-              setRegion(e.target.value);
+              const nextRegion = e.target.value;
+              setRegion(nextRegion);
+              gpsActiveRef.current = false;
+              stopGpsWatch();
               setPosition(null);
+              setAccuracyMeters(null);
             }}
           >
             <option value="">{t(locale, 'allRegions')}</option>
@@ -383,44 +435,46 @@ export function MapExplorer({
         </label>
       </div>
 
-      {/* Location, IP, and Radius Bar */}
+      {/* Clean Compact GPS & Discovery Radius Toolbar */}
       <div className="map-location">
         <div className="location-btn-group">
           <button
             type="button"
-            className="button secondary small locate-btn"
-            onClick={locateDevice}
+            className={`icon-locate-btn ${position ? 'active' : ''}`}
+            onClick={() => locateDevice(true)}
             disabled={pending || routingPending}
+            aria-label={t(locale, 'locateMe')}
+            title={t(locale, 'locateMe')}
           >
-            <LocateFixed size={16} />
-            {t(locale, pending ? 'loading' : 'locateMe')}
+            <LocateFixed size={17} />
           </button>
 
           {position && (
-            <button
-              type="button"
-              className="button ghost small clear-locate-btn"
-              onClick={() => {
-                setPosition(null);
-                clearRoute();
-              }}
-            >
-              <X size={14} /> Tắt định vị
-            </button>
-          )}
-
-          {userIpInfo && (
-            <div className="device-ip-badge">
-              <Globe size={13} />
+            <div className="gps-coords-pill">
+              <span className="gps-live-dot" aria-hidden="true" />
               <span>
-                <strong>IP:</strong> {userIpInfo.ip} &middot;{' '}
-                <strong>Vị trí thiết bị:</strong> {userIpInfo.city}{' '}
-                {userIpInfo.isp ? `(${userIpInfo.isp})` : ''}
+                GPS {position.latitude.toFixed(4)}°N, {position.longitude.toFixed(4)}°E
+                {typeof accuracyMeters === 'number' && accuracyMeters > 0
+                  ? ` (±${Math.max(1, Math.round(accuracyMeters))}m)`
+                  : ''}
               </span>
+              <button
+                type="button"
+                className="gps-reset-icon-btn"
+                onClick={() => {
+                  gpsActiveRef.current = false;
+                  stopGpsWatch();
+                  setPosition(null);
+                  setAccuracyMeters(null);
+                  clearRoute();
+                }}
+                aria-label={t(locale, 'clear')}
+                title={t(locale, 'clear')}
+              >
+                <X size={13} />
+              </button>
             </div>
           )}
-
-          <p className="help-text">{t(locale, 'locationPurpose')}</p>
         </div>
 
         <label className="radius-field">
@@ -447,14 +501,16 @@ export function MapExplorer({
           entries={filtered}
           locale={locale}
           position={position}
+          accuracyMeters={accuracyMeters}
+          locateTrigger={locateTrigger}
           radius={radius}
           selectedPlace={selectedPlace}
-          userIpInfo={userIpInfo}
           routeCoordinates={routeCoordinates}
           routeInfo={routeInfo}
           onSelectPlace={handleSelect}
           onRequestRoute={handleRequestRoute}
           onClearRoute={clearRoute}
+          onLocateMe={() => locateDevice(true)}
         />
 
         <div className="map-results">
@@ -497,7 +553,7 @@ export function MapExplorer({
                         )}
                         {hasPhoto && (
                           <span className="thumb-photo-tag" title={t(locale, 'photoFilterVerified')}>
-                            📷
+                            <Camera size={11} />
                           </span>
                         )}
                       </div>

@@ -191,8 +191,8 @@ export function Shell({
               { label: t(locale, 'home'), to: '', Icon: Home },
               ...links,
               {
-                label: t(locale, signedIn ? 'profile' : 'login'),
-                to: signedIn ? '/dashboard' : '/auth/login',
+                label: t(locale, 'profile'),
+                to: '/profile',
                 Icon: UserRound,
               },
             ].map(({ label, to, Icon }) => (
@@ -251,9 +251,7 @@ export function Shell({
           { label: c('Khám phá', 'Explore', '探索'), to: '/explore', Icon: Compass },
           { label: t(locale, 'map'), to: '/map', Icon: Map },
           { label: t(locale, 'challenges'), to: '/challenges', Icon: Trophy },
-          showDashboard
-            ? { label: 'Dashboard', to: dashboardHref, Icon: UserRound }
-            : { label: c('Hành trình', 'Journey', '旅程'), to: '/journey', Icon: Route },
+          { label: t(locale, 'profile'), to: '/profile', Icon: UserRound },
         ].map(({ label, to, Icon }) => (
           <Link
             key={to}
