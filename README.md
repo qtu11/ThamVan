@@ -196,3 +196,15 @@ Quận 12
 Nhà Bè
 Quận 8
 Hồ Tràm
+
+## Membership update — 28/10/2026
+
+Current consumer offers are Free, Premium 39,000 VND/month and Premium Family 89,000 VND/month for four members. New one-time guide checkout is retired; verified legacy guide rights are preserved.
+
+- Customer workspace: `/vi/dashboard`
+- Operations: `/vi/admin/dashboard` (admin required once Supabase is configured)
+- Apply migrations 001–008 in order; checkout remains disabled without required configuration.
+- Setup and live verification: [MEMBERSHIP-OPERATIONS.md](docs/MEMBERSHIP-OPERATIONS.md)
+- Reference-site audit and revenue hypotheses: [THAMVAN-PRODUCT-AND-REVENUE.md](docs/THAMVAN-PRODUCT-AND-REVENUE.md)
+
+Local build/test results do not establish live payments, push delivery, AI-provider operation, or deployed database state.

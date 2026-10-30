@@ -18,7 +18,8 @@ export const metadata: Metadata = {
   title: { default: 'THÁM VĂN — Chạm để hiểu di sản Sài Gòn', template: '%s · THÁM VĂN' },
   description:
     'Khám phá di sản, văn hóa và những câu chuyện TP. Hồ Chí Minh qua hình ảnh, bản đồ và hành trình của riêng bạn.',
-  icons: { icon: '/images/logo.png' },
+  icons: { icon: '/images/logo.png', apple: '/icons/pwa-192.png' },
+  appleWebApp: { capable: true, title: 'THÁM VĂN', statusBarStyle: 'default' },
 };
 export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#0B4538' };
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

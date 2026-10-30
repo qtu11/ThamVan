@@ -124,12 +124,31 @@ export function buildBaSon() {
 
   // Trụ cầu bê tông vững chắc dưới nước với đệm chống va tàu
   for (const z of [-3, 14, 34, 48]) {
-    kit.box(0, 0.98, z, 1.1, 2.05, 1.3, 'stone');
-    kit.box(0, 1.82, z, 2.55, 0.25, 1.5, 'ivory');
+    kit.box(0, 0.98, z, 1.15, 2.05, 1.35, 'stone');
+    kit.box(0, 0.24, z, 1.65, 0.32, 1.85, 'concrete'); // Bệ móng cọc khoan nhồi & đệm chống va tàu
+    kit.box(0, 1.82, z, 2.65, 0.26, 1.55, 'ivory');
     // Đèn tín hiệu hàng hải (xanh mạn phải, đỏ mạn trái)
     kit.box(-1.35, 1.85, z, 0.06, 0.06, 0.06, 'red');
     kit.box(1.35, 1.85, z, 0.06, 0.06, 0.06, 'ledCyan');
   }
+
+  // Hệ dầm hộp thép chịu lực dưới gầm mặt cầu (Under-deck Box-Girder Ribs) và cột đèn chiếu sáng cầu
+  for (let z = 0; z <= 52; z += 3.2) {
+    kit.box(0, 1.88, z, 2.45, 0.12, 0.22, 'stone');
+    if (z % 6.4 < 3.2 && Math.abs(z - 25) > 3.5) {
+      for (const s of [-1.42, 1.42]) {
+        kit.cylinder(s, 2.75, z, 0.018, 0.72, 'ivory');
+        kit.box(s - Math.sign(s) * 0.08, 3.1, z, 0.18, 0.03, 0.04, 'ledWhite');
+      }
+    }
+  }
+
+  // Chân trụ tháp đôi chữ A ôm hai bên mặt cầu và dầm ngang liên kết (Lower Pylon Legs & Cross-Beams)
+  for (const s of [-1.48, 1.48]) {
+    kit.box(s, 1.95, 24.1, 0.32, 3.8, 1.25, 'ivory');
+  }
+  kit.box(0, 1.72, 24.1, 3.3, 0.32, 1.35, 'ivory');
+  kit.box(0, 3.75, 24.2, 2.8, 0.28, 1.1, 'ivory');
 
   // Tháp cầu vòm cong (Pylon)
   const curve = new THREE.CatmullRomCurve3([
@@ -445,13 +464,32 @@ export function buildLandmark81() {
     kit.box(s + 0.15, 1.35, 4.2, 0.35, 0.22, 0.02, 'red');
   }
 
-  // 8. Tuyến đường nội bộ Central Park Ring Road & Dàn xe buýt điện VinBus
+  // 8. Tuyến đường nội bộ Central Park Ring Road, Cầu vượt bộ hành & Dàn xe buýt điện VinBus
   kit.box(0, 0.19, -3.2, 36, 0.03, 2.8, 'road');
   kit.box(0, 0.21, -3.2, 36, 0.006, 0.04, 'marking');
   // Vạch kẻ đi bộ sang đường (Zebra Crossing) trước sảnh Vincom
   for (let z = -4.4; z <= -2.0; z += 0.4) {
     kit.box(-4.5, 0.21, z, 0.35, 0.006, 0.25, 'marking');
     kit.box(4.5, 0.21, z, 0.35, 0.006, 0.25, 'marking');
+  }
+
+  // Cầu vượt bộ hành dây văng (Central Park Cable-Stayed Pedestrian Bridge) nối Vincom ra công viên ven sông
+  const pbx = -9.2;
+  kit.box(pbx, 1.18, -1.2, 1.15, 0.12, 8.4, 'ivory');
+  kit.box(pbx, 1.25, -1.2, 0.95, 0.03, 8.3, 'paving');
+  for (const s of [-0.54, 0.54]) {
+    kit.box(pbx + s, 1.34, -1.2, 0.04, 0.16, 8.4, 'glass');
+    kit.box(pbx + s, 1.43, -1.2, 0.045, 0.035, 8.4, 'ledGold');
+  }
+  // Trụ tháp nghiêng màu đỏ của cầu bộ hành và hệ dây văng
+  kit.box(pbx, 2.15, -1.2, 0.22, 2.2, 0.28, 'red');
+  kit.box(pbx, 3.28, -1.2, 0.26, 0.08, 0.32, 'ledGold');
+  for (const dz of [-3.6, -2.4, -1.4, 0.8, 1.8, 2.8]) {
+    kit.line(
+      new THREE.Vector3(pbx, 3.15, -1.2),
+      new THREE.Vector3(pbx, 1.28, dz),
+      'cable',
+    );
   }
 
   // Dàn xe buýt điện VinBus xanh lá & Xe hơi hạng sang đón khách
@@ -550,6 +588,14 @@ export function buildLandmark81() {
     for (const sz of [-0.65, -0.22, 0.22, 0.65]) {
       kit.box(shaftX + shaftW / 2 + 0.02, 2.4 + h / 2, z + sz, 0.03, h, 0.035, 'ivory');
       kit.box(shaftX - shaftW / 2 - 0.02, 2.4 + h / 2, z + sz, 0.03, h, 0.035, 'ivory');
+    }
+
+    // Viền tầng lánh nạn & kỹ thuật ngang thân tháp (Horizontal Refuge Floor Spandrels)
+    for (const ry of [10.5, 18.5, 26.5, 34.5]) {
+      if (ry < h + 1.2) {
+        kit.box(shaftX, ry, z, shaftW + 0.05, 0.09, shaftD + 0.05, 'ivory');
+        kit.box(shaftX, ry + 0.06, z, shaftW + 0.06, 0.03, shaftD + 0.06, 'ledWhite');
+      }
     }
 
     // Viền đỉnh mỗi bậc giật cấp

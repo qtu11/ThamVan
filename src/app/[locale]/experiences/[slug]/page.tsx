@@ -130,7 +130,7 @@ export default async function Walk({
                   '解锁所有观察任务并下载路线文本。地点目录仍然免费。',
                 )}
               </p>
-              <Link className="button" href={`/${locale}/checkout?product=walk&experience=${slug}`}>
+              <Link className="button" href={`/${locale}/checkout?plan=premium`}>
                 {c('Xem bộ hướng dẫn', 'View guide pack', '查看指南')}
                 <ArrowUpRight size={16} />
               </Link>
@@ -141,17 +141,17 @@ export default async function Walk({
           <p className="startup-eyebrow">YOUR NEXT STORY</p>
           <h2>
             {c(
-              'Một lần mua. Một câu chuyện của bạn.',
-              'One purchase. Your own story.',
-              '一次购买，你的故事。',
+              'Một gói tháng. Nhiều câu chuyện.',
+              'One monthly plan. More stories.',
+              '每月套餐，更多故事。',
             )}
           </h2>
-          <div className="walk-price">{money(products.walk.amount, locale)}</div>
+          <div className="walk-price">{money(products.walk.amount, locale)} / tháng</div>
           <p>
             {c(
-              'Bộ hướng dẫn số cho một tài khoản. Không tự gia hạn.',
-              'Digital guide for one account. No automatic renewal.',
-              '单个账户的数字指南，无自动续费。',
+              'Đọc và tải toàn bộ bộ hướng dẫn trong thời hạn Premium hoặc Family. Không tự gia hạn.',
+              'Read and download all guides during an active Premium or Family term. No automatic renewal.',
+              'Premium或Family有效期内可阅读和下载全部指南，不自动续费。',
             )}
           </p>
           {owned ? (
@@ -160,7 +160,7 @@ export default async function Walk({
               {c('Tải hướng dẫn', 'Download guide', '下载指南')}
             </a>
           ) : (
-            <Link className="button" href={`/${locale}/checkout?product=walk&experience=${slug}`}>
+            <Link className="button" href={`/${locale}/checkout?plan=premium`}>
               {c('Xem chi tiết mua', 'View checkout', '查看购买详情')}
               <ArrowUpRight size={16} />
             </Link>

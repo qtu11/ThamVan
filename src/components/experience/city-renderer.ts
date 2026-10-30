@@ -23,12 +23,12 @@ export function createCityRenderer(
     onUnavailable();
     return () => {};
   }
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, innerWidth < 900 ? 1.25 : 1.75));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, innerWidth < 900 ? 1.5 : 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 1.1;
   renderer.shadowMap.enabled = innerWidth >= 900;
-  renderer.shadowMap.type = THREE.PCFShadowMap;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   // Light and geometry stay fixed while the camera travels. Reuse their shadow
   // map instead of rendering it again for every scroll frame.
   renderer.shadowMap.autoUpdate = false;
@@ -36,9 +36,9 @@ export function createCityRenderer(
   const canvas = renderer.domElement;
   host.append(canvas);
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#f6f0e3');
-  scene.fog = new THREE.Fog('#f6f0e3', 85, 150);
-  const sky = new THREE.HemisphereLight('#fff5df', '#435b4b', 1.2);
+  scene.background = new THREE.Color('#f6efe1');
+  scene.fog = new THREE.Fog('#f6efe1', 85, 160);
+  const sky = new THREE.HemisphereLight('#fff6e2', '#445e4e', 1.28);
   scene.add(sky);
   // A small, generated studio environment gives glass a real reflected light
   // response without fetching HDR textures or third-party assets.
@@ -49,7 +49,7 @@ export function createCityRenderer(
     try {
       reflections = pmrem.fromScene(room, 0.04, 0.1, 100, { size: 128 });
       scene.environment = reflections.texture;
-      scene.environmentIntensity = 0.35;
+      scene.environmentIntensity = 0.48;
     } catch {
       // Image based lighting is optional on constrained GPUs.
     } finally {
@@ -57,13 +57,14 @@ export function createCityRenderer(
       pmrem.dispose();
     }
   }
-  const sun = new THREE.DirectionalLight('#ffe4b5', 3.2);
+  const sun = new THREE.DirectionalLight('#ffe6ba', 3.35);
   sun.position.set(-28, 36, 20);
   sun.castShadow = true;
   sun.shadow.mapSize.set(1024, 1024);
-  Object.assign(sun.shadow.camera, { left: -35, right: 35, top: 35, bottom: -35, far: 110 });
+  Object.assign(sun.shadow.camera, { left: -38, right: 38, top: 38, bottom: -38, far: 118 });
   sun.shadow.camera.updateProjectionMatrix();
-  sun.shadow.normalBias = 0.08;
+  sun.shadow.normalBias = 0.05;
+  sun.shadow.bias = -0.0002;
   scene.add(sun);
   const city = buildCity();
   scene.add(city.model);
@@ -73,18 +74,18 @@ export function createCityRenderer(
   renderer.shadowMap.needsUpdate = true;
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 500);
   const cameraPath = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(12, 19, 69),
-    new THREE.Vector3(-4, 16, 62),
-    new THREE.Vector3(120, 18, 58),
-    new THREE.Vector3(232, 28, 70),
-    new THREE.Vector3(228, 25, 66),
+    new THREE.Vector3(10, 18, 65),
+    new THREE.Vector3(-4, 15.5, 58),
+    new THREE.Vector3(118, 17, 55),
+    new THREE.Vector3(225, 24, 55),
+    new THREE.Vector3(222, 23, 50),
   ]);
   const targetPath = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(0, 10, -3),
-    new THREE.Vector3(0, 10, -3),
-    new THREE.Vector3(100, 7, 24),
-    new THREE.Vector3(210, 22, -9),
-    new THREE.Vector3(210, 24, -9),
+    new THREE.Vector3(0, 10.5, -3),
+    new THREE.Vector3(0, 10.5, -3),
+    new THREE.Vector3(100, 8, 22),
+    new THREE.Vector3(210, 25, -9),
+    new THREE.Vector3(210, 28.5, -9),
   ]);
   const target = new THREE.Vector3();
   const projected = new THREE.Vector3();
@@ -108,12 +109,13 @@ export function createCityRenderer(
     if (disposed) return;
     // Keep normal frames smooth but let a delayed GPU frame catch up. Hidden
     // tabs reset lastTime in resume(), so their elapsed time never causes a jump.
-    const dt = Math.min(0.1, lastTime ? (time - lastTime) / 1000 : 1 / 60);
+    const dt = Math.min(0.25, lastTime ? (time - lastTime) / 1000 : 1 / 60);
     lastTime = time;
-    // Tăng độ nhạy camera bám mượt mà không bị trễ nặng
-    const amount = 1 - Math.exp(-dt * 9.0);
+    // Chuyển cảnh camera chậm rãi, mượt mà đậm chất điện ảnh (~1.7 giây)
+    const amount = 1 - Math.exp(-dt * 3.1);
+    const pointerAmount = 1 - Math.exp(-dt * 3.5);
     smoothed = THREE.MathUtils.lerp(smoothed, progress.current, amount);
-    easedPointer.lerp(pointer, amount);
+    easedPointer.lerp(pointer, pointerAmount);
     cameraPath.getPoint(smoothed, camera.position);
     targetPath.getPoint(smoothed, target);
 
@@ -136,8 +138,10 @@ export function createCityRenderer(
       sun.target.updateMatrixWorld();
       renderer.shadowMap.needsUpdate = true;
     }
-    camera.position.x += easedPointer.x * 1.5;
-    camera.position.y += easedPointer.y * 0.65;
+    const idleDriftX = Math.sin(time * 0.00045) * 0.65;
+    const idleDriftY = Math.cos(time * 0.00035) * 0.22;
+    camera.position.x += easedPointer.x * 1.35 + idleDriftX;
+    camera.position.y += easedPointer.y * 0.55 + idleDriftY;
 
     // Cache kích thước DOM một lần duy nhất ngoài vòng lặp để ngăn chặn Layout Thrashing
     const hostW = host.clientWidth;
@@ -151,8 +155,8 @@ export function createCityRenderer(
 
     const placed: { x: number; y: number }[] = [];
     const activeView = Math.round(smoothed * 2);
-    const topMargin = compact ? 80 : 120;
-    const bottomMargin = compact ? 65 : 120;
+    const topMargin = compact ? 64 : 88;
+    const bottomMargin = compact ? 64 : 104;
 
     for (const label of labels) {
       if (!label.element) continue;
@@ -181,7 +185,7 @@ export function createCityRenderer(
     }
 
     try {
-      const wavePhase = (time / 1000) * 1.5 + smoothed * 6 + easedPointer.x * 0.25;
+      const wavePhase = (time / 1000) * 0.68 + smoothed * 2.4 + easedPointer.x * 0.18;
       for (const water of city.waters)
         water.uniforms.phase.value = wavePhase;
       renderer.render(scene, camera);

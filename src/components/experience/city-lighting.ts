@@ -4,41 +4,41 @@ export type CityTime = 'dusk' | 'day' | 'sunset' | 'night';
 
 // Bảng màu kiến trúc 3 pha: Day -> Sunset -> Night
 const sunsetColors: Record<string, string> = {
-  ivory: '#e4b89b',
-  stone: '#523a48',
-  glass: '#7b6875',
-  jade: '#4a6566',
-  mint: '#72767c',
-  bronze: '#d48843',
-  roof: '#9c4d4b',
-  bark: '#634444',
-  leaf: '#3b4e3a',
-  leafLight: '#5b7048',
-  road: '#3a2d38',
-  paving: '#635355',
-  marking: '#f3c788',
-  window: '#6a5255',
-  dark: '#2e2532',
-  concrete: '#ba9e95',
+  ivory: '#eed6ba',
+  stone: '#c9b49e',
+  glass: '#3b6460',
+  jade: '#2e5d54',
+  mint: '#6d857e',
+  bronze: '#d89b48',
+  roof: '#b94f2d',
+  bark: '#755a48',
+  leaf: '#3d6348',
+  leafLight: '#5e7e52',
+  road: '#8c8176',
+  paving: '#cbbba8',
+  marking: '#f7d9a3',
+  window: '#4c6d64',
+  dark: '#263832',
+  concrete: '#ccb8a4',
 };
 
 const nightColors: Record<string, string> = {
-  ivory: '#8895a3',
-  stone: '#1b2c42',
-  glass: '#385568',
-  jade: '#264f58',
-  mint: '#455f70',
-  bronze: '#a27c44',
-  roof: '#5f444c',
-  bark: '#3f3a40',
-  leaf: '#123130',
-  leafLight: '#234a3d',
-  road: '#142232',
-  paving: '#2f3b46',
-  marking: '#a59775',
-  window: '#253f52',
-  dark: '#112030',
-  concrete: '#737c88',
+  ivory: '#9fb0b8',
+  stone: '#344c5c',
+  glass: '#294c5c',
+  jade: '#1f4950',
+  mint: '#486672',
+  bronze: '#ba924e',
+  roof: '#7a463a',
+  bark: '#464244',
+  leaf: '#1d423a',
+  leafLight: '#2c5848',
+  road: '#243644',
+  paving: '#3d515e',
+  marking: '#bba982',
+  window: '#2a4b5a',
+  dark: '#162836',
+  concrete: '#82929c',
 };
 
 export function cityLighting(
@@ -71,8 +71,8 @@ export function cityLighting(
     nightColorMap.set(name, new THREE.Color(hex));
   }
 
-  // Khởi tạo Dynamic Gradient DataTexture 1x32 cho bầu trời chuyển màu mượt mà
-  const skyRows = 32;
+  // Khởi tạo Dynamic Gradient DataTexture 1x64 cho bầu trời chuyển màu mượt mà, chân thực
+  const skyRows = 64;
   const skyData = new Uint8Array(skyRows * 4);
   const skyTexture = new THREE.DataTexture(skyData, 1, skyRows);
   skyTexture.colorSpace = THREE.SRGBColorSpace;
@@ -80,42 +80,42 @@ export function cityLighting(
   skyTexture.minFilter = THREE.LinearFilter;
   scene.background = skyTexture;
 
-  // Điểm màu cho 3 pha bầu trời (Top, Mid, Horizon)
-  // Day: [0: chân trời, 1: giữa trời, 2: đỉnh trời]
+  // Điểm màu cho 3 pha bầu trời (Horizon -> Mid -> Zenith)
+  // Day: [0: chân trời ấm #f6efe1, 1: giữa trời trong trẻo, 2: đỉnh trời xanh ngọc Sài Gòn]
   const skyDay = [
-    [246, 240, 227], // Vàng be sáng chân trời
-    [195, 222, 245], // Xanh dịu nhẹ
-    [120, 175, 230], // Xanh thanh khiết đỉnh trời
+    [246, 239, 225], // Vàng kem di sản chân trời (#f6efe1)
+    [206, 228, 234], // Lam ngọc nhạt thanh thoát
+    [134, 184, 210], // Xanh da trời nhiệt đới dịu mắt đỉnh trời
   ];
-  // Sunset: Hoàng hôn Cầu Ba Son rực rỡ sắc cam đỏ hổ phách & tím thạch anh
+  // Sunset: Hoàng hôn Cầu Ba Son rực rỡ nắng vàng hổ phách & xanh chiều sâu lắng
   const skySunset = [
-    [255, 145, 50],  // Cam vàng hổ phách chói lọi chân trời lặn
-    [190, 65, 60],   // Ráng chiều cam đỏ rực rỡ
-    [45, 30, 68],    // Tím thạch anh đỉnh trời hoàng hôn
+    [255, 208, 142], // Vàng hổ phách ấm áp chân trời
+    [232, 144, 102], // Cam đất nung hoàng hôn dịu mắt
+    [66, 102, 126],  // Xanh chiều chạng vạng thanh lịch đỉnh trời
   ];
-  // Night: Đêm hoa lệ Landmark 81
+  // Night: Chạng vạng / Đêm hoa lệ Landmark 81
   const skyNight = [
-    [26, 48, 80],    // Ánh sáng chân trời đô thị lung linh
-    [14, 30, 56],    // Xanh chàm huyền bí
-    [6, 14, 28],     // Xanh đen dạ yến sâu thẳm
+    [46, 78, 96],    // Ánh sáng chân trời đô thị ngọc lục bảo
+    [20, 42, 62],    // Xanh chàm chiều muộn
+    [9, 20, 34],     // Xanh đêm sâu lắng
   ];
 
   // Màu sắc ánh sáng và sương mù
-  const dayFogColor = new THREE.Color('#e2edf5');
-  const sunsetFogColor = new THREE.Color('#c56a52'); // Sương chiều hoàng hôn nhuộm màu cam hồng
-  const nightFogColor = new THREE.Color('#0c192d');
+  const dayFogColor = new THREE.Color('#eae6dc');
+  const sunsetFogColor = new THREE.Color('#e2ab84');
+  const nightFogColor = new THREE.Color('#183040');
 
-  const daySunColor = new THREE.Color('#fff9eb');
-  const sunsetSunColor = new THREE.Color('#ff7e36'); // Nắng hoàng hôn cam đỏ rực rỡ
-  const nightSunColor = new THREE.Color('#8cb6f8'); // Ánh trăng xanh bàng bạc dịu mát
+  const daySunColor = new THREE.Color('#fff8e8');
+  const sunsetSunColor = new THREE.Color('#ffaf68');
+  const nightSunColor = new THREE.Color('#a4c8f0');
 
-  const daySkyColor = new THREE.Color('#ffffff');
-  const sunsetSkyColor = new THREE.Color('#ffa66f');
-  const nightSkyColor = new THREE.Color('#789ed4');
+  const daySkyColor = new THREE.Color('#fffdf8');
+  const sunsetSkyColor = new THREE.Color('#ffd0a6');
+  const nightSkyColor = new THREE.Color('#8ab0d8');
 
-  const dayGroundColor = new THREE.Color('#506657');
-  const sunsetGroundColor = new THREE.Color('#5e3240');
-  const nightGroundColor = new THREE.Color('#162335');
+  const dayGroundColor = new THREE.Color('#5a6d5e');
+  const sunsetGroundColor = new THREE.Color('#6b5046');
+  const nightGroundColor = new THREE.Color('#1e3240');
 
   let currentSunY = 36;
   let lastAppliedFactor = -1;
@@ -246,10 +246,10 @@ export function cityLighting(
       } else {
         if (isPhase1) {
           m.color.lerpColors(new THREE.Color('#789985'), new THREE.Color('#94695b'), smoothP);
-          m.opacity = THREE.MathUtils.lerp(0.4, 0.3, smoothP);
+          m.opacity = THREE.MathUtils.lerp(0.22, 0.16, smoothP);
         } else {
           m.color.lerpColors(new THREE.Color('#94695b'), new THREE.Color('#688296'), smoothP);
-          m.opacity = THREE.MathUtils.lerp(0.3, 0.18, smoothP);
+          m.opacity = THREE.MathUtils.lerp(0.16, 0.12, smoothP);
         }
       }
     }

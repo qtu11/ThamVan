@@ -37,9 +37,18 @@ export const getHcmPlacesData = cache(async (): Promise<Heritage[]> => {
 /** Discovery catalog = danh bạ TP.HCM (starter HCM chỉ dùng khi danh bạ trống). */
 export const getCatalog = cache(async (): Promise<Heritage[]> => {
   const hcm = await getHcmPlacesData();
-  return hcm.length ? hcm : catalog;
+  const base = hcm.length ? hcm : catalog;
+  if (!hasSupabase()) return base;
+  const db = await supabase();
+  const { data, error } = await db
+    .from('heritage_entries')
+    .select('*')
+    .eq('status', 'published')
+    .like('slug', 'community-%')
+    .limit(500);
+  return error ? base : [...base, ...(data as Heritage[])];
 });
-export const getAllMapPlaces = cache(async (): Promise<Heritage[]> => getHcmPlacesData());
+export const getAllMapPlaces = cache(async (): Promise<Heritage[]> => getCatalog());
 export const getChallenges = cache(async (): Promise<Challenge[]> => {
   if (!hasSupabase()) return starterChallenges;
   const db = await supabase();
@@ -56,7 +65,7 @@ export async function getPersonalData(): Promise<{ saved: Saved[]; progress: Pro
   const viewer = await getViewer();
   if (!viewer) return { saved: [], progress: [] };
   const db = await supabase();
-  const [saved, progress] = await Promise.all([
+  const [saved, progress, bookmarks] = await Promise.all([
     db
       .from('saved_entries')
       .select('entry_id,collection,saved_at,visited_at')
@@ -66,7 +75,16 @@ export async function getPersonalData(): Promise<{ saved: Saved[]; progress: Pro
       .from('challenge_progress')
       .select('challenge_id,joined_at,completed_at,awarded_points')
       .eq('user_id', viewer.id),
+    db
+      .from('catalog_bookmarks')
+      .select('entry_id,collection,saved_at,visited_at')
+      .eq('user_id', viewer.id)
+      .order('saved_at', { ascending: false }),
   ]);
-  if (saved.error || progress.error) throw new Error('PERSONAL_DATA_LOAD_FAILED');
-  return { saved: saved.data, progress: progress.data };
+  if (saved.error || progress.error || bookmarks.error)
+    throw new Error('PERSONAL_DATA_LOAD_FAILED');
+  return {
+    saved: [...saved.data, ...bookmarks.data].sort((a, b) => b.saved_at.localeCompare(a.saved_at)),
+    progress: progress.data,
+  };
 }

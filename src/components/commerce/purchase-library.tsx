@@ -3,6 +3,7 @@ import { ArrowUpRight, BookOpen } from 'lucide-react';
 import { supabase } from '@/lib/supabase/server';
 import { experiences, experienceText } from '@/data/experiences';
 import { copy, money } from '@/lib/locale-copy';
+import { getMembership } from '@/lib/workspace';
 import type { Locale } from '@/lib/types';
 
 export async function PurchaseLibrary({ locale, userId }: { locale: Locale; userId: string }) {
@@ -14,6 +15,8 @@ export async function PurchaseLibrary({ locale, userId }: { locale: Locale; user
     .order('created_at', { ascending: false })
     .limit(50);
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+  const membership = await getMembership().catch(() => null);
+  const subscribed = membership?.plan === 'premium' || membership?.plan === 'family';
   if (error)
     return (
       <div className="commerce-notice" role="status">
@@ -24,19 +27,24 @@ export async function PurchaseLibrary({ locale, userId }: { locale: Locale; user
         )}
       </div>
     );
-  const owned = experiences.filter((item) =>
-    data.some(
-      (order) =>
-        order.status === 'paid' &&
-        (order.product_id === 'collection' || order.experience_slug === item.slug),
-    ),
+  const owned = experiences.filter(
+    (item) =>
+      subscribed ||
+      data.some(
+        (order) =>
+          order.status === 'paid' &&
+          (order.product_id === 'collection' || order.experience_slug === item.slug),
+      ),
   );
   return (
     <section className="purchase-library">
       <h2>
         <BookOpen size={22} />
-        {c('Bộ hướng dẫn đã mua', 'Your purchased guides', '已购指南')}
+        {c('Thư viện hướng dẫn của bạn', 'Your guide library', '你的指南库')}
       </h2>
+      <Link className="text-link" href={`/${locale}/dashboard?tab=billing`}>
+        {c('Quản lý gói thành viên', 'Manage membership', '管理会员')} <ArrowUpRight size={14} />
+      </Link>
       {owned.length ? (
         <div className="purchased-guides">
           {owned.map((item) => (

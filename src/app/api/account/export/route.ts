@@ -16,7 +16,44 @@ export const POST = route(async () => {
       'id,order_code,product_id,experience_slug,amount,currency,status,created_at,paid_at,refunded_at,purchase_terms_version,purchase_consented_at',
     )
     .eq('user_id', viewer.id);
+  const tables = [
+    'catalog_bookmarks',
+    'memberships',
+    'plan_orders',
+    'discovery_visits',
+    'travel_sessions',
+    'place_submissions',
+    'user_notifications',
+    'itineraries',
+  ] as const;
+  const workspace = await Promise.all(
+    tables.map(async (table) => {
+      const result = await db.from(table).select('*').eq('user_id', viewer.id).limit(20000);
+      return [
+        table,
+        {
+          available: !result.error,
+          limit: 20000,
+          may_be_truncated: result.data?.length === 20000,
+          data: result.error ? null : result.data,
+        },
+      ];
+    }),
+  );
+  const points = await db
+    .from('travel_points')
+    .select('*')
+    .order('session_id')
+    .order('sequence')
+    .limit(20000);
   return ok({
+    workspace: Object.fromEntries(workspace),
+    gps_points: {
+      available: !points.error,
+      limit: 20000,
+      may_be_truncated: points.data?.length === 20000,
+      data: points.error ? null : points.data,
+    },
     exported_at: new Date().toISOString(),
     account: { email: viewer.email, profile: viewer.profile },
     ...(await getPersonalData()),

@@ -15,6 +15,10 @@ export const POST = route(async (request) => {
           p_challenge_id: body.challenge_id,
           p_answer: body.answer,
         });
-  if (error) fail('error', 400);
+  if (error)
+    fail(
+      error.message.includes('DAILY_CHALLENGE_LIMIT') ? 'DAILY_CHALLENGE_LIMIT' : 'error',
+      error.message.includes('DAILY_CHALLENGE_LIMIT') ? 429 : 400,
+    );
   return ok(data ?? { success: true });
 });

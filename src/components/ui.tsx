@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { MapPin, ArrowUpRight, Compass, LoaderCircle } from 'lucide-react';
 import type { Heritage, Locale } from '@/lib/types';
 import { textFor } from '@/lib/types';
+import { workspaceError } from '@/lib/workspace-errors';
 import { t, type MessageKey } from '@/lib/i18n';
 export function Photo({
   entry,
@@ -121,6 +122,8 @@ export async function api(path: string, body: unknown, method = 'POST') {
   return data;
 }
 export function errorText(locale: Locale, error: unknown) {
+  if (error instanceof Error && error.message === 'DAILY_CHALLENGE_LIMIT')
+    return workspaceError(error.message, locale);
   const key = error instanceof Error ? error.message : '';
   const allowed: MessageKey[] = [
     'error',

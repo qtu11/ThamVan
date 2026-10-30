@@ -106,58 +106,58 @@ export function createCityBoats() {
     return { group, windows: windowMeshes, wakes: [lineLeft, lineRight] };
   }
 
-  // 4 chiếc thuyền đại diện dọc theo chiều dài sông Sài Gòn
+  // 4 chiếc thuyền đại diện dọc theo chiều dài sông Sài Gòn (tốc độ chậm rãi, chân thực)
   const fleetConfigs = [
     {
       id: 'waterbus-1',
       bus: true,
       color: 'bronze' as const,
-      baseX: -15,
+      baseX: -12,
       baseZ: 14.5,
-      speed: 3.2,
+      speed: 1.45,
       direction: 1, // Đi xuôi về phía Landmark 81
       minX: -32,
       maxX: 245,
-      amplitude: 0.03,
+      amplitude: 0.022,
       phase: 0,
     },
     {
       id: 'yacht-1',
       bus: false,
       color: 'ivory' as const,
-      baseX: 80,
+      baseX: 84,
       baseZ: 18.0,
-      speed: 2.6,
+      speed: 1.25,
       direction: -1, // Đi ngược về phía Bến Bạch Đằng
       minX: -28,
       maxX: 240,
-      amplitude: 0.025,
+      amplitude: 0.018,
       phase: 1.8,
     },
     {
       id: 'waterbus-2',
       bus: true,
       color: 'bronze' as const,
-      baseX: 160,
+      baseX: 168,
       baseZ: 28.0,
-      speed: 3.0,
+      speed: 1.38,
       direction: 1, // Đi xuôi qua Landmark 81
       minX: -20,
       maxX: 250,
-      amplitude: 0.035,
+      amplitude: 0.024,
       phase: 3.4,
     },
     {
       id: 'cruise-night',
-      bus: false,
+      bus: true,
       color: 'jade' as const,
-      baseX: 30,
-      baseZ: 17.0,
-      speed: 1.8,
-      direction: 1, // Tàu du lịch ngắm cảnh
+      baseX: 22,
+      baseZ: 17.2,
+      speed: 1.05,
+      direction: 1, // Tàu du lịch nhà hàng ngắm cảnh sông Sài Gòn
       minX: -25,
-      maxX: 210,
-      amplitude: 0.02,
+      maxX: 215,
+      amplitude: 0.016,
       phase: 5.1,
     },
   ];
@@ -206,11 +206,11 @@ export function createCityBoats() {
         riverZ += t * 10;
       }
 
-      // Wave bobbing, rolling & pitching
-      const waveTime = elapsedTime * 2.2 + b.phase;
+      // Wave bobbing, rolling & pitching (nhịp sóng êm dịu, tự nhiên)
+      const waveTime = elapsedTime * 1.25 + b.phase;
       const bobY = 0.12 + Math.sin(waveTime) * b.amplitude;
-      const rollZ = Math.sin(waveTime * 0.9) * 0.035;
-      const pitchX = Math.cos(waveTime * 1.1) * 0.02;
+      const rollZ = Math.sin(waveTime * 0.85) * 0.022;
+      const pitchX = Math.cos(waveTime * 1.05) * 0.014;
 
       b.group.position.set(b.baseX, bobY, riverZ);
       b.group.rotation.z = rollZ;

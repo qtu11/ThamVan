@@ -1,10 +1,29 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
-import { ArrowUpRight, CheckCircle2, Download, LoaderCircle } from 'lucide-react';
+import { useState, useSyncExternalStore } from 'react';
+import { ArrowUpRight, CheckCircle2, Download, LayoutDashboard, LoaderCircle } from 'lucide-react';
 import { copy } from '@/lib/locale-copy';
 import type { Locale } from '@/lib/types';
 import { Captcha } from '@/components/captcha';
+
+function subscribePartnerRole(callback: () => void) {
+  window.addEventListener('storage', callback);
+  window.addEventListener('tv-partner-role-change', callback);
+  return () => {
+    window.removeEventListener('storage', callback);
+    window.removeEventListener('tv-partner-role-change', callback);
+  };
+}
+
+function getPartnerRoleSnapshot(): string {
+  try {
+    const saved = localStorage.getItem('tv-partner-role');
+    return saved && ['school', 'hotel', 'team', 'admin'].includes(saved) ? saved : '';
+  } catch {
+    return '';
+  }
+}
+
 export function LeadForm({
   locale,
   ready,
@@ -17,8 +36,28 @@ export function LeadForm({
   const [busy, setBusy] = useState(false),
     [reference, setReference] = useState(''),
     [error, setError] = useState(''),
-    [captcha, setCaptcha] = useState('');
+    [captcha, setCaptcha] = useState(''),
+    [segment, setSegment] = useState<'school' | 'hotel' | 'team' | 'admin'>('team');
+  const activeRole = useSyncExternalStore(subscribePartnerRole, getPartnerRoleSnapshot, () => '');
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+
+  function activatePartnerRole(role: 'school' | 'hotel' | 'team' | 'admin') {
+    try {
+      localStorage.setItem('tv-partner-role', role);
+      window.dispatchEvent(new Event('tv-partner-role-change'));
+    } catch {
+      // ignore storage errors
+    }
+  }
+
+  function clearPartnerRole() {
+    try {
+      localStorage.removeItem('tv-partner-role');
+      window.dispatchEvent(new Event('tv-partner-role-change'));
+    } catch {
+      // ignore storage errors
+    }
+  }
   async function submit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     if (busy) return;
@@ -54,6 +93,7 @@ export function LeadForm({
         return;
       }
       setReference(body.reference);
+      activatePartnerRole(segment);
     } catch {
       setError(
         c(
@@ -144,19 +184,65 @@ export function LeadForm({
         />
       </label>
       <label>
-        {c('Bạn đại diện cho', 'You represent', '你代表')}
-        <select name="segment">
+        {c('Bạn đại diện cho (Tư cách hợp tác)', 'You represent (Partnership role)', '你代表（合作身份）')}
+        <select
+          name="segment"
+          value={segment}
+          onChange={(e) => setSegment(e.target.value as 'school' | 'hotel' | 'team' | 'admin')}
+        >
+          <option value="team">
+            {c('Doanh nghiệp / đội ngũ', 'Business / team', '企业 / 团队')}
+          </option>
           <option value="school">
             {c('Trường học / đơn vị giáo dục', 'School / education provider', '学校 / 教育机构')}
           </option>
           <option value="hotel">
             {c('Khách sạn / đơn vị lưu trú', 'Hotel / accommodation', '酒店 / 住宿机构')}
           </option>
-          <option value="team">
-            {c('Doanh nghiệp / đội ngũ', 'Business / team', '企业 / 团队')}
+          <option value="admin">
+            {c('Quản trị viên / Đối tác vận hành (Admin)', 'Operations / Platform Admin', '平台与运营管理员 (Admin)')}
           </option>
         </select>
       </label>
+      <div className="commerce-notice">
+        <p style={{ marginBottom: 10 }}>
+          {activeRole
+            ? c(
+                `Đã kích hoạt Dashboard trên thanh điều hướng với tư cách: ${activeRole === 'admin' ? 'Admin' : activeRole === 'team' ? 'Doanh nghiệp' : activeRole === 'school' ? 'Đơn vị giáo dục' : 'Đơn vị lưu trú'}.`,
+                `Dashboard enabled in navigation for role: ${activeRole}.`,
+                `导航栏已启用控制台（身份：${activeRole}）。`,
+              )
+            : c(
+                'Chọn tư cách hợp tác ở trên để hiển thị mục Dashboard tương ứng (Doanh nghiệp, Giáo dục, Lưu trú hoặc Admin) trên thanh điều hướng.',
+                'Select your partnership role above to display the corresponding Dashboard in the navigation bar.',
+                '在上方选择合作身份，即可在导航栏显示对应的控制台。',
+              )}
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          <button
+            type="button"
+            className="button secondary"
+            onClick={() => activatePartnerRole(segment)}
+          >
+            <LayoutDashboard size={15} />
+            {c('Hiện Dashboard theo tư cách này', 'Enable Dashboard for this role', '按此身份显示控制台')}
+          </button>
+          {activeRole && (
+            <>
+              <Link
+                className="button"
+                href={`/${locale}${activeRole === 'admin' ? '/admin/dashboard' : '/dashboard'}`}
+              >
+                {c('Mở Dashboard ngay', 'Open Dashboard', '立即打开控制台')}
+                <ArrowUpRight size={15} />
+              </Link>
+              <button type="button" className="button quiet" onClick={clearPartnerRole}>
+                {c('Ẩn khỏi thanh điều hướng', 'Hide from navigation', '从导航栏隐藏')}
+              </button>
+            </>
+          )}
+        </div>
+      </div>
       <label>
         {c('Bạn muốn tạo trải nghiệm gì?', 'What would you like to create?', '想创建什么体验？')}
         <textarea

@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       return Response.json({ error: 'invalidSignature' }, { status: 401 });
     if (body.code !== '00' || !body.success || body.data.code !== '00')
       return Response.json({ ignored: true });
-    const { data, error } = await supabaseAdmin().rpc('complete_commerce_payment', {
+    const { data, error } = await supabaseAdmin().rpc('complete_payos_payment', {
       p_code: body.data.orderCode,
       p_amount: body.data.amount,
       p_link: body.data.paymentLinkId,

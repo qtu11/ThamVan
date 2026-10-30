@@ -2,6 +2,7 @@ import 'server-only';
 import { getViewer } from './data';
 import { supabase } from './supabase/server';
 import { hasSupabase } from './env';
+import { getMembership } from './workspace';
 export const paymentWindowExpired = (createdAt: string) =>
   Date.now() - new Date(createdAt).getTime() > 900000;
 
@@ -20,6 +21,12 @@ export const checkoutReady = () =>
 export async function ownsExperience(slug: string) {
   const viewer = await getViewer();
   if (!viewer || !hasSupabase()) return false;
+  try {
+    const access = await getMembership();
+    if (access?.plan === 'premium' || access?.plan === 'family') return true;
+  } catch {
+    /* Keep legacy purchase access available if membership migration is not deployed. */
+  }
   const db = await supabase();
   const { data, error } = await db
     .from('commerce_orders')

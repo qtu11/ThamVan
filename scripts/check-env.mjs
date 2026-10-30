@@ -44,7 +44,7 @@ console.log(
     process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY &&
     process.env.SUPABASE_SERVICE_ROLE_KEY,
   )
-    ? 'CONFIGURED (apply migration 004 separately)'
+    ? 'CONFIGURED (apply migrations 001-008 separately)'
     : 'NOT CONFIGURED',
 );
 console.log(
@@ -65,5 +65,16 @@ console.log(
     ? 'ENABLED (verify provider in Supabase dashboard)'
     : 'DISABLED (set AUTH_GOOGLE_ENABLED=true after setup)',
 );
+for (const [label, keys] of [
+  ['SePay card merchant + IPN', ['SEPAY_MERCHANT_ID', 'SEPAY_SECRET_KEY', 'SEPAY_IPN_SECRET']],
+  ['Family AI planner', ['ITINERARY_API_KEY', 'ITINERARY_MODEL']],
+  ['Web Push VAPID', ['NEXT_PUBLIC_VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY', 'VAPID_SUBJECT']],
+])
+  console.log(
+    label + ':',
+    keys.every((key) => Boolean(process.env[key]))
+      ? 'CONFIGURED (live operation unverified)'
+      : 'NOT CONFIGURED',
+  );
 console.log('Values are intentionally not printed. Apply migrations and seed separately.');
 if (!checks.slice(0, 3).every((c) => c.status === 'OK')) process.exitCode = 1;

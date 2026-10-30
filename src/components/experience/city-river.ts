@@ -72,24 +72,27 @@ export function createRiver(
         return tint * streak * (0.07 + breaks * 0.85) * exp(-distance * 0.075);
       }
       void main() {
-        // Sóng nước tự nhiên đa tầng mềm mại, loại bỏ hoàn toàn sọc Moiré tần số cao
-        float w1 = sin(world.z * 1.6 + sin(world.x * 0.45) * 1.2 + phase);
-        float w2 = sin(world.x * 0.85 + world.z * 0.95 + phase * 1.4);
-        float w3 = sin(world.z * 3.6 + world.x * 1.6 + phase * 1.9) * 0.35;
-        float ripples = (w1 * 0.45 + w2 * 0.35 + w3);
-        float grain = hash(floor(world.xz * vec2(10.0, 16.0))) * 0.015;
-        
-        vec3 day = vec3(0.12, 0.32, 0.28) + (ripples * 0.02 + grain);
-        
-        // Hoàng hôn sông Sài Gòn: sắc hổ phách vàng cam óng ả phản chiếu ánh ráng chiều
-        vec3 sunset = vec3(0.30, 0.16, 0.10) + ripples * 0.03;
-        sunset += vec3(0.50, 0.28, 0.09) * pow(max(0.0, ripples * 0.5 + 0.5), 2.6);
+        // Sóng nước tự nhiên đa tầng mềm mại kèm phản chiếu bầu trời Fresnel chân thực
+        float w1 = sin(world.z * 1.45 + sin(world.x * 0.42) * 1.25 + phase);
+        float w2 = sin(world.x * 0.78 + world.z * 0.92 + phase * 1.32);
+        float w3 = sin(world.z * 3.2 + world.x * 1.45 + phase * 1.75) * 0.32;
+        float ripples = (w1 * 0.46 + w2 * 0.36 + w3);
+        float grain = hash(floor(world.xz * vec2(10.0, 16.0))) * 0.012;
+        float crest = pow(max(0.0, ripples * 0.5 + 0.5), 3.4);
+        float fresnel = smoothstep(4.0, 38.0, max(0.0, world.z - bankAt(world.x)));
+
+        vec3 day = mix(vec3(0.07, 0.27, 0.22), vec3(0.16, 0.38, 0.36), fresnel * 0.55) + (ripples * 0.018 + grain);
+        day += vec3(0.26, 0.32, 0.22) * crest * 0.42;
+
+        // Hoàng hôn sông Sài Gòn: nền ngọc lục bảo sâu thẳm phản chiếu ánh vàng hổ phách
+        vec3 sunset = mix(vec3(0.06, 0.21, 0.19), vec3(0.24, 0.28, 0.26), fresnel * 0.45) + ripples * 0.022;
+        sunset += vec3(0.62, 0.38, 0.14) * crest * 0.95;
         if(district > 0.5 && district < 1.5) {
           // Phản chiếu ánh vàng của Cầu Ba Son lúc hoàng hôn
-          sunset += vec3(0.38, 0.22, 0.08) * exp(-abs(world.x) * 0.35) * (0.6 + ripples * 0.4);
+          sunset += vec3(0.46, 0.28, 0.10) * exp(-abs(world.x) * 0.24) * (0.58 + ripples * 0.36);
         }
         
-        vec3 night = vec3(0.008, 0.032, 0.070) + ripples * 0.008 + grain;
+        vec3 night = vec3(0.015, 0.055, 0.085) + ripples * 0.01 + grain;
         if(district < 0.5) {
           night += lightTrail(-17.0, vec3(0.20, 0.55, 0.83), 0.6);
           night += lightTrail(-5.0, vec3(0.65, 0.06, 0.45), 0.9);

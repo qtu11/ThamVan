@@ -14,6 +14,7 @@ import { getAllMapPlaces, getViewer, getPersonalData, getChallenges } from '@/li
 import { isLocale, textFor } from '@/lib/types';
 import { t, dateFormat } from '@/lib/i18n';
 import { Photo, HeritageCard } from '@/components/ui';
+import { VisitActions } from '@/components/dashboard/visit-actions';
 import { EntryActions } from '@/components/entry-actions';
 type Props = { params: Promise<{ locale: string; slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -68,6 +69,12 @@ export default async function Entry({ params }: Props) {
             locale={locale}
             signedIn={!!viewer}
             initialSaved={personal.saved.some((e) => e.entry_id === entry.id)}
+          />
+          <VisitActions
+            slug={entry.slug}
+            locale={locale}
+            signedIn={!!viewer}
+            gps={entry.latitude !== null && entry.longitude !== null}
           />
           <section>
             <h2>

@@ -12,3 +12,5 @@ test-results/
 coverage/
 *.log
 supabase/.temp/
+video/
+

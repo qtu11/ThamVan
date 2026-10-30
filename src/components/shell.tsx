@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -15,18 +15,41 @@ import {
   WifiOff,
   Building2,
   Home,
+  Trophy,
 } from 'lucide-react';
 import { t, localeName } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
 import { locales, type Locale } from '@/lib/types';
 
+export type PartnerRole = 'team' | 'school' | 'hotel' | 'admin' | '';
+
+function subscribePartnerRole(callback: () => void) {
+  window.addEventListener('storage', callback);
+  window.addEventListener('tv-partner-role-change', callback);
+  return () => {
+    window.removeEventListener('storage', callback);
+    window.removeEventListener('tv-partner-role-change', callback);
+  };
+}
+
+function getPartnerRoleSnapshot(): PartnerRole {
+  try {
+    const stored = localStorage.getItem('tv-partner-role') as PartnerRole | null;
+    return stored && ['team', 'school', 'hotel', 'admin'].includes(stored) ? stored : '';
+  } catch {
+    return '';
+  }
+}
+
 export function Shell({
   locale,
   signedIn,
+  isAdmin = false,
   children,
 }: {
   locale: Locale;
   signedIn: boolean;
+  isAdmin?: boolean;
   children: React.ReactNode;
 }) {
   const path = usePathname(),
@@ -34,7 +57,26 @@ export function Shell({
     params = useSearchParams();
   const [menu, setMenu] = useState(false),
     [offline, setOffline] = useState(false);
+  const partnerRole = useSyncExternalStore(
+    subscribePartnerRole,
+    getPartnerRoleSnapshot,
+    () => '' as PartnerRole,
+  );
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+
+  const showDashboard = signedIn || isAdmin || Boolean(partnerRole);
+  const dashboardHref = isAdmin || partnerRole === 'admin' ? '/admin/dashboard' : '/dashboard';
+  const dashboardLabel =
+    isAdmin || partnerRole === 'admin'
+      ? 'Dashboard (Admin)'
+      : partnerRole === 'team'
+        ? c('Dashboard (Doanh nghiệp)', 'Dashboard (Business)', '控制台 (企业)')
+        : partnerRole === 'school'
+          ? c('Dashboard (Giáo dục)', 'Dashboard (Education)', '控制台 (教育)')
+          : partnerRole === 'hotel'
+            ? c('Dashboard (Lưu trú)', 'Dashboard (Hospitality)', '控制台 (酒店)')
+            : 'Dashboard';
+
   const links = [
     { label: c('Khám phá', 'Explore', '探索'), to: '/explore', Icon: Compass },
     {
@@ -43,6 +85,10 @@ export function Shell({
       Icon: Route,
     },
     { label: t(locale, 'map'), to: '/map', Icon: Map },
+    { label: t(locale, 'challenges'), to: '/challenges', Icon: Trophy },
+    ...(showDashboard
+      ? [{ label: dashboardLabel, to: dashboardHref, Icon: UserRound }]
+      : []),
     { label: c('Cho doanh nghiệp', 'For business', '企业合作'), to: '/partners', Icon: Building2 },
   ];
   useEffect(() => {
@@ -114,10 +160,10 @@ export function Shell({
             </label>
             <Link
               className="button small header-login"
-              href={`/${locale}/${signedIn ? 'profile' : 'auth/login'}`}
+              href={`/${locale}/${signedIn ? 'dashboard' : 'auth/login'}`}
             >
               {signedIn && <UserRound size={15} />}
-              {t(locale, signedIn ? 'profile' : 'login')}
+              {signedIn ? 'Dashboard' : t(locale, 'login')}
               <ArrowUpRight size={13} />
             </Link>
             <button
@@ -144,10 +190,9 @@ export function Shell({
             {[
               { label: t(locale, 'home'), to: '', Icon: Home },
               ...links,
-              { label: t(locale, 'challenges'), to: '/challenges', Icon: Compass },
               {
                 label: t(locale, signedIn ? 'profile' : 'login'),
-                to: signedIn ? '/profile' : '/auth/login',
+                to: signedIn ? '/dashboard' : '/auth/login',
                 Icon: UserRound,
               },
             ].map(({ label, to, Icon }) => (
@@ -203,10 +248,12 @@ export function Shell({
       <nav className="bottom-nav" aria-label={t(locale, 'home')}>
         {[
           { label: t(locale, 'home'), to: '', Icon: Home },
-          { label: c('Hành trình', 'Walks', '漫步'), to: '/experiences', Icon: Route },
+          { label: c('Khám phá', 'Explore', '探索'), to: '/explore', Icon: Compass },
           { label: t(locale, 'map'), to: '/map', Icon: Map },
-          { label: c('Đã lưu', 'Saved', '收藏'), to: '/journey', Icon: Compass },
-          { label: t(locale, 'profile'), to: '/profile', Icon: UserRound },
+          { label: t(locale, 'challenges'), to: '/challenges', Icon: Trophy },
+          showDashboard
+            ? { label: 'Dashboard', to: dashboardHref, Icon: UserRound }
+            : { label: c('Hành trình', 'Journey', '旅程'), to: '/journey', Icon: Route },
         ].map(({ label, to, Icon }) => (
           <Link
             key={to}

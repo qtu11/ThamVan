@@ -67,7 +67,9 @@ test('checkout and business inquiries fail honestly without live configuration',
   request,
 }) => {
   await page.goto('/vi/checkout?product=walk&experience=sai-gon-ben-song');
-  await expect(page.getByText('Bộ hướng dẫn chưa mở bán', { exact: true })).toBeVisible();
+  await expect(
+    page.getByText('Phương thức này chưa được chủ website kích hoạt.', { exact: false }),
+  ).toBeVisible();
   const api = await request.post('/api/checkout', {
     headers: { Origin: 'http://localhost:3000' },
     data: {
@@ -78,7 +80,7 @@ test('checkout and business inquiries fail honestly without live configuration',
       amount: 1,
     },
   });
-  expect(api.status()).toBe(503);
+  expect(api.status()).toBe(409);
   expect(
     (
       await request.post('/api/checkout', {

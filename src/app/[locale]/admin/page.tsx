@@ -53,6 +53,9 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
           )}
         </Link>
       </div>
+      <Link className="button" href={`/${locale}/admin/dashboard`}>
+        Dashboard điều hành
+      </Link>
       <Admin
         locale={locale}
         entries={entries.data as Heritage[]}

@@ -88,6 +88,28 @@ export function addWaterfront(kit: CityKit, samples: THREE.Vector3[], bank: Rive
   kit.box(px + 1.5, 0.46, pz + 1.8, 1.25, 0.12, 2.6, 'glass', Math.PI / 2);
   // Lan can an toàn cầu tàu
   kit.line(new THREE.Vector3(px - 3.7, 0.42, pz + 1.45), new THREE.Vector3(px + 3.7, 0.42, pz + 1.45), 'brass');
+
+  // 5. Tàu nhà hàng nổi Elisa / Sài Gòn Princess neo đậu lung linh tại Bến Bạch Đằng
+  const ex = 16.5,
+    ez = bank(ex) + 2.4;
+  // Cầu dẫn lên tàu nhà hàng
+  kit.box(ex, 0.24, ez - 1.35, 1.1, 0.1, 2.2, 'wood');
+  // Thân tàu 3 tầng sang trọng
+  kit.box(ex, 0.26, ez + 0.3, 1.85, 0.32, 5.2, 'ivory', Math.PI / 2);
+  kit.box(ex, 0.52, ez + 0.3, 1.55, 0.24, 4.2, 'lit', Math.PI / 2);
+  kit.box(ex, 0.76, ez + 0.3, 1.32, 0.22, 3.4, 'glass', Math.PI / 2);
+  kit.box(ex, 0.92, ez + 0.3, 1.38, 0.06, 3.6, 'ivory', Math.PI / 2);
+  kit.box(ex, 0.97, ez + 0.3, 1.42, 0.035, 3.65, 'ledGold', Math.PI / 2);
+  // 3 cánh buồm biểu tượng phát sáng của tàu Elisa trên sông Sài Gòn
+  for (const [dx, sh] of [
+    [-1.1, 1.35],
+    [0, 1.75],
+    [1.1, 1.25],
+  ]) {
+    kit.cylinder(ex + dx, 0.95 + sh / 2, ez + 0.3, 0.03, sh, 'gold');
+    kit.box(ex + dx + 0.18, 0.95 + sh * 0.45, ez + 0.3, 0.36, sh * 0.78, 0.03, 'ivory');
+    kit.box(ex + dx + 0.36, 0.95 + sh * 0.45, ez + 0.3, 0.035, sh * 0.8, 0.035, 'ledGold');
+  }
   // Fine, irregular ripples break up the larger procedural light trails.
   for (let i = 0; i < 160; i++) {
     const x = Math.sin(i * 71.3) * 27,

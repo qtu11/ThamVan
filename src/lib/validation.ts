@@ -22,7 +22,7 @@ export const profileSchema = z.object({
   notifications: z.boolean(),
 });
 export const savedSchema = z.object({
-  entry_id: z.uuid(),
+  entry_id: z.union([z.uuid(), z.string().regex(/^HCM-[A-Z0-9-]{1,80}$/)]),
   collection: z.string().trim().max(80).optional(),
   visited: z.boolean().optional(),
 });

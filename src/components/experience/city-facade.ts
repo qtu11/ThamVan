@@ -47,26 +47,30 @@ export function architecturalFacade(material: THREE.MeshStandardMaterial) {
       vec3 cityNormal = normalize(vCityNormal);
       float cityWall = 1.0 - smoothstep(0.45, 0.7, abs(cityNormal.y));
       float cityHorizontal = abs(cityNormal.z) > abs(cityNormal.x) ? vCityPosition.x : vCityPosition.z;
-      vec2 cityGrid = vec2(cityHorizontal / 0.32, vCityPosition.y / 0.46);
+      vec2 cityGrid = vec2(cityHorizontal / 0.54, vCityPosition.y / 0.68);
       vec2 cityCell = floor(cityGrid);
       vec2 cityFract = fract(cityGrid);
-      float cityPane = smoothstep(0.06, 0.12, cityFract.x) * (1.0 - smoothstep(0.88, 0.94, cityFract.x));
-      cityPane *= smoothstep(0.12, 0.20, cityFract.y) * (1.0 - smoothstep(0.82, 0.90, cityFract.y));
+      float cityPane = smoothstep(0.09, 0.21, cityFract.x) * (1.0 - smoothstep(0.79, 0.91, cityFract.x));
+      cityPane *= smoothstep(0.14, 0.27, cityFract.y) * (1.0 - smoothstep(0.73, 0.86, cityFract.y));
+      float spandrelBand = 1.0 - smoothstep(0.0, 0.14, cityFract.y) * (1.0 - smoothstep(0.86, 1.0, cityFract.y));
       float cityNoise = fract(sin(dot(cityCell, vec2(12.9898, 78.233))) * 43758.5453);
-      float cityRoom = step(0.72, cityNoise) * cityPane * cityWall;
-      float cityBand = 0.88 + sin(vCityPosition.y * 0.15 + cityHorizontal * 0.08) * 0.08;
-      diffuseColor.rgb *= mix(1.0, mix(0.35, cityBand, cityPane), cityWall);
+      float cityRoom = step(0.62, cityNoise) * cityPane * cityWall;
+      float skySheen = clamp(vCityPosition.y * 0.022, 0.0, 0.24);
+      float cityBand = 0.92 + skySheen + sin(vCityPosition.y * 0.14 + cityHorizontal * 0.07) * 0.05;
+      float frameShade = mix(0.78, 0.68, spandrelBand);
+      diffuseColor.rgb *= mix(1.0, mix(frameShade, cityBand, cityPane), cityWall);
     `,
       )
       .replace(
         '#include <emissivemap_fragment>',
         `
       #include <emissivemap_fragment>
-      vec3 cityWarm = mix(vec3(1.0, 0.76, 0.42), vec3(0.68, 0.85, 0.95), step(0.65, cityNoise));
-      totalEmissiveRadiance += cityWarm * cityRoom * uCityDusk * 0.55;
+      vec3 cityWarm = mix(vec3(1.0, 0.82, 0.48), vec3(0.84, 0.93, 0.99), step(0.74, cityNoise));
+      float floorDim = 0.65 + 0.35 * fract(cityNoise * 7.13);
+      totalEmissiveRadiance += cityWarm * cityRoom * floorDim * (0.08 + uCityDusk * 0.78);
     `,
       );
   };
-  material.customProgramCacheKey = () => 'thamvan-architectural-facade-2';
+  material.customProgramCacheKey = () => 'thamvan-architectural-facade-4';
   return material;
 }

@@ -2,11 +2,94 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Award, Trophy, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Award, Trophy, ArrowUpRight, CheckCircle2, HelpCircle, RefreshCw } from 'lucide-react';
 import type { Challenge, Heritage, Locale, Progress } from '@/lib/types';
 import { textFor } from '@/lib/types';
+import { copy } from '@/lib/locale-copy';
 import { t } from '@/lib/i18n';
 import { api, Photo, Status, errorText, Empty } from './ui';
+
+function HeritageQuizBanner({ entries, locale }: { entries: Heritage[]; locale: Locale }) {
+  const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+  const quizPool = entries.slice(0, 8);
+  const [questionIdx, setQuestionIdx] = useState(0);
+  const [pickedId, setPickedId] = useState<string | null>(null);
+
+  if (quizPool.length < 4) return null;
+  const target = quizPool[questionIdx % quizPool.length];
+  const targetSummary = textFor(target.translations, locale).summary;
+  const options = [
+    target,
+    quizPool[(questionIdx + 1) % quizPool.length],
+    quizPool[(questionIdx + 2) % quizPool.length],
+    quizPool[(questionIdx + 3) % quizPool.length],
+  ].sort((a, b) => a.id.localeCompare(b.id));
+
+  function nextQuestion() {
+    setPickedId(null);
+    setQuestionIdx((prev) => (prev + 1) % quizPool.length);
+  }
+
+  return (
+    <section
+      className="heritage-quiz-banner"
+      aria-label={c('Đố vui di sản', 'Heritage trivia', '遗产问答')}
+    >
+      <div className="heritage-quiz-top">
+        <span className="heritage-quiz-eyebrow">
+          <HelpCircle size={15} />
+          {c('ĐỐ VUI DI SẢN', 'HERITAGE TRIVIA', '遗产问答')}
+        </span>
+        <button type="button" className="heritage-quiz-next" onClick={nextQuestion}>
+          <RefreshCw size={13} />
+          {c('Câu khác', 'Next clue', '下一题')}
+        </button>
+      </div>
+      <p className="heritage-quiz-prompt">
+        {c(
+          'Sự thật này nói về địa điểm nào?',
+          'Which heritage site does this clue describe?',
+          '这条线索描述的是哪个地点？',
+        )}
+      </p>
+      <blockquote className="heritage-quiz-quote">“{targetSummary}”</blockquote>
+      <div className="heritage-quiz-options">
+        {options.map((opt) => {
+          const isPicked = pickedId === opt.id;
+          const isCorrect = pickedId !== null && opt.id === target.id;
+          const isWrong = isPicked && opt.id !== target.id;
+          return (
+            <button
+              type="button"
+              key={opt.id}
+              className={`heritage-quiz-option ${isCorrect ? 'correct' : ''} ${isWrong ? 'wrong' : ''}`}
+              onClick={() => setPickedId(opt.id)}
+              aria-pressed={isPicked}
+            >
+              <span>{opt.name}</span>
+              {isCorrect && <CheckCircle2 size={16} />}
+            </button>
+          );
+        })}
+      </div>
+      {pickedId && (
+        <p className="heritage-quiz-feedback" role="status">
+          {pickedId === target.id
+            ? c(
+                `Chính xác! Đó là ${target.name} (${target.region}).`,
+                `Correct! That is ${target.name} (${target.region}).`,
+                `回答正确！这是 ${target.name} (${target.region})。`,
+              )
+            : c(
+                `Chưa đúng — đáp án là ${target.name}. Hãy thử câu tiếp theo!`,
+                `Not quite — the answer is ${target.name}. Try the next clue!`,
+                `不太对——正确答案是 ${target.name}。试试下一题！`,
+              )}
+        </p>
+      )}
+    </section>
+  );
+}
 function ChallengeCard({
   challenge,
   entry,
@@ -138,6 +221,7 @@ export function ChallengeList({
   );
   return (
     <>
+      <HeritageQuizBanner entries={entries} locale={locale} />
       <div className="chips">
         {(['all', 'inProgress', 'completed'] as const).map((key) => (
           <button

@@ -59,7 +59,7 @@ export default async function LocaleLayout({
       );
   }
   return (
-    <Shell locale={locale} signedIn={!!user}>
+    <Shell locale={locale} signedIn={!!user} isAdmin={!!user?.admin}>
       {children}
     </Shell>
   );

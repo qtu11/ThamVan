@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
-  ArrowDown,
   ArrowUpRight,
   Check,
   Clock3,
@@ -44,9 +43,9 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
             <span className="live-dot" />
             {copy(
               locale,
-              'MỘT SÀI GÒN CHƯA KỂ HẾT',
-              'SAIGON, STILL FULL OF STORIES',
-              '西贡，故事未完待续',
+              'XIN CHÀO, NHÀ THÁM HIỂM · THÁM VĂN',
+              'WELCOME, EXPLORER · THÁM VĂN',
+              '你好，探索者 · 探文',
             )}
           </p>
           <h1>
@@ -56,16 +55,13 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
             <span className="hero-serif">{copy(locale, 'chạm', 'the city', '这座城市')}</span>
             <br />
             {copy(locale, 'vào Sài Gòn.', 'a little closer.', '更近一点。')}
-            <span className="hero-period" aria-hidden="true">
-              *
-            </span>
           </h1>
           <p className="hero-description">
             {copy(
               locale,
-              'Biến một buổi đi chơi thành câu chuyện của riêng bạn. Chọn gu, mở hành trình và khám phá những lớp văn hóa ngay giữa lòng thành phố.',
-              'Make an afternoon out a story of your own. Pick your mood, find your walk and discover the culture hiding in plain sight.',
-              '让一次出游成为你的独家故事。选择喜好，开启漫步，发现城市日常里的文化。',
+              'Chạm để hiểu di sản Việt. Chụp công trình để nhận diện, tìm địa điểm văn hóa quanh bạn và mở hành trình khám phá giữa lòng thành phố.',
+              'Touch to understand Vietnamese heritage. Snap buildings to identify, find cultural places nearby, and unlock story walks across the city.',
+              '触摸理解越南遗产。拍照识别建筑，查找身边的文化地点，开启城市探索之旅。',
             )}
           </p>
           <div className="hero-actions">
@@ -73,7 +69,7 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
               {copy(locale, 'Tìm hành trình của tôi', 'Find my story walk', '寻找我的漫步')}
               <ArrowUpRight size={18} />
             </Link>
-            <Link className="hero-secondary" href={`/${locale}/explore`}>
+            <Link className="button secondary" href={`/${locale}/explore`}>
               {copy(locale, 'Khám phá miễn phí', 'Explore for free', '免费探索')}
               <ArrowUpRight size={15} />
             </Link>
@@ -81,11 +77,12 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
           <div className="hero-promises">
             <span>
               <Check size={14} />
-              {copy(locale, 'Đi theo nhịp của bạn', 'Your pace, your story', '按自己的节奏')}
+              <strong>{count.toLocaleString(locale)}</strong>
+              {copy(locale, 'địa điểm di sản', 'heritage places', '个遗产地点')}
             </span>
             <span>
               <Check size={14} />
-              {copy(locale, 'Tư liệu có nguồn', 'Sources you can follow', '可追溯的资料')}
+              {copy(locale, 'Tư liệu có nguồn đối chiếu', 'Verified source citations', '可追溯的权威资料')}
             </span>
           </div>
         </div>
@@ -93,7 +90,7 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
           <div className="world-heading">
             <span>
               <span className="live-dot" />
-              SAIGON EXPLORER
+              SAIGON 3D ATLAS
             </span>
             <span>10.78° N / 106.70° E</span>
           </div>
@@ -119,22 +116,18 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
               {motion ? <Pause size={12} /> : <Play size={12} />}
               {t(locale, staticExperience ? 'motionReduced' : motion ? 'motionOn' : 'motionOff')}
             </button>
-            <div className="world-compass" aria-hidden="true">
-              <span>N</span>
-              <Compass size={36} strokeWidth={1} />
-            </div>
           </div>
           <div className="world-ticket">
             <span className="ticket-icon">
-              <MapPin size={20} />
+              <MapPin size={19} />
             </span>
             <div>
               <small>
                 {copy(
                   locale,
-                  'MỖI GÓC PHỐ, MỘT CÂU CHUYỆN',
-                  'EVERY CORNER HAS A STORY',
-                  '每个街角都有故事',
+                  'GÓC NHÌN DI SẢN ĐƯƠNG ĐẠI',
+                  'HERITAGE VIEWPOINT',
+                  '当代遗产视角',
                 )}
               </small>
               <strong>
@@ -144,16 +137,12 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
                 )}
               </strong>
             </div>
-            <span className="ticket-mark" aria-hidden="true">
-              ✳
-            </span>
           </div>
           <div className="world-tabs" role="group" aria-label={t(locale, 'cityViews')}>
             {['cityOverview', 'cityRiver', 'citySkyline'].map((key, index) => (
               <button key={key} aria-pressed={active === index} onClick={() => setActive(index)}>
                 <span>0{index + 1}</span>
                 {t(locale, key as 'cityOverview')}
-                <ArrowUpRight size={13} />
               </button>
             ))}
           </div>
@@ -172,22 +161,22 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
         aria-label={copy(locale, 'Tìm hành trình phù hợp', 'Find your walk', '寻找适合的路线')}
       >
         <div className="finder-title">
-          <Sparkles size={22} />
+          <Sparkles size={20} />
           <div>
             <strong>
               {copy(
                 locale,
-                'Hôm nay, bạn muốn đi đâu?',
-                'What’s your kind of day?',
-                '今天想去哪里？',
+                'Chọn nhanh hành trình theo gu',
+                'Quick route by your mood',
+                '按喜好快速选路线',
               )}
             </strong>
             <small>
               {copy(
                 locale,
-                'Một chút thời gian. Một góc nhìn mới.',
-                'A little time. A fresh perspective.',
-                '一点时间，全新视角。',
+                'Gợi ý lộ trình đi bộ tự khám phá phù hợp thời gian của bạn.',
+                'Self-guided walking routes tailored to your schedule.',
+                '为你量身定制的自助漫步路线。',
               )}
             </small>
           </div>
@@ -228,26 +217,6 @@ export function HomeExperience({ locale, count }: { locale: Locale; count: numbe
           <ArrowUpRight size={17} />
         </Link>
       </section>
-      <div className="discovery-proof container">
-        <span>
-          <MapPin size={15} />
-          <strong>{count.toLocaleString(locale)}</strong>
-          {copy(locale, 'địa điểm trong danh mục', 'places in the atlas', '个目录地点')}
-        </span>
-        <span>
-          <Compass size={15} />
-          {copy(
-            locale,
-            'Tự khám phá. Theo cách của bạn.',
-            'Self-guided. On your terms.',
-            '自主探索，自由安排。',
-          )}
-        </span>
-        <a href="#story-walks">
-          {copy(locale, 'Kéo xuống, mở câu chuyện', 'Scroll into a new story', '向下发现故事')}
-          <ArrowDown size={14} />
-        </a>
-      </div>
     </div>
   );
 }

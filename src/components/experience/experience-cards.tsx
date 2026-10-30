@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, Clock3, MapPin } from 'lucide-react';
-import { experiences, experienceText, products } from '@/data/experiences';
-import { copy, money } from '@/lib/locale-copy';
+import { experiences, experienceText } from '@/data/experiences';
+import { copy } from '@/lib/locale-copy';
 import type { Locale } from '@/lib/types';
 
 export function ExperienceCards({ locale }: { locale: Locale }) {
@@ -42,7 +42,14 @@ export function ExperienceCards({ locale }: { locale: Locale }) {
             <div className="experience-card-bottom">
               <span>
                 {copy(locale, 'Bộ hướng dẫn số', 'Digital story walk', '数字漫步指南')}
-                <strong>{money(products.walk.amount, locale)}</strong>
+                <strong>
+                  {copy(
+                    locale,
+                    'Trong Premium / Family',
+                    'Included in Premium / Family',
+                    '包含在Premium / Family中',
+                  )}
+                </strong>
               </span>
               <small>STORY WALK / 0{index + 1}</small>
             </div>

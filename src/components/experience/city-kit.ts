@@ -3,68 +3,68 @@ import { architecturalFacade } from './city-facade';
 
 export const cityMaterials = () => {
   const materials = {
-    ivory: new THREE.MeshStandardMaterial({ color: '#d9d1bc', roughness: 0.78 }),
-    stone: new THREE.MeshStandardMaterial({ color: '#c8cbb8', roughness: 0.95 }),
+    ivory: new THREE.MeshStandardMaterial({ color: '#ebe3d2', roughness: 0.74 }),
+    stone: new THREE.MeshStandardMaterial({ color: '#dcd5c3', roughness: 0.9 }),
     glass: architecturalFacade(
-      new THREE.MeshStandardMaterial({ color: '#35566a', roughness: 0.27, metalness: 0.32 }),
+      new THREE.MeshStandardMaterial({ color: '#2b5850', roughness: 0.24, metalness: 0.36 }),
     ),
     jade: architecturalFacade(
-      new THREE.MeshStandardMaterial({ color: '#39696a', roughness: 0.28, metalness: 0.45 }),
+      new THREE.MeshStandardMaterial({ color: '#215246', roughness: 0.25, metalness: 0.44 }),
     ),
     mint: architecturalFacade(
-      new THREE.MeshStandardMaterial({ color: '#82969e', roughness: 0.44, metalness: 0.2 }),
+      new THREE.MeshStandardMaterial({ color: '#6b877f', roughness: 0.4, metalness: 0.22 }),
     ),
     concrete: architecturalFacade(
-      new THREE.MeshStandardMaterial({ color: '#bdb5a5', roughness: 0.83 }),
+      new THREE.MeshStandardMaterial({ color: '#d2c9b8', roughness: 0.8 }),
     ),
-    bronze: new THREE.MeshStandardMaterial({ color: '#b18b48', roughness: 0.32, metalness: 0.62 }),
-    roof: new THREE.MeshStandardMaterial({ color: '#b86b4e', roughness: 0.85 }),
-    bark: new THREE.MeshStandardMaterial({ color: '#84725a', roughness: 1 }),
-    leaf: new THREE.MeshStandardMaterial({ color: '#527e61', roughness: 0.92 }),
-    leafLight: new THREE.MeshStandardMaterial({ color: '#7b9b70', roughness: 0.95 }),
-    road: new THREE.MeshStandardMaterial({ color: '#abb7aa', roughness: 1 }),
-    paving: new THREE.MeshStandardMaterial({ color: '#dcdcc7', roughness: 0.92 }),
-    marking: new THREE.MeshStandardMaterial({ color: '#f4ebcd', roughness: 0.8 }),
-    window: new THREE.MeshStandardMaterial({ color: '#5b8a77', roughness: 0.24, metalness: 0.35 }),
+    bronze: new THREE.MeshStandardMaterial({ color: '#c49645', roughness: 0.3, metalness: 0.65 }),
+    roof: new THREE.MeshStandardMaterial({ color: '#b94f2d', roughness: 0.82 }),
+    bark: new THREE.MeshStandardMaterial({ color: '#7d6852', roughness: 1 }),
+    leaf: new THREE.MeshStandardMaterial({ color: '#3b6e52', roughness: 0.9 }),
+    leafLight: new THREE.MeshStandardMaterial({ color: '#628d64', roughness: 0.92 }),
+    road: new THREE.MeshStandardMaterial({ color: '#b8b3a3', roughness: 0.96 }),
+    paving: new THREE.MeshStandardMaterial({ color: '#e6dfd0', roughness: 0.9 }),
+    marking: new THREE.MeshStandardMaterial({ color: '#f7f0de', roughness: 0.8 }),
+    window: new THREE.MeshStandardMaterial({ color: '#3d6e60', roughness: 0.22, metalness: 0.38 }),
     lit: new THREE.MeshStandardMaterial({
-      color: '#e5c58b',
-      emissive: '#bd8b42',
-      emissiveIntensity: 0.2,
-      roughness: 0.45,
+      color: '#eed29c',
+      emissive: '#c9953d',
+      emissiveIntensity: 0.25,
+      roughness: 0.42,
     }),
-    dark: new THREE.MeshStandardMaterial({ color: '#354c43', roughness: 0.85 }),
+    dark: new THREE.MeshStandardMaterial({ color: '#1e3a31', roughness: 0.85 }),
     pool: new THREE.MeshStandardMaterial({
-      color: '#1eaabf',
-      roughness: 0.12,
-      metalness: 0.45,
+      color: '#25968d',
+      roughness: 0.14,
+      metalness: 0.42,
     }),
-    tennis: new THREE.MeshStandardMaterial({ color: '#2b5f8f', roughness: 0.88 }),
-    wood: new THREE.MeshStandardMaterial({ color: '#7a5a3a', roughness: 0.72 }),
+    tennis: new THREE.MeshStandardMaterial({ color: '#2e6658', roughness: 0.86 }),
+    wood: new THREE.MeshStandardMaterial({ color: '#7a5638', roughness: 0.72 }),
     gold: new THREE.MeshStandardMaterial({ color: '#d8ab42', roughness: 0.28, metalness: 0.82 }),
-    red: new THREE.MeshStandardMaterial({ color: '#ba3030', roughness: 0.65 }),
+    red: new THREE.MeshStandardMaterial({ color: '#b94f2d', roughness: 0.65 }),
     vinbus: new THREE.MeshStandardMaterial({ color: '#128d52', roughness: 0.38 }),
     curtainBlue: architecturalFacade(
-      new THREE.MeshStandardMaterial({ color: '#274e6b', roughness: 0.22, metalness: 0.52 }),
+      new THREE.MeshStandardMaterial({ color: '#244e58', roughness: 0.2, metalness: 0.54 }),
     ),
     ledCyan: new THREE.MeshStandardMaterial({
-      color: '#9bd3d2',
-      emissive: '#43d8e9',
-      emissiveIntensity: 0.15,
+      color: '#a8ded8',
+      emissive: '#43d8c9',
+      emissiveIntensity: 0.18,
     }),
     ledPink: new THREE.MeshStandardMaterial({
-      color: '#bc7b9c',
-      emissive: '#f34dba',
-      emissiveIntensity: 0.1,
+      color: '#d4947a',
+      emissive: '#e87a4d',
+      emissiveIntensity: 0.14,
     }),
     ledWhite: new THREE.MeshStandardMaterial({
-      color: '#deded0',
-      emissive: '#c9e9ff',
-      emissiveIntensity: 0.1,
+      color: '#f2ecdf',
+      emissive: '#ffe9c2',
+      emissiveIntensity: 0.16,
     }),
     ledGold: new THREE.MeshStandardMaterial({
-      color: '#cfac65',
-      emissive: '#ffb449',
-      emissiveIntensity: 0.15,
+      color: '#d8b468',
+      emissive: '#ffb84d',
+      emissiveIntensity: 0.22,
     }),
   };
   for (const [name, material] of Object.entries(materials)) material.name = name;
@@ -192,29 +192,22 @@ export class CityKit {
     this.strokes.get(kind)!.push(a.x, a.y, a.z, b.x, b.y, b.z);
   }
 
-  facade(x: number, z: number, w: number, h: number, d: number, base = 0.2, floor = 0.42) {
+  facade(x: number, z: number, w: number, h: number, d: number, base = 0.2, _floor = 0.42) {
     const front = z + d / 2 + 0.012,
       right = x + w / 2 + 0.012;
-    for (let level = floor; level < h - 0.1; level += floor) {
-      this.line(
-        new THREE.Vector3(x - w / 2, base + level, front),
-        new THREE.Vector3(x + w / 2, base + level, front),
-      );
-      this.line(
-        new THREE.Vector3(right, base + level, z - d / 2),
-        new THREE.Vector3(right, base + level, z + d / 2),
-      );
-    }
-    const columns = Math.max(2, Math.round(w / 0.35));
-    for (let i = 0; i <= columns; i++) {
-      const xx = x - w / 2 + (w * i) / columns;
-      this.line(new THREE.Vector3(xx, base, front), new THREE.Vector3(xx, base + h, front));
-    }
-    const sideColumns = Math.max(2, Math.round(d / 0.35));
-    for (let i = 0; i <= sideColumns; i++) {
-      const zz = z - d / 2 + (d * i) / sideColumns;
-      this.line(new THREE.Vector3(right, base, zz), new THREE.Vector3(right, base + h, zz));
-    }
+    void _floor;
+    // Draw clean architectural cornice and corner accents without dense Moiré grid noise
+    this.line(
+      new THREE.Vector3(x - w / 2, base + h, front),
+      new THREE.Vector3(x + w / 2, base + h, front),
+    );
+    this.line(
+      new THREE.Vector3(right, base + h, z - d / 2),
+      new THREE.Vector3(right, base + h, z + d / 2),
+    );
+    this.line(new THREE.Vector3(x - w / 2, base, front), new THREE.Vector3(x - w / 2, base + h, front));
+    this.line(new THREE.Vector3(x + w / 2, base, front), new THREE.Vector3(x + w / 2, base + h, front));
+    this.line(new THREE.Vector3(right, base, z + d / 2), new THREE.Vector3(right, base + h, z + d / 2));
   }
 
   tree(x: number, z: number, scale = 1, light = false, base = 0.16) {

@@ -17,11 +17,13 @@ vi.mock('@/lib/supabase/server', () => ({
     from: () => ({ update: () => ({ eq: () => ({ eq: () => fake.update() }) }) }),
   }),
 }));
-import { POST as checkout } from '@/app/api/checkout/route';
+import { POST as checkout } from '@/app/api/membership/checkout/route';
+import { POST as retiredCheckout } from '@/app/api/checkout/route';
 import { POST as webhook } from '@/app/api/payments/payos/route';
 import { POST as lead } from '@/app/api/business-leads/route';
 import { ownsExperience } from '@/lib/commerce';
 import { paymentSignature } from '@/lib/payment-signature';
+import { signSepay } from '@/lib/sepay';
 const orderId = '50000000-0000-4000-8000-000000000001';
 const order = { id: orderId, order_code: 123456, amount: 39000 };
 const request = (path: string, body: unknown, origin = 'http://localhost:3000') =>
@@ -30,7 +32,7 @@ const request = (path: string, body: unknown, origin = 'http://localhost:3000') 
     headers: { Origin: origin, 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   });
-const purchase = { product: 'walk', experience: 'sai-gon-ben-song', locale: 'vi', consent: true };
+const purchase = { plan: 'premium', method: 'bank', locale: 'vi', consent: true };
 const transaction = {
   orderCode: 123456,
   amount: 39000,
@@ -77,12 +79,43 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 describe('checkout endpoint and fulfilment', () => {
+  it('creates a signed hosted card form at the monthly server price without handling card details', async () => {
+    vi.stubEnv('SEPAY_CARD_ENABLED', 'true');
+    vi.stubEnv('SEPAY_MERCHANT_ID', 'test-merchant');
+    vi.stubEnv('SEPAY_SECRET_KEY', 'test-secret');
+    vi.stubEnv('SEPAY_IPN_SECRET', 'test-ipn');
+    const response = await checkout(
+      request('/api/membership/checkout', {
+        plan: 'family',
+        method: 'card',
+        locale: 'vi',
+        consent: true,
+        amount: 1,
+        card_number: 'ignored',
+      }),
+    );
+    expect(response.status).toBe(200);
+    const result = await response.json();
+    expect(result.action).toBe('https://pay.sepay.vn/v1/checkout/init');
+    const fields = Object.fromEntries(result.fields);
+    expect(fields.order_amount).toBe('89000');
+    expect(fields.payment_method).toBe('CARD');
+    expect(fields.order_invoice_number).toBe(orderId);
+    expect(fields.signature).toBe(signSepay(fields, 'test-secret'));
+    expect(fields.card_number).toBeUndefined();
+    expect(fake.fetch).not.toHaveBeenCalled();
+  });
+  it('retires one-time checkout without converting prior consent', async () => {
+    const result = await retiredCheckout(request('/api/checkout', purchase));
+    expect(result.status).toBe(409);
+    expect(fake.rpc).not.toHaveBeenCalled();
+  });
   it('ignores forged browser prices and sends the server SKU total to the provider', async () => {
     const response = await checkout(request('/api/checkout', { ...purchase, amount: 1 }));
     expect(response.status).toBe(200);
     const payload = JSON.parse(fake.fetch.mock.calls[0][1].body);
     expect(payload.amount).toBe(39000);
-    expect(payload.returnUrl).toBe(`http://localhost:3000/vi/orders/${orderId}`);
+    expect(payload.returnUrl).toBe(`http://localhost:3000/vi/billing/${orderId}`);
     expect(payload.items[0].price).toBe(39000);
     expect(fake.update).toHaveBeenCalledOnce();
   });
@@ -148,7 +181,7 @@ describe('provider webhook and lead capture', () => {
     const response = await webhook(request('/api/payments/payos', body, ''));
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ received: true, matched: true });
-    expect(fake.rpc).toHaveBeenCalledWith('complete_commerce_payment', {
+    expect(fake.rpc).toHaveBeenCalledWith('complete_payos_payment', {
       p_code: 123456,
       p_amount: 39000,
       p_link: 'link-1',
