@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  outputFileTracingIncludes: { '/api/recognize': ['./prompts/**/*'] },
   experimental: { serverActions: { bodySizeLimit: '1mb' } },
   async headers() {
     return [

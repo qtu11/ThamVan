@@ -20,6 +20,7 @@ import {
 import { t, localeName } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
 import { locales, type Locale } from '@/lib/types';
+import { SecurityGuard } from './security-guard';
 
 export type PartnerRole = 'team' | 'school' | 'hotel' | 'admin' | '';
 
@@ -116,6 +117,7 @@ export function Shell({
     path === `/${locale}${to}` || (!!to && path.startsWith(`/${locale}${to}/`));
   return (
     <>
+      <SecurityGuard />
       <a className="skip-link" href="#content">
         {c('Đến nội dung chính', 'Skip to content', '跳到主内容')}
       </a>

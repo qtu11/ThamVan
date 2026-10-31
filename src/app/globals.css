@@ -2868,8 +2868,13 @@ input[type='range'] {
 }
 
 .recognition-result {
+  overflow-wrap: anywhere;
   padding-block: 30px;
 }
+.recognition-location { padding-block: 1rem; border-block: 1px solid var(--line, #d8d1c3); }
+.recognition-objects article { padding-block: .75rem; border-bottom: 1px solid var(--line, #d8d1c3); }
+.recognition-result ul { padding-left: 1.25rem; }
+.recognition-result details { margin-top: .75rem; }
 
 .recognition-result p {
   font-size: 12px;
@@ -5631,5 +5636,50 @@ input[type='range'] {
 
   .quest-hero-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Security Guard Shield Toast */
+.security-toast-alert {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: rgba(17, 68, 54, 0.96);
+  color: #fff;
+  border: 1px solid rgba(224, 138, 91, 0.4);
+  border-radius: 999px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(10px);
+  animation: securityToastDrop 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  max-width: calc(100vw - 32px);
+  text-align: center;
+}
+
+.security-toast-icon {
+  color: #f1d39a;
+  flex-shrink: 0;
+}
+
+@keyframes securityToastDrop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
   }
 }

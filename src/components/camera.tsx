@@ -4,20 +4,18 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Camera, Upload, ScanLine, X, ArrowUpRight } from 'lucide-react';
-import type { Heritage, Locale } from '@/lib/types';
+import type { Locale } from '@/lib/types';
+import { deviceLocationSchema, freshLocation, type DeviceLocation, type RecognitionResult } from '@/lib/recognition';
 import { t } from '@/lib/i18n';
 import { Photo, Status, errorText } from './ui';
-type Result = { observation: string; candidates: { id: string; reason: string }[] };
 export function CameraExplorer({
   locale,
   available,
   signedIn,
-  entries,
 }: {
   locale: Locale;
   available: boolean;
   signedIn: boolean;
-  entries: Heritage[];
 }) {
   const router = useRouter(),
     input = useRef<HTMLInputElement>(null),
@@ -25,6 +23,9 @@ export function CameraExplorer({
     stream = useRef<MediaStream | null>(null),
     mounted = useRef(true),
     requesting = useRef(false),
+    analyzing = useRef(false),
+    locationRequest = useRef(0),
+    analysisController = useRef<AbortController | null>(null),
     [starting, setStarting] = useState(false),
     [canCapture, setCanCapture] = useState(false),
     [live, setLive] = useState(false),
@@ -33,7 +34,11 @@ export function CameraExplorer({
     [consent, setConsent] = useState(false),
     [pending, setPending] = useState(false),
     [message, setMessage] = useState(''),
-    [result, setResult] = useState<Result | null>(null);
+    [result, setResult] = useState<RecognitionResult | null>(null),
+    [shareLocation, setShareLocation] = useState(false),
+    [location, setLocation] = useState<DeviceLocation | null>(null),
+    [locating, setLocating] = useState(false),
+    [locationMessage, setLocationMessage] = useState('');
   useEffect(
     () => () => {
       if (preview) URL.revokeObjectURL(preview);
@@ -44,6 +49,8 @@ export function CameraExplorer({
     mounted.current = true;
     return () => {
       mounted.current = false;
+      locationRequest.current++;
+      analysisController.current?.abort();
       stream.current?.getTracks().forEach((t) => t.stop());
     };
   }, []);
@@ -53,8 +60,39 @@ export function CameraExplorer({
     setLive(false);
     setCanCapture(false);
   }
+  async function getLocation() {
+    if (!window.isSecureContext || !navigator.geolocation) throw new Error('locationDenied');
+    const position = await new Promise<GeolocationPosition>((resolve, reject) =>
+      navigator.geolocation.getCurrentPosition(resolve, () => reject(new Error('locationDenied')), {
+        enableHighAccuracy: true, timeout: 12000, maximumAge: 0,
+      }));
+    const next = deviceLocationSchema.parse({ source: 'device', latitude: position.coords.latitude,
+      longitude: position.coords.longitude, accuracy: position.coords.accuracy, timestamp: position.timestamp });
+    if (!freshLocation(next)) throw new Error('locationExpired');
+    return next;
+  }
+  async function toggleLocation(enabled: boolean) {
+    const id = ++locationRequest.current;
+    setShareLocation(enabled);
+    setLocation(null);
+    setLocationMessage('');
+    setResult(null);
+    setLocating(enabled);
+    if (!enabled) return;
+    try {
+      const next = await getLocation();
+      if (mounted.current && id === locationRequest.current) setLocation(next);
+    } catch {
+      if (mounted.current && id === locationRequest.current) {
+        setShareLocation(false);
+        setLocationMessage(t(locale, 'locationDenied'));
+      }
+    } finally {
+      if (mounted.current && id === locationRequest.current) setLocating(false);
+    }
+  }
   async function openCamera() {
-    if (requesting.current) return;
+    if (requesting.current || analyzing.current) return;
     requesting.current = true;
     setStarting(true);
     setMessage('');
@@ -88,7 +126,7 @@ export function CameraExplorer({
     }
   }
   function select(next?: File) {
-    if (!next) return;
+    if (!next || analyzing.current) return;
     if (
       !['image/jpeg', 'image/png', 'image/webp'].includes(next.type) ||
       next.size === 0 ||
@@ -105,7 +143,7 @@ export function CameraExplorer({
     setConsent(false);
   }
   function capture() {
-    if (!video.current) return;
+    if (!video.current || !canCapture || !video.current.videoWidth || !video.current.videoHeight) return;
     const canvas = document.createElement('canvas');
     const ratio = Math.min(1, 1600 / video.current.videoWidth);
     canvas.width = video.current.videoWidth * ratio;
@@ -113,7 +151,7 @@ export function CameraExplorer({
     canvas.getContext('2d')?.drawImage(video.current, 0, 0, canvas.width, canvas.height);
     canvas.toBlob(
       (blob) => {
-        if (blob) select(new File([blob], 'capture.jpg', { type: 'image/jpeg' }));
+        if (blob && mounted.current) select(new File([blob], 'capture.jpg', { type: 'image/jpeg' }));
       },
       'image/jpeg',
       0.88,
@@ -124,7 +162,10 @@ export function CameraExplorer({
       router.push(`/${locale}/auth/login?next=/${locale}/camera`);
       return;
     }
-    if (!file || !consent) return;
+    if (!file || !consent || analyzing.current || locating) return;
+    analyzing.current = true;
+    const controller = new AbortController();
+    analysisController.current = controller;
     setPending(true);
     setMessage('');
     setResult(null);
@@ -133,14 +174,25 @@ export function CameraExplorer({
     form.set('locale', locale);
     form.set('consent', 'true');
     try {
-      const response = await fetch('/api/recognize', { method: 'POST', body: form });
+      if (shareLocation) {
+        const current = location && freshLocation(location) ? location : await getLocation();
+        if (!mounted.current || controller.signal.aborted) return;
+        setLocation(current);
+        form.set('locationConsent', 'true');
+        form.set('location', JSON.stringify(current));
+      }
+      const response = await fetch('/api/recognize', { method: 'POST', body: form,
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(55000)]) });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
-      setResult(data);
+      if (mounted.current) setResult(data);
     } catch (e) {
-      setMessage(errorText(locale, e));
+      if (mounted.current && !controller.signal.aborted) {
+        setMessage(errorText(locale, e));
+      }
     } finally {
-      setPending(false);
+      analyzing.current = false;
+      if (mounted.current) setPending(false);
     }
   }
   return (
@@ -191,14 +243,14 @@ export function CameraExplorer({
             </button>
           ) : (
             <>
-              <button className="button secondary" onClick={openCamera} disabled={starting}>
+              <button className="button secondary" onClick={openCamera} disabled={starting || pending}>
                 <Camera size={18} />
                 {t(locale, starting ? 'loading' : 'openCamera')}
               </button>
               <button
                 className="button secondary"
                 onClick={() => input.current?.click()}
-                disabled={starting}
+                disabled={starting || pending}
               >
                 <Upload size={18} />
                 {t(locale, preview ? 'retake' : 'chooseImage')}
@@ -219,17 +271,29 @@ export function CameraExplorer({
         </div>
         <p className="help-text">{t(locale, 'imageHint')}</p>
         <Status message={message} error />
+        {pending && <button className="button secondary" onClick={() => analysisController.current?.abort()}>{t(locale, 'cancel')}</button>}
         {result && (
-          <section className="recognition-result">
+          <section className="recognition-result" aria-live="polite">
             <p className="eyebrow">
               <ScanLine size={16} />
               {t(locale, 'possibleMatch')}
             </p>
+            <h2>{t(locale, result.assessment === 'nearby_match' ? 'lensNearby' : result.assessment === 'location_conflict' ? 'lensConflict' : result.assessment === 'visual_only' ? 'lensVisualOnly' : 'lensUncertain')}</h2>
+            <p className="help-text">{t(locale, 'lensLocationNote')}</p>
             <h2>{t(locale, 'evidence')}</h2>
             <p>{result.observation}</p>
+            {result.visibleText.length > 0 && <p><strong>{t(locale, 'lensVisibleText')}: </strong>{result.visibleText.join(' · ')}</p>}
+            {result.objects.length > 0 && <div className="recognition-objects">
+              <h3>{t(locale, 'lensObjects')}</h3>
+              {result.objects.map((object, index) => <article key={index}>
+                <h4>{object.name}</h4><p>{object.description}</p>
+                {object.placeId && <p className="help-text">{result.candidates.find((candidate) => candidate.id === object.placeId)?.entry.name}</p>}
+                {object.culturalContext && <p>{object.culturalContext}</p>}
+              </article>)}
+            </div>}
             {result.candidates.length ? (
               result.candidates.map((c) => {
-                const entry = entries.find((e) => e.id === c.id);
+                const entry = c.entry;
                 return entry ? (
                   <div className="recognition-match" key={c.id}>
                     <Photo entry={entry} />
@@ -240,6 +304,12 @@ export function CameraExplorer({
                         </h3>
                       </Link>
                       <p>{c.reason}</p>
+                      <ul>{c.evidence.map((evidence, index) => <li key={index}>{evidence}</li>)}</ul>
+                      {entry.address && <p className="help-text">{entry.address}</p>}
+                      {c.distanceMeters !== null && <p className="help-text">{t(locale, 'lensDistance')}: {c.distanceMeters} m · {t(locale, c.locationAssessment === 'nearby' ? 'lensNearCandidate' : c.locationAssessment === 'conflict' ? 'lensFarCandidate' : 'lensWeakCandidate')}</p>}
+                      {entry.sources.length > 0 && <details><summary>{t(locale, 'sources')}</summary>
+                        <ul>{entry.sources.map((source, index) => <li key={index}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a></li>)}</ul>
+                      </details>}
                     </div>
                   </div>
                 ) : null;
@@ -247,6 +317,7 @@ export function CameraExplorer({
             ) : (
               <p>{t(locale, 'noMatch')}</p>
             )}
+            {result.limitations.length > 0 && <div><h3>{t(locale, 'lensLimitations')}</h3><ul>{result.limitations.map((limitation, index) => <li key={index}>{limitation}</li>)}</ul></div>}
           </section>
         )}
       </div>
@@ -255,8 +326,18 @@ export function CameraExplorer({
         <h2>{t(locale, 'lookCloser')}</h2>
         <p>{t(locale, 'visionNote')}</p>
         {!available && <Status message={t(locale, 'visionUnavailable')} />}
+        <div className="recognition-location">
+          <label className="check-label">
+            <input type="checkbox" checked={shareLocation} disabled={pending}
+              onChange={(event) => void toggleLocation(event.target.checked)} />
+            <span>{t(locale, 'lensLocationConsent')}</span>
+          </label>
+          <p className="help-text">{t(locale, 'lensLocationNote')}</p>
+          <p className="help-text" role="status">{locating ? t(locale, 'lensLocating') : location ? `${t(locale, 'lensLocationReady')} ${Math.round(location.accuracy)} m` : t(locale, 'lensNoLocation')}</p>
+          <Status message={locationMessage} error />
+        </div>
         <label className="check-label">
-          <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
+          <input type="checkbox" checked={consent} disabled={pending} onChange={(e) => setConsent(e.target.checked)} />
           <span>{t(locale, 'visionConsent')}</span>
         </label>
         <Link className="text-link" href={`/${locale}/privacy`}>
@@ -265,7 +346,7 @@ export function CameraExplorer({
         </Link>
         <button
           className="button terracotta"
-          disabled={!file || !consent || pending || !available}
+          disabled={!file || !consent || pending || locating || !available}
           onClick={analyze}
         >
           <ScanLine size={19} />

@@ -39,6 +39,7 @@ beforeEach(() => {
   vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL', 'https://project.supabase.co');
   vi.stubEnv('NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY', 'test-key');
   vi.stubEnv('AUTH_GOOGLE_ENABLED', 'true');
+  vi.stubEnv('AUTH_GOOGLE_FLOW', 'supabase');
   vi.stubEnv('TURNSTILE_SECRET_KEY', '');
   vi.stubEnv('SUPABASE_SERVICE_ROLE_KEY', 'test-server-only-key');
   fake.auth.signInWithOAuth.mockResolvedValue({

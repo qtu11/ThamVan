@@ -12,7 +12,7 @@ export function Photo({
   priority = false,
   className = '',
 }: {
-  entry: Heritage;
+  entry: Pick<Heritage, 'image' | 'name'>;
   priority?: boolean;
   className?: string;
 }) {
@@ -135,6 +135,11 @@ export function errorText(locale: Locale, error: unknown) {
     'rateLimit',
     'captchaError',
     'visionUnavailable',
+    'visionTimeout',
+    'visionProviderError',
+    'visionInvalidResponse',
+    'locationExpired',
+    'locationDenied',
     'googleUnavailable',
     'oauthFailed',
     'oauthCancelled',
