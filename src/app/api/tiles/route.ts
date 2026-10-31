@@ -18,7 +18,7 @@ function pruneCache() {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const layer = searchParams.get('layer') || 'voyager';
+    const layer = searchParams.get('layer') || 'esriStreet';
     const z = searchParams.get('z');
     const x = searchParams.get('x');
     const y = searchParams.get('y');
@@ -54,32 +54,28 @@ export async function GET(request: Request) {
           url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/${z}/${y}/${x}`,
           defaultType: 'image/jpeg',
         },
+        {
+          url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/${z}/${y}/${x}`,
+          defaultType: 'image/jpeg',
+        },
       ];
     } else if (layer === 'heritageLight') {
       urls = [
         {
-          url: `https://a.basemaps.cartocdn.com/light_all/${z}/${x}/${y}@2x.png`,
-          defaultType: 'image/png',
+          url: `https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/${z}/${y}/${x}`,
+          defaultType: 'image/jpeg',
         },
         {
-          url: `https://b.basemaps.cartocdn.com/light_all/${z}/${x}/${y}.png`,
-          defaultType: 'image/png',
-        },
-        {
-          url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/${z}/${y}/${x}`,
+          url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/${z}/${y}/${x}`,
           defaultType: 'image/jpeg',
         },
       ];
     } else {
-      // Default & esriStreet: Crisp Carto Voyager @2x retina map with Esri Topo fallback
+      // Default & esriStreet: Esri World Street Map (Hiển thị cực kỳ rõ nét đường xá, ngõ ngách, tên đường TP.HCM, 100% không cần API key)
       urls = [
         {
-          url: `https://a.basemaps.cartocdn.com/rastertiles/voyager/${z}/${x}/${y}@2x.png`,
-          defaultType: 'image/png',
-        },
-        {
-          url: `https://b.basemaps.cartocdn.com/rastertiles/voyager/${z}/${x}/${y}.png`,
-          defaultType: 'image/png',
+          url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/${z}/${y}/${x}`,
+          defaultType: 'image/jpeg',
         },
         {
           url: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/${z}/${y}/${x}`,
@@ -92,7 +88,8 @@ export async function GET(request: Request) {
       try {
         const res = await fetch(item.url, {
           headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'User-Agent':
+              'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
             Accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
           },
           signal: AbortSignal.timeout(4000),
