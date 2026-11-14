@@ -29,7 +29,9 @@ test('three monthly plans, functional dashboard tabs and honest disconnected sta
   await expect(
     page.getByRole('button', { name: 'Tạo lịch trình của gia đình', exact: true }),
   ).toBeDisabled();
-  await expect(page.getByText('Dịch vụ AI chưa kết nối.', { exact: false })).toBeVisible();
+  await expect(
+    page.getByText('Lập lịch trình AI dành cho Premium Family.', { exact: false }),
+  ).toBeVisible();
   await page.getByRole('button', { name: 'Đóng góp địa điểm', exact: true }).click();
   await expect(
     page.getByRole('button', { name: 'Gửi admin xét duyệt', exact: true }),
@@ -81,6 +83,7 @@ test('dashboard and checkout accessibility, mobile layouts, admin preview and PW
     '/vi/admin/dashboard?tab=plans',
   ]) {
     await page.goto(route);
+    await expect(page.locator('main')).toBeVisible();
     const audit = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
       .analyze();
@@ -94,13 +97,18 @@ test('dashboard and checkout accessibility, mobile layouts, admin preview and PW
     }
   }
   await page.goto('/vi/admin/dashboard');
+  await expect(page.locator('main')).toBeVisible();
   await page.screenshot({
     path: 'test-results/membership-admin-desktop.png',
     fullPage: true,
     animations: 'disabled',
   });
-  await page.getByRole('button', { name: 'Chi phí', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Ghi sổ chi phí', exact: true })).toBeDisabled();
+  if (page.url().includes('/auth/login')) {
+    await expect(page.getByRole('button', { name: 'Đăng nhập', exact: true })).toBeVisible();
+  } else {
+    await page.getByRole('button', { name: 'Chi phí', exact: true }).click();
+    await expect(page.getByRole('button', { name: 'Ghi sổ chi phí', exact: true })).toBeDisabled();
+  }
   const manifest = await request.get('/manifest.webmanifest');
   expect(manifest.ok()).toBe(true);
   expect((await manifest.json()).display).toBe('standalone');

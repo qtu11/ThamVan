@@ -27,11 +27,48 @@ export function MembershipCheckout({
   cardReady: boolean;
   signedIn: boolean;
 }) {
-  const [method, setMethod] = useState<'bank' | 'card'>('bank'),
+  const [method, setMethod] = useState<'bank' | 'card'>(!bankReady && cardReady ? 'card' : 'bank'),
     [consent, setConsent] = useState(false),
     [busy, setBusy] = useState(false),
     [error, setError] = useState('');
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+  function mapCheckoutError(code?: string) {
+    if (code === 'FAMILY_ACTIVE')
+      return c(
+        'Gói Family đang hiệu lực. Bạn có thể gia hạn Family hoặc chọn Premium khi hết hạn.',
+        'Family is active. Renew Family or choose Premium after expiry.',
+        'Family仍有效，请续费Family或到期后选择Premium。',
+      );
+    if (code === 'rateLimit')
+      return c(
+        'Bạn vừa tạo nhiều phiên thanh toán. Hãy đợi một lát rồi thử lại.',
+        'Too many checkout attempts. Please wait a moment and try again.',
+        '付款请求过多，请稍后再试。',
+      );
+    if (code === 'authRequired')
+      return c(
+        'Vui lòng đăng nhập lại để tiếp tục thanh toán an toàn.',
+        'Please sign in again to continue safely to checkout.',
+        '请重新登录以安全继续付款。',
+      );
+    if (code === 'termsRequired')
+      return c(
+        'Hãy đánh dấu đồng ý điều khoản gói thành viên trước khi thanh toán.',
+        'Please accept the membership terms before continuing.',
+        '付款前请先同意会员条款。',
+      );
+    if (code === 'checkoutUnavailable')
+      return c(
+        'Cổng thanh toán tạm thời chưa sẵn sàng hoặc đang bảo trì. Chưa có khoản tiền nào bị trừ.',
+        'The payment gateway is temporarily unavailable. No payment has been charged.',
+        '支付网关暂不可用，本次操作未扣款。',
+      );
+    return c(
+      'Chưa tạo được thanh toán. Không có khoản tiền nào được thu từ thao tác này.',
+      'Checkout was not created. This action has not charged you.',
+      '尚未创建付款，此操作未扣款。',
+    );
+  }
   async function pay() {
     if (busy) return;
     setBusy(true);
@@ -44,19 +81,7 @@ export function MembershipCheckout({
       });
       const result = await response.json();
       if (!response.ok) {
-        setError(
-          result.error === 'FAMILY_ACTIVE'
-            ? c(
-                'Gói Family đang hiệu lực. Bạn có thể gia hạn Family hoặc chọn Premium khi hết hạn.',
-                'Family is active. Renew Family or choose Premium after expiry.',
-                'Family仍有效，请续费Family或到期后选择Premium。',
-              )
-            : c(
-                'Chưa tạo được thanh toán. Không có khoản tiền nào được thu từ thao tác này.',
-                'Checkout was not created. This action has not charged you.',
-                '尚未创建付款，此操作未扣款。',
-              ),
-        );
+        setError(mapCheckoutError(result?.error));
         return;
       }
       if (result.provider === 'payos' && isPaymentUrl(result.url)) {
@@ -155,25 +180,64 @@ export function MembershipCheckout({
         role="group"
         aria-label={c('Phương thức thanh toán', 'Payment method', '付款方式')}
       >
-        <button onClick={() => setMethod('bank')} aria-pressed={method === 'bank'}>
+        <button type="button" onClick={() => setMethod('bank')} aria-pressed={method === 'bank'}>
           <Landmark size={19} />
           <strong>VietQR</strong>
-          <small>payOS</small>
+          <small>
+            payOS ·{' '}
+            {bankReady
+              ? c('Đang mở', 'Active', '已启用')
+              : c('Sắp kích hoạt', 'Pending', '待启用')}
+          </small>
         </button>
-        <button onClick={() => setMethod('card')} aria-pressed={method === 'card'}>
+        <button type="button" onClick={() => setMethod('card')} aria-pressed={method === 'card'}>
           <CreditCard size={19} />
           <strong>Visa / Mastercard</strong>
-          <small>SePay</small>
+          <small>
+            SePay ·{' '}
+            {cardReady
+              ? c('Đang mở', 'Active', '已启用')
+              : c('Sắp kích hoạt', 'Pending', '待启用')}
+          </small>
         </button>
       </div>
       {!ready && (
-        <p className="commerce-notice" role="status">
-          {c(
-            'Phương thức này chưa được chủ website kích hoạt. Bạn có thể xem các gói; website chưa thu tiền.',
-            'This payment method is not activated yet. You can browse plans; no payment is collected.',
-            '此付款方式尚未启用，可浏览套餐，目前不收款。',
-          )}
-        </p>
+        <div className="commerce-notice" role="status">
+          <p style={{ margin: 0 }}>
+            {c(
+              'Phương thức này chưa được chủ website kích hoạt. Website chưa thu tiền trong giai đoạn này.',
+              'This payment gateway is not activated yet. No payment is collected at this time.',
+              '此付款方式尚未启用在线收款，目前不会产生任何扣款。',
+            )}
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 10 }}>
+            {method === 'bank' && cardReady && (
+              <button type="button" className="button secondary" onClick={() => setMethod('card')}>
+                {c('Chuyển sang thẻ Visa / Mastercard (SePay)', 'Switch to Card (SePay)', '改用银行卡 (SePay)')}
+              </button>
+            )}
+            {method === 'card' && bankReady && (
+              <button type="button" className="button secondary" onClick={() => setMethod('bank')}>
+                {c('Chuyển sang VietQR (payOS)', 'Switch to VietQR (payOS)', '改用 VietQR (payOS)')}
+              </button>
+            )}
+            {!bankReady && !cardReady && (
+              <>
+                <Link className="button secondary" href={`/${locale}/partners`}>
+                  {c('Liên hệ giữ chỗ / đối tác', 'Contact / reserve access', '联系预约 / 合作')}
+                  <ArrowUpRight size={14} />
+                </Link>
+                <Link className="button secondary" href={`/${locale}/experiences`}>
+                  {c('Xem trước miễn phí', 'Browse free previews', '免费预览路线')}
+                  <ArrowUpRight size={14} />
+                </Link>
+                <Link className="text-link" href={`/${locale}/explore`}>
+                  {c('Khám phá 1.400+ địa điểm miễn phí', 'Explore 1,400+ places free', '免费探索 1,400+ 地点')}
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
       )}
       <p className="help-text">
         {c(

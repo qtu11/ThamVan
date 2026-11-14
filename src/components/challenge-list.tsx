@@ -18,6 +18,7 @@ import type { Challenge, Heritage, Locale, Progress } from '@/lib/types';
 import { textFor } from '@/lib/types';
 import { copy } from '@/lib/locale-copy';
 import { t } from '@/lib/i18n';
+import { levelForXp } from '@/lib/xp';
 import { api, Photo, Status, errorText, Empty } from './ui';
 
 type Level = 'easy' | 'medium' | 'hard';
@@ -132,7 +133,8 @@ function ChallengeCard({
     [answer, setAnswer] = useState<number | null>(null),
     [pending, setPending] = useState(false),
     [message, setMessage] = useState(''),
-    [error, setError] = useState(false);
+    [error, setError] = useState(false),
+    [limitHit, setLimitHit] = useState(false);
   const text = textFor(challenge.translations, locale),
     expired = !!challenge.expires_at && new Date(challenge.expires_at) < new Date();
   const level = levelOf(challenge.points);
@@ -152,6 +154,7 @@ function ChallengeCard({
     }
     setPending(true);
     setMessage('');
+    setLimitHit(false);
     try {
       const result = await api('/api/challenges', {
         challenge_id: challenge.id,
@@ -159,12 +162,15 @@ function ChallengeCard({
       });
       if (!joined) setJoined(true);
       else {
+        const isLimited = Boolean(result.limited);
         setComplete(result.correct === true);
-        setMessage(t(locale, result.limited ? 'rateLimit' : result.correct ? 'correct' : 'wrong'));
+        setLimitHit(isLimited);
+        setMessage(t(locale, isLimited ? 'rateLimit' : result.correct ? 'correct' : 'wrong'));
         setError(!result.correct);
       }
       router.refresh();
     } catch (e) {
+      if (e instanceof Error && e.message === 'DAILY_CHALLENGE_LIMIT') setLimitHit(true);
       setMessage(errorText(locale, e));
       setError(true);
     } finally {
@@ -184,7 +190,8 @@ function ChallengeCard({
           {levelLabel}
         </span>
         <span className="quest-points">
-          +{challenge.points} XP
+          <Sparkles size={12} />
+          {challenge.points} XP
         </span>
         <span className="quest-place">
           <MapPin size={12} />
@@ -252,6 +259,18 @@ function ChallengeCard({
           </Link>
         </div>
         <Status message={message} error={error} />
+        {limitHit && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8 }}>
+            <Link className="quest-link" href={`/${locale}/checkout?plan=premium`}>
+              {c('Nâng cấp Premium không giới hạn', 'Unlock unlimited with Premium', '升级 Premium 无限挑战')}
+              <ArrowUpRight size={14} />
+            </Link>
+            <Link className="quest-link" href={`/${locale}/explore`}>
+              {c('Đọc tư liệu di sản', 'Read heritage stories', '阅读遗产档案')}
+              <ArrowUpRight size={14} />
+            </Link>
+          </div>
+        )}
       </div>
     </article>
   );
@@ -286,6 +305,7 @@ export function ChallengeList({
     .filter((p) => p.completed_at)
     .reduce((sum, p) => sum + (p.awarded_points || 0), 0);
   const pct = playable.length ? Math.round((completedCount / playable.length) * 100) : 0;
+  const levelState = levelForXp(earnedPoints);
 
   const filtered = playable.filter((ch) => {
     if (level !== 'all' && levelOf(ch.points) !== level) return false;
@@ -344,13 +364,37 @@ export function ChallengeList({
             <strong>{totalPoints}</strong>
             <span>{c('XP có thể nhận', 'XP available', '可得 XP')}</span>
           </div>
-          <div>
-            <strong>{earnedPoints}</strong>
-            <span>{c('XP đã nhận', 'XP earned', '已得 XP')}</span>
+          <div className="stat-xp-earned">
+            <strong>
+              <Sparkles size={18} />
+              {earnedPoints} XP
+            </strong>
+            <span>{c('XP cá nhân đã nhận', 'Your XP earned', '你的已获 XP')}</span>
           </div>
           <div>
             <strong>{completedCount}</strong>
             <span>{c('Huy hiệu', 'Badges', '徽章')}</span>
+          </div>
+        </div>
+        <div className="quest-xp-level">
+          <div className="quest-xp-level-head">
+            <span className="quest-xp-level-badge">
+              <Sparkles size={14} />
+              {t(locale, 'levelOf')} {levelState.level}
+            </span>
+            <span>
+              {levelState.toNext} XP {c('tới cấp kế tiếp', 'to next level', '距离下一级')}
+            </span>
+          </div>
+          <div
+            className="quest-xp-track"
+            role="progressbar"
+            aria-valuenow={levelState.progress}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={c('Tiến độ cấp độ', 'Level progress', '等级进度')}
+          >
+            <span style={{ width: `${levelState.progress}%` }} />
           </div>
         </div>
       </section>

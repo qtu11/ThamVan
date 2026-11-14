@@ -4,6 +4,7 @@ import { getViewer } from './data';
 import { supabase } from './supabase/server';
 import type { MembershipAccess } from './plans';
 import { z } from 'zod';
+import { levelForXp } from './xp';
 const accessSchema = z.object({
   plan: z.enum(['free', 'premium', 'family']),
   owner_id: z.uuid().nullable(),
@@ -84,6 +85,13 @@ export type AccountWorkspace = {
   notifications: Notice[];
   itineraries: Itinerary[];
   family: { member_id: string; joined_at: string }[];
+  xp: {
+    earned: number;
+    level: number;
+    levelProgress: number;
+    toNext: number;
+    completed: number;
+  };
 };
 
 export const getMembership = cache(async (): Promise<MembershipAccess | null> => {
@@ -99,7 +107,7 @@ export const getAccountWorkspace = cache(async (): Promise<AccountWorkspace | nu
   const viewer = await getViewer();
   if (!viewer) return null;
   const db = await supabase();
-  const [access, visits, trips, orders, submissions, notifications, itineraries, family] =
+  const [access, visits, trips, orders, submissions, notifications, itineraries, family, progress] =
     await Promise.all([
       getMembership(),
       db
@@ -141,14 +149,23 @@ export const getAccountWorkspace = cache(async (): Promise<AccountWorkspace | nu
         .order('created_at', { ascending: false })
         .limit(20),
       db.from('family_members').select('member_id,joined_at').eq('owner_id', viewer.id),
+      db
+        .from('challenge_progress')
+        .select('challenge_id,joined_at,completed_at,awarded_points')
+        .eq('user_id', viewer.id),
     ]);
   if (
     !access ||
-    [visits, trips, orders, submissions, notifications, itineraries, family].some(
+    [visits, trips, orders, submissions, notifications, itineraries, family, progress].some(
       (result) => result.error,
     )
   )
     throw new Error('WORKSPACE_UNAVAILABLE');
+  const earned = (progress.data || []).reduce(
+    (sum, item) => sum + (item.awarded_points || 0),
+    0,
+  );
+  const levelState = levelForXp(earned);
   return {
     access,
     visits: visits.data as Visit[],
@@ -158,5 +175,12 @@ export const getAccountWorkspace = cache(async (): Promise<AccountWorkspace | nu
     notifications: notifications.data as Notice[],
     itineraries: itineraries.data as Itinerary[],
     family: family.data || [],
+    xp: {
+      earned,
+      level: levelState.level,
+      levelProgress: levelState.progress,
+      toNext: levelState.toNext,
+      completed: (progress.data || []).filter((item) => item.completed_at).length,
+    },
   };
 });

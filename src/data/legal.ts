@@ -19,7 +19,7 @@ export const legal: Record<
       },
       {
         title: 'Dịch vụ bên ngoài',
-        body: 'Supabase cung cấp xác thực và lưu dữ liệu. Bản đồ tải ô bản đồ từ OpenStreetMap, có thể gửi địa chỉ IP và thông tin trình duyệt đến dịch vụ đó. Cloudflare Turnstile chống lạm dụng khi được cấu hình. Khi bạn chọn chỉ đường hoặc nguồn tham khảo, trang bên ngoài áp dụng chính sách riêng.',
+        body: 'Supabase cung cấp xác thực và lưu dữ liệu. Bản đồ hiển thị ô bản đồ thông qua máy chủ trung gian của THÁM VĂN từ các nhà cung cấp bản đồ nền bên ngoài. Cloudflare Turnstile chống lạm dụng khi được cấu hình. Khi bạn chọn chỉ đường hoặc nguồn tham khảo, trang bên ngoài áp dụng chính sách riêng.',
       },
       {
         title: 'Quyền quản lý dữ liệu',
@@ -27,7 +27,7 @@ export const legal: Record<
       },
       {
         title: 'Thời gian lưu và thay đổi',
-        body: 'Dữ liệu tài khoản được giữ khi tài khoản còn tồn tại. Bạn có thể tắt thông báo bất cứ lúc nào; quyền thiết bị được quản lý trong trình duyệt. Phiên bản chính sách: 26/10/2026. Chủ vận hành cần bổ sung thông tin liên hệ, thời hạn bản sao lưu và nhà cung cấp AI cụ thể trước khi mở dịch vụ công khai.',
+        body: 'Dữ liệu tài khoản được giữ khi tài khoản còn tồn tại. Bạn có thể tắt thông báo bất cứ lúc nào; quyền thiết bị được quản lý trong trình duyệt. Phiên bản chính sách: 26/10/2026. Mọi thắc mắc về dữ liệu cá nhân hoặc yêu cầu hỗ trợ có thể gửi qua mục Đối tác & Liên hệ trên website.',
       },
     ],
     en: [
@@ -45,7 +45,7 @@ export const legal: Record<
       },
       {
         title: 'External services',
-        body: 'Supabase provides authentication and storage. OpenStreetMap serves map tiles and may receive your IP address and browser information. Cloudflare Turnstile prevents abuse when configured. External directions and source links have their own privacy policies.',
+        body: 'Supabase provides authentication and storage. Basemap tiles are served via THÁM VĂN server proxy from external tile providers. Cloudflare Turnstile prevents abuse when configured. External directions and source links have their own privacy policies.',
       },
       {
         title: 'Managing your data',
@@ -53,7 +53,7 @@ export const legal: Record<
       },
       {
         title: 'Retention and changes',
-        body: 'Account data is kept while the account exists. You can disable notifications at any time; browser settings control device permissions. Policy version: 26 October 2026. Before public launch, the operator must add contact information, backup retention and the specific AI provider.',
+        body: 'Account data is kept while the account exists. You can disable notifications at any time; browser settings control device permissions. Policy version: 26 October 2026. Data questions and support inquiries can be submitted through the Partners & Contact channel on this site.',
       },
     ],
     zh: [
@@ -71,7 +71,7 @@ export const legal: Record<
       },
       {
         title: '外部服务',
-        body: 'Supabase提供认证与数据存储。OpenStreetMap提供地图瓦片，可能接收IP和浏览器信息。配置后使用Cloudflare Turnstile防止滥用。外部路线和参考来源适用各自的隐私政策。',
+        body: 'Supabase提供认证与数据存储。底图瓦片通过THÁM VĂN服务器代理由外部地图提供商提供。配置后使用Cloudflare Turnstile防止滥用。外部路线和参考来源适用各自的隐私政策。',
       },
       {
         title: '管理你的数据',
@@ -79,7 +79,7 @@ export const legal: Record<
       },
       {
         title: '保留与变更',
-        body: '账户存在期间保留账户数据。可随时关闭通知，设备权限由浏览器设置管理。政策版本：2026年10月26日。正式公开运营前，运营者需要补充联系信息、备份保留期限和具体AI提供商。',
+        body: '账户存在期间保留账户数据。可随时关闭通知，设备权限由浏览器设置管理。政策版本：2026年10月26日。如需数据咨询或支持，可通过网站“合作与联系”渠道提交请求。',
       },
     ],
   },
@@ -99,7 +99,7 @@ export const legal: Record<
       },
       {
         title: 'Thử thách và hành trình',
-        body: 'Điểm và huy hiệu dùng để ghi nhận việc học, không có giá trị tiền tệ hoặc voucher. Ghé thăm là ghi nhận do bạn tự xác nhận. Không có quyền lợi tài trợ hoặc Premium nào được cam kết trên website này.',
+        body: 'Điểm XP và huy hiệu dùng để ghi nhận tiến độ học tập, không có giá trị tiền tệ hoặc đổi voucher. Lượt ghé thăm là ghi nhận cá nhân trong sổ hành trình. Quyền lợi gói hội viên được quy định riêng tại mục Gói thành viên bên dưới.',
       },
       {
         title: 'Bản quyền',
@@ -107,7 +107,7 @@ export const legal: Record<
       },
       {
         title: 'Thay đổi dịch vụ',
-        body: 'Một số chức năng phụ thuộc cấu hình và tình trạng của dịch vụ bên ngoài. Website có thể được cập nhật hoặc tạm ngừng để bảo trì. Phiên bản điều khoản: 26/10/2026. Chủ vận hành cần hoàn thiện thông tin pháp nhân, liên hệ và quy trình hỗ trợ trước khi mở dịch vụ công khai.',
+        body: 'Một số chức năng phụ thuộc cấu hình và tình trạng của dịch vụ bên ngoài. Website có thể được cập nhật hoặc tạm ngừng để bảo trì. Phiên bản điều khoản: 26/10/2026. Thông tin đối soát giao dịch và hỗ trợ được tiếp nhận qua kênh liên hệ hiển thị trên website.',
       },
     ],
     en: [
@@ -125,7 +125,7 @@ export const legal: Record<
       },
       {
         title: 'Challenges and journeys',
-        body: 'Points and badges celebrate learning and have no monetary or voucher value. Visits are self-reported. No sponsored or Premium benefit is promised by this website.',
+        body: 'XP points and badges celebrate learning progress and have no monetary or voucher value. Visits are personal entries in your field journal. Paid membership entitlements are governed solely by the Monthly memberships section below.',
       },
       {
         title: 'Copyright',
@@ -133,7 +133,7 @@ export const legal: Record<
       },
       {
         title: 'Service changes',
-        body: 'Some features depend on external service configuration and availability. The website may be updated or paused for maintenance. Terms version: 26 October 2026. Before public launch the operator must complete entity, contact and support information.',
+        body: 'Some features depend on external service configuration and availability. The website may be updated or paused for maintenance. Terms version: 26 October 2026. Order reconciliation and support requests are handled via the official contact channels shown on this site.',
       },
     ],
     zh: [
@@ -151,7 +151,7 @@ export const legal: Record<
       },
       {
         title: '挑战与旅程',
-        body: '积分和徽章仅记录学习成果，没有现金或兑换价值。到访记录由本人确认。本网站不承诺任何赞助或Premium权益。',
+        body: 'XP 积分与徽章用于记录学习成果，不具备现金或兑换券价值。到访记录属于个人旅程手札。会员权益由下文“月度会员”条款单独规定。',
       },
       {
         title: '版权',
@@ -159,7 +159,7 @@ export const legal: Record<
       },
       {
         title: '服务变更',
-        body: '部分功能取决于外部服务的配置与可用性。网站可能更新或暂停维护。条款版本：2026年10月26日。正式公开前，运营者需要完善主体、联系和支持信息。',
+        body: '部分功能取决于外部服务的配置与可用性。网站可能更新或暂停维护。条款版本：2026年10月26日。订单核对与支持请求通过网站公示的官方联系渠道处理。',
       },
     ],
   },

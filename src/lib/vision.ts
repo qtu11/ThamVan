@@ -32,3 +32,32 @@ export async function limitedBody(request: Pick<Request, 'headers' | 'body'>, ma
   }
   return Buffer.concat(chunks);
 }
+
+/** Disable DeepSeek / TheHive chain-of-thought reasoning tokens so structured JSON returns fast without length truncation. */
+export function providerThinkingOptions(endpoint: URL, model: string): Record<string, unknown> {
+  const isTheHive = endpoint.hostname === 'api.thehive.ai';
+  const isDeepSeek = model.toLowerCase().includes('deepseek');
+  if (!isTheHive && !isDeepSeek) return {};
+  return {
+    chat_template_kwargs: { thinking: false },
+  };
+}
+
+/** Parse provider JSON text safely, tolerating code fences or leading/trailing prose. */
+export function parseJsonResponse(content: string): unknown {
+  const cleaned = content
+    .trim()
+    .replace(/^```(?:json)?\s*/i, '')
+    .replace(/\s*```$/, '')
+    .trim();
+  try {
+    return JSON.parse(cleaned);
+  } catch {
+    const first = cleaned.indexOf('{');
+    const last = cleaned.lastIndexOf('}');
+    if (first >= 0 && last > first) {
+      return JSON.parse(cleaned.slice(first, last + 1));
+    }
+    throw new Error('INVALID_JSON_RESPONSE');
+  }
+}

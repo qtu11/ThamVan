@@ -1,6 +1,7 @@
 import { getViewer, getCatalog } from '@/lib/data';
 import { getAccountWorkspace } from '@/lib/workspace';
 import { isLocale } from '@/lib/types';
+import { copy } from '@/lib/locale-copy';
 import { pushReady } from '@/lib/push';
 import { CustomerDashboard } from '@/components/dashboard/customer';
 export default async function Dashboard({
@@ -28,7 +29,7 @@ export default async function Dashboard({
   return (
     <CustomerDashboard
       locale={locale}
-      name={viewer?.profile.display_name || 'Nhà khám phá'}
+      name={viewer?.profile.display_name || copy(locale, 'Nhà khám phá', 'Explorer', '探索者')}
       signedIn={!!viewer}
       data={data}
       unavailable={unavailable}

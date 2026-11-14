@@ -3,8 +3,16 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { CheckCircle2, LocateFixed } from 'lucide-react';
 import { api } from '@/components/ui';
+import { copy } from '@/lib/locale-copy';
 import { workspaceError } from '@/lib/workspace-errors';
 import type { Locale } from '@/lib/types';
+
+function makeKey() {
+  return typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+    ? crypto.randomUUID()
+    : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
 export function VisitActions({
   slug,
   locale,
@@ -29,6 +37,9 @@ export function VisitActions({
     try {
       let location = {};
       if (useGps) {
+        if (typeof navigator === 'undefined' || !navigator.geolocation) {
+          throw new Error('geolocationUnavailable');
+        }
         const position = await new Promise<GeolocationPosition>((resolve, reject) =>
           navigator.geolocation.getCurrentPosition(resolve, reject, {
             enableHighAccuracy: true,
@@ -42,9 +53,21 @@ export function VisitActions({
           accuracy: position.coords.accuracy,
         };
       }
-      await api('/api/workspace', { action: 'visit', slug, key: crypto.randomUUID(), ...location });
+      await api('/api/workspace', { action: 'visit', slug, key: makeKey(), ...location });
       setMessage(
-        useGps ? 'Đã lưu check-in theo vị trí cung cấp.' : 'Đã lưu lượt ghé do bạn tự đánh dấu.',
+        useGps
+          ? copy(
+              locale,
+              'Đã lưu check-in theo vị trí GPS thực địa.',
+              'GPS field check-in recorded.',
+              '已按实地 GPS 位置完成打卡记录。',
+            )
+          : copy(
+              locale,
+              'Đã lưu lượt ghé do bạn tự đánh dấu vào sổ hành trình.',
+              'Self-marked visit recorded in your field journal.',
+              '已将本次自行标记的到访记录保存至旅程档案。',
+            ),
       );
       router.refresh();
     } catch (error) {
@@ -54,36 +77,40 @@ export function VisitActions({
     }
   }
   return (
-    <div
-      style={{
-        margin: '25px 0',
-        padding: 20,
-        border: '1px solid #dfe7dc',
-        borderRadius: 14,
-        background: '#f5f8f1',
-      }}
-    >
-      <strong style={{ fontSize: 14 }}>Bạn đã ghé địa điểm này?</strong>
-      <div
-        className="dash-actions"
-        style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 15 }}
-      >
-        <button className="button secondary" disabled={busy} onClick={() => record(false)}>
+    <div className="visit-card">
+      <strong className="visit-card-title">
+        {copy(
+          locale,
+          'Bạn đã ghé địa điểm này?',
+          'Have you visited this place?',
+          '你去过这个地点吗？',
+        )}
+      </strong>
+      <div className="visit-actions-row">
+        <button type="button" className="button secondary" disabled={busy} onClick={() => record(false)}>
           <CheckCircle2 size={16} />
-          Đánh dấu đã ghé
+          {copy(locale, 'Đánh dấu đã ghé', 'Mark as visited', '标记为已到访')}
         </button>
         {gps && (
-          <button className="button secondary" disabled={busy} onClick={() => record(true)}>
+          <button type="button" className="button secondary" disabled={busy} onClick={() => record(true)}>
             <LocateFixed size={16} />
-            Check-in GPS
+            {copy(locale, 'Check-in GPS', 'GPS check-in', 'GPS 实地打卡')}
           </button>
         )}
       </div>
       <p className="help-text">
-        Tự đánh dấu không xác nhận vị trí. Check-in GPS cần ở trong bán kính 300 m; chỉ lưu địa
-        điểm, không lưu tọa độ hiện tại của thiết bị vào lượt ghé.
+        {copy(
+          locale,
+          'Tự đánh dấu không xác nhận vị trí. Check-in GPS cần ở trong bán kính 300 m; chỉ lưu địa điểm, không lưu tọa độ thiết bị vào lượt ghé.',
+          'Self-marking does not verify your location. GPS check-in requires being within 300 m and records only the place, never your device coordinates.',
+          '自行标记不校验实时位置；GPS 实地打卡需位于 300 米范围内，系统仅记录到访地点，不保存设备坐标。',
+        )}
       </p>
-      {message && <p role="status">{message}</p>}
+      {message && (
+        <p className="visit-status" role="status">
+          {message}
+        </p>
+      )}
     </div>
   );
 }

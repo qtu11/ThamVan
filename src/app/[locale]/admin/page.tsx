@@ -54,7 +54,7 @@ export default async function AdminPage({ params }: { params: Promise<{ locale: 
         </Link>
       </div>
       <Link className="button" href={`/${locale}/admin/dashboard`}>
-        Dashboard điều hành
+        {copy(locale, 'Dashboard điều hành', 'Operations dashboard', '运营控制台')}
       </Link>
       <Admin
         locale={locale}

@@ -71,23 +71,32 @@ export const POST = route(async (request) => {
     cancelUrl: `${returnUrl}?result=cancelled`,
     returnUrl,
   };
-  const response = await fetch('https://api-merchant.payos.vn/v2/payment-requests', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-client-id': process.env.PAYOS_CLIENT_ID!,
-      'x-api-key': process.env.PAYOS_API_KEY!,
-    },
-    signal: AbortSignal.timeout(15000),
-    body: JSON.stringify({
-      ...payload,
-      expiredAt: Math.floor(Date.now() / 1000) + 900,
-      items: [{ name: plans[body.plan].name, quantity: 1, price: amount }],
-      signature: paymentSignature(payload, process.env.PAYOS_CHECKSUM_KEY!),
-    }),
-    cache: 'no-store',
-  });
-  const result = await response.json();
+  let response: Response;
+  let result: {
+    code?: string;
+    data?: { amount?: number; orderCode?: number; checkoutUrl?: string; paymentLinkId?: string };
+  };
+  try {
+    response = await fetch('https://api-merchant.payos.vn/v2/payment-requests', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-client-id': process.env.PAYOS_CLIENT_ID!,
+        'x-api-key': process.env.PAYOS_API_KEY!,
+      },
+      signal: AbortSignal.timeout(15000),
+      body: JSON.stringify({
+        ...payload,
+        expiredAt: Math.floor(Date.now() / 1000) + 900,
+        items: [{ name: plans[body.plan].name, quantity: 1, price: amount }],
+        signature: paymentSignature(payload, process.env.PAYOS_CHECKSUM_KEY!),
+      }),
+      cache: 'no-store',
+    });
+    result = await response.json();
+  } catch {
+    fail('checkoutUnavailable', 502);
+  }
   const payment = result.data;
   if (
     !response.ok ||

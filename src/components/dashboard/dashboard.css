@@ -115,7 +115,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  border-bottom: 1px solid #e1e8e1;
+  border-bottom: 1px solid var(--line);
   min-height: 96px;
 }
 .dashboard-topbar p {
@@ -162,15 +162,15 @@
   font-weight: 700;
 }
 .dashboard-wrap .icon-button {
-  border: 1px solid #dce5db;
+  border: 1px solid var(--line);
   border-radius: 50%;
   width: 36px;
   height: 36px;
   display: inline-grid;
   place-items: center;
-  background: white;
+  background: var(--surface);
   position: relative;
-  color: #365b46;
+  color: var(--dash-green);
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -258,12 +258,12 @@
   height: 252px;
   width: 185px;
   border-radius: 8px 20px 20px 8px;
-  background: linear-gradient(120deg, #4e7960, #2e5746 55%, #163d31);
+  background: linear-gradient(130deg, #1b5948, #114436 58%, #0a2a21);
   box-shadow:
-    10px 20px 30px #234c3930,
+    10px 20px 30px #11443630,
     inset 5px 0 7px #ffffff15,
     inset -5px -5px 10px #0002;
-  border: 1px solid #78917b;
+  border: 1px solid #8a7852;
   padding: 25px;
   color: #e4d6ac;
   transform: perspective(750px) rotateY(-17deg) rotateZ(7deg);
@@ -309,8 +309,8 @@
   margin-bottom: 28px;
 }
 .dash-metric {
-  background: white;
-  border: 1px solid #e0e8df;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 13px;
   padding: 19px;
   min-width: 0;
@@ -345,8 +345,8 @@
 }
 .dash-panel {
   padding: 25px;
-  background: white;
-  border: 1px solid #e0e8df;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 15px;
   min-width: 0;
   margin-bottom: 20px;
@@ -534,7 +534,7 @@
   letter-spacing: 0.4px;
   margin-top: 30px;
   padding-top: 22px;
-  border-top: 1px solid #e0e8df;
+  border-top: 1px solid var(--line);
 }
 .dashboard-footnote span:first-child {
   display: flex;
@@ -711,7 +711,8 @@
   position: relative;
   overflow: hidden;
   border-radius: 12px;
-  background: #edf3ef;
+  background: #f7f1e3;
+  border: 1px solid var(--line);
 }
 .timeline-map canvas {
   display: block;
@@ -728,8 +729,8 @@
   text-align: center;
   padding: 20px;
   gap: 13px;
-  background: #edf3efe8;
-  color: #50664e;
+  background: rgba(247, 241, 227, 0.92);
+  color: var(--dash-green);
 }
 .timeline-map-empty strong {
   font-size: 13px;
@@ -824,16 +825,16 @@
 .invite-link {
   overflow-wrap: anywhere;
   font-size: 11px;
-  background: #edf2e7;
+  background: var(--cream);
   padding: 15px;
   border-radius: 8px;
 }
 .membership-checkout {
   max-width: 720px;
   margin: 30px auto 70px;
-  border: 1px solid #e0e8df;
+  border: 1px solid var(--line);
   border-radius: 20px;
-  background: white;
+  background: var(--surface);
   padding: 30px;
 }
 .checkout-plan {
@@ -841,7 +842,7 @@
   align-items: center;
   gap: 17px;
   padding-bottom: 25px;
-  border-bottom: 1px solid #e7ece2;
+  border-bottom: 1px solid var(--line);
 }
 .checkout-plan > span {
   color: #50664e;
@@ -1014,7 +1015,7 @@
   .dashboard-sidebar {
     padding: 16px;
     border-right: 0;
-    border-bottom: 1px solid #e1e8e1;
+    border-bottom: 1px solid var(--line);
   }
   .dashboard-brand {
     font-size: 12px;
@@ -1304,7 +1305,7 @@
 }
 .family-capacity > strong {
   font-size: 38px;
-  color: #365b3d;
+  color: var(--dash-green);
 }
 .family-capacity small {
   font-size: 15px;
@@ -1381,4 +1382,18 @@
     font-size: 13px;
   }
 }
+.dashboard-xp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--dash-line);
+  background: #f5efe0;
+  color: var(--dash-green);
+  font-size: 11px !important;
+  font-weight: 600;
+}
+
 

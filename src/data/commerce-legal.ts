@@ -42,9 +42,9 @@ export function commerceLegal(locale: Locale, document: 'privacy' | 'terms') {
                 `支持：${process.env.COMMERCE_SUPPORT_EMAIL}。请提供订单号与问题，勿发送密码、验证码、卡号或CVV。合作咨询不是已签合同。`,
               )
             : c(
-                'Chưa mở thu tiền. Cần hoàn tất chủ thể vận hành, hỗ trợ và cấu hình cổng thanh toán trước khi kích hoạt.',
-                'Payments are not open. Operator details, support and gateway configuration must be completed before activation.',
-                '尚未开放收款，启用前须完善运营主体、支持与支付配置。',
+                'Hỗ trợ giao dịch và đối soát đơn hàng được tiếp nhận qua Dashboard cá nhân và mục Đối tác trên website. Vui lòng lưu mã đơn khi liên hệ; tuyệt đối không gửi mật khẩu, OTP, số thẻ hoặc CVV. Yêu cầu đối tác chưa phải hợp đồng đã ký.',
+                'Order support and reconciliation are tracked via your personal Dashboard and the Partners channel on this site. Keep your order code handy when contacting us, and never share passwords, OTPs, card numbers, or CVV codes. Partnership inquiries are not signed contracts.',
+                '订单支持与对账通过个人控制台及网站“合作与联系”渠道受理。沟通时请保留订单号，切勿发送密码、验证码、卡号或 CVV。合作咨询不构成已签署合同。',
               ),
         },
       ]

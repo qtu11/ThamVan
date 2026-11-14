@@ -1,5 +1,7 @@
 import { z } from 'zod';
 import { route, readJson, requireViewer, fail, ok } from '@/lib/api';
+import { copy } from '@/lib/locale-copy';
+import { isLocale } from '@/lib/types';
 import { supabaseAdmin } from '@/lib/supabase/server';
 import { pushReady, allowedPushEndpoint, sendUserPush } from '@/lib/push';
 const schema = z.discriminatedUnion('action', [
@@ -9,7 +11,7 @@ const schema = z.discriminatedUnion('action', [
     keys: z.object({ p256dh: z.string().min(50).max(200), auth: z.string().min(10).max(100) }),
   }),
   z.object({ action: z.literal('unsubscribe'), endpoint: z.string().max(2048) }),
-  z.object({ action: z.literal('test') }),
+  z.object({ action: z.literal('test'), locale: z.enum(['vi', 'en', 'zh']).optional() }),
 ]);
 export const POST = route(async (request) => {
   const viewer = await requireViewer();
@@ -55,12 +57,21 @@ export const POST = route(async (request) => {
     p_seconds: 60,
   });
   if (quota.error || !quota.data) fail('rateLimit', 429);
+  const profile = body.locale
+    ? null
+    : await db.from('profiles').select('locale').eq('id', viewer.id).maybeSingle();
+  const locale = body.locale ?? (isLocale(profile?.data?.locale ?? '') ? profile!.data!.locale : 'vi');
   // An actual provider acceptance, not a fabricated local Notification success.
   const result = await sendUserPush(
     viewer.id,
     'THÁM VĂN',
-    'Thông báo thử từ THÁM VĂN.',
-    '/vi/dashboard?tab=notifications',
+    copy(
+      locale,
+      'Thông báo thử từ THÁM VĂN.',
+      'Test notification from THÁM VĂN.',
+      'THÁM VĂN 测试通知。',
+    ),
+    `/${locale}/dashboard?tab=notifications`,
   );
   return ok(result);
 });

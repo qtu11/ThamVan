@@ -44,11 +44,21 @@ export function recentGoogleAuthentication(
   now = Date.now() / 1000,
 ) {
   if (claims.sub !== userId || !Array.isArray(claims.amr)) return false;
+  const appMeta =
+    claims.app_metadata && typeof claims.app_metadata === 'object'
+      ? (claims.app_metadata as Record<string, unknown>)
+      : null;
+  const isGoogleAppMeta =
+    appMeta?.provider === 'google' ||
+    appMeta?.oauth_provider === 'google' ||
+    (Array.isArray(appMeta?.providers) && appMeta.providers.includes('google'));
   return claims.amr.some((method: unknown) => {
     if (!method || typeof method !== 'object') return false;
     const item = method as Record<string, unknown>;
+    const validMethod =
+      item.method === 'oauth' || (item.method === 'otp' && isGoogleAppMeta);
     return (
-      item.method === 'oauth' &&
+      validMethod &&
       typeof item.timestamp === 'number' &&
       Number.isFinite(item.timestamp) &&
       item.timestamp <= now + 30 &&

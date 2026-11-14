@@ -37,7 +37,28 @@ export async function readJson<T>(request: Request, schema: z.ZodType<T>): Promi
 export function assertOrigin(request: Request) {
   const origin = request.headers.get('origin');
   const allowed = new URL(siteUrl()).origin;
-  if (origin !== allowed) fail('forbidden', 403);
+  if (origin !== allowed) {
+    if (origin) {
+      try {
+        const originUrl = new URL(origin);
+        const allowedUrl = new URL(allowed);
+        const isLoopback = (host: string) => host === 'localhost' || host === '127.0.0.1';
+        if (
+          isLoopback(originUrl.hostname) &&
+          isLoopback(allowedUrl.hostname) &&
+          originUrl.port === allowedUrl.port
+        ) {
+          // Allow loopback aliases in local development (127.0.0.1 <=> localhost)
+        } else {
+          fail('forbidden', 403);
+        }
+      } catch {
+        fail('forbidden', 403);
+      }
+    } else {
+      fail('forbidden', 403);
+    }
+  }
   if (request.headers.get('sec-fetch-site') === 'cross-site') fail('forbidden', 403);
 }
 export async function requireViewer(admin = false, allowUnconsented = false) {

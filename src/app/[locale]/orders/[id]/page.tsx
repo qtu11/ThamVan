@@ -37,7 +37,7 @@ export default async function Order({
     <section className="order-state">
       {paid ? <CheckCircle2 size={35} /> : <Clock3 size={35} />}
       <p className="startup-eyebrow" style={{ marginTop: 20 }}>
-        ORDER #{order.order_code}
+        {c('ĐƠN HÀNG', 'ORDER', '订单')} #{order.order_code}
       </p>
       <h1>
         {paid
@@ -103,7 +103,12 @@ export default async function Order({
               </a>
             )}
           </>
-        ) : null}
+        ) : (
+          <Link className="button secondary" href={`/${locale}/dashboard?tab=billing`}>
+            {c('Về mục Gói & thanh toán', 'Back to Plan & billing', '返回套餐与支付')}
+            <ArrowUpRight size={15} />
+          </Link>
+        )}
       </div>
       {pending && expired && (
         <p className="commerce-notice">

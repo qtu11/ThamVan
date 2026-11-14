@@ -44,6 +44,7 @@ export function ConsentForm({
   }
   async function logout() {
     setPending(true);
+    setMessage('');
     try {
       await api('/api/auth', { action: 'logout', locale, email });
       router.replace(`/${locale}`);
@@ -69,10 +70,10 @@ export function ConsentForm({
         />
       </label>
       <div className="legal-links">
-        <Link href={`/${locale}/terms`} target="_blank">
+        <Link href={`/${locale}/terms`} target="_blank" rel="noopener noreferrer">
           {t(locale, 'terms')}
         </Link>
-        <Link href={`/${locale}/privacy`} target="_blank">
+        <Link href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer">
           {t(locale, 'privacy')}
         </Link>
       </div>

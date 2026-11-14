@@ -20,7 +20,7 @@ export function SecurityGuard() {
     function handleKeyDown(e: KeyboardEvent) {
       const isMac = typeof navigator !== 'undefined' && navigator.platform.toUpperCase().includes('MAC');
       const modKey = isMac ? e.metaKey : e.ctrlKey;
-      const key = e.key.toLowerCase();
+      const key = typeof e.key === 'string' ? e.key.toLowerCase() : '';
 
       // 1. F12 (DevTools)
       if (e.key === 'F12' || e.keyCode === 123) {

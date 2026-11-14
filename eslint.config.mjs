@@ -10,6 +10,7 @@ export default defineConfig([
     'test-results/**',
     'playwright-report/**',
     'next-env.d.ts',
-    'asset/quarantine/**',
+    'asset/**',
+    'video/**',
   ]),
 ]);

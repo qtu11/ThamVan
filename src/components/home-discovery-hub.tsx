@@ -42,19 +42,19 @@ const cityEvents: CityEventItem[] = [
     category: 'music',
     image: '/images/hcm-vr-0062-pho-di-bo-nguyen-hue.jpg',
     badge: {
-      vi: 'Show ca nhạc',
-      en: 'Live Music Show',
-      zh: '音乐演出',
+      vi: 'Âm nhạc đường phố',
+      en: 'Live Music',
+      zh: '街头音乐',
     },
     title: {
-      vi: 'Show ca nhạc & Nhạc nước Phố đi bộ Nguyễn Huệ',
+      vi: 'Đêm nhạc & Trình diễn ánh sáng Phố đi bộ Nguyễn Huệ',
       en: 'Nguyen Hue Walking Street Live Music & Fountain Show',
       zh: '阮惠步行街音乐秀与喷泉表演',
     },
     time: {
-      vi: 'Thứ Bảy & Chủ Nhật · 19:30 – 22:00',
-      en: 'Sat & Sun · 19:30 – 22:00',
-      zh: '周六至周日 · 19:30 – 22:00',
+      vi: 'Cuối tuần · Không gian phố đi bộ buổi tối',
+      en: 'Weekends · Evening pedestrian promenade',
+      zh: '周末晚间 · 步行街公共空间',
     },
     venue: {
       vi: 'Phố đi bộ Nguyễn Huệ, Quận 1',
@@ -66,7 +66,7 @@ const cityEvents: CityEventItem[] = [
       en: 'Street live bands, youth performances, and illuminated water fountain shows along the central boulevard.',
       zh: '街头乐队现场演唱、青年艺术表演与大道灯光音乐喷泉秀。',
     },
-    href: '/explore/hcm-0066',
+    href: '/explore/hcm-vr-0062',
   },
   {
     id: 'opera-house-concert',
@@ -83,9 +83,9 @@ const cityEvents: CityEventItem[] = [
       zh: '西贡大剧院交响乐与竹艺演出',
     },
     time: {
-      vi: 'Chủ Nhật · 08:00 – 09:30 & Tối 20:00',
-      en: 'Sun · 08:00 – 09:30 & 20:00',
-      zh: '周日 · 08:00 – 09:30 及 20:00',
+      vi: 'Cuối tuần & lịch diễn theo mùa tại Nhà hát',
+      en: 'Weekends & seasonal Opera House billings',
+      zh: '周末及歌剧院当季演出排期',
     },
     venue: {
       vi: 'Công trường Lam Sơn (Nhà hát Thành phố), Quận 1',
@@ -114,9 +114,9 @@ const cityEvents: CityEventItem[] = [
       zh: '白藤码头日落原声音乐夜',
     },
     time: {
-      vi: 'Mỗi tối · 18:30 – 21:30',
-      en: 'Daily · 18:30 – 21:30',
-      zh: '每晚 · 18:30 – 21:30',
+      vi: 'Chiều muộn & buổi tối dọc công viên sông',
+      en: 'Late afternoon & evening riverside walks',
+      zh: '傍晚至夜间 · 江畔漫步时段',
     },
     venue: {
       vi: 'Công viên Bến Bạch Đằng & Ga tàu thủy, Quận 1',
@@ -135,27 +135,27 @@ const cityEvents: CityEventItem[] = [
     category: 'festival',
     image: '/images/hcm-vr-0027-cau-ba-son.jpg',
     badge: {
-      vi: 'Lễ hội & Sân khấu mở',
+      vi: 'Sân khấu ven sông',
       en: 'Open-Air Festival',
       zh: '户外音乐节',
     },
     title: {
-      vi: 'Show Âm nhạc Hoàng hôn & Chợ phiên Công viên Bờ sông',
+      vi: 'Hòa nhạc hoàng hôn & Chợ phiên Công viên Bờ sông',
       en: 'Sunset Indie Concert & Creative Fair at Riverfront Park',
       zh: '西贡河畔公园日落音乐会与创意市集',
     },
     time: {
-      vi: 'Thứ Bảy & Chủ Nhật · 16:30 – 21:30',
-      en: 'Sat & Sun · 16:30 – 21:30',
-      zh: '周六至周日 · 16:30 – 21:30',
+      vi: 'Cuối tuần · Chợ phiên & sân khấu công viên',
+      en: 'Weekends · Riverside market & open stage',
+      zh: '周末 · 江畔创意市集与户外舞台',
     },
     venue: {
-      vi: 'Công viên bờ sông Sài Gòn (Chân cầu Ba Son), TP Thủ Đức',
+      vi: 'Công viên bờ sông Sài Gòn (Chân cầu Ba Son), TP. Thủ Đức',
       en: 'Saigon Riverfront Park (Ba Son Bridge), Thu Duc City',
       zh: '守德市西贡河畔公园（巴山桥下）',
     },
     summary: {
-      vi: 'Sân khấu nhạc Indie ngoài trời hướng thẳng về skyline Quận 1 kết hợp gian hàng thủ công bản địa.',
+      vi: 'Sân khấu nhạc nhẹ ngoài trời hướng thẳng về đường chân trời Quận 1 kết hợp gian hàng thủ công bản địa.',
       en: 'Open-air indie stage facing the District 1 skyline paired with local artisan craft stalls.',
       zh: '面向第一郡天际线的户外独立音乐舞台与本地手作创意市集。',
     },
@@ -176,9 +176,9 @@ const cityEvents: CityEventItem[] = [
       zh: '堤岸舞狮盛会与古街文化之夜',
     },
     time: {
-      vi: 'Thứ Sáu – Chủ Nhật · 18:00 – 22:00',
-      en: 'Fri – Sun · 18:00 – 22:00',
-      zh: '周五至周日 · 18:00 – 22:00',
+      vi: 'Dịp lễ hội truyền thống & sinh hoạt phố cổ',
+      en: 'Traditional festivals & guildhall gatherings',
+      zh: '传统节庆与会馆民俗活动期',
     },
     venue: {
       vi: 'Hội quán Tuệ Thành & Phố Nguyễn Trãi, Quận 5',
@@ -207,9 +207,9 @@ const cityEvents: CityEventItem[] = [
       zh: '西贡建筑记忆与古董明信片特展',
     },
     time: {
-      vi: 'Thứ Ba – Chủ Nhật · 08:30 – 17:00',
-      en: 'Tue – Sun · 08:30 – 17:00',
-      zh: '周二至周日 · 08:30 – 17:00',
+      vi: 'Tham quan ban ngày theo giờ mở cửa khu di sản',
+      en: 'Daytime visits during heritage site hours',
+      zh: '日间开放参观 · 按场馆开放时间',
     },
     venue: {
       vi: 'Bưu điện Trung tâm & Đường sách Nguyễn Văn Bình, Quận 1',
@@ -236,10 +236,10 @@ export function HomeDiscoveryHub({
   const [selectedCategory, setSelectedCategory] = useState<EventCategory>('all');
 
   const categoryTabs: { id: EventCategory; label: string }[] = [
-    { id: 'all', label: c('Tất cả sự kiện', 'All events', '全部活动') },
-    { id: 'music', label: c('Show ca nhạc & Biểu diễn', 'Live Music & Shows', '音乐与演出') },
-    { id: 'festival', label: c('Lễ hội & Phố đi bộ', 'Festivals & Streets', '节庆与步行街') },
-    { id: 'exhibition', label: c('Triển lãm & Di sản', 'Exhibitions & Heritage', '展览与遗产') },
+    { id: 'all', label: c('Tất cả', 'All events', '全部活动') },
+    { id: 'music', label: c('Âm nhạc & Biểu diễn', 'Live Music & Shows', '音乐与演出') },
+    { id: 'festival', label: c('Lễ hội & Phố cổ', 'Festivals & Streets', '节庆与步行街') },
+    { id: 'exhibition', label: c('Triển lãm & Tư liệu', 'Exhibitions & Heritage', '展览与遗产') },
   ];
 
   const visibleEvents =
@@ -249,15 +249,15 @@ export function HomeDiscoveryHub({
 
   return (
     <section
-      className="lovable-hub container"
+      className="hub-section container"
       aria-label={c('Khám phá nhanh di sản', 'Quick heritage discovery', '快速探索遗产')}
     >
-      <div className="lovable-action-grid">
-        <Link href={`/${locale}/camera`} className="lovable-camera-cta">
-          <span className="lovable-camera-badge" aria-hidden="true">
+      <div className="hub-action-grid">
+        <Link href={`/${locale}/camera`} className="hub-camera-cta">
+          <span className="hub-camera-badge" aria-hidden="true">
             <Camera size={26} />
           </span>
-          <div className="lovable-camera-copy">
+          <div className="hub-action-copy">
             <h2>{c('Chụp để khám phá', 'Snap to discover', '拍照探索')}</h2>
             <p>
               {c(
@@ -267,14 +267,14 @@ export function HomeDiscoveryHub({
               )}
             </p>
           </div>
-          <ChevronRight size={22} className="lovable-camera-arrow" aria-hidden="true" />
+          <ChevronRight size={22} className="hub-action-arrow" aria-hidden="true" />
         </Link>
 
-        <Link href={`/${locale}/challenges`} className="lovable-challenge-cta">
-          <span className="lovable-challenge-badge" aria-hidden="true">
+        <Link href={`/${locale}/challenges`} className="hub-challenge-cta">
+          <span className="hub-challenge-badge" aria-hidden="true">
             <Trophy size={24} />
           </span>
-          <div className="lovable-camera-copy">
+          <div className="hub-action-copy">
             <h2>{c('Thử thách & Đố vui', 'Challenges & Trivia', '挑战与问答')}</h2>
             <p>
               {c(
@@ -284,44 +284,44 @@ export function HomeDiscoveryHub({
               )}
             </p>
           </div>
-          <ChevronRight size={22} className="lovable-camera-arrow" aria-hidden="true" />
+          <ChevronRight size={22} className="hub-action-arrow" aria-hidden="true" />
         </Link>
       </div>
 
-      <div className="lovable-nearby-card">
-        <div className="lovable-nearby-header">
+      <div className="hub-events-card">
+        <div className="hub-events-header">
           <div>
             <h2>
               {c(
-                'Sự kiện quanh thành phố',
-                'Events around the city',
-                '全城近期活动',
+                'Nhịp sống văn hóa quanh thành phố',
+                'Cultural rhythm around the city',
+                '全城近期文化活动',
               )}
             </h2>
             <p>
               {c(
-                'Cập nhật lịch show ca nhạc ở phố đi bộ Nguyễn Huệ, biểu diễn nghệ thuật và lễ hội văn hóa kèm thời gian, địa điểm chi tiết.',
-                'Live music shows at Nguyen Hue Walking Street, cultural festivals, and exhibitions with schedules and venues.',
-                '汇总阮惠步行街音乐演出、文化节庆与艺术展览的详细时间与地点。',
+                'Gợi ý các không gian âm nhạc ngoài trời tại Phố đi bộ Nguyễn Huệ, công viên ven sông và triển lãm di sản cuối tuần.',
+                'Curated spaces for Nguyen Hue performances, riverfront evenings, and heritage exhibitions.',
+                '精选阮惠步行街音乐空间、河畔夜色与城市遗产展览地点。',
               )}
             </p>
           </div>
-          <Link href={`/${locale}/map`} className="lovable-map-link">
+          <Link href={`/${locale}/map`} className="hub-map-link">
             {c('Xem bản đồ sự kiện & điểm đến', 'View events & places on map', '在地图上查看全部')}
-            <ArrowRight size={16} />
+            <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
 
-        <div className="lovable-nearby-controls lovable-events-controls">
-          <div className="lovable-events-live">
-            <span className="live-dot" aria-hidden="true" />
+        <div className="hub-events-controls">
+          <div className="hub-events-status">
+            <Calendar size={15} aria-hidden="true" />
             <strong>
-              {c('Lịch hoạt động tiêu biểu tuần này', 'Featured schedule this week', '本周精选活动日程')}
+              {c('Không gian sinh hoạt văn hóa nổi bật', 'Featured cultural spaces', '城市常设文化空间')}
             </strong>
           </div>
 
           <div
-            className="lovable-region-pills"
+            className="hub-filter-pills"
             role="group"
             aria-label={c('Lọc loại sự kiện', 'Filter event type', '筛选活动类型')}
           >
@@ -329,7 +329,7 @@ export function HomeDiscoveryHub({
               <button
                 type="button"
                 key={tab.id}
-                className={`lovable-pill ${selectedCategory === tab.id ? 'active' : ''}`}
+                className={`hub-pill ${selectedCategory === tab.id ? 'active' : ''}`}
                 aria-pressed={selectedCategory === tab.id}
                 onClick={() => setSelectedCategory(tab.id)}
               >
@@ -339,50 +339,50 @@ export function HomeDiscoveryHub({
           </div>
         </div>
 
-        <div className="lovable-nearby-results">
+        <div className="hub-events-grid">
           {visibleEvents.map((eventItem) => {
             const IconComponent = eventItem.category === 'music' ? Music : Calendar;
             return (
               <Link
                 key={eventItem.id}
                 href={`/${locale}${eventItem.href}`}
-                className="lovable-place-mini lovable-event-card"
+                className="hub-event-card"
               >
-                <div className="lovable-event-thumb">
+                <div className="hub-event-thumb">
                   <Image
                     src={eventItem.image}
                     alt={eventItem.title[locale]}
                     fill
-                    sizes="(max-width: 700px) 32vw, 32vw"
+                    sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 31vw"
                   />
-                  <span className="lovable-place-tag lovable-event-badge">
+                  <span className="hub-event-badge">
                     <IconComponent size={12} aria-hidden="true" />
                     {eventItem.badge[locale]}
                   </span>
                 </div>
-                <div className="lovable-place-info">
+                <div className="hub-event-info">
                   <strong>{eventItem.title[locale]}</strong>
                   <p>{eventItem.summary[locale]}</p>
-                  <div className="lovable-event-meta">
-                    <small className="lovable-event-time">
+                  <div className="hub-event-meta">
+                    <small className="hub-event-time">
                       <Clock3 size={12} />
                       <span>{eventItem.time[locale]}</span>
                     </small>
-                    <small className="lovable-event-venue">
+                    <small className="hub-event-venue">
                       <MapPin size={12} />
                       <span>{eventItem.venue[locale]}</span>
                     </small>
                   </div>
                 </div>
-                <ArrowRight size={16} className="lovable-place-arrow" aria-hidden="true" />
+                <ArrowRight size={16} className="hub-event-arrow" aria-hidden="true" />
               </Link>
             );
           })}
         </div>
       </div>
 
-      <div className="lovable-topics-block">
-        <div className="lovable-topics-header">
+      <div className="hub-topics-block">
+        <div className="hub-topics-header">
           <div>
             <p className="startup-eyebrow">
               <Sparkles size={13} />
@@ -395,16 +395,16 @@ export function HomeDiscoveryHub({
             <ArrowRight size={16} />
           </Link>
         </div>
-        <div className="lovable-topics-grid">
+        <div className="hub-topics-grid">
           {mainTopics.map((topic) => {
             const topicCount = entries.filter((item) => item.kind === topic).length;
             return (
               <Link
                 key={topic}
                 href={`/${locale}/explore?kind=${topic}`}
-                className="lovable-topic-card"
+                className="hub-topic-card"
               >
-                <span className="lovable-topic-icon" aria-hidden="true">
+                <span className="hub-topic-icon" aria-hidden="true">
                   <Compass size={18} />
                 </span>
                 <div>
@@ -416,8 +416,8 @@ export function HomeDiscoveryHub({
               </Link>
             );
           })}
-          <Link href={`/${locale}/explore`} className="lovable-topic-card">
-            <span className="lovable-topic-icon" aria-hidden="true">
+          <Link href={`/${locale}/explore`} className="hub-topic-card">
+            <span className="hub-topic-icon" aria-hidden="true">
               <Landmark size={18} />
             </span>
             <div>

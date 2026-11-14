@@ -20,7 +20,9 @@ export default async function Checkout({
   return (
     <div className="container membership-purchase">
       <div className="commerce-heading">
-        <p className="startup-eyebrow">THÁM VĂN MEMBERSHIP</p>
+        <p className="startup-eyebrow">
+          {copy(locale, 'HỘI VIÊN THÁM VĂN', 'THÁM VĂN MEMBERSHIP', 'THÁM VĂN 会员')}
+        </p>
         <h1>
           {copy(
             locale,

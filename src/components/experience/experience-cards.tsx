@@ -41,17 +41,19 @@ export function ExperienceCards({ locale }: { locale: Locale }) {
             <p>{experienceText(item.description, locale)}</p>
             <div className="experience-card-bottom">
               <span>
-                {copy(locale, 'Bộ hướng dẫn số', 'Digital story walk', '数字漫步指南')}
+                {copy(locale, 'Tập hướng dẫn số', 'Digital monograph', '数字漫步手记')}
                 <strong>
                   {copy(
                     locale,
-                    'Trong Premium / Family',
+                    'Trong gói Premium / Family',
                     'Included in Premium / Family',
-                    '包含在Premium / Family中',
+                    '含于 Premium / Family 方案',
                   )}
                 </strong>
               </span>
-              <small>STORY WALK / 0{index + 1}</small>
+              <small>
+                {copy(locale, `TẬP 0${index + 1}`, `VOL. 0${index + 1}`, `第 0${index + 1} 辑`)}
+              </small>
             </div>
           </div>
         </Link>

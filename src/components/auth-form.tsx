@@ -39,6 +39,7 @@ export function AuthForm({
   async function googleSignIn() {
     setPending(true);
     setMessage('');
+    setError(false);
     try {
       const result = await api('/api/auth/google', { locale, next, captcha });
       window.location.assign(result.url);
@@ -54,6 +55,7 @@ export function AuthForm({
     event.preventDefault();
     setPending(true);
     setMessage('');
+    setError(false);
     const form = new FormData(event.currentTarget);
     try {
       const result = await api('/api/auth', {
@@ -156,10 +158,10 @@ export function AuthForm({
             <span>{t(locale, 'consent')}</span>
           </label>
           <div className="legal-links">
-            <Link href={`/${locale}/terms`} target="_blank">
+            <Link href={`/${locale}/terms`} target="_blank" rel="noopener noreferrer">
               {t(locale, 'terms')}
             </Link>
-            <Link href={`/${locale}/privacy`} target="_blank">
+            <Link href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer">
               {t(locale, 'privacy')}
             </Link>
           </div>

@@ -28,7 +28,7 @@ export function createCityRenderer(
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.1;
   renderer.shadowMap.enabled = innerWidth >= 900;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.shadowMap.type = THREE.PCFShadowMap;
   // Light and geometry stay fixed while the camera travels. Reuse their shadow
   // map instead of rendering it again for every scroll frame.
   renderer.shadowMap.autoUpdate = false;

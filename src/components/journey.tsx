@@ -10,15 +10,21 @@ function JourneyItem({ saved, entry, locale }: { saved: Saved; entry: Heritage; 
   const router = useRouter(),
     [group, setGroup] = useState(saved.collection),
     [pending, setPending] = useState(false),
-    [message, setMessage] = useState('');
+    [message, setMessage] = useState(''),
+    [isError, setIsError] = useState(false);
   async function mutate(method: string, data: object = {}) {
     setPending(true);
     setMessage('');
+    setIsError(false);
     try {
       await api('/api/saved', { entry_id: entry.id, ...data }, method);
+      if (method === 'PATCH' && 'collection' in data) {
+        setMessage(t(locale, 'success'));
+      }
       router.refresh();
     } catch (e) {
       setMessage(errorText(locale, e));
+      setIsError(true);
     } finally {
       setPending(false);
     }
@@ -79,7 +85,7 @@ function JourneyItem({ saved, entry, locale }: { saved: Saved; entry: Heritage; 
             {t(locale, 'remove')}
           </button>
         </div>
-        <Status message={message} error />
+        <Status message={message} error={isError} />
       </div>
     </article>
   );

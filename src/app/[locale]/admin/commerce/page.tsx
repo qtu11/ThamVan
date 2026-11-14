@@ -12,6 +12,50 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
     redirect(`/${locale}/auth/login?next=${encodeURIComponent(`/${locale}/admin/commerce`)}`);
   if (!viewer.admin) notFound();
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+  const dateLocale = locale === 'zh' ? 'zh-CN' : locale === 'en' ? 'en-GB' : 'vi-VN';
+  const orderStatusLabel = (status: string) => {
+    switch (status) {
+      case 'paid':
+        return c('Đã thanh toán', 'Paid', '已支付');
+      case 'pending':
+        return c('Chờ xác nhận', 'Pending', '待确认');
+      case 'refunded':
+        return c('Đã hoàn tiền', 'Refunded', '已退款');
+      case 'cancelled':
+      case 'failed':
+        return c('Đã hủy', 'Cancelled', '已取消');
+      default:
+        return status;
+    }
+  };
+  const productLabel = (productId: string) =>
+    productId === 'collection'
+      ? c('Trọn bộ Saigon Collection', 'Saigon Collection', '西贡全套路线')
+      : c('Gói hành trình đơn', 'Story Walk Guide', '单条漫步指南');
+  const segmentLabel = (segment: string) => {
+    switch (segment) {
+      case 'school':
+        return c('Trường học / Giáo dục', 'School / Education', '学校与教育');
+      case 'hotel':
+        return c('Khách sạn / Lưu trú', 'Hotel / Hospitality', '酒店与住宿');
+      case 'team':
+        return c('Doanh nghiệp / Đội ngũ', 'Team / Corporate', '企业与团队');
+      default:
+        return segment;
+    }
+  };
+  const leadStatusLabel = (status: string) => {
+    switch (status) {
+      case 'new':
+        return c('Mới tiếp nhận', 'New', '新提交');
+      case 'contacted':
+        return c('Đã liên hệ', 'Contacted', '已联系');
+      case 'closed':
+        return c('Đã hoàn tất', 'Closed', '已归档');
+      default:
+        return status;
+    }
+  };
   if (!commerceStorageReady())
     return (
       <div className="container section">
@@ -33,7 +77,9 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
   ]);
   return (
     <div className="container section">
-      <p className="startup-eyebrow">THÁM VĂN / OPERATIONS</p>
+      <p className="startup-eyebrow">
+        {c('THÁM VĂN · ĐỐI SOÁT THƯƠNG MẠI', 'THÁM VĂN / OPERATIONS', 'THÁM VĂN · 商业运营')}
+      </p>
       <h1>{c('Đơn hàng & cơ hội hợp tác', 'Orders & partnership inquiries', '订单与合作请求')}</h1>
       <p>
         {c(
@@ -45,9 +91,9 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
       {orders.error || leads.error ? (
         <p role="alert">
           {c(
-            'Chưa đọc được dữ liệu. Kiểm tra migration 004 và quyền dịch vụ.',
-            'Data unavailable. Check migration 004 and service permissions.',
-            '无法读取数据，请检查004迁移与服务权限。',
+            'Chưa đọc được dữ liệu thương mại lúc này. Vui lòng kiểm tra kết nối cơ sở dữ liệu.',
+            'Commercial records are currently unavailable. Check database connectivity.',
+            '暂无法读取商业数据，请检查数据库连接与权限。',
           )}
         </p>
       ) : (
@@ -57,7 +103,13 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
             <table>
               <thead>
                 <tr>
-                  {['Order', 'Product', 'Amount', 'Status', 'Created'].map((label) => (
+                  {[
+                    c('Mã đơn', 'Order', '订单号'),
+                    c('Sản phẩm', 'Product', '产品'),
+                    c('Số tiền', 'Amount', '金额'),
+                    c('Trạng thái', 'Status', '状态'),
+                    c('Ngày tạo', 'Created', '创建时间'),
+                  ].map((label) => (
                     <th key={label}>{label}</th>
                   ))}
                 </tr>
@@ -67,11 +119,11 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
                   orders.data.map((order) => (
                     <tr key={order.order_code}>
                       <td>{order.order_code}</td>
-                      <td>{order.product_id}</td>
+                      <td>{productLabel(order.product_id)}</td>
                       <td>{money(order.amount, locale)}</td>
-                      <td>{order.status}</td>
+                      <td>{orderStatusLabel(order.status)}</td>
                       <td>
-                        {new Date(order.created_at).toLocaleString('vi-VN', {
+                        {new Date(order.created_at).toLocaleString(dateLocale, {
                           timeZone: 'Asia/Ho_Chi_Minh',
                         })}
                       </td>
@@ -90,7 +142,13 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
             <table>
               <thead>
                 <tr>
-                  {['Organization', 'Contact', 'Segment', 'Brief', 'Status'].map((label) => (
+                  {[
+                    c('Đơn vị', 'Organization', '机构'),
+                    c('Liên hệ', 'Contact', '联系人'),
+                    c('Phân khúc', 'Segment', '合作类型'),
+                    c('Nội dung', 'Brief', '需求说明'),
+                    c('Trạng thái', 'Status', '状态'),
+                  ].map((label) => (
                     <th key={label}>{label}</th>
                   ))}
                 </tr>
@@ -105,9 +163,9 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
                         <br />
                         {lead.email}
                       </td>
-                      <td>{lead.segment}</td>
+                      <td>{segmentLabel(lead.segment)}</td>
                       <td>{lead.message}</td>
-                      <td>{lead.status}</td>
+                      <td>{leadStatusLabel(lead.status)}</td>
                     </tr>
                   ))
                 ) : (

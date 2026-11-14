@@ -5,6 +5,14 @@ export const dynamic = 'force-dynamic';
 // In-memory tile cache to serve pan/zoom in 0ms
 const tileCache = new Map<string, { buffer: Buffer; contentType: string; time: number }>();
 const MAX_CACHE_SIZE = 1200;
+const ALLOWED_LAYERS = new Set(['esriStreet', 'esriSat', 'esriTopo', 'heritageLight']);
+const TILE_COORD_RE = /^\d{1,7}$/;
+
+function parseTileInt(value: string | null) {
+  if (!value || !TILE_COORD_RE.test(value)) return null;
+  const parsed = Number.parseInt(value, 10);
+  return Number.isSafeInteger(parsed) ? parsed : null;
+}
 
 function pruneCache() {
   if (tileCache.size > MAX_CACHE_SIZE) {
@@ -18,13 +26,21 @@ function pruneCache() {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const layer = searchParams.get('layer') || 'esriStreet';
-    const z = searchParams.get('z');
-    const x = searchParams.get('x');
-    const y = searchParams.get('y');
+    const requestedLayer = searchParams.get('layer') || 'esriStreet';
+    if (!ALLOWED_LAYERS.has(requestedLayer)) {
+      return NextResponse.json({ error: 'INVALID_TILE_LAYER' }, { status: 400 });
+    }
+    const layer = requestedLayer;
+    const z = parseTileInt(searchParams.get('z'));
+    const x = parseTileInt(searchParams.get('x'));
+    const y = parseTileInt(searchParams.get('y'));
 
-    if (!z || !x || !y) {
-      return NextResponse.json({ error: 'MISSING_TILE_COORDINATES' }, { status: 400 });
+    if (z === null || x === null || y === null || z > 20) {
+      return NextResponse.json({ error: 'INVALID_TILE_COORDINATES' }, { status: 400 });
+    }
+    const maxCoord = 2 ** z;
+    if (x >= maxCoord || y >= maxCoord) {
+      return NextResponse.json({ error: 'TILE_OUT_OF_RANGE' }, { status: 400 });
     }
 
     const cacheKey = `${layer}:${z}:${x}:${y}`;
@@ -98,19 +114,21 @@ export async function GET(request: Request) {
         if (res.ok) {
           const contentType = res.headers.get('content-type') || item.defaultType;
           const arrayBuffer = await res.arrayBuffer();
-          const buffer = Buffer.from(arrayBuffer);
+          if (contentType.toLowerCase().startsWith('image/') && arrayBuffer.byteLength > 0) {
+            const buffer = Buffer.from(arrayBuffer);
 
-          pruneCache();
-          tileCache.set(cacheKey, { buffer, contentType, time: Date.now() });
+            pruneCache();
+            tileCache.set(cacheKey, { buffer, contentType, time: Date.now() });
 
-          return new Response(new Uint8Array(buffer), {
-            status: 200,
-            headers: {
-              'Content-Type': contentType,
-              'Cache-Control': 'public, max-age=604800, stale-while-revalidate=2592000',
-              'X-Tile-Cache': 'MISS',
-            },
-          });
+            return new Response(new Uint8Array(buffer), {
+              status: 200,
+              headers: {
+                'Content-Type': contentType,
+                'Cache-Control': 'public, max-age=604800, stale-while-revalidate=2592000',
+                'X-Tile-Cache': 'MISS',
+              },
+            });
+          }
         }
       } catch {
         // Try next fallback
@@ -129,9 +147,9 @@ export async function GET(request: Request) {
         'Cache-Control': 'public, max-age=300',
       },
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'TILE_ERROR' },
+      { error: 'TILE_ERROR' },
       { status: 500 }
     );
   }

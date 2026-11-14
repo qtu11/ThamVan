@@ -8,7 +8,14 @@ export default async function Experiences({ params }: { params: Promise<{ locale
   return (
     <div className="container commerce-body">
       <div className="commerce-heading">
-        <p className="startup-eyebrow">THE STORY WALKS / SAIGON EDITION</p>
+        <p className="startup-eyebrow">
+          {copy(
+            locale,
+            'TUYẾN BỘ HÀNH SÀI GÒN · THÁM VĂN',
+            'THE STORY WALKS / SAIGON EDITION',
+            '西贡文化漫步 · 精选指南',
+          )}
+        </p>
         <h1>
           {copy(
             locale,

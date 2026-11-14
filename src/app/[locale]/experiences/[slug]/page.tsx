@@ -5,7 +5,8 @@ import { ArrowUpRight, Download, LockKeyhole, Clock3, MapPin } from 'lucide-reac
 import { getCatalog } from '@/lib/data';
 import { isLocale, textFor } from '@/lib/types';
 import { copy, money } from '@/lib/locale-copy';
-import { findExperience, experienceText, products } from '@/data/experiences';
+import { findExperience, experienceText } from '@/data/experiences';
+import { plans } from '@/lib/plans';
 import { guideFor } from '@/data/walk-guides';
 import { ownsExperience } from '@/lib/commerce';
 export default async function Walk({
@@ -28,6 +29,7 @@ export default async function Walk({
     .map((stop) => entries.find((entry) => entry.slug === stop))
     .filter((entry) => entry !== undefined);
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+  const requestedMinutes = query.time ? Number(query.time) : NaN;
   return (
     <div className="container commerce-body">
       <div className="commerce-heading">
@@ -35,7 +37,7 @@ export default async function Walk({
           ← {c('Các hành trình', 'All story walks', '全部路线')}
         </Link>
         <p className="startup-eyebrow" style={{ marginTop: 25 }}>
-          STORY WALK / {experience.theme.toUpperCase()}
+          {c('TUYẾN KHÁM PHÁ', 'STORY WALK', '漫步指南')} / {experience.theme.toUpperCase()}
         </p>
         <h1>{experienceText(experience.title, locale)}</h1>
         <p>{experienceText(experience.description, locale)}</p>
@@ -62,13 +64,15 @@ export default async function Walk({
       <div className="walk-layout">
         <div>
           <h2>{c('Câu chuyện trên từng bước chân', 'A story at every stop', '每一步都有故事')}</h2>
-          {query.time && Number(query.time) < experience.minutes && (
+          {Number.isFinite(requestedMinutes) &&
+            requestedMinutes > 0 &&
+            requestedMinutes < experience.minutes && (
             <div className="walk-logistics">
               <p>
                 {c(
-                  `Bạn chọn ${query.time === '90' ? '90' : '150'} phút. Toàn tuyến dự kiến ${experience.minutes} phút; hãy chọn một phần tuyến hoặc dành thêm thời gian, không cần đi vội.`,
-                  `Your selected time is shorter than this walk’s estimated ${experience.minutes} minutes. Explore part of the route or allow more time.`,
-                  `你选择的时间短于本路线预计的${experience.minutes}分钟。可探索部分路线或安排更多时间。`,
+                  `Bạn chọn ${requestedMinutes} phút. Toàn tuyến dự kiến ${experience.minutes} phút; hãy chọn một phần tuyến hoặc dành thêm thời gian, không cần đi vội.`,
+                  `Your selected time (${requestedMinutes} min) is shorter than this walk’s estimated ${experience.minutes} minutes. Explore part of the route or allow more time.`,
+                  `你选择的${requestedMinutes}分钟短于本路线预计的${experience.minutes}分钟。可探索部分路线或安排更多时间。`,
                 )}
               </p>
             </div>
@@ -138,7 +142,9 @@ export default async function Walk({
           )}
         </div>
         <aside className="walk-sidebar">
-          <p className="startup-eyebrow">YOUR NEXT STORY</p>
+          <p className="startup-eyebrow">
+            {c('HÀNH TRÌNH TIẾP THEO', 'YOUR NEXT STORY', '下一段旅程')}
+          </p>
           <h2>
             {c(
               'Một gói tháng. Nhiều câu chuyện.',
@@ -146,7 +152,9 @@ export default async function Walk({
               '每月套餐，更多故事。',
             )}
           </h2>
-          <div className="walk-price">{money(products.walk.amount, locale)} / tháng</div>
+          <div className="walk-price">
+            {money(plans.premium.amount, locale)} {c('/ tháng', '/ month', '/ 月')}
+          </div>
           <p>
             {c(
               'Đọc và tải toàn bộ bộ hướng dẫn trong thời hạn Premium hoặc Family. Không tự gia hạn.',

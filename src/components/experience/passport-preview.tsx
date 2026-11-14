@@ -64,16 +64,26 @@ export function PassportPreview({ locale }: { locale: Locale }) {
       <span className="passport-orbit orbit-two" aria-hidden="true" />
       <div className="passport-card">
         <div className="passport-top">
-          <Compass size={25} />
+          <Compass size={25} aria-hidden="true" />
           <span>
-            THÁM VĂN<small>CULTURAL PASSPORT</small>
+            THÁM VĂN
+            <small>
+              {copy(locale, 'HỘ CHIẾU THỰC ĐỊA', 'CULTURAL PASSPORT', '实地探索护照')}
+            </small>
           </span>
           <span className="passport-flower" aria-hidden="true">
             ✳
           </span>
         </div>
         <div className="passport-title">
-          <span>SAIGON EDITION</span>
+          <span>
+            {copy(
+              locale,
+              'BƯU CỤC SÀI GÒN · ẤN BẢN THỰC ĐỊA',
+              'SAIGON DISPATCH · FIELD EDITION',
+              '西贡邮政手记 · 实地版',
+            )}
+          </span>
           <h3>
             {copy(
               locale,

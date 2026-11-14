@@ -24,34 +24,52 @@ import {
 import type { Heritage, Locale } from '@/lib/types';
 import { distanceKm, type Coordinates } from '@/lib/geo';
 import { t } from '@/lib/i18n';
+import { copy } from '@/lib/locale-copy';
 import 'leaflet/dist/leaflet.css';
 
 const TILE_LAYERS = {
   esriStreet: {
-    name: 'Bản đồ đường phố sắc nét',
     url: '/api/tiles?layer=esriStreet&z={z}&x={x}&y={y}',
-    subdomains: 'abc',
     maxZoom: 19,
+    label: (locale: Locale) =>
+      copy(locale, 'Bản đồ đường phố sắc nét', 'Detailed Street Atlas', '高清街道地图'),
   },
   heritageLight: {
-    name: 'Bản đồ di sản tối giản',
     url: '/api/tiles?layer=heritageLight&z={z}&x={x}&y={y}',
-    subdomains: 'abc',
     maxZoom: 19,
+    label: (locale: Locale) =>
+      copy(locale, 'Bản đồ di sản tối giản', 'Minimal Heritage Paper', '极简档案底图'),
   },
   esriTopo: {
-    name: 'Bản đồ địa hình & cảnh quan',
     url: '/api/tiles?layer=esriTopo&z={z}&x={x}&y={y}',
-    subdomains: 'abc',
     maxZoom: 19,
+    label: (locale: Locale) =>
+      copy(locale, 'Bản đồ địa hình & cảnh quan', 'Topographic Relief', '地形与景观图'),
   },
   esriSat: {
-    name: 'Ảnh vệ tinh (Satellite)',
     url: '/api/tiles?layer=esriSat&z={z}&x={x}&y={y}',
-    subdomains: 'abc',
     maxZoom: 19,
+    label: (locale: Locale) =>
+      copy(locale, 'Ảnh vệ tinh (Satellite)', 'Satellite Imagery', '卫星实景图'),
   },
 };
+
+function PopupPhoto({ src, alt }: { src: string; alt: string }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return null;
+  }
+  return (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img
+      src={src}
+      alt={alt}
+      className="popup-photo"
+      loading="lazy"
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 const CAMERA_PIN_SVG =
   '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.2"/></svg>';
@@ -126,7 +144,7 @@ function ZoomTracker({ onZoomChange }: { onZoomChange: (zoom: number) => void })
   return null;
 }
 
-function ClusterMarkerItem({ cluster }: { cluster: ClusterGroup }) {
+function ClusterMarkerItem({ cluster, locale }: { cluster: ClusterGroup; locale: Locale }) {
   const map = useMap();
   const icon = useMemo(
     () => getClusterIcon(cluster.items.length, cluster.hasPhoto),
@@ -137,7 +155,12 @@ function ClusterMarkerItem({ cluster }: { cluster: ClusterGroup }) {
     <Marker
       position={[cluster.latitude, cluster.longitude]}
       icon={icon}
-      title={`${cluster.items.length} địa điểm di sản — Nhấn để phóng to`}
+      title={`${cluster.items.length} ${copy(
+        locale,
+        'địa điểm di sản — Nhấn để phóng to',
+        'heritage places — Click to zoom in',
+        '个遗产地点 — 点击放大查看',
+      )}`}
       eventHandlers={{
         click: () => {
           const bounds = latLngBounds(
@@ -274,7 +297,26 @@ export default function MapCanvas({
   const [activeTileLayer, setActiveTileLayer] = useState<keyof typeof TILE_LAYERS>('esriStreet');
   const [showLayerMenu, setShowLayerMenu] = useState(false);
   const [zoom, setZoom] = useState(12);
+  const layerMenuRef = useRef<HTMLDivElement>(null);
   const currentTile = TILE_LAYERS[activeTileLayer];
+
+  useEffect(() => {
+    if (!showLayerMenu) return;
+    function onPointerDown(event: MouseEvent) {
+      if (layerMenuRef.current && !layerMenuRef.current.contains(event.target as Node)) {
+        setShowLayerMenu(false);
+      }
+    }
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') setShowLayerMenu(false);
+    }
+    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [showLayerMenu]);
 
   const validEntries = useMemo(() => {
     return entries.filter((e) => e.latitude !== null && e.longitude !== null);
@@ -335,29 +377,33 @@ export default function MapCanvas({
   return (
     <div className="map-wrapper">
       {/* Tile Layer Switcher */}
-      <div className="map-layer-switcher">
+      <div className="map-layer-switcher" ref={layerMenuRef}>
         <button
           type="button"
           className="layer-toggle-btn"
+          aria-expanded={showLayerMenu}
+          aria-haspopup="menu"
           onClick={() => setShowLayerMenu((v) => !v)}
-          title="Đổi kiểu bản đồ"
+          title={copy(locale, 'Đổi kiểu bản đồ', 'Change map layer', '切换地图图层')}
         >
           <Layers size={15} />
-          <span>Lớp bản đồ</span>
+          <span>{copy(locale, 'Lớp bản đồ', 'Map layers', '地图图层')}</span>
         </button>
         {showLayerMenu && (
-          <div className="layer-menu">
+          <div className="layer-menu" role="menu">
             {(Object.keys(TILE_LAYERS) as (keyof typeof TILE_LAYERS)[]).map((key) => (
               <button
                 key={key}
                 type="button"
+                role="menuitemradio"
+                aria-checked={activeTileLayer === key}
                 className={`layer-option-btn ${activeTileLayer === key ? 'active' : ''}`}
                 onClick={() => {
                   setActiveTileLayer(key);
                   setShowLayerMenu(false);
                 }}
               >
-                {TILE_LAYERS[key].name}
+                {TILE_LAYERS[key].label(locale)}
               </button>
             ))}
           </div>
@@ -370,9 +416,18 @@ export default function MapCanvas({
           type="button"
           className={`map-gps-fab ${position ? 'active' : ''}`}
           onClick={onLocateMe}
-          tabIndex={-1}
-          aria-hidden="true"
-          title="Định vị chính xác vị trí GPS của tôi"
+          aria-label={copy(
+            locale,
+            'Định vị trung tâm GPS của tôi',
+            'Center map on my GPS position',
+            '将地图定位到我的 GPS 位置',
+          )}
+          title={copy(
+            locale,
+            'Định vị trung tâm GPS của tôi',
+            'Center map on my GPS position',
+            '将地图定位到我的 GPS 位置',
+          )}
         >
           <LocateFixed size={18} />
         </button>
@@ -380,12 +435,26 @@ export default function MapCanvas({
 
       {/* Route Info Overlay */}
       {routeInfo && routeCoordinates && routeCoordinates.length > 0 && (
-        <div className="route-banner-overlay">
+        <div className="route-banner-overlay" role="status">
           <div className="route-banner-left">
             <Compass size={18} className="route-icon" />
             <div>
-              <strong>Lộ trình thực tế: {routeInfo.distanceKm} km</strong>
-              <span>Khoảng {routeInfo.durationMinutes} phút di chuyển qua các tuyến phố</span>
+              <strong>
+                {copy(
+                  locale,
+                  `Lộ trình thực tế: ${routeInfo.distanceKm} km`,
+                  `Estimated route: ${routeInfo.distanceKm} km`,
+                  `预计实地路线：${routeInfo.distanceKm} 公里`,
+                )}
+              </strong>
+              <span>
+                {copy(
+                  locale,
+                  `Khoảng ${routeInfo.durationMinutes} phút di chuyển qua các tuyến phố`,
+                  `Approx. ${routeInfo.durationMinutes} min via city streets`,
+                  `经由城市街道约 ${routeInfo.durationMinutes} 分钟`,
+                )}
+              </span>
             </div>
           </div>
           {onClearRoute && (
@@ -394,11 +463,15 @@ export default function MapCanvas({
               className="route-clear-btn"
               onClick={onClearRoute}
             >
-              Ẩn tuyến đường
+              {copy(locale, 'Ẩn tuyến đường', 'Hide route', '隐藏路线')}
             </button>
           )}
         </div>
       )}
+
+      <span className="map-tile-credit" aria-hidden="true">
+        THÁM VĂN Atlas · Esri
+      </span>
 
       <MapContainer
         center={[10.7769, 106.7009]}
@@ -412,7 +485,6 @@ export default function MapCanvas({
         <TileLayer
           key={activeTileLayer}
           url={currentTile.url}
-          subdomains={currentTile.subdomains}
           maxZoom={currentTile.maxZoom}
         />
 
@@ -461,17 +533,26 @@ export default function MapCanvas({
             <Marker
               position={[position.latitude, position.longitude]}
               icon={userLocationIcon}
-              title="Vị trí GPS của bạn"
+              title={copy(locale, 'Vị trí GPS của bạn', 'Your GPS location', '您的 GPS 位置')}
             >
               <Popup className="user-popup">
                 <div className="user-popup-content">
-                  <strong>Vị trí hiện tại của bạn</strong>
+                  <strong>
+                    {copy(
+                      locale,
+                      'Vị trí hiện tại của bạn',
+                      'Your current position',
+                      '您当前的位置',
+                    )}
+                  </strong>
                   <small>
-                    Tọa độ GPS: {position.latitude.toFixed(6)}, {position.longitude.toFixed(6)}
+                    {copy(locale, 'Tọa độ GPS:', 'GPS coordinates:', 'GPS 坐标：')}{' '}
+                    {position.latitude.toFixed(6)}, {position.longitude.toFixed(6)}
                   </small>
                   {typeof accuracyMeters === 'number' && accuracyMeters > 0 && (
                     <small className="user-accuracy-note">
-                      Độ chính xác: ±{Math.max(1, Math.round(accuracyMeters))} m
+                      {copy(locale, 'Độ chính xác:', 'Accuracy:', '定位精度：')} ±
+                      {Math.max(1, Math.round(accuracyMeters))} m
                     </small>
                   )}
                 </div>
@@ -494,7 +575,7 @@ export default function MapCanvas({
 
         {/* Cluster Markers */}
         {clusters.map((cluster) => (
-          <ClusterMarkerItem key={cluster.id} cluster={cluster} />
+          <ClusterMarkerItem key={cluster.id} cluster={cluster} locale={locale} />
         ))}
 
         {/* Individual Place Markers */}
@@ -523,13 +604,7 @@ export default function MapCanvas({
                 <div className="popup-card">
                   {hasPhoto && e.image ? (
                     <div className="popup-photo-box">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={e.image}
-                        alt={e.name}
-                        className="popup-photo"
-                        loading="lazy"
-                      />
+                      <PopupPhoto key={e.image} src={e.image} alt={e.name} />
                       <span className="popup-photo-badge">
                         <Sparkles size={11} />
                         {t(locale, 'photoFilterVerified')}
@@ -563,7 +638,7 @@ export default function MapCanvas({
                       <p className="popup-distance">
                         <Navigation size={12} />
                         <span>
-                          Cách bạn{' '}
+                          {copy(locale, 'Cách bạn', 'Distance', '距您')}{' '}
                           {distanceKm(position, {
                             latitude: e.latitude,
                             longitude: e.longitude,
@@ -586,10 +661,15 @@ export default function MapCanvas({
                           type="button"
                           className="button secondary small popup-btn route-btn-action"
                           onClick={() => onRequestRoute(e)}
-                          title="Vẽ tuyến đường thực tế đến đây"
+                          title={copy(
+                            locale,
+                            'Vẽ tuyến đường thực tế đến đây',
+                            'Show street route to this place',
+                            '显示前往此地的路线',
+                          )}
                         >
                           <Compass size={14} />
-                          Hiện đường
+                          {copy(locale, 'Hiện đường', 'Route', '显示路线')}
                         </button>
                       )}
 

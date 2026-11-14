@@ -15,7 +15,9 @@ export default async function Partners({ params }: { params: Promise<{ locale: s
   return (
     <div className="container">
       <div className="commerce-heading">
-        <p className="startup-eyebrow">THÁM VĂN FOR BUSINESS</p>
+        <p className="startup-eyebrow">
+          {c('THÁM VĂN · ĐỐI TÁC & TRƯỜNG HỌC', 'THÁM VĂN FOR PARTNERS', 'THÁM VĂN 合作伙伴')}
+        </p>
         <h1>
           {c(
             'Biến văn hóa thành một trải nghiệm đáng nhớ.',

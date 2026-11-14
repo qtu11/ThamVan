@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useState, useSyncExternalStore } from 'react';
+import { useRef, useState, useSyncExternalStore } from 'react';
 import { ArrowUpRight, CheckCircle2, Download, LayoutDashboard, LoaderCircle } from 'lucide-react';
 import { copy } from '@/lib/locale-copy';
 import type { Locale } from '@/lib/types';
@@ -18,7 +18,7 @@ function subscribePartnerRole(callback: () => void) {
 function getPartnerRoleSnapshot(): string {
   try {
     const saved = localStorage.getItem('tv-partner-role');
-    return saved && ['school', 'hotel', 'team', 'admin'].includes(saved) ? saved : '';
+    return saved && ['school', 'hotel', 'team'].includes(saved) ? saved : '';
   } catch {
     return '';
   }
@@ -37,11 +37,12 @@ export function LeadForm({
     [reference, setReference] = useState(''),
     [error, setError] = useState(''),
     [captcha, setCaptcha] = useState(''),
-    [segment, setSegment] = useState<'school' | 'hotel' | 'team' | 'admin'>('team');
+    [segment, setSegment] = useState<'school' | 'hotel' | 'team'>('team');
+  const formRef = useRef<HTMLFormElement>(null);
   const activeRole = useSyncExternalStore(subscribePartnerRole, getPartnerRoleSnapshot, () => '');
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
 
-  function activatePartnerRole(role: 'school' | 'hotel' | 'team' | 'admin') {
+  function activatePartnerRole(role: 'school' | 'hotel' | 'team') {
     try {
       localStorage.setItem('tv-partner-role', role);
       window.dispatchEvent(new Event('tv-partner-role-change'));
@@ -70,6 +71,7 @@ export function LeadForm({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...Object.fromEntries(data.entries()),
+          segment,
           consent: data.get('consent') === 'on',
           locale,
           captcha,
@@ -84,11 +86,23 @@ export function LeadForm({
                 'Too many requests. Please try again in an hour.',
                 '请求过多，请一小时后再试。',
               )
-            : c(
-                'Yêu cầu chưa được lưu. Kiểm tra kết nối hoặc thử lại sau.',
-                'Your request has not been saved. Check your connection or try again later.',
-                '请求尚未保存，请检查连接或稍后重试。',
-              ),
+            : body.error === 'captchaError'
+              ? c(
+                  'Chưa xác minh được bước chống spam. Hãy hoàn tất xác minh rồi gửi lại.',
+                  'Verification check did not complete. Please verify and try again.',
+                  '人机验证未通过，请重新确认后再提交。',
+                )
+              : body.error === 'invalidInput'
+                ? c(
+                    'Thông tin còn thiếu hoặc nội dung đề bài ngắn hơn 15 ký tự. Hãy kiểm tra lại.',
+                    'Some fields are incomplete or the brief is under 15 characters. Please review and try again.',
+                    '信息不完整或需求描述少于 15 个字符，请检查后重试。',
+                  )
+                : c(
+                    'Yêu cầu chưa được lưu. Kiểm tra kết nối hoặc tải mẫu đề bài bên trên để chuẩn bị trước.',
+                    'Your request has not been saved. Check your connection or download the brief template above.',
+                    '请求尚未保存，请检查连接或先下载上方的需求模板。',
+                  ),
         );
         return;
       }
@@ -107,10 +121,15 @@ export function LeadForm({
     }
   }
   function downloadBrief() {
+    const filled = formRef.current ? new FormData(formRef.current) : null;
+    const org = String(filled?.get('organization') || '').trim();
+    const contact = String(filled?.get('name') || '').trim();
+    const email = String(filled?.get('email') || '').trim();
+    const msg = String(filled?.get('message') || '').trim();
     const text = c(
-      'THÁM VĂN — ĐỀ BÀI HỢP TÁC\n\nĐơn vị:\nNgười liên hệ:\nEmail:\nĐối tượng tham gia:\nSố người dự kiến:\nMục tiêu trải nghiệm:\nThời gian mong muốn:\nNgân sách dự kiến:\n\nBản này lưu trên thiết bị, chưa được gửi đến THÁM VĂN.',
-      'THÁM VĂN — PARTNERSHIP BRIEF\n\nOrganization:\nContact name:\nEmail:\nAudience:\nExpected participants:\nExperience goals:\nPreferred dates:\nIndicative budget:\n\nThis file is saved locally and has not been sent to THÁM VĂN.',
-      'THÁM VĂN — 合作需求\n\n组织：\n联系人：\n邮箱：\n参与对象：\n预计人数：\n体验目标：\n希望时间：\n预算：\n\n此文件仅保存在本地，尚未发送至THÁM VĂN。',
+      `THÁM VĂN — ĐỀ BÀI HỢP TÁC\n\nĐơn vị: ${org}\nNgười liên hệ: ${contact}\nEmail: ${email}\nNhóm đối tác: ${segment}\nNội dung / mục tiêu: ${msg}\nSố người dự kiến:\nThời gian mong muốn:\nNgân sách dự kiến:\n\nBản này lưu trên thiết bị, chưa được gửi đến THÁM VĂN.`,
+      `THÁM VĂN — PARTNERSHIP BRIEF\n\nOrganization: ${org}\nContact name: ${contact}\nEmail: ${email}\nSegment: ${segment}\nExperience goals / notes: ${msg}\nExpected participants:\nPreferred dates:\nIndicative budget:\n\nThis file is saved locally and has not been sent to THÁM VĂN.`,
+      `THÁM VĂN — 合作需求\n\n组织：${org}\n联系人：${contact}\n邮箱：${email}\n合作类别：${segment}\n体验目标与备注：${msg}\n预计人数：\n希望时间：\n预算：\n\n此文件仅保存在本地，尚未发送至THÁM VĂN。`,
     );
     const url = URL.createObjectURL(
       new Blob(['\ufeff', text], { type: 'text/plain;charset=utf-8' }),
@@ -129,7 +148,7 @@ export function LeadForm({
           {c('Đã lưu yêu cầu hợp tác.', 'Your partnership request is saved.', '合作请求已保存。')}
         </h2>
         <p>
-          {c('Mã tham chiếu', 'Reference', '参考编号')}: {reference}
+          {c('Mã tham chiếu', 'Reference', '参考编号')}: <strong>{reference}</strong>
         </p>
         <p>
           {c(
@@ -138,10 +157,22 @@ export function LeadForm({
             '这是咨询请求，不是预订或已确认的报价。',
           )}
         </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 14 }}>
+          <Link className="button" href={`/${locale}/dashboard`}>
+            {c('Mở Dashboard đối tác', 'Open Partner Dashboard', '打开合作控制台')}
+            <ArrowUpRight size={15} />
+          </Link>
+          <Link className="button secondary" href={`/${locale}/experiences`}>
+            {c('Xem các Story Walks', 'Browse Story Walks', '查看精选路线')}
+          </Link>
+          <button type="button" className="button quiet" onClick={() => setReference('')}>
+            {c('Gửi yêu cầu khác', 'Submit another inquiry', '提交另一份咨询')}
+          </button>
+        </div>
       </div>
     );
   return (
-    <form className="lead-form" onSubmit={submit}>
+    <form className="lead-form" ref={formRef} onSubmit={submit}>
       <h2>{c('Kể chúng tôi nghe đề bài.', 'Tell us what you have in mind.', '说说你的想法。')}</h2>
       <p>
         {c(
@@ -188,7 +219,7 @@ export function LeadForm({
         <select
           name="segment"
           value={segment}
-          onChange={(e) => setSegment(e.target.value as 'school' | 'hotel' | 'team' | 'admin')}
+          onChange={(e) => setSegment(e.target.value as 'school' | 'hotel' | 'team')}
         >
           <option value="team">
             {c('Doanh nghiệp / đội ngũ', 'Business / team', '企业 / 团队')}
@@ -199,21 +230,18 @@ export function LeadForm({
           <option value="hotel">
             {c('Khách sạn / đơn vị lưu trú', 'Hotel / accommodation', '酒店 / 住宿机构')}
           </option>
-          <option value="admin">
-            {c('Quản trị viên / Đối tác vận hành (Admin)', 'Operations / Platform Admin', '平台与运营管理员 (Admin)')}
-          </option>
         </select>
       </label>
       <div className="commerce-notice">
         <p style={{ marginBottom: 10 }}>
           {activeRole
             ? c(
-                `Đã kích hoạt Dashboard trên thanh điều hướng với tư cách: ${activeRole === 'admin' ? 'Admin' : activeRole === 'team' ? 'Doanh nghiệp' : activeRole === 'school' ? 'Đơn vị giáo dục' : 'Đơn vị lưu trú'}.`,
+                `Đã kích hoạt Dashboard trên thanh điều hướng với tư cách: ${activeRole === 'team' ? 'Doanh nghiệp' : activeRole === 'school' ? 'Đơn vị giáo dục' : 'Đơn vị lưu trú'}.`,
                 `Dashboard enabled in navigation for role: ${activeRole}.`,
                 `导航栏已启用控制台（身份：${activeRole}）。`,
               )
             : c(
-                'Chọn tư cách hợp tác ở trên để hiển thị mục Dashboard tương ứng (Doanh nghiệp, Giáo dục, Lưu trú hoặc Admin) trên thanh điều hướng.',
+                'Chọn tư cách hợp tác ở trên để hiển thị mục Dashboard tương ứng (Doanh nghiệp, Giáo dục hoặc Lưu trú) trên thanh điều hướng.',
                 'Select your partnership role above to display the corresponding Dashboard in the navigation bar.',
                 '在上方选择合作身份，即可在导航栏显示对应的控制台。',
               )}
@@ -229,10 +257,7 @@ export function LeadForm({
           </button>
           {activeRole && (
             <>
-              <Link
-                className="button"
-                href={`/${locale}${activeRole === 'admin' ? '/admin/dashboard' : '/dashboard'}`}
-              >
+              <Link className="button" href={`/${locale}/dashboard`}>
                 {c('Mở Dashboard ngay', 'Open Dashboard', '立即打开控制台')}
                 <ArrowUpRight size={15} />
               </Link>

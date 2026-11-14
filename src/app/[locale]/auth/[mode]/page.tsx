@@ -1,12 +1,16 @@
 import { notFound, redirect } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { headers } from 'next/headers';
+import { ScrollText } from 'lucide-react';
 import { isLocale } from '@/lib/types';
 import { t } from '@/lib/i18n';
+import { copy } from '@/lib/locale-copy';
 import { hasSupabase, hasGoogleAuth } from '@/lib/env';
 import { getViewer } from '@/lib/data';
 import { authDestination, authErrorCode } from '@/lib/auth-policy';
 import { AuthForm, type AuthMode } from '@/components/auth-form';
+import { Chatbot } from '@/components/chatbot';
 export default async function AuthPage({
   params,
   searchParams,
@@ -27,13 +31,20 @@ export default async function AuthPage({
       <div className="auth-art">
         <Image
           src="/images/hcm-0025-nha-tho-duc-ba-sai-gon.jpg"
-          alt="Nhà thờ Đức Bà Sài Gòn"
+          alt={copy(
+            locale,
+            'Nhà thờ Đức Bà Sài Gòn',
+            'Notre-Dame Cathedral of Saigon',
+            '西贡圣母大教堂',
+          )}
           fill
           sizes="50vw"
           unoptimized
         />
         <div />
-        <p className="eyebrow">THÁM VĂN</p>
+        <p className="eyebrow">
+          THÁM VĂN · {copy(locale, 'DI SẢN SÀI GÒN', 'SAIGON HERITAGE', '西贡遗产')}
+        </p>
         <h2>
           {t(locale, 'hero1')}
           <br />
@@ -63,6 +74,13 @@ export default async function AuthPage({
           nonce={(await headers()).get('x-nonce') || undefined}
           initialError={query.error ? authErrorCode(query.error) : undefined}
         />
+        <div className="auth-support-row">
+          <Link className="button secondary auth-policy-btn" href={`/${locale}/terms`}>
+            <ScrollText size={17} />
+            {t(locale, 'policyAndTerms')}
+          </Link>
+          <Chatbot locale={locale} />
+        </div>
       </div>
     </div>
   );

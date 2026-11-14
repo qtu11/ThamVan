@@ -16,13 +16,15 @@ import {
   Building2,
   Home,
   Trophy,
+  Camera,
 } from 'lucide-react';
 import { t, localeName } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
 import { locales, type Locale } from '@/lib/types';
 import { SecurityGuard } from './security-guard';
+import { Chatbot } from './chatbot';
 
-export type PartnerRole = 'team' | 'school' | 'hotel' | 'admin' | '';
+export type PartnerRole = 'team' | 'school' | 'hotel' | '';
 
 function subscribePartnerRole(callback: () => void) {
   window.addEventListener('storage', callback);
@@ -36,7 +38,7 @@ function subscribePartnerRole(callback: () => void) {
 function getPartnerRoleSnapshot(): PartnerRole {
   try {
     const stored = localStorage.getItem('tv-partner-role') as PartnerRole | null;
-    return stored && ['team', 'school', 'hotel', 'admin'].includes(stored) ? stored : '';
+    return stored && ['team', 'school', 'hotel'].includes(stored) ? stored : '';
   } catch {
     return '';
   }
@@ -65,31 +67,33 @@ export function Shell({
   );
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
 
-  const showDashboard = signedIn || isAdmin || Boolean(partnerRole);
-  const dashboardHref = isAdmin || partnerRole === 'admin' ? '/admin/dashboard' : '/dashboard';
-  const dashboardLabel =
-    isAdmin || partnerRole === 'admin'
-      ? 'Dashboard (Admin)'
-      : partnerRole === 'team'
-        ? c('Dashboard (Doanh nghiệp)', 'Dashboard (Business)', '控制台 (企业)')
-        : partnerRole === 'school'
-          ? c('Dashboard (Giáo dục)', 'Dashboard (Education)', '控制台 (教育)')
-          : partnerRole === 'hotel'
-            ? c('Dashboard (Lưu trú)', 'Dashboard (Hospitality)', '控制台 (酒店)')
-            : 'Dashboard';
+  const dashboardHref = isAdmin ? '/admin/dashboard' : '/dashboard';
+  const dashboardLabel = isAdmin
+    ? c('Dashboard (Quản trị)', 'Dashboard (Admin)', '控制台（管理）')
+    : partnerRole === 'team'
+      ? c('Dashboard (Doanh nghiệp)', 'Dashboard (Business)', '控制台 (企业)')
+      : partnerRole === 'school'
+        ? c('Dashboard (Giáo dục)', 'Dashboard (Education)', '控制台 (教育)')
+        : partnerRole === 'hotel'
+          ? c('Dashboard (Lưu trú)', 'Dashboard (Hospitality)', '控制台 (酒店)')
+          : 'Dashboard';
 
   const links = [
-    { label: c('Khám phá', 'Explore', '探索'), to: '/explore', Icon: Compass },
+    {
+      label: c('Khám phá', 'Explore', '探索'),
+      to: '/explore',
+      Icon: Compass,
+      children: [
+        { label: t(locale, 'listView'), to: '/explore', Icon: Compass },
+        { label: t(locale, 'mapView'), to: '/map', Icon: Map },
+      ],
+    },
     {
       label: c('Hành trình trải nghiệm', 'Story walks', '故事漫步'),
       to: '/experiences',
       Icon: Route,
     },
-    { label: t(locale, 'map'), to: '/map', Icon: Map },
     { label: t(locale, 'challenges'), to: '/challenges', Icon: Trophy },
-    ...(showDashboard
-      ? [{ label: dashboardLabel, to: dashboardHref, Icon: UserRound }]
-      : []),
     { label: c('Cho doanh nghiệp', 'For business', '企业合作'), to: '/partners', Icon: Building2 },
   ];
   useEffect(() => {
@@ -128,24 +132,47 @@ export function Shell({
             className="brand"
             aria-label={`THÁM VĂN · ${t(locale, 'home')}`}
           >
-            <Image src="/images/logo.png" alt="" width={38} height={46} />
+            <Image
+              src="/images/logo.png"
+              alt=""
+              width={34}
+              height={40}
+              style={{ height: 'auto' }}
+              className="brand-logo-image"
+            />
             <span>
               THÁM VĂN
               <small>
-                {c('ĐI ĐỂ THẤY. CHẠM ĐỂ HIỂU.', 'WALK. DISCOVER. CONNECT.', '漫步，发现，连接。')}
+                {c('SỔ TAY THỰC ĐỊA SÀI GÒN', 'SAIGON HERITAGE FIELD-GUIDE', '西贡城市遗产手记')}
               </small>
             </span>
           </Link>
           <nav className="desktop-nav" aria-label={t(locale, 'explore')}>
-            {links.map(({ label, to }) => (
-              <Link
-                key={to}
-                className={isActive(to) ? 'active' : ''}
-                aria-current={isActive(to) ? 'page' : undefined}
-                href={`/${locale}${to}`}
-              >
-                {label}
-              </Link>
+            {links.map(({ label, to, children }) => (
+              <div key={to} className={`nav-item ${children ? 'has-children' : ''}`}>
+                <Link
+                  className={isActive(to) ? 'active' : ''}
+                  aria-current={isActive(to) ? 'page' : undefined}
+                  href={`/${locale}${to}`}
+                >
+                  {label}
+                </Link>
+                {children && (
+                  <div className="nav-submenu">
+                    {children.map((child) => (
+                      <Link
+                        key={child.to}
+                        href={`/${locale}${child.to}`}
+                        className={isActive(child.to) ? 'active' : ''}
+                        aria-current={isActive(child.to) ? 'page' : undefined}
+                      >
+                        <child.Icon size={14} />
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
           <div className="header-actions">
@@ -162,10 +189,10 @@ export function Shell({
             </label>
             <Link
               className="button small header-login"
-              href={`/${locale}/${signedIn ? 'dashboard' : 'auth/login'}`}
+              href={`/${locale}/${signedIn || partnerRole ? dashboardHref.replace(/^\//, '') : 'auth/login'}`}
             >
-              {signedIn && <UserRound size={15} />}
-              {signedIn ? 'Dashboard' : t(locale, 'login')}
+              {(signedIn || partnerRole) && <UserRound size={15} />}
+              {signedIn || partnerRole ? dashboardLabel : t(locale, 'login')}
               <ArrowUpRight size={13} />
             </Link>
             <button
@@ -191,7 +218,18 @@ export function Shell({
           >
             {[
               { label: t(locale, 'home'), to: '', Icon: Home },
-              ...links,
+              { label: c('Khám phá', 'Explore', '探索'), to: '/explore', Icon: Compass },
+              {
+                label: c('Hành trình trải nghiệm', 'Story walks', '故事漫步'),
+                to: '/experiences',
+                Icon: Route,
+              },
+              { label: t(locale, 'challenges'), to: '/challenges', Icon: Trophy },
+              {
+                label: c('Cho doanh nghiệp', 'For business', '企业合作'),
+                to: '/partners',
+                Icon: Building2,
+              },
               {
                 label: t(locale, 'profile'),
                 to: '/profile',
@@ -216,7 +254,14 @@ export function Shell({
       <footer className="site-footer">
         <div className="footer-top">
           <Link href={`/${locale}`} className="brand">
-            <Image src="/images/logo.png" width={38} height={46} alt="" />
+            <Image
+              src="/images/logo.png"
+              width={34}
+              height={40}
+              alt=""
+              style={{ height: 'auto' }}
+              className="brand-logo-image"
+            />
             <span>
               THÁM VĂN
               <small>
@@ -229,17 +274,23 @@ export function Shell({
             </span>
           </Link>
           <div className="footer-offers">
-            <Link href={`/${locale}/experiences`}>Story walks</Link>
+            <Link href={`/${locale}/experiences`}>
+              {c('Hành trình trải nghiệm', 'Story walks', '故事漫步')}
+            </Link>
             <Link href={`/${locale}/partners`}>{c('Hợp tác', 'Partnerships', '合作')}</Link>
             <Link href={`/${locale}/journey`}>{c('Đã lưu', 'Saved places', '收藏地点')}</Link>
+            {!path.startsWith(`/${locale}/auth`) && <Chatbot locale={locale} />}
           </div>
           <Link href={`/${locale}/experiences`}>
-            {c('Đi một vòng Sài Gòn', 'Find your Saigon', '发现你的西贡')}
+            {c('Mở bản đồ hành trình', 'Browse story walks', '探索城市漫步')}
             <ArrowUpRight size={16} />
           </Link>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} THÁM VĂN · MADE FOR THE CURIOUS.</span>
+          <span>
+            © {new Date().getFullYear()} THÁM VĂN ·{' '}
+            {c('ẤN PHẨM THỰC ĐỊA SÀI GÒN', 'SAIGON HERITAGE FIELD-GUIDE', '西贡文化遗产图文手记')}
+          </span>
           <div>
             <Link href={`/${locale}/terms`}>{t(locale, 'terms')}</Link>
             <Link href={`/${locale}/privacy`}>{t(locale, 'privacy')}</Link>
@@ -251,17 +302,24 @@ export function Shell({
         {[
           { label: t(locale, 'home'), to: '', Icon: Home },
           { label: c('Khám phá', 'Explore', '探索'), to: '/explore', Icon: Compass },
-          { label: t(locale, 'map'), to: '/map', Icon: Map },
+          {
+            label: t(locale, 'cameraShort'),
+            to: '/camera',
+            Icon: Camera,
+            featured: true,
+          },
           { label: t(locale, 'challenges'), to: '/challenges', Icon: Trophy },
           { label: t(locale, 'profile'), to: '/profile', Icon: UserRound },
-        ].map(({ label, to, Icon }) => (
+        ].map(({ label, to, Icon, featured }) => (
           <Link
             key={to}
             href={`/${locale}${to}`}
-            className={isActive(to) ? 'active' : ''}
+            className={`${isActive(to) ? 'active' : ''} ${featured ? 'bottom-nav-featured' : ''}`}
             aria-current={isActive(to) ? 'page' : undefined}
           >
-            <Icon size={20} />
+            <span className="bottom-nav-icon">
+              <Icon size={featured ? 24 : 20} />
+            </span>
             <span>{label}</span>
           </Link>
         ))}

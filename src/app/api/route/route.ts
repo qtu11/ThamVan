@@ -1,20 +1,33 @@
 import { NextResponse } from 'next/server';
+import { distanceKm } from '@/lib/geo';
 
 export const dynamic = 'force-dynamic';
+
+function isValidCoordinate(lat: number, lon: number) {
+  return (
+    Number.isFinite(lat) &&
+    Number.isFinite(lon) &&
+    Math.abs(lat) <= 90 &&
+    Math.abs(lon) <= 180
+  );
+}
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const fromLat = parseFloat(searchParams.get('fromLat') || '');
-    const fromLon = parseFloat(
-      searchParams.get('fromLon') || searchParams.get('fromLng') || ''
-    );
-    const toLat = parseFloat(searchParams.get('toLat') || '');
-    const toLon = parseFloat(
-      searchParams.get('toLon') || searchParams.get('toLng') || ''
-    );
+    const fromLat = Number(searchParams.get('fromLat'));
+    const fromLon = Number(searchParams.get('fromLon') ?? searchParams.get('fromLng'));
+    const toLat = Number(searchParams.get('toLat'));
+    const toLon = Number(searchParams.get('toLon') ?? searchParams.get('toLng'));
 
-    if (isNaN(fromLat) || isNaN(fromLon) || isNaN(toLat) || isNaN(toLon)) {
+    if (
+      !searchParams.has('fromLat') ||
+      (!searchParams.has('fromLon') && !searchParams.has('fromLng')) ||
+      !searchParams.has('toLat') ||
+      (!searchParams.has('toLon') && !searchParams.has('toLng')) ||
+      !isValidCoordinate(fromLat, fromLon) ||
+      !isValidCoordinate(toLat, toLon)
+    ) {
       return NextResponse.json(
         { error: 'INVALID_COORDINATES' },
         { status: 400 }
@@ -33,40 +46,54 @@ export async function GET(request: Request) {
 
       if (res.ok) {
         const data = await res.json();
-        if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
+        if (data.code === 'Ok' && Array.isArray(data.routes) && data.routes.length > 0) {
           const route = data.routes[0];
           // OSRM returns coordinates as [lon, lat], Leaflet polyline expects [lat, lon]
-          const coordinates = (route.geometry?.coordinates || []).map(
-            (c: [number, number]) => [c[1], c[0]]
-          );
+          const coordinates = Array.isArray(route.geometry?.coordinates)
+            ? route.geometry.coordinates
+                .filter(
+                  (c: unknown): c is [number, number] =>
+                    Array.isArray(c) &&
+                    c.length >= 2 &&
+                    typeof c[0] === 'number' &&
+                    typeof c[1] === 'number',
+                )
+                .map((c: [number, number]) => [c[1], c[0]])
+            : [];
 
-          return NextResponse.json({
-            ok: true,
-            distanceKm: Number((route.distance / 1000).toFixed(1)),
-            durationMinutes: Math.round(route.duration / 60),
-            coordinates,
-            source: 'osrm',
-          });
+          if (coordinates.length >= 2) {
+            return NextResponse.json({
+              ok: true,
+              distanceKm: Number((Number(route.distance || 0) / 1000).toFixed(1)),
+              durationMinutes: Math.round(Number(route.duration || 0) / 60),
+              coordinates,
+              source: 'osrm',
+            });
+          }
         }
       }
     } catch {
       // Fallback below
     }
 
-    // Direct line fallback if routing engine is unreachable
+    // Direct Haversine fallback if routing engine is unreachable
+    const directKm = distanceKm(
+      { latitude: fromLat, longitude: fromLon },
+      { latitude: toLat, longitude: toLon },
+    );
     return NextResponse.json({
       ok: true,
-      distanceKm: 0,
-      durationMinutes: 0,
+      distanceKm: Number(directKm.toFixed(1)),
+      durationMinutes: directKm > 0 ? Math.max(1, Math.round((directKm / 22) * 60)) : 0,
       coordinates: [
         [fromLat, fromLon],
         [toLat, toLon],
       ],
       source: 'direct_fallback',
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'ROUTE_FAILED' },
+      { error: 'ROUTE_FAILED' },
       { status: 500 }
     );
   }

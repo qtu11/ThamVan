@@ -32,6 +32,7 @@ export function EntryActions({
     }
     setPending(true);
     setMessage('');
+    setError(false);
     try {
       await api('/api/saved', { entry_id: id }, saved ? 'DELETE' : 'POST');
       setSaved(!saved);
@@ -49,6 +50,14 @@ export function EntryActions({
       setMessage(t(locale, 'copied'));
       setError(false);
     } catch {
+      if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+        try {
+          await navigator.share({ url: window.location.href, title: document.title });
+          return;
+        } catch {
+          // Fallback to message below if user cancelled or share failed
+        }
+      }
       setMessage(t(locale, 'error'));
       setError(true);
     }
@@ -56,6 +65,8 @@ export function EntryActions({
   async function report(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
     setPending(true);
+    setError(false);
+    setMessage('');
     const data = new FormData(event.currentTarget);
     try {
       await api('/api/reports', { entry_id: id, reason: data.get('reason') });

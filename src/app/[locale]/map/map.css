@@ -1,0 +1,132 @@
+/* Map Explorer & Canvas Field-Guide Overrides + Mobile Safe Geometry */
+
+.map-wrapper .route-banner-overlay {
+  background: rgba(17, 68, 54, 0.94);
+  border: 1px solid rgba(255, 253, 248, 0.22);
+  color: #fffdf8;
+}
+
+.map-wrapper .route-icon {
+  color: #f3c68f;
+}
+
+.map-wrapper .route-banner-left strong {
+  color: #fffdf8;
+}
+
+.map-wrapper .route-banner-left span {
+  color: rgba(255, 253, 248, 0.8);
+}
+
+.map-wrapper .route-clear-btn:hover {
+  background: rgba(255, 253, 248, 0.26);
+}
+
+.map-wrapper .layer-toggle-btn {
+  background: rgba(254, 251, 246, 0.96);
+  border-color: rgba(17, 42, 34, 0.16);
+  color: var(--green);
+}
+
+.map-wrapper .layer-menu {
+  background: var(--surface);
+  border-color: var(--line);
+}
+
+.map-wrapper .layer-option-btn {
+  border-bottom-color: var(--line);
+}
+
+.map-wrapper .layer-option-btn.active {
+  background: var(--cream);
+  color: var(--green);
+}
+
+.map-tile-credit {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  z-index: 900;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(254, 251, 246, 0.88);
+  border: 1px solid rgba(17, 42, 34, 0.12);
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.3;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+.place-name-btn {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
+
+.place-name-btn:hover {
+  color: var(--terra);
+}
+
+.place-name-btn:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.hcm-place-card .place-card-body {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .map-wrapper .route-banner-overlay {
+    top: auto;
+    bottom: 14px;
+    left: 12px;
+    right: 66px;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .map-wrapper .route-banner-left {
+    min-width: 0;
+  }
+
+  .map-wrapper .route-banner-left strong,
+  .map-wrapper .route-banner-left span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .map-tile-credit {
+    bottom: 6px;
+    left: 8px;
+    font-size: 9px;
+  }
+
+  .leaflet-popup-content-wrapper {
+    max-width: calc(100vw - 44px);
+  }
+}
+
+@media (max-width: 480px) {
+  .place-select-trigger {
+    grid-template-columns: 60px minmax(0, 1fr);
+    gap: 10px;
+  }
+}

@@ -48,20 +48,20 @@ export const starterChallenges: Challenge[] = [
         description:
           'Khám phá tuyệt tác kiến trúc hiện đại Việt Nam với rèm hoa đá chữ Cát và trục đại lộ Lê Duẩn.',
         question: 'Kiến trúc sư nào thiết kế công trình Dinh Độc Lập hiện tại?',
-        options: ['Ngô Viết Thụ', 'Nguyễn Công Trứ', 'Huỳnh Tấn Phát', 'Lê Văn Tám'],
+        options: ['Nguyễn Công Trứ', 'Ngô Viết Thụ', 'Huỳnh Tấn Phát', 'Lê Văn Tám'],
       },
       en: {
         title: 'Decoding Independence Palace',
         description:
           'Explore a masterpiece of Vietnamese modernist architecture and its iconic stone screen facade.',
         question: 'Which architect designed the present Independence Palace?',
-        options: ['Ngô Viết Thụ', 'Nguyễn Công Trứ', 'Huỳnh Tấn Phát', 'Lê Văn Tám'],
+        options: ['Nguyễn Công Trứ', 'Ngô Viết Thụ', 'Huỳnh Tấn Phát', 'Lê Văn Tám'],
       },
       zh: {
         title: '读懂独立宫立面密码',
         description: '探索越南现代主义建筑杰作及其象征吉祥的竹节石花窗立面。',
         question: '现独立宫由哪位建筑师设计？',
-        options: ['吴越树', '阮公著', '黄晋发', '黎文心'],
+        options: ['阮公著', '吴越树', '黄晋发', '黎文心'],
       },
     },
   },
@@ -78,20 +78,20 @@ export const starterChallenges: Challenge[] = [
         description:
           'Tìm hiểu bí mật vật liệu gạch nung hồng cam giữ màu hơn một thế kỷ giữa trung tâm Quận 1.',
         question: 'Nhà thờ Đức Bà Sài Gòn nằm ở khu vực trung tâm nào của thành phố?',
-        options: ['Quận 1', 'Quận 5', 'Củ Chi', 'TP Thủ Đức'],
+        options: ['Quận 5', 'Củ Chi', 'Quận 1', 'TP Thủ Đức'],
       },
       en: {
         title: 'Brickwork of Notre-Dame Cathedral',
         description:
           'Uncover the story of the Marseille terracotta bricks that have defined central Saigon since 1880.',
         question: 'In which district is Saigon Notre-Dame Cathedral located?',
-        options: ['District 1', 'District 5', 'Củ Chi', 'Thủ Đức City'],
+        options: ['District 5', 'Củ Chi', 'District 1', 'Thủ Đức City'],
       },
       zh: {
         title: '西贡圣母大教堂红砖之谜',
         description: '了解自1880年以来定义西贡市中心的马赛红砖建筑传奇。',
         question: '西贡圣母大教堂位于哪个区域？',
-        options: ['第一郡', '第五郡', '古芝', '守德市'],
+        options: ['第五郡', '古芝', '第一郡', '守德市'],
       },
     },
   },
@@ -109,10 +109,10 @@ export const starterChallenges: Challenge[] = [
           'Quan sát bốn cổng chính của ngôi chợ trăm tuổi và tháp đồng hồ quen thuộc ở cửa Nam.',
         question: 'Chi tiết kiến trúc biểu tượng nổi bật nhất tại cửa Nam Chợ Bến Thành là gì?',
         options: [
-          'Tháp đồng hồ trên cổng chính',
           'Cổng vòm đá hoa cương bảy nhịp',
           'Tháp chuông đồng cao 45 mét',
           'Mái đình cong lợp ngói âm dương',
+          'Tháp đồng hồ trên cổng chính',
         ],
       },
       en: {
@@ -121,10 +121,10 @@ export const starterChallenges: Challenge[] = [
           'Observe the four main gates of the century-old market and its familiar South Gate clock tower.',
         question: 'What is the iconic architectural feature above the South Gate of Bến Thành Market?',
         options: [
-          'A clock tower above the main gate',
           'Seven-arch granite colonnade',
           '45-meter bronze bell tower',
           'Curved yin-yang tiled pavilion roof',
+          'A clock tower above the main gate',
         ],
       },
       zh: {
@@ -132,10 +132,10 @@ export const starterChallenges: Challenge[] = [
         description: '细看百年市场的四座主门与南门钟楼。',
         question: '滨城市场南门最著名的标志性建筑细节是什么？',
         options: [
-          '主门上方的钟楼',
           '七拱花岗岩柱廊',
           '45米青铜钟塔',
           '阴阳瓦弯脊亭顶',
+          '主门上方的钟楼',
         ],
       },
     },
@@ -154,8 +154,8 @@ export const starterChallenges: Challenge[] = [
           'Bước vào đại sảnh vòm thép xanh lục và ngắm hai bức bản đồ lịch sử vẽ tay treo hai bên đại sảnh.',
         question: 'Không gian đại sảnh Bưu điện Trung tâm Sài Gòn nổi bật với kết cấu đặc trưng nào?',
         options: [
-          'Hệ vòm khung sắt uốn cong kết hợp hai bản đồ lịch sử vẽ tay',
           'Hệ cột gỗ lim nguyên khối chạm tứ linh',
+          'Hệ vòm khung sắt uốn cong kết hợp hai bản đồ lịch sử vẽ tay',
           'Mái kính kim tự tháp bốn mặt hiện đại',
           'Hành lang đá cẩm thạch trắng ba tầng',
         ],
@@ -166,8 +166,8 @@ export const starterChallenges: Challenge[] = [
           'Step beneath the green wrought-iron vault and examine the two hand-painted historical maps.',
         question: 'What defines the main concourse of the Saigon Central Post Office?',
         options: [
-          'Curved wrought-iron vaulted ribs and two hand-painted historical wall maps',
           'Carved ironwood pillars with four sacred creatures',
+          'Curved wrought-iron vaulted ribs and two hand-painted historical wall maps',
           'Modern four-sided glass pyramid skylight',
           'Three-story white marble colonnade',
         ],
@@ -177,8 +177,8 @@ export const starterChallenges: Challenge[] = [
         description: '步入绿色锻铁拱顶大厅，欣赏两幅手绘历史地图。',
         question: '西贡中央邮局大厅最具代表性的空间结构是什么？',
         options: [
-          '弧形锻铁拱肋结构与两幅手绘历史壁画地图',
           '雕有四灵图案的整木铁力木柱',
+          '弧形锻铁拱肋结构与两幅手绘历史壁画地图',
           '现代四面玻璃金字塔天窗',
           '三层白色大理石回廊',
         ],
@@ -244,9 +244,9 @@ export const starterChallenges: Challenge[] = [
           'Nhìn lên đỉnh mái ngói tòa thương cảng bên ngã ba sông Sài Gòn – Kênh Tẻ để hiểu nguồn gốc tên gọi Nhà Rồng.',
         question: 'Vì sao tòa nhà trụ sở thương cảng xây năm 1863 bên sông Sài Gòn được gọi là Nhà Rồng?',
         options: [
-          'Trên đỉnh mái ngói gắn đôi rồng gốm men xanh chầu mặt trăng',
           'Tòa nhà có mặt bằng uốn lượn hình rồng dài 300 mét',
           'Nằm trên cù lao Rồng giữa dòng sông Sài Gòn',
+          'Trên đỉnh mái ngói gắn đôi rồng gốm men xanh chầu mặt trăng',
           'Được sơn phủ toàn bộ bằng màu vàng hoàng gia',
         ],
       },
@@ -256,9 +256,9 @@ export const starterChallenges: Challenge[] = [
           'Look up at the roof ridge beside the Saigon River confluence to see why citizens named it Dragon House.',
         question: 'Why did locals call the 1863 riverside maritime headquarters Nhà Rồng (Dragon House)?',
         options: [
-          'Its roof ridge is crowned with two glazed ceramic dragons flanking the moon',
           'Its floor plan curves like a 300-meter dragon',
           'It stands on Dragon Islet in the middle of the Saigon River',
+          'Its roof ridge is crowned with two glazed ceramic dragons flanking the moon',
           'It was painted entirely in imperial gold',
         ],
       },
@@ -267,9 +267,9 @@ export const starterChallenges: Challenge[] = [
         description: '仰望西贡河交汇处的老商港屋顶，探寻“龙屋”名称的由来。',
         question: '为什么这座建于1863年的河畔航运大楼被称为“龙屋”（Nhà Rồng）？',
         options: [
-          '屋脊顶端饰有双龙朝月的青釉陶瓷雕塑',
           '建筑平面呈300米长的盘龙造型',
           '坐落于西贡河心的龙洲岛上',
+          '屋脊顶端饰有双龙朝月的青釉陶瓷雕塑',
           '整栋建筑外墙涂满皇家金色',
         ],
       },
@@ -289,10 +289,10 @@ export const starterChallenges: Challenge[] = [
           'Khám phá Hội quán Tuệ Thành hơn 260 năm tuổi trên đường Nguyễn Trãi với sân thiên tỉnh và tiểu tượng gốm.',
         question: 'Điểm đặc sắc nhất trên diềm mái và nóc Hội quán Tuệ Thành (Chùa Bà Thiên Hậu) là gì?',
         options: [
-          'Quần thể phù điêu và tiểu tượng gốm Cây Mai – Thạch Loan diễn tích cổ',
           'Tháp chuông đá xanh nguyên khối cao 7 tầng',
           'Mái vòm kính màu ghép hình hoa sen',
           'Hệ thống cầu đá bắc qua hồ bán nguyệt trên mái',
+          'Quần thể phù điêu và tiểu tượng gốm Cây Mai – Thạch Loan diễn tích cổ',
         ],
       },
       en: {
@@ -301,10 +301,10 @@ export const starterChallenges: Challenge[] = [
           'Explore the 260-year-old Tuệ Thành Guildhall in Chợ Lớn with its skywell courtyard and rooftop ceramics.',
         question: 'What is the most distinctive artistic feature along the rooflines of Thiên Hậu Temple?',
         options: [
-          'Intricate Cây Mai and Shiwan glazed ceramic dioramas depicting classical legends',
           'A seven-story monolithic bluestone bell tower',
           'A stained-glass lotus dome',
           'Stone bridges spanning a rooftop crescent pond',
+          'Intricate Cây Mai and Shiwan glazed ceramic dioramas depicting classical legends',
         ],
       },
       zh: {
@@ -312,10 +312,10 @@ export const starterChallenges: Challenge[] = [
         description: '探索堤岸逾260年历史的穗城会馆天井与屋脊陶塑艺术。',
         question: '天后宫（穗城会馆）屋脊与檐口最突出的艺术特色是什么？',
         options: [
-          '展现传统戏曲典故的梅树窑与石湾琉璃陶塑群',
           '七层整石青石钟塔',
           '莲花图案彩色玻璃穹顶',
           '屋顶半月池上的石桥结构',
+          '展现传统戏曲典故的梅树窑与石湾琉璃陶塑群',
         ],
       },
     },
@@ -334,8 +334,8 @@ export const starterChallenges: Challenge[] = [
           'Chiêm ngưỡng sự giao thoa kiến trúc Á – Âu, gạch bông cổ và thang máy gỗ đầu tiên của Sài Gòn.',
         question: 'Tòa nhà chính của Bảo tàng Mỹ thuật TP.HCM trước đây gắn liền với gia tộc thương nhân nào?',
         options: [
-          'Gia tộc Chú Hỏa (Hứa Bổn Hòa)',
           'Gia tộc Bạch Thái Bưởi',
+          'Gia tộc Chú Hỏa (Hứa Bổn Hòa)',
           'Gia tộc Công tử Bạc Liêu',
           'Gia tộc Trịnh Hoài Đức',
         ],
@@ -346,8 +346,8 @@ export const starterChallenges: Challenge[] = [
           'Admire the East-meets-West architecture, vintage encaustic tiles, and Saigon’s earliest wooden elevator.',
         question: 'With which merchant family was the Fine Arts Museum building originally associated?',
         options: [
-          'The Chú Hỏa (Hứa Bổn Hòa) family',
           'The Bạch Thái Bưởi family',
+          'The Chú Hỏa (Hứa Bổn Hòa) family',
           'The Bạc Liêu Prince family',
           'The Trịnh Hoài Đức family',
         ],
@@ -357,8 +357,8 @@ export const starterChallenges: Challenge[] = [
         description: '欣赏中西合璧的建筑美学、复古花砖与西贡最早的木制电梯。',
         question: '胡志明市美术馆主楼原是哪位著名华商家族的府邸？',
         options: [
-          '火叔（许本和）家族',
           '白泰贞家族',
+          '火叔（许本和）家族',
           '薄寮公子家族',
           '郑怀德家族',
         ],
@@ -379,9 +379,9 @@ export const starterChallenges: Challenge[] = [
           'Đi giữa khu chợ đầu mối sầm uất bậc nhất Chợ Lớn với tháp đồng hồ mái chồng diêm và sân vườn trung tâm.',
         question: 'Ai là thương nhân đã hiến tặng kinh phí xây dựng Chợ Bình Tây vào thập niên 1920?',
         options: [
-          'Thương nhân Quách Đàm (Thông Hiệp)',
           'Thương nhân Lý Văn Phức',
           'Thương nhân Trương Vĩnh Ký',
+          'Thương nhân Quách Đàm (Thông Hiệp)',
           'Thương nhân Nguyễn Hữu Cảnh',
         ],
       },
@@ -391,9 +391,9 @@ export const starterChallenges: Challenge[] = [
           'Walk through Chợ Lớn’s grand wholesale market with its tiered roof clock tower and central courtyard.',
         question: 'Which merchant funded the construction of Bình Tây Market in the 1920s?',
         options: [
-          'Merchant Quách Đàm (Thông Hiệp)',
           'Merchant Lý Văn Phức',
           'Scholar Trương Vĩnh Ký',
+          'Merchant Quách Đàm (Thông Hiệp)',
           'General Nguyễn Hữu Cảnh',
         ],
       },
@@ -402,9 +402,9 @@ export const starterChallenges: Challenge[] = [
         description: '漫步堤岸最繁忙的批发市场，领略重檐屋顶钟楼与中央庭院布局。',
         question: '20世纪20年代捐资兴建平西市场的著名华商是谁？',
         options: [
-          '华商郭琰（通合）',
           '学者李文馥',
           '学者张永记',
+          '华商郭琰（通合）',
           '统率阮有镜',
         ],
       },
@@ -469,10 +469,10 @@ export const starterChallenges: Challenge[] = [
           'Ngắm tháp chuông vươn cao và các đường diềm hoa văn trắng nổi bật trên nền tường hồng tại Quận 3.',
         question: 'Nhà thờ Tân Định trên đường Hai Bà Trưng gây ấn tượng bởi sự kết hợp phong cách kiến trúc nào?',
         options: [
-          'Sự giao thoa giữa kiến trúc Roman, Gothic và các chi tiết trang trí Baroque',
           'Kiến trúc nhà sàn gỗ truyền thống Tây Nguyên',
           'Kiến trúc tối giản kính và thép đương đại',
           'Kiến trúc đền tháp Chăm Pa cổ',
+          'Sự giao thoa giữa kiến trúc Roman, Gothic và các chi tiết trang trí Baroque',
         ],
       },
       en: {
@@ -481,10 +481,10 @@ export const starterChallenges: Challenge[] = [
           'Admire the soaring bell tower and white openwork trim set against the rose-pink facade on Hai Bà Trưng Street.',
         question: 'Which architectural styles blend together in Tân Định Church?',
         options: [
-          'A synthesis of Romanesque, Gothic, and Baroque ornamental details',
           'Central Highlands traditional wooden stilt architecture',
           'Contemporary minimalist glass-and-steel design',
           'Ancient Cham brick sanctuary tower architecture',
+          'A synthesis of Romanesque, Gothic, and Baroque ornamental details',
         ],
       },
       zh: {
@@ -492,10 +492,10 @@ export const starterChallenges: Challenge[] = [
         description: '欣赏二征夫人街上高耸的钟楼与粉红墙面上的白色镂空花饰。',
         question: '新定教堂融合了哪些欧洲建筑风格？',
         options: [
-          '罗马式、哥特式与巴洛克装饰细节的巧妙融合',
           '西原地区传统木制高脚屋建筑',
           '当代极简玻璃与钢结构设计',
           '古代占婆红砖塔庙建筑',
+          '罗马式、哥特式与巴洛克装饰细节的巧妙融合',
         ],
       },
     },

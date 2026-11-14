@@ -21,13 +21,27 @@ export const getViewer = cache(async (): Promise<Viewer | null> => {
     db.from('user_roles').select('role').eq('user_id', user.id).maybeSingle(),
   ]);
   if (profile.error || role.error) throw new Error('ACCOUNT_LOAD_FAILED');
+  const appProviders = Array.isArray(user.app_metadata?.providers)
+    ? user.app_metadata.providers.filter((p): p is string => typeof p === 'string')
+    : [];
+  const primaryProvider =
+    typeof user.app_metadata?.provider === 'string' ? [user.app_metadata.provider] : [];
+  const oauthProvider =
+    typeof user.app_metadata?.oauth_provider === 'string' ? [user.app_metadata.oauth_provider] : [];
   return {
     id: user.id,
     email: user.email || '',
     profile: profile.data as Profile,
     admin: role.data?.role === 'admin',
     acceptedTerms: acceptedCurrentTerms(profile.data),
-    providers: [...new Set((user.identities || []).map((identity) => identity.provider))],
+    providers: [
+      ...new Set([
+        ...(user.identities || []).map((identity) => identity.provider),
+        ...appProviders,
+        ...primaryProvider,
+        ...oauthProvider,
+      ]),
+    ],
   };
 });
 export const getHcmPlacesData = cache(async (): Promise<Heritage[]> => {
@@ -58,8 +72,9 @@ export const getChallenges = cache(async (): Promise<Challenge[]> => {
     .eq('status', 'published')
     .order('created_at')
     .limit(200);
-  if (error) throw new Error('CHALLENGES_LOAD_FAILED');
-  return data as Challenge[];
+  if (error || !data?.length) return starterChallenges;
+  const starterIds = new Set(starterChallenges.map((c) => c.id));
+  return [...starterChallenges, ...(data as Challenge[]).filter((c) => !starterIds.has(c.id))];
 });
 export async function getPersonalData(): Promise<{ saved: Saved[]; progress: Progress[] }> {
   const viewer = await getViewer();

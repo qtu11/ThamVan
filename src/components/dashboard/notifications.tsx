@@ -28,16 +28,36 @@ export function PushSettings({
         !('Notification' in window)
       )
         throw new Error(
-          'Thiết bị chưa hỗ trợ Web Push. Trên iPhone, thêm website vào Màn hình chính rồi mở lại từ biểu tượng.',
+          c(
+            'Thiết bị chưa hỗ trợ Web Push. Trên iPhone, thêm website vào Màn hình chính rồi mở lại từ biểu tượng.',
+            'This browser does not support Web Push. On iPhone, add the site to your Home Screen first.',
+            '当前浏览器不支持 Web Push。在 iPhone 上请先添加到主屏幕并从图标打开。',
+          ),
         );
       if (!ready || !signedIn)
-        throw new Error('Cần đăng nhập và cấu hình kênh thông báo trước khi kết nối.');
+        throw new Error(
+          c(
+            'Cần đăng nhập và cấu hình kênh thông báo trước khi kết nối.',
+            'Sign in and wait for notification service setup before subscribing.',
+            '需先登录并等待推送通道配置完成后才可订阅。',
+          ),
+        );
       if (action === 'test') {
         const result = await api('/api/push', { action: 'test' });
         if (!result.sent)
-          throw new Error('Chưa có thiết bị nhận được yêu cầu gửi. Hãy bật thông báo rồi thử lại.');
+          throw new Error(
+            c(
+              'Chưa có thiết bị nhận được yêu cầu gửi. Hãy bật thông báo rồi thử lại.',
+              'No subscribed device accepted the test push. Enable notifications and try again.',
+              '尚无设备接收测试推送，请先开启通知后再试。',
+            ),
+          );
         setMessage(
-          `Kênh push đã chấp nhận gửi đến ${result.sent} thiết bị. Việc hiển thị phụ thuộc cài đặt hệ điều hành.`,
+          c(
+            `Kênh push đã chấp nhận gửi đến ${result.sent} thiết bị. Việc hiển thị phụ thuộc cài đặt hệ điều hành.`,
+            `Push gateway accepted delivery to ${result.sent} device(s). Display depends on OS notification settings.`,
+            `推送网关已接收发往 ${result.sent} 台设备的请求，最终展示取决于系统设置。`,
+          ),
         );
         return;
       }
@@ -51,13 +71,23 @@ export function PushSettings({
           await api('/api/push', { action: 'unsubscribe', endpoint: existing.endpoint });
           await existing.unsubscribe();
         }
-        setMessage('Đã tắt thông báo trên thiết bị này.');
+        setMessage(
+          c(
+            'Đã tắt thông báo trên thiết bị này.',
+            'Notifications disabled on this device.',
+            '已在此设备上停用通知。',
+          ),
+        );
         return;
       }
       const permission = await permissionRequest;
       if (permission !== 'granted')
         throw new Error(
-          'Chưa được cấp quyền thông báo. Bạn có thể thay đổi quyền trong cài đặt trình duyệt.',
+          c(
+            'Chưa được cấp quyền thông báo. Bạn có thể thay đổi quyền trong cài đặt trình duyệt.',
+            'Notification permission was not granted. You can update permission in browser settings.',
+            '尚未授予通知权限，您可在浏览器设置中调整。',
+          ),
         );
       const raw = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!;
       const decoded = atob(
@@ -76,10 +106,24 @@ export function PushSettings({
         endpoint: subscription.endpoint,
         keys: json.keys,
       });
-      setMessage('Đã kết nối thông báo cho thiết bị này.');
+      setMessage(
+        c(
+          'Đã kết nối thông báo cho thiết bị này.',
+          'Notifications connected for this device.',
+          '已为此设备绑定通知推送。',
+        ),
+      );
     } catch (error) {
       setError(true);
-      setMessage(error instanceof Error ? error.message : 'Không kết nối được thông báo.');
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : c(
+              'Không kết nối được thông báo.',
+              'Unable to connect notifications.',
+              '无法连接推送通知。',
+            ),
+      );
     } finally {
       setBusy(false);
     }
@@ -88,7 +132,7 @@ export function PushSettings({
     <section className="dash-panel">
       <div className="dash-panel-heading">
         <div>
-          <small>WEB PUSH</small>
+          <small>{c('THÔNG BÁO TRÌNH DUYỆT', 'WEB PUSH', '网页推送通知')}</small>
           <h2>{c('Thông báo đến điện thoại', 'Notifications on your phone', '手机通知')}</h2>
         </div>
         <Smartphone size={25} />

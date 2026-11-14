@@ -1,8 +1,18 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { createServerClient } from '@supabase/ssr';
+import { siteUrl } from '@/lib/env';
 export async function proxy(request: NextRequest) {
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
   const dev = process.env.NODE_ENV !== 'production';
+  if (dev && !request.nextUrl.pathname.startsWith('/api/') && request.nextUrl.hostname === '127.0.0.1') {
+    const canonical = new URL(siteUrl());
+    if (canonical.hostname === 'localhost' && canonical.port === request.nextUrl.port) {
+      return NextResponse.redirect(
+        new URL(request.nextUrl.pathname + request.nextUrl.search, canonical.origin),
+        307,
+      );
+    }
+  }
   const supabaseOrigin = process.env.NEXT_PUBLIC_SUPABASE_URL
     ? new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin
     : '';
@@ -29,7 +39,14 @@ export async function proxy(request: NextRequest) {
   headers.set('x-locale', ['vi', 'en', 'zh'].includes(locale) ? locale : 'vi');
   headers.set('x-app-path', request.nextUrl.pathname + request.nextUrl.search);
   let response = NextResponse.next({ request: { headers } });
-  if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY) {
+  const skipAuthRefresh = /^\/api\/(tiles|route|locate)(\/|$)/.test(request.nextUrl.pathname);
+  const hasAuthCookie = request.cookies.getAll().some((cookie) => cookie.name.startsWith('sb-'));
+  if (
+    !skipAuthRefresh &&
+    hasAuthCookie &&
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+  ) {
     const db = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL,
       process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
@@ -50,7 +67,9 @@ export async function proxy(request: NextRequest) {
   }
   response.headers.set('Content-Security-Policy', csp);
   // Auth and user-dependent responses must never be cached by shared CDNs.
-  response.headers.set('Cache-Control', 'private, no-store');
+  if (!request.nextUrl.pathname.startsWith('/api/tiles')) {
+    response.headers.set('Cache-Control', 'private, no-store');
+  }
   return response;
 }
 export const config = {

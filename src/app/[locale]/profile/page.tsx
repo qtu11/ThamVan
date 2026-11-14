@@ -1,29 +1,61 @@
 import Link from 'next/link';
 import { headers } from 'next/headers';
 import { Award, ArrowUpRight } from 'lucide-react';
-import { getViewer, getPersonalData, getChallenges } from '@/lib/data';
-import { isLocale } from '@/lib/types';
+import { getViewer, getPersonalData, getChallenges, getAllMapPlaces } from '@/lib/data';
+import { isLocale, kinds } from '@/lib/types';
 import { t } from '@/lib/i18n';
 import { ExplorerProfileHeader, Preferences, AccountControls } from '@/components/profile';
+import { PersonalJourney } from '@/components/personal-journey';
 import { hasGoogleAuth } from '@/lib/env';
+import './profile.css';
 
 export default async function ProfilePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
   const locale = isLocale(raw) ? raw : 'vi';
-  const viewer = await getViewer();
-  const personal = viewer ? await getPersonalData() : null;
-  const challenges = viewer ? await getChallenges() : [];
-  const completed = personal?.progress.filter((p) => p.completed_at) || [];
+  const [viewer, personal, challenges, allEntries] = await Promise.all([
+    getViewer(),
+    getPersonalData(),
+    getChallenges(),
+    getAllMapPlaces(),
+  ]);
+  const safePersonal = viewer ? personal : null;
+  const completed = safePersonal?.progress.filter((p) => p.completed_at) || [];
+  const savedList = safePersonal?.saved || [];
+  const savedIds = new Set(savedList.map((s) => s.entry_id));
+  const savedEntries = allEntries.filter((e) => savedIds.has(e.id));
+  const topicTotals = kinds
+    .map((kind) => {
+      const total = allEntries.filter((e) => e.kind === kind).length;
+      const done = savedEntries.filter((e) => e.kind === kind).length;
+      return { kind, done, total };
+    })
+    .filter((item) => item.total > 0);
+  const visitedCount = savedList.filter((s) => s.visited_at).length;
+
   return (
     <div className="container section">
       <ExplorerProfileHeader
         locale={locale}
         viewer={viewer}
         completedCount={completed.length}
-        savedCount={personal?.saved.length || 0}
+        savedCount={savedList.length}
+        visitedCount={visitedCount}
+        progress={safePersonal?.progress || []}
+        topicTotals={topicTotals}
+        savedEntries={savedEntries}
+        savedRecords={savedList}
+        challenges={challenges}
       />
 
-      {personal && challenges.length > 0 && (
+      <PersonalJourney
+        locale={locale}
+        viewer={viewer}
+        saved={savedList}
+        progress={safePersonal?.progress || []}
+        entries={savedEntries}
+      />
+
+      {safePersonal && challenges.length > 0 && (
         <div className="badge-collection">
           {challenges.map((c) => {
             const earned = completed.some((p) => p.challenge_id === c.id);

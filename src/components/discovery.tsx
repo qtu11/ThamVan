@@ -1,19 +1,22 @@
 'use client';
-import { useEffect, useState, useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
   ArrowRight,
+  Image as ImageIcon,
   LocateFixed,
   MapPin,
   Search,
   SlidersHorizontal,
   Navigation,
+  X,
 } from 'lucide-react';
 import type { Heritage, Locale, Kind, Profile } from '@/lib/types';
 import { kinds, textFor } from '@/lib/types';
 import { distanceKm, normalizeSearch, type Coordinates } from '@/lib/geo';
 import { t } from '@/lib/i18n';
+import { copy } from '@/lib/locale-copy';
 import { api, Empty, HeritageCard, Photo, Status, errorText } from './ui';
 export function SearchBox({ locale, initial = '' }: { locale: Locale; initial?: string }) {
   return (
@@ -53,7 +56,9 @@ export function DiscoveryList({
   const [query, setQuery] = useState(initialQuery),
     [kind, setKind] = useState(initialKind),
     [region, setRegion] = useState(initialRegion),
+    [withPhotoOnly, setWithPhotoOnly] = useState(false),
     [page, setPage] = useState(1);
+  const topRef = useRef<HTMLDivElement>(null);
   const source = JSON.stringify([initialQuery, initialKind, initialRegion]);
   const [previousSource, setPreviousSource] = useState(source);
   // Synchronize browser navigation without remounting the input or losing focus while typing.
@@ -64,14 +69,26 @@ export function DiscoveryList({
     setRegion(initialRegion);
     setPage(1);
   }
-  const filtered = entries.filter(
-    (e) =>
-      (!kind || e.kind === kind) &&
-      (!region || e.region === region) &&
-      normalizeSearch(`${e.name} ${e.region} ${textFor(e.translations, locale).summary}`).includes(
-        normalizeSearch(query),
-      ),
-  );
+  const tokens = normalizeSearch(query).trim().split(/\s+/).filter(Boolean);
+  const filtered = entries.filter((e) => {
+    if (kind && e.kind !== kind) return false;
+    if (region && e.region !== region) return false;
+    if (withPhotoOnly && !e.image) return false;
+    if (!tokens.length) return true;
+    const haystack = normalizeSearch(
+      [
+        e.id,
+        e.name,
+        e.region,
+        e.address || '',
+        e.category || '',
+        e.categoryGroup || '',
+        ...(e.aliases || []),
+        textFor(e.translations, locale).summary,
+      ].join(' '),
+    );
+    return tokens.every((token) => haystack.includes(token));
+  });
   function filter(q: string, k: string, r: string) {
     setQuery(q);
     setKind(k);
@@ -83,9 +100,15 @@ export function DiscoveryList({
     if (r) params.set('region', r);
     router.replace(`/${locale}/explore${params.size ? `?${params}` : ''}`, { scroll: false });
   }
+  function changePage(nextPage: number) {
+    setPage(nextPage);
+    topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  const hasActiveFilter = Boolean(query || kind || region || withPhotoOnly);
+  const photoCount = entries.filter((e) => Boolean(e.image)).length;
   return (
     <>
-      <div className="discovery-controls">
+      <div className="discovery-controls" ref={topRef}>
         <div className="search-box">
           <Search size={20} />
           <label className="sr-only" htmlFor="filter-search">
@@ -125,9 +148,40 @@ export function DiscoveryList({
           </button>
         ))}
       </div>
-      <p className="result-meta" aria-live="polite">
-        {filtered.length} {t(locale, 'resultCount')}
-      </p>
+      <div className="explore-filter-bar">
+        <p className="result-meta" aria-live="polite">
+          {filtered.length} {t(locale, 'resultCount')}
+        </p>
+        <div className="explore-filter-actions">
+          {photoCount > 0 && photoCount < entries.length && (
+            <button
+              type="button"
+              className={`explore-toggle-chip ${withPhotoOnly ? 'active' : ''}`}
+              aria-pressed={withPhotoOnly}
+              onClick={() => {
+                setWithPhotoOnly((v) => !v);
+                setPage(1);
+              }}
+            >
+              <ImageIcon size={14} />
+              {copy(locale, 'Chỉ điểm có ảnh tư liệu', 'Archival photo only', '仅含实景档案图')}
+            </button>
+          )}
+          {hasActiveFilter && (
+            <button
+              type="button"
+              className="explore-clear-btn"
+              onClick={() => {
+                setWithPhotoOnly(false);
+                filter('', '', '');
+              }}
+            >
+              <X size={14} />
+              {copy(locale, 'Xóa bộ lọc', 'Clear filters', '清除筛选')}
+            </button>
+          )}
+        </div>
+      </div>
       {filtered.length ? (
         <div className="card-grid">
           {filtered.slice((page - 1) * 9, page * 9).map((e, index) => (
@@ -142,7 +196,7 @@ export function DiscoveryList({
           <button
             className="button secondary"
             disabled={page === 1}
-            onClick={() => setPage(page - 1)}
+            onClick={() => changePage(page - 1)}
           >
             {t(locale, 'previous')}
           </button>
@@ -152,7 +206,7 @@ export function DiscoveryList({
           <button
             className="button secondary"
             disabled={page * 9 >= filtered.length}
-            onClick={() => setPage(page + 1)}
+            onClick={() => changePage(page + 1)}
           >
             {t(locale, 'next')}
           </button>

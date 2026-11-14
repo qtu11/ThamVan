@@ -1,7 +1,9 @@
 import { z } from 'zod';
 import { route, readJson, requireViewer, fail, ok } from '@/lib/api';
+import { copy } from '@/lib/locale-copy';
+import { isLocale } from '@/lib/types';
 import { sendUserPush, pushReady } from '@/lib/push';
-import { supabase } from '@/lib/supabase/server';
+import { supabase, supabaseAdmin } from '@/lib/supabase/server';
 const schema = z.discriminatedUnion('action', [
   z.object({
     action: z.literal('review'),
@@ -44,13 +46,28 @@ export const POST = route(async (request) => {
       .select('user_id')
       .eq('id', body.id)
       .maybeSingle();
-    if (item.data?.user_id)
+    if (item.data?.user_id) {
+      let targetLocale: 'vi' | 'en' | 'zh' = 'vi';
+      if (process.env.SUPABASE_SERVICE_ROLE_KEY) {
+        const profile = await supabaseAdmin()
+          .from('profiles')
+          .select('locale')
+          .eq('id', item.data.user_id)
+          .maybeSingle();
+        if (profile.data?.locale && isLocale(profile.data.locale)) {
+          targetLocale = profile.data.locale;
+        }
+      }
+      const title = body.approve
+        ? copy(targetLocale, 'Địa điểm đã được duyệt', 'Submission approved', '地点已通过审核')
+        : copy(targetLocale, 'Đề xuất cần điều chỉnh', 'Submission needs updates', '建议修改提交内容');
       await sendUserPush(
         item.data.user_id,
-        body.approve ? 'Địa điểm đã được duyệt' : 'Đề xuất cần điều chỉnh',
+        title,
         body.note,
-        '/vi/dashboard?tab=contributions',
+        `/${targetLocale}/dashboard?tab=contributions`,
       ).catch(() => {});
+    }
   }
   return ok({ success: true });
 });

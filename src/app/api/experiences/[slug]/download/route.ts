@@ -2,6 +2,7 @@ import { findExperience, experienceText } from '@/data/experiences';
 import { guideFor } from '@/data/walk-guides';
 import { ownsExperience } from '@/lib/commerce';
 import { getCatalog } from '@/lib/data';
+import { copy } from '@/lib/locale-copy';
 import { isLocale, textFor } from '@/lib/types';
 export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -18,7 +19,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
   const content = [
     `# THÁM VĂN — ${experienceText(item.title, locale)}`,
     experienceText(item.description, locale),
-    'Self-guided digital guide. Admission, meals and transport are excluded. Check opening hours and routes locally. Reference material and editorial observation prompts; not expert certification.',
+    copy(
+      locale,
+      'Hướng dẫn số tự khám phá. Không bao gồm vé vào cổng, ăn uống và phương tiện di chuyển. Vui lòng kiểm tra giờ mở cửa và lộ trình thực tế tại địa phương. Tài liệu tham khảo và gợi ý quan sát biên tập; không phải chứng nhận chuyên môn.',
+      'Self-guided digital guide. Admission, meals and transport are excluded. Check opening hours and routes locally. Reference material and editorial observation prompts; not expert certification.',
+      '自助数字导览指南，不含门票、餐饮及交通费用。请在当地核实开放时间与实际路线。本内容仅供参考与观察提示，不构成专业认证。',
+    ),
     ...item.stops.map((slug, index) => {
       const entry = entries.find((item) => item.slug === slug);
       if (!entry) return '';

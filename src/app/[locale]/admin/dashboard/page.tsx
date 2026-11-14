@@ -31,12 +31,11 @@ export default async function Page({
   if (!viewer) redirect(`/${locale}/auth/login?next=/${locale}/admin/dashboard`);
   if (!viewer.admin) notFound();
   const db = await supabase();
-  const result = await db.rpc('admin_workspace');
+  const [result, xp] = await Promise.all([db.rpc('admin_workspace'), db.rpc('admin_xp_summary')]);
+  const workspace = result.error ? null : (result.data as AdminWorkspace);
+  if (workspace && !xp.error)
+    workspace.xp_summary = xp.data as AdminWorkspace['xp_summary'];
   return (
-    <AdminDashboard
-      locale={locale}
-      data={result.error ? null : (result.data as AdminWorkspace)}
-      initialTab={tab}
-    />
+    <AdminDashboard locale={locale} data={workspace} initialTab={tab} />
   );
 }

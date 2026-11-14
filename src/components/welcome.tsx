@@ -18,7 +18,13 @@ export function Welcome({ locale }: { locale: Locale }) {
     <div className="welcome-card">
       <div className="welcome-symbol">
         {step === 0 ? (
-          <Image src="/images/logo.png" alt="THÁM VĂN" width={100} height={120} />
+          <Image
+            src="/images/logo.png"
+            alt="THÁM VĂN"
+            width={101}
+            height={120}
+            style={{ width: 101, height: 'auto' }}
+          />
         ) : step === 3 ? (
           <ShieldCheck size={64} />
         ) : step === 2 ? (
@@ -27,7 +33,13 @@ export function Welcome({ locale }: { locale: Locale }) {
           <Camera size={64} />
         )}
       </div>
-      <span className="eyebrow">THÁM VĂN · 0{step + 1}/04</span>
+      <span className="eyebrow">
+        {locale === 'en'
+          ? `SAIGON FIELD-GUIDE · 0${step + 1}/04`
+          : locale === 'zh'
+            ? `西贡文化手记 · 0${step + 1}/04`
+            : `SỔ TAY THỰC ĐỊA · 0${step + 1}/04`}
+      </span>
       <h1>
         {t(
           locale,
@@ -49,15 +61,15 @@ export function Welcome({ locale }: { locale: Locale }) {
       {step === 1 && (
         <div className="welcome-features">
           <span>
-            <Camera />
+            <Camera aria-hidden="true" />
             {t(locale, 'camera')}
           </span>
           <span>
-            <MapPin />
+            <MapPin aria-hidden="true" />
             {t(locale, 'nearby')}
           </span>
           <span>
-            <Trophy />
+            <Trophy aria-hidden="true" />
             {t(locale, 'challenges')}
           </span>
         </div>

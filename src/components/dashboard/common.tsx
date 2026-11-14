@@ -3,13 +3,14 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowUpRight, LoaderCircle } from 'lucide-react';
 import { api } from '@/components/ui';
+import { copy } from '@/lib/locale-copy';
 import { workspaceError } from '@/lib/workspace-errors';
 import type { Locale } from '@/lib/types';
 export function ActionForm({
   children,
   endpoint = '/api/workspace',
   values,
-  submit = 'Lưu thay đổi',
+  submit,
   disabled = false,
   locale,
   onSuccess,
@@ -26,6 +27,7 @@ export function ActionForm({
     [message, setMessage] = useState(''),
     [error, setError] = useState(false);
   const router = useRouter();
+  const submitLabel = submit || copy(locale, 'Lưu thay đổi', 'Save changes', '保存更改');
   return (
     <form
       className="dash-form"
@@ -37,7 +39,7 @@ export function ActionForm({
         try {
           const result = await api(endpoint, values(new FormData(event.currentTarget)));
           setError(false);
-          setMessage('Đã lưu thay đổi.');
+          setMessage(copy(locale, 'Đã lưu thay đổi.', 'Changes saved.', '更改已保存。'));
           onSuccess?.(result);
           router.refresh();
         } catch (error) {
@@ -50,7 +52,8 @@ export function ActionForm({
     >
       {children}
       <button className="button" disabled={disabled || busy}>
-        {busy ? <LoaderCircle className="spin" size={16} /> : <ArrowUpRight size={16} />} {submit}
+        {busy ? <LoaderCircle className="spin" size={16} /> : <ArrowUpRight size={16} />}{' '}
+        {submitLabel}
       </button>
       {message && (
         <p className={`status ${error ? 'danger' : 'success'}`} role={error ? 'alert' : 'status'}>
