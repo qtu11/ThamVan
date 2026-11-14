@@ -14,3 +14,10 @@ coverage/
 supabase/.temp/
 video/
 
+# Temporary research caches, quarantine and candidate images
+asset/place-photo-research/cache/
+asset/place-photo-research/source-cache/
+asset/place-photo-research/gallery-candidates/
+asset/quarantine/
+public/images/quảng cáo/
+
