@@ -5,6 +5,7 @@ export default defineConfig([
   ...nextVitals,
   ...nextTs,
   globalIgnores([
+    '_backup*/**',
     '.next/**',
     'node_modules/**',
     'test-results/**',

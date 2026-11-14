@@ -82,7 +82,17 @@ beforeEach(async () => {
     .mockReset()
     .mockResolvedValueOnce(provider(clues))
     .mockResolvedValueOnce(provider(grounded));
-  vi.stubGlobal('fetch', fetchMock);
+  // OpenStreetMap lookups are answered separately so the provider sequence stays intact.
+  vi.stubGlobal('fetch', (url: string | URL, init?: RequestInit) => {
+    const href = String(url);
+    if (href.includes('/reverse'))
+      return Promise.resolve(
+        Response.json({ name: 'Bảo tàng Hoa Văn', category: 'tourism', type: 'museum', address: { road: 'Lê Duẩn', city_district: 'Quận 1' } }),
+      );
+    if (href.includes('overpass') || href.includes('/interpreter'))
+      return Promise.resolve(Response.json({ elements: [] }));
+    return fetchMock(url, init);
+  });
   image = await sharp({ create: { width: 10, height: 10, channels: 3, background: 'red' } })
     .jpeg()
     .toBuffer();
@@ -116,6 +126,9 @@ it('runs normalization, quota, visual retrieval and grounded analysis, returning
   expect(second.messages[0].content).toContain('Operator-specific instruction');
   expect(second.messages[1].content[0].text).toContain(target.id);
   expect(second.messages[1].content[0].text).not.toContain('106.7');
+  expect(second.messages[1].content[0].text).toContain('Lê Duẩn, Quận 1');
+  expect(data.place.label).toBe('Lê Duẩn, Quận 1');
+  expect(JSON.stringify(data)).not.toMatch(/"latitude"|"accuracy/);
   expect(second).toHaveProperty('max_completion_tokens', 3000);
 });
 it('works without location and never falls back to IP coordinates', async () => {

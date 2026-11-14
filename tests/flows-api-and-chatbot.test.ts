@@ -145,25 +145,63 @@ describe('itinerary validation contract', () => {
 });
 
 describe('route & tiles API hardening', () => {
-  it('rejects out-of-range coordinates and calculates real Haversine fallback when OSRM fails', async () => {
+  it('rejects bad input and never fabricates a straight-line route when routing fails', async () => {
     const bad = await routeGet(
       new Request('http://localhost:3000/api/route?fromLat=999&fromLon=106.7&toLat=10.78&toLon=106.7'),
     );
     expect(bad.status).toBe(400);
     expect(await bad.json()).toEqual({ error: 'INVALID_COORDINATES' });
+    const badMode = await routeGet(
+      new Request(
+        'http://localhost:3000/api/route?fromLat=10.77&fromLon=106.7&toLat=10.78&toLon=106.7&mode=teleport',
+      ),
+    );
+    expect(badMode.status).toBe(400);
 
     vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('network down')));
-    const fallback = await routeGet(
+    const down = await routeGet(
       new Request(
         'http://localhost:3000/api/route?fromLat=10.7798&fromLon=106.6990&toLat=10.7530&toLon=106.6611',
       ),
     );
-    expect(fallback.status).toBe(200);
-    const data = await fallback.json();
-    expect(data.source).toBe('direct_fallback');
-    expect(data.distanceKm).toBeGreaterThan(4);
-    expect(data.durationMinutes).toBeGreaterThan(5);
-    expect(data.coordinates).toHaveLength(2);
+    expect(down.status).toBe(502);
+    expect(await down.json()).toEqual({ error: 'ROUTE_UNAVAILABLE' });
+  });
+
+  it('returns the real OSRM geometry and turn-by-turn steps', async () => {
+    const osrm = {
+      code: 'Ok',
+      routes: [
+        {
+          distance: 4321,
+          duration: 610,
+          geometry: { coordinates: [[106.699, 10.7798], [106.68, 10.77], [106.6611, 10.753]] },
+          legs: [
+            {
+              steps: [
+                { name: 'Lê Duẩn', distance: 300, duration: 40, maneuver: { type: 'depart', location: [106.699, 10.7798] } },
+                { name: 'Nam Kỳ Khởi Nghĩa', distance: 4000, duration: 560, maneuver: { type: 'turn', modifier: 'left', location: [106.68, 10.77] } },
+                { name: '', distance: 0, duration: 0, maneuver: { type: 'arrive', location: [106.6611, 10.753] } },
+              ],
+            },
+          ],
+        },
+      ],
+    };
+    const fetchMock = vi.fn().mockResolvedValue(Response.json(osrm));
+    vi.stubGlobal('fetch', fetchMock);
+    const response = await routeGet(
+      new Request(
+        'http://localhost:3000/api/route?fromLat=10.7798&fromLon=106.6990&toLat=10.7530&toLon=106.6611&mode=walking',
+      ),
+    );
+    expect(response.status).toBe(200);
+    const data = await response.json();
+    expect(data.mode).toBe('walking');
+    expect(data.distanceMeters).toBe(4321);
+    expect(data.line).toHaveLength(3);
+    expect(data.steps.map((step: { type: string }) => step.type)).toEqual(['depart', 'turn', 'arrive']);
+    expect(String(fetchMock.mock.calls[0][0])).toContain('routed-foot');
   });
 
   it('rejects invalid tile layers, traversal params, and HTML upstream error payloads', async () => {

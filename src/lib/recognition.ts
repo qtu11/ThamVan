@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { distanceKm, normalizeSearch } from './geo';
 import { textFor, type Heritage, type Locale } from './types';
+import type { PlaceContext } from './place-context';
 
 export const deviceLocationSchema = z.object({
   source: z.literal('device'),
@@ -19,8 +20,22 @@ export const imageCluesSchema = z.object({
   searchHints: z.array(shortText).max(8),
 });
 export type ImageClues = z.infer<typeof imageCluesSchema>;
+/** Where the picture came from: a live shutter press or an older photo from the library. */
+export const captureOrigins = ['camera', 'gallery'] as const;
+export type CaptureOrigin = (typeof captureOrigins)[number];
+const longText = z.string().trim().min(1).max(1200);
+/** The main thing in the frame: what it is, and what it is for at this particular spot. */
+export const subjectSchema = z.object({
+  name: shortText,
+  category: z.string().trim().max(120).nullable().default(null),
+  whatItIs: longText,
+  generalUse: z.string().trim().max(1200).nullable().default(null),
+  purposeHere: z.string().trim().max(1200).nullable().default(null),
+  certainty: z.enum(['high', 'medium', 'low']).catch('low'),
+});
 export const groundedVisionSchema = z.object({
   observation: z.string().trim().min(1).max(2000),
+  subject: subjectSchema.nullable().default(null),
   candidates: z
     .array(
       z.object({
@@ -35,6 +50,7 @@ export const groundedVisionSchema = z.object({
       z.object({
         name: shortText,
         description: z.string().trim().min(1).max(1000),
+        purpose: z.string().trim().max(1000).nullable().default(null),
         culturalContext: z.string().max(1000).nullable(),
         placeId: z.string().max(100).nullable(),
       }),
@@ -54,15 +70,51 @@ export type RecognitionCandidate = {
   distanceMeters: number | null;
   locationAssessment: 'nearby' | 'conflict' | 'uncertain' | 'unavailable';
 };
+export type RecognitionSubject = z.infer<typeof subjectSchema>;
+/** Location context shown to the visitor. Deliberately holds no coordinates, accuracy or IP. */
+export type RecognitionPlace = {
+  label: string | null;
+  feature: string | null;
+  nearby: { name: string; kind: string; distanceMeters: number }[];
+};
 export type RecognitionResult = {
   observation: string;
+  subject: RecognitionSubject | null;
   visibleText: string[];
   objects: z.infer<typeof groundedVisionSchema>['objects'];
   candidates: RecognitionCandidate[];
   limitations: string[];
   assessment: 'nearby_match' | 'location_conflict' | 'visual_only' | 'uncertain' | 'no_match';
-  location: { provided: boolean; accuracyMeters: number | null };
+  location: { provided: boolean; quality: 'precise' | 'approximate' | null };
+  place: RecognitionPlace | null;
+  origin: CaptureOrigin;
 };
+
+/**
+ * What the vision model is told about "here". Names, street-level address and distances only:
+ * raw coordinates never go to the AI provider.
+ */
+export function recognitionLocationContext(
+  context: PlaceContext | null,
+  location: DeviceLocation | null,
+  origin: CaptureOrigin,
+) {
+  if (!location) return { available: false as const };
+  return {
+    available: true as const,
+    capturedNow: origin === 'camera',
+    gpsQuality: location.accuracy <= 100 ? 'precise' : 'approximate',
+    address: context?.address?.label ?? null,
+    standingOn: context?.address?.feature
+      ? { name: context.address.feature, type: context.address.featureTag }
+      : null,
+    nearestRealPlaces: (context?.nearby || []).slice(0, 12).map((poi) => ({
+      name: poi.name,
+      type: poi.tag || poi.kind,
+      distanceMeters: poi.distanceMeters,
+    })),
+  };
+}
 
 /** Search the entire catalog, never only the first rows. */
 export function retrieveRecognitionPlaces(
@@ -141,10 +193,12 @@ export function recognitionCatalogContext(
 }
 
 export function finalizeRecognition(
-  parsed: z.infer<typeof groundedVisionSchema>,
+  parsed: z.input<typeof groundedVisionSchema>,
   clues: ImageClues,
   shortlist: Heritage[],
   location: DeviceLocation | null,
+  context: PlaceContext | null = null,
+  origin: CaptureOrigin = 'camera',
 ): RecognitionResult {
   const seen = new Set<string>();
   const candidates: RecognitionCandidate[] = [];
@@ -181,12 +235,25 @@ export function finalizeRecognition(
     });
   }
   const first = candidates[0];
+  const subject = parsed.subject
+    ? {
+        name: parsed.subject.name,
+        category: parsed.subject.category ?? null,
+        whatItIs: parsed.subject.whatItIs,
+        generalUse: parsed.subject.generalUse ?? null,
+        // A "here" claim needs a "here": without a device position it is dropped.
+        purposeHere: location ? (parsed.subject.purposeHere ?? null) : null,
+        certainty: parsed.subject.certainty ?? 'low',
+      }
+    : null;
   return {
     observation: parsed.observation,
+    subject,
     visibleText: clues.visibleText,
     candidates,
     objects: parsed.objects.map((object) => ({
       ...object,
+      purpose: object.purpose ?? null,
       placeId: object.placeId && seen.has(object.placeId) ? object.placeId : null,
       culturalContext: object.placeId && seen.has(object.placeId) ? object.culturalContext : null,
     })),
@@ -200,6 +267,20 @@ export function finalizeRecognition(
           : !location
             ? 'visual_only'
             : 'uncertain',
-    location: { provided: Boolean(location), accuracyMeters: location?.accuracy ?? null },
+    location: {
+      provided: Boolean(location),
+      quality: location ? (location.accuracy <= 100 ? 'precise' : 'approximate') : null,
+    },
+    place:
+      location && context
+        ? {
+            label: context.address?.label ?? null,
+            feature: context.address?.feature ?? null,
+            nearby: context.nearby
+              .slice(0, 5)
+              .map(({ name, kind, distanceMeters }) => ({ name, kind, distanceMeters })),
+          }
+        : null,
+    origin,
   };
 }

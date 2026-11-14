@@ -6,7 +6,7 @@ import { catalog } from '@/data/catalog';
 // Render the actual result component with deterministic API-shaped fixtures.
 // This checks the result UI without introducing a fake login route in the application.
 test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('tv-permission-notice', 'accepted'));
+  await page.addInitScript(() => localStorage.setItem('tv-device-consent', JSON.stringify({ version: 1, acceptedAt: '2026-11-14T00:00:00Z', location: true, terms: true, camera: true, photos: true })));
 });
 
 test('recognition result renders objects, sources and GPS conflict accessibly on mobile', async ({
@@ -19,8 +19,7 @@ test('recognition result renders objects, sources and GPS conflict accessibly on
   );
   await page.goto('/vi/camera');
   await page
-    .locator('.camera-layout > div')
-    .first()
+    .locator('.lens')
     .evaluate((element, html) => {
       element.innerHTML = html;
     }, markup);

@@ -1,29 +1,44 @@
 'use client';
 import dynamic from 'next/dynamic';
-import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
-  LocateFixed,
-  Search,
-  MapPin,
   ArrowUpRight,
-  Sparkles,
-  Camera,
+  Bike,
+  Car,
   ChevronDown,
-  X,
+  CornerUpRight,
+  ExternalLink,
+  Footprints,
+  Layers,
+  LoaderCircle,
+  LocateFixed,
+  MapPin,
   Navigation,
-  Info,
-  Compass,
+  Search,
+  Sparkles,
   Trophy,
+  X,
 } from 'lucide-react';
-import type { Challenge, Heritage, Locale, Profile } from '@/lib/types';
+import type { Challenge, Locale, Profile } from '@/lib/types';
 import { textFor } from '@/lib/types';
-import { distanceKm, normalizeSearch, type Coordinates } from '@/lib/geo';
+import { distanceKm, normalizeSearch } from '@/lib/geo';
 import { t } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
-import { useDiscoveryPreferences } from './discovery';
-import { Empty, Status } from './ui';
 import { hcmCategoryGroups } from '@/data/hcm-places';
+import { useDeviceConsent } from '@/lib/device-consent';
+import { useLiveLocation, type LocationFailure } from '@/lib/device-location';
+import type { Basemap, MapPlace, MapView, OsmPlace } from '@/lib/map-types';
+import {
+  distanceToLineMeters,
+  formatDistance,
+  formatDuration,
+  nextStepIndex,
+  stepText,
+  type RouteMode,
+  type RouteResult,
+} from '@/lib/routing';
+import { useDiscoveryPreferences } from './discovery';
 
 const CATEGORY_GROUP_LABELS: Record<string, { en: string; zh: string }> = {
   'Tín ngưỡng & Tâm linh': { en: 'Belief & Spiritual Sites', zh: '信仰与宗教场所' },
@@ -41,537 +56,462 @@ const CATEGORY_GROUP_LABELS: Record<string, { en: string; zh: string }> = {
   'Ngân hàng & Tài chính': { en: 'Banking & Finance', zh: '银行与金融建筑' },
   'Điểm đến & Tiện ích khác': { en: 'Civic & Other Landmarks', zh: '公共建筑与其他地标' },
 };
+const labelCategoryGroup = (group: string, locale: Locale) =>
+  locale === 'vi' ? group : (CATEGORY_GROUP_LABELS[group]?.[locale] ?? group);
 
-function labelCategoryGroup(group: string, locale: Locale): string {
-  if (locale === 'vi') return group;
-  return CATEGORY_GROUP_LABELS[group]?.[locale] ?? group;
-}
-
-function MapPlaceImg({
-  src,
-  alt,
-  className,
-  fallback,
-}: {
-  src: string;
-  alt: string;
-  className: string;
-  fallback: React.ReactNode;
-}) {
-  const [failed, setFailed] = useState(false);
-  if (failed) return <>{fallback}</>;
-  return (
-    /* eslint-disable-next-line @next/next/no-img-element */
-    <img
-      src={src}
-      alt={alt}
-      className={className}
-      loading="lazy"
-      onError={() => setFailed(true)}
-    />
-  );
-}
+const POI_KIND_LABELS: Record<string, [string, string, string]> = {
+  heritage: ['Di tích', 'Historic site', '历史遗迹'],
+  worship: ['Nơi thờ tự', 'Place of worship', '宗教场所'],
+  museum: ['Bảo tàng', 'Museum', '博物馆'],
+  attraction: ['Điểm tham quan', 'Attraction', '景点'],
+  park: ['Công viên', 'Park', '公园'],
+  cafe: ['Quán cà phê', 'Café', '咖啡馆'],
+  food: ['Ăn uống', 'Food & drink', '餐饮'],
+  market: ['Chợ', 'Market', '市场'],
+  shop: ['Mua sắm', 'Shopping', '购物'],
+  hotel: ['Lưu trú', 'Stay', '住宿'],
+  education: ['Trường học', 'Education', '教育'],
+  health: ['Y tế', 'Health', '医疗'],
+  culture: ['Văn hóa', 'Culture', '文化'],
+  service: ['Dịch vụ', 'Service', '服务'],
+  transport: ['Giao thông', 'Transport', '交通'],
+  other: ['Địa điểm', 'Place', '地点'],
+};
+const labelPoiKind = (kind: string, locale: Locale) =>
+  copy(locale, ...(POI_KIND_LABELS[kind] || POI_KIND_LABELS.other));
 
 const MapCanvas = dynamic(() => import('./map-canvas'), {
   ssr: false,
-  loading: () => <div className="skeleton skeleton-hero" />,
+  loading: () => <div className="atlas-canvas skeleton" />,
 });
 
-const PAGE_SIZE = 40;
+const PAGE_SIZE = 30;
+const AROUND_RADIUS = 900;
+
+type Target = { id: string; name: string; latitude: number; longitude: number };
+type Selection = { type: 'place'; id: string } | { type: 'poi'; id: string } | null;
+type Around = {
+  status: 'idle' | 'loading' | 'ready' | 'error';
+  places: OsmPlace[];
+  area: string | null;
+  origin: { latitude: number; longitude: number } | null;
+};
+
+function PlaceImage({ src, alt, className }: { src: string; alt: string; className: string }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return null;
+  return (
+    /* eslint-disable-next-line @next/next/no-img-element */
+    <img src={src} alt={alt} className={className} loading="lazy" onError={() => setFailed(true)} />
+  );
+}
+
+const failureText = (locale: Locale, failure: LocationFailure | null) =>
+  failure === 'insecure'
+    ? copy(
+        locale,
+        'Trình duyệt chỉ cho lấy vị trí khi trang chạy bằng HTTPS (hoặc localhost).',
+        'Browsers only share location on HTTPS (or localhost) pages.',
+        '浏览器仅在 HTTPS（或 localhost）页面上提供位置。',
+      )
+    : failure === 'denied'
+      ? copy(
+          locale,
+          'Bạn đã chặn quyền vị trí cho trang này. Hãy bật lại trong cài đặt trình duyệt rồi bấm định vị.',
+          'Location is blocked for this site. Re-enable it in your browser settings, then tap locate.',
+          '你已阻止本站使用位置。请在浏览器设置中重新开启，然后点击定位。',
+        )
+      : failure
+        ? copy(
+            locale,
+            'Chưa lấy được vị trí của thiết bị. Hãy bật GPS/định vị và thử lại ở nơi thoáng.',
+            'Could not get this device’s location. Turn on GPS/location and try again in the open.',
+            '无法获取本设备的位置。请开启 GPS/定位后在开阔处重试。',
+          )
+        : '';
 
 export function MapExplorer({
-  entries,
+  places,
   locale,
   focus,
   profile,
   challenges = [],
 }: {
-  entries: Heritage[];
+  places: MapPlace[];
   locale: Locale;
   focus?: string;
   profile?: Profile;
   challenges?: Challenge[];
 }) {
+  const c = useCallback(
+    (vi: string, en: string, zh: string) => copy(locale, vi, en, zh),
+    [locale],
+  );
+  const focused = useMemo(
+    () =>
+      focus
+        ? places.find((p) => p.slug === focus || p.id.toLowerCase() === focus.toLowerCase()) || null
+        : null,
+    [places, focus],
+  );
+
   const [query, setQuery] = useState('');
   const [categoryGroup, setCategoryGroup] = useState('');
-  const [region, setRegion] = useState(
-    focus
-      ? entries.find((e) => e.slug === focus || e.id.toLowerCase() === focus.toLowerCase())
-          ?.region || ''
-      : '',
-  );
-  const [photoFilter, setPhotoFilter] = useState<'all' | 'with-photo' | 'without-photo'>('all');
-  const [position, setPosition] = useState<Coordinates | null>(null);
-  const [accuracyMeters, setAccuracyMeters] = useState<number | null>(null);
-  const [locateTrigger, setLocateTrigger] = useState(0);
-  const [routeCoordinates, setRouteCoordinates] = useState<[number, number][]>([]);
-  const [routeInfo, setRouteInfo] = useState<{
-    distanceKm: number;
-    durationMinutes: number;
-  } | null>(null);
-  const [routingPending, setRoutingPending] = useState(false);
-  const [message, setMessage] = useState('');
-  const [pending, setPending] = useState(false);
-  const [selectedPlace, setSelectedPlace] = useState<Heritage | null>(() => {
-    if (!focus) return null;
-    return (
-      entries.find(
-        (e) => e.slug === focus || e.id.toLowerCase() === focus.toLowerCase(),
-      ) || null
-    );
-  });
-  const [detailModal, setDetailModal] = useState<Heritage | null>(null);
+  const [region, setRegion] = useState('');
+  const [nearOnly, setNearOnly] = useState(false);
+  const [tab, setTab] = useState<'places' | 'around'>('places');
   const [displayCount, setDisplayCount] = useState(PAGE_SIZE);
+  const [selection, setSelection] = useState<Selection>(
+    focused ? { type: 'place', id: focused.id } : null,
+  );
+  const [basemap, setBasemap] = useState<Basemap>('streets');
+  const [layersOpen, setLayersOpen] = useState(false);
+  const [view, setView] = useState<MapView | null>(
+    focused
+      ? { type: 'point', longitude: focused.longitude, latitude: focused.latitude, zoom: 16, nonce: 1 }
+      : null,
+  );
+  const [around, setAround] = useState<Around>({
+    status: 'idle',
+    places: [],
+    area: null,
+    origin: null,
+  });
+  const [mapCenter, setMapCenter] = useState<{ latitude: number; longitude: number } | null>(null);
+  const [route, setRoute] = useState<RouteResult | null>(null);
+  const [routeTarget, setRouteTarget] = useState<Target | null>(null);
+  const [routeMode, setRouteMode] = useState<RouteMode>('driving');
+  const [routeState, setRouteState] = useState<'idle' | 'waiting' | 'loading' | 'error'>('idle');
+  const [navigating, setNavigating] = useState(false);
+  const [arrived, setArrived] = useState(false);
 
-  const watchIdRef = useRef<number | null>(null);
-  const gpsActiveRef = useRef<boolean>(!focus);
-  const bestAccuracyRef = useRef<number>(Infinity);
-
+  const { consent } = useDeviceConsent();
+  const live = useLiveLocation();
+  const { fix, start: startLocation } = live;
   const { radius, store, ready } = useDiscoveryPreferences(profile);
 
-  const stopGpsWatch = useCallback(() => {
-    if (
-      watchIdRef.current !== null &&
-      typeof navigator !== 'undefined' &&
-      navigator.geolocation &&
-      typeof navigator.geolocation.clearWatch === 'function'
-    ) {
-      navigator.geolocation.clearWatch(watchIdRef.current);
-      watchIdRef.current = null;
-    }
+  const nonce = useRef(1);
+  const centredOnUser = useRef(Boolean(focused));
+  const aroundOrigin = useRef<{ latitude: number; longitude: number } | null>(null);
+  const aroundRequest = useRef<AbortController | null>(null);
+  const routeRequest = useRef<AbortController | null>(null);
+  const lastReroute = useRef(0);
+  const layersRef = useRef<HTMLDivElement>(null);
+
+  const flyTo = useCallback((latitude: number, longitude: number, zoom: number) => {
+    nonce.current += 1;
+    setView({ type: 'point', latitude, longitude, zoom, nonce: nonce.current });
   }, []);
 
-  const applyGpsFix = useCallback((coords: GeolocationCoordinates, forceCenter = false) => {
-    if (!gpsActiveRef.current) return;
-    const accuracy = typeof coords.accuracy === 'number' && coords.accuracy > 0 ? coords.accuracy : 50;
-    // Ignore sudden degraded coarse network fixes if we already have a much sharper GPS lock
-    if (!forceCenter && accuracy > bestAccuracyRef.current * 2.5 && bestAccuracyRef.current < 100) {
-      return;
-    }
-    if (accuracy < bestAccuracyRef.current) {
-      bestAccuracyRef.current = accuracy;
-    }
-    setPosition({
-      latitude: coords.latitude,
-      longitude: coords.longitude,
-    });
-    setAccuracyMeters(accuracy);
-    if (forceCenter) {
-      setLocateTrigger((n) => n + 1);
-    }
-  }, []);
-
-  const startGpsWatch = useCallback(() => {
-    if (
-      typeof navigator === 'undefined' ||
-      !navigator.geolocation ||
-      typeof navigator.geolocation.watchPosition !== 'function'
-    ) {
-      return;
-    }
-    stopGpsWatch();
-    try {
-      watchIdRef.current = navigator.geolocation.watchPosition(
-        (p) => {
-          applyGpsFix(p.coords, false);
-        },
-        () => {
-          // Keep current fix if watch encounters a transient timeout
-        },
-        {
-          enableHighAccuracy: true,
-          maximumAge: 0,
-          timeout: 20000,
-        },
-      );
-    } catch {
-      // Ignore if watchPosition is unsupported in test mocks
-    }
-  }, [applyGpsFix, stopGpsWatch]);
-
-  // Acquire true hardware/browser GPS location (never overwrite with coarse ISP IP)
-  const locateDevice = useCallback(
-    (isManual = true) => {
-      if (typeof navigator === 'undefined' || !navigator.geolocation) {
-        if (isManual) {
-          setMessage(t(locale, 'locationDenied'));
-        }
-        return;
-      }
-
-      gpsActiveRef.current = true;
-      bestAccuracyRef.current = Infinity;
-      if (isManual) {
-        setPending(true);
-        setMessage('');
-      }
-
-      navigator.geolocation.getCurrentPosition(
-        (p) => {
-          setRegion('');
-          setMessage('');
-          applyGpsFix(p.coords, true);
-          setPending(false);
-          startGpsWatch();
-        },
-        () => {
-          setPending(false);
-          if (isManual) {
-            setMessage(t(locale, 'locationDenied'));
-          }
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 12000,
-          maximumAge: 0,
-        },
-      );
-    },
-    [locale, applyGpsFix, startGpsWatch],
-  );
-
-  // Auto-request real GPS on mount when not focusing a specific place
+  // Start tracking without a second prompt when this device already agreed (camera gate or browser).
+  const consentLocation = consent?.location === true;
   useEffect(() => {
-    if (focus) return;
-    if (typeof navigator === 'undefined' || !navigator.geolocation) return;
-
     let cancelled = false;
-    navigator.geolocation.getCurrentPosition(
-      (p) => {
-        if (cancelled || !gpsActiveRef.current) return;
-        applyGpsFix(p.coords, true);
-        startGpsWatch();
-      },
-      () => {
-        // Silent on initial mount; user can click the GPS icon or pick a district
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 12000,
-        maximumAge: 0,
-      },
-    );
-
+    (async () => {
+      let granted = consentLocation;
+      if (!granted && navigator.permissions?.query) {
+        try {
+          const status = await navigator.permissions.query({ name: 'geolocation' });
+          granted = status.state === 'granted';
+        } catch {
+          /* Permissions API unavailable: wait for the visitor to tap locate. */
+        }
+      }
+      if (!cancelled && granted) startLocation();
+    })();
     return () => {
       cancelled = true;
-      stopGpsWatch();
     };
-  }, [focus, applyGpsFix, startGpsWatch, stopGpsWatch]);
+  }, [consentLocation, startLocation]);
 
-  // Extract distinct regions
-  const allRegions = useMemo(() => {
-    const list = [...new Set(entries.map((e) => e.region).filter(Boolean))];
-    return list.sort((a, b) => a.localeCompare(b, 'vi'));
-  }, [entries]);
+  const loadAround = useCallback(async (origin: { latitude: number; longitude: number }) => {
+    aroundRequest.current?.abort();
+    const controller = new AbortController();
+    aroundRequest.current = controller;
+    aroundOrigin.current = origin;
+    setAround((current) => ({ ...current, status: 'loading', origin }));
+    try {
+      const response = await fetch(
+        `/api/nearby?lat=${origin.latitude}&lon=${origin.longitude}&radius=${AROUND_RADIUS}&address=1`,
+        { signal: AbortSignal.any([controller.signal, AbortSignal.timeout(20_000)]) },
+      );
+      const data = await response.json();
+      if (!response.ok || !data.ok || !data.placesAvailable) throw new Error('unavailable');
+      setAround({
+        status: 'ready',
+        places: data.places as OsmPlace[],
+        area: typeof data.area === 'string' ? data.area : null,
+        origin,
+      });
+    } catch {
+      if (!controller.signal.aborted)
+        setAround((current) => ({ ...current, status: 'error', places: [], origin }));
+    }
+  }, []);
 
-  // Filter places
+  // First fix: centre on the visitor. Later fixes: refresh "around you" after a real move.
+  const hasFix = Boolean(fix);
+  const fixLatitude = fix?.latitude;
+  const fixLongitude = fix?.longitude;
+  useEffect(() => {
+    if (fixLatitude === undefined || fixLongitude === undefined) return;
+    const here = { latitude: fixLatitude, longitude: fixLongitude };
+    const timer = window.setTimeout(() => {
+      if (!centredOnUser.current) {
+        centredOnUser.current = true;
+        flyTo(here.latitude, here.longitude, 15.5);
+      }
+      if (!aroundOrigin.current || distanceKm(aroundOrigin.current, here) > 0.3)
+        void loadAround(here);
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [fixLatitude, fixLongitude, flyTo, loadAround]);
+
+  useEffect(
+    () => () => {
+      aroundRequest.current?.abort();
+      routeRequest.current?.abort();
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (!layersOpen) return;
+    const onPointer = (event: MouseEvent) => {
+      if (!layersRef.current?.contains(event.target as Node)) setLayersOpen(false);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setLayersOpen(false);
+    };
+    document.addEventListener('mousedown', onPointer);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onPointer);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [layersOpen]);
+
+  const regions = useMemo(
+    () =>
+      [...new Set(places.map((p) => p.region).filter(Boolean))].sort((a, b) =>
+        a.localeCompare(b, 'vi'),
+      ),
+    [places],
+  );
+
   const filtered = useMemo(() => {
     const tokens = normalizeSearch(query.trim()).split(/\s+/).filter(Boolean);
-    return entries.filter((e) => {
-      if (e.latitude === null || e.longitude === null) return false;
-
-      const hasPhoto = Boolean(e.hasImage || e.image);
-      if (photoFilter === 'with-photo' && !hasPhoto) return false;
-      if (photoFilter === 'without-photo' && hasPhoto) return false;
-
-      if (categoryGroup && categoryGroup !== 'Tất cả' && e.categoryGroup !== categoryGroup) {
-        return false;
-      }
-
-      if (region && e.region !== region) {
-        return false;
-      }
-
-      if (tokens.length > 0) {
-        const summary = textFor(e.translations, locale).summary;
+    const here =
+      fixLatitude !== undefined && fixLongitude !== undefined
+        ? { latitude: fixLatitude, longitude: fixLongitude }
+        : null;
+    return places
+      .map((place) => ({ place, distance: here ? distanceKm(here, place) * 1000 : null }))
+      .filter(({ place, distance }) => {
+        if (categoryGroup && place.categoryGroup !== categoryGroup) return false;
+        if (region && place.region !== region) return false;
+        if (nearOnly && distance !== null && distance > radius * 1000) return false;
+        if (!tokens.length) return true;
         const target = normalizeSearch(
-          `${e.name} ${e.address || ''} ${e.category || ''} ${e.categoryGroup || ''} ${e.region} ${(e.aliases || []).join(' ')} ${summary}`,
+          `${place.name} ${place.address} ${place.category} ${place.categoryGroup} ${place.region} ${place.description}`,
         );
-        if (!tokens.every((tok) => target.includes(tok))) return false;
-      }
+        return tokens.every((token) => target.includes(token));
+      })
+      .sort((a, b) =>
+        a.distance !== null && b.distance !== null
+          ? a.distance - b.distance
+          : a.place.name.localeCompare(b.place.name, 'vi'),
+      );
+  }, [places, query, categoryGroup, region, nearOnly, radius, fixLatitude, fixLongitude]);
+  const mapPlaces = useMemo(() => filtered.map((item) => item.place), [filtered]);
 
-      if (position) {
-        const d = distanceKm(position, { latitude: e.latitude, longitude: e.longitude });
-        if (d > radius) return false;
-      }
-
-      return true;
-    });
-  }, [entries, photoFilter, categoryGroup, region, query, position, radius, locale]);
-
-  // Reset pagination count on filter change
-  const filterKey = `${photoFilter}-${categoryGroup}-${region}-${query}-${position ? 'pos' : ''}-${radius}`;
-  const [prevFilterKey, setPrevFilterKey] = useState(filterKey);
-  if (prevFilterKey !== filterKey) {
-    setPrevFilterKey(filterKey);
+  const filterKey = `${query}|${categoryGroup}|${region}|${nearOnly}|${radius}|${tab}`;
+  const [seenFilterKey, setSeenFilterKey] = useState(filterKey);
+  if (seenFilterKey !== filterKey) {
+    setSeenFilterKey(filterKey);
     setDisplayCount(PAGE_SIZE);
   }
 
-  // Statistics
-  const totalWithPhotos = useMemo(
-    () => entries.filter((e) => e.hasImage || e.image).length,
-    [entries],
+  const selectedPlace =
+    selection?.type === 'place' ? places.find((p) => p.id === selection.id) || null : null;
+  const selectedPoi =
+    selection?.type === 'poi' ? around.places.find((p) => p.id === selection.id) || null : null;
+  const selectedTarget: Target | null = selectedPlace || selectedPoi;
+  const selectedDistance = fix && selectedTarget ? distanceKm(fix, selectedTarget) * 1000 : null;
+  const relatedChallenges = selectedPlace
+    ? challenges.filter((challenge) => challenge.entry_id === selectedPlace.id)
+    : [];
+
+  const select = useCallback(
+    (next: Exclude<Selection, null>, target: Target) => {
+      setSelection(next);
+      setNavigating(false);
+      flyTo(target.latitude, target.longitude, 16);
+    },
+    [flyTo],
   );
-  const filteredWithPhotos = useMemo(
-    () => filtered.filter((e) => e.hasImage || e.image).length,
-    [filtered],
-  );
 
-  // Request actual driving route to destination using accurate GPS first
-  const handleRequestRoute = useCallback(
-    async (place: Heritage) => {
-      if (!place.latitude || !place.longitude) return;
-
-      let currentPos = position;
-      if (!currentPos && typeof navigator !== 'undefined' && navigator.geolocation) {
-        setRoutingPending(true);
-        currentPos = await new Promise<Coordinates | null>((resolve) => {
-          navigator.geolocation.getCurrentPosition(
-            (p) => {
-              const coords = {
-                latitude: p.coords.latitude,
-                longitude: p.coords.longitude,
-              };
-              gpsActiveRef.current = true;
-              applyGpsFix(p.coords, true);
-              startGpsWatch();
-              resolve(coords);
-            },
-            () => resolve(null),
-            { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 },
-          );
-        });
-      }
-
-      if (!currentPos) {
-        setRoutingPending(false);
-        setMessage(t(locale, 'locationDenied'));
-        return;
-      }
-
-      setRoutingPending(true);
-      setMessage('');
+  const fetchRoute = useCallback(
+    async (
+      from: { latitude: number; longitude: number },
+      target: Target,
+      mode: RouteMode,
+      fit: boolean,
+    ) => {
+      routeRequest.current?.abort();
+      const controller = new AbortController();
+      routeRequest.current = controller;
+      setRouteState('loading');
       try {
-        const routeRes = await fetch(
-          `/api/route?fromLat=${currentPos.latitude}&fromLon=${currentPos.longitude}&toLat=${place.latitude}&toLon=${place.longitude}`,
+        const response = await fetch(
+          `/api/route?fromLat=${from.latitude}&fromLon=${from.longitude}&toLat=${target.latitude}&toLon=${target.longitude}&mode=${mode}`,
+          { signal: AbortSignal.any([controller.signal, AbortSignal.timeout(25_000)]) },
         );
-        if (routeRes.ok) {
-          const routeData = await routeRes.json();
-          if (routeData.ok && routeData.coordinates?.length > 0) {
-            setRouteCoordinates(routeData.coordinates);
-            setRouteInfo({
-              distanceKm: routeData.distanceKm,
-              durationMinutes: routeData.durationMinutes,
-            });
-            setSelectedPlace(place);
-            return;
-          }
+        const data = await response.json();
+        if (!response.ok || !data.ok || !Array.isArray(data.line) || data.line.length < 2)
+          throw new Error('unavailable');
+        setRoute(data as RouteResult);
+        setRouteState('idle');
+        if (fit) {
+          nonce.current += 1;
+          setView({ type: 'line', line: data.line, nonce: nonce.current });
         }
-        setMessage(
-          copy(
-            locale,
-            'Chưa thể tải tuyến đường lúc này. Bạn có thể mở chỉ đường trực tiếp qua Google Maps.',
-            'Could not load street directions right now. You can open direct navigation in Google Maps.',
-            '暂时无法加载街道路线，可直接通过 Google Maps 开启导航。',
-          ),
-        );
       } catch {
-        setMessage(
-          copy(
-            locale,
-            'Không thể kết nối dịch vụ vẽ tuyến đường lúc này.',
-            'Unable to connect to the routing service right now.',
-            '当前无法连接路线规划服务。',
-          ),
-        );
-      } finally {
-        setRoutingPending(false);
+        if (controller.signal.aborted) return;
+        setRoute(null);
+        setNavigating(false);
+        setRouteState('error');
       }
     },
-    [position, locale, applyGpsFix, startGpsWatch],
+    [],
   );
 
-  function clearRoute() {
-    setRouteCoordinates([]);
-    setRouteInfo(null);
-  }
+  const requestRoute = useCallback(
+    (target: Target, mode: RouteMode) => {
+      setRouteTarget(target);
+      setRouteMode(mode);
+      setArrived(false);
+      setNavigating(false);
+      if (fix) void fetchRoute(fix, target, mode, true);
+      else {
+        // Directions start from the real device position: ask for it, then route.
+        setRoute(null);
+        setRouteState('waiting');
+        startLocation();
+      }
+    },
+    [fix, fetchRoute, startLocation],
+  );
 
-  function handleSelect(place: Heritage) {
-    setSelectedPlace(place);
-  }
-
-  function handleOpenDetail(place: Heritage, e?: React.MouseEvent) {
-    if (e) e.stopPropagation();
-    setDetailModal(place);
-  }
-
+  // A route requested before the first fix is computed as soon as the device reports one.
   useEffect(() => {
-    if (!detailModal) return;
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') setDetailModal(null);
-    }
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [detailModal]);
+    if (
+      routeState !== 'waiting' ||
+      !routeTarget ||
+      fixLatitude === undefined ||
+      fixLongitude === undefined
+    )
+      return;
+    const timer = window.setTimeout(
+      () =>
+        void fetchRoute(
+          { latitude: fixLatitude, longitude: fixLongitude },
+          routeTarget,
+          routeMode,
+          true,
+        ),
+      0,
+    );
+    return () => window.clearTimeout(timer);
+  }, [routeState, routeTarget, routeMode, fixLatitude, fixLongitude, fetchRoute]);
 
-  const relatedChallenges = useMemo(
-    () => (selectedPlace ? challenges.filter((c) => c.entry_id === selectedPlace.id) : []),
-    [challenges, selectedPlace],
+  // While navigating: detect arrival, and re-route from the real position after a wrong turn.
+  useEffect(() => {
+    if (
+      !navigating ||
+      !route ||
+      !routeTarget ||
+      fixLatitude === undefined ||
+      fixLongitude === undefined
+    )
+      return;
+    const here = { latitude: fixLatitude, longitude: fixLongitude };
+    const timer = window.setTimeout(() => {
+      if (distanceKm(here, routeTarget) * 1000 < 35) {
+        setNavigating(false);
+        setArrived(true);
+        return;
+      }
+      if (
+        distanceToLineMeters(here, route.line) > 70 &&
+        Date.now() - lastReroute.current > 15_000
+      ) {
+        lastReroute.current = Date.now();
+        void fetchRoute(here, routeTarget, routeMode, false);
+      }
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [navigating, route, routeTarget, routeMode, fixLatitude, fixLongitude, fetchRoute]);
+
+  const clearRoute = useCallback(() => {
+    routeRequest.current?.abort();
+    setRoute(null);
+    setRouteTarget(null);
+    setRouteState('idle');
+    setNavigating(false);
+    setArrived(false);
+  }, []);
+
+  const locate = useCallback(() => {
+    if (fix) flyTo(fix.latitude, fix.longitude, 16.5);
+    else centredOnUser.current = false;
+    startLocation();
+  }, [fix, flyTo, startLocation]);
+
+  const onSelectPlace = useCallback(
+    (id: string) => {
+      const place = places.find((p) => p.id === id);
+      if (place) select({ type: 'place', id }, place);
+    },
+    [places, select],
   );
+  const onSelectPoi = useCallback(
+    (id: string) => {
+      const poi = around.places.find((p) => p.id === id);
+      if (poi) select({ type: 'poi', id }, poi);
+    },
+    [around.places, select],
+  );
+  const onClearSelection = useCallback(() => setSelection(null), []);
+  const onUserGesture = useCallback(() => setNavigating(false), []);
+
+  const currentStep = navigating && route && fix ? nextStepIndex(fix, route.steps) : -1;
+  const searchAreaVisible =
+    mapCenter !== null &&
+    around.status !== 'loading' &&
+    (!around.origin || distanceKm(around.origin, mapCenter) > 0.6);
+  const locationMessage = failureText(locale, live.failure);
+  const googleHref = (target: Target) =>
+    `https://www.google.com/maps/dir/?api=1&destination=${target.latitude},${target.longitude}`;
+  const modes: { id: RouteMode; Icon: typeof Car; label: string }[] = [
+    { id: 'driving', Icon: Car, label: c('Xe máy / ô tô', 'Motorbike / car', '摩托车 / 汽车') },
+    { id: 'walking', Icon: Footprints, label: c('Đi bộ', 'Walk', '步行') },
+    { id: 'cycling', Icon: Bike, label: c('Xe đạp', 'Cycle', '骑行') },
+  ];
+  const basemaps: { id: Basemap; label: string }[] = [
+    { id: 'streets', label: c('Bản đồ', 'Map', '地图') },
+    { id: 'light', label: c('Tối giản', 'Light', '简洁') },
+    { id: 'satellite', label: c('Vệ tinh', 'Satellite', '卫星') },
+  ];
 
   return (
-    <>
-      {/* Photo status tab bar */}
-      <div className="map-photo-tabs">
-        <button
-          type="button"
-          className={`map-photo-tab ${photoFilter === 'all' ? 'active' : ''}`}
-          onClick={() => setPhotoFilter('all')}
-        >
-          <span>{t(locale, 'photoFilterAll')}</span>
-          <span className="tab-count">{entries.length}</span>
-        </button>
-
-        <button
-          type="button"
-          className={`map-photo-tab has-photo-tab ${photoFilter === 'with-photo' ? 'active' : ''}`}
-          onClick={() => setPhotoFilter('with-photo')}
-        >
-          <Camera size={15} />
-          <span>{t(locale, 'photoFilterWith')}</span>
-          <span className="tab-count highlight">{totalWithPhotos}</span>
-        </button>
-
-        <button
-          type="button"
-          className={`map-photo-tab ${photoFilter === 'without-photo' ? 'active' : ''}`}
-          onClick={() => setPhotoFilter('without-photo')}
-        >
-          <span>{t(locale, 'photoFilterWithout')}</span>
-          <span className="tab-count">{entries.length - totalWithPhotos}</span>
-        </button>
-      </div>
-
-      {/* Selected place detail + related challenges */}
-      {selectedPlace && (
-        <section className="map-selected-card" aria-live="polite">
-          <div className="map-selected-media">
-            {selectedPlace.hasImage && selectedPlace.image ? (
-              <MapPlaceImg
-                key={selectedPlace.image}
-                src={selectedPlace.image}
-                alt={selectedPlace.name}
-                className="map-selected-img"
-                fallback={
-                  <span className="map-selected-placeholder">
-                    <MapPin size={22} />
-                  </span>
-                }
-              />
-            ) : (
-              <span className="map-selected-placeholder">
-                <MapPin size={22} />
-              </span>
-            )}
-            <span className="map-selected-category">
-              {selectedPlace.categoryGroup
-                ? labelCategoryGroup(selectedPlace.categoryGroup, locale)
-                : selectedPlace.category || t(locale, selectedPlace.kind)}
-            </span>
-          </div>
-          <div className="map-selected-body">
-            <h3>{selectedPlace.name}</h3>
-            <p className="map-selected-meta">
-              <MapPin size={13} />
-              {selectedPlace.address || selectedPlace.region}
-              {position &&
-                selectedPlace.latitude !== null &&
-                selectedPlace.longitude !== null && (
-                  <span className="map-selected-distance">
-                    ·{' '}
-                    {distanceKm(position, {
-                      latitude: selectedPlace.latitude,
-                      longitude: selectedPlace.longitude,
-                    }).toFixed(1)}{' '}
-                    km
-                  </span>
-                )}
-            </p>
-            {selectedPlace.description && (
-              <p className="map-selected-desc">{selectedPlace.description}</p>
-            )}
-            {selectedPlace.history &&
-              normalizeSearch(selectedPlace.history) !==
-                normalizeSearch(selectedPlace.description || '') && (
-                <p className="map-selected-desc">{selectedPlace.history}</p>
-              )}
-            <div className="map-selected-actions">
-              <button
-                type="button"
-                className="text-btn"
-                onClick={() => handleOpenDetail(selectedPlace)}
-              >
-                <Info size={13} /> {t(locale, 'placeDetails')}
-              </button>
-              <button
-                type="button"
-                className="text-btn route-btn"
-                disabled={routingPending}
-                onClick={() => handleRequestRoute(selectedPlace)}
-              >
-                <Compass size={13} /> {copy(locale, 'Hiện đường', 'Route', '显示路线')}
-              </button>
-              <Link
-                className="text-btn explore-link-btn"
-                href={`/${locale}/explore/${selectedPlace.slug}`}
-              >
-                {t(locale, 'open')}
-                <ArrowUpRight size={13} />
-              </Link>
-            </div>
-
-            <div className="map-selected-challenges">
-              <h4>
-                <Trophy size={15} />
-                {t(locale, 'relatedChallenges')}
-              </h4>
-              {relatedChallenges.length ? (
-                relatedChallenges.map((challenge) => (
-                  <Link
-                    key={challenge.id}
-                    className="map-selected-challenge"
-                    href={`/${locale}/challenges#${challenge.id}`}
-                  >
-                    <span className="map-selected-challenge-xp">
-                      <Sparkles size={11} />
-                      {challenge.points} XP
-                    </span>
-                    <strong>
-                      {textFor(challenge.translations, locale).title}
-                    </strong>
-                    <ArrowUpRight size={14} />
-                  </Link>
-                ))
-              ) : (
-                <p className="map-selected-empty">{t(locale, 'noRelatedChallenges')}</p>
-              )}
-            </div>
-          </div>
-          <button
-            type="button"
-            className="map-selected-close"
-            onClick={() => setSelectedPlace(null)}
-            aria-label={t(locale, 'close')}
-          >
-            <X size={16} />
-          </button>
-        </section>
-      )}
-
-      {/* Main control panel */}
-      <div className="map-controls">
-        <div className="search-box">
-          <Search size={18} />
+    <div className="atlas">
+      <aside
+        className="atlas-panel"
+        aria-label={c('Tìm kiếm và kết quả', 'Search and results', '搜索与结果')}
+      >
+        <div className="atlas-search">
+          <Search size={18} aria-hidden="true" />
           <label className="sr-only" htmlFor="map-search">
             {t(locale, 'search')}
           </label>
@@ -580,405 +520,580 @@ export function MapExplorer({
             type="search"
             maxLength={100}
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setTab('places');
+            }}
             placeholder={t(locale, 'searchPlaces')}
           />
           {query && (
-            <button
-              type="button"
-              className="clear-search-btn"
-              onClick={() => setQuery('')}
-              aria-label={t(locale, 'clear')}
-            >
-              <X size={14} />
+            <button type="button" onClick={() => setQuery('')} aria-label={t(locale, 'clear')}>
+              <X size={16} />
             </button>
           )}
         </div>
 
-        <label className="select-wrapper">
-          <span className="sr-only">{t(locale, 'categoryFilter')}</span>
-          <select
-            value={categoryGroup}
-            onChange={(e) => setCategoryGroup(e.target.value)}
-          >
-            <option value="">{t(locale, 'allCategories')}</option>
-            {hcmCategoryGroups
-              .filter((cat) => cat !== 'Tất cả')
-              .map((cat) => (
-                <option key={cat} value={cat}>
-                  {labelCategoryGroup(cat, locale)}
+        <div className="atlas-filters">
+          <label className="atlas-select">
+            <span className="sr-only">{t(locale, 'categoryFilter')}</span>
+            <select value={categoryGroup} onChange={(event) => setCategoryGroup(event.target.value)}>
+              <option value="">{t(locale, 'allCategories')}</option>
+              {hcmCategoryGroups
+                .filter((group) => group !== 'Tất cả')
+                .map((group) => (
+                  <option key={group} value={group}>
+                    {labelCategoryGroup(group, locale)}
+                  </option>
+                ))}
+            </select>
+            <ChevronDown size={14} aria-hidden="true" />
+          </label>
+          <label className="atlas-select">
+            <span className="sr-only">{t(locale, 'selectRegion')}</span>
+            <select value={region} onChange={(event) => setRegion(event.target.value)}>
+              <option value="">{t(locale, 'allRegions')}</option>
+              {regions.map((name) => (
+                <option key={name} value={name}>
+                  {name}
                 </option>
               ))}
-          </select>
-          <ChevronDown size={14} className="select-arrow" />
-        </label>
+            </select>
+            <ChevronDown size={14} aria-hidden="true" />
+          </label>
+        </div>
 
-        <label className="select-wrapper">
-          <span className="sr-only">{t(locale, 'selectRegion')}</span>
-          <select
-            value={region}
-            onChange={(e) => {
-              const nextRegion = e.target.value;
-              setRegion(nextRegion);
-              gpsActiveRef.current = false;
-              stopGpsWatch();
-              setPosition(null);
-              setAccuracyMeters(null);
-            }}
-          >
-            <option value="">{t(locale, 'allRegions')}</option>
-            {allRegions.map((r) => (
-              <option key={r} value={r}>
-                {r}
-              </option>
-            ))}
-          </select>
-          <ChevronDown size={14} className="select-arrow" />
-        </label>
-      </div>
-
-      {/* Clean Compact GPS & Discovery Radius Toolbar */}
-      <div className="map-location">
-        <div className="location-btn-group">
-          <button
-            type="button"
-            className={`icon-locate-btn ${position ? 'active' : ''}`}
-            onClick={() => locateDevice(true)}
-            disabled={pending || routingPending}
-            aria-label={t(locale, 'locateMe')}
-            title={t(locale, 'locateMe')}
-          >
-            <LocateFixed size={17} />
-          </button>
-
-          {position && (
-            <div className="gps-coords-pill">
-              <span className="gps-live-dot" aria-hidden="true" />
+        {hasFix && (
+          <div className="atlas-near">
+            <label className="atlas-near-toggle">
+              <input
+                type="checkbox"
+                checked={nearOnly}
+                onChange={(event) => setNearOnly(event.target.checked)}
+              />
               <span>
-                GPS {position.latitude.toFixed(4)}°N, {position.longitude.toFixed(4)}°E
-                {typeof accuracyMeters === 'number' && accuracyMeters > 0
-                  ? ` (±${Math.max(1, Math.round(accuracyMeters))}m)`
-                  : ''}
+                {c('Chỉ hiện trong bán kính', 'Only within', '仅显示半径')} <b>{radius} km</b>
               </span>
+            </label>
+            <input
+              type="range"
+              aria-label={t(locale, 'radius')}
+              disabled={!ready || !nearOnly}
+              value={radius}
+              min={3}
+              max={10}
+              step={1}
+              onChange={(event) => store(Number(event.target.value))}
+            />
+          </div>
+        )}
+
+        {routeTarget && (
+          <section className="atlas-route" aria-live="polite">
+            <header>
+              <div>
+                <small>{c('Chỉ đường đến', 'Directions to', '前往')}</small>
+                <strong>{routeTarget.name}</strong>
+              </div>
               <button
                 type="button"
-                className="gps-reset-icon-btn"
-                onClick={() => {
-                  gpsActiveRef.current = false;
-                  stopGpsWatch();
-                  setPosition(null);
-                  setAccuracyMeters(null);
-                  clearRoute();
-                }}
-                aria-label={t(locale, 'clear')}
-                title={t(locale, 'clear')}
+                onClick={clearRoute}
+                aria-label={c('Đóng chỉ đường', 'Close directions', '关闭路线')}
               >
-                <X size={13} />
+                <X size={18} />
               </button>
+            </header>
+            <div
+              className="atlas-modes"
+              role="group"
+              aria-label={c('Phương tiện', 'Travel mode', '出行方式')}
+            >
+              {modes.map(({ id, Icon, label }) => (
+                <button
+                  key={id}
+                  type="button"
+                  className={routeMode === id ? 'active' : ''}
+                  aria-pressed={routeMode === id}
+                  onClick={() => requestRoute(routeTarget, id)}
+                >
+                  <Icon size={16} aria-hidden="true" />
+                  {label}
+                </button>
+              ))}
             </div>
-          )}
-        </div>
-
-        <label className="radius-field">
-          <span>
-            {t(locale, 'radius')} <b>{radius} km</b>
-          </span>
-          <input
-            type="range"
-            disabled={!ready}
-            value={radius}
-            min={3}
-            max={10}
-            step={1}
-            onChange={(e) => store(Number(e.target.value))}
-          />
-        </label>
-      </div>
-
-      <Status message={message} error />
-
-      {/* Map Layout */}
-      <div className="map-layout">
-        <MapCanvas
-          entries={filtered}
-          locale={locale}
-          position={position}
-          accuracyMeters={accuracyMeters}
-          locateTrigger={locateTrigger}
-          radius={radius}
-          selectedPlace={selectedPlace}
-          routeCoordinates={routeCoordinates}
-          routeInfo={routeInfo}
-          onSelectPlace={handleSelect}
-          onRequestRoute={handleRequestRoute}
-          onClearRoute={clearRoute}
-          onLocateMe={() => locateDevice(true)}
-        />
-
-        <div className="map-results">
-          <div className="results-header">
-            <p className="result-meta">
-              <strong>{filtered.length}</strong> {t(locale, 'resultCount')}
-              <span className="photo-count-badge">
-                <Sparkles size={12} />
-                {filteredWithPhotos} {t(locale, 'placesWithPhotos')}
-              </span>
-            </p>
-          </div>
-
-          {filtered.length ? (
-            <>
-              <div className="places-scroll-list">
-                {filtered.slice(0, displayCount).map((e) => {
-                  const hasPhoto = Boolean(e.hasImage || e.image);
-                  const isSelected = selectedPlace?.id === e.id;
-
-                  return (
-                    <article
-                      key={e.id}
-                      className={`nearby-item hcm-place-card ${isSelected ? 'selected' : ''}`}
-                    >
-                      <div
-                        className="place-thumb-container"
-                        onClick={() => handleSelect(e)}
-                      >
-                        {hasPhoto && e.image ? (
-                          <MapPlaceImg
-                            key={e.image}
-                            src={e.image}
-                            alt={e.name}
-                            className="place-thumb"
-                            fallback={
-                              <div className="place-thumb-placeholder">
-                                <MapPin size={20} />
-                              </div>
-                            }
-                          />
-                        ) : (
-                          <div className="place-thumb-placeholder">
-                            <MapPin size={20} />
-                          </div>
-                        )}
-                        {hasPhoto && (
-                          <span className="thumb-photo-tag" title={t(locale, 'photoFilterVerified')}>
-                            <Camera size={11} />
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="place-info">
-                        <div className="place-top-row">
-                          <span className="place-category-tag">
-                            {e.categoryGroup
-                              ? labelCategoryGroup(e.categoryGroup, locale)
-                              : e.category || t(locale, e.kind)}
-                          </span>
-                          {hasPhoto ? (
-                            <span className="verified-pill">
-                              {copy(locale, 'Ảnh thực tế', 'Verified photo', '实景照片')}
-                            </span>
-                          ) : (
-                            <span className="pending-pill">
-                              {copy(locale, 'Đang cập nhật', 'Updating photo', '照片待补充')}
-                            </span>
-                          )}
-                        </div>
-
-                        <button
-                          type="button"
-                          className="place-name-btn"
-                          onClick={() => handleSelect(e)}
-                        >
-                          {e.name}
-                        </button>
-
-                        <small className="place-address">
-                          <MapPin size={12} />
-                          {position
-                            ? `${distanceKm(position, { latitude: e.latitude!, longitude: e.longitude! }).toFixed(1)} km · ${e.region}`
-                            : e.address || e.region}
-                        </small>
-
-                        <div className="place-card-actions">
-                          <button
-                            type="button"
-                            className="text-btn quick-view-btn"
-                            onClick={(ev) => handleOpenDetail(e, ev)}
-                          >
-                            <Info size={13} /> {t(locale, 'placeDetails')}
-                          </button>
-
-                          <button
-                            type="button"
-                            className="text-btn route-btn"
-                            disabled={routingPending}
-                            onClick={(ev) => {
-                              ev.stopPropagation();
-                              handleRequestRoute(e);
-                            }}
-                          >
-                            <Compass size={13} /> {copy(locale, 'Hiện đường', 'Route', '显示路线')}
-                          </button>
-
-                          <Link
-                            className="text-btn explore-link-btn"
-                            href={`/${locale}/explore/${e.slug}`}
-                            onClick={(ev) => ev.stopPropagation()}
-                          >
-                            {t(locale, 'open')}
-                            <ArrowUpRight size={13} />
-                          </Link>
-                        </div>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-
-              {filtered.length > displayCount && (
-                <div className="load-more-container">
+            {routeState === 'waiting' && (
+              <p className={`atlas-note ${live.failure ? 'is-error' : ''}`} role="status">
+                {!live.failure && <LoaderCircle size={16} className="spin" aria-hidden="true" />}
+                {live.failure
+                  ? locationMessage
+                  : c(
+                      'Đang lấy vị trí của bạn để tính đường…',
+                      'Getting your location to plan the route…',
+                      '正在获取你的位置以规划路线…',
+                    )}
+              </p>
+            )}
+            {routeState === 'loading' && !route && (
+              <p className="atlas-note" role="status">
+                <LoaderCircle size={16} className="spin" aria-hidden="true" />
+                {c('Đang tìm đường…', 'Finding a route…', '正在规划路线…')}
+              </p>
+            )}
+            {routeState === 'error' && (
+              <>
+                <p className="atlas-note is-error" role="alert">
+                  {c(
+                    'Máy chủ dẫn đường chưa trả về lộ trình thật nên bản đồ không vẽ đường phỏng đoán. Hãy thử lại hoặc mở Google Maps.',
+                    'The routing server did not return a real route, so no guessed line is drawn. Try again or open Google Maps.',
+                    '导航服务器未返回真实路线，因此不会绘制推测线路。请重试或打开 Google 地图。',
+                  )}
+                </p>
+                <div className="atlas-actions">
                   <button
                     type="button"
-                    className="button secondary small load-more-btn"
-                    onClick={() => setDisplayCount((prev) => prev + PAGE_SIZE)}
+                    className="atlas-btn primary"
+                    onClick={() => requestRoute(routeTarget, routeMode)}
                   >
-                    {copy(
-                      locale,
-                      `Xem thêm (${Math.min(PAGE_SIZE, filtered.length - displayCount)}/${filtered.length - displayCount} địa điểm còn lại)`,
-                      `Load more (${Math.min(PAGE_SIZE, filtered.length - displayCount)} of ${filtered.length - displayCount} remaining)`,
-                      `加载更多（剩余 ${filtered.length - displayCount} 处中的 ${Math.min(PAGE_SIZE, filtered.length - displayCount)} 处）`,
-                    )}
+                    {c('Thử lại', 'Try again', '重试')}
                   </button>
-                </div>
-              )}
-            </>
-          ) : (
-            <Empty locale={locale} />
-          )}
-        </div>
-      </div>
-
-      {/* Quick View Place Modal */}
-      {detailModal && (
-        <div className="place-modal-overlay" onClick={() => setDetailModal(null)}>
-          <div
-            className="place-modal-content"
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="map-modal-title"
-          >
-            <button
-              type="button"
-              className="modal-close-btn"
-              onClick={() => setDetailModal(null)}
-              aria-label={t(locale, 'close')}
-            >
-              <X size={20} />
-            </button>
-
-            {detailModal.hasImage && detailModal.image && (
-              <div className="modal-hero-photo">
-                <MapPlaceImg
-                  key={detailModal.image}
-                  src={detailModal.image}
-                  alt={detailModal.name}
-                  className="modal-img"
-                  fallback={null}
-                />
-                {(detailModal.image_author || detailModal.image_license) && (
-                  <div className="modal-photo-credit">
-                    <Sparkles size={12} />
-                    <span>
-                      {t(locale, 'photoCredit')}:{' '}
-                      {[detailModal.image_author, detailModal.image_license]
-                        .filter(Boolean)
-                        .join(' · ')}
-                    </span>
-                  </div>
-                )}
-              </div>
-            )}
-
-            <div className="modal-body">
-              <div className="modal-tags">
-                <span className="pill primary">
-                  {detailModal.category || t(locale, detailModal.kind)}
-                </span>
-                <span className="pill">{detailModal.region}</span>
-                {detailModal.hasImage ? (
-                  <span className="pill verified">{t(locale, 'photoFilterVerified')}</span>
-                ) : (
-                  <span className="pill warning">{t(locale, 'photoFilterWithout')}</span>
-                )}
-              </div>
-
-              <h2 id="map-modal-title">{detailModal.name}</h2>
-
-              {detailModal.address && (
-                <p className="modal-address">
-                  <MapPin size={16} />
-                  <span>{detailModal.address}</span>
-                </p>
-              )}
-
-              {detailModal.description && (
-                <div className="modal-section">
-                  <h3>{copy(locale, 'Mô tả', 'Overview', '地点简介')}</h3>
-                  <p>{detailModal.description}</p>
-                </div>
-              )}
-
-              {detailModal.history && (
-                <div className="modal-section">
-                  <h3>{copy(locale, 'Lịch sử & Nguồn gốc', 'History & Origin', '历史与渊源')}</h3>
-                  <p>{detailModal.history}</p>
-                </div>
-              )}
-
-              <div className="modal-footer-actions">
-                <button
-                  type="button"
-                  className="button primary"
-                  disabled={routingPending}
-                  onClick={() => {
-                    handleRequestRoute(detailModal);
-                    setDetailModal(null);
-                  }}
-                >
-                  <Compass size={16} />
-                  {copy(
-                    locale,
-                    'Hiện tuyến đường đến đây',
-                    'Show street route here',
-                    '显示前往此地的路线',
-                  )}
-                </button>
-
-                {detailModal.latitude && detailModal.longitude && (
                   <a
-                    className="button secondary"
-                    href={`https://www.google.com/maps/dir/?api=1&destination=${detailModal.latitude},${detailModal.longitude}`}
+                    className="atlas-btn"
+                    href={googleHref(routeTarget)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Navigation size={16} />
-                    {copy(locale, 'Mở Google Maps', 'Open Google Maps', '打开 Google 地图')}
+                    <ExternalLink size={15} aria-hidden="true" />
+                    Google Maps
                   </a>
+                </div>
+              </>
+            )}
+            {route && (
+              <>
+                <p className="atlas-route-summary">
+                  <b>{formatDuration(route.durationSeconds, locale)}</b>
+                  <span>{formatDistance(route.distanceMeters, locale)}</span>
+                </p>
+                {arrived && (
+                  <p className="atlas-note" role="status">
+                    {c('Bạn đã đến nơi.', 'You have arrived.', '你已到达目的地。')}
+                  </p>
                 )}
+                <div className="atlas-actions">
+                  <button
+                    type="button"
+                    className="atlas-btn primary"
+                    onClick={() => {
+                      setArrived(false);
+                      setNavigating((value) => !value);
+                    }}
+                  >
+                    <Navigation size={16} aria-hidden="true" />
+                    {navigating
+                      ? c('Dừng dẫn đường', 'Stop', '停止导航')
+                      : c('Bắt đầu', 'Start', '开始导航')}
+                  </button>
+                  <a
+                    className="atlas-btn"
+                    href={googleHref(routeTarget)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink size={15} aria-hidden="true" />
+                    Google Maps
+                  </a>
+                </div>
+                <ol className="atlas-steps">
+                  {route.steps.map((step, index) => (
+                    <li
+                      key={index}
+                      className={index === currentStep ? 'current' : ''}
+                      aria-current={index === currentStep ? 'step' : undefined}
+                    >
+                      <CornerUpRight size={15} aria-hidden="true" />
+                      <span>{stepText(step, locale)}</span>
+                      {step.distanceMeters > 0 && (
+                        <small>{formatDistance(step.distanceMeters, locale)}</small>
+                      )}
+                    </li>
+                  ))}
+                </ol>
+                <p className="atlas-credit">
+                  {c(
+                    'Lộ trình: OSRM · dữ liệu © OpenStreetMap. Thời gian là ước tính, chưa tính kẹt xe.',
+                    'Route: OSRM · data © OpenStreetMap. Times are estimates and ignore live traffic.',
+                    '路线：OSRM · 数据 © OpenStreetMap。时间为估算，未计入实时路况。',
+                  )}
+                </p>
+              </>
+            )}
+          </section>
+        )}
 
-                <Link
-                  className="button ghost"
-                  href={`/${locale}/explore/${detailModal.slug}`}
-                  onClick={() => setDetailModal(null)}
-                >
-                  {t(locale, 'open')}
+        {selectedTarget && !routeTarget && (
+          <section className="atlas-selected" aria-live="polite">
+            <button
+              type="button"
+              className="atlas-selected-close"
+              onClick={() => setSelection(null)}
+              aria-label={t(locale, 'close')}
+            >
+              <X size={16} />
+            </button>
+            {selectedPlace?.image && (
+              <PlaceImage
+                key={selectedPlace.image}
+                src={selectedPlace.image}
+                alt={selectedPlace.name}
+                className="atlas-selected-photo"
+              />
+            )}
+            <p className="atlas-kicker">
+              {selectedPlace
+                ? selectedPlace.categoryGroup
+                  ? labelCategoryGroup(selectedPlace.categoryGroup, locale)
+                  : selectedPlace.category || t(locale, selectedPlace.kind)
+                : `${labelPoiKind(selectedPoi?.kind || 'other', locale)} · OpenStreetMap`}
+            </p>
+            <h2>{selectedTarget.name}</h2>
+            <p className="atlas-meta">
+              <MapPin size={14} aria-hidden="true" />
+              <span>
+                {selectedPlace ? selectedPlace.address || selectedPlace.region : (around.area ?? '')}
+                {selectedDistance !== null && (
+                  <b>
+                    {' '}
+                    · {c('cách bạn ', '', '距你 ')}
+                    {formatDistance(selectedDistance, locale)}
+                    {c('', ' away', '')}
+                  </b>
+                )}
+              </span>
+            </p>
+            {selectedPlace?.description && <p className="atlas-desc">{selectedPlace.description}</p>}
+            {selectedPlace?.history &&
+              normalizeSearch(selectedPlace.history) !==
+                normalizeSearch(selectedPlace.description) && (
+                <p className="atlas-desc">{selectedPlace.history}</p>
+              )}
+            <div className="atlas-actions">
+              <button
+                type="button"
+                className="atlas-btn primary"
+                onClick={() => requestRoute(selectedTarget, routeMode)}
+              >
+                <Navigation size={16} aria-hidden="true" />
+                {t(locale, 'directions')}
+              </button>
+              {selectedPlace && (
+                <Link className="atlas-btn" href={`/${locale}/explore/${selectedPlace.slug}`}>
+                  {t(locale, 'placeDetails')}
+                  <ArrowUpRight size={15} aria-hidden="true" />
                 </Link>
-              </div>
+              )}
             </div>
-          </div>
+            {selectedPlace && relatedChallenges.length > 0 && (
+              <div className="atlas-challenges">
+                <h3>
+                  <Trophy size={15} aria-hidden="true" />
+                  {t(locale, 'relatedChallenges')}
+                </h3>
+                {relatedChallenges.map((challenge) => (
+                  <Link key={challenge.id} href={`/${locale}/challenges#${challenge.id}`}>
+                    <span>
+                      <Sparkles size={11} aria-hidden="true" />
+                      {challenge.points} XP
+                    </span>
+                    <strong>{textFor(challenge.translations, locale).title}</strong>
+                    <ArrowUpRight size={14} aria-hidden="true" />
+                  </Link>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        <div className="atlas-tabs" role="tablist">
+          <button
+            type="button"
+            role="tab"
+            id="atlas-tab-places"
+            aria-selected={tab === 'places'}
+            aria-controls="atlas-list"
+            className={tab === 'places' ? 'active' : ''}
+            onClick={() => setTab('places')}
+          >
+            THÁM VĂN <span>{filtered.length}</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="atlas-tab-around"
+            aria-selected={tab === 'around'}
+            aria-controls="atlas-list"
+            className={tab === 'around' ? 'active' : ''}
+            onClick={() => setTab('around')}
+          >
+            {c('Quanh bạn', 'Around you', '你的周围')}
+            {around.status === 'ready' && <span>{around.places.length}</span>}
+          </button>
         </div>
-      )}
-    </>
+
+        <div
+          className="atlas-list"
+          id="atlas-list"
+          role="tabpanel"
+          aria-labelledby={tab === 'places' ? 'atlas-tab-places' : 'atlas-tab-around'}
+        >
+          {tab === 'places' ? (
+            filtered.length ? (
+              <>
+                <ul>
+                  {filtered.slice(0, displayCount).map(({ place, distance }) => (
+                    <li key={place.id}>
+                      <button
+                        type="button"
+                        className={`atlas-item ${selectedPlace?.id === place.id ? 'selected' : ''}`}
+                        onClick={() => select({ type: 'place', id: place.id }, place)}
+                      >
+                        <span className="atlas-item-thumb">
+                          <MapPin size={18} aria-hidden="true" />
+                          {place.image && (
+                            <PlaceImage key={place.image} src={place.image} alt="" className="" />
+                          )}
+                        </span>
+                        <span className="atlas-item-body">
+                          <strong>{place.name}</strong>
+                          <small>
+                            {place.categoryGroup
+                              ? labelCategoryGroup(place.categoryGroup, locale)
+                              : place.category}
+                          </small>
+                          <small>
+                            {distance !== null ? `${formatDistance(distance, locale)} · ` : ''}
+                            {place.address || place.region}
+                          </small>
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                {filtered.length > displayCount && (
+                  <button
+                    type="button"
+                    className="atlas-btn atlas-more"
+                    onClick={() => setDisplayCount((value) => value + PAGE_SIZE)}
+                  >
+                    {c('Xem thêm', 'Show more', '显示更多')} ({filtered.length - displayCount})
+                  </button>
+                )}
+              </>
+            ) : (
+              <p className="atlas-empty">
+                {c(
+                  'Không có địa điểm nào khớp bộ lọc. Thử bỏ bớt điều kiện hoặc đổi từ khóa.',
+                  'No places match these filters. Try removing a filter or changing the keywords.',
+                  '没有符合筛选条件的地点。请减少条件或更换关键词。',
+                )}
+              </p>
+            )
+          ) : (
+            <>
+              {around.area && around.status === 'ready' && (
+                <p className="atlas-area">
+                  <MapPin size={14} aria-hidden="true" />
+                  {around.area}
+                </p>
+              )}
+              {around.status === 'loading' && (
+                <p className="atlas-note" role="status">
+                  <LoaderCircle size={16} className="spin" aria-hidden="true" />
+                  {c(
+                    'Đang tìm địa điểm thật quanh đây…',
+                    'Looking up real places nearby…',
+                    '正在查找附近的真实地点…',
+                  )}
+                </p>
+              )}
+              {around.status === 'idle' && (
+                <div className="atlas-empty">
+                  <p>
+                    {c(
+                      'Bật vị trí để xem các địa điểm có thật quanh bạn (dữ liệu OpenStreetMap), hoặc kéo bản đồ rồi bấm “Tìm quanh khu vực này”.',
+                      'Turn on location to see real places around you (OpenStreetMap data), or move the map and tap “Search this area”.',
+                      '开启位置即可查看你周围的真实地点（OpenStreetMap 数据），或移动地图后点击“搜索此区域”。',
+                    )}
+                  </p>
+                  <button type="button" className="atlas-btn primary" onClick={locate}>
+                    <LocateFixed size={16} aria-hidden="true" />
+                    {c('Bật vị trí', 'Turn on location', '开启位置')}
+                  </button>
+                </div>
+              )}
+              {around.status === 'error' && (
+                <div className="atlas-empty">
+                  <p role="alert">
+                    {c(
+                      'Dịch vụ dữ liệu địa điểm đang bận nên chưa có danh sách. Ứng dụng không hiển thị địa điểm phỏng đoán.',
+                      'The place-data service is busy, so there is no list yet. The app never shows guessed places.',
+                      '地点数据服务繁忙，暂无列表。应用不会显示推测的地点。',
+                    )}
+                  </p>
+                  {around.origin && (
+                    <button
+                      type="button"
+                      className="atlas-btn primary"
+                      onClick={() => {
+                        if (around.origin) void loadAround(around.origin);
+                      }}
+                    >
+                      {c('Thử lại', 'Try again', '重试')}
+                    </button>
+                  )}
+                </div>
+              )}
+              {around.status === 'ready' &&
+                (around.places.length ? (
+                  <ul>
+                    {around.places.slice(0, displayCount).map((poi) => (
+                      <li key={poi.id}>
+                        <button
+                          type="button"
+                          className={`atlas-item ${selectedPoi?.id === poi.id ? 'selected' : ''}`}
+                          onClick={() => select({ type: 'poi', id: poi.id }, poi)}
+                        >
+                          <span className={`atlas-item-thumb kind-${poi.kind}`}>
+                            <MapPin size={18} aria-hidden="true" />
+                          </span>
+                          <span className="atlas-item-body">
+                            <strong>{poi.name}</strong>
+                            <small>{labelPoiKind(poi.kind, locale)}</small>
+                            <small>{formatDistance(poi.distanceMeters, locale)}</small>
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="atlas-empty">
+                    {c(
+                      'OpenStreetMap chưa ghi nhận địa điểm có tên trong phạm vi này.',
+                      'OpenStreetMap has no named places within this range yet.',
+                      'OpenStreetMap 在此范围内暂无已命名的地点。',
+                    )}
+                  </p>
+                ))}
+              {around.status === 'ready' && around.places.length > displayCount && (
+                <button
+                  type="button"
+                  className="atlas-btn atlas-more"
+                  onClick={() => setDisplayCount((value) => value + PAGE_SIZE)}
+                >
+                  {c('Xem thêm', 'Show more', '显示更多')} ({around.places.length - displayCount})
+                </button>
+              )}
+              <p className="atlas-credit">
+                {c(
+                  'Dữ liệu địa điểm: © OpenStreetMap',
+                  'Place data: © OpenStreetMap contributors',
+                  '地点数据：© OpenStreetMap 贡献者',
+                )}
+              </p>
+            </>
+          )}
+        </div>
+      </aside>
+
+      <div className="atlas-map">
+        <MapCanvas
+          locale={locale}
+          places={mapPlaces}
+          pois={around.places}
+          user={fix}
+          selected={selectedTarget}
+          routeLine={route?.line ?? null}
+          routeMode={routeMode}
+          basemap={basemap}
+          follow={navigating}
+          view={view}
+          onSelectPlace={onSelectPlace}
+          onSelectPoi={onSelectPoi}
+          onClearSelection={onClearSelection}
+          onUserGesture={onUserGesture}
+          onCenterChange={setMapCenter}
+        />
+
+        {searchAreaVisible && mapCenter && (
+          <button
+            type="button"
+            className="atlas-search-area"
+            onClick={() => {
+              setTab('around');
+              void loadAround(mapCenter);
+            }}
+          >
+            <Search size={15} aria-hidden="true" />
+            {c('Tìm quanh khu vực này', 'Search this area', '搜索此区域')}
+          </button>
+        )}
+
+        <div className="atlas-layers" ref={layersRef}>
+          <button
+            type="button"
+            className="atlas-fab"
+            aria-expanded={layersOpen}
+            aria-haspopup="menu"
+            aria-label={c('Kiểu bản đồ', 'Map style', '地图样式')}
+            onClick={() => setLayersOpen((value) => !value)}
+          >
+            <Layers size={20} />
+          </button>
+          {layersOpen && (
+            <div role="menu" className="atlas-layers-menu">
+              {basemaps.map(({ id, label }) => (
+                <button
+                  key={id}
+                  type="button"
+                  role="menuitemradio"
+                  aria-checked={basemap === id}
+                  className={basemap === id ? 'active' : ''}
+                  onClick={() => {
+                    setBasemap(id);
+                    setLayersOpen(false);
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <button
+          type="button"
+          className={`atlas-fab atlas-locate ${hasFix ? 'active' : ''}`}
+          onClick={locate}
+          disabled={live.status === 'locating'}
+          aria-label={t(locale, 'locateMe')}
+          title={t(locale, 'locateMe')}
+        >
+          {live.status === 'locating' ? (
+            <LoaderCircle size={20} className="spin" />
+          ) : (
+            <LocateFixed size={20} />
+          )}
+        </button>
+
+        {(locationMessage || (fix && fix.accuracy > 150)) && (
+          <p className="atlas-location-note" role={locationMessage ? 'alert' : 'status'}>
+            {locationMessage ||
+              c(
+                'Vị trí đang chỉ gần đúng. Bật GPS và ra nơi thoáng để chính xác hơn.',
+                'Your position is only approximate. Turn on GPS and step into the open for a sharper fix.',
+                '当前位置仅为大致范围。请开启 GPS 并到开阔处以提高精度。',
+              )}
+          </p>
+        )}
+      </div>
+    </div>
   );
 }

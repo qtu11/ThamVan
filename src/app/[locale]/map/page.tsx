@@ -1,25 +1,42 @@
+import type { Metadata } from 'next';
 import { MapPin } from 'lucide-react';
 import { getHcmPlacesData, getViewer, getChallenges } from '@/lib/data';
 import { isLocale } from '@/lib/types';
 import { t } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
+import { toMapPlace, type MapPlace } from '@/lib/map-types';
 import { MapExplorer } from '@/components/map-explorer';
 import './map.css';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  return { title: t(isLocale(raw) ? raw : 'vi', 'mapView') };
+}
 
 export default async function MapPage({
   params,
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ place?: string }>;
+  searchParams: Promise<{ place?: string; focus?: string }>;
 }) {
   const { locale: raw } = await params;
   const locale = isLocale(raw) ? raw : 'vi';
-  const focus = (await searchParams).place;
-  const [places, challenges] = await Promise.all([getHcmPlacesData(), getChallenges()]);
+  const query = await searchParams;
+  const focus = query.focus || query.place;
+  const [catalog, challenges, viewer] = await Promise.all([
+    getHcmPlacesData(),
+    getChallenges(),
+    getViewer(),
+  ]);
+  const places = catalog.map(toMapPlace).filter((place): place is MapPlace => place !== null);
   return (
-    <div className="container section">
-      <div className="page-heading">
+    <div className="atlas-page">
+      <div className="atlas-heading">
         <p className="eyebrow">
           <MapPin size={16} />{' '}
           {copy(
@@ -30,14 +47,13 @@ export default async function MapPage({
           )}
         </p>
         <h1>{t(locale, 'exploreSection')}</h1>
-        <p>{t(locale, 'nearbyDesc')}</p>
       </div>
       <MapExplorer
-        entries={places}
+        places={places}
         locale={locale}
-        focus={focus}
+        focus={typeof focus === 'string' ? focus : undefined}
         challenges={challenges}
-        profile={(await getViewer())?.profile}
+        profile={viewer?.profile}
       />
     </div>
   );

@@ -1,704 +1,504 @@
 'use client';
-import { useEffect, useState, useMemo, useRef } from 'react';
-import {
-  MapContainer,
-  TileLayer,
+import { useEffect, useRef, useState } from 'react';
+// maplibre-gl 6 ships named exports only (no default export).
+import * as maplibregl from 'maplibre-gl';
+import type {
+  GeoJSONSource,
+  Map as MapLibreMap,
   Marker,
-  Popup,
-  Circle,
-  Polyline,
-  useMap,
-  useMapEvents,
-} from 'react-leaflet';
-import { divIcon, latLngBounds, type DivIcon } from 'leaflet';
-import Link from 'next/link';
-import {
-  ExternalLink,
-  Navigation,
-  MapPin,
-  Sparkles,
-  Layers,
-  Compass,
-  LocateFixed,
-} from 'lucide-react';
-import type { Heritage, Locale } from '@/lib/types';
-import { distanceKm, type Coordinates } from '@/lib/geo';
-import { t } from '@/lib/i18n';
+  StyleSpecification,
+} from 'maplibre-gl';
+import type { FeatureCollection as GeoFeatureCollection, Geometry, Point } from 'geojson';
+import 'maplibre-gl/dist/maplibre-gl.css';
+import type { Locale } from '@/lib/types';
+import type { LiveFix } from '@/lib/device-location';
+import type { Basemap, MapPlace, MapView, OsmPlace } from '@/lib/map-types';
+import type { LngLat, RouteMode } from '@/lib/routing';
 import { copy } from '@/lib/locale-copy';
-import 'leaflet/dist/leaflet.css';
 
-const TILE_LAYERS = {
-  esriStreet: {
-    url: '/api/tiles?layer=esriStreet&z={z}&x={x}&y={y}',
-    maxZoom: 19,
-    label: (locale: Locale) =>
-      copy(locale, 'Bản đồ đường phố sắc nét', 'Detailed Street Atlas', '高清街道地图'),
-  },
-  heritageLight: {
-    url: '/api/tiles?layer=heritageLight&z={z}&x={x}&y={y}',
-    maxZoom: 19,
-    label: (locale: Locale) =>
-      copy(locale, 'Bản đồ di sản tối giản', 'Minimal Heritage Paper', '极简档案底图'),
-  },
-  esriTopo: {
-    url: '/api/tiles?layer=esriTopo&z={z}&x={x}&y={y}',
-    maxZoom: 19,
-    label: (locale: Locale) =>
-      copy(locale, 'Bản đồ địa hình & cảnh quan', 'Topographic Relief', '地形与景观图'),
-  },
-  esriSat: {
-    url: '/api/tiles?layer=esriSat&z={z}&x={x}&y={y}',
-    maxZoom: 19,
-    label: (locale: Locale) =>
-      copy(locale, 'Ảnh vệ tinh (Satellite)', 'Satellite Imagery', '卫星实景图'),
-  },
-};
+/**
+ * Vector basemap (OpenFreeMap / OpenStreetMap data) rendered with MapLibre GL.
+ * This component only draws: places, the visitor's live position and a routed line.
+ */
+const BASEMAP_HOST = 'https://tiles.openfreemap.org';
+const HCM_CENTER: LngLat = [106.7009, 10.7769];
+const HIT_LAYERS = ['tv-places-point', 'tv-places-cluster', 'tv-pois-dot'];
+const FONT_REGULAR = ['Noto Sans Regular'];
+const FONT_BOLD = ['Noto Sans Bold'];
 
-function PopupPhoto({ src, alt }: { src: string; alt: string }) {
-  const [failed, setFailed] = useState(false);
-  if (failed) {
-    return null;
-  }
-  return (
-    /* eslint-disable-next-line @next/next/no-img-element */
-    <img
-      src={src}
-      alt={alt}
-      className="popup-photo"
-      loading="lazy"
-      onError={() => setFailed(true)}
-    />
-  );
-}
+type FeatureCollection = GeoFeatureCollection<Geometry>;
+const EMPTY: FeatureCollection = { type: 'FeatureCollection', features: [] };
 
-const CAMERA_PIN_SVG =
-  '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.2"/></svg>';
-
-const COMPASS_PIN_SVG =
-  '<svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"/></svg>';
-
-const photoMarkerIcon = divIcon({
-  className: 'heritage-marker has-photo-marker',
-  html: `<span class="pin-inner"><span class="pin-glyph">${CAMERA_PIN_SVG}</span></span>`,
-  iconSize: [32, 40],
-  iconAnchor: [16, 40],
-  popupAnchor: [0, -38],
-});
-
-const standardMarkerIcon = divIcon({
-  className: 'heritage-marker standard-marker',
-  html: `<span class="pin-inner"><span class="pin-glyph">${COMPASS_PIN_SVG}</span></span>`,
-  iconSize: [26, 34],
-  iconAnchor: [13, 34],
-  popupAnchor: [0, -32],
-});
-
-const selectedMarkerIcon = divIcon({
-  className: 'heritage-marker selected-marker',
-  html: `<span class="pin-selected-halo"></span><span class="pin-inner"><span class="pin-glyph">${CAMERA_PIN_SVG}</span></span>`,
-  iconSize: [38, 46],
-  iconAnchor: [19, 46],
-  popupAnchor: [0, -44],
-});
-
-const userLocationIcon = divIcon({
-  className: 'user-location-marker',
-  html: '<div class="user-location-pulse"><div class="user-location-dot"></div></div>',
-  iconSize: [36, 36],
-  iconAnchor: [18, 18],
-  popupAnchor: [0, -18],
-});
-
-const clusterIconCache = new Map<string, DivIcon>();
-
-function getClusterIcon(count: number, hasPhoto: boolean): DivIcon {
-  const key = `${count}:${hasPhoto ? 1 : 0}`;
-  const cached = clusterIconCache.get(key);
-  if (cached) return cached;
-
-  const size = count >= 50 ? 46 : count >= 15 ? 40 : 35;
-  const icon = divIcon({
-    className: `heritage-cluster-marker ${hasPhoto ? 'has-photo-cluster' : 'standard-cluster'}`,
-    html: `<div class="cluster-badge" style="width:${size}px;height:${size}px"><span>${count}</span></div>`,
-    iconSize: [size, size],
-    iconAnchor: [size / 2, size / 2],
-  });
-  clusterIconCache.set(key, icon);
-  return icon;
-}
-
-type ClusterGroup = {
-  id: string;
-  latitude: number;
-  longitude: number;
-  items: Heritage[];
-  hasPhoto: boolean;
-};
-
-function ZoomTracker({ onZoomChange }: { onZoomChange: (zoom: number) => void }) {
-  const map = useMapEvents({
-    zoomend: () => {
-      onZoomChange(map.getZoom());
-    },
-  });
-  return null;
-}
-
-function ClusterMarkerItem({ cluster, locale }: { cluster: ClusterGroup; locale: Locale }) {
-  const map = useMap();
-  const icon = useMemo(
-    () => getClusterIcon(cluster.items.length, cluster.hasPhoto),
-    [cluster.items.length, cluster.hasPhoto],
-  );
-
-  return (
-    <Marker
-      position={[cluster.latitude, cluster.longitude]}
-      icon={icon}
-      title={`${cluster.items.length} ${copy(
-        locale,
-        'địa điểm di sản — Nhấn để phóng to',
-        'heritage places — Click to zoom in',
-        '个遗产地点 — 点击放大查看',
-      )}`}
-      eventHandlers={{
-        click: () => {
-          const bounds = latLngBounds(
-            cluster.items.map((item) => [item.latitude!, item.longitude!] as [number, number]),
-          );
-          map.flyToBounds(bounds, {
-            padding: [56, 56],
-            maxZoom: Math.min(map.getZoom() + 3, 17),
-            duration: 0.65,
-          });
+function styleFor(basemap: Basemap): string | StyleSpecification {
+  if (basemap === 'satellite')
+    return {
+      version: 8,
+      glyphs: `${BASEMAP_HOST}/fonts/{fontstack}/{range}.pbf`,
+      sources: {
+        satellite: {
+          type: 'raster',
+          tiles: [`${window.location.origin}/api/tiles?layer=esriSat&z={z}&x={x}&y={y}`],
+          tileSize: 256,
+          maxzoom: 19,
+          attribution: 'Imagery © Esri, Maxar, Earthstar Geographics',
         },
-      }}
-    />
-  );
-}
-
-function MapController({
-  entries,
-  position,
-  selectedPlace,
-  routeCoordinates,
-  locateTrigger,
-}: {
-  entries: Heritage[];
-  position: Coordinates | null;
-  selectedPlace: Heritage | null;
-  routeCoordinates?: [number, number][];
-  locateTrigger?: number;
-}) {
-  const map = useMap();
-  const lastPositionKeyRef = useRef<string>('');
-  const lastSelectedIdRef = useRef<string>('');
-  const initializedBoundsRef = useRef(false);
-
-  useEffect(() => {
-    map.invalidateSize();
-    const timer = setTimeout(() => {
-      map.invalidateSize();
-    }, 250);
-    return () => clearTimeout(timer);
-  }, [map]);
-
-  useEffect(() => {
-    if (routeCoordinates && routeCoordinates.length > 0) {
-      map.fitBounds(latLngBounds(routeCoordinates), {
-        padding: [60, 60],
-        maxZoom: 16,
-      });
-    }
-  }, [map, routeCoordinates]);
-
-  useEffect(() => {
-    if (!selectedPlace?.latitude || !selectedPlace?.longitude) {
-      lastSelectedIdRef.current = '';
-      return;
-    }
-    if (lastSelectedIdRef.current === selectedPlace.id) return;
-    lastSelectedIdRef.current = selectedPlace.id;
-    map.flyTo([selectedPlace.latitude, selectedPlace.longitude], 16, {
-      duration: 0.9,
-    });
-  }, [map, selectedPlace]);
-
-  useEffect(() => {
-    if (!position) {
-      lastPositionKeyRef.current = '';
-      return;
-    }
-    const posKey = `${position.latitude.toFixed(5)}:${position.longitude.toFixed(5)}:${locateTrigger || 0}`;
-    if (lastPositionKeyRef.current === posKey) return;
-    lastPositionKeyRef.current = posKey;
-    map.flyTo([position.latitude, position.longitude], 15, {
-      duration: 0.85,
-    });
-  }, [map, position, locateTrigger]);
-
-  useEffect(() => {
-    if (position || selectedPlace || (routeCoordinates && routeCoordinates.length > 0)) {
-      return;
-    }
-    const coords = entries.flatMap((e) =>
-      e.latitude !== null && e.longitude !== null
-        ? [[e.latitude, e.longitude] as [number, number]]
-        : [],
-    );
-
-    if (coords.length > 0) {
-      if (coords.length > 200) {
-        if (!initializedBoundsRef.current) {
-          initializedBoundsRef.current = true;
-          map.setView([10.7769, 106.7009], 12);
-        }
-      } else {
-        map.fitBounds(latLngBounds(coords), { padding: [44, 44], maxZoom: 15 });
-      }
-    }
-  }, [map, entries, position, selectedPlace, routeCoordinates]);
-
-  return null;
-}
-
-export default function MapCanvas({
-  entries,
-  locale,
-  position,
-  accuracyMeters,
-  locateTrigger,
-  radius,
-  selectedPlace,
-  routeCoordinates,
-  routeInfo,
-  onSelectPlace,
-  onRequestRoute,
-  onClearRoute,
-  onLocateMe,
-}: {
-  entries: Heritage[];
-  locale: Locale;
-  position: Coordinates | null;
-  accuracyMeters?: number | null;
-  locateTrigger?: number;
-  radius: number;
-  selectedPlace?: Heritage | null;
-  routeCoordinates?: [number, number][];
-  routeInfo?: {
-    distanceKm: number;
-    durationMinutes: number;
-  } | null;
-  onSelectPlace?: (place: Heritage) => void;
-  onRequestRoute?: (place: Heritage) => void;
-  onClearRoute?: () => void;
-  onLocateMe?: () => void;
-}) {
-  const [activeTileLayer, setActiveTileLayer] = useState<keyof typeof TILE_LAYERS>('esriStreet');
-  const [showLayerMenu, setShowLayerMenu] = useState(false);
-  const [zoom, setZoom] = useState(12);
-  const layerMenuRef = useRef<HTMLDivElement>(null);
-  const currentTile = TILE_LAYERS[activeTileLayer];
-
-  useEffect(() => {
-    if (!showLayerMenu) return;
-    function onPointerDown(event: MouseEvent) {
-      if (layerMenuRef.current && !layerMenuRef.current.contains(event.target as Node)) {
-        setShowLayerMenu(false);
-      }
-    }
-    function onKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') setShowLayerMenu(false);
-    }
-    document.addEventListener('mousedown', onPointerDown);
-    document.addEventListener('keydown', onKeyDown);
-    return () => {
-      document.removeEventListener('mousedown', onPointerDown);
-      document.removeEventListener('keydown', onKeyDown);
+      },
+      layers: [{ id: 'satellite', type: 'raster', source: 'satellite' }],
     };
-  }, [showLayerMenu]);
+  if (basemap === 'light') return `${BASEMAP_HOST}/styles/positron`;
+  return process.env.NEXT_PUBLIC_MAP_STYLE_URL || `${BASEMAP_HOST}/styles/liberty`;
+}
 
-  const validEntries = useMemo(() => {
-    return entries.filter((e) => e.latitude !== null && e.longitude !== null);
-  }, [entries]);
+const pointCollection = <T extends { id: string; name: string; latitude: number; longitude: number }>(
+  items: T[],
+  extra: (item: T) => Record<string, string | number> = () => ({}),
+): FeatureCollection => ({
+  type: 'FeatureCollection',
+  features: items.map((item) => ({
+    type: 'Feature',
+    geometry: { type: 'Point', coordinates: [item.longitude, item.latitude] },
+    properties: { id: item.id, name: item.name, ...extra(item) },
+  })),
+});
 
-  // Spatial clustering at lower zoom levels so pins never pile into an illegible blob
-  const { singleMarkers, clusters } = useMemo(() => {
-    if (zoom >= 15 || validEntries.length <= 24) {
-      return { singleMarkers: validEntries, clusters: [] as ClusterGroup[] };
-    }
+/** Accuracy halo: a metre-true circle around the fix. */
+function accuracyCircle(fix: LiveFix | null): FeatureCollection {
+  if (!fix || fix.accuracy <= 12) return EMPTY;
+  const radius = Math.min(fix.accuracy, 1500);
+  const ring: LngLat[] = [];
+  const kx = 111_320 * Math.cos((fix.latitude * Math.PI) / 180);
+  for (let i = 0; i <= 48; i++) {
+    const angle = (i / 48) * Math.PI * 2;
+    ring.push([
+      fix.longitude + (Math.cos(angle) * radius) / kx,
+      fix.latitude + (Math.sin(angle) * radius) / 110_574,
+    ]);
+  }
+  return {
+    type: 'FeatureCollection',
+    features: [{ type: 'Feature', geometry: { type: 'Polygon', coordinates: [ring] }, properties: {} }],
+  };
+}
 
-    const cellSize = 0.055 / Math.pow(2, Math.max(0, zoom - 11));
-    const buckets = new Map<string, Heritage[]>();
-    const singles: Heritage[] = [];
-
-    for (const item of validEntries) {
-      if (selectedPlace && item.id === selectedPlace.id) {
-        singles.push(item);
-        continue;
+const routeCollection = (line: LngLat[] | null): FeatureCollection =>
+  line && line.length > 1
+    ? {
+        type: 'FeatureCollection',
+        features: [
+          { type: 'Feature', geometry: { type: 'LineString', coordinates: line }, properties: {} },
+        ],
       }
-      const gx = Math.floor(item.longitude! / cellSize);
-      const gy = Math.floor(item.latitude! / cellSize);
-      const key = `${gx}:${gy}`;
-      const list = buckets.get(key);
-      if (list) {
-        list.push(item);
-      } else {
-        buckets.set(key, [item]);
-      }
-    }
+    : EMPTY;
 
-    const clusterList: ClusterGroup[] = [];
-    for (const [key, list] of buckets.entries()) {
-      if (list.length <= 2) {
-        singles.push(...list);
-      } else {
-        let sumLat = 0;
-        let sumLng = 0;
-        let hasPhoto = false;
-        for (const item of list) {
-          sumLat += item.latitude!;
-          sumLng += item.longitude!;
-          if (item.hasImage || item.image) hasPhoto = true;
-        }
-        clusterList.push({
-          id: `cluster-${key}`,
-          latitude: sumLat / list.length,
-          longitude: sumLng / list.length,
-          items: list,
-          hasPhoto,
-        });
-      }
-    }
+function element(className: string, html = '') {
+  const node = document.createElement('div');
+  node.className = className;
+  node.innerHTML = html;
+  return node;
+}
 
-    return { singleMarkers: singles, clusters: clusterList };
-  }, [validEntries, zoom, selectedPlace]);
+export type MapCanvasProps = {
+  locale: Locale;
+  places: MapPlace[];
+  pois: OsmPlace[];
+  user: LiveFix | null;
+  selected: { id: string; name: string; latitude: number; longitude: number } | null;
+  routeLine: LngLat[] | null;
+  routeMode: RouteMode;
+  basemap: Basemap;
+  follow: boolean;
+  view: MapView | null;
+  onSelectPlace: (id: string) => void;
+  onSelectPoi: (id: string) => void;
+  onClearSelection: () => void;
+  onUserGesture: () => void;
+  onCenterChange: (center: { latitude: number; longitude: number }) => void;
+};
+
+export default function MapCanvas(props: MapCanvasProps) {
+  const { locale, places, pois, user, selected, routeLine, routeMode, basemap, follow, view } =
+    props;
+  const container = useRef<HTMLDivElement>(null);
+  const map = useRef<MapLibreMap | null>(null);
+  const userMarker = useRef<Marker | null>(null);
+  const selectedMarker = useRef<Marker | null>(null);
+  const latest = useRef(props);
+  const firstStyle = useRef(true);
+  const [failed, setFailed] = useState(false);
+  const [styleEpoch, setStyleEpoch] = useState(0);
+
+  useEffect(() => {
+    latest.current = props;
+  });
+
+  // Create the map once.
+  useEffect(() => {
+    if (!container.current) return;
+    let loaded = false;
+    const instance = new maplibregl.Map({
+      container: container.current,
+      style: styleFor(latest.current.basemap),
+      center: HCM_CENTER,
+      zoom: 12.4,
+      maxZoom: 19.5,
+      maxPitch: 65,
+      attributionControl: { compact: true },
+    });
+    map.current = instance;
+    instance.addControl(
+      new maplibregl.NavigationControl({ showCompass: true, visualizePitch: true }),
+      'bottom-right',
+    );
+    instance.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
+
+    const install = () => {
+      const current = latest.current;
+      const add = (id: string, data: FeatureCollection, options: object = {}) => {
+        if (!instance.getSource(id)) instance.addSource(id, { type: 'geojson', data, ...options });
+      };
+      add('tv-accuracy', accuracyCircle(current.user));
+      add('tv-route', routeCollection(current.routeLine));
+      add('tv-pois', pointCollection(current.pois, (poi) => ({ kind: poi.kind })));
+      add('tv-places', pointCollection(current.places), {
+        cluster: true,
+        clusterRadius: 46,
+        clusterMaxZoom: 14,
+      });
+      if (instance.getLayer('tv-places-point')) return;
+      instance.addLayer({
+        id: 'tv-accuracy-fill',
+        type: 'fill',
+        source: 'tv-accuracy',
+        paint: { 'fill-color': '#1a73e8', 'fill-opacity': 0.12 },
+      });
+      instance.addLayer({
+        id: 'tv-accuracy-line',
+        type: 'line',
+        source: 'tv-accuracy',
+        paint: { 'line-color': '#1a73e8', 'line-opacity': 0.4, 'line-width': 1 },
+      });
+      instance.addLayer({
+        id: 'tv-route-casing',
+        type: 'line',
+        source: 'tv-route',
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: {
+          'line-color': '#0b4fb3',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 10, 6, 17, 13],
+        },
+      });
+      instance.addLayer({
+        id: 'tv-route-line',
+        type: 'line',
+        source: 'tv-route',
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: {
+          'line-color': '#3b8bff',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 10, 3.5, 17, 9],
+        },
+      });
+      instance.addLayer({
+        id: 'tv-pois-dot',
+        type: 'circle',
+        source: 'tv-pois',
+        minzoom: 12.5,
+        paint: {
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 12.5, 3, 17, 7],
+          'circle-color': [
+            'match',
+            ['get', 'kind'],
+            ['heritage', 'museum', 'attraction', 'culture'],
+            '#8a5d18',
+            'worship',
+            '#6b4fa3',
+            ['park'],
+            '#2e7d4f',
+            ['cafe', 'food', 'market'],
+            '#c2571a',
+            '#4a6fa5',
+          ],
+          'circle-stroke-color': '#ffffff',
+          'circle-stroke-width': 1.5,
+        },
+      });
+      instance.addLayer({
+        id: 'tv-pois-label',
+        type: 'symbol',
+        source: 'tv-pois',
+        minzoom: 15.3,
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': FONT_REGULAR,
+          'text-size': 11.5,
+          'text-offset': [0, 0.9],
+          'text-anchor': 'top',
+          'text-max-width': 9,
+          'text-optional': true,
+        },
+        paint: { 'text-color': '#30383f', 'text-halo-color': '#ffffff', 'text-halo-width': 1.5 },
+      });
+      instance.addLayer({
+        id: 'tv-places-cluster',
+        type: 'circle',
+        source: 'tv-places',
+        filter: ['has', 'point_count'],
+        paint: {
+          'circle-color': '#114436',
+          'circle-radius': ['step', ['get', 'point_count'], 16, 10, 20, 40, 26],
+          'circle-stroke-color': '#ffffff',
+          'circle-stroke-width': 2.5,
+        },
+      });
+      instance.addLayer({
+        id: 'tv-places-count',
+        type: 'symbol',
+        source: 'tv-places',
+        filter: ['has', 'point_count'],
+        layout: {
+          'text-field': ['get', 'point_count_abbreviated'],
+          'text-font': FONT_BOLD,
+          'text-size': 12.5,
+          'text-allow-overlap': true,
+        },
+        paint: { 'text-color': '#ffffff' },
+      });
+      instance.addLayer({
+        id: 'tv-places-point',
+        type: 'circle',
+        source: 'tv-places',
+        filter: ['!', ['has', 'point_count']],
+        paint: {
+          'circle-color': '#963a1b',
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 11, 6, 17, 10],
+          'circle-stroke-color': '#ffffff',
+          'circle-stroke-width': 2.5,
+        },
+      });
+      instance.addLayer({
+        id: 'tv-places-label',
+        type: 'symbol',
+        source: 'tv-places',
+        filter: ['!', ['has', 'point_count']],
+        minzoom: 13.2,
+        layout: {
+          'text-field': ['get', 'name'],
+          'text-font': FONT_BOLD,
+          'text-size': 12.5,
+          'text-offset': [0, 1.05],
+          'text-anchor': 'top',
+          'text-max-width': 10,
+          'text-optional': true,
+        },
+        paint: { 'text-color': '#6e2610', 'text-halo-color': '#ffffff', 'text-halo-width': 1.8 },
+      });
+    };
+
+    instance.on('style.load', () => {
+      install();
+      setFailed(false);
+      setStyleEpoch((value) => value + 1);
+    });
+    instance.on('load', () => {
+      loaded = true;
+    });
+    instance.on('error', () => {
+      // Before the first successful load an error means the basemap itself is unreachable.
+      if (!loaded) setFailed(true);
+    });
+
+    const hit = (point: { x: number; y: number }) => {
+      const layers = HIT_LAYERS.filter((id) => instance.getLayer(id));
+      if (!layers.length) return undefined;
+      return instance.queryRenderedFeatures(
+        [
+          [point.x - 7, point.y - 7],
+          [point.x + 7, point.y + 7],
+        ],
+        { layers },
+      )[0];
+    };
+    instance.on('click', (event) => {
+      const feature = hit(event.point);
+      if (!feature) {
+        latest.current.onClearSelection();
+        return;
+      }
+      if (feature.layer.id === 'tv-places-cluster') {
+        const source = instance.getSource('tv-places') as GeoJSONSource | undefined;
+        const clusterId = Number(feature.properties?.cluster_id);
+        const centre = (feature.geometry as Point).coordinates as LngLat;
+        void source
+          ?.getClusterExpansionZoom(clusterId)
+          .then((zoom) => instance.easeTo({ center: centre, zoom: Math.min(zoom + 0.3, 18) }))
+          .catch(() => instance.easeTo({ center: centre, zoom: instance.getZoom() + 2 }));
+        return;
+      }
+      const id = String(feature.properties?.id || '');
+      if (!id) return;
+      if (feature.layer.id === 'tv-pois-dot') latest.current.onSelectPoi(id);
+      else latest.current.onSelectPlace(id);
+    });
+    instance.on('mousemove', (event) => {
+      instance.getCanvas().style.cursor = hit(event.point) ? 'pointer' : '';
+    });
+    for (const type of ['dragstart', 'rotatestart', 'pitchstart'] as const)
+      instance.on(type, (event) => {
+        if ((event as { originalEvent?: unknown }).originalEvent) latest.current.onUserGesture();
+      });
+    instance.on('moveend', () => {
+      const centre = instance.getCenter();
+      latest.current.onCenterChange({ latitude: centre.lat, longitude: centre.lng });
+    });
+
+    const observer = new ResizeObserver(() => instance.resize());
+    observer.observe(container.current);
+    return () => {
+      observer.disconnect();
+      userMarker.current = null;
+      selectedMarker.current = null;
+      map.current = null;
+      instance.remove();
+    };
+  }, []);
+
+  // Basemap switch: the style is replaced, `style.load` re-installs our layers.
+  useEffect(() => {
+    if (firstStyle.current) {
+      firstStyle.current = false;
+      return;
+    }
+    map.current?.setStyle(styleFor(basemap));
+  }, [basemap]);
+
+  // Data → sources. `styleEpoch` re-runs these after a style swap.
+  useEffect(() => {
+    (map.current?.getSource('tv-places') as GeoJSONSource | undefined)?.setData(
+      pointCollection(places),
+    );
+  }, [places, styleEpoch]);
+  useEffect(() => {
+    (map.current?.getSource('tv-pois') as GeoJSONSource | undefined)?.setData(
+      pointCollection(pois, (poi) => ({ kind: poi.kind })),
+    );
+  }, [pois, styleEpoch]);
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance) return;
+    (instance.getSource('tv-route') as GeoJSONSource | undefined)?.setData(
+      routeCollection(routeLine),
+    );
+    if (instance.getLayer('tv-route-line'))
+      // Walking routes are drawn dotted, as on most consumer maps.
+      instance.setPaintProperty(
+        'tv-route-line',
+        'line-dasharray',
+        routeMode === 'walking' ? [0.2, 1.6] : [1],
+      );
+  }, [routeLine, routeMode, styleEpoch]);
+
+  // Live position: blue dot, heading wedge and accuracy halo.
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance) return;
+    (instance.getSource('tv-accuracy') as GeoJSONSource | undefined)?.setData(accuracyCircle(user));
+    if (!user) {
+      userMarker.current?.remove();
+      userMarker.current = null;
+      return;
+    }
+    if (!userMarker.current) {
+      userMarker.current = new maplibregl.Marker({
+        element: element(
+          'atlas-me',
+          '<span class="atlas-me-heading"></span><span class="atlas-me-pulse"></span><span class="atlas-me-dot"></span>',
+        ),
+        rotationAlignment: 'map',
+        pitchAlignment: 'map',
+      })
+        .setLngLat([user.longitude, user.latitude])
+        .addTo(instance);
+      userMarker.current
+        .getElement()
+        .setAttribute(
+          'aria-label',
+          copy(locale, 'Vị trí của bạn', 'Your location', '你的位置'),
+        );
+    }
+    userMarker.current.setLngLat([user.longitude, user.latitude]);
+    userMarker.current.setRotation(user.heading ?? 0);
+    userMarker.current.getElement().classList.toggle('has-heading', user.heading !== null);
+  }, [user, locale, styleEpoch]);
+
+  // Selected place pin.
+  useEffect(() => {
+    const instance = map.current;
+    selectedMarker.current?.remove();
+    selectedMarker.current = null;
+    if (!instance || !selected) return;
+    selectedMarker.current = new maplibregl.Marker({
+      element: element('atlas-pin', '<span></span>'),
+      anchor: 'bottom',
+    })
+      .setLngLat([selected.longitude, selected.latitude])
+      .addTo(instance);
+    selectedMarker.current.getElement().setAttribute('aria-label', selected.name);
+  }, [selected]);
+
+  // One-shot camera moves requested by the explorer.
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance || !view) return;
+    if (view.type === 'point') {
+      instance.flyTo({
+        center: [view.longitude, view.latitude],
+        zoom: Math.max(view.zoom, Math.min(instance.getZoom(), 17)),
+        duration: 900,
+        essential: true,
+      });
+      return;
+    }
+    if (view.line.length < 2) return;
+    const bounds = new maplibregl.LngLatBounds(view.line[0], view.line[0]);
+    for (const point of view.line) bounds.extend(point);
+    instance.fitBounds(bounds, { padding: 70, maxZoom: 16.5, duration: 900 });
+  }, [view]);
+
+  // Navigation mode: keep the traveller centred and the map turned the way they move.
+  useEffect(() => {
+    const instance = map.current;
+    if (!instance || !follow || !user) return;
+    instance.easeTo({
+      center: [user.longitude, user.latitude],
+      zoom: Math.max(instance.getZoom(), 16.6),
+      pitch: 50,
+      bearing: user.heading ?? instance.getBearing(),
+      duration: 700,
+    });
+  }, [follow, user]);
 
   return (
-    <div className="map-wrapper">
-      {/* Tile Layer Switcher */}
-      <div className="map-layer-switcher" ref={layerMenuRef}>
-        <button
-          type="button"
-          className="layer-toggle-btn"
-          aria-expanded={showLayerMenu}
-          aria-haspopup="menu"
-          onClick={() => setShowLayerMenu((v) => !v)}
-          title={copy(locale, 'Đổi kiểu bản đồ', 'Change map layer', '切换地图图层')}
-        >
-          <Layers size={15} />
-          <span>{copy(locale, 'Lớp bản đồ', 'Map layers', '地图图层')}</span>
-        </button>
-        {showLayerMenu && (
-          <div className="layer-menu" role="menu">
-            {(Object.keys(TILE_LAYERS) as (keyof typeof TILE_LAYERS)[]).map((key) => (
-              <button
-                key={key}
-                type="button"
-                role="menuitemradio"
-                aria-checked={activeTileLayer === key}
-                className={`layer-option-btn ${activeTileLayer === key ? 'active' : ''}`}
-                onClick={() => {
-                  setActiveTileLayer(key);
-                  setShowLayerMenu(false);
-                }}
-              >
-                {TILE_LAYERS[key].label(locale)}
-              </button>
-            ))}
-          </div>
+    <div className="atlas-canvas">
+      <div
+        ref={container}
+        className="atlas-canvas-map"
+        role="application"
+        aria-label={copy(
+          locale,
+          'Bản đồ tương tác TP. Hồ Chí Minh',
+          'Interactive map of Ho Chi Minh City',
+          '胡志明市互动地图',
         )}
-      </div>
-
-      {/* Floating GPS Recenter Action Button */}
-      {onLocateMe && (
-        <button
-          type="button"
-          className={`map-gps-fab ${position ? 'active' : ''}`}
-          onClick={onLocateMe}
-          aria-label={copy(
+      />
+      {failed && (
+        <p className="atlas-canvas-error" role="alert">
+          {copy(
             locale,
-            'Định vị trung tâm GPS của tôi',
-            'Center map on my GPS position',
-            '将地图定位到我的 GPS 位置',
+            'Chưa tải được bản đồ nền. Hãy kiểm tra kết nối mạng rồi tải lại trang.',
+            'The basemap could not be loaded. Check your connection and reload the page.',
+            '底图加载失败，请检查网络后刷新页面。',
           )}
-          title={copy(
-            locale,
-            'Định vị trung tâm GPS của tôi',
-            'Center map on my GPS position',
-            '将地图定位到我的 GPS 位置',
-          )}
-        >
-          <LocateFixed size={18} />
-        </button>
+        </p>
       )}
-
-      {/* Route Info Overlay */}
-      {routeInfo && routeCoordinates && routeCoordinates.length > 0 && (
-        <div className="route-banner-overlay" role="status">
-          <div className="route-banner-left">
-            <Compass size={18} className="route-icon" />
-            <div>
-              <strong>
-                {copy(
-                  locale,
-                  `Lộ trình thực tế: ${routeInfo.distanceKm} km`,
-                  `Estimated route: ${routeInfo.distanceKm} km`,
-                  `预计实地路线：${routeInfo.distanceKm} 公里`,
-                )}
-              </strong>
-              <span>
-                {copy(
-                  locale,
-                  `Khoảng ${routeInfo.durationMinutes} phút di chuyển qua các tuyến phố`,
-                  `Approx. ${routeInfo.durationMinutes} min via city streets`,
-                  `经由城市街道约 ${routeInfo.durationMinutes} 分钟`,
-                )}
-              </span>
-            </div>
-          </div>
-          {onClearRoute && (
-            <button
-              type="button"
-              className="route-clear-btn"
-              onClick={onClearRoute}
-            >
-              {copy(locale, 'Ẩn tuyến đường', 'Hide route', '隐藏路线')}
-            </button>
-          )}
-        </div>
-      )}
-
-      <span className="map-tile-credit" aria-hidden="true">
-        THÁM VĂN Atlas · Esri
-      </span>
-
-      <MapContainer
-        center={[10.7769, 106.7009]}
-        zoom={12}
-        scrollWheelZoom={true}
-        attributionControl={false}
-        className="heritage-map"
-      >
-        <ZoomTracker onZoomChange={setZoom} />
-
-        <TileLayer
-          key={activeTileLayer}
-          url={currentTile.url}
-          maxZoom={currentTile.maxZoom}
-        />
-
-        {/* Driving Route Polyline */}
-        {routeCoordinates && routeCoordinates.length > 0 && (
-          <>
-            <Polyline
-              positions={routeCoordinates}
-              pathOptions={{
-                color: '#114436',
-                weight: 9,
-                opacity: 0.28,
-                lineCap: 'round',
-                lineJoin: 'round',
-              }}
-            />
-            <Polyline
-              positions={routeCoordinates}
-              pathOptions={{
-                color: '#963a1b',
-                weight: 4.5,
-                opacity: 0.95,
-                lineCap: 'round',
-                lineJoin: 'round',
-              }}
-            />
-          </>
-        )}
-
-        {/* User Exact GPS Location Marker */}
-        {position && (
-          <>
-            {typeof accuracyMeters === 'number' && accuracyMeters > 10 && (
-              <Circle
-                center={[position.latitude, position.longitude]}
-                radius={Math.min(accuracyMeters, 450)}
-                pathOptions={{
-                  color: '#0284c7',
-                  fillColor: '#0ea5e9',
-                  fillOpacity: 0.12,
-                  weight: 1,
-                }}
-              />
-            )}
-
-            <Marker
-              position={[position.latitude, position.longitude]}
-              icon={userLocationIcon}
-              title={copy(locale, 'Vị trí GPS của bạn', 'Your GPS location', '您的 GPS 位置')}
-            >
-              <Popup className="user-popup">
-                <div className="user-popup-content">
-                  <strong>
-                    {copy(
-                      locale,
-                      'Vị trí hiện tại của bạn',
-                      'Your current position',
-                      '您当前的位置',
-                    )}
-                  </strong>
-                  <small>
-                    {copy(locale, 'Tọa độ GPS:', 'GPS coordinates:', 'GPS 坐标：')}{' '}
-                    {position.latitude.toFixed(6)}, {position.longitude.toFixed(6)}
-                  </small>
-                  {typeof accuracyMeters === 'number' && accuracyMeters > 0 && (
-                    <small className="user-accuracy-note">
-                      {copy(locale, 'Độ chính xác:', 'Accuracy:', '定位精度：')} ±
-                      {Math.max(1, Math.round(accuracyMeters))} m
-                    </small>
-                  )}
-                </div>
-              </Popup>
-            </Marker>
-
-            <Circle
-              center={[position.latitude, position.longitude]}
-              radius={radius * 1000}
-              pathOptions={{
-                color: '#114436',
-                fillColor: '#114436',
-                fillOpacity: 0.045,
-                weight: 1.5,
-                dashArray: '6, 6',
-              }}
-            />
-          </>
-        )}
-
-        {/* Cluster Markers */}
-        {clusters.map((cluster) => (
-          <ClusterMarkerItem key={cluster.id} cluster={cluster} locale={locale} />
-        ))}
-
-        {/* Individual Place Markers */}
-        {singleMarkers.map((e) => {
-          const hasPhoto = Boolean(e.hasImage || e.image);
-          const isSelected = selectedPlace?.id === e.id;
-          const icon = isSelected
-            ? selectedMarkerIcon
-            : hasPhoto
-              ? photoMarkerIcon
-              : standardMarkerIcon;
-
-          return (
-            <Marker
-              key={e.id}
-              position={[e.latitude!, e.longitude!]}
-              icon={icon}
-              title={e.name}
-              alt={e.name}
-              zIndexOffset={isSelected ? 1000 : hasPhoto ? 200 : 0}
-              eventHandlers={{
-                click: () => onSelectPlace?.(e),
-              }}
-            >
-              <Popup className="hcm-map-popup" maxWidth={320} minWidth={260}>
-                <div className="popup-card">
-                  {hasPhoto && e.image ? (
-                    <div className="popup-photo-box">
-                      <PopupPhoto key={e.image} src={e.image} alt={e.name} />
-                      <span className="popup-photo-badge">
-                        <Sparkles size={11} />
-                        {t(locale, 'photoFilterVerified')}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="popup-no-photo-badge">
-                      <MapPin size={12} />
-                      <span>{t(locale, 'photoFilterWithout')}</span>
-                    </div>
-                  )}
-
-                  <div className="popup-body">
-                    <div className="popup-pills">
-                      <span className="popup-cat-pill">
-                        {e.category || t(locale, e.kind)}
-                      </span>
-                      <span className="popup-region-pill">{e.region}</span>
-                    </div>
-
-                    <h3 className="popup-title">{e.name}</h3>
-
-                    {e.address && (
-                      <p className="popup-address">
-                        <MapPin size={13} />
-                        <span>{e.address}</span>
-                      </p>
-                    )}
-
-                    {position && e.latitude && e.longitude && (
-                      <p className="popup-distance">
-                        <Navigation size={12} />
-                        <span>
-                          {copy(locale, 'Cách bạn', 'Distance', '距您')}{' '}
-                          {distanceKm(position, {
-                            latitude: e.latitude,
-                            longitude: e.longitude,
-                          }).toFixed(1)}{' '}
-                          km
-                        </span>
-                      </p>
-                    )}
-
-                    <div className="popup-actions">
-                      <Link
-                        className="button primary small popup-btn"
-                        href={`/${locale}/explore/${e.slug}`}
-                      >
-                        {t(locale, 'open')}
-                      </Link>
-
-                      {onRequestRoute && (
-                        <button
-                          type="button"
-                          className="button secondary small popup-btn route-btn-action"
-                          onClick={() => onRequestRoute(e)}
-                          title={copy(
-                            locale,
-                            'Vẽ tuyến đường thực tế đến đây',
-                            'Show street route to this place',
-                            '显示前往此地的路线',
-                          )}
-                        >
-                          <Compass size={14} />
-                          {copy(locale, 'Hiện đường', 'Route', '显示路线')}
-                        </button>
-                      )}
-
-                      <a
-                        className="button secondary small popup-btn"
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${e.latitude},${e.longitude}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={t(locale, 'directions')}
-                      >
-                        <ExternalLink size={14} />
-                        Google Maps
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </Popup>
-            </Marker>
-          );
-        })}
-
-        <MapController
-          entries={entries}
-          position={position}
-          selectedPlace={selectedPlace || null}
-          routeCoordinates={routeCoordinates}
-          locateTrigger={locateTrigger}
-        />
-      </MapContainer>
     </div>
   );
 }

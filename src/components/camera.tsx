@@ -1,685 +1,784 @@
 'use client';
-/* eslint-disable @next/next/no-img-element -- User-selected blob previews must stay local. */
-import { useEffect, useRef, useState } from 'react';
+/* eslint-disable @next/next/no-img-element -- Captured/selected blob previews must stay local. */
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import {
-  Camera,
-  Upload,
-  ScanLine,
-  X,
-  ArrowUpRight,
-  Compass,
-  ImagePlus,
-  Minus,
-  Plus,
+  Check,
+  Images,
+  LoaderCircle,
+  LogIn,
+  MapPin,
+  MapPinOff,
+  RefreshCcw,
   RotateCcw,
   Save,
-  Search,
-  Images,
-  Sparkles,
+  SwitchCamera,
+  X,
+  Zap,
+  ZapOff,
 } from 'lucide-react';
 import type { Locale } from '@/lib/types';
 import {
-  deviceLocationSchema,
   freshLocation,
+  type CaptureOrigin,
   type DeviceLocation,
   type RecognitionResult,
 } from '@/lib/recognition';
 import { t } from '@/lib/i18n';
-import { Status, errorText } from './ui';
-import { RecognitionResultView } from './recognition-result';
+import { copy } from '@/lib/locale-copy';
+import { useDeviceConsent, type ConsentItem } from '@/lib/device-consent';
+import { locationSupport, requestDeviceLocation } from '@/lib/device-location';
 import { toStoredPhotoDataUrl, useJourneyPhotos } from '@/lib/journey-photos';
+import { errorText } from './ui';
+import { PermissionGate } from './permission-gate';
+import { RecognitionResultView } from './recognition-result';
 
-type CameraTab = 'capture' | 'explore';
+type Shot = { file: File; url: string; origin: CaptureOrigin };
+type CameraState = 'idle' | 'starting' | 'live' | 'denied' | 'unsupported';
+type LocationState = 'off' | 'locating' | 'ready' | 'unavailable';
+type Analysis =
+  | { status: 'idle' }
+  | { status: 'pending' }
+  | { status: 'done'; result: RecognitionResult }
+  | { status: 'error'; message: string }
+  | { status: 'login' }
+  | { status: 'unavailable' };
+
+const ACCEPTED = ['image/jpeg', 'image/png', 'image/webp'];
+const MAX_UPLOAD = 5 * 1024 * 1024;
+const MAX_EDGE = 1600;
+const DIGITAL_ZOOM_MAX = 4;
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+
+type ZoomCapability = { min: number; max: number };
+type ExtendedCapabilities = MediaTrackCapabilities & {
+  zoom?: { min?: number; max?: number };
+  torch?: boolean;
+};
+
+/** Fit any picked photo inside the upload limits; phone originals are routinely larger. */
+async function prepareImage(file: File): Promise<File | null> {
+  if (ACCEPTED.includes(file.type) && file.size > 0 && file.size <= MAX_UPLOAD * 0.9) return file;
+  try {
+    const bitmap = await createImageBitmap(file, { imageOrientation: 'from-image' });
+    const scale = Math.min(1, MAX_EDGE / Math.max(bitmap.width, bitmap.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+    canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+    canvas.getContext('2d')?.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    bitmap.close();
+    const blob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob(resolve, 'image/jpeg', 0.88),
+    );
+    return blob && blob.size <= MAX_UPLOAD
+      ? new File([blob], 'photo.jpg', { type: 'image/jpeg' })
+      : null;
+  } catch {
+    return null;
+  }
+}
 
 export function CameraExplorer({
   locale,
   available,
- signedIn,
+  signedIn,
 }: {
   locale: Locale;
   available: boolean;
   signedIn: boolean;
 }) {
-  const router = useRouter(),
-    input = useRef<HTMLInputElement>(null),
-    video = useRef<HTMLVideoElement>(null),
-    stream = useRef<MediaStream | null>(null),
-    mounted = useRef(true),
-    requesting = useRef(false),
-    analyzing = useRef(false),
-    locationRequest = useRef(0),
-    analysisController = useRef<AbortController | null>(null),
-    [starting, setStarting] = useState(false),
-    [canCapture, setCanCapture] = useState(false),
-    [live, setLive] = useState(false),
-    [file, setFile] = useState<File | null>(null),
-    [preview, setPreview] = useState(''),
-   [consent, setConsent] = useState(false),
-    [pending, setPending] = useState(false),
-    [message, setMessage] = useState(''),
-    [result, setResult] = useState<RecognitionResult | null>(null),
-    [shareLocation, setShareLocation] = useState(false),
-    [location, setLocation] = useState<DeviceLocation | null>(null),
-    [locating, setLocating] = useState(false),
-    [locationMessage, setLocationMessage] = useState(''),
-    [tab, setTab] = useState<CameraTab>('capture'),
-    [zoom, setZoom] = useState(1),
-    [offset, setOffset] = useState({ x: 0, y: 0 }),
-    [searchQuery, setSearchQuery] = useState(''),
-    [libraryNotice, setLibraryNotice] = useState(''),
-    [savedNotice, setSavedNotice] = useState(''),
-    [permissionNotice, setPermissionNotice] = useState(false);
-  const { photos, save: savePhoto } = useJourneyPhotos();
-  const permissionSeen = useRef(false);
+  const c = useCallback(
+    (vi: string, en: string, zh: string) => copy(locale, vi, en, zh),
+    [locale],
+  );
+  const { consent, accept } = useDeviceConsent();
+  const { save: savePhoto } = useJourneyPhotos();
+
+  const video = useRef<HTMLVideoElement>(null);
+  const input = useRef<HTMLInputElement>(null);
+  const stream = useRef<MediaStream | null>(null);
+  const hardwareZoom = useRef<ZoomCapability | null>(null);
+  const location = useRef<DeviceLocation | null>(null);
+  const controller = useRef<AbortController | null>(null);
+  const pointers = useRef(new Map<number, { x: number; y: number }>());
+  const pinch = useRef<{ distance: number; zoom: number } | null>(null);
+  const drag = useRef<{ x: number; y: number; ox: number; oy: number } | null>(null);
+  const lastTap = useRef(0);
+
+  const [cameraState, setCameraState] = useState<CameraState>('idle');
+  const [facing, setFacing] = useState<'environment' | 'user'>('environment');
+  const [attempt, setAttempt] = useState(0);
+  const [zoom, setZoom] = useState(1);
+  const [zoomMax, setZoomMax] = useState(DIGITAL_ZOOM_MAX);
+  const [opticalZoom, setOpticalZoom] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [torch, setTorch] = useState<'none' | 'off' | 'on'>('none');
+  const [locationState, setLocationState] = useState<LocationState>('off');
+  const [shot, setShot] = useState<Shot | null>(null);
+  const [analysis, setAnalysis] = useState<Analysis>({ status: 'idle' });
+  const [notice, setNotice] = useState('');
+  const [saved, setSaved] = useState(false);
+
+  const consentReady = Boolean(consent);
+  const wantsLocation = Boolean(consent?.location);
+  const reviewing = Boolean(shot);
+
+  // The capture screen is a full-viewport surface: keep the page behind it from scrolling.
+  useEffect(() => {
+    document.documentElement.classList.add('lens-open');
+    return () => document.documentElement.classList.remove('lens-open');
+  }, []);
 
   useEffect(
     () => () => {
-      if (preview) URL.revokeObjectURL(preview);
+      controller.current?.abort();
     },
-    [preview],
+    [],
   );
+
   useEffect(() => {
-    mounted.current = true;
+    const url = shot?.url;
     return () => {
-      mounted.current = false;
-      analysisController.current?.abort();
-      stream.current?.getTracks().forEach((t) => t.stop());
+      if (url) URL.revokeObjectURL(url);
     };
-  }, []);
+  }, [shot]);
+
+  // Live camera: runs only while consent exists and no shot is being reviewed.
   useEffect(() => {
-    if (typeof window === 'undefined' || permissionSeen.current) return;
-    permissionSeen.current = true;
-    let accepted = false;
-    try {
-      accepted = !!localStorage.getItem('tv-permission-notice');
-    } catch {
-      /* Storage unavailable: the notice simply shows again next time. */
-    }
-    if (!accepted) {
-      const timer = window.setTimeout(() => setPermissionNotice(true), 0);
-      return () => window.clearTimeout(timer);
-    }
-  }, []);
-  function stop() {
-    stream.current?.getTracks().forEach((t) => t.stop());
-    stream.current = null;
-    setLive(false);
-    setCanCapture(false);
-    setZoom(1);
-    setOffset({ x: 0, y: 0 });
-  }
-  async function getLocation() {
-    if (!window.isSecureContext || !navigator.geolocation) throw new Error('locationDenied');
-    const position = await new Promise<GeolocationPosition>((resolve, reject) =>
-      navigator.geolocation.getCurrentPosition(resolve, () => reject(new Error('locationDenied')), {
-        enableHighAccuracy: true,
-        timeout: 12000,
-        maximumAge: 0,
-      }),
-    );
-    const next = deviceLocationSchema.parse({
-      source: 'device',
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
-      accuracy: position.coords.accuracy,
-      timestamp: position.timestamp,
-    });
-    if (!freshLocation(next)) throw new Error('locationExpired');
-    return next;
-  }
-  async function toggleLocation(enabled: boolean) {
-    const id = ++locationRequest.current;
-    setShareLocation(enabled);
-    setLocation(null);
-    setLocationMessage('');
-    setResult(null);
-    setLocating(enabled);
-    if (!enabled) return;
-    try {
-      const next = await getLocation();
-      if (mounted.current && id === locationRequest.current) setLocation(next);
-    } catch {
-      if (mounted.current && id === locationRequest.current) {
-        setShareLocation(false);
-        setLocationMessage(t(locale, 'locationDenied'));
-      }
-    } finally {
-      if (mounted.current && id === locationRequest.current) setLocating(false);
-    }
-  }
-  async function openCamera() {
-    if (requesting.current || analyzing.current) return;
-    requesting.current = true;
-    setStarting(true);
-    setMessage('');
-    try {
-      const media = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: 'environment' },
-        audio: false,
-      });
-      if (!mounted.current) {
-        media.getTracks().forEach((t) => t.stop());
+    if (!consentReady || reviewing) return;
+    let cancelled = false;
+    const element = video.current;
+    (async () => {
+      await Promise.resolve();
+      if (cancelled) return;
+      if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia) {
+        setCameraState('unsupported');
         return;
       }
-      stream.current = media;
-      setFile(null);
-      setPreview('');
-      setConsent(false);
-      setResult(null);
-      setLive(true);
-      setTab('capture');
-      if (video.current) {
-        video.current.srcObject = media;
-        await video.current.play();
+      setCameraState('starting');
+      try {
+        const media = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: { ideal: facing },
+            width: { ideal: 1920 },
+            height: { ideal: 1080 },
+          },
+          audio: false,
+        });
+        if (cancelled) {
+          media.getTracks().forEach((track) => track.stop());
+          return;
+        }
+        stream.current = media;
+        const track = media.getVideoTracks()[0];
+        const capabilities = (track?.getCapabilities?.() || {}) as ExtendedCapabilities;
+        const min = capabilities.zoom?.min;
+        const max = capabilities.zoom?.max;
+        if (typeof min === 'number' && typeof max === 'number' && min > 0 && max > min * 1.2) {
+          hardwareZoom.current = { min, max };
+          setOpticalZoom(true);
+          setZoomMax(Math.min(8, max / min));
+        } else {
+          hardwareZoom.current = null;
+          setOpticalZoom(false);
+          setZoomMax(DIGITAL_ZOOM_MAX);
+        }
+        setTorch(capabilities.torch ? 'off' : 'none');
+        setZoom(1);
+        setOffset({ x: 0, y: 0 });
+        if (element) {
+          element.srcObject = media;
+          await element.play().catch(() => undefined);
+        }
+        if (!cancelled) setCameraState('live');
+      } catch {
+        if (!cancelled) setCameraState('denied');
       }
-    } catch {
-      if (mounted.current) {
-        stop();
-        setMessage(t(locale, 'cameraDenied'));
-      }
-    } finally {
-      requesting.current = false;
-      if (mounted.current) setStarting(false);
-    }
-  }
-  function select(next?: File) {
-    if (!next || analyzing.current) return;
-    if (
-      !['image/jpeg', 'image/png', 'image/webp'].includes(next.type) ||
-      next.size === 0 ||
-      next.size > 5 * 1024 * 1024
-    ) {
-      setMessage(t(locale, 'imageHint'));
-      return;
-    }
-    stop();
-    setFile(next);
-    setPreview(URL.createObjectURL(next));
-    setResult(null);
-    setMessage('');
-    setConsent(false);
-    setLibraryNotice('');
-    setZoom(1);
-    setOffset({ x: 0, y: 0 });
-  }
-  function capture() {
-    if (!video.current || !canCapture || !video.current.videoWidth || !video.current.videoHeight)
-      return;
-    const canvas = document.createElement('canvas');
-    const ratio = Math.min(1, 1600 / video.current.videoWidth);
-    canvas.width = video.current.videoWidth * ratio;
-    canvas.height = video.current.videoHeight * ratio;
-    canvas.getContext('2d')?.drawImage(video.current, 0, 0, canvas.width, canvas.height);
-    canvas.toBlob(
-      (blob) => {
-        if (blob && mounted.current)
-          select(new File([blob], 'capture.jpg', { type: 'image/jpeg' }));
-      },
-      'image/jpeg',
-      0.88,
-    );
-  }
-  async function analyze() {
-    if (!signedIn) {
-      router.push(`/${locale}/auth/login?next=/${locale}/camera`);
-      return;
-    }
-    if (!file || !consent || analyzing.current || locating) return;
-    analyzing.current = true;
-    const controller = new AbortController();
-    analysisController.current = controller;
-    setPending(true);
-    setMessage('');
-    setResult(null);
-    const form = new FormData();
-    form.set('image', file);
-    form.set('locale', locale);
-    form.set('consent', 'true');
-    try {
-      if (shareLocation) {
-        const current = location && freshLocation(location) ? location : await getLocation();
-        if (!mounted.current || controller.signal.aborted) return;
-        setLocation(current);
-        form.set('locationConsent', 'true');
-        form.set('location', JSON.stringify(current));
-      }
-      const response = await fetch('/api/recognize', {
-        method: 'POST',
-        body: form,
-        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(60000)]),
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error);
-      if (mounted.current) setResult(data);
-    } catch (e) {
-      if (mounted.current && !controller.signal.aborted) {
-        setMessage(errorText(locale, e));
-      }
-    } finally {
-      analyzing.current = false;
-      if (mounted.current) setPending(false);
-    }
-  }
-  async function persistToJourney() {
-    if (!file) return;
-    const dataUrl = await toStoredPhotoDataUrl(file);
-    const matched = result?.candidates.find((candidate) => candidate.entry);
-    const entry = matched?.entry;
-    const saved = savePhoto({
-      name: entry?.name || (file.name || t(locale, 'camera')),
-      region: entry?.address || '',
-      slug: entry?.slug || null,
-      dataUrl,
-    });
-    if (saved) setSavedNotice(t(locale, 'photoSaved'));
-    else setSavedNotice(t(locale, 'imageHint'));
-  }
+    })();
+    return () => {
+      cancelled = true;
+      stream.current?.getTracks().forEach((track) => track.stop());
+      stream.current = null;
+      hardwareZoom.current = null;
+      if (element) element.srcObject = null;
+    };
+  }, [consentReady, reviewing, facing, attempt]);
 
-  const filteredPhotos = photos.filter((photo) =>
-    searchQuery.trim()
-      ? `${photo.name} ${photo.region}`.toLowerCase().includes(searchQuery.trim().toLowerCase())
-      : true,
+  // Device position, kept fresh in the background so the shutter never waits on GPS.
+  useEffect(() => {
+    if (!wantsLocation) return;
+    let cancelled = false;
+    let watch: number | null = null;
+    (async () => {
+      await Promise.resolve();
+      if (cancelled) return;
+      if (locationSupport()) {
+        setLocationState('unavailable');
+        return;
+      }
+      setLocationState((current) => (current === 'ready' ? current : 'locating'));
+      watch = navigator.geolocation.watchPosition(
+        (position) => {
+          if (cancelled) return;
+          const next: DeviceLocation = {
+            source: 'device',
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            accuracy: position.coords.accuracy > 0 ? position.coords.accuracy : 50,
+            timestamp: position.timestamp,
+          };
+          const previous = location.current;
+          // Keep a sharp GPS lock over a momentary coarse reading.
+          if (
+            previous &&
+            freshLocation(previous) &&
+            next.accuracy > previous.accuracy * 2.5 &&
+            previous.accuracy < 100
+          )
+            return;
+          location.current = next;
+          setLocationState('ready');
+        },
+        () => {
+          if (cancelled || (location.current && freshLocation(location.current))) return;
+          location.current = null;
+          setLocationState('unavailable');
+        },
+        { enableHighAccuracy: true, maximumAge: 0, timeout: 20_000 },
+      );
+    })();
+    return () => {
+      cancelled = true;
+      if (watch !== null) navigator.geolocation.clearWatch?.(watch);
+    };
+  }, [wantsLocation, attempt]);
+
+  const applyZoom = useCallback(
+    (value: number) => {
+      const next = clamp(Number(value.toFixed(2)), 1, reviewing ? DIGITAL_ZOOM_MAX : zoomMax);
+      setZoom(next);
+      if (next === 1) setOffset({ x: 0, y: 0 });
+      const hardware = hardwareZoom.current;
+      const track = stream.current?.getVideoTracks()[0];
+      if (!reviewing && hardware && track)
+        void track
+          .applyConstraints({
+            advanced: [
+              { zoom: clamp(hardware.min * next, hardware.min, hardware.max) } as object,
+            ],
+          })
+          .catch(() => undefined);
+    },
+    [reviewing, zoomMax],
   );
 
+  const analyze = useCallback(
+    async (file: File, origin: CaptureOrigin) => {
+      controller.current?.abort();
+      if (!signedIn) {
+        setAnalysis({ status: 'login' });
+        return;
+      }
+      if (!available) {
+        setAnalysis({ status: 'unavailable' });
+        return;
+      }
+      const current = new AbortController();
+      controller.current = current;
+      setAnalysis({ status: 'pending' });
+      const form = new FormData();
+      form.set('image', file);
+      form.set('locale', locale);
+      form.set('consent', 'true');
+      form.set('origin', origin);
+      try {
+        if (wantsLocation) {
+          let fix = location.current && freshLocation(location.current) ? location.current : null;
+          if (!fix) fix = await requestDeviceLocation(8000).catch(() => null);
+          if (current.signal.aborted) return;
+          if (fix) {
+            location.current = fix;
+            setLocationState('ready');
+            form.set('locationConsent', 'true');
+            form.set('location', JSON.stringify(fix));
+          }
+        }
+        const response = await fetch('/api/recognize', {
+          method: 'POST',
+          body: form,
+          signal: AbortSignal.any([current.signal, AbortSignal.timeout(60_000)]),
+        });
+        const data = await response.json().catch(() => ({ error: 'error' }));
+        if (current.signal.aborted) return;
+        if (response.status === 401) {
+          setAnalysis({ status: 'login' });
+          return;
+        }
+        if (!response.ok) throw new Error(data.error);
+        setAnalysis({ status: 'done', result: data as RecognitionResult });
+      } catch (error) {
+        if (current.signal.aborted) return;
+        setAnalysis({
+          status: 'error',
+          message:
+            error instanceof DOMException && error.name === 'TimeoutError'
+              ? t(locale, 'visionTimeout')
+              : errorText(locale, error),
+        });
+      }
+    },
+    [available, locale, signedIn, wantsLocation],
+  );
+
+  const acceptShot = useCallback(
+    (file: File, origin: CaptureOrigin) => {
+      setShot({ file, url: URL.createObjectURL(file), origin });
+      setZoom(1);
+      setOffset({ x: 0, y: 0 });
+      setSaved(false);
+      setNotice('');
+      void analyze(file, origin);
+    },
+    [analyze],
+  );
+
+  function capture() {
+    const element = video.current;
+    if (cameraState !== 'live' || !element?.videoWidth || !element.videoHeight) return;
+    // Hardware zoom is already in the frame; digital zoom is applied by cropping the centre.
+    const digital = hardwareZoom.current ? 1 : zoom;
+    const sw = element.videoWidth / digital;
+    const sh = element.videoHeight / digital;
+    const scale = Math.min(1, MAX_EDGE / Math.max(sw, sh));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(sw * scale);
+    canvas.height = Math.round(sh * scale);
+    const context = canvas.getContext('2d');
+    if (!context) return;
+    context.drawImage(
+      element,
+      (element.videoWidth - sw) / 2,
+      (element.videoHeight - sh) / 2,
+      sw,
+      sh,
+      0,
+      0,
+      canvas.width,
+      canvas.height,
+    );
+    canvas.toBlob(
+      (blob) => {
+        if (blob) acceptShot(new File([blob], 'capture.jpg', { type: 'image/jpeg' }), 'camera');
+      },
+      'image/jpeg',
+      0.9,
+    );
+  }
+
+  async function pick(file?: File) {
+    if (!file) return;
+    const prepared = await prepareImage(file);
+    if (!prepared) {
+      setNotice(t(locale, 'imageHint'));
+      return;
+    }
+    acceptShot(prepared, 'gallery');
+  }
+
+  function retake() {
+    controller.current?.abort();
+    setShot(null);
+    setAnalysis({ status: 'idle' });
+    setZoom(1);
+    setOffset({ x: 0, y: 0 });
+    setNotice('');
+  }
+
+  async function toggleTorch() {
+    const track = stream.current?.getVideoTracks()[0];
+    if (!track || torch === 'none') return;
+    const next = torch === 'on' ? 'off' : 'on';
+    try {
+      await track.applyConstraints({ advanced: [{ torch: next === 'on' } as object] });
+      setTorch(next);
+    } catch {
+      setTorch('none');
+    }
+  }
+
+  async function saveToJourney() {
+    if (!shot) return;
+    const result = analysis.status === 'done' ? analysis.result : null;
+    const entry = result?.candidates[0]?.entry;
+    const stored = savePhoto({
+      name: entry?.name || result?.subject?.name || t(locale, 'camera'),
+      region: entry?.address || result?.place?.label || '',
+      slug: entry?.slug || null,
+      dataUrl: await toStoredPhotoDataUrl(shot.file),
+    });
+    setSaved(Boolean(stored));
+    setNotice(stored ? t(locale, 'photoSaved') : t(locale, 'imageHint'));
+  }
+
+  // Pinch with two fingers, drag to pan a zoomed still, double-tap to jump between 1× and 2×.
+  const gesture = {
+    onPointerDown(event: React.PointerEvent<HTMLDivElement>) {
+      event.currentTarget.setPointerCapture?.(event.pointerId);
+      pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      const points = [...pointers.current.values()];
+      if (points.length === 2) {
+        pinch.current = {
+          distance: Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y) || 1,
+          zoom,
+        };
+        drag.current = null;
+      } else if (points.length === 1) {
+        drag.current = { x: event.clientX, y: event.clientY, ox: offset.x, oy: offset.y };
+        const now = event.timeStamp;
+        if (now - lastTap.current < 300) applyZoom(zoom > 1.05 ? 1 : 2);
+        lastTap.current = now;
+      }
+    },
+    onPointerMove(event: React.PointerEvent<HTMLDivElement>) {
+      if (!pointers.current.has(event.pointerId)) return;
+      pointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+      const points = [...pointers.current.values()];
+      if (points.length === 2 && pinch.current) {
+        const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+        applyZoom(pinch.current.zoom * (distance / pinch.current.distance));
+      } else if (points.length === 1 && drag.current && reviewing && zoom > 1) {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        const limitX = (bounds.width * (zoom - 1)) / 2;
+        const limitY = (bounds.height * (zoom - 1)) / 2;
+        setOffset({
+          x: clamp(drag.current.ox + event.clientX - drag.current.x, -limitX, limitX),
+          y: clamp(drag.current.oy + event.clientY - drag.current.y, -limitY, limitY),
+        });
+      }
+    },
+    onPointerUp(event: React.PointerEvent<HTMLDivElement>) {
+      pointers.current.delete(event.pointerId);
+      if (pointers.current.size < 2) pinch.current = null;
+      if (pointers.current.size === 0) drag.current = null;
+    },
+    onWheel(event: React.WheelEvent<HTMLDivElement>) {
+      applyZoom(zoom * (event.deltaY < 0 ? 1.12 : 0.89));
+    },
+  };
+
+  const digitalScale = !reviewing && opticalZoom ? 1 : zoom;
+  const zoomStops = [1, 2, 3].filter((stop) => stop <= (reviewing ? DIGITAL_ZOOM_MAX : zoomMax) + 0.01);
+  const loginHref = `/${locale}/auth/login?next=${encodeURIComponent(`/${locale}/camera`)}`;
+
+  if (consent === undefined)
+    return (
+      <div className="lens" aria-busy="true">
+        <h1 className="sr-only">{t(locale, 'camera')}</h1>
+        <p className="lens-loading" role="status">
+          <LoaderCircle size={22} className="spin" aria-hidden="true" />
+          {t(locale, 'loading')}
+        </p>
+      </div>
+    );
+
+  if (!consent)
+    return (
+      <div className="lens">
+        <h1 className="sr-only">{t(locale, 'camera')}</h1>
+        <PermissionGate
+          locale={locale}
+          onAccept={(choice: Record<ConsentItem, boolean>) => accept(choice)}
+        />
+      </div>
+    );
+
   return (
-    <div className="camera-layout">
-      <div>
-        {/* Phone-style capture surface */}
-        <div className={`phone-camera ${preview || live ? 'has-image' : ''}`}>
-          <div
-            className="phone-camera-screen camera-view"
-            style={{ height: 'auto', border: 'none' }}
-          >
-            <video
-              ref={video}
-              autoPlay
-              playsInline
-              muted
-              hidden={!live}
-              onLoadedData={() => setCanCapture(true)}
+    <div className={`lens ${reviewing ? 'is-review' : 'is-live'}`}>
+      <h1 className="sr-only">{t(locale, 'camera')}</h1>
+      <div className="lens-stage">
+        <div
+          className="lens-surface"
+          {...gesture}
+          onPointerCancel={gesture.onPointerUp}
+          aria-label={c(
+            'Khung ngắm: chụm hai ngón tay để phóng to hoặc thu nhỏ',
+            'Viewfinder: pinch with two fingers to zoom in or out',
+            '取景框：双指捏合可放大或缩小',
+          )}
+          role="group"
+        >
+          <video
+            ref={video}
+            className={`lens-video ${facing === 'user' ? 'is-mirrored' : ''}`}
+            autoPlay
+            playsInline
+            muted
+            hidden={reviewing}
+            style={{ transform: `${facing === 'user' ? 'scaleX(-1) ' : ''}scale(${digitalScale})` }}
+          />
+          {shot && (
+            <img
+              className="lens-still"
+              src={shot.url}
+              alt={c('Ảnh vừa chụp', 'Captured photo', '刚拍摄的照片')}
+              draggable={false}
+              style={{ transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})` }}
+              onError={() => {
+                setNotice(t(locale, 'imageHint'));
+                retake();
+              }}
             />
-            {preview && !live && (
-              <img
-                src={preview}
-                alt={t(locale, 'camera')}
-                style={{
-                  transform: `scale(${zoom}) translate(${offset.x}px, ${offset.y}px)`,
-                }}
-                onError={() => {
-                  setFile(null);
-                  setPreview('');
-                  setConsent(false);
-                  setMessage(t(locale, 'imageHint'));
-                }}
-              />
-            )}
-            <div hidden={!!preview || live} className="camera-empty">
-              <span className="scan-corners" />
-              <Camera size={44} />
-              <h2>{t(locale, 'camera')}</h2>
-              <p>{t(locale, 'cameraHint')}</p>
-            </div>
-
-            {/* Rule-of-thirds framing grid */}
-            <div className="phone-camera-grid" aria-hidden="true">
+          )}
+          {!reviewing && cameraState === 'live' && (
+            <div className="lens-grid" aria-hidden="true">
               <span />
               <span />
               <span />
               <span />
             </div>
+          )}
+        </div>
 
-            {/* Live zoom + framing controls */}
-            {(live || !!preview) && (
-              <div className="phone-camera-tools">
-                <button
-                  type="button"
-                  onClick={() => setZoom((value) => Math.max(1, Number((value - 0.25).toFixed(2))))}
-                  disabled={zoom <= 1}
-                  aria-label={t(locale, 'zoomOut')}
-                  title={t(locale, 'zoomOut')}
-                >
-                  <Minus size={16} />
-                </button>
-                <span className="phone-camera-zoom-value">{zoom.toFixed(1)}×</span>
-                <button
-                  type="button"
-                  onClick={() => setZoom((value) => Math.min(3, Number((value + 0.25).toFixed(2))))}
-                  disabled={zoom >= 3}
-                  aria-label={t(locale, 'zoomIn')}
-                  title={t(locale, 'zoomIn')}
-                >
-                  <Plus size={16} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setZoom(1);
-                    setOffset({ x: 0, y: 0 });
-                  }}
-                  disabled={zoom === 1 && offset.x === 0 && offset.y === 0}
-                  aria-label={t(locale, 'resetZoom')}
-                  title={t(locale, 'resetZoom')}
-                >
-                  <RotateCcw size={16} />
-                </button>
-              </div>
+        <div className="lens-top">
+          <Link
+            className="lens-icon"
+            href={`/${locale}`}
+            aria-label={c('Đóng camera', 'Close camera', '关闭相机')}
+          >
+            <X size={22} />
+          </Link>
+          <button
+            type="button"
+            className={`lens-chip ${locationState === 'ready' ? 'is-on' : ''}`}
+            onClick={() => {
+              if (locationState !== 'ready' && wantsLocation) setAttempt((value) => value + 1);
+            }}
+            aria-live="polite"
+          >
+            {locationState === 'ready' ? (
+              <MapPin size={14} aria-hidden="true" />
+            ) : (
+              <MapPinOff size={14} aria-hidden="true" />
             )}
-
-            {/* Frame slider for re-framing the shot */}
-            {live && (
-              <div className="phone-camera-frame">
-                <input
-                  type="range"
-                  min={-40}
-                  max={40}
-                  value={offset.x}
-                  onChange={(event) =>
-                    setOffset((current) => ({ ...current, x: Number(event.target.value) }))
-                  }
-                  aria-label={t(locale, 'captureFrameHint')}
-                />
-              </div>
-            )}
-
-            {live && (
+            {locationState === 'ready'
+              ? c('Đang dùng vị trí của bạn', 'Using your location', '正在使用你的位置')
+              : locationState === 'locating'
+                ? c('Đang định vị…', 'Locating…', '正在定位…')
+                : c('Chưa có vị trí · chạm để thử lại', 'No location · tap to retry', '未获取位置 · 点击重试')}
+          </button>
+          <div className="lens-top-actions">
+            {!reviewing && torch !== 'none' && (
               <button
-                className="camera-close icon-button"
-                aria-label={t(locale, 'cancel')}
-                onClick={stop}
+                type="button"
+                className="lens-icon"
+                onClick={toggleTorch}
+                aria-pressed={torch === 'on'}
+                aria-label={c('Đèn flash', 'Flash light', '闪光灯')}
               >
-                <X />
+                {torch === 'on' ? <Zap size={20} /> : <ZapOff size={20} />}
+              </button>
+            )}
+            {!reviewing && cameraState === 'live' && (
+              <button
+                type="button"
+                className="lens-icon"
+                onClick={() => setFacing((value) => (value === 'user' ? 'environment' : 'user'))}
+                aria-label={c('Đổi camera trước/sau', 'Switch camera', '切换前后摄像头')}
+              >
+                <SwitchCamera size={20} />
               </button>
             )}
           </div>
+        </div>
 
-          {/* Shutter row */}
-          <div className="phone-camera-controls">
+        {!reviewing && cameraState !== 'live' && (
+          <div className="lens-fallback" role="status">
+            {cameraState === 'starting' || cameraState === 'idle' ? (
+              <p>
+                <LoaderCircle size={20} className="spin" aria-hidden="true" />
+                {c('Đang mở camera…', 'Opening the camera…', '正在打开相机…')}
+              </p>
+            ) : (
+              <>
+                <p>
+                  {cameraState === 'unsupported'
+                    ? c(
+                        'Trình duyệt này không mở được camera (cần HTTPS hoặc localhost). Bạn vẫn có thể chọn ảnh từ thư viện.',
+                        'This browser cannot open the camera (HTTPS or localhost is required). You can still pick a photo from your library.',
+                        '此浏览器无法打开相机（需要 HTTPS 或 localhost）。你仍可从相册选择图片。',
+                      )
+                    : t(locale, 'cameraDenied')}
+                </p>
+                <div className="lens-fallback-actions">
+                  <button type="button" className="lens-pill" onClick={() => input.current?.click()}>
+                    <Images size={16} /> {t(locale, 'chooseImage')}
+                  </button>
+                  {cameraState === 'denied' && (
+                    <button
+                      type="button"
+                      className="lens-pill ghost"
+                      onClick={() => setAttempt((value) => value + 1)}
+                    >
+                      <RefreshCcw size={16} /> {c('Thử lại', 'Try again', '重试')}
+                    </button>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
+        )}
+
+        {(cameraState === 'live' || reviewing) && zoomStops.length > 1 && (
+          <div className="lens-zoom" role="group" aria-label={c('Mức thu phóng', 'Zoom level', '缩放级别')}>
+            {zoomStops.map((stop) => (
+              <button
+                key={stop}
+                type="button"
+                className={Math.abs(zoom - stop) < 0.15 ? 'active' : ''}
+                aria-pressed={Math.abs(zoom - stop) < 0.15}
+                onClick={() => applyZoom(stop)}
+              >
+                {stop}×
+              </button>
+            ))}
+            {zoomStops.every((stop) => Math.abs(zoom - stop) >= 0.15) && (
+              <span className="lens-zoom-value">{zoom.toFixed(1)}×</span>
+            )}
+          </div>
+        )}
+
+        {!reviewing && (
+          <div className="lens-bottom">
             <button
               type="button"
-              className="phone-camera-side"
+              className="lens-side"
               onClick={() => input.current?.click()}
-              disabled={starting || pending}
               aria-label={t(locale, 'chooseImage')}
             >
-              <Images size={20} />
+              <Images size={22} />
+              <span>{c('Thư viện', 'Library', '相册')}</span>
             </button>
             <button
               type="button"
-              className="phone-shutter"
-              onClick={live ? capture : openCamera}
-              disabled={!live && (starting || pending)}
+              className="lens-shutter"
+              onClick={capture}
+              disabled={cameraState !== 'live'}
               aria-label={t(locale, 'capture')}
             >
               <span />
             </button>
+            <p className="lens-side lens-hint">
+              {c('Chụm 2 ngón để zoom', 'Pinch to zoom', '双指捏合缩放')}
+            </p>
+          </div>
+        )}
+      </div>
+
+      {shot && (
+        <section
+          className="lens-sheet"
+          aria-label={c('Kết quả phân tích', 'Analysis result', '分析结果')}
+        >
+          <div className="lens-sheet-actions">
+            <button type="button" className="lens-pill" onClick={retake}>
+              <RotateCcw size={16} /> {c('Chụp lại', 'Retake', '重拍')}
+            </button>
+            <button type="button" className="lens-pill ghost" onClick={() => input.current?.click()}>
+              <Images size={16} /> {c('Chọn ảnh khác', 'Pick another', '选择其他图片')}
+            </button>
             <button
               type="button"
-              className="phone-camera-side"
-              onClick={() => setTab(tab === 'capture' ? 'explore' : 'capture')}
-              aria-label={t(locale, 'exploreSection')}
+              className="lens-pill ghost"
+              onClick={saveToJourney}
+              disabled={saved}
             >
-              <Compass size={20} />
+              {saved ? <Check size={16} /> : <Save size={16} />}
+              {saved ? c('Đã lưu', 'Saved', '已保存') : c('Lưu vào hành trình', 'Save to journey', '保存到旅程')}
             </button>
           </div>
-          <p className="help-text phone-camera-hint">{t(locale, 'captureFrameHint')}</p>
-        </div>
 
-        <div className="camera-buttons">
-          {!live && (
-            <>
-              <button
-                className="button secondary"
-                onClick={openCamera}
-                disabled={starting || pending}
-              >
-                <Camera size={18} />
-                {t(locale, starting ? 'loading' : 'openCamera')}
-              </button>
-              <button
-                className="button secondary"
-                onClick={() => input.current?.click()}
-                disabled={starting || pending}
-              >
-                <Upload size={18} />
-                {t(locale, preview ? 'retake' : 'chooseImage')}
-              </button>
-            </>
-          )}
-          <input
-            className="sr-only"
-            ref={input}
-            type="file"
-            accept="image/jpeg,image/png,image/webp"
-            onChange={(e) => {
-              select(e.target.files?.[0]);
-              e.currentTarget.value = '';
-            }}
-            aria-label={t(locale, 'chooseImage')}
-          />
-        </div>
-        {libraryNotice && (
-          <p className="camera-library-notice" role="status">
-            <ImagePlus size={15} />
-            {libraryNotice}
-          </p>
-        )}
-        <p className="help-text">{t(locale, 'imageHint')}</p>
-        <Status message={message} error />
-        <Status message={savedNotice} />
-        {pending && (
-          <button className="button secondary" onClick={() => analysisController.current?.abort()}>
-            {t(locale, 'cancel')}
-          </button>
-        )}
-        {file && (
-          <div className="camera-save-row">
-            <button className="button secondary" onClick={persistToJourney} disabled={pending}>
-              <Save size={17} />
-              {t(locale, 'captureAndSave')}
-            </button>
-          </div>
-        )}
-        {result && <RecognitionResultView result={result} locale={locale} />}
-      </div>
-      <aside className="camera-aside">
-        <span className="eyebrow">THÁM VĂN LENS</span>
-        <h2>{t(locale, 'lookCloser')}</h2>
-        <p>{t(locale, 'visionNote')}</p>
-        {!available && (
-          <div>
-            <Status message={t(locale, 'visionUnavailable')} />
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 8 }}>
-              <Link className="text-link" href={`/${locale}/explore`}>
-                {t(locale, 'explore')} <ArrowUpRight size={14} />
-              </Link>
-              <Link className="text-link" href={`/${locale}/map`}>
-                {t(locale, 'mapView')} <ArrowUpRight size={14} />
-              </Link>
-            </div>
-          </div>
-        )}
-        {!signedIn && (
-          <div className="commerce-notice" role="status" style={{ marginTop: 10 }}>
-            <p style={{ margin: 0 }}>{t(locale, 'authRequired')}</p>
-            <Link
-              className="text-link"
-              href={`/${locale}/auth/login?next=${encodeURIComponent(`/${locale}/camera`)}`}
-              style={{ marginTop: 6, display: 'inline-flex', alignItems: 'center', gap: 4 }}
-            >
-              {t(locale, 'login')}
-              <ArrowUpRight size={14} />
-            </Link>
-          </div>
-        )}
-
-        <div className="camera-aside-tabs" role="tablist" aria-label={t(locale, 'captureAndSave')}>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={tab === 'capture'}
-            className={tab === 'capture' ? 'active' : ''}
-            onClick={() => setTab('capture')}
-          >
-            <Camera size={14} />
-            {t(locale, 'captureAndSave')}
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={tab === 'explore'}
-            className={tab === 'explore' ? 'active' : ''}
-            onClick={() => setTab('explore')}
-          >
-            <Search size={14} />
-            {t(locale, 'exploreSection')}
-          </button>
-        </div>
-
-        {tab === 'capture' ? (
-          <>
-            <div className="recognition-location">
-              <label className="check-label">
-                <input
-                  type="checkbox"
-                  checked={shareLocation}
-                  disabled={pending}
-                  onChange={(event) => void toggleLocation(event.target.checked)}
-                />
-                <span>{t(locale, 'lensLocationConsent')}</span>
-              </label>
-              <p className="help-text">{t(locale, 'lensLocationNote')}</p>
-              <p className="help-text" role="status">
-                {locating
-                  ? t(locale, 'lensLocating')
-                  : location
-                    ? `${t(locale, 'lensLocationReady')} ${Math.round(location.accuracy)} m`
-                    : t(locale, 'lensNoLocation')}
-              </p>
-              <Status message={locationMessage} error />
-            </div>
-            <label className="check-label">
-              <input
-                type="checkbox"
-                checked={consent}
-                disabled={pending}
-                onChange={(e) => setConsent(e.target.checked)}
-              />
-              <span>{t(locale, 'visionConsent')}</span>
-            </label>
-            <Link className="text-link" href={`/${locale}/privacy`}>
-              {t(locale, 'privacy')}
-              <ArrowUpRight size={15} />
-            </Link>
-            <button
-              className="button terracotta"
-              disabled={!file || !consent || pending || locating || !available}
-              onClick={analyze}
-            >
-              <ScanLine size={19} />
-              {t(locale, pending ? 'analyzing' : 'analyze')}
-            </button>
-            <button
-              className="button secondary"
-              onClick={() => {
-                setLibraryNotice('');
-                setTab('explore');
-              }}
-            >
-              <ImagePlus size={17} />
-              {t(locale, 'imageSearch')}
-            </button>
-          </>
-        ) : (
-          <div className="camera-explore-panel">
-            <label className="search-box">
-              <Search size={17} />
-              <span className="sr-only">{t(locale, 'imageSearch')}</span>
-              <input
-                type="search"
-                maxLength={100}
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder={t(locale, 'imageSearchHint')}
-              />
-            </label>
-            <p className="help-text">{t(locale, 'imageSearchHint')}</p>
-            {filteredPhotos.length ? (
-              <div className="camera-explore-gallery">
-                {filteredPhotos.map((photo) => (
-                  <figure key={photo.id}>
-                    <img src={photo.dataUrl} alt={photo.name} loading="lazy" />
-                    <figcaption>
-                      <strong>{photo.name}</strong>
-                      {photo.region && <small>{photo.region}</small>}
-                    </figcaption>
-                  </figure>
-                ))}
+          {analysis.status === 'pending' && (
+            <div className="lens-pending" role="status">
+              <LoaderCircle size={22} className="spin" aria-hidden="true" />
+              <div>
+                <strong>{c('AI đang phân tích ảnh…', 'The AI is analysing your photo…', 'AI 正在分析图片…')}</strong>
+                <p>
+                  {locationState === 'ready'
+                    ? c(
+                        'Đang đối chiếu vật trong ảnh với nơi bạn đang đứng.',
+                        'Matching what is in the photo with where you are standing.',
+                        '正在将图片内容与你所在的位置进行对照。',
+                      )
+                    : c(
+                        'Chưa có vị trí nên AI sẽ trả lời theo hình ảnh.',
+                        'No location yet, so the AI will answer from the image alone.',
+                        '尚未获取位置，AI 将仅根据图片作答。',
+                      )}
+                </p>
               </div>
-            ) : (
-              <p className="camera-explore-empty">
-                <Sparkles size={18} />
-                {t(locale, 'journeyEmptyPhotos')}
-              </p>
-            )}
-            <Link className="button secondary" href={`/${locale}/explore`}>
-              {t(locale, 'explore')}
-              <ArrowUpRight size={17} />
-            </Link>
-            <Link className="button secondary" href={`/${locale}/map`}>
-              {t(locale, 'mapView')}
-              <ArrowUpRight size={17} />
-            </Link>
-          </div>
-        )}
-      </aside>
-
-      {/* One-time permission & terms notice */}
-      {permissionNotice && (
-        <div className="permission-overlay" role="dialog" aria-modal="true" aria-label={t(locale, 'permissionNoticeTitle')}>
-          <div className="permission-card">
-            <h2>{t(locale, 'permissionNoticeTitle')}</h2>
-            <ul>
-              <li>
-                <strong>{t(locale, 'permissionLocation')}</strong>
-                <span>{t(locale, 'permissionLocationBody')}</span>
-              </li>
-              <li>
-                <strong>{t(locale, 'permissionImage')}</strong>
-                <span>{t(locale, 'permissionImageBody')}</span>
-              </li>
-              <li>
-                <strong>{t(locale, 'permissionTerms')}</strong>
-                <span>{t(locale, 'permissionTermsBody')}</span>
-              </li>
-            </ul>
-            <div className="permission-actions">
-              <button
-                type="button"
-                className="button secondary"
-                onClick={() => setPermissionNotice(false)}
-              >
-                {t(locale, 'permissionLater')}
-              </button>
-              <button
-                type="button"
-                className="button"
-                onClick={() => {
-                  try {
-                    localStorage.setItem('tv-permission-notice', 'accepted');
-                  } catch {
-                    /* Storage unavailable: the notice will show again. */
-                  }
-                  setPermissionNotice(false);
-                }}
-              >
-                {t(locale, 'permissionAccept')}
+              <button type="button" className="lens-pill ghost" onClick={retake}>
+                {t(locale, 'cancel')}
               </button>
             </div>
-          </div>
-        </div>
+          )}
+
+          {analysis.status === 'login' && (
+            <div className="lens-message" role="status">
+              <strong>{c('Đăng nhập để AI phân tích ảnh', 'Sign in for AI analysis', '登录后即可使用 AI 分析')}</strong>
+              <p>{t(locale, 'authRequired')}</p>
+              <Link className="lens-pill" href={loginHref}>
+                <LogIn size={16} /> {t(locale, 'login')}
+              </Link>
+            </div>
+          )}
+
+          {analysis.status === 'unavailable' && (
+            <div className="lens-message" role="status">
+              <p>{t(locale, 'visionUnavailable')}</p>
+              <Link className="lens-pill ghost" href={`/${locale}/map`}>
+                <MapPin size={16} /> {t(locale, 'mapView')}
+              </Link>
+            </div>
+          )}
+
+          {analysis.status === 'error' && (
+            <div className="lens-message is-error" role="alert">
+              <p>{analysis.message}</p>
+              <button
+                type="button"
+                className="lens-pill"
+                onClick={() => void analyze(shot.file, shot.origin)}
+              >
+                <RefreshCcw size={16} /> {c('Phân tích lại', 'Analyse again', '重新分析')}
+              </button>
+            </div>
+          )}
+
+          {analysis.status === 'done' && (
+            <RecognitionResultView result={analysis.result} locale={locale} />
+          )}
+        </section>
       )}
+
+      {notice && (
+        <p className="lens-toast" role="status">
+          {notice}
+        </p>
+      )}
+
+      <input
+        ref={input}
+        className="sr-only"
+        type="file"
+        accept="image/jpeg,image/png,image/webp,image/heic,image/heif"
+        tabIndex={-1}
+        aria-label={t(locale, 'chooseImage')}
+        onChange={(event) => {
+          const file = event.target.files?.[0];
+          event.currentTarget.value = '';
+          void pick(file);
+        }}
+      />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() => localStorage.setItem('tv-permission-notice', 'accepted'));
+  await page.addInitScript(() => localStorage.setItem('tv-device-consent', JSON.stringify({ version: 1, acceptedAt: '2026-11-14T00:00:00Z', location: true, terms: true, camera: true, photos: true })));
 });
 
 test('Google sign-in is localized, fails closed without configuration, and handles cancelled callbacks', async ({
@@ -106,32 +106,24 @@ test('language change retains current route and updates document language', asyn
   await expect(page.locator('html')).toHaveAttribute('lang', 'zh-CN');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Bưu điện Trung tâm Sài Gòn');
 });
-test('camera previews a selected image and never fabricates recognition', async ({ page }) => {
+test('camera previews a picked library photo and never fabricates recognition', async ({ page }) => {
   await page.goto('/vi/camera');
   await page.locator('input[type=file]').setInputFiles('public/images/hue.jpg');
-  await expect(page.locator('.camera-view>img')).toBeVisible();
-  await page.getByRole('checkbox', { name: 'Tôi đồng ý gửi ảnh', exact: false }).check();
-  await expect(page.getByRole('button', { name: 'Tìm hiểu ảnh này' })).toBeVisible();
+  await expect(page.locator('img.lens-still')).toBeVisible();
   await expect(page.locator('.recognition-result')).toHaveCount(0);
 });
-test('map honors granted location, radius and manual region', async ({ page, context }) => {
-  await page.route('**/api/locate', (route) =>
-    route.fulfill({ status: 503, contentType: 'application/json', body: '{}' }),
+test('map tracks the real device position without printing coordinates', async ({ page, context }) => {
+  await page.route('**/api/nearby**', (route) =>
+    route.fulfill({ contentType: 'application/json', body: JSON.stringify({ ok: true, area: 'Quận 1', placesAvailable: true, places: [] }) }),
   );
   await context.grantPermissions(['geolocation']);
   await context.setGeolocation({ latitude: 10.779981, longitude: 106.700021 });
   await page.goto('/vi/map');
-  await page.getByRole('button', { name: 'Vị trí của tôi', exact: true }).click();
   await page.locator('#map-search').fill('Buu dien Trung tam Sai Gon');
-  await expect(page.locator('.map-results .nearby-item')).toHaveCount(1);
-  await page.getByRole('slider').fill('3');
-  await expect(page.getByRole('slider')).toHaveValue('3');
-  await page.reload();
-  await expect(page.getByRole('slider')).toHaveValue('3');
-  await page.locator('#map-search').fill('Buu dien Trung tam Sai Gon');
-  await page.locator('.map-controls select').last().selectOption('Quận 1');
-  await expect(page.locator('.map-results .nearby-item')).toHaveCount(1);
-  await expect(page.locator('.map-results')).toContainText('Bưu điện Trung tâm Sài Gòn');
+  await expect(page.locator('.atlas-list .atlas-item')).toHaveCount(1);
+  await expect(page.locator('.atlas-list')).toContainText('Bưu điện Trung tâm Sài Gòn');
+  await expect(page.locator('.atlas-list')).toContainText(/\d+ m ·/);
+  expect(await page.locator('body').innerText()).not.toMatch(/10\.7799|106\.700|°N/);
 });
 test('settings persist guest choices, legal pages and gated private pages render', async ({
   page,
@@ -198,24 +190,25 @@ test('English and Chinese pages have no serious accessibility violations', async
     expect(audit.violations, `${path}`).toEqual([]);
   }
 });
-test('denied GPS and unavailable IP lookup provide a manual region fallback', async ({ page }) => {
-  await page.route('**/api/locate', (route) =>
-    route.fulfill({ status: 503, contentType: 'application/json', body: '{}' }),
-  );
+test('denied GPS explains how to re-enable it and search still works', async ({ page }) => {
   await page.addInitScript(() => {
     Object.defineProperty(navigator, 'geolocation', {
       value: {
-        getCurrentPosition: (_success: unknown, failure: (error: object) => void) =>
-          failure({ code: 1 }),
+        getCurrentPosition: (_s: unknown, failure: (error: object) => void) => failure({ code: 1 }),
+        watchPosition: (_s: unknown, failure: (error: object) => void) => {
+          failure({ code: 1 });
+          return 1;
+        },
+        clearWatch: () => undefined,
       },
     });
   });
   await page.goto('/vi/map');
   await page.getByRole('button', { name: 'Vị trí của tôi', exact: true }).click();
-  await expect(page.locator('.status[role=alert]')).toContainText('Hãy cấp quyền');
+  await expect(page.locator('.atlas-location-note[role=alert]')).toContainText('chặn quyền vị trí');
   await page.locator('#map-search').fill('Buu dien Trung tam Sai Gon');
-  await page.locator('.map-controls select').last().selectOption('Quận 1');
-  await expect(page.locator('.map-results .nearby-item')).toHaveCount(1);
+  await page.locator('.atlas-filters select').last().selectOption('Quận 1');
+  await expect(page.locator('.atlas-list .atlas-item')).toHaveCount(1);
 });
 test('all main screens fit a 320px viewport in three languages', async ({ page }) => {
   test.setTimeout(90000);
@@ -241,27 +234,14 @@ test('all main screens fit a 320px viewport in three languages', async ({ page }
     }
 });
 test.describe('camera device flow', () => {
-  test('opens a camera stream, captures a frame, and releases the device', async ({
-    page,
-    context,
-  }) => {
+  test('captures a frame and releases the device', async ({ page, context }) => {
     await context.grantPermissions(['camera']);
     await page.goto('/vi/camera');
-    await page.getByRole('button', { name: 'Mở camera', exact: true }).click();
-    await expect(page.locator('video')).toBeVisible();
+    await expect(page.locator('video.lens-video')).toBeVisible();
     await page.getByRole('button', { name: 'Chụp ảnh', exact: true }).click();
-    await expect(page.locator('.camera-view>img')).toBeVisible();
-    await expect(page.locator('video')).toBeHidden();
+    await expect(page.locator('img.lens-still')).toBeVisible();
     expect(
-      await page
-        .locator('video')
-        .evaluate(
-          (video) =>
-            (video as HTMLVideoElement).srcObject instanceof MediaStream &&
-            ((video as HTMLVideoElement).srcObject as MediaStream)
-              .getTracks()
-              .every((t) => t.readyState === 'ended'),
-        ),
+      await page.locator('video').evaluate((video) => (video as HTMLVideoElement).srcObject === null),
     ).toBe(true);
   });
 });

@@ -11,7 +11,7 @@ export const legal: Record<
       },
       {
         title: 'Vị trí, camera và ảnh',
-        body: 'Vị trí được tính trên thiết bị để lọc địa điểm; không gửi tọa độ hiện tại lên database. Camera chỉ mở khi bạn chủ động yêu cầu. Ảnh chỉ được gửi đến nhà cung cấp AI sau khi bạn đồng ý; ứng dụng không lưu ảnh nhận diện trên máy chủ hoặc công khai ảnh. Nhà cung cấp AI có thể xử lý/lưu theo chính sách riêng. Hãy tránh gửi ảnh chứa người hoặc thông tin riêng tư.',
+        body: 'Lần đầu dùng camera trên mỗi thiết bị, bạn được hỏi một lần về vị trí, camera, ảnh từ thư viện và điều khoản; lựa chọn được ghi trên chính thiết bị đó và có thể thu hồi trong cài đặt trình duyệt. Vị trí chỉ lấy từ GPS/trình duyệt của thiết bị (không suy đoán qua IP), không lưu vào database và không hiển thị tọa độ trên giao diện. Khi bạn chụp ảnh, tìm địa điểm quanh mình hoặc xin chỉ đường, vị trí được gửi tới máy chủ THÁM VĂN cho riêng yêu cầu đó; máy chủ gửi tọa độ đã làm tròn tới dịch vụ bản đồ OpenStreetMap để lấy tên đường, địa điểm lân cận và lộ trình. Nhà cung cấp AI chỉ nhận ảnh, tên khu vực và khoảng cách — không nhận tọa độ. Ứng dụng không lưu ảnh nhận diện trên máy chủ hoặc công khai ảnh. Nhà cung cấp AI có thể xử lý/lưu theo chính sách riêng. Hãy tránh gửi ảnh chứa người hoặc thông tin riêng tư.',
       },
       {
         title: 'Cookie và lưu trữ trên thiết bị',
@@ -19,7 +19,7 @@ export const legal: Record<
       },
       {
         title: 'Dịch vụ bên ngoài',
-        body: 'Supabase cung cấp xác thực và lưu dữ liệu. Bản đồ hiển thị ô bản đồ thông qua máy chủ trung gian của THÁM VĂN từ các nhà cung cấp bản đồ nền bên ngoài. Cloudflare Turnstile chống lạm dụng khi được cấu hình. Khi bạn chọn chỉ đường hoặc nguồn tham khảo, trang bên ngoài áp dụng chính sách riêng.',
+        body: 'Supabase cung cấp xác thực và lưu dữ liệu. Bản đồ nền được trình duyệt tải trực tiếp từ OpenFreeMap (dữ liệu OpenStreetMap); ảnh vệ tinh đi qua máy chủ trung gian của THÁM VĂN. Tên đường, địa điểm lân cận và chỉ đường do các dịch vụ dựa trên OpenStreetMap (Nominatim, Overpass, OSRM) cung cấp thông qua máy chủ THÁM VĂN. Cloudflare Turnstile chống lạm dụng khi được cấu hình. Khi bạn mở Google Maps hoặc nguồn tham khảo, trang bên ngoài áp dụng chính sách riêng.',
       },
       {
         title: 'Quyền quản lý dữ liệu',
@@ -37,7 +37,7 @@ export const legal: Record<
       },
       {
         title: 'Location, camera and photos',
-        body: 'Your location is used on your device to filter places and is not sent to the database. The camera opens only on request. Photos are sent to the AI provider only after consent. This app does not store recognition photos on its server or publish them. The AI provider may process or retain inputs under its own policy. Avoid photos of people or private information.',
+        body: 'The first time you use the camera on a device you are asked once about location, camera, library photos and the terms; your choice is recorded on that device and can be withdrawn in browser settings. Location comes only from the device GPS/browser (never guessed from IP), is not stored in the database and coordinates are not shown in the interface. When you take a photo, look for places around you or ask for directions, your position is sent to the THÁM VĂN server for that request only; the server sends rounded coordinates to OpenStreetMap-based services to obtain the street name, nearby places and the route. The AI provider receives the photo, the area name and distances — never coordinates. This app does not store recognition photos on its server or publish them. The AI provider may process or retain inputs under its own policy. Avoid photos of people or private information.',
       },
       {
         title: 'Cookies and device storage',
@@ -45,7 +45,7 @@ export const legal: Record<
       },
       {
         title: 'External services',
-        body: 'Supabase provides authentication and storage. Basemap tiles are served via THÁM VĂN server proxy from external tile providers. Cloudflare Turnstile prevents abuse when configured. External directions and source links have their own privacy policies.',
+        body: 'Supabase provides authentication and storage. The basemap is loaded by your browser directly from OpenFreeMap (OpenStreetMap data); satellite imagery passes through the THÁM VĂN server proxy. Street names, nearby places and directions come from OpenStreetMap-based services (Nominatim, Overpass, OSRM) through the THÁM VĂN server. Cloudflare Turnstile prevents abuse when configured. Google Maps and source links have their own privacy policies.',
       },
       {
         title: 'Managing your data',
@@ -63,7 +63,7 @@ export const legal: Record<
       },
       {
         title: '位置、相机和图片',
-        body: '位置仅在设备上用于筛选地点，不会上传数据库。相机仅在你主动操作时打开。图片仅在同意后发送到AI提供商，本应用不会在服务器保存识别图片或公开图片。AI提供商可能根据自身政策处理或保留输入。请勿发送人物或私人信息图片。',
+        body: '在每台设备上首次使用相机时，系统会就位置、相机、相册图片和条款询问一次；你的选择记录在该设备上，可在浏览器设置中撤回。位置仅来自设备的GPS/浏览器（不会通过IP推测），不会存入数据库，界面上也不显示坐标。当你拍照、查找周边地点或请求路线时，位置仅为该次请求发送到THÁM VĂN服务器；服务器会将取整后的坐标发送给基于OpenStreetMap的服务，以获取街道名称、周边地点和路线。AI提供商只会收到图片、区域名称和距离，不会收到坐标。本应用不会在服务器保存识别图片或公开图片。AI提供商可能根据自身政策处理或保留输入。请勿发送人物或私人信息图片。',
       },
       {
         title: 'Cookie与设备存储',
@@ -71,7 +71,7 @@ export const legal: Record<
       },
       {
         title: '外部服务',
-        body: 'Supabase提供认证与数据存储。底图瓦片通过THÁM VĂN服务器代理由外部地图提供商提供。配置后使用Cloudflare Turnstile防止滥用。外部路线和参考来源适用各自的隐私政策。',
+        body: 'Supabase提供认证与数据存储。底图由浏览器直接从OpenFreeMap（OpenStreetMap数据）加载；卫星影像经由THÁM VĂN服务器代理。街道名称、周边地点和路线由基于OpenStreetMap的服务（Nominatim、Overpass、OSRM）经THÁM VĂN服务器提供。配置后使用Cloudflare Turnstile防止滥用。Google地图和参考来源适用各自的隐私政策。',
       },
       {
         title: '管理你的数据',
