@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { Bell, BellOff, Send, Smartphone } from 'lucide-react';
+import { Bell, BellOff, MapPin, Send, Smartphone } from 'lucide-react';
+import { NEARBY_ALERTS_KEY, useNearbyAlertsOn } from '@/components/nearby-alerts';
 import { api } from '@/components/ui';
 import { copy } from '@/lib/locale-copy';
 import type { Locale } from '@/lib/types';
@@ -17,6 +18,48 @@ export function PushSettings({
     [busy, setBusy] = useState(false),
     [error, setError] = useState(false);
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
+  const nearby = useNearbyAlertsOn();
+  async function toggleNearby() {
+    setMessage('');
+    setError(false);
+    if (nearby) {
+      localStorage.removeItem(NEARBY_ALERTS_KEY);
+    } else {
+      if (!('Notification' in window) || !('serviceWorker' in navigator) || !navigator.geolocation) {
+        setError(true);
+        setMessage(
+          c(
+            'Trình duyệt chưa hỗ trợ. Trên iPhone, thêm website vào Màn hình chính rồi mở từ biểu tượng.',
+            'Not supported here. On iPhone, add the site to your Home Screen and open it from the icon.',
+            '当前浏览器不支持。在 iPhone 上请先添加到主屏幕并从图标打开。',
+          ),
+        );
+        return;
+      }
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        setError(true);
+        setMessage(
+          c(
+            'Chưa được cấp quyền thông báo.',
+            'Notification permission was not granted.',
+            '尚未授予通知权限。',
+          ),
+        );
+        return;
+      }
+      await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+      localStorage.setItem(NEARBY_ALERTS_KEY, 'on');
+      setMessage(
+        c(
+          'Đã bật. Khi bạn đến gần một địa điểm di sản trong 3 km, thông báo sẽ hiện trên màn hình khóa (khi app đang mở hoặc chạy nền).',
+          'On. When you come within 3 km of a heritage place, an alert shows on your lock screen (while the app is open or in the background).',
+          '已开启。当您接近 3 公里内的文化遗产时，将在锁屏上提示（应用打开或在后台时）。',
+        ),
+      );
+    }
+    window.dispatchEvent(new Event('tv-nearby-alerts'));
+  }
   async function run(action: 'enable' | 'disable' | 'test') {
     setBusy(true);
     setMessage('');
@@ -184,6 +227,12 @@ export function PushSettings({
         >
           <BellOff size={15} />
           {c('Tắt thiết bị này', 'Disable this device', '停用此设备')}
+        </button>
+        <button className={`button ${nearby ? 'quiet' : 'secondary'}`} onClick={toggleNearby}>
+          <MapPin size={15} />
+          {nearby
+            ? c('Tắt báo địa điểm gần (3 km)', 'Stop nearby alerts (3 km)', '关闭附近提醒（3 公里）')
+            : c('Báo địa điểm gần tôi (3 km)', 'Alert me to places within 3 km', '提醒我 3 公里内的地点')}
         </button>
       </div>
       {message && (

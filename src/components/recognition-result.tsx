@@ -29,6 +29,20 @@ export function RecognitionResultView({
         <div className="lens-answer">
           <h2>{subject.name}</h2>
           <p className="lens-answer-tags">
+            {subject.heritageType && subject.heritageType !== 'other' && (
+              <span className="lens-tag">
+                {
+                  {
+                    architecture: c('Kiến trúc', 'Architecture', '建筑'),
+                    artifact: c('Hiện vật', 'Artifact', '文物'),
+                    intangible: c('Di sản phi vật thể', 'Intangible heritage', '非物质文化遗产'),
+                    monument: c('Tượng đài · tưởng niệm', 'Monument', '纪念碑'),
+                    natural: c('Cảnh quan tự nhiên', 'Natural landscape', '自然景观'),
+                    everyday: c('Đời sống hiện đại', 'Everyday / modern', '日常 / 现代'),
+                  }[subject.heritageType]
+                }
+              </span>
+            )}
             {subject.category && <span className="lens-tag">{subject.category}</span>}
             <span className={`lens-tag certainty-${subject.certainty}`}>
               {subject.certainty === 'high'
@@ -40,6 +54,18 @@ export function RecognitionResultView({
           </p>
           <h3>{c('Đây là gì?', 'What is it?', '这是什么？')}</h3>
           <p>{subject.whatItIs}</p>
+          {subject.history && (
+            <>
+              <h3>{c('Nguồn gốc và ý nghĩa', 'Origin and meaning', '起源与意义')}</h3>
+              <p>{subject.history}</p>
+            </>
+          )}
+          {subject.whyHere && (
+            <>
+              <h3>{c('Vì sao nó ở địa điểm này?', 'Why is it at this place?', '为什么它在这里？')}</h3>
+              <p>{subject.whyHere}</p>
+            </>
+          )}
           {subject.generalUse && (
             <>
               <h3>{c('Thường dùng để làm gì?', 'What is it normally for?', '通常有什么用途？')}</h3>

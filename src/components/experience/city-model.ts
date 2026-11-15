@@ -20,7 +20,7 @@ export function buildCity() {
   const land = new THREE.Shape();
   land.moveTo(-29, 22);
   land.lineTo(29, 22);
-  for (const point of samples.toReversed()) land.lineTo(point.x, -point.z);
+  for (const point of [...samples].reverse()) land.lineTo(point.x, -point.z);
   land.closePath();
   const foundation = kit.mesh(
     new THREE.ExtrudeGeometry(land, {

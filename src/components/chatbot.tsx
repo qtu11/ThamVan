@@ -1,4 +1,5 @@
 'use client';
+import '@/lib/abort-polyfill';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, BookOpen, Compass, MapPin, MessageCircle, Send, Sparkles, X } from 'lucide-react';

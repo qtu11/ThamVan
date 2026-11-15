@@ -23,6 +23,16 @@ export type ImageClues = z.infer<typeof imageCluesSchema>;
 /** Where the picture came from: a live shutter press or an older photo from the library. */
 export const captureOrigins = ['camera', 'gallery'] as const;
 export type CaptureOrigin = (typeof captureOrigins)[number];
+export const heritageTypes = [
+  'architecture',
+  'artifact',
+  'intangible',
+  'monument',
+  'natural',
+  'everyday',
+  'other',
+] as const;
+export type HeritageType = (typeof heritageTypes)[number];
 const longText = z.string().trim().min(1).max(1200);
 /** The main thing in the frame: what it is, and what it is for at this particular spot. */
 export const subjectSchema = z.object({
@@ -31,6 +41,12 @@ export const subjectSchema = z.object({
   whatItIs: longText,
   generalUse: z.string().trim().max(1200).nullable().default(null),
   purposeHere: z.string().trim().max(1200).nullable().default(null),
+  /** Heritage class: tangible architecture, artifact, intangible practice, monument, nature or everyday. */
+  heritageType: z.enum(heritageTypes).catch('other').default('other'),
+  /** Origin, era, makers and meaning — only what the image or supplied records support. */
+  history: z.string().trim().max(1500).nullable().default(null),
+  /** Why it stands at this particular place (historical/functional reason), or null. */
+  whyHere: z.string().trim().max(1200).nullable().default(null),
   certainty: z.enum(['high', 'medium', 'low']).catch('low'),
 });
 export const groundedVisionSchema = z.object({
@@ -243,6 +259,9 @@ export function finalizeRecognition(
         generalUse: parsed.subject.generalUse ?? null,
         // A "here" claim needs a "here": without a device position it is dropped.
         purposeHere: location ? (parsed.subject.purposeHere ?? null) : null,
+        heritageType: parsed.subject.heritageType ?? 'other',
+        history: parsed.subject.history ?? null,
+        whyHere: parsed.subject.whyHere ?? null,
         certainty: parsed.subject.certainty ?? 'low',
       }
     : null;

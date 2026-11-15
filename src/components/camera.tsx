@@ -17,6 +17,7 @@ import {
   Zap,
   ZapOff,
 } from 'lucide-react';
+import '@/lib/abort-polyfill';
 import type { Locale } from '@/lib/types';
 import {
   freshLocation,
@@ -241,8 +242,17 @@ export function CameraExplorer({
         },
         () => {
           if (cancelled || (location.current && freshLocation(location.current))) return;
-          location.current = null;
-          setLocationState('unavailable');
+          void requestDeviceLocation(10_000)
+            .then((fix) => {
+              if (cancelled) return;
+              location.current = fix;
+              setLocationState('ready');
+            })
+            .catch(() => {
+              if (cancelled || (location.current && freshLocation(location.current))) return;
+              location.current = null;
+              setLocationState('unavailable');
+            });
         },
         { enableHighAccuracy: true, maximumAge: 0, timeout: 20_000 },
       );

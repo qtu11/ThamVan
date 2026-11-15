@@ -23,6 +23,7 @@ import { copy } from '@/lib/locale-copy';
 import { locales, type Locale } from '@/lib/types';
 import { SecurityGuard } from './security-guard';
 import { Chatbot } from './chatbot';
+import { NearbyAlerts } from './nearby-alerts';
 
 export type PartnerRole = 'team' | 'school' | 'hotel' | '';
 
@@ -122,6 +123,7 @@ export function Shell({
   return (
     <>
       <SecurityGuard />
+      <NearbyAlerts locale={locale} />
       <a className="skip-link" href="#content">
         {c('Đến nội dung chính', 'Skip to content', '跳到主内容')}
       </a>

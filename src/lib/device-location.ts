@@ -20,6 +20,15 @@ const failureOf = (error: { code?: number } | null | undefined): LocationFailure
 
 /** One fresh fix, e.g. to accompany a photo. Rejects with a LocationFailure string. */
 export function requestDeviceLocation(timeoutMs = 12_000): Promise<DeviceLocation> {
+  // Indoors a high-accuracy GPS fix often times out; the Wi-Fi/cell estimate is still a real device position.
+  return locateOnce(timeoutMs, true).catch((failure: LocationFailure) =>
+    failure === 'denied' || failure === 'insecure' || failure === 'unsupported'
+      ? Promise.reject(failure)
+      : locateOnce(timeoutMs, false),
+  );
+}
+
+function locateOnce(timeoutMs: number, enableHighAccuracy: boolean): Promise<DeviceLocation> {
   return new Promise((resolve, reject) => {
     const unsupported = locationSupport();
     if (unsupported) return reject(unsupported);
@@ -36,7 +45,7 @@ export function requestDeviceLocation(timeoutMs = 12_000): Promise<DeviceLocatio
         resolve(parsed.data);
       },
       (error) => reject(failureOf(error)),
-      { enableHighAccuracy: true, timeout: timeoutMs, maximumAge: 0 },
+      { enableHighAccuracy, timeout: timeoutMs, maximumAge: enableHighAccuracy ? 0 : 60_000 },
     );
   });
 }
@@ -157,6 +166,12 @@ export function useLiveLocation() {
     try {
       watchId.current = navigator.geolocation.watchPosition(accept, reject, options);
       navigator.geolocation.getCurrentPosition(accept, () => undefined, options);
+      // Fast Wi-Fi/cell fix so the dot appears indoors; accept() swaps in GPS once it is sharper.
+      navigator.geolocation.getCurrentPosition(accept, () => undefined, {
+        enableHighAccuracy: false,
+        maximumAge: 60_000,
+        timeout: 20_000,
+      });
       let attempts = 0;
       refineTimer.current = window.setInterval(() => {
         attempts += 1;

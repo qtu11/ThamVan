@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 import { nearbyPois, reverseGeocode } from '@/lib/place-context';
+import { getCatalog } from '@/lib/data';
+import { distanceKm } from '@/lib/geo';
+import { toMapPlace, type MapPlace } from '@/lib/map-types';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,6 +30,25 @@ export async function GET(request: Request) {
   )
     return NextResponse.json({ error: 'INVALID_COORDINATES' }, { status: 400 });
   const coords = { latitude, longitude };
+  if (searchParams.get('source') === 'catalog') {
+    // Heritage places from our own catalog within the radius (capped at 3 km), nearest first.
+    const limitKm = Math.min(Math.max(radius, 100), 3000) / 1000;
+    const places = (await getCatalog())
+      .map(toMapPlace)
+      .filter((e): e is MapPlace => e !== null)
+      .map((e) => ({
+        slug: e.slug,
+        name: e.name,
+        distanceMeters: Math.round(distanceKm(coords, e) * 1000),
+      }))
+      .filter((e) => e.distanceMeters <= limitKm * 1000)
+      .sort((a, b) => a.distanceMeters - b.distanceMeters)
+      .slice(0, 20);
+    return NextResponse.json(
+      { ok: true, places },
+      { headers: { 'Cache-Control': 'private, no-store' } },
+    );
+  }
   const [places, address] = await Promise.all([
     nearbyPois(coords, radius, 80, request.signal),
     searchParams.get('address') === '1' ? reverseGeocode(coords, request.signal) : null,
