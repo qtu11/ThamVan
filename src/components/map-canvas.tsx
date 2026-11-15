@@ -134,6 +134,7 @@ export default function MapCanvas(props: MapCanvasProps) {
   // Create the map once.
   useEffect(() => {
     if (!container.current) return;
+    maplibregl.setWorkerUrl('/website/maplibre-gl-worker.mjs');
     let loaded = false;
     const instance = new maplibregl.Map({
       container: container.current,
