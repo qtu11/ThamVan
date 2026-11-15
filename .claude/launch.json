@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "video-studio",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d video\\remotion && npx remotion studio --no-open --port 3200"],
+      "port": 3200
+    }
+  ]
+}
