@@ -301,7 +301,10 @@ export default function MapCanvas(props: MapCanvasProps) {
     });
     instance.on('load', () => {
       loaded = true;
-      // Start with the credits folded into the (i) button instead of a line of text over the map.
+    });
+    // Start with the credits folded into the (i) button. MapLibre opens them once the source
+    // attribution arrives, which is after 'load', so fold on the first idle frame instead.
+    instance.once('idle', () => {
       container.current
         ?.querySelector('.maplibregl-ctrl-attrib')
         ?.classList.remove('maplibregl-compact-show');
