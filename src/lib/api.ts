@@ -86,22 +86,7 @@ export function route(handler: (request: Request, context?: never) => Promise<Re
 }
 export const ok = (data: unknown = { success: true }) =>
   NextResponse.json(data, { headers: { 'Cache-Control': 'no-store' } });
+// Self-hosted slider check only: a fresh single-use pass is required on every guarded request.
 export async function verifyCaptcha(token?: string) {
-  if (isHumanPass(token)) {
-    if (!verifyHumanPass(token!)) fail('captchaError', 422);
-    return;
-  }
-  const key = process.env.TURNSTILE_SECRET_KEY;
-  if (!key) {
-    if (process.env.NODE_ENV === 'production') fail('notConfigured', 503);
-    return;
-  }
-  if (!token) fail('captchaError', 422);
-  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    method: 'POST',
-    body: new URLSearchParams({ secret: key, response: token }),
-    signal: AbortSignal.timeout(10000),
-  });
-  const data = await res.json();
-  if (!data.success || data.hostname !== new URL(siteUrl()).hostname) fail('captchaError', 422);
+  if (!isHumanPass(token) || !verifyHumanPass(token!)) fail('captchaError', 422);
 }

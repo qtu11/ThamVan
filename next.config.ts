@@ -20,6 +20,13 @@ const nextConfig: NextConfig = {
             : []),
         ],
       },
+      {
+        // Unhashed public assets: a day fresh, a week stale-while-revalidate (MapLibre worker included).
+        source: '/:dir(images|icons|mobile|website)/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=86400, stale-while-revalidate=604800' },
+        ],
+      },
     ];
   },
 };

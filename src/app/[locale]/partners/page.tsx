@@ -1,4 +1,3 @@
-import { headers } from 'next/headers';
 import { GraduationCap, Hotel, Building2, Check } from 'lucide-react';
 import { copy } from '@/lib/locale-copy';
 import { isLocale } from '@/lib/types';
@@ -8,10 +7,6 @@ export default async function Partners({ params }: { params: Promise<{ locale: s
   const { locale: raw } = await params;
   const locale = isLocale(raw) ? raw : 'vi';
   const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
-  const nonce = (await headers()).get('x-nonce') || undefined;
-  const captchaReady =
-    process.env.NODE_ENV !== 'production' ||
-    Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && process.env.TURNSTILE_SECRET_KEY);
   return (
     <div className="container">
       <div className="commerce-heading">
@@ -105,7 +100,7 @@ export default async function Partners({ params }: { params: Promise<{ locale: s
             </a>
           )}
         </div>
-        <LeadForm locale={locale} nonce={nonce} ready={commerceStorageReady() && captchaReady} />
+        <LeadForm locale={locale} ready={commerceStorageReady()} />
       </div>
     </div>
   );

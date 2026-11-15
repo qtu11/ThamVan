@@ -624,7 +624,9 @@ export function TravelTimeline({
               <option value="">{c('Chọn chuyến đi', 'Choose a trip', '选择行程')}</option>
               {trips.map((trip) => (
                 <option key={trip.id} value={trip.id}>
-                  {trip.name} · {new Date(trip.started_at).toLocaleDateString(dateLocale)}
+                  {trip.name} · {new Date(trip.started_at).toLocaleDateString(dateLocale, {
+                    timeZone: 'Asia/Ho_Chi_Minh',
+                  })}
                 </option>
               ))}
             </select>

@@ -3,6 +3,7 @@ import { getViewer } from '@/lib/data';
 import { isLocale } from '@/lib/types';
 import { copy } from '@/lib/locale-copy';
 import { payosReady, sepayReady } from '@/lib/membership-checkout';
+import { paymentsLive } from '@/lib/app-settings';
 import { isPaidPlan } from '@/lib/plans';
 import { MembershipCheckout } from '@/components/membership/checkout';
 export default async function Checkout({
@@ -16,7 +17,7 @@ export default async function Checkout({
   const locale = isLocale(raw) ? raw : 'vi';
   if (!isPaidPlan(query.plan))
     redirect(`/${locale}/checkout?plan=${query.product === 'collection' ? 'family' : 'premium'}`);
-  const viewer = await getViewer();
+  const [viewer, live] = await Promise.all([getViewer(), paymentsLive()]);
   return (
     <div className="container membership-purchase">
       <div className="commerce-heading">
@@ -46,6 +47,7 @@ export default async function Checkout({
         bankReady={payosReady()}
         cardReady={sepayReady()}
         signedIn={!!viewer}
+        live={live}
       />
     </div>
   );

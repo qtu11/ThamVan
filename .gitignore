@@ -24,3 +24,6 @@ public/images/quảng cáo/
 
 # Ban sao luu cuc bo, khong dua len git
 _backup_truoc_khi_viet_lai_camera_map/
+
+# Live AI eval reports
+evals/results/

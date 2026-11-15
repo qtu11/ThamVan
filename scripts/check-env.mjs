@@ -30,28 +30,11 @@ report(
   'SUPABASE_SERVICE_ROLE_KEY (account deletion)',
   Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
 );
-report(
-  'VISION_API_KEY + VISION_MODEL (optional)',
-  Boolean(process.env.VISION_API_KEY && process.env.VISION_MODEL),
-);
-let visionEndpointValid = false;
-try {
-  const endpoint = new URL(
-    process.env.VISION_API_URL || 'https://api.openai.com/v1/chat/completions',
-  );
-  visionEndpointValid =
-    endpoint.protocol === 'https:' && !endpoint.username && !endpoint.password && !endpoint.hash;
-} catch {}
-report('VISION_API_URL (HTTPS)', visionEndpointValid);
+report('THEHIVE_API_KEY (camera AI + Family planner, DeepSeek)', Boolean(process.env.THEHIVE_API_KEY));
 const maxTokens = Number(process.env.VISION_MAX_OUTPUT_TOKENS || 3000);
 report(
-  'VISION_MAX_OUTPUT_TOKENS + VISION_TOKEN_PARAMETER',
-  Number.isInteger(maxTokens) &&
-    maxTokens >= 512 &&
-    maxTokens <= 8000 &&
-    ['max_tokens', 'max_completion_tokens'].includes(
-      process.env.VISION_TOKEN_PARAMETER || 'max_completion_tokens',
-    ),
+  'VISION_MAX_OUTPUT_TOKENS (512-8000)',
+  Number.isInteger(maxTokens) && maxTokens >= 512 && maxTokens <= 8000,
 );
 let validPrompt = false;
 try {
@@ -71,8 +54,8 @@ const googleReady =
     Boolean(process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET));
 report('Google OAuth flow + credentials', googleReady);
 report(
-  'Turnstile site + secret keys (required for production auth)',
-  Boolean(process.env.TURNSTILE_SECRET_KEY && process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY),
+  'CAPTCHA_SECRET (>= 32 chars) or SUPABASE_JWT_SECRET (slider captcha fails closed without one)',
+  (process.env.CAPTCHA_SECRET || '').length >= 32 || Boolean(process.env.SUPABASE_JWT_SECRET),
 );
 console.table(checks);
 console.log(
@@ -116,7 +99,7 @@ console.log(
 );
 for (const [label, keys] of [
   ['SePay card merchant + IPN', ['SEPAY_MERCHANT_ID', 'SEPAY_SECRET_KEY', 'SEPAY_IPN_SECRET']],
-  ['Family AI planner', ['ITINERARY_API_KEY', 'ITINERARY_MODEL']],
+  ['Family AI planner', ['THEHIVE_API_KEY']],
   ['Web Push VAPID', ['NEXT_PUBLIC_VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY', 'VAPID_SUBJECT']],
 ])
   console.log(

@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
+import { humanPass } from './helpers/human-pass';
 import { createHash } from 'node:crypto';
 vi.mock('server-only', () => ({}));
 const fake = vi.hoisted(() => ({
@@ -42,7 +43,6 @@ beforeEach(() => {
     AUTH_GOOGLE_FLOW: 'direct',
     GOOGLE_CLIENT_ID: 'client.apps.googleusercontent.com',
     GOOGLE_CLIENT_SECRET: 'server-secret-not-for-browser',
-    TURNSTILE_SECRET_KEY: '',
   }))
     vi.stubEnv(key, value);
   fake.auth.signInWithIdToken.mockResolvedValue({
@@ -72,7 +72,7 @@ async function begin(next = '/en/camera') {
     new Request('http://localhost:3000/api/auth/google', {
       method: 'POST',
       headers: { Origin: 'http://localhost:3000', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ locale: 'en', next }),
+      body: JSON.stringify({ locale: 'en', next, captcha: humanPass() }),
     }),
   );
   expect(response.status).toBe(200);
@@ -118,7 +118,7 @@ it('fails closed for missing credentials and unknown flow', async () => {
     new Request('http://localhost:3000/api/auth/google', {
       method: 'POST',
       headers: { Origin: 'http://localhost:3000', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ locale: 'vi' }),
+      body: JSON.stringify({ locale: 'vi', captcha: humanPass() }),
     }),
   );
   expect(response.status).toBe(503);

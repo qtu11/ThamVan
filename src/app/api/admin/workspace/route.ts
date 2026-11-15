@@ -18,6 +18,7 @@ const schema = z.discriminatedUnion('action', [
     description: z.string().trim().min(3).max(500),
     date: z.iso.date(),
   }),
+  z.object({ action: z.literal('payments'), live: z.boolean() }),
   z.object({
     action: z.literal('fee'),
     order: z.uuid(),
@@ -25,9 +26,24 @@ const schema = z.discriminatedUnion('action', [
   }),
 ]);
 export const POST = route(async (request) => {
-  await requireViewer(true);
+  const viewer = await requireViewer(true);
   const body = await readJson(request, schema);
   const db = await supabase();
+  if (body.action === 'payments') {
+    // Written with the admin's own session so the RLS policy re-checks the role in the database.
+    const saved = await db
+      .from('app_settings')
+      .upsert({
+        key: 'payments_live',
+        value: body.live,
+        updated_at: new Date().toISOString(),
+        updated_by: viewer.id,
+      })
+      .select('value')
+      .single();
+    if (saved.error || saved.data?.value !== body.live) fail('error', 400);
+    return ok({ live: body.live });
+  }
   const result =
     body.action === 'review'
       ? await db.rpc('review_place', { p_id: body.id, p_approve: body.approve, p_note: body.note })

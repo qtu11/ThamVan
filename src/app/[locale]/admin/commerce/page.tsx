@@ -3,6 +3,9 @@ import { getViewer } from '@/lib/data';
 import { supabaseAdmin } from '@/lib/supabase/server';
 import { commerceStorageReady } from '@/lib/commerce';
 import { isLocale } from '@/lib/types';
+import { paymentSettings } from '@/lib/app-settings';
+import { payosReady, sepayReady } from '@/lib/membership-checkout';
+import { PaymentSettings } from '@/components/dashboard/payment-settings';
 import { copy, money } from '@/lib/locale-copy';
 export default async function CommerceAdmin({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -63,7 +66,7 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
       </div>
     );
   const db = supabaseAdmin();
-  const [orders, leads] = await Promise.all([
+  const [orders, leads, settings] = await Promise.all([
     db
       .from('commerce_orders')
       .select('order_code,product_id,amount,status,created_at')
@@ -74,6 +77,7 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
       .select('id,name,email,organization,segment,message,status,created_at')
       .order('created_at', { ascending: false })
       .limit(100),
+    paymentSettings(),
   ]);
   return (
     <div className="container section">
@@ -88,6 +92,13 @@ export default async function CommerceAdmin({ params }: { params: Promise<{ loca
           '每类最多显示100条最近记录。仅验证已付款订单计入收入，无示例数据。',
         )}
       </p>
+      <PaymentSettings
+        locale={locale}
+        live={settings.live}
+        stored={settings.stored}
+        payosConfigured={payosReady()}
+        sepayConfigured={sepayReady()}
+      />
       {orders.error || leads.error ? (
         <p role="alert">
           {c(

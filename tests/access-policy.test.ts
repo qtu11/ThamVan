@@ -43,10 +43,10 @@ it('protects API endpoints and permits only public ones', () => {
   expect(isPublicPath('/api/auth')).toBe(true);
   expect(isPublicPath('/api/auth/google')).toBe(true);
   expect(isPublicPath('/api/captcha')).toBe(true);
+  expect(isPublicPath('/api/assistant')).toBe(true);
   expect(isPublicPath('/api/payments/payos')).toBe(true);
   expect(isPublicPath('/api/payments/sepay')).toBe(true);
 
-  expect(isPublicPath('/api/assistant')).toBe(false);
   expect(isPublicPath('/api/locate')).toBe(false);
   expect(isPublicPath('/api/nearby')).toBe(false);
   expect(isPublicPath('/api/route')).toBe(false);

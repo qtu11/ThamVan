@@ -1,4 +1,5 @@
 import { beforeEach, afterEach, describe, it, expect, vi } from 'vitest';
+import { humanPass } from './helpers/human-pass';
 vi.mock('server-only', () => ({}));
 const fake = vi.hoisted(() => ({
   viewer: vi.fn(),
@@ -6,8 +7,10 @@ const fake = vi.hoisted(() => ({
   update: vi.fn(),
   select: vi.fn(),
   fetch: vi.fn(),
+  live: vi.fn(),
 }));
 vi.mock('@/lib/data', () => ({ getViewer: fake.viewer }));
+vi.mock('@/lib/app-settings', () => ({ paymentsLive: fake.live }));
 vi.mock('@/lib/supabase/server', () => ({
   supabase: async () => ({
     from: () => ({ select: () => ({ eq: () => ({ eq: () => fake.select() }) }) }),
@@ -30,7 +33,10 @@ const request = (path: string, body: unknown, origin = 'http://localhost:3000') 
   new Request(`http://localhost:3000${path}`, {
     method: 'POST',
     headers: { Origin: origin, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+    // Guarded routes need a fresh single-use human pass; others ignore the extra field.
+    body: JSON.stringify(
+      body && typeof body === 'object' && !Array.isArray(body) ? { captcha: humanPass(), ...body } : body,
+    ),
   });
 const purchase = { plan: 'premium', method: 'bank', locale: 'vi', consent: true };
 const transaction = {
@@ -48,16 +54,15 @@ beforeEach(() => {
   vi.stubEnv('NEXT_PUBLIC_SUPABASE_URL', 'https://test.supabase.co');
   vi.stubEnv('NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY', 'test-public');
   vi.stubEnv('SUPABASE_SERVICE_ROLE_KEY', 'test-service');
-  vi.stubEnv('COMMERCE_ENABLED', 'true');
   vi.stubEnv('PAYOS_CLIENT_ID', 'test-client');
   vi.stubEnv('PAYOS_API_KEY', 'test-api');
   vi.stubEnv('PAYOS_CHECKSUM_KEY', 'test-checksum');
   vi.stubEnv('COMMERCE_SUPPORT_EMAIL', 'support@example.test');
-  vi.stubEnv('TURNSTILE_SECRET_KEY', '');
   fake.viewer.mockResolvedValue({
     id: '50000000-0000-4000-8000-000000000099',
     acceptedTerms: true,
   });
+  fake.live.mockResolvedValue(true);
   fake.rpc.mockResolvedValue({ data: order, error: null });
   fake.update.mockResolvedValue({ error: null });
   fake.select.mockResolvedValue({ data: [], error: null });
@@ -128,8 +133,16 @@ describe('checkout endpoint and fulfilment', () => {
     );
     fake.viewer.mockResolvedValue(null);
     expect((await checkout(request('/api/checkout', purchase))).status).toBe(401);
-    vi.stubEnv('COMMERCE_ENABLED', 'false');
+    fake.viewer.mockResolvedValue({ id: '50000000-0000-4000-8000-000000000099', acceptedTerms: true });
+    // Admin switch off: preview QR only, no order reserved and no provider session.
+    fake.live.mockResolvedValue(false);
+    const preview = await checkout(request('/api/checkout', purchase));
+    expect(preview.status).toBe(409);
+    expect(await preview.json()).toEqual({ error: 'checkoutPreview' });
+    fake.live.mockResolvedValue(true);
+    vi.stubEnv('PAYOS_API_KEY', '');
     expect((await checkout(request('/api/checkout', purchase))).status).toBe(503);
+    expect(fake.rpc).not.toHaveBeenCalled();
     expect(fake.fetch).not.toHaveBeenCalled();
   });
   it('rejects mismatched provider totals and malicious redirect URLs', async () => {

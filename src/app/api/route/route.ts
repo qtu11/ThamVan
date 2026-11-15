@@ -94,5 +94,5 @@ export async function GET(request: Request) {
       if (request.signal.aborted) break;
     }
   }
-  return NextResponse.json({ error: 'ROUTE_UNAVAILABLE' }, { status: 502 });
+  return NextResponse.json({ error: 'ROUTE_UNAVAILABLE' }, { status: 503 });
 }

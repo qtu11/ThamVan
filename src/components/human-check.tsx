@@ -316,13 +316,21 @@ export function HumanCheck({
 
   return (
     <div className="human-check" onKeyDown={onKey}>
-      <div className={`human-check-box${checked ? ' is-checked' : ''}`}>
+      <div
+        className={`human-check-box${checked ? ' is-checked' : ''}`}
+        onClick={() => {
+          if (!checked && phase !== 'loading' && !open) start();
+        }}
+      >
         <button
           type="button"
           role="checkbox"
           aria-checked={checked}
           className="human-check-tick"
-          onClick={start}
+          onClick={(e) => {
+            e.stopPropagation();
+            start();
+          }}
           disabled={checked || phase === 'loading'}
           aria-label={c('Tôi không phải người máy', "I'm not a robot", '我不是机器人')}
         >
@@ -340,6 +348,11 @@ export function HumanCheck({
           <small>THÁM VĂN</small>
         </span>
       </div>
+      {phase === 'failed' && !data && (
+        <p className="human-check-error">
+          {c('Không tải được mã xác minh. Bấm vào ô trên để thử lại.', 'Could not load puzzle. Tap above to retry.', '无法加载验证拼图，请点击重试。')}
+        </p>
+      )}
 
       {open && (
         <div

@@ -1,5 +1,5 @@
 import type { Locale } from './types';
-const messages = {
+export const messages = {
   cityExperience: [
     'Khám phá đô thị TP.HCM qua mô hình 3D',
     'Explore Ho Chi Minh City in 3D',
@@ -680,7 +680,7 @@ const messages = {
     'The assistant only links to on-site content and does not replace official advice.',
     '助手仅提供站内内容链接，不替代官方建议。',
   ],
-} as const;
+} as const satisfies Record<string, readonly [string, string, string]>;
 export type MessageKey = keyof typeof messages;
 export function t(locale: Locale, key: MessageKey): string {
   return messages[key][locale === 'vi' ? 0 : locale === 'en' ? 1 : 2];

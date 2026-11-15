@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { headers } from 'next/headers';
 import { Award, ArrowUpRight } from 'lucide-react';
 import { getViewer, getPersonalData, getChallenges, getAllMapPlaces } from '@/lib/data';
 import { isLocale, kinds } from '@/lib/types';
@@ -82,7 +81,6 @@ export default async function ProfilePage({ params }: { params: Promise<{ locale
               locale={locale}
               viewer={viewer}
               googleEnabled={hasGoogleAuth()}
-              nonce={(await headers()).get('x-nonce') || undefined}
             />
           )}
           <section className="settings-card">

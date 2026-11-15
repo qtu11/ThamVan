@@ -3246,6 +3246,18 @@ input[type='range'] {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.human-check-box:not(.is-checked) {
+  cursor: pointer;
+}
+
+.human-check-error {
+  margin: 6px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #c44030;
+  text-align: center;
+}
+
 .human-check-tick {
   display: grid;
   place-items: center;

@@ -59,12 +59,10 @@ beforeEach(async () => {
     NEXT_PUBLIC_SITE_URL: 'http://localhost:3000',
     NEXT_PUBLIC_SUPABASE_URL: 'https://project.supabase.co',
     NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: 'public-test',
-    VISION_API_KEY: 'private-vision-key',
+    THEHIVE_API_KEY: 'private-vision-key',
     VISION_MODEL: 'vision-test',
-    VISION_API_URL: 'https://provider.test/v1/chat/completions',
     VISION_PROMPT_FILE: 'prompts/recognition.md',
     VISION_SYSTEM_PROMPT: 'Operator-specific instruction',
-    VISION_TOKEN_PARAMETER: 'max_completion_tokens',
     VISION_MAX_OUTPUT_TOKENS: '3000',
   }))
     vi.stubEnv(key, value);
@@ -129,7 +127,10 @@ it('runs normalization, quota, visual retrieval and grounded analysis, returning
   expect(second.messages[1].content[0].text).toContain('Lê Duẩn, Quận 1');
   expect(data.place.label).toBe('Lê Duẩn, Quận 1');
   expect(JSON.stringify(data)).not.toMatch(/"latitude"|"accuracy/);
-  expect(second).toHaveProperty('max_completion_tokens', 3000);
+  expect(second).toHaveProperty('max_tokens', 3000);
+  // The TheHive key is only ever sent to TheHive.
+  expect(String(fetchMock.mock.calls[1][0])).toBe('https://api.thehive.ai/api/v3/chat/completions');
+  expect(fetchMock.mock.calls[1][1].headers.Authorization).toBe('Bearer private-vision-key');
 });
 it('works without location and never falls back to IP coordinates', async () => {
   const response = await POST(await request());
@@ -175,9 +176,9 @@ it('blocks unauthenticated, cross-site, missing consent, stale GPS and malformed
   expect(fetchMock).not.toHaveBeenCalled();
 });
 it('rejects missing/invalid configuration and exhausted quota without invoking the provider', async () => {
-  vi.stubEnv('VISION_API_URL', 'http://provider.test');
+  vi.stubEnv('THEHIVE_API_KEY', '');
   expect((await POST(await request())).status).toBe(503);
-  vi.stubEnv('VISION_API_URL', 'https://provider.test');
+  vi.stubEnv('THEHIVE_API_KEY', 'private-vision-key');
   vi.stubEnv('VISION_PROMPT_FILE', 'prompts/missing.md');
   expect((await POST(await request())).status).toBe(503);
   vi.stubEnv('VISION_PROMPT_FILE', 'prompts/recognition.md');

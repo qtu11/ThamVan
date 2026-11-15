@@ -1,8 +1,8 @@
 import 'server-only';
 import { commerceStorageReady } from './commerce';
+// Provider keys present. Whether money is actually taken is the admin switch (app-settings.ts).
 export const payosReady = () =>
   commerceStorageReady() &&
-  process.env.COMMERCE_ENABLED === 'true' &&
   Boolean(
     process.env.PAYOS_CLIENT_ID &&
     process.env.PAYOS_API_KEY &&
@@ -11,7 +11,6 @@ export const payosReady = () =>
   );
 export const sepayReady = () =>
   commerceStorageReady() &&
-  process.env.COMMERCE_ENABLED === 'true' &&
   process.env.SEPAY_CARD_ENABLED === 'true' &&
   Boolean(
     process.env.SEPAY_MERCHANT_ID &&

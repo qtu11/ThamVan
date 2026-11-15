@@ -1,4 +1,5 @@
 import { getViewer, getCatalog } from '@/lib/data';
+import { itineraryConfig } from '@/lib/env';
 import { getAccountWorkspace } from '@/lib/workspace';
 import { isLocale } from '@/lib/types';
 import { copy } from '@/lib/locale-copy';
@@ -34,7 +35,7 @@ export default async function Dashboard({
       data={data}
       unavailable={unavailable}
       pushConnected={pushReady()}
-      aiConnected={Boolean(process.env.ITINERARY_API_KEY && process.env.ITINERARY_MODEL)}
+      aiConnected={Boolean(itineraryConfig())}
       regions={[...new Set(entries.map((entry) => entry.region))].sort((a, b) =>
         a.localeCompare(b, 'vi'),
       )}

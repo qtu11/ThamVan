@@ -90,9 +90,11 @@ export const POST = route(async (request) => {
       })
       .eq('user_id', viewer.id)
       .eq('challenge_id', starter.id)
-      .is('completed_at', null);
+      .is('completed_at', null)
+      .select('challenge_id');
     if (updated.error) fail('error', 500);
-    return ok({ correct: true, points: starter.points, already_completed: false });
+    // A concurrent request may have completed it first: report that instead of a second award.
+    return ok({ correct: true, points: starter.points, already_completed: !updated.data?.length });
   }
   return ok(data ?? { success: true });
 });

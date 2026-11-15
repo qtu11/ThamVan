@@ -24,7 +24,7 @@ import { copy } from '@/lib/locale-copy';
 import { levelForXp, totalEarnedXp } from '@/lib/xp';
 import { api, Status, Submit, errorText } from './ui';
 import { useDiscoveryPreferences } from './discovery';
-import { Captcha } from './captcha';
+import { HumanCheck } from './human-check';
 import { GoogleSignInButton } from './google-sign-in';
 
 type TopicProgress = { kind: Kind; done: number; total: number };
@@ -213,6 +213,7 @@ export function ExplorerProfileHeader({
     } catch {
       // Ignored
     } finally {
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full reload drops all signed-in client state
       window.location.assign(`/${locale}/auth/login`);
     }
   }
@@ -696,16 +697,13 @@ export function Preferences({ locale, viewer }: { locale: Locale; viewer: Viewer
 export function AccountControls({
   locale,
   viewer,
-  nonce,
   googleEnabled,
 }: {
   locale: Locale;
   viewer: Viewer;
-  nonce?: string;
   googleEnabled: boolean;
 }) {
-  const router = useRouter(),
-    dialog = useRef<HTMLDialogElement>(null),
+  const dialog = useRef<HTMLDialogElement>(null),
     [pending, setPending] = useState(false),
     [message, setMessage] = useState(''),
     [captcha, setCaptcha] = useState(''),
@@ -732,6 +730,7 @@ export function AccountControls({
         locale,
         email: viewer.email || 'logout@account.local',
       });
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full reload drops all signed-in client state
       window.location.assign(`/${locale}/auth/login`);
     } catch (e) {
       setMessage(errorText(locale, e));
@@ -769,6 +768,7 @@ export function AccountControls({
         captcha,
       });
       dialog.current?.close();
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- full reload drops all signed-in client state
       window.location.assign(`/${locale}/auth/login`);
     } catch (e) {
       setMessage(errorText(locale, e));
@@ -819,7 +819,7 @@ export function AccountControls({
               <GoogleSignInButton
                 locale={locale}
                 enabled={
-                  googleEnabled && (!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || !!captcha)
+                  googleEnabled && !!captcha
                 }
                 pending={pending}
                 onClick={reauthenticate}
@@ -842,11 +842,11 @@ export function AccountControls({
               />
             </label>
           )}
-          <Captcha key={captchaEpoch} onToken={setCaptcha} nonce={nonce} />
+          <HumanCheck key={captchaEpoch} locale={locale} onToken={setCaptcha} />
           <Status message={message} error />
           <button
             className="button terracotta"
-            disabled={pending || (!!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !captcha)}
+            disabled={pending || !captcha}
           >
             {t(locale, pending ? 'loading' : 'deleteAccount')}
           </button>

@@ -1,4 +1,5 @@
 import { beforeEach, afterEach, it, expect, vi } from 'vitest';
+import { humanPass } from './helpers/human-pass';
 vi.mock('server-only', () => ({}));
 const fake = vi.hoisted(() => ({
   viewer: vi.fn(),
@@ -30,7 +31,10 @@ const request = (path: string, body: unknown, origin = 'http://localhost:3000') 
   new Request(`http://localhost:3000${path}`, {
     method: 'POST',
     headers: { Origin: origin, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
+    // Guarded routes need a fresh single-use human pass; others ignore the extra field.
+    body: JSON.stringify(
+      body && typeof body === 'object' && !Array.isArray(body) ? { captcha: humanPass(), ...body } : body,
+    ),
   });
 beforeEach(() => {
   vi.clearAllMocks();
@@ -40,7 +44,6 @@ beforeEach(() => {
   vi.stubEnv('NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY', 'test-key');
   vi.stubEnv('AUTH_GOOGLE_ENABLED', 'true');
   vi.stubEnv('AUTH_GOOGLE_FLOW', 'supabase');
-  vi.stubEnv('TURNSTILE_SECRET_KEY', '');
   vi.stubEnv('SUPABASE_SERVICE_ROLE_KEY', 'test-server-only-key');
   fake.auth.signInWithOAuth.mockResolvedValue({
     data: { url: 'https://project.supabase.co/auth/v1/authorize?provider=google' },

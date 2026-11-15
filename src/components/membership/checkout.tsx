@@ -14,18 +14,22 @@ import { copy, money } from '@/lib/locale-copy';
 import { plans, type PaidPlanId } from '@/lib/plans';
 import { isPaymentUrl } from '@/lib/checkout-url';
 import type { Locale } from '@/lib/types';
+import { PreviewQr } from './preview-qr';
 export function MembershipCheckout({
   locale,
   plan,
   bankReady,
   cardReady,
   signedIn,
+  live,
 }: {
   locale: Locale;
   plan: PaidPlanId;
   bankReady: boolean;
   cardReady: boolean;
   signedIn: boolean;
+  /** Admin switch app_settings.payments_live; false = preview QR only, nothing is charged. */
+  live: boolean;
 }) {
   const [method, setMethod] = useState<'bank' | 'card'>(!bankReady && cardReady ? 'card' : 'bank'),
     [consent, setConsent] = useState(false),
@@ -56,6 +60,12 @@ export function MembershipCheckout({
         'Hãy đánh dấu đồng ý điều khoản gói thành viên trước khi thanh toán.',
         'Please accept the membership terms before continuing.',
         '付款前请先同意会员条款。',
+      );
+    if (code === 'checkoutPreview')
+      return c(
+        'Thanh toán đang ở chế độ xem trước. Chưa có khoản tiền nào bị trừ.',
+        'Payments are in preview mode. Nothing has been charged.',
+        '付款处于预览模式，未产生任何扣款。',
       );
     if (code === 'checkoutUnavailable')
       return c(
@@ -127,7 +137,7 @@ export function MembershipCheckout({
       setBusy(false);
     }
   }
-  const ready = method === 'bank' ? bankReady : cardReady;
+  const ready = live && (method === 'bank' ? bankReady : cardReady);
   return (
     <section className="membership-checkout">
       <div className="checkout-plan">
@@ -185,7 +195,9 @@ export function MembershipCheckout({
           <strong>VietQR</strong>
           <small>
             payOS ·{' '}
-            {bankReady
+            {!live
+              ? c('Xem trước', 'Preview', '预览')
+              : bankReady
               ? c('Đang mở', 'Active', '已启用')
               : c('Sắp kích hoạt', 'Pending', '待启用')}
           </small>
@@ -195,13 +207,23 @@ export function MembershipCheckout({
           <strong>Visa / Mastercard</strong>
           <small>
             SePay ·{' '}
-            {cardReady
+            {!live
+              ? c('Xem trước', 'Preview', '预览')
+              : cardReady
               ? c('Đang mở', 'Active', '已启用')
               : c('Sắp kích hoạt', 'Pending', '待启用')}
           </small>
         </button>
       </div>
-      {!ready && (
+      {!live && (
+        <PreviewQr
+          key={method}
+          seed={`${plan}:${method}`}
+          locale={locale}
+          label={`${method === 'bank' ? 'VietQR · payOS' : 'SePay'} · ${money(plans[plan].amount, locale)}`}
+        />
+      )}
+      {live && !ready && (
         <div className="commerce-notice" role="status">
           <p style={{ margin: 0 }}>
             {c(
@@ -255,7 +277,7 @@ export function MembershipCheckout({
           )}
         </p>
       )}
-      {signedIn ? (
+      {!live ? null : signedIn ? (
         <>
           <label className="check-label">
             <input

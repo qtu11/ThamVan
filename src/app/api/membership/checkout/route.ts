@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { route, readJson, requireViewer, fail, ok } from '@/lib/api';
 import { plans } from '@/lib/plans';
 import { payosReady, sepayReady } from '@/lib/membership-checkout';
+import { paymentsLive } from '@/lib/app-settings';
 import { supabaseAdmin } from '@/lib/supabase/server';
 import { siteUrl } from '@/lib/env';
 import { signSepay, sepayFields } from '@/lib/sepay';
@@ -17,6 +18,8 @@ export const POST = route(async (request) => {
       consent: z.literal(true),
     }),
   );
+  // Preview mode (admin switch off): the page shows an unscannable QR; no provider session exists.
+  if (!(await paymentsLive())) fail('checkoutPreview', 409);
   if (body.method === 'bank' ? !payosReady() : !sepayReady()) fail('checkoutUnavailable', 503);
   const viewer = await requireViewer();
   const provider = body.method === 'card' ? 'sepay' : 'payos';

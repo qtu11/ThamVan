@@ -4,7 +4,7 @@ import { useRef, useState, useSyncExternalStore } from 'react';
 import { ArrowUpRight, CheckCircle2, Download, LayoutDashboard, LoaderCircle } from 'lucide-react';
 import { copy } from '@/lib/locale-copy';
 import type { Locale } from '@/lib/types';
-import { Captcha } from '@/components/captcha';
+import { HumanCheck } from '@/components/human-check';
 
 function subscribePartnerRole(callback: () => void) {
   window.addEventListener('storage', callback);
@@ -27,16 +27,15 @@ function getPartnerRoleSnapshot(): string {
 export function LeadForm({
   locale,
   ready,
-  nonce,
 }: {
   locale: Locale;
   ready: boolean;
-  nonce?: string;
 }) {
   const [busy, setBusy] = useState(false),
     [reference, setReference] = useState(''),
     [error, setError] = useState(''),
     [captcha, setCaptcha] = useState(''),
+    [captchaEpoch, setCaptchaEpoch] = useState(0),
     [segment, setSegment] = useState<'school' | 'hotel' | 'team'>('team');
   const formRef = useRef<HTMLFormElement>(null);
   const activeRole = useSyncExternalStore(subscribePartnerRole, getPartnerRoleSnapshot, () => '');
@@ -78,6 +77,9 @@ export function LeadForm({
         }),
       });
       const body = await result.json();
+      // The pass is single-use: the server spent it whatever the outcome.
+      setCaptcha('');
+      setCaptchaEpoch((n) => n + 1);
       if (!result.ok || !body.reference) {
         setError(
           body.error === 'rateLimit'
@@ -301,13 +303,11 @@ export function LeadForm({
           .
         </span>
       </label>
-      <Captcha nonce={nonce} onToken={setCaptcha} />
+      <HumanCheck key={captchaEpoch} locale={locale} onToken={setCaptcha} />
       <button
         className="button"
         type="submit"
-        disabled={
-          busy || !ready || (Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY) && !captcha)
-        }
+        disabled={busy || !ready || !captcha}
       >
         {busy ? <LoaderCircle size={16} className="spin" /> : <ArrowUpRight size={17} />}{' '}
         {c('Gửi đề bài hợp tác', 'Send partnership inquiry', '发送合作需求')}

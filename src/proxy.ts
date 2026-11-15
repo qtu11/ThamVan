@@ -18,15 +18,15 @@ export async function proxy(request: NextRequest) {
   const mapOrigin = basemapOrigin();
   const csp = [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${dev ? "'unsafe-eval'" : ''} https://challenges.cloudflare.com`,
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' ${dev ? "'unsafe-eval'" : ''}`,
     "style-src 'self' 'unsafe-inline'",
     `img-src 'self' data: blob: ${mapOrigin} ${supabaseOrigin}`,
     "font-src 'self'",
     "worker-src 'self' blob:",
     "media-src 'self' blob:",
     // MapLibre fetches the vector style, tiles, sprites and glyphs straight from the basemap host.
-    `connect-src 'self' ${dev ? 'ws:' : ''} ${mapOrigin} ${supabaseOrigin} https://challenges.cloudflare.com`,
-    'frame-src https://challenges.cloudflare.com',
+    `connect-src 'self' ${dev ? 'ws:' : ''} ${mapOrigin} ${supabaseOrigin}`,
+    "frame-src 'none'",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self' https://pay.sepay.vn",
@@ -110,5 +110,8 @@ export async function proxy(request: NextRequest) {
   return response;
 }
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|images|favicon.ico|robots.txt|sitemap.xml).*)'],
+  // Public static folders skip the proxy so they keep the cache headers from next.config.ts.
+  matcher: [
+    '/((?!_next/static|_next/image|images/|icons/|mobile/|website/|favicon.ico|robots.txt|sitemap.xml).*)',
+  ],
 };

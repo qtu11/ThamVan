@@ -1,6 +1,13 @@
 import { it, expect, vi } from 'vitest';
 vi.mock('server-only', () => ({}));
-import { issueChallenge, verifyAttempt, verifyHumanPass, isHumanPass } from '@/lib/human-check';
+import {
+  issueChallenge,
+  verifyAttempt,
+  verifyHumanPass,
+  isHumanPass,
+  usedNonceCount,
+  USED_NONCE_CAP,
+} from '@/lib/human-check';
 
 function humanTrack(target: number): [number, number][] {
   const out: [number, number][] = [];
@@ -48,4 +55,28 @@ it('rejects wrong position, replayed challenge, tampering and robotic tracks', (
 
   const d = issueChallenge();
   expect(verifyAttempt(d.challenge, d.x, [[8, 0], [d.x, 5]])).toBeNull(); // teleport
+});
+
+it('keeps the single-use registry bounded under a flood of live challenges', () => {
+  // Every attempt consumes a nonce; a wrong x keeps it cheap. Old entries must be evicted, not accumulated.
+  for (let i = 0; i < USED_NONCE_CAP + 50; i++) {
+    const c = issueChallenge();
+    verifyAttempt(c.challenge, c.x + 100, []);
+  }
+  const fresh = issueChallenge();
+  const pass = verifyAttempt(fresh.challenge, fresh.x, humanTrack(fresh.x));
+  expect(pass).toBeTruthy();
+  expect(verifyHumanPass(pass!)).toBe(true);
+  expect(verifyHumanPass(pass!)).toBe(false); // the newest nonces are kept, so replay is still blocked
+  expect(usedNonceCount()).toBeLessThanOrEqual(USED_NONCE_CAP);
+});
+
+it('guards routes with the self-hosted pass only: missing, foreign or reused tokens fail', async () => {
+  const { verifyCaptcha } = await import('@/lib/api');
+  await expect(verifyCaptcha(undefined)).rejects.toMatchObject({ code: 'captchaError' });
+  await expect(verifyCaptcha('0.turnstile-style-token')).rejects.toMatchObject({ code: 'captchaError' });
+  const c = issueChallenge();
+  const pass = verifyAttempt(c.challenge, c.x, humanTrack(c.x))!;
+  await expect(verifyCaptcha(pass)).resolves.toBeUndefined();
+  await expect(verifyCaptcha(pass)).rejects.toMatchObject({ code: 'captchaError' });
 });

@@ -17,6 +17,7 @@ const PUBLIC_API: RegExp[] = [
   /^\/api\/auth\/?$/, // login / register / forgot / logout (captcha-guarded)
   /^\/api\/auth\/google\/?$/, // start Google OAuth (captcha-guarded)
   /^\/api\/captcha\/?$/, // slider puzzle challenge/verify
+  /^\/api\/assistant\/?$/, // public heritage Q&A widget shown on auth pages
   /^\/api\/payments\/(?:payos|sepay)\/?$/, // provider webhooks, signature-verified in handler
 ];
 

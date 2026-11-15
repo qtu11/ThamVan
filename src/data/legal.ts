@@ -19,7 +19,7 @@ export const legal: Record<
       },
       {
         title: 'Dịch vụ bên ngoài',
-        body: 'Supabase cung cấp xác thực và lưu dữ liệu. Bản đồ nền được trình duyệt tải trực tiếp từ OpenFreeMap (dữ liệu OpenStreetMap); ảnh vệ tinh đi qua máy chủ trung gian của THÁM VĂN. Tên đường, địa điểm lân cận và chỉ đường do các dịch vụ dựa trên OpenStreetMap (Nominatim, Overpass, OSRM) cung cấp thông qua máy chủ THÁM VĂN. Cloudflare Turnstile chống lạm dụng khi được cấu hình. Khi bạn mở Google Maps hoặc nguồn tham khảo, trang bên ngoài áp dụng chính sách riêng.',
+        body: 'Supabase cung cấp xác thực và lưu dữ liệu. Bản đồ nền được trình duyệt tải trực tiếp từ OpenFreeMap (dữ liệu OpenStreetMap); ảnh vệ tinh đi qua máy chủ trung gian của THÁM VĂN. Tên đường, địa điểm lân cận và chỉ đường do các dịch vụ dựa trên OpenStreetMap (Nominatim, Overpass, OSRM) cung cấp thông qua máy chủ THÁM VĂN. Bước xác minh “Tôi không phải người máy” do chính máy chủ THÁM VĂN cấp và kiểm tra, không gửi dữ liệu cho bên thứ ba. Khi bạn mở Google Maps hoặc nguồn tham khảo, trang bên ngoài áp dụng chính sách riêng.',
       },
       {
         title: 'Quyền quản lý dữ liệu',
@@ -45,7 +45,7 @@ export const legal: Record<
       },
       {
         title: 'External services',
-        body: 'Supabase provides authentication and storage. The basemap is loaded by your browser directly from OpenFreeMap (OpenStreetMap data); satellite imagery passes through the THÁM VĂN server proxy. Street names, nearby places and directions come from OpenStreetMap-based services (Nominatim, Overpass, OSRM) through the THÁM VĂN server. Cloudflare Turnstile prevents abuse when configured. Google Maps and source links have their own privacy policies.',
+        body: 'Supabase provides authentication and storage. The basemap is loaded by your browser directly from OpenFreeMap (OpenStreetMap data); satellite imagery passes through the THÁM VĂN server proxy. Street names, nearby places and directions come from OpenStreetMap-based services (Nominatim, Overpass, OSRM) through the THÁM VĂN server. The “I’m not a robot” check is issued and verified by the THÁM VĂN server itself, without third parties. Google Maps and source links have their own privacy policies.',
       },
       {
         title: 'Managing your data',
@@ -71,7 +71,7 @@ export const legal: Record<
       },
       {
         title: '外部服务',
-        body: 'Supabase提供认证与数据存储。底图由浏览器直接从OpenFreeMap（OpenStreetMap数据）加载；卫星影像经由THÁM VĂN服务器代理。街道名称、周边地点和路线由基于OpenStreetMap的服务（Nominatim、Overpass、OSRM）经THÁM VĂN服务器提供。配置后使用Cloudflare Turnstile防止滥用。Google地图和参考来源适用各自的隐私政策。',
+        body: 'Supabase提供认证与数据存储。底图由浏览器直接从OpenFreeMap（OpenStreetMap数据）加载；卫星影像经由THÁM VĂN服务器代理。街道名称、周边地点和路线由基于OpenStreetMap的服务（Nominatim、Overpass、OSRM）经THÁM VĂN服务器提供。“我不是机器人”验证由THÁM VĂN服务器自行签发与校验，不涉及第三方。Google地图和参考来源适用各自的隐私政策。',
       },
       {
         title: '管理你的数据',

@@ -31,7 +31,7 @@ vi.mock('@/lib/supabase/server', () => ({
       if (table === 'challenge_progress') {
         const chain = {
           eq: () => chain,
-          is: () => mockEnv.updateProgress(),
+          is: () => ({ select: () => mockEnv.updateProgress() }),
         };
         return { update: () => chain };
       }
@@ -164,7 +164,7 @@ describe('route & tiles API hardening', () => {
         'http://localhost:3000/api/route?fromLat=10.7798&fromLon=106.6990&toLat=10.7530&toLon=106.6611',
       ),
     );
-    expect(down.status).toBe(502);
+    expect(down.status).toBe(503);
     expect(await down.json()).toEqual({ error: 'ROUTE_UNAVAILABLE' });
   });
 
@@ -335,7 +335,7 @@ describe('reports & challenges security hardening', () => {
     });
     expect(mockEnv.updateProgress).not.toHaveBeenCalled();
 
-    mockEnv.updateProgress.mockResolvedValue({ error: null });
+    mockEnv.updateProgress.mockResolvedValue({ data: [{ challenge_id: 'x' }], error: null });
     const rightRes = await challengesPost(
       new Request('http://localhost:3000/api/challenges', {
         method: 'POST',
@@ -349,6 +349,20 @@ describe('reports & challenges security hardening', () => {
     expect(rightRes.status).toBe(200);
     expect(await rightRes.json()).toEqual({ correct: true, points: 20, already_completed: false });
     expect(mockEnv.updateProgress).toHaveBeenCalledTimes(1);
+
+    // A parallel request already completed it: no row updated, so no second award is reported.
+    mockEnv.updateProgress.mockResolvedValue({ data: [], error: null });
+    const raceRes = await challengesPost(
+      new Request('http://localhost:3000/api/challenges', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', origin: 'http://localhost:3000' },
+        body: JSON.stringify({
+          challenge_id: '10000000-0000-4000-8000-000000000001',
+          answer: 1,
+        }),
+      }),
+    );
+    expect(await raceRes.json()).toEqual({ correct: true, points: 20, already_completed: true });
   });
 
   it('serves localized Vietnamese disclaimer on story walk download', async () => {

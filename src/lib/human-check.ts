@@ -46,15 +46,23 @@ function open<T>(prefix: string, token: string): T | null {
   }
 }
 
-// Single-use registry. Best effort per server instance; TTL keeps it bounded.
+// Single-use registry. Best effort per server instance; TTL + hard cap keep it bounded.
 const used = new Map<string, number>();
+export const USED_NONCE_CAP = 20_000;
 function consume(nonce: string, exp: number) {
   const now = Date.now();
   if (used.size > 5000) for (const [k, e] of used) if (e < now) used.delete(k);
+  // Under a flood of live nonces, drop the oldest (closest to expiry) instead of growing forever.
+  for (const k of used.keys()) {
+    if (used.size < USED_NONCE_CAP) break;
+    used.delete(k);
+  }
   if (used.has(nonce)) return false;
   used.set(nonce, exp);
   return true;
 }
+/** Test hook. */
+export const usedNonceCount = () => used.size;
 
 type Challenge = { t: number; x: number; y: number; n: string; e: number };
 type Pass = { n: string; e: number };

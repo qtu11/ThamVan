@@ -3,32 +3,22 @@ export const hasSupabase = () =>
   Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY);
 export const siteUrl = () =>
   (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+// One AI provider for the whole app: TheHive's OpenAI-compatible endpoint with a DeepSeek model.
+export const THEHIVE_CHAT_URL = new URL('https://api.thehive.ai/api/v3/chat/completions');
+export const DEFAULT_THEHIVE_MODEL = 'deepseek-ai/deepseek-v4.1-flash-1017';
+export const theHiveKey = () => process.env.THEHIVE_API_KEY?.trim() || null;
 export function visionConfig() {
-  try {
-    const endpoint = new URL(
-      process.env.VISION_API_URL || 'https://api.openai.com/v1/chat/completions',
-    );
-    const key = process.env.VISION_API_KEY?.trim(),
-      model = process.env.VISION_MODEL?.trim();
-    const maxTokens = Number(process.env.VISION_MAX_OUTPUT_TOKENS || 3000);
-    const tokenParameter = process.env.VISION_TOKEN_PARAMETER || 'max_completion_tokens';
-    if (
-      !key ||
-      !model ||
-      endpoint.protocol !== 'https:' ||
-      endpoint.username ||
-      endpoint.password ||
-      endpoint.hash ||
-      !Number.isInteger(maxTokens) ||
-      maxTokens < 512 ||
-      maxTokens > 8000 ||
-      !['max_tokens', 'max_completion_tokens'].includes(tokenParameter)
-    )
-      return null;
-    return { endpoint, key, model, maxTokens, tokenParameter };
-  } catch {
-    return null;
-  }
+  const key = theHiveKey();
+  const model = process.env.VISION_MODEL?.trim() || DEFAULT_THEHIVE_MODEL;
+  const maxTokens = Number(process.env.VISION_MAX_OUTPUT_TOKENS || 3000);
+  if (!key || !Number.isInteger(maxTokens) || maxTokens < 512 || maxTokens > 8000) return null;
+  return { endpoint: THEHIVE_CHAT_URL, key, model, maxTokens };
+}
+export function itineraryConfig() {
+  const key = theHiveKey();
+  return key
+    ? { endpoint: THEHIVE_CHAT_URL, key, model: process.env.ITINERARY_MODEL?.trim() || DEFAULT_THEHIVE_MODEL }
+    : null;
 }
 export const hasVision = () => Boolean(visionConfig());
 export const googleAuthFlow = () => process.env.AUTH_GOOGLE_FLOW || 'supabase';

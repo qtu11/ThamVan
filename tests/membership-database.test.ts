@@ -332,4 +332,32 @@ describe('membership PostgreSQL production boundaries', () => {
       await db.query('update public.profiles set consented_at=now() where id=$1', [owner]);
     }
   });
+  it('lets only an admin switch real payments on, and defaults to preview', async () => {
+    const value = async (user: string | null) =>
+      as(user, async () => (await db.query<{ value: unknown }>(
+        "select value from public.app_settings where key='payments_live'",
+      )).rows);
+    expect(await value(admin)).toEqual([{ value: false }]);
+    expect(await value(owner)).toEqual([]);
+    await expect(value(null)).rejects.toThrow('permission denied');
+    const flip = (user: string) =>
+      as(user, () =>
+        db.query(
+          "update public.app_settings set value='true'::jsonb,updated_by=$1 where key='payments_live'",
+          [user],
+        ),
+      );
+    expect((await flip(owner)).affectedRows).toBe(0);
+    await expect(
+      as(admin, () =>
+        db.query(
+          "update public.app_settings set value='true'::jsonb,updated_by=$1 where key='payments_live'",
+          [owner],
+        ),
+      ),
+    ).rejects.toThrow();
+    expect((await flip(admin)).affectedRows).toBe(1);
+    expect(await value(admin)).toEqual([{ value: true }]);
+    await db.query("update public.app_settings set value='false'::jsonb where key='payments_live'");
+  });
 });

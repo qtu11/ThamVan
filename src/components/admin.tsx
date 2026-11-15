@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { uuid } from '@/lib/uuid';
 import { useRouter } from 'next/navigation';
 import { Plus, FileJson, Check, Archive } from 'lucide-react';
 import type { Heritage, Challenge, Locale } from '@/lib/types';
@@ -79,15 +80,11 @@ export function Admin({
     }
   }
   function add() {
-    const makeId = () =>
-      typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
-        ? crypto.randomUUID()
-        : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
     if (tab === 'entries') {
       const template = entries[0];
       edit(
         template
-          ? { ...template, id: makeId(), slug: 'new-entry', name: '', status: 'draft' }
+          ? { ...template, id: uuid(), slug: 'new-entry', name: '', status: 'draft' }
           : {
               slug: 'new-entry',
               name: '',

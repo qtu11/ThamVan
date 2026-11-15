@@ -29,8 +29,6 @@ export async function callVision<T>(options: {
 }) {
   const config = visionConfig();
   if (!config) fail('visionUnavailable', 503);
-  const isTheHiveOrDeepSeek =
-    config.endpoint.hostname === 'api.thehive.ai' || config.model.toLowerCase().includes('deepseek');
   let response: Response;
   try {
     response = await fetch(config.endpoint, {
@@ -41,8 +39,8 @@ export async function callVision<T>(options: {
       headers: { Authorization: `Bearer ${config.key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: config.model,
-        [config.tokenParameter]: config.maxTokens,
-        ...(isTheHiveOrDeepSeek ? { temperature: 0.2 } : {}),
+        max_tokens: config.maxTokens,
+        temperature: 0.2,
         ...providerThinkingOptions(config.endpoint, config.model),
         response_format: { type: 'json_object' },
         messages: [

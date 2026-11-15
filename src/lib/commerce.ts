@@ -8,16 +8,6 @@ export const paymentWindowExpired = (createdAt: string) =>
 
 export const commerceStorageReady = () =>
   hasSupabase() && Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY);
-export const checkoutReady = () =>
-  commerceStorageReady() &&
-  process.env.COMMERCE_ENABLED === 'true' &&
-  Boolean(
-    process.env.PAYOS_CLIENT_ID &&
-    process.env.PAYOS_API_KEY &&
-    process.env.PAYOS_CHECKSUM_KEY &&
-    process.env.COMMERCE_SUPPORT_EMAIL,
-  );
-
 export async function ownsExperience(slug: string) {
   const viewer = await getViewer();
   if (!viewer || !hasSupabase()) return false;

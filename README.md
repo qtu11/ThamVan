@@ -78,13 +78,13 @@ Làm theo **[hướng dẫn Google OAuth và SQL](docs/GOOGLE-AUTH.md)**. Nếu 
 
 ## Cấu hình chống lạm dụng khi deploy
 
-Tạo Cloudflare Turnstile widget cho đúng domain, điền cả `NEXT_PUBLIC_TURNSTILE_SITE_KEY` và `TURNSTILE_SECRET_KEY`. Đăng nhập, đăng ký, quên mật khẩu và xóa tài khoản **yêu cầu Turnstile khi `NODE_ENV=production`**. Local development không bắt buộc. Token được xác minh server và kiểm tra hostname. Không bật CAPTCHA của Supabase song song với widget tùy biến này nếu chưa tích hợp thêm `captchaToken` vào Auth options.
+Đăng nhập, đăng ký, quên mật khẩu, đăng nhập Google, xóa tài khoản và form đối tác **luôn yêu cầu** ô xác minh “Tôi không phải người máy” tự host (`/api/captcha`, `src/lib/human-check.ts`): thử thách ký HMAC, TTL 2 phút, token dùng một lần. Không dùng dịch vụ CAPTCHA bên thứ ba. Production cần `CAPTCHA_SECRET` ≥ 32 ký tự (hoặc `SUPABASE_JWT_SECRET`).
 
 Supabase Auth có giới hạn riêng; nên cấu hình Auth Rate Limits cho môi trường thực. AI có quota 10 lượt/tài khoản/24 giờ trong Postgres, câu trả lời 30 lượt/giờ, báo sai 5 lượt/giờ. Điểm thử thách được ghi server trong transaction với row lock, chỉ cộng một lần.
 
 ## Nhận diện ảnh
 
-Điền `VISION_API_KEY`, `VISION_MODEL`, `VISION_API_URL` (mặc định OpenAI Chat Completions). Model phải hỗ trợ ảnh và JSON object response. Endpoint phải HTTPS, do chủ vận hành cấu hình, không nhận URL endpoint từ người dùng.
+Chỉ cần `THEHIVE_API_KEY`. Endpoint cố định `https://api.thehive.ai/api/v3/chat/completions`, model mặc định `deepseek-ai/deepseek-v4.1-flash-1017` (nhận ảnh, trả JSON); đổi model qua `VISION_MODEL`. Prompt hệ thống nằm ở `prompts/recognition.md`. Đo độ chính xác prompt bằng `npm run vision:eval` (xem `evals/README.md`).
 
 Ảnh JPG/PNG/WebP tối đa 5 MB; server kiểm tra chữ ký file, giới hạn stream đầu vào và timeout. Ảnh được giải mã với trần 24 triệu pixel, thu nhỏ tối đa 1600 px và loại EXIF/GPS trước khi gửi. Người dùng phải đăng nhập và đồng ý gửi ảnh cho nhà cung cấp. Ảnh không được ghi vào database/storage, không được log hoặc công khai. Chính sách lưu của nhà cung cấp là độc lập; bổ sung tên/điều khoản nhà cung cấp trong chính sách trước khi vận hành.
 

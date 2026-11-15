@@ -3,6 +3,7 @@ import { itineraryInput, validateItinerary } from '@/lib/itinerary';
 import { getCatalog } from '@/lib/data';
 import { getMembership } from '@/lib/workspace';
 import { supabase, supabaseAdmin } from '@/lib/supabase/server';
+import { itineraryConfig } from '@/lib/env';
 import { limitedBody, parseJsonResponse, providerThinkingOptions } from '@/lib/vision';
 
 export const maxDuration = 60;
@@ -61,12 +62,9 @@ export const POST = route(async (request) => {
   const input = await readJson(request, itineraryInput);
   const access = await getMembership();
   if (access?.plan !== 'family') fail('FAMILY_REQUIRED', 403);
-  if (!process.env.ITINERARY_API_KEY || !process.env.ITINERARY_MODEL) fail('aiUnavailable', 503);
-  const endpoint = new URL(
-    process.env.ITINERARY_API_URL || 'https://api.openai.com/v1/chat/completions',
-  );
-  if (endpoint.protocol !== 'https:' || endpoint.username || endpoint.password)
-    fail('notConfigured', 503);
+  const ai = itineraryConfig();
+  if (!ai) fail('aiUnavailable', 503);
+  const { endpoint } = ai;
   const candidates = (await getCatalog())
     .filter(
       (entry) =>
@@ -119,44 +117,18 @@ export const POST = route(async (request) => {
     })),
   });
   const candidateSlugs = new Set(candidates.map((entry) => entry.slug));
-  const primaryModel = process.env.ITINERARY_MODEL;
-  const fallbackModel =
-    endpoint.hostname === 'api.thehive.ai' && primaryModel !== 'zai-org/glm-5.3-flash'
-      ? 'zai-org/glm-5.3-flash'
-      : null;
-  let usedModel = primaryModel;
   try {
-    let output;
-    try {
-      output = await callItineraryProvider({
-        endpoint,
-        apiKey: process.env.ITINERARY_API_KEY,
-        model: primaryModel,
-        systemPrompt,
-        userPayload,
-        slugs: candidateSlugs,
-        days: input.days,
-        hours: input.hours,
-        signal: AbortSignal.any([
-          request.signal,
-          AbortSignal.timeout(fallbackModel ? 28000 : 48000),
-        ]),
-      });
-    } catch (primaryError) {
-      if (!fallbackModel || request.signal.aborted) throw primaryError;
-      usedModel = fallbackModel;
-      output = await callItineraryProvider({
-        endpoint,
-        apiKey: process.env.ITINERARY_API_KEY,
-        model: fallbackModel,
-        systemPrompt,
-        userPayload,
-        slugs: candidateSlugs,
-        days: input.days,
-        hours: input.hours,
-        signal: AbortSignal.any([request.signal, AbortSignal.timeout(22000)]),
-      });
-    }
+    const output = await callItineraryProvider({
+      endpoint,
+      apiKey: ai.key,
+      model: ai.model,
+      systemPrompt,
+      userPayload,
+      slugs: candidateSlugs,
+      days: input.days,
+      hours: input.hours,
+      signal: AbortSignal.any([request.signal, AbortSignal.timeout(50000)]),
+    });
     // Re-check Family at fulfilment in case membership expired or was revoked while the provider ran.
     const renewed = await db.rpc('my_membership');
     if (renewed.error || renewed.data?.plan !== 'family') throw new Error('FAMILY_REQUIRED');
@@ -167,7 +139,7 @@ export const POST = route(async (request) => {
         user_id: viewer.id,
         title: output.title,
         days: output.days,
-        provider_model: usedModel,
+        provider_model: ai.model,
       })
       .select('id')
       .single();

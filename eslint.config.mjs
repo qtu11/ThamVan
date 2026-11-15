@@ -13,5 +13,7 @@ export default defineConfig([
     'next-env.d.ts',
     'asset/**',
     'video/**',
+    // Vendored MapLibre worker bundle copied from node_modules.
+    'public/website/maplibre-gl-worker.mjs',
   ]),
 ]);

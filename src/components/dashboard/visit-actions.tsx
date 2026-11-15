@@ -6,12 +6,8 @@ import { api } from '@/components/ui';
 import { copy } from '@/lib/locale-copy';
 import { workspaceError } from '@/lib/workspace-errors';
 import type { Locale } from '@/lib/types';
+import { uuid } from '@/lib/uuid';
 
-function makeKey() {
-  return typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
-    ? crypto.randomUUID()
-    : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-}
 
 export function VisitActions({
   slug,
@@ -53,7 +49,7 @@ export function VisitActions({
           accuracy: position.coords.accuracy,
         };
       }
-      await api('/api/workspace', { action: 'visit', slug, key: makeKey(), ...location });
+      await api('/api/workspace', { action: 'visit', slug, key: uuid(), ...location });
       setMessage(
         useGps
           ? copy(
