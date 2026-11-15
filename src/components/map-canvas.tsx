@@ -301,6 +301,10 @@ export default function MapCanvas(props: MapCanvasProps) {
     });
     instance.on('load', () => {
       loaded = true;
+      // Start with the credits folded into the (i) button instead of a line of text over the map.
+      container.current
+        ?.querySelector('.maplibregl-ctrl-attrib')
+        ?.classList.remove('maplibregl-compact-show');
     });
     instance.on('error', () => {
       // Before the first successful load an error means the basemap itself is unreachable.

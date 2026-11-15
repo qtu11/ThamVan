@@ -911,3 +911,8 @@
     animation: none;
   }
 }
+
+/* Map credits: collapsed to the (i) button; tapping it shows the OpenStreetMap licence line. */
+.atlas-canvas-map .maplibregl-ctrl-attrib.maplibregl-compact:not(.maplibregl-compact-show) .maplibregl-ctrl-attrib-inner {
+  display: none;
+}
