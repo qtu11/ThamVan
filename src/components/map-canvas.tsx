@@ -1,11 +1,13 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 // maplibre-gl 6 ships named exports only (no default export).
 import * as maplibregl from 'maplibre-gl';
 import type {
   GeoJSONSource,
   Map as MapLibreMap,
   Marker,
+  Popup,
   StyleSpecification,
 } from 'maplibre-gl';
 import type { FeatureCollection as GeoFeatureCollection, Geometry, Point } from 'geojson';
@@ -80,6 +82,17 @@ function accuracyCircle(fix: LiveFix | null): FeatureCollection {
   };
 }
 
+const linkCollection = (links: LngLat[][]): FeatureCollection => ({
+  type: 'FeatureCollection',
+  features: links
+    .filter((link) => link.length > 1)
+    .map((link) => ({
+      type: 'Feature',
+      geometry: { type: 'LineString', coordinates: link },
+      properties: {},
+    })),
+});
+
 const routeCollection = (line: LngLat[] | null): FeatureCollection =>
   line && line.length > 1
     ? {
@@ -104,26 +117,47 @@ export type MapCanvasProps = {
   user: LiveFix | null;
   selected: { id: string; name: string; latitude: number; longitude: number } | null;
   routeLine: LngLat[] | null;
+  /** Dotted links between the real start/destination and where the route joins the road. */
+  routeLinks: LngLat[][];
+  /** Place card rendered inside a map popup anchored at `selected`. */
+  popup: ReactNode | null;
   routeMode: RouteMode;
   basemap: Basemap;
   follow: boolean;
   view: MapView | null;
   onSelectPlace: (id: string) => void;
   onSelectPoi: (id: string) => void;
+  /** A place icon drawn by the basemap itself (OpenStreetMap), tapped by the visitor. */
+  onPickPlace: (place: OsmPlace) => void;
   onClearSelection: () => void;
   onUserGesture: () => void;
   onCenterChange: (center: { latitude: number; longitude: number }) => void;
 };
 
 export default function MapCanvas(props: MapCanvasProps) {
-  const { locale, places, pois, user, selected, routeLine, routeMode, basemap, follow, view } =
-    props;
+  const {
+    locale,
+    places,
+    pois,
+    user,
+    selected,
+    routeLine,
+    routeLinks,
+    popup,
+    routeMode,
+    basemap,
+    follow,
+    view,
+  } = props;
   const container = useRef<HTMLDivElement>(null);
   const map = useRef<MapLibreMap | null>(null);
   const userMarker = useRef<Marker | null>(null);
   const selectedMarker = useRef<Marker | null>(null);
   const latest = useRef(props);
   const firstStyle = useRef(true);
+  const basemapPoiLayers = useRef<string[]>([]);
+  const popupRef = useRef<Popup | null>(null);
+  const [popupNode, setPopupNode] = useState<HTMLDivElement | null>(null);
   const [failed, setFailed] = useState(false);
   const [styleEpoch, setStyleEpoch] = useState(0);
 
@@ -159,6 +193,7 @@ export default function MapCanvas(props: MapCanvasProps) {
       };
       add('tv-accuracy', accuracyCircle(current.user));
       add('tv-route', routeCollection(current.routeLine));
+      add('tv-route-links', linkCollection(current.routeLinks));
       add('tv-pois', pointCollection(current.pois, (poi) => ({ kind: poi.kind })));
       add('tv-places', pointCollection(current.places), {
         cluster: true,
@@ -177,6 +212,17 @@ export default function MapCanvas(props: MapCanvasProps) {
         type: 'line',
         source: 'tv-accuracy',
         paint: { 'line-color': '#1a73e8', 'line-opacity': 0.4, 'line-width': 1 },
+      });
+      instance.addLayer({
+        id: 'tv-route-links',
+        type: 'line',
+        source: 'tv-route-links',
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: {
+          'line-color': '#5f6368',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 12, 2.5, 17, 5],
+          'line-dasharray': [0.1, 2],
+        },
       });
       instance.addLayer({
         id: 'tv-route-casing',
@@ -202,9 +248,9 @@ export default function MapCanvas(props: MapCanvasProps) {
         id: 'tv-pois-dot',
         type: 'circle',
         source: 'tv-pois',
-        minzoom: 12.5,
+        minzoom: 10,
         paint: {
-          'circle-radius': ['interpolate', ['linear'], ['zoom'], 12.5, 3, 17, 7],
+          'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 3.5, 14, 6, 17, 9],
           'circle-color': [
             'match',
             ['get', 'kind'],
@@ -226,12 +272,12 @@ export default function MapCanvas(props: MapCanvasProps) {
         id: 'tv-pois-label',
         type: 'symbol',
         source: 'tv-pois',
-        minzoom: 15.3,
+        minzoom: 14,
         layout: {
           'text-field': ['get', 'name'],
           'text-font': FONT_REGULAR,
-          'text-size': 11.5,
-          'text-offset': [0, 0.9],
+          'text-size': ['interpolate', ['linear'], ['zoom'], 14, 11, 17, 13],
+          'text-offset': [0, 1],
           'text-anchor': 'top',
           'text-max-width': 9,
           'text-optional': true,
@@ -296,6 +342,20 @@ export default function MapCanvas(props: MapCanvasProps) {
 
     instance.on('style.load', () => {
       install();
+      // Show the basemap's own place icons (schools, clinics, cafés, bus stops…) from street level.
+      const poiLayers: string[] = [];
+      for (const layer of instance.getStyle().layers || []) {
+        const sourceLayer = (layer as { 'source-layer'?: string })['source-layer'];
+        if (layer.type !== 'symbol' || (sourceLayer !== 'poi' && sourceLayer !== 'aerodrome_label'))
+          continue;
+        poiLayers.push(layer.id);
+        try {
+          instance.setLayerZoomRange(layer.id, Math.min(layer.minzoom ?? 14, 13.5), 24);
+        } catch {
+          /* Layer without a zoom range: leave it as the style defines. */
+        }
+      }
+      basemapPoiLayers.current = poiLayers;
       setFailed(false);
       setStyleEpoch((value) => value + 1);
     });
@@ -325,9 +385,45 @@ export default function MapCanvas(props: MapCanvasProps) {
         { layers },
       )[0];
     };
+    const basemapHit = (point: { x: number; y: number }) => {
+      const layers = basemapPoiLayers.current.filter((id) => instance.getLayer(id));
+      if (!layers.length) return undefined;
+      return instance
+        .queryRenderedFeatures(
+          [
+            [point.x - 10, point.y - 10],
+            [point.x + 10, point.y + 10],
+          ],
+          { layers },
+        )
+        .find((feature) => feature.geometry.type === 'Point' && feature.properties?.name);
+    };
     instance.on('click', (event) => {
       const feature = hit(event.point);
       if (!feature) {
+        const poi = basemapHit(event.point);
+        if (poi) {
+          const [lng, lat] = (poi.geometry as Point).coordinates;
+          const props = poi.properties || {};
+          const name = String(props['name:vi'] || props.name).slice(0, 160);
+          const here = latest.current.user;
+          latest.current.onPickPlace({
+            id: `b${String(poi.id ?? `${lng.toFixed(5)},${lat.toFixed(5)}`)}`,
+            name,
+            kind: String(props.class || 'other'),
+            latitude: lat,
+            longitude: lng,
+            distanceMeters: here
+              ? Math.round(
+                  Math.hypot(
+                    (lat - here.latitude) * 110_574,
+                    (lng - here.longitude) * 111_320 * Math.cos((here.latitude * Math.PI) / 180),
+                  ),
+                )
+              : 0,
+          });
+          return;
+        }
         latest.current.onClearSelection();
         return;
       }
@@ -347,7 +443,8 @@ export default function MapCanvas(props: MapCanvasProps) {
       else latest.current.onSelectPlace(id);
     });
     instance.on('mousemove', (event) => {
-      instance.getCanvas().style.cursor = hit(event.point) ? 'pointer' : '';
+      instance.getCanvas().style.cursor =
+        hit(event.point) || basemapHit(event.point) ? 'pointer' : '';
     });
     for (const type of ['dragstart', 'rotatestart', 'pitchstart'] as const)
       instance.on(type, (event) => {
@@ -395,6 +492,9 @@ export default function MapCanvas(props: MapCanvasProps) {
     (instance.getSource('tv-route') as GeoJSONSource | undefined)?.setData(
       routeCollection(routeLine),
     );
+    (instance.getSource('tv-route-links') as GeoJSONSource | undefined)?.setData(
+      linkCollection(routeLinks),
+    );
     if (instance.getLayer('tv-route-line'))
       // Walking routes are drawn dotted, as on most consumer maps.
       instance.setPaintProperty(
@@ -402,7 +502,7 @@ export default function MapCanvas(props: MapCanvasProps) {
         'line-dasharray',
         routeMode === 'walking' ? [0.2, 1.6] : [1],
       );
-  }, [routeLine, routeMode, styleEpoch]);
+  }, [routeLine, routeLinks, routeMode, styleEpoch]);
 
   // Live position: blue dot, heading wedge and accuracy halo.
   useEffect(() => {
@@ -452,6 +552,37 @@ export default function MapCanvas(props: MapCanvasProps) {
     selectedMarker.current.getElement().setAttribute('aria-label', selected.name);
   }, [selected]);
 
+  // Place card on the map, anchored above the pin; the map pans so the whole card is visible.
+  const hasPopup = Boolean(popup);
+  useEffect(() => {
+    const instance = map.current;
+    popupRef.current?.remove();
+    popupRef.current = null;
+    if (!instance || !selected || !hasPopup) return;
+    const node = document.createElement('div');
+    const narrow = (container.current?.clientWidth ?? 600) < 520;
+    popupRef.current = new maplibregl.Popup({
+      closeButton: false,
+      closeOnClick: false,
+      anchor: 'bottom',
+      offset: 46,
+      maxWidth: narrow ? '260px' : '300px',
+      className: 'atlas-popup',
+      padding: { top: 70, bottom: 30, left: 20, right: 70 },
+    } as ConstructorParameters<typeof maplibregl.Popup>[0])
+      .setLngLat([selected.longitude, selected.latitude])
+      .setDOMContent(node)
+      .addTo(instance);
+    // Portal target is created imperatively by MapLibre; hand it to React on the next tick.
+    const timer = window.setTimeout(() => setPopupNode(node), 0);
+    return () => {
+      window.clearTimeout(timer);
+      popupRef.current?.remove();
+      popupRef.current = null;
+      setPopupNode((current) => (current === node ? null : current));
+    };
+  }, [selected, hasPopup]);
+
   // One-shot camera moves requested by the explorer.
   useEffect(() => {
     const instance = map.current;
@@ -459,6 +590,8 @@ export default function MapCanvas(props: MapCanvasProps) {
     if (view.type === 'point') {
       instance.flyTo({
         center: [view.longitude, view.latitude],
+        // Leave room above the point for the place card.
+        offset: [0, Math.min(140, instance.getContainer().clientHeight * 0.22)],
         zoom: Math.max(view.zoom, Math.min(instance.getZoom(), 17)),
         duration: 900,
         essential: true,
@@ -497,6 +630,7 @@ export default function MapCanvas(props: MapCanvasProps) {
           '胡志明市互动地图',
         )}
       />
+      {popupNode && popup ? createPortal(popup, popupNode) : null}
       {failed && (
         <p className="atlas-canvas-error" role="alert">
           {copy(

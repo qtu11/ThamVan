@@ -1,8 +1,6 @@
 import { notFound, redirect } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
 import { headers } from 'next/headers';
-import { ScrollText } from 'lucide-react';
 import { isLocale } from '@/lib/types';
 import { t } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
@@ -75,10 +73,6 @@ export default async function AuthPage({
           initialError={query.error ? authErrorCode(query.error) : undefined}
         />
         <div className="auth-support-row">
-          <Link className="button secondary auth-policy-btn" href={`/${locale}/terms`}>
-            <ScrollText size={17} />
-            {t(locale, 'policyAndTerms')}
-          </Link>
           <Chatbot locale={locale} />
         </div>
       </div>

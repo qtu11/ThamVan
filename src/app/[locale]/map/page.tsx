@@ -6,6 +6,8 @@ import { t } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
 import { toMapPlace, type MapPlace } from '@/lib/map-types';
 import { MapExplorer } from '@/components/map-explorer';
+// Loaded with the page so markers and controls are positioned before the map chunk arrives.
+import 'maplibre-gl/dist/maplibre-gl.css';
 import './map.css';
 
 export async function generateMetadata({

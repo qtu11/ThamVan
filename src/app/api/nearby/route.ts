@@ -31,8 +31,6 @@ export async function GET(request: Request) {
     nearbyPois(coords, radius, 80, request.signal),
     searchParams.get('address') === '1' ? reverseGeocode(coords, request.signal) : null,
   ]);
-  if (!places && !address)
-    return NextResponse.json({ error: 'NEARBY_UNAVAILABLE' }, { status: 502 });
   return NextResponse.json(
     {
       ok: true,

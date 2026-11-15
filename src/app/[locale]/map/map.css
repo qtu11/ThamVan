@@ -338,6 +338,14 @@
   color: #8a2f18;
 }
 
+.atlas-note.is-warning {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fef7e0;
+  color: #5a3d08;
+}
+
 .atlas-credit {
   padding: 10px 6px 0;
   font-size: 11.5px;
@@ -380,7 +388,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 10px;
+}
+
+.atlas-selected .atlas-btn {
+  min-height: 38px;
+  padding: 6px 14px;
+  font-size: 12.5px;
 }
 
 /* ---------- Selected place + directions cards ---------- */
@@ -388,18 +402,29 @@
 .atlas-route {
   flex: none;
   position: relative;
-  padding: 14px;
+  padding: 12px;
   border: 1px solid var(--line);
   border-radius: 14px;
   background: #fff;
   box-shadow: var(--shadow-card);
 }
 
+.atlas-selected-head {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding-right: 34px;
+}
+
+.atlas-selected-title {
+  min-width: 0;
+  flex: 1;
+}
+
 .atlas-selected-photo {
-  display: block;
-  width: 100%;
-  height: 150px;
-  margin-bottom: 12px;
+  flex: none;
+  width: 76px;
+  height: 76px;
   border-radius: 10px;
   object-fit: cover;
 }
@@ -422,7 +447,7 @@
 }
 
 .atlas-kicker {
-  margin: 0 36px 4px 0;
+  margin: 0 0 2px;
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -430,17 +455,21 @@
 }
 
 .atlas-selected h2 {
-  margin: 0 0 6px;
+  margin: 0 0 4px;
   font-family: var(--serif);
-  font-size: 21px;
+  font-size: 18px;
   line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .atlas-meta {
   display: flex;
-  gap: 6px;
+  gap: 5px;
   margin: 0;
-  font-size: 13px;
+  font-size: 12.5px;
   line-height: 1.55;
   color: var(--muted);
 }
@@ -458,8 +487,12 @@
 .atlas-desc {
   margin: 10px 0 0;
   font-size: 13px;
-  line-height: 1.65;
+  line-height: 1.55;
   color: var(--text);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .atlas-challenges {
@@ -675,6 +708,13 @@
   position: absolute;
   right: 10px;
   bottom: 158px;
+  z-index: 3;
+}
+
+.atlas-native {
+  position: absolute;
+  right: 10px;
+  bottom: 210px;
   z-index: 3;
 }
 
@@ -904,6 +944,10 @@
   .atlas-locate {
     bottom: 150px;
   }
+
+  .atlas-native {
+    bottom: 202px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -912,7 +956,228 @@
   }
 }
 
+/* Essential MapLibre layout rules (duplicated so the map never collapses if its stylesheet is late). */
+.atlas-canvas-map.maplibregl-map {
+  position: relative;
+  overflow: hidden;
+}
+
+.atlas-canvas-map .maplibregl-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.atlas-canvas-map .maplibregl-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.atlas-canvas-map :is(.maplibregl-ctrl-top-left, .maplibregl-ctrl-top-right, .maplibregl-ctrl-bottom-left, .maplibregl-ctrl-bottom-right) {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.atlas-canvas-map .maplibregl-ctrl-top-left { top: 0; left: 0; }
+.atlas-canvas-map .maplibregl-ctrl-top-right { top: 0; right: 0; }
+.atlas-canvas-map .maplibregl-ctrl-bottom-left { bottom: 0; left: 0; }
+.atlas-canvas-map .maplibregl-ctrl-bottom-right { bottom: 0; right: 0; }
+
+.atlas-canvas-map .maplibregl-ctrl {
+  pointer-events: auto;
+}
+
 /* Map credits: collapsed to the (i) button; tapping it shows the OpenStreetMap licence line. */
 .atlas-canvas-map .maplibregl-ctrl-attrib.maplibregl-compact:not(.maplibregl-compact-show) .maplibregl-ctrl-attrib-inner {
   display: none;
+}
+
+/* ---------- Place card on the map ---------- */
+.atlas-canvas-map .atlas-popup {
+  z-index: 3;
+}
+
+.atlas-canvas-map .atlas-popup .maplibregl-popup-content {
+  padding: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.35);
+}
+
+.atlas-canvas-map .atlas-popup.maplibregl-popup-anchor-bottom .maplibregl-popup-tip {
+  border-top-color: #fff;
+}
+
+.atlas-card {
+  position: relative;
+  width: 300px;
+  max-width: 100%;
+  font-family: var(--sans);
+  color: var(--text);
+}
+
+.atlas-card-photo {
+  display: block;
+  width: 100%;
+  height: 128px;
+  object-fit: cover;
+  background: var(--soft);
+}
+
+.atlas-card-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.atlas-card-body {
+  padding: 12px 14px 14px;
+}
+
+.atlas-card .atlas-kicker {
+  margin: 0 30px 2px 0;
+  font-size: 11px;
+}
+
+.atlas-card h2 {
+  margin: 0 0 4px;
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.atlas-card .atlas-meta {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.atlas-card .atlas-meta span {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.atlas-card .atlas-desc {
+  margin-top: 8px;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.atlas-card-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.atlas-card-actions .atlas-btn {
+  flex: 1;
+  min-height: 36px;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+.atlas-card .atlas-challenges {
+  margin-top: 10px;
+  padding-top: 8px;
+}
+
+.atlas-card .atlas-challenges a {
+  padding: 5px 0;
+  font-size: 12px;
+}
+
+.atlas-card-nophoto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 64px;
+  padding: 12px 44px 12px 14px;
+  background: linear-gradient(135deg, #114436, #1f6b55);
+  color: #fffdf8;
+  text-decoration: none;
+}
+
+.atlas-card-nophoto:is(.kind-worship) {
+  background: linear-gradient(135deg, #4b3780, #6b4fa3);
+}
+
+.atlas-card-nophoto:is(.kind-food, .kind-cafe, .kind-market) {
+  background: linear-gradient(135deg, #8f3f12, #c2571a);
+}
+
+.atlas-card-nophoto:is(.kind-heritage, .kind-museum, .kind-attraction, .kind-culture) {
+  background: linear-gradient(135deg, #6d4a12, #8a5d18);
+}
+
+.atlas-card-nophoto svg {
+  flex: none;
+}
+
+.atlas-card-nophoto span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.atlas-card-nophoto strong {
+  font-size: 13px;
+}
+
+.atlas-card-nophoto small {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  color: rgba(255, 253, 248, 0.88);
+  text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+  .atlas-card {
+    width: 250px;
+  }
+
+  .atlas-card-photo {
+    height: 96px;
+  }
+
+  .atlas-card-body {
+    padding: 10px 12px 12px;
+  }
+
+  .atlas-card h2 {
+    font-size: 15.5px;
+  }
+
+  .atlas-card .atlas-desc {
+    -webkit-line-clamp: 2;
+    font-size: 12px;
+  }
+
+  .atlas-card-actions .atlas-btn {
+    min-height: 34px;
+    padding: 5px 8px;
+    font-size: 12px;
+  }
 }

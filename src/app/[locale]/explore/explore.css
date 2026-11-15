@@ -270,3 +270,44 @@
     gap: 12px;
   }
 }
+
+/* Hero title must stay legible over any photo (the global h1 colour is dark green). */
+.detail-hero .detail-shade {
+  background: linear-gradient(
+    0deg,
+    rgba(4, 30, 23, 0.94) 0%,
+    rgba(4, 30, 23, 0.7) 38%,
+    rgba(4, 30, 23, 0.2) 68%,
+    transparent 85%
+  );
+}
+
+.detail-hero .detail-title h1 {
+  color: #fffdf8;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+  overflow-wrap: anywhere;
+}
+
+.detail-hero .detail-title p {
+  color: #f1ead9;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+.detail-hero .detail-catalog-code {
+  background: rgba(4, 30, 23, 0.62);
+  border-color: rgba(255, 253, 248, 0.45);
+  backdrop-filter: blur(6px);
+}
+
+.entry-actions .button.quiet {
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+@media (max-width: 720px) {
+  .detail-hero .detail-title h1 {
+    font-size: 27px;
+    line-height: 1.22;
+    margin-block: 10px;
+  }
+}

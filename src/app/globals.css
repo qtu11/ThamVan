@@ -3167,8 +3167,327 @@ input[type='range'] {
   margin-right: 5px;
 }
 
+.auth-login-options {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  width: 100%;
+}
+
+.auth-policy-checkbox {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+  margin: 0 !important;
+}
+
+.auth-policy-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--green);
+  cursor: pointer;
+  margin: 0 !important;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.auth-policy-text {
+  display: inline-block;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.auth-policy-checkbox a {
+  color: var(--green);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.auth-policy-checkbox a:hover {
+  color: var(--terra);
+}
+
 .forgot-link {
   justify-self: end;
+}
+
+/* ------------------------------------------------------------------
+   Self-hosted "I'm not a robot" slider puzzle
+   ------------------------------------------------------------------ */
+.human-check-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.human-check {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+}
+
+.human-check-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.human-check-tick {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 2px solid #c1c1c1;
+  border-radius: 4px;
+  background: #fff;
+  color: #1f9d55;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.human-check-tick:hover:not(:disabled) {
+  border-color: #8f8f8f;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.human-check-tick:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.human-check-tick:disabled {
+  cursor: default;
+}
+
+.human-check-box.is-checked .human-check-tick {
+  border-color: #1f9d55;
+}
+
+.human-check-label {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222;
+}
+
+.human-check-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  color: #4a90e2;
+}
+
+.human-check-brand small {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #777;
+}
+
+.human-check-pop {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  margin-left: calc(min(332px, calc(100vw - 32px)) / -2);
+  z-index: 60;
+  width: min(332px, calc(100vw - 32px));
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface, #fff);
+  box-shadow: 0 16px 40px rgba(15, 43, 35, 0.22);
+  animation: human-check-in 0.18s ease-out;
+}
+
+@keyframes human-check-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.human-check-pop header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.human-check-pop header strong {
+  display: block;
+  font-size: 13px;
+  color: var(--green);
+}
+
+.human-check-pop header span {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.human-check-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.human-check-actions button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.human-check-actions button:hover:not(:disabled) {
+  background: rgba(15, 43, 35, 0.06);
+  color: var(--green);
+}
+
+.human-check-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 300 / 170;
+  background: #e9e4d8;
+  user-select: none;
+}
+
+.human-check-stage svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.human-check-stage.is-failed {
+  animation: human-check-shake 0.35s ease;
+}
+
+@keyframes human-check-shake {
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+}
+
+.human-check-placeholder {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: var(--muted);
+}
+
+.human-check-msg {
+  position: absolute;
+  inset: auto 0 0;
+  margin: 0;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  background: rgba(196, 64, 48, 0.9);
+}
+
+.human-check-track {
+  position: relative;
+  height: 44px;
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f1efe8;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.human-check-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: rgba(31, 157, 85, 0.16);
+}
+
+.human-check-hint {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.human-check-handle {
+  position: absolute;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--green);
+  color: #fff;
+  cursor: grab;
+  touch-action: none;
+  box-shadow: 0 2px 6px rgba(15, 43, 35, 0.3);
+}
+
+.human-check-track.is-dragging .human-check-handle {
+  cursor: grabbing;
+}
+
+.human-check-handle:disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+
+.human-check-spin {
+  animation: human-check-rotate 0.8s linear infinite;
+}
+
+@keyframes human-check-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .human-check-pop,
+  .human-check-stage.is-failed,
+  .human-check-spin {
+    animation: none;
+  }
 }
 
 .legal-links {
@@ -4894,6 +5213,34 @@ input[type='range'] {
   flex-shrink: 0;
 }
 
+.explorer-logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 12px;
+  font-weight: 600;
+  color: #c44030;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.explorer-logout-btn:hover:not(:disabled) {
+  background: #fdf2f0;
+  border-color: #f0c4be;
+  color: #a62b1e;
+  transform: translateY(-1px);
+}
+
+.explorer-logout-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 .explorer-xp-card {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -6070,6 +6417,7 @@ input[type='range'] {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 12px;
   margin-top: 20px;
   padding-top: 18px;

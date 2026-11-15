@@ -57,9 +57,17 @@ export type LiveLocationState = {
 };
 
 /**
- * Continuous tracking for the map. Keeps the sharpest recent fix: a coarse Wi-Fi/cell reading
- * does not replace a good GPS lock unless that lock has gone stale or the device really moved.
+ * Continuous tracking for the map, using the same location service as the phone's own map app:
+ * on a phone Chrome/Safari hand out the GPS fix, on a laptop the OS / Google network location.
+ *
+ * The first answer is often a coarse Wi-Fi/cell estimate. We keep listening and also ask again a few
+ * times, and always keep the sharpest recent fix, so the dot snaps to the GPS position as soon as the
+ * device has it. A coarse reading never replaces a sharp one unless the device has clearly moved.
  */
+const REFINE_TARGET_METERS = 40;
+const REFINE_INTERVAL_MS = 6_000;
+const REFINE_ATTEMPTS = 10;
+
 export function useLiveLocation() {
   const [state, setState] = useState<LiveLocationState>({
     fix: null,
@@ -67,15 +75,22 @@ export function useLiveLocation() {
     failure: null,
   });
   const watchId = useRef<number | null>(null);
+  const refineTimer = useRef<number | null>(null);
   const last = useRef<LiveFix | null>(null);
 
-  const stop = useCallback(() => {
+  const clearTimers = useCallback(() => {
     if (watchId.current !== null && typeof navigator !== 'undefined' && navigator.geolocation)
       navigator.geolocation.clearWatch?.(watchId.current);
     watchId.current = null;
+    if (refineTimer.current !== null) window.clearInterval(refineTimer.current);
+    refineTimer.current = null;
+  }, []);
+
+  const stop = useCallback(() => {
+    clearTimers();
     last.current = null;
     setState({ fix: null, status: 'idle', failure: null });
-  }, []);
+  }, [clearTimers]);
 
   const start = useCallback(() => {
     const unsupported = locationSupport();
@@ -89,6 +104,7 @@ export function useLiveLocation() {
       return;
     }
     setState((current) => ({ ...current, status: 'locating', failure: null }));
+
     const accept = (position: GeolocationPosition) => {
       const { latitude, longitude, accuracy, heading, speed } = position.coords;
       if (
@@ -106,48 +122,58 @@ export function useLiveLocation() {
           typeof heading === 'number' && Number.isFinite(heading) && (speed ?? 0) > 0.5
             ? heading
             : null,
-        timestamp: position.timestamp,
+        timestamp: position.timestamp || Date.now(),
       };
       const previous = last.current;
-      if (
-        previous &&
-        next.accuracy > previous.accuracy * 2.5 &&
-        previous.accuracy < 100 &&
-        next.timestamp - previous.timestamp < 20_000
-      )
-        return;
+      if (previous && next.accuracy > previous.accuracy) {
+        const moved =
+          Math.hypot(
+            (next.latitude - previous.latitude) * 110_574,
+            (next.longitude - previous.longitude) *
+              111_320 *
+              Math.cos((previous.latitude * Math.PI) / 180),
+          ) >
+          next.accuracy + previous.accuracy;
+        const stale = next.timestamp - previous.timestamp > 45_000;
+        // A blurrier reading is only believed when it proves we moved or the sharp one is old.
+        if (!moved && !stale) return;
+      }
       last.current = next;
       setState({ fix: next, status: 'tracking', failure: null });
+      if (next.accuracy <= REFINE_TARGET_METERS && refineTimer.current !== null) {
+        window.clearInterval(refineTimer.current);
+        refineTimer.current = null;
+      }
     };
     const reject = (error: GeolocationPositionError) => {
       // A transient timeout while we already hold a fix is not worth alarming anyone over.
       if (last.current && error.code !== 1) return;
-      if (error.code === 1 && watchId.current !== null) {
-        navigator.geolocation.clearWatch?.(watchId.current);
-        watchId.current = null;
-      }
+      if (error.code === 1) clearTimers();
+      if (error.code !== 1 && refineTimer.current !== null) return; // keep trying quietly
       last.current = null;
       setState({ fix: null, status: 'error', failure: failureOf(error) });
     };
+    const options: PositionOptions = { enableHighAccuracy: true, maximumAge: 0, timeout: 20_000 };
     try {
-      watchId.current = navigator.geolocation.watchPosition(accept, reject, {
-        enableHighAccuracy: true,
-        maximumAge: 0,
-        timeout: 20_000,
-      });
+      watchId.current = navigator.geolocation.watchPosition(accept, reject, options);
+      navigator.geolocation.getCurrentPosition(accept, () => undefined, options);
+      let attempts = 0;
+      refineTimer.current = window.setInterval(() => {
+        attempts += 1;
+        if (attempts > REFINE_ATTEMPTS || (last.current && last.current.accuracy <= REFINE_TARGET_METERS)) {
+          if (refineTimer.current !== null) window.clearInterval(refineTimer.current);
+          refineTimer.current = null;
+          return;
+        }
+        navigator.geolocation.getCurrentPosition(accept, () => undefined, options);
+      }, REFINE_INTERVAL_MS);
     } catch {
+      clearTimers();
       setState({ fix: null, status: 'error', failure: 'unavailable' });
     }
-  }, []);
+  }, [clearTimers]);
 
-  useEffect(
-    () => () => {
-      if (watchId.current !== null && typeof navigator !== 'undefined' && navigator.geolocation)
-        navigator.geolocation.clearWatch?.(watchId.current);
-      watchId.current = null;
-    },
-    [],
-  );
+  useEffect(() => () => clearTimers(), [clearTimers]);
 
   return { ...state, start, stop };
 }

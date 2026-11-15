@@ -52,7 +52,7 @@ const geocoderUrl = () =>
 const overpassUrls = () =>
   (
     process.env.OVERPASS_API_URL ||
-    'https://overpass-api.de/api/interpreter,https://overpass.kumi.systems/api/interpreter'
+    'https://overpass-api.de/api/interpreter,https://overpass.kumi.systems/api/interpreter,https://overpass.private.coffee/api/interpreter,https://maps.mail.ru/osm/tools/overpass/api/interpreter'
   )
     .split(',')
     .map((value) => value.trim())
@@ -166,74 +166,140 @@ function classify(tags: Record<string, string>): { kind: PoiKind; tag: string } 
     return { kind: 'health', tag: detail('amenity') };
   if (['theatre', 'cinema', 'arts_centre', 'community_centre'].includes(tags.amenity))
     return { kind: 'culture', tag: detail('amenity') };
-  if (['bus_station', 'ferry_terminal'].includes(tags.amenity) || tags.railway === 'station')
+  if (tags.healthcare) return { kind: 'health', tag: detail('healthcare') };
+  if (tags.highway === 'bus_stop') return { kind: 'transport', tag: 'highway=bus_stop' };
+  if (['bus_station', 'ferry_terminal'].includes(tags.amenity) || tags.railway)
     return { kind: 'transport', tag: tags.railway ? detail('railway') : detail('amenity') };
   if (tags.amenity) return { kind: 'service', tag: detail('amenity') };
   if (tags.shop) return { kind: 'shop', tag: detail('shop') };
+  if (tags.office) return { kind: 'service', tag: detail('office') };
   return { kind: 'other', tag: '' };
 }
 
 function overpassQuery(lat: string, lon: string, radius: number) {
   const around = `(around:${radius},${lat},${lon})[name]`;
-  return `[out:json][timeout:8];(
+  // Everything with a name that a person would walk to: like the place icons on a phone map.
+  return `[out:json][timeout:9];(
+nwr${around}[amenity];
+nwr${around}[shop];
+nwr${around}[tourism];
 nwr${around}[historic];
-nwr${around}[tourism~"^(attraction|museum|gallery|artwork|viewpoint|zoo|theme_park|hotel|hostel|guest_house)$"];
-nwr${around}[amenity~"^(place_of_worship|cafe|restaurant|fast_food|food_court|bar|pub|marketplace|theatre|cinema|arts_centre|community_centre|library|university|college|school|hospital|clinic|pharmacy|townhall|post_office|bank|bus_station|ferry_terminal)$"];
-nwr${around}[leisure~"^(park|garden|stadium|sports_centre)$"];
-nwr${around}[shop~"^(mall|supermarket|department_store|books)$"];
-nwr${around}[railway=station];
-);out center tags 400;`;
+nwr${around}[leisure~"^(park|garden|stadium|sports_centre|playground|fitness_centre|water_park)$"];
+nwr${around}[office~"^(government|company|educational_institution|ngo)$"];
+node${around}[highway=bus_stop];
+nwr${around}[railway~"^(station|halt)$"];
+nwr${around}[healthcare];
+);out center tags 500;`;
 }
 
 async function fetchPois(lat: string, lon: string, radius: number, signal?: AbortSignal) {
+  const urls = overpassUrls();
+  if (urls.length === 0) return null;
   const body = new URLSearchParams({ data: overpassQuery(lat, lon, radius) });
-  for (const url of overpassUrls()) {
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        body,
+  const raceController = new AbortController();
+  const combinedSignal = signal
+    ? AbortSignal.any([signal, raceController.signal, AbortSignal.timeout(9000)])
+    : AbortSignal.any([raceController.signal, AbortSignal.timeout(9000)]);
+
+  const queryOne = async (url: string): Promise<RawPoi[]> => {
+    const response = await fetch(url, {
+      method: 'POST',
+      body,
+      headers: { 'User-Agent': userAgent(), Accept: 'application/json' },
+      cache: 'no-store',
+      redirect: 'error',
+      signal: combinedSignal,
+    });
+    if (!response.ok) {
+      await response.body?.cancel();
+      throw new Error(`Overpass ${response.status}`);
+    }
+    const data = (await response.json()) as { elements?: unknown };
+    if (!Array.isArray(data.elements)) throw new Error('Overpass invalid payload');
+    const seen = new Set<string>();
+    const list: RawPoi[] = [];
+    for (const raw of data.elements) {
+      const element = raw as {
+        type?: unknown;
+        id?: unknown;
+        lat?: unknown;
+        lon?: unknown;
+        center?: { lat?: unknown; lon?: unknown };
+        tags?: Record<string, string>;
+      };
+      const pLat = Number(element.lat ?? element.center?.lat);
+      const pLon = Number(element.lon ?? element.center?.lon);
+      const tags = element.tags || {};
+      const name = text(tags['name:vi'] || tags.name);
+      if (!name || !Number.isFinite(pLat) || !Number.isFinite(pLon)) continue;
+      const { kind, tag } = classify(tags);
+      // The same building is often mapped as node + way; keep one.
+      const dedupe = `${name.toLowerCase()}|${pLat.toFixed(3)}|${pLon.toFixed(3)}`;
+      if (seen.has(dedupe)) continue;
+      seen.add(dedupe);
+      list.push({ id: `${String(element.type)[0]}${element.id}`, name, kind, tag, lat: pLat, lon: pLon });
+    }
+    return list;
+  };
+
+  try {
+    const list = await Promise.any(urls.map(queryOne));
+    raceController.abort();
+    return list;
+  } catch {
+    return null;
+  }
+}
+
+/** Second source when every Overpass mirror is busy: Photon reverse geocoding (also OpenStreetMap). */
+async function fetchPoisPhoton(lat: string, lon: string, radius: number, signal?: AbortSignal) {
+  const base = (process.env.PHOTON_API_URL || 'https://photon.komoot.io').replace(/\/$/, '');
+  try {
+    const response = await fetch(
+      `${base}/reverse?lat=${lat}&lon=${lon}&radius=${Math.max(0.1, radius / 1000).toFixed(2)}&limit=50&lang=default`,
+      {
         headers: { 'User-Agent': userAgent(), Accept: 'application/json' },
         cache: 'no-store',
         redirect: 'error',
         signal: signal
-          ? AbortSignal.any([signal, AbortSignal.timeout(9000)])
-          : AbortSignal.timeout(9000),
-      });
-      if (!response.ok) {
-        await response.body?.cancel();
-        continue;
-      }
-      const data = (await response.json()) as { elements?: unknown };
-      if (!Array.isArray(data.elements)) continue;
-      const seen = new Set<string>();
-      const list: RawPoi[] = [];
-      for (const raw of data.elements) {
-        const element = raw as {
-          type?: unknown;
-          id?: unknown;
-          lat?: unknown;
-          lon?: unknown;
-          center?: { lat?: unknown; lon?: unknown };
-          tags?: Record<string, string>;
-        };
-        const pLat = Number(element.lat ?? element.center?.lat);
-        const pLon = Number(element.lon ?? element.center?.lon);
-        const tags = element.tags || {};
-        const name = text(tags['name:vi'] || tags.name);
-        if (!name || !Number.isFinite(pLat) || !Number.isFinite(pLon)) continue;
-        const { kind, tag } = classify(tags);
-        // The same building is often mapped as node + way; keep one.
-        const dedupe = `${name.toLowerCase()}|${pLat.toFixed(3)}|${pLon.toFixed(3)}`;
-        if (seen.has(dedupe)) continue;
-        seen.add(dedupe);
-        list.push({ id: `${String(element.type)[0]}${element.id}`, name, kind, tag, lat: pLat, lon: pLon });
-      }
-      return list;
-    } catch {
-      if (signal?.aborted) return null;
+          ? AbortSignal.any([signal, AbortSignal.timeout(7000)])
+          : AbortSignal.timeout(7000),
+      },
+    );
+    if (!response.ok) {
+      await response.body?.cancel();
+      return null;
     }
+    const data = (await response.json()) as { features?: unknown };
+    if (!Array.isArray(data.features)) return null;
+    const list: RawPoi[] = [];
+    const seen = new Set<string>();
+    for (const raw of data.features) {
+      const feature = raw as {
+        geometry?: { coordinates?: unknown };
+        properties?: Record<string, unknown>;
+      };
+      const coords = feature.geometry?.coordinates;
+      const props = feature.properties || {};
+      const name = text(props.name);
+      const key = text(props.osm_key, 40);
+      const value = text(props.osm_value, 40);
+      if (!name || !Array.isArray(coords) || !['amenity', 'shop', 'tourism', 'historic', 'leisure', 'office', 'healthcare', 'railway', 'highway'].includes(key))
+        continue;
+      if (key === 'highway' && value !== 'bus_stop') continue;
+      const pLon = Number(coords[0]);
+      const pLat = Number(coords[1]);
+      if (!Number.isFinite(pLat) || !Number.isFinite(pLon)) continue;
+      const dedupe = `${name.toLowerCase()}|${pLat.toFixed(3)}|${pLon.toFixed(3)}`;
+      if (seen.has(dedupe)) continue;
+      seen.add(dedupe);
+      const { kind, tag } = classify({ [key]: value });
+      list.push({ id: `p${text(props.osm_type, 1)}${String(props.osm_id)}`, name, kind, tag, lat: pLat, lon: pLon });
+    }
+    return list;
+  } catch {
+    return null;
   }
-  return null;
 }
 
 /** Named real places around a point, nearest first. `null` = service unavailable (not "nothing here"). */
@@ -250,7 +316,9 @@ export async function nearbyPois(
   const key = `${lat},${lon},${radius}`;
   let raw = cached(poiCache, key);
   if (!raw) {
-    const fetched = await fetchPois(lat, lon, radius + 80, signal);
+    const fetched =
+      (await fetchPois(lat, lon, radius + 80, signal)) ??
+      (signal?.aborted ? null : await fetchPoisPhoton(lat, lon, radius + 80, signal));
     if (!fetched) return null;
     raw = fetched;
     remember(poiCache, key, raw, 15 * 60_000);

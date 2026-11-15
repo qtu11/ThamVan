@@ -1,12 +1,11 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, ArrowRight } from 'lucide-react';
 import { t } from '@/lib/i18n';
 import type { Locale } from '@/lib/types';
 import { api, Status, Submit, errorText } from './ui';
-import { Captcha } from './captcha';
+import { HumanCheck } from './human-check';
 import { GoogleSignInButton } from './google-sign-in';
 import type { MessageKey } from '@/lib/i18n';
 export type AuthMode = 'login' | 'register' | 'forgot' | 'reset';
@@ -16,7 +15,6 @@ export function AuthForm({
   configured,
   googleEnabled,
   next,
-  nonce,
   initialError,
 }: {
   locale: Locale;
@@ -27,15 +25,15 @@ export function AuthForm({
   nonce?: string;
   initialError?: MessageKey;
 }) {
-  const router = useRouter(),
-    [visible, setVisible] = useState(false),
+  const [visible, setVisible] = useState(false),
     [pending, setPending] = useState(false),
     [message, setMessage] = useState(initialError ? t(locale, initialError) : ''),
     [error, setError] = useState(!!initialError),
     [captcha, setCaptcha] = useState(''),
-    [captchaEpoch, setCaptchaEpoch] = useState(0);
+    [captchaEpoch, setCaptchaEpoch] = useState(0),
+    [policyAccepted, setPolicyAccepted] = useState(false);
   const googleMode = mode === 'login' || mode === 'register';
-  const captchaRequired = !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const captchaRequired = true;
   async function googleSignIn() {
     setPending(true);
     setMessage('');
@@ -53,6 +51,11 @@ export function AuthForm({
   }
   async function submit(event: React.SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (mode === 'login' && !policyAccepted) {
+      setMessage(t(locale, 'termsRequired'));
+      setError(true);
+      return;
+    }
     setPending(true);
     setMessage('');
     setError(false);
@@ -69,11 +72,13 @@ export function AuthForm({
         captcha,
       });
       if (result.redirect) {
-        router.push(result.redirect);
-        router.refresh();
+        window.location.assign(result.redirect);
+        return;
       } else {
         setMessage(t(locale, 'authSent'));
         setError(false);
+        setCaptcha('');
+        setCaptchaEpoch((n) => n + 1);
       }
     } catch (e) {
       setMessage(errorText(locale, e));
@@ -97,7 +102,6 @@ export function AuthForm({
           <p className="help-text">
             {t(locale, googleEnabled ? 'googleHint' : 'googleUnavailable')}
           </p>
-          <Captcha key={captchaEpoch} onToken={setCaptcha} nonce={nonce} />
           <div className="auth-divider">
             <span>{t(locale, 'authOr')}</span>
           </div>
@@ -146,10 +150,36 @@ export function AuthForm({
           {mode !== 'login' && <small>{t(locale, 'passwordHint')}</small>}
         </label>
       )}
+      {mode !== 'reset' && (
+        <div className="human-check-row">
+          <HumanCheck key={captchaEpoch} locale={locale} onToken={setCaptcha} />
+        </div>
+      )}
       {mode === 'login' && (
-        <Link className="text-link forgot-link" href={`/${locale}/auth/forgot`}>
-          {t(locale, 'forgot')}
-        </Link>
+        <div className="auth-login-options">
+          <label className="auth-policy-checkbox">
+            <input
+              type="checkbox"
+              name="consent"
+              checked={policyAccepted}
+              onChange={(e) => setPolicyAccepted(e.target.checked)}
+              required
+            />
+            <span className="auth-policy-text">
+              <Link
+                href={`/${locale}/terms`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {t(locale, 'policyAndTerms')}
+              </Link>
+            </span>
+          </label>
+          <Link className="text-link forgot-link" href={`/${locale}/auth/forgot`}>
+            {t(locale, 'forgot')}
+          </Link>
+        </div>
       )}
       {mode === 'register' && (
         <>
@@ -167,16 +197,14 @@ export function AuthForm({
           </div>
         </>
       )}
-      {mode !== 'reset' && !googleMode && (
-        <Captcha key={captchaEpoch} onToken={setCaptcha} nonce={nonce} />
-      )}
       {!configured && <Status message={t(locale, 'notConfigured')} />}
       <Status message={message} error={error} />
       <Submit
         pending={pending}
         disabled={
           !configured ||
-          (mode !== 'reset' && !!process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !captcha)
+          (mode === 'login' && !policyAccepted) ||
+          (mode !== 'reset' && captchaRequired && !captcha)
         }
       >
         {t(locale, mode === 'forgot' ? 'sendReset' : mode === 'reset' ? 'reset' : mode)}
@@ -186,7 +214,6 @@ export function AuthForm({
         <Link href={`/${locale}/auth/${mode === 'login' ? 'register' : 'login'}`}>
           {t(locale, mode === 'login' ? 'register' : 'login')}
         </Link>
-        <Link href={`/${locale}`}>{t(locale, 'skip')}</Link>
       </div>
     </form>
   );

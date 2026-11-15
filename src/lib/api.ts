@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { hasSupabase, siteUrl } from './env';
 import { getViewer } from './data';
 import { limitedBody } from './vision';
+import { isHumanPass, verifyHumanPass } from './human-check';
 export class ApiError extends Error {
   constructor(
     public code: string,
@@ -86,6 +87,10 @@ export function route(handler: (request: Request, context?: never) => Promise<Re
 export const ok = (data: unknown = { success: true }) =>
   NextResponse.json(data, { headers: { 'Cache-Control': 'no-store' } });
 export async function verifyCaptcha(token?: string) {
+  if (isHumanPass(token)) {
+    if (!verifyHumanPass(token!)) fail('captchaError', 422);
+    return;
+  }
   const key = process.env.TURNSTILE_SECRET_KEY;
   if (!key) {
     if (process.env.NODE_ENV === 'production') fail('notConfigured', 503);

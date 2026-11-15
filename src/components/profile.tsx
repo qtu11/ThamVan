@@ -13,7 +13,6 @@ import {
   X,
   Footprints,
   Pencil,
-  Languages,
   Award,
   Check,
   Sparkles,
@@ -111,6 +110,7 @@ export function ExplorerProfileHeader({
   const [activeTab, setActiveTab] = useState<'overview' | 'titles' | 'history' | 'settings'>(
     'overview',
   );
+  const [loggingOut, setLoggingOut] = useState(false);
   const [editingName, setEditingName] = useState(false);
   const [savingName, setSavingName] = useState(false);
   const [nameFeedback, setNameFeedback] = useState<{ text: string; error: boolean } | null>(null);
@@ -126,9 +126,10 @@ export function ExplorerProfileHeader({
     () => '',
   );
   const [viewerNameOverride, setViewerNameOverride] = useState<string | null>(null);
+  const fallbackName = c('Khách khám phá', 'Guest Explorer', '探索访客');
   const defaultName = viewer
-    ? viewerNameOverride ?? viewer.profile.display_name
-    : storedGuestName || c('Khách khám phá', 'Guest Explorer', '探索访客');
+    ? viewerNameOverride ?? (viewer.profile.display_name || fallbackName)
+    : storedGuestName || fallbackName;
   const [draftName, setDraftName] = useState(defaultName);
   const xp = totalEarnedXp(progress);
   const xpState = levelForXp(xp);
@@ -199,6 +200,23 @@ export function ExplorerProfileHeader({
     setEditingName(false);
   }
 
+  async function handleLogout() {
+    setLoggingOut(true);
+    try {
+      if (viewer) {
+        await api('/api/auth', {
+          action: 'logout',
+          locale,
+          email: viewer.email || 'logout@account.local',
+        });
+      }
+    } catch {
+      // Ignored
+    } finally {
+      window.location.assign(`/${locale}/auth/login`);
+    }
+  }
+
   function handleTabSelect(tab: 'overview' | 'titles' | 'history' | 'settings') {
     setActiveTab(tab);
     if (tab === 'settings') {
@@ -222,10 +240,17 @@ export function ExplorerProfileHeader({
           </div>
         </div>
 
-        <span className="explorer-lang-pill">
-          <Languages size={14} />
-          {locale.toUpperCase()}
-        </span>
+        <button
+          type="button"
+          className="explorer-logout-btn"
+          onClick={handleLogout}
+          disabled={loggingOut}
+          title={t(locale, 'logout')}
+          aria-label={t(locale, 'logout')}
+        >
+          <LogOut size={14} />
+          <span>{t(locale, 'logout')}</span>
+        </button>
       </div>
 
       {/* Level & XP Progress Card */}
@@ -256,7 +281,7 @@ export function ExplorerProfileHeader({
           <div className="explorer-inline-edit">
             <input
               type="text"
-              value={draftName}
+              value={draftName ?? ''}
               onChange={(e) => setDraftName(e.target.value)}
               minLength={2}
               maxLength={60}
@@ -278,7 +303,7 @@ export function ExplorerProfileHeader({
             type="button"
             className="explorer-edit-btn"
             onClick={() => {
-              setDraftName(defaultName);
+              setDraftName(defaultName ?? '');
               setNameFeedback(null);
               setEditingName(true);
             }}
@@ -611,7 +636,7 @@ export function Preferences({ locale, viewer }: { locale: Locale; viewer: Viewer
           <label>
             {t(locale, 'displayName')}
             <input
-              value={name}
+              value={name ?? ''}
               onChange={(e) => setName(e.target.value)}
               required
               minLength={2}
@@ -702,12 +727,14 @@ export function AccountControls({
   async function logout() {
     setPending(true);
     try {
-      await api('/api/auth', { action: 'logout', locale, email: viewer.email });
-      router.push(`/${locale}`);
-      router.refresh();
+      await api('/api/auth', {
+        action: 'logout',
+        locale,
+        email: viewer.email || 'logout@account.local',
+      });
+      window.location.assign(`/${locale}/auth/login`);
     } catch (e) {
       setMessage(errorText(locale, e));
-    } finally {
       setPending(false);
     }
   }
@@ -742,8 +769,7 @@ export function AccountControls({
         captcha,
       });
       dialog.current?.close();
-      router.push(`/${locale}`);
-      router.refresh();
+      window.location.assign(`/${locale}/auth/login`);
     } catch (e) {
       setMessage(errorText(locale, e));
       setCaptcha('');

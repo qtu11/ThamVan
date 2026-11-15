@@ -19,6 +19,21 @@ describe('routing helpers', () => {
       parseOsrmRoute({ code: 'Ok', routes: [{ distance: 1, duration: 1, geometry: { coordinates: [[1, 1]] } }] }, 'driving'),
     ).toBeNull();
   });
+  it('reports how far the engine moved the start/end onto a permitted road', () => {
+    const route = parseOsrmRoute(
+      {
+        code: 'Ok',
+        waypoints: [
+          { location: [106.6, 10.86], distance: 340 },
+          { location: [106.601, 10.858], distance: 310 },
+        ],
+        routes: [{ distance: 220, duration: 60, geometry: { coordinates: [[106.6, 10.86], [106.601, 10.858]] }, legs: [] }],
+      },
+      'cycling',
+    );
+    expect(route?.snap?.startMeters).toBe(340);
+    expect(route?.snap?.end).toEqual([106.601, 10.858]);
+  });
   it('writes readable Vietnamese instructions and units', () => {
     const step = { type: 'turn', modifier: 'left', name: 'Lê Lợi', exit: null, distanceMeters: 120, durationSeconds: 30, location: [106.7, 10.77] as [number, number] };
     expect(stepText(step, 'vi')).toBe('Rẽ trái vào Lê Lợi');

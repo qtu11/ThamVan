@@ -20,13 +20,23 @@ export type RouteStep = {
   location: LngLat;
 };
 
+/**
+ * Where the engine joined the road network. Engines move the start/end onto the nearest road the
+ * chosen vehicle may use, which can be a parallel street far from the real point.
+ */
+export type RouteSnap = { start: LngLat; end: LngLat; startMeters: number; endMeters: number };
+
 export type RouteResult = {
   mode: RouteMode;
   distanceMeters: number;
   durationSeconds: number;
   line: LngLat[];
   steps: RouteStep[];
+  snap: RouteSnap | null;
 };
+
+/** Beyond this, the drawn route no longer starts/ends where the traveller and the place really are. */
+export const SNAP_WARNING_METERS = 60;
 
 const isLngLat = (value: unknown): value is LngLat =>
   Array.isArray(value) &&
@@ -83,7 +93,21 @@ export function parseOsrmRoute(data: unknown, mode: RouteMode): RouteResult | nu
       });
     }
   }
+  let snap: RouteSnap | null = null;
+  const waypoints = (data as { waypoints?: unknown }).waypoints;
+  if (Array.isArray(waypoints) && waypoints.length >= 2) {
+    const first = waypoints[0] as { location?: unknown; distance?: unknown };
+    const last = waypoints[waypoints.length - 1] as { location?: unknown; distance?: unknown };
+    if (isLngLat(first.location) && isLngLat(last.location))
+      snap = {
+        start: [first.location[0], first.location[1]],
+        end: [last.location[0], last.location[1]],
+        startMeters: Math.max(0, Number(first.distance) || 0),
+        endMeters: Math.max(0, Number(last.distance) || 0),
+      };
+  }
   return {
+    snap,
     mode,
     distanceMeters: Math.max(0, distanceMeters),
     durationSeconds: Math.max(0, durationSeconds),

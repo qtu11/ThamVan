@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowUpRight,
+  Camera,
   Bike,
   Car,
   ChevronDown,
@@ -16,7 +17,6 @@ import {
   MapPin,
   Navigation,
   Search,
-  Sparkles,
   Trophy,
   X,
 } from 'lucide-react';
@@ -35,6 +35,8 @@ import {
   formatDuration,
   nextStepIndex,
   stepText,
+  SNAP_WARNING_METERS,
+  type LngLat,
   type RouteMode,
   type RouteResult,
 } from '@/lib/routing';
@@ -77,8 +79,52 @@ const POI_KIND_LABELS: Record<string, [string, string, string]> = {
   transport: ['Giao thông', 'Transport', '交通'],
   other: ['Địa điểm', 'Place', '地点'],
 };
+// Basemap (OpenMapTiles) icon classes mapped onto the same labels.
+const POI_CLASS_ALIASES: Record<string, string> = {
+  school: 'education',
+  college: 'education',
+  library: 'education',
+  hospital: 'health',
+  pharmacy: 'health',
+  doctors: 'health',
+  dentist: 'health',
+  restaurant: 'food',
+  fast_food: 'food',
+  bar: 'food',
+  beer: 'food',
+  ice_cream: 'food',
+  bakery: 'food',
+  grocery: 'shop',
+  clothing_store: 'shop',
+  shop: 'shop',
+  lodging: 'hotel',
+  bus: 'transport',
+  railway: 'transport',
+  ferry_terminal: 'transport',
+  place_of_worship: 'worship',
+  religious_christian: 'worship',
+  religious_buddhist: 'worship',
+  garden: 'park',
+  campsite: 'park',
+  stadium: 'park',
+  town_hall: 'service',
+  bank: 'service',
+  post: 'service',
+  police: 'service',
+  fuel: 'service',
+  monument: 'heritage',
+  castle: 'heritage',
+  art_gallery: 'museum',
+  theatre: 'culture',
+  cinema: 'culture',
+};
 const labelPoiKind = (kind: string, locale: Locale) =>
-  copy(locale, ...(POI_KIND_LABELS[kind] || POI_KIND_LABELS.other));
+  copy(
+    locale,
+    ...(POI_KIND_LABELS[kind] ||
+      POI_KIND_LABELS[POI_CLASS_ALIASES[kind] || 'other'] ||
+      POI_KIND_LABELS.other),
+  );
 
 const MapCanvas = dynamic(() => import('./map-canvas'), {
   ssr: false,
@@ -89,7 +135,11 @@ const PAGE_SIZE = 30;
 const AROUND_RADIUS = 900;
 
 type Target = { id: string; name: string; latitude: number; longitude: number };
-type Selection = { type: 'place'; id: string } | { type: 'poi'; id: string } | null;
+type Selection =
+  | { type: 'place'; id: string }
+  | { type: 'poi'; id: string }
+  | { type: 'picked'; id: string }
+  | null;
 type Around = {
   status: 'idle' | 'loading' | 'ready' | 'error';
   places: OsmPlace[];
@@ -177,12 +227,17 @@ export function MapExplorer({
     area: null,
     origin: null,
   });
+  const [picked, setPicked] = useState<OsmPlace | null>(null);
   const [mapCenter, setMapCenter] = useState<{ latitude: number; longitude: number } | null>(null);
   const [route, setRoute] = useState<RouteResult | null>(null);
   const [routeTarget, setRouteTarget] = useState<Target | null>(null);
   const [routeMode, setRouteMode] = useState<RouteMode>('driving');
   const [routeState, setRouteState] = useState<'idle' | 'waiting' | 'loading' | 'error'>('idle');
   const [navigating, setNavigating] = useState(false);
+  const navigatingRef = useRef(false);
+  useEffect(() => {
+    navigatingRef.current = navigating;
+  }, [navigating]);
   const [arrived, setArrived] = useState(false);
 
   const { consent } = useDeviceConsent();
@@ -192,6 +247,8 @@ export function MapExplorer({
 
   const nonce = useRef(1);
   const centredOnUser = useRef(Boolean(focused));
+  const centredAccuracy = useRef(Infinity);
+  const autoAroundTab = useRef(false);
   const aroundOrigin = useRef<{ latitude: number; longitude: number } | null>(null);
   const aroundRequest = useRef<AbortController | null>(null);
   const routeRequest = useRef<AbortController | null>(null);
@@ -253,19 +310,35 @@ export function MapExplorer({
   const hasFix = Boolean(fix);
   const fixLatitude = fix?.latitude;
   const fixLongitude = fix?.longitude;
+  const fixAccuracy = fix?.accuracy;
   useEffect(() => {
-    if (fixLatitude === undefined || fixLongitude === undefined) return;
+    if (fixLatitude === undefined || fixLongitude === undefined || fixAccuracy === undefined)
+      return;
     const here = { latitude: fixLatitude, longitude: fixLongitude };
     const timer = window.setTimeout(() => {
-      if (!centredOnUser.current) {
+      // Centre on the first fix, and once more when a coarse network estimate sharpens into GPS.
+      const sharpened =
+        centredAccuracy.current > 150 && fixAccuracy < centredAccuracy.current / 2.5;
+      if (!centredOnUser.current || (sharpened && !navigatingRef.current)) {
         centredOnUser.current = true;
-        flyTo(here.latitude, here.longitude, 15.5);
+        centredAccuracy.current = fixAccuracy;
+        flyTo(here.latitude, here.longitude, 16);
       }
-      if (!aroundOrigin.current || distanceKm(aroundOrigin.current, here) > 0.3)
+      if (!aroundOrigin.current || distanceKm(aroundOrigin.current, here) > 0.15)
         void loadAround(here);
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [fixLatitude, fixLongitude, flyTo, loadAround]);
+  }, [fixLatitude, fixLongitude, fixAccuracy, flyTo, loadAround]);
+
+  // The first time real places around the visitor arrive, show them.
+  useEffect(() => {
+    if (around.status !== 'ready' || autoAroundTab.current || !around.places.length) return;
+    autoAroundTab.current = true;
+    const timer = window.setTimeout(() => {
+      if (!query) setTab('around');
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, [around.status, around.places.length, query]);
 
   useEffect(
     () => () => {
@@ -335,7 +408,11 @@ export function MapExplorer({
   const selectedPlace =
     selection?.type === 'place' ? places.find((p) => p.id === selection.id) || null : null;
   const selectedPoi =
-    selection?.type === 'poi' ? around.places.find((p) => p.id === selection.id) || null : null;
+    selection?.type === 'poi'
+      ? around.places.find((p) => p.id === selection.id) || null
+      : selection?.type === 'picked' && picked?.id === selection.id
+        ? picked
+        : null;
   const selectedTarget: Target | null = selectedPlace || selectedPoi;
   const selectedDistance = fix && selectedTarget ? distanceKm(fix, selectedTarget) * 1000 : null;
   const relatedChallenges = selectedPlace
@@ -443,7 +520,7 @@ export function MapExplorer({
         return;
       }
       if (
-        distanceToLineMeters(here, route.line) > 70 &&
+        distanceToLineMeters(here, route.line) > Math.max(70, (route.snap?.startMeters ?? 0) + 40) &&
         Date.now() - lastReroute.current > 15_000
       ) {
         lastReroute.current = Date.now();
@@ -483,9 +560,38 @@ export function MapExplorer({
     [around.places, select],
   );
   const onClearSelection = useCallback(() => setSelection(null), []);
+  const onPickPlace = useCallback(
+    (place: OsmPlace) => {
+      setPicked(place);
+      select({ type: 'picked', id: place.id }, place);
+    },
+    [select],
+  );
   const onUserGesture = useCallback(() => setNavigating(false), []);
 
   const currentStep = navigating && route && fix ? nextStepIndex(fix, route.steps) : -1;
+
+  // Dotted links: you → where the route starts on the road, road end → the actual place.
+  const routeLinks = useMemo(() => {
+    if (!route || !routeTarget || route.line.length < 2) return [] as LngLat[][];
+    const links: LngLat[][] = [];
+    const first = route.line[0];
+    const last = route.line[route.line.length - 1];
+    const gap = (a: LngLat, b: LngLat) =>
+      distanceKm({ latitude: a[1], longitude: a[0] }, { latitude: b[1], longitude: b[0] }) * 1000;
+    if (fixLatitude !== undefined && fixLongitude !== undefined) {
+      const me: LngLat = [fixLongitude, fixLatitude];
+      if (gap(me, first) > 8) links.push([me, first]);
+    }
+    const place: LngLat = [routeTarget.longitude, routeTarget.latitude];
+    if (gap(last, place) > 8) links.push([last, place]);
+    return links;
+  }, [route, routeTarget, fixLatitude, fixLongitude]);
+  const snapWarning =
+    route?.snap &&
+    Math.max(route.snap.startMeters, route.snap.endMeters) > SNAP_WARNING_METERS
+      ? Math.round(Math.max(route.snap.startMeters, route.snap.endMeters))
+      : null;
   const searchAreaVisible =
     mapCenter !== null &&
     around.status !== 'loading' &&
@@ -503,6 +609,100 @@ export function MapExplorer({
     { id: 'light', label: c('Tối giản', 'Light', '简洁') },
     { id: 'satellite', label: c('Vệ tinh', 'Satellite', '卫星') },
   ];
+
+  // Info box shown on the map, anchored at the tapped place (like a phone map's place card).
+  const placeCard = selectedTarget ? (
+    <article className="atlas-card" aria-live="polite">
+      <button
+        type="button"
+        className="atlas-card-close"
+        onClick={() => setSelection(null)}
+        aria-label={t(locale, 'close')}
+      >
+        <X size={15} />
+      </button>
+      {selectedPlace?.image ? (
+        <PlaceImage
+          key={selectedPlace.image}
+          src={selectedPlace.image}
+          alt={selectedPlace.name}
+          className="atlas-card-photo"
+        />
+      ) : (
+        // No verified photo in the archive yet: never a stock picture, but a link to real photos.
+        <a
+          className={`atlas-card-nophoto kind-${selectedPlace ? 'archive' : selectedPoi?.kind || 'other'}`}
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+            `${selectedTarget.name} ${selectedPlace?.address || ''}`.trim(),
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Camera size={18} aria-hidden="true" />
+          <span>
+            <strong>{c('Chưa có ảnh trong THÁM VĂN', 'No photo in THÁM VĂN yet', 'THÁM VĂN 暂无照片')}</strong>
+            <small>
+              {c('Xem ảnh thực tế trên Google Maps', 'See real photos on Google Maps', '在 Google 地图查看实景照片')}
+              <ArrowUpRight size={12} aria-hidden="true" />
+            </small>
+          </span>
+        </a>
+      )}
+      <div className="atlas-card-body">
+        <p className="atlas-kicker">
+          {selectedPlace
+            ? selectedPlace.categoryGroup
+              ? labelCategoryGroup(selectedPlace.categoryGroup, locale)
+              : selectedPlace.category || t(locale, selectedPlace.kind)
+            : labelPoiKind(selectedPoi?.kind || 'other', locale)}
+        </p>
+        <h2>{selectedTarget.name}</h2>
+        <p className="atlas-meta">
+          <MapPin size={13} aria-hidden="true" />
+          <span>
+            {selectedDistance !== null && (
+              <b>
+                {formatDistance(selectedDistance, locale)}
+                {' · '}
+              </b>
+            )}
+            {selectedPlace ? selectedPlace.address || selectedPlace.region : (around.area ?? '')}
+          </span>
+        </p>
+        {selectedPlace?.description && <p className="atlas-desc">{selectedPlace.description}</p>}
+        <div className="atlas-card-actions">
+          <button
+            type="button"
+            className="atlas-btn primary"
+            onClick={() => requestRoute(selectedTarget, routeMode)}
+          >
+            <Navigation size={15} aria-hidden="true" />
+            {t(locale, 'directions')}
+          </button>
+          {selectedPlace && (
+            <Link className="atlas-btn" href={`/${locale}/explore/${selectedPlace.slug}`}>
+              {t(locale, 'placeDetails')}
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </Link>
+          )}
+        </div>
+        {selectedPlace && relatedChallenges.length > 0 && (
+          <div className="atlas-challenges">
+            {relatedChallenges.slice(0, 2).map((challenge) => (
+              <Link key={challenge.id} href={`/${locale}/challenges#${challenge.id}`}>
+                <span>
+                  <Trophy size={11} aria-hidden="true" />
+                  {challenge.points} XP
+                </span>
+                <strong>{textFor(challenge.translations, locale).title}</strong>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    </article>
+  ) : null;
 
   return (
     <div className="atlas">
@@ -673,6 +873,21 @@ export function MapExplorer({
                   <b>{formatDuration(route.durationSeconds, locale)}</b>
                   <span>{formatDistance(route.distanceMeters, locale)}</span>
                 </p>
+                {snapWarning !== null && (
+                  <p className="atlas-note is-warning" role="status">
+                    {routeMode === 'driving'
+                      ? c(
+                          `Không có đường xe chạy sát điểm này: lộ trình bắt đầu/kết thúc ở con đường gần nhất, cách khoảng ${formatDistance(snapWarning, locale)} (nét chấm).`,
+                          `No drivable road reaches this point: the route starts/ends on the nearest road, about ${formatDistance(snapWarning, locale)} away (dotted line).`,
+                          `此处没有可通行的车道：路线在约 ${formatDistance(snapWarning, locale)} 外的最近道路开始/结束（虚线）。`,
+                        )
+                      : c(
+                          `${routeMode === 'cycling' ? 'Xe đạp' : 'Đi bộ'} không được đi trên đoạn đường sát bạn hoặc sát điểm đến, nên lộ trình nhập vào con đường gần nhất cách khoảng ${formatDistance(snapWarning, locale)} (nét chấm). Ở Việt Nam nên chọn "Xe máy / ô tô".`,
+                          `${routeMode === 'cycling' ? 'Bicycles are' : 'Walking is'} not allowed on the road right by you or the destination, so the route joins the nearest permitted road about ${formatDistance(snapWarning, locale)} away (dotted line). Try "Motorbike / car".`,
+                          `你或目的地旁的道路不允许${routeMode === 'cycling' ? '骑行' : '步行'}，路线从约 ${formatDistance(snapWarning, locale)} 外最近的可通行道路开始（虚线）。可尝试“摩托车 / 汽车”。`,
+                        )}
+                  </p>
+                )}
                 {arrived && (
                   <p className="atlas-note" role="status">
                     {c('Bạn đã đến nơi.', 'You have arrived.', '你已到达目的地。')}
@@ -729,88 +944,6 @@ export function MapExplorer({
           </section>
         )}
 
-        {selectedTarget && !routeTarget && (
-          <section className="atlas-selected" aria-live="polite">
-            <button
-              type="button"
-              className="atlas-selected-close"
-              onClick={() => setSelection(null)}
-              aria-label={t(locale, 'close')}
-            >
-              <X size={16} />
-            </button>
-            {selectedPlace?.image && (
-              <PlaceImage
-                key={selectedPlace.image}
-                src={selectedPlace.image}
-                alt={selectedPlace.name}
-                className="atlas-selected-photo"
-              />
-            )}
-            <p className="atlas-kicker">
-              {selectedPlace
-                ? selectedPlace.categoryGroup
-                  ? labelCategoryGroup(selectedPlace.categoryGroup, locale)
-                  : selectedPlace.category || t(locale, selectedPlace.kind)
-                : `${labelPoiKind(selectedPoi?.kind || 'other', locale)} · OpenStreetMap`}
-            </p>
-            <h2>{selectedTarget.name}</h2>
-            <p className="atlas-meta">
-              <MapPin size={14} aria-hidden="true" />
-              <span>
-                {selectedPlace ? selectedPlace.address || selectedPlace.region : (around.area ?? '')}
-                {selectedDistance !== null && (
-                  <b>
-                    {' '}
-                    · {c('cách bạn ', '', '距你 ')}
-                    {formatDistance(selectedDistance, locale)}
-                    {c('', ' away', '')}
-                  </b>
-                )}
-              </span>
-            </p>
-            {selectedPlace?.description && <p className="atlas-desc">{selectedPlace.description}</p>}
-            {selectedPlace?.history &&
-              normalizeSearch(selectedPlace.history) !==
-                normalizeSearch(selectedPlace.description) && (
-                <p className="atlas-desc">{selectedPlace.history}</p>
-              )}
-            <div className="atlas-actions">
-              <button
-                type="button"
-                className="atlas-btn primary"
-                onClick={() => requestRoute(selectedTarget, routeMode)}
-              >
-                <Navigation size={16} aria-hidden="true" />
-                {t(locale, 'directions')}
-              </button>
-              {selectedPlace && (
-                <Link className="atlas-btn" href={`/${locale}/explore/${selectedPlace.slug}`}>
-                  {t(locale, 'placeDetails')}
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </Link>
-              )}
-            </div>
-            {selectedPlace && relatedChallenges.length > 0 && (
-              <div className="atlas-challenges">
-                <h3>
-                  <Trophy size={15} aria-hidden="true" />
-                  {t(locale, 'relatedChallenges')}
-                </h3>
-                {relatedChallenges.map((challenge) => (
-                  <Link key={challenge.id} href={`/${locale}/challenges#${challenge.id}`}>
-                    <span>
-                      <Sparkles size={11} aria-hidden="true" />
-                      {challenge.points} XP
-                    </span>
-                    <strong>{textFor(challenge.translations, locale).title}</strong>
-                    <ArrowUpRight size={14} aria-hidden="true" />
-                  </Link>
-                ))}
-              </div>
-            )}
-          </section>
-        )}
 
         <div className="atlas-tabs" role="tablist">
           <button
@@ -1011,12 +1144,15 @@ export function MapExplorer({
           user={fix}
           selected={selectedTarget}
           routeLine={route?.line ?? null}
+          routeLinks={routeLinks}
+          popup={routeTarget ? null : placeCard}
           routeMode={routeMode}
           basemap={basemap}
           follow={navigating}
           view={view}
           onSelectPlace={onSelectPlace}
           onSelectPoi={onSelectPoi}
+          onPickPlace={onPickPlace}
           onClearSelection={onClearSelection}
           onUserGesture={onUserGesture}
           onCenterChange={setMapCenter}
@@ -1068,6 +1204,22 @@ export function MapExplorer({
           )}
         </div>
 
+        {fix && (
+          <a
+            className="atlas-fab atlas-native"
+            href={`https://www.google.com/maps/@?api=1&map_action=map&center=${fix.latitude},${fix.longitude}&zoom=17`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={c(
+              'Mở vị trí của bạn trong Google Maps',
+              'Open your location in Google Maps',
+              '在 Google 地图中打开你的位置',
+            )}
+            title={c('Mở trong Google Maps', 'Open in Google Maps', '在 Google 地图中打开')}
+          >
+            <ExternalLink size={18} />
+          </a>
+        )}
         <button
           type="button"
           className={`atlas-fab atlas-locate ${hasFix ? 'active' : ''}`}
@@ -1083,14 +1235,9 @@ export function MapExplorer({
           )}
         </button>
 
-        {(locationMessage || (fix && fix.accuracy > 150)) && (
-          <p className="atlas-location-note" role={locationMessage ? 'alert' : 'status'}>
-            {locationMessage ||
-              c(
-                'Vị trí đang chỉ gần đúng. Bật GPS và ra nơi thoáng để chính xác hơn.',
-                'Your position is only approximate. Turn on GPS and step into the open for a sharper fix.',
-                '当前位置仅为大致范围。请开启 GPS 并到开阔处以提高精度。',
-              )}
+        {locationMessage && (
+          <p className="atlas-location-note" role="alert">
+            {locationMessage}
           </p>
         )}
       </div>
