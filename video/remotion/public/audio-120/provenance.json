@@ -1,0 +1,11 @@
+{
+  "musicSource": "music.wav",
+  "musicSourceSha256": "d3d64700bf5fd9bdabce334c05cf381e0c08d1c3f95d878bc35f066da6d9678f",
+  "originalDuration": 97.7,
+  "duration": 120,
+  "tempo": 84,
+  "edit": "Original 0–91.5486 s, repeat original 68.4514–91.5486 s, original 91.3086 s to end; 0.24 s phase-aligned linear crossfades. Trim 0.5571 s tail to 120 s; 2 s closing fade.",
+  "noTempoOrPitchChange": true,
+  "sfxSource": "Original Remotion URLs already referenced by Video.tsx",
+  "notificationAndChime": "Local sine UI tones; no replacement music or voice."
+}

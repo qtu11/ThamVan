@@ -1,0 +1,21 @@
+{
+  "source": "C:\\Users\\KIMPC\\Downloads\\thamvan-v2 (1).mp4",
+  "source_sha256": "a1d4fe3dc23921438c1f10a119ad14316e5e4d7046f6a41bf3910fd52cf20140",
+  "source_duration_seconds": 48,
+  "output": "D:\\thamvan-moi\\video\\remotion\\public\\silent58\\soundtrack-v2.m4a",
+  "output_sha256": "078cd475b827efca14db3b63bb21b624af7b3afacc652c8c48d1906e073ceb5c",
+  "output_duration_seconds": 58,
+  "sample_rate": 48000,
+  "channels": 2,
+  "codec": "AAC 256 kb/s",
+  "edit": "Original 0-30.29s; repeat original 20.09-30.29s; original 30.09-48s. Two 0.20s linear crossfades (output 30.09-30.29s and 40.09-40.29s). Fadeout output 57-58s.",
+  "no_tempo_or_pitch_change": true,
+  "no_synthesized_music": true,
+  "gain": 1.0,
+  "decoded_peak": 0.8612148761749268,
+  "peak_dbfs": -1.297769540164614,
+  "original_output_pcm_correlation_source1to20_output1to20": 0.9990461245246275,
+  "original_output_pcm_correlation_source31to45_output41to55": 0.9977770728776328,
+  "checks": "58s duration, stereo, decoded peak below clipping, near-identical source/output PCM correlations passed.",
+  "limitation": "No physical speaker/headphone listening performed."
+}

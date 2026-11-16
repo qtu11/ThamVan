@@ -1,0 +1,645 @@
+{
+  "original-intro": [
+    {
+      "text": " Thám Văn. Đi để thấy. Chạm để hiểu.",
+      "start": 0.0,
+      "end": 2.78,
+      "words": [
+        {
+          "text": " Thám",
+          "start": 0.0,
+          "end": 0.2,
+          "probability": 0.6675021350383759
+        },
+        {
+          "text": " Văn.",
+          "start": 0.2,
+          "end": 0.66,
+          "probability": 0.4380860077217221
+        },
+        {
+          "text": " Đi",
+          "start": 0.78,
+          "end": 1.06,
+          "probability": 0.9392487704753876
+        },
+        {
+          "text": " để",
+          "start": 1.06,
+          "end": 1.2,
+          "probability": 0.9139243364334106
+        },
+        {
+          "text": " thấy.",
+          "start": 1.2,
+          "end": 1.5,
+          "probability": 0.9915870428085327
+        },
+        {
+          "text": " Chạm",
+          "start": 1.88,
+          "end": 2.32,
+          "probability": 0.84312903881073
+        },
+        {
+          "text": " để",
+          "start": 2.32,
+          "end": 2.46,
+          "probability": 0.9722504615783691
+        },
+        {
+          "text": " hiểu.",
+          "start": 2.46,
+          "end": 2.78,
+          "probability": 0.9946382343769073
+        }
+      ]
+    }
+  ],
+  "intro": [
+    {
+      "text": " Thám Văn. Chạm để hiểu di sản Việt.",
+      "start": 0.0,
+      "end": 2.42,
+      "words": [
+        {
+          "text": " Thám",
+          "start": 0.0,
+          "end": 0.2,
+          "probability": 0.1695908010005951
+        },
+        {
+          "text": " Văn.",
+          "start": 0.2,
+          "end": 0.64,
+          "probability": 0.4324261429719627
+        },
+        {
+          "text": " Chạm",
+          "start": 0.86,
+          "end": 1.28,
+          "probability": 0.779478391011556
+        },
+        {
+          "text": " để",
+          "start": 1.28,
+          "end": 1.4,
+          "probability": 0.9513030052185059
+        },
+        {
+          "text": " hiểu",
+          "start": 1.4,
+          "end": 1.7,
+          "probability": 0.9902965426445007
+        },
+        {
+          "text": " di",
+          "start": 1.7,
+          "end": 1.88,
+          "probability": 0.294192910194397
+        },
+        {
+          "text": " sản",
+          "start": 1.88,
+          "end": 2.2,
+          "probability": 0.9239409565925598
+        },
+        {
+          "text": " Việt.",
+          "start": 2.2,
+          "end": 2.42,
+          "probability": 0.013319829478859901
+        }
+      ]
+    }
+  ],
+  "camera": [
+    {
+      "text": " Chạm Camera AI. Chụp tượng rồng, Nhà thờ Đức Bà, hiện vật hoặc một tiết mục văn hóa dân gian.",
+      "start": 0.0,
+      "end": 6.56,
+      "words": [
+        {
+          "text": " Chạm",
+          "start": 0.0,
+          "end": 0.26,
+          "probability": 0.43235813702146214
+        },
+        {
+          "text": " Camera",
+          "start": 0.26,
+          "end": 0.66,
+          "probability": 0.0747419148683548
+        },
+        {
+          "text": " AI.",
+          "start": 0.66,
+          "end": 1.34,
+          "probability": 0.8839548826217651
+        },
+        {
+          "text": " Chụp",
+          "start": 1.82,
+          "end": 2.16,
+          "probability": 0.8996647198994955
+        },
+        {
+          "text": " tượng",
+          "start": 2.16,
+          "end": 2.36,
+          "probability": 0.6285259276628494
+        },
+        {
+          "text": " rồng,",
+          "start": 2.36,
+          "end": 2.7,
+          "probability": 0.8293410837650299
+        },
+        {
+          "text": " Nhà",
+          "start": 3.12,
+          "end": 3.26,
+          "probability": 0.5145375393331051
+        },
+        {
+          "text": " thờ",
+          "start": 3.26,
+          "end": 3.48,
+          "probability": 0.559243232011795
+        },
+        {
+          "text": " Đức",
+          "start": 3.48,
+          "end": 3.72,
+          "probability": 0.879820704460144
+        },
+        {
+          "text": " Bà,",
+          "start": 3.72,
+          "end": 4.04,
+          "probability": 0.8038242757320404
+        },
+        {
+          "text": " hiện",
+          "start": 4.28,
+          "end": 4.4,
+          "probability": 0.7112747430801392
+        },
+        {
+          "text": " vật",
+          "start": 4.4,
+          "end": 4.74,
+          "probability": 0.9470921754837036
+        },
+        {
+          "text": " hoặc",
+          "start": 4.74,
+          "end": 5.02,
+          "probability": 0.9889457821846008
+        },
+        {
+          "text": " một",
+          "start": 5.02,
+          "end": 5.14,
+          "probability": 0.8417001962661743
+        },
+        {
+          "text": " tiết",
+          "start": 5.14,
+          "end": 5.44,
+          "probability": 0.32273777873676107
+        },
+        {
+          "text": " mục",
+          "start": 5.44,
+          "end": 5.6,
+          "probability": 0.5130714252591133
+        },
+        {
+          "text": " văn",
+          "start": 5.6,
+          "end": 5.78,
+          "probability": 0.8179372549057007
+        },
+        {
+          "text": " hóa",
+          "start": 5.78,
+          "end": 6.06,
+          "probability": 0.9535621007283529
+        },
+        {
+          "text": " dân",
+          "start": 6.06,
+          "end": 6.26,
+          "probability": 0.9559420943260193
+        },
+        {
+          "text": " gian.",
+          "start": 6.26,
+          "end": 6.56,
+          "probability": 0.7839371263980865
+        }
+      ]
+    }
+  ],
+  "titles": [
+    {
+      "text": " Ghé thêm địa điểm, lưu ảnh và sưu tập danh hiệu Khoai Lang Thang, Nhà Du Mục, Nhà Thám Hiểm.",
+      "start": 0.0,
+      "end": 6.8,
+      "words": [
+        {
+          "text": " Ghé",
+          "start": 0.0,
+          "end": 0.86,
+          "probability": 0.22826635092496872
+        },
+        {
+          "text": " thêm",
+          "start": 0.86,
+          "end": 1.14,
+          "probability": 0.9932753145694733
+        },
+        {
+          "text": " địa",
+          "start": 1.14,
+          "end": 1.4,
+          "probability": 0.8561054766178131
+        },
+        {
+          "text": " điểm,",
+          "start": 1.4,
+          "end": 1.68,
+          "probability": 0.9883870184421539
+        },
+        {
+          "text": " lưu",
+          "start": 2.0,
+          "end": 2.34,
+          "probability": 0.7553091645240784
+        },
+        {
+          "text": " ảnh",
+          "start": 2.34,
+          "end": 2.64,
+          "probability": 0.9803458253542582
+        },
+        {
+          "text": " và",
+          "start": 2.64,
+          "end": 2.78,
+          "probability": 0.9645723700523376
+        },
+        {
+          "text": " sưu",
+          "start": 2.78,
+          "end": 3.1,
+          "probability": 0.8430173595746359
+        },
+        {
+          "text": " tập",
+          "start": 3.1,
+          "end": 3.24,
+          "probability": 0.9923888146877289
+        },
+        {
+          "text": " danh",
+          "start": 3.24,
+          "end": 3.52,
+          "probability": 0.9126948416233063
+        },
+        {
+          "text": " hiệu",
+          "start": 3.52,
+          "end": 3.8,
+          "probability": 0.9501323401927948
+        },
+        {
+          "text": " Khoai",
+          "start": 3.8,
+          "end": 4.42,
+          "probability": 0.6897101998329163
+        },
+        {
+          "text": " Lang",
+          "start": 4.42,
+          "end": 4.58,
+          "probability": 0.182875394821167
+        },
+        {
+          "text": " Thang,",
+          "start": 4.58,
+          "end": 4.94,
+          "probability": 0.7517848014831543
+        },
+        {
+          "text": " Nhà",
+          "start": 5.18,
+          "end": 5.36,
+          "probability": 0.7304839342832565
+        },
+        {
+          "text": " Du",
+          "start": 5.36,
+          "end": 5.52,
+          "probability": 0.6868451833724976
+        },
+        {
+          "text": " Mục,",
+          "start": 5.52,
+          "end": 5.82,
+          "probability": 0.8799574673175812
+        },
+        {
+          "text": " Nhà",
+          "start": 6.1,
+          "end": 6.28,
+          "probability": 0.9875784814357758
+        },
+        {
+          "text": " Thám",
+          "start": 6.28,
+          "end": 6.48,
+          "probability": 0.893600583076477
+        },
+        {
+          "text": " Hiểm.",
+          "start": 6.48,
+          "end": 6.8,
+          "probability": 0.5559563338756561
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    {
+      "text": " Bạn chủ động đồng ý chính sách, cấp quyền vị trí, camera và chọn ảnh muốn tải lên.",
+      "start": 0.0,
+      "end": 5.8,
+      "words": [
+        {
+          "text": " Bạn",
+          "start": 0.0,
+          "end": 0.2,
+          "probability": 0.2980034854263067
+        },
+        {
+          "text": " chủ",
+          "start": 0.2,
+          "end": 0.44,
+          "probability": 0.9403693377971649
+        },
+        {
+          "text": " động",
+          "start": 0.44,
+          "end": 0.66,
+          "probability": 0.933638334274292
+        },
+        {
+          "text": " đồng",
+          "start": 0.66,
+          "end": 0.92,
+          "probability": 0.8607721030712128
+        },
+        {
+          "text": " ý",
+          "start": 0.92,
+          "end": 1.14,
+          "probability": 0.9985435009002686
+        },
+        {
+          "text": " chính",
+          "start": 1.14,
+          "end": 1.36,
+          "probability": 0.993355393409729
+        },
+        {
+          "text": " sách,",
+          "start": 1.36,
+          "end": 1.76,
+          "probability": 0.8757611811161041
+        },
+        {
+          "text": " cấp",
+          "start": 2.12,
+          "end": 2.24,
+          "probability": 0.2696980610489845
+        },
+        {
+          "text": " quyền",
+          "start": 2.24,
+          "end": 2.58,
+          "probability": 0.9904092252254486
+        },
+        {
+          "text": " vị",
+          "start": 2.58,
+          "end": 2.76,
+          "probability": 0.9748601317405701
+        },
+        {
+          "text": " trí,",
+          "start": 2.76,
+          "end": 3.14,
+          "probability": 0.9986969828605652
+        },
+        {
+          "text": " camera",
+          "start": 3.54,
+          "end": 3.88,
+          "probability": 0.8452326655387878
+        },
+        {
+          "text": " và",
+          "start": 3.88,
+          "end": 4.42,
+          "probability": 0.9816033840179443
+        },
+        {
+          "text": " chọn",
+          "start": 4.42,
+          "end": 4.74,
+          "probability": 0.9722161889076233
+        },
+        {
+          "text": " ảnh",
+          "start": 4.74,
+          "end": 5.02,
+          "probability": 0.9794794917106628
+        },
+        {
+          "text": " muốn",
+          "start": 5.02,
+          "end": 5.18,
+          "probability": 0.9595308303833008
+        },
+        {
+          "text": " tải",
+          "start": 5.18,
+          "end": 5.5,
+          "probability": 0.7201793491840363
+        },
+        {
+          "text": " lên.",
+          "start": 5.5,
+          "end": 5.8,
+          "probability": 0.9728063344955444
+        }
+      ]
+    },
+    {
+      "text": " Cứng dụng chỉ nhận ảnh bạn chọn.",
+      "start": 6.54,
+      "end": 8.68,
+      "words": [
+        {
+          "text": " Cứng",
+          "start": 6.54,
+          "end": 7.02,
+          "probability": 0.8006885051727295
+        },
+        {
+          "text": " dụng",
+          "start": 7.02,
+          "end": 7.34,
+          "probability": 0.9432084759076437
+        },
+        {
+          "text": " chỉ",
+          "start": 7.34,
+          "end": 7.52,
+          "probability": 0.9833833575248718
+        },
+        {
+          "text": " nhận",
+          "start": 7.52,
+          "end": 7.78,
+          "probability": 0.9739371240139008
+        },
+        {
+          "text": " ảnh",
+          "start": 7.78,
+          "end": 8.1,
+          "probability": 0.9978690147399902
+        },
+        {
+          "text": " bạn",
+          "start": 8.1,
+          "end": 8.28,
+          "probability": 0.8425604701042175
+        },
+        {
+          "text": " chọn.",
+          "start": 8.28,
+          "end": 8.68,
+          "probability": 0.9891712963581085
+        }
+      ]
+    }
+  ],
+  "outro": [
+    {
+      "text": " Thám Văn. Khám phá Sài Gòn qua từng câu chuyện. Chạm để hiểu di sản Việt.",
+      "start": 0.0,
+      "end": 5.04,
+      "words": [
+        {
+          "text": " Thám",
+          "start": 0.0,
+          "end": 0.22,
+          "probability": 0.6596276462078094
+        },
+        {
+          "text": " Văn.",
+          "start": 0.22,
+          "end": 0.76,
+          "probability": 0.4583717826753855
+        },
+        {
+          "text": " Khám",
+          "start": 0.9,
+          "end": 1.38,
+          "probability": 0.9055574834346771
+        },
+        {
+          "text": " phá",
+          "start": 1.38,
+          "end": 1.68,
+          "probability": 0.963823676109314
+        },
+        {
+          "text": " Sài",
+          "start": 1.68,
+          "end": 1.92,
+          "probability": 0.8265765309333801
+        },
+        {
+          "text": " Gòn",
+          "start": 1.92,
+          "end": 2.18,
+          "probability": 0.9933343231678009
+        },
+        {
+          "text": " qua",
+          "start": 2.18,
+          "end": 2.34,
+          "probability": 0.997288703918457
+        },
+        {
+          "text": " từng",
+          "start": 2.34,
+          "end": 2.6,
+          "probability": 0.2110230354592204
+        },
+        {
+          "text": " câu",
+          "start": 2.6,
+          "end": 2.88,
+          "probability": 0.9968087673187256
+        },
+        {
+          "text": " chuyện.",
+          "start": 2.88,
+          "end": 3.2,
+          "probability": 0.9055129289627075
+        },
+        {
+          "text": " Chạm",
+          "start": 3.52,
+          "end": 3.98,
+          "probability": 0.8598690430323283
+        },
+        {
+          "text": " để",
+          "start": 3.98,
+          "end": 4.12,
+          "probability": 0.9853708744049072
+        },
+        {
+          "text": " hiểu",
+          "start": 4.12,
+          "end": 4.4,
+          "probability": 0.9926845133304596
+        },
+        {
+          "text": " di",
+          "start": 4.4,
+          "end": 4.56,
+          "probability": 0.5810569524765015
+        },
+        {
+          "text": " sản",
+          "start": 4.56,
+          "end": 4.84,
+          "probability": 0.972220778465271
+        },
+        {
+          "text": " Việt.",
+          "start": 4.84,
+          "end": 5.04,
+          "probability": 0.015249695628881454
+        }
+      ]
+    }
+  ]
+}

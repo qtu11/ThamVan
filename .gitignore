@@ -12,7 +12,7 @@ test-results/
 coverage/
 *.log
 supabase/.temp/
-video/
+
 
 # Temporary research caches, quarantine and candidate images
 asset/place-photo-research/cache/

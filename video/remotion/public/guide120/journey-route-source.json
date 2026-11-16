@@ -1,0 +1,24 @@
+{
+  "capturedAt": "2026-11-16T10:09:03.3750629+00:00",
+  "provider": "OSRM routed-foot / OpenStreetMap",
+  "url": "https://routing.openstreetmap.de/routed-foot/route/v1/driving/106.700021,10.779981;106.695403,10.777017?overview=full&geometries=geojson&steps=true",
+  "profile": "walking",
+  "origin": {
+    "coordinates": [
+      106.700021,
+      10.779981
+    ],
+    "name": "Bưu điện Trung tâm Sài Gòn"
+  },
+  "destination": {
+    "coordinates": [
+      106.695403,
+      10.777017
+    ],
+    "name": "Dinh Độc Lập"
+  },
+  "distanceMeters": 766.8,
+  "durationSeconds": 615.5,
+  "geometryPoints": 97,
+  "description": "Lộ trình đi bộ mẫu được OSRM định tuyến theo mạng đường và lối đi OpenStreetMap; không phải bản ghi GPS của người dùng."
+}

@@ -1,0 +1,12 @@
+{
+  "file": "D:\\thamvan-moi\\video\\remotion\\public\\silent58\\soundtrack-upbeat.m4a",
+  "duration_seconds": 58,
+  "bpm": 116,
+  "sample_rate": 48000,
+  "channels": 2,
+  "integrated_lufs": -17.04,
+  "true_peak_dbtp": -2.97,
+  "loudness_range_lu": 3.3,
+  "sample_peak_dbfs": -2.9694485664367676,
+  "checks": "duration, finite samples, nonempty opening, no clipping, stereo, loudness"
+}

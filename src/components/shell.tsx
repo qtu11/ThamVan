@@ -17,6 +17,8 @@ import {
   Home,
   Trophy,
   Camera,
+  Bookmark,
+  LayoutGrid,
 } from 'lucide-react';
 import { t, localeName } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
@@ -221,12 +223,14 @@ export function Shell({
             {[
               { label: t(locale, 'home'), to: '', Icon: Home },
               { label: c('Khám phá', 'Explore', '探索'), to: '/explore', Icon: Compass },
+              { label: t(locale, 'mapView'), to: '/map', Icon: Map },
               {
                 label: c('Hành trình trải nghiệm', 'Story walks', '故事漫步'),
                 to: '/experiences',
                 Icon: Route,
               },
               { label: t(locale, 'challenges'), to: '/challenges', Icon: Trophy },
+              { label: t(locale, 'journey'), to: '/journey', Icon: Bookmark },
               {
                 label: c('Cho doanh nghiệp', 'For business', '企业合作'),
                 to: '/partners',
@@ -237,8 +241,19 @@ export function Shell({
                 to: '/profile',
                 Icon: UserRound,
               },
+              {
+                label: signedIn || partnerRole ? dashboardLabel : t(locale, 'login'),
+                to: signedIn || partnerRole ? dashboardHref : '/auth/login',
+                Icon: LayoutGrid,
+              },
             ].map(({ label, to, Icon }) => (
-              <Link key={to} href={`/${locale}${to}`} onClick={() => setMenu(false)}>
+              <Link
+                key={to}
+                href={`/${locale}${to}`}
+                className={isActive(to) ? 'active' : ''}
+                aria-current={isActive(to) ? 'page' : undefined}
+                onClick={() => setMenu(false)}
+              >
                 <Icon size={18} />
                 {label}
               </Link>

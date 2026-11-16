@@ -1,0 +1,12 @@
+{
+  "allNarrationsPresent": true,
+  "voice": "VieNeu-TTS v3 Turbo · Mỹ Duyên",
+  "noClippedSamples": true,
+  "noTempoOrPitchChange": true,
+  "nominalSlotExcess": [],
+  "musicFirst90SecondsPCMIdentical": true,
+  "musicDuration": 120,
+  "musicPeak": 0.699951171875,
+  "wordAlignmentMinimumMatch": 0.938,
+  "note": "Any nominal slot excess must be resolved by extending the scene, never clipping narration."
+}

@@ -1,0 +1,31 @@
+{
+  "routePoints": 97,
+  "distanceMeters": 766.8,
+  "source": "actual MapLibre camera projection + OSRM routed-foot geometry",
+  "checks": [
+    {
+      "name": "planner-before",
+      "width": 522,
+      "height": 386,
+      "all97StreetPointsVisible": true
+    },
+    {
+      "name": "planner-results",
+      "width": 522,
+      "height": 280,
+      "all97StreetPointsVisible": true
+    },
+    {
+      "name": "timeline",
+      "width": 892,
+      "height": 356,
+      "all97StreetPointsVisible": true
+    },
+    {
+      "name": "memory",
+      "width": 370,
+      "height": 285,
+      "all97StreetPointsVisible": true
+    }
+  ]
+}

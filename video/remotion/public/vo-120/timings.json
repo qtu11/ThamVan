@@ -1,0 +1,2265 @@
+{
+  "fps": 30,
+  "total": 120,
+  "voice": "VieNeu-TTS v3 Turbo · Mỹ Duyên",
+  "processing": "silenceremove=start_periods=1:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_threshold=-50dB,areverse,highpass=f=70,acompressor=threshold=-20dB:ratio=2:attack=8:release=120:makeup=1.5,loudnorm=I=-16:TP=-1.5:LRA=9,aresample=48000",
+  "noTempoOrPitchChange": true,
+  "scenes": [
+    {
+      "id": "intro",
+      "index": 0,
+      "sceneStart": 0,
+      "sceneEnd": 5,
+      "start": 0.3,
+      "offset": 0.3,
+      "duration": 2.54125,
+      "end": 2.84125,
+      "text": "Thám Văn. Chạm để hiểu di sản Việt.",
+      "file": "vo-120/intro.wav",
+      "words": [
+        {
+          "text": "Thám",
+          "start": 0.3,
+          "end": 0.5,
+          "estimated": false
+        },
+        {
+          "text": "Văn.",
+          "start": 0.5,
+          "end": 0.94,
+          "estimated": false
+        },
+        {
+          "text": "Chạm",
+          "start": 1.16,
+          "end": 1.58,
+          "estimated": false
+        },
+        {
+          "text": "để",
+          "start": 1.58,
+          "end": 1.7,
+          "estimated": false
+        },
+        {
+          "text": "hiểu",
+          "start": 1.7,
+          "end": 2.0,
+          "estimated": false
+        },
+        {
+          "text": "di",
+          "start": 2.0,
+          "end": 2.18,
+          "estimated": false
+        },
+        {
+          "text": "sản",
+          "start": 2.18,
+          "end": 2.5,
+          "estimated": false
+        },
+        {
+          "text": "Việt.",
+          "start": 2.5,
+          "end": 2.72,
+          "estimated": false
+        }
+      ],
+      "alignmentMatch": 1.0,
+      "recognized": "Thám Văn. Chạm để hiểu di sản Việt.",
+      "cues": {
+        "Thám Văn": 0.3,
+        "Chạm": 1.16
+      },
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "home",
+      "index": 1,
+      "sceneStart": 5,
+      "sceneEnd": 12,
+      "start": 5.3,
+      "offset": 0.3,
+      "duration": 5.531146,
+      "end": 10.831146,
+      "text": "Trang chủ mở ra mô hình ba chiều gợi không gian Sài Gòn. Kéo xuống để xem thêm.",
+      "file": "vo-120/home.wav",
+      "words": [
+        {
+          "text": "Trang",
+          "start": 0.3,
+          "end": 0.48,
+          "estimated": false
+        },
+        {
+          "text": "chủ",
+          "start": 0.48,
+          "end": 0.7,
+          "estimated": false
+        },
+        {
+          "text": "mở",
+          "start": 0.7,
+          "end": 1.06,
+          "estimated": false
+        },
+        {
+          "text": "ra",
+          "start": 1.06,
+          "end": 1.24,
+          "estimated": false
+        },
+        {
+          "text": "mô",
+          "start": 1.24,
+          "end": 1.48,
+          "estimated": false
+        },
+        {
+          "text": "hình",
+          "start": 1.48,
+          "end": 1.7,
+          "estimated": false
+        },
+        {
+          "text": "ba",
+          "start": 1.7,
+          "end": 1.92,
+          "estimated": false
+        },
+        {
+          "text": "chiều",
+          "start": 1.92,
+          "end": 2.2,
+          "estimated": false
+        },
+        {
+          "text": "gợi",
+          "start": 2.2,
+          "end": 2.5,
+          "estimated": false
+        },
+        {
+          "text": "không",
+          "start": 2.5,
+          "end": 2.64,
+          "estimated": false
+        },
+        {
+          "text": "gian",
+          "start": 2.64,
+          "end": 2.9,
+          "estimated": false
+        },
+        {
+          "text": "Sài",
+          "start": 2.9,
+          "end": 3.16,
+          "estimated": false
+        },
+        {
+          "text": "Gòn.",
+          "start": 3.16,
+          "end": 3.48,
+          "estimated": false
+        },
+        {
+          "text": "Kéo",
+          "start": 4.18,
+          "end": 4.48,
+          "estimated": false
+        },
+        {
+          "text": "xuống",
+          "start": 4.48,
+          "end": 4.8,
+          "estimated": false
+        },
+        {
+          "text": "để",
+          "start": 4.8,
+          "end": 4.96,
+          "estimated": false
+        },
+        {
+          "text": "xem",
+          "start": 4.96,
+          "end": 5.2,
+          "estimated": false
+        },
+        {
+          "text": "thêm.",
+          "start": 5.2,
+          "end": 5.56,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "mô hình": 1.24,
+        "Kéo xuống": 4.18
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Trang chủ mở ra mô hình ba chiều gợi không gian Sài Gòn. Kéo xuống để xem thêm.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "gifts",
+      "index": 2,
+      "sceneStart": 12,
+      "sceneEnd": 18,
+      "start": 12.3,
+      "offset": 0.3,
+      "duration": 5.25175,
+      "end": 17.55175,
+      "text": "Khám phá quà tặng văn hóa: nón lá thêu, ly sứ, ký họa Sài Gòn.",
+      "file": "vo-120/gifts.wav",
+      "words": [
+        {
+          "text": "Khám",
+          "start": 0.3,
+          "end": 0.56,
+          "estimated": false
+        },
+        {
+          "text": "phá",
+          "start": 0.56,
+          "end": 0.84,
+          "estimated": false
+        },
+        {
+          "text": "quà",
+          "start": 0.84,
+          "end": 1.14,
+          "estimated": false
+        },
+        {
+          "text": "tặng",
+          "start": 1.14,
+          "end": 1.42,
+          "estimated": false
+        },
+        {
+          "text": "văn",
+          "start": 1.42,
+          "end": 1.58,
+          "estimated": false
+        },
+        {
+          "text": "hóa:",
+          "start": 1.58,
+          "end": 2.3,
+          "estimated": false
+        },
+        {
+          "text": "nón",
+          "start": 2.3,
+          "end": 2.68,
+          "estimated": false
+        },
+        {
+          "text": "lá",
+          "start": 2.68,
+          "end": 2.9,
+          "estimated": false
+        },
+        {
+          "text": "thêu,",
+          "start": 2.9,
+          "end": 3.3,
+          "estimated": false
+        },
+        {
+          "text": "ly",
+          "start": 3.68,
+          "end": 3.8,
+          "estimated": false
+        },
+        {
+          "text": "sứ,",
+          "start": 3.8,
+          "end": 4.18,
+          "estimated": false
+        },
+        {
+          "text": "ký",
+          "start": 4.52,
+          "end": 4.68,
+          "estimated": false
+        },
+        {
+          "text": "họa",
+          "start": 4.68,
+          "end": 5.02,
+          "estimated": false
+        },
+        {
+          "text": "Sài",
+          "start": 5.02,
+          "end": 5.18,
+          "estimated": false
+        },
+        {
+          "text": "Gòn.",
+          "start": 5.18,
+          "end": 5.46,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "nón lá thêu": 2.3,
+        "ly sứ": 3.68,
+        "ký họa Sài Gòn": 4.52
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Khám phá quà tặng văn hóa, nón lá thêu, ly sứ, ký họa Sài Gòn.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "events",
+      "index": 3,
+      "sceneStart": 18,
+      "sceneEnd": 23,
+      "start": 18.3,
+      "offset": 0.3,
+      "duration": 4.159688,
+      "end": 22.459688,
+      "text": "Kéo tiếp để xem những sự kiện văn hóa sắp diễn ra trong thành phố.",
+      "file": "vo-120/events.wav",
+      "words": [
+        {
+          "text": "Kéo",
+          "start": 0.3,
+          "end": 0.6,
+          "estimated": false
+        },
+        {
+          "text": "tiếp",
+          "start": 0.6,
+          "end": 0.96,
+          "estimated": false
+        },
+        {
+          "text": "để",
+          "start": 0.96,
+          "end": 1.1,
+          "estimated": false
+        },
+        {
+          "text": "xem",
+          "start": 1.1,
+          "end": 1.38,
+          "estimated": false
+        },
+        {
+          "text": "những",
+          "start": 1.38,
+          "end": 1.62,
+          "estimated": false
+        },
+        {
+          "text": "sự",
+          "start": 1.62,
+          "end": 1.86,
+          "estimated": false
+        },
+        {
+          "text": "kiện",
+          "start": 1.86,
+          "end": 2.2,
+          "estimated": false
+        },
+        {
+          "text": "văn",
+          "start": 2.2,
+          "end": 2.38,
+          "estimated": false
+        },
+        {
+          "text": "hóa",
+          "start": 2.38,
+          "end": 2.7,
+          "estimated": false
+        },
+        {
+          "text": "sắp",
+          "start": 2.7,
+          "end": 2.94,
+          "estimated": false
+        },
+        {
+          "text": "diễn",
+          "start": 2.94,
+          "end": 3.2,
+          "estimated": false
+        },
+        {
+          "text": "ra",
+          "start": 3.2,
+          "end": 3.4,
+          "estimated": false
+        },
+        {
+          "text": "trong",
+          "start": 3.4,
+          "end": 3.64,
+          "estimated": false
+        },
+        {
+          "text": "thành",
+          "start": 3.64,
+          "end": 3.82,
+          "estimated": false
+        },
+        {
+          "text": "phố.",
+          "start": 3.82,
+          "end": 4.18,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "sự kiện văn hóa": 1.62,
+        "sắp diễn ra": 2.7
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Kéo tiếp để xem những sự kiện văn hóa sắp diễn ra trong thành phố.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "camera",
+      "index": 4,
+      "sceneStart": 23,
+      "sceneEnd": 31,
+      "start": 23.3,
+      "offset": 0.3,
+      "duration": 6.929229,
+      "end": 30.229229,
+      "text": "Chạm Camera AI. Chụp tượng rồng, Nhà thờ Đức Bà, hiện vật hoặc một tiết mục văn hóa dân gian.",
+      "file": "vo-120/camera.wav",
+      "words": [
+        {
+          "text": "Chạm",
+          "start": 0.3,
+          "end": 0.56,
+          "estimated": false
+        },
+        {
+          "text": "Camera",
+          "start": 0.56,
+          "end": 0.96,
+          "estimated": false
+        },
+        {
+          "text": "AI.",
+          "start": 0.96,
+          "end": 1.66,
+          "estimated": false
+        },
+        {
+          "text": "Chụp",
+          "start": 2.12,
+          "end": 2.46,
+          "estimated": false
+        },
+        {
+          "text": "tượng",
+          "start": 2.46,
+          "end": 2.66,
+          "estimated": false
+        },
+        {
+          "text": "rồng,",
+          "start": 2.66,
+          "end": 3.0,
+          "estimated": false
+        },
+        {
+          "text": "Nhà",
+          "start": 3.42,
+          "end": 3.56,
+          "estimated": false
+        },
+        {
+          "text": "thờ",
+          "start": 3.56,
+          "end": 3.78,
+          "estimated": false
+        },
+        {
+          "text": "Đức",
+          "start": 3.78,
+          "end": 4.02,
+          "estimated": false
+        },
+        {
+          "text": "Bà,",
+          "start": 4.02,
+          "end": 4.34,
+          "estimated": false
+        },
+        {
+          "text": "hiện",
+          "start": 4.58,
+          "end": 4.7,
+          "estimated": false
+        },
+        {
+          "text": "vật",
+          "start": 4.7,
+          "end": 5.04,
+          "estimated": false
+        },
+        {
+          "text": "hoặc",
+          "start": 5.04,
+          "end": 5.3,
+          "estimated": false
+        },
+        {
+          "text": "một",
+          "start": 5.3,
+          "end": 5.44,
+          "estimated": false
+        },
+        {
+          "text": "tiết",
+          "start": 5.44,
+          "end": 5.74,
+          "estimated": false
+        },
+        {
+          "text": "mục",
+          "start": 5.74,
+          "end": 5.9,
+          "estimated": false
+        },
+        {
+          "text": "văn",
+          "start": 5.9,
+          "end": 6.08,
+          "estimated": false
+        },
+        {
+          "text": "hóa",
+          "start": 6.08,
+          "end": 6.36,
+          "estimated": false
+        },
+        {
+          "text": "dân",
+          "start": 6.36,
+          "end": 6.56,
+          "estimated": false
+        },
+        {
+          "text": "gian.",
+          "start": 6.56,
+          "end": 6.86,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "Chạm Camera AI": 0.3,
+        "tượng rồng": 2.46,
+        "Nhà thờ Đức Bà": 3.42,
+        "hiện vật": 4.58,
+        "tiết mục": 5.44
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Chạm Camera AI. Chụp tượng rồng, Nhà thờ Đức Bà, hiện vật hoặc một tiết mục văn hóa dân gian.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "learn",
+      "index": 5,
+      "sceneStart": 31,
+      "sceneEnd": 38,
+      "start": 31.3,
+      "offset": 0.3,
+      "duration": 5.446667,
+      "end": 36.746667,
+      "text": "AI gợi mở thông tin. Chạm Tìm hiểu thêm để xem câu chuyện, nguồn tư liệu.",
+      "file": "vo-120/learn.wav",
+      "words": [
+        {
+          "text": "AI",
+          "start": 0.3,
+          "end": 0.74,
+          "estimated": false
+        },
+        {
+          "text": "gợi",
+          "start": 0.74,
+          "end": 1.1,
+          "estimated": false
+        },
+        {
+          "text": "mở",
+          "start": 1.1,
+          "end": 1.28,
+          "estimated": false
+        },
+        {
+          "text": "thông",
+          "start": 1.28,
+          "end": 1.54,
+          "estimated": false
+        },
+        {
+          "text": "tin.",
+          "start": 1.54,
+          "end": 1.76,
+          "estimated": false
+        },
+        {
+          "text": "Chạm",
+          "start": 2.26,
+          "end": 2.54,
+          "estimated": false
+        },
+        {
+          "text": "Tìm",
+          "start": 2.54,
+          "end": 2.8,
+          "estimated": false
+        },
+        {
+          "text": "hiểu",
+          "start": 2.8,
+          "end": 3.0,
+          "estimated": false
+        },
+        {
+          "text": "thêm",
+          "start": 3.0,
+          "end": 3.3,
+          "estimated": false
+        },
+        {
+          "text": "để",
+          "start": 3.3,
+          "end": 3.68,
+          "estimated": false
+        },
+        {
+          "text": "xem",
+          "start": 3.68,
+          "end": 3.88,
+          "estimated": false
+        },
+        {
+          "text": "câu",
+          "start": 3.88,
+          "end": 4.22,
+          "estimated": false
+        },
+        {
+          "text": "chuyện,",
+          "start": 4.22,
+          "end": 4.52,
+          "estimated": false
+        },
+        {
+          "text": "nguồn",
+          "start": 4.92,
+          "end": 5.18,
+          "estimated": false
+        },
+        {
+          "text": "tư",
+          "start": 5.18,
+          "end": 5.3,
+          "estimated": true
+        },
+        {
+          "text": "liệu.",
+          "start": 5.3,
+          "end": 5.66,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "thông tin": 1.28,
+        "Chạm Tìm hiểu thêm": 2.26,
+        "câu chuyện": 3.88,
+        "nguồn tư liệu": 4.92
+      },
+      "alignmentMatch": 0.938,
+      "recognized": "AI gợi mở thông tin. Chạm Tìm hiểu Thêm để xem câu chuyện, nguồn ư liệu.",
+      "alignmentModel": "Whisper base (higher approved-word match)"
+    },
+    {
+      "id": "atlas",
+      "index": 6,
+      "sceneStart": 38,
+      "sceneEnd": 46,
+      "start": 38.3,
+      "offset": 0.3,
+      "duration": 6.572396,
+      "end": 44.872396,
+      "text": "Trên web hay điện thoại, mở Atlas ba chiều, bật vị trí và khám phá trong bán kính ba ki lô mét.",
+      "file": "vo-120/atlas.wav",
+      "words": [
+        {
+          "text": "Trên",
+          "start": 0.3,
+          "end": 0.44,
+          "estimated": false
+        },
+        {
+          "text": "web",
+          "start": 0.44,
+          "end": 0.7,
+          "estimated": false
+        },
+        {
+          "text": "hay",
+          "start": 0.7,
+          "end": 1.0,
+          "estimated": false
+        },
+        {
+          "text": "điện",
+          "start": 1.0,
+          "end": 1.26,
+          "estimated": false
+        },
+        {
+          "text": "thoại,",
+          "start": 1.26,
+          "end": 1.64,
+          "estimated": false
+        },
+        {
+          "text": "mở",
+          "start": 1.92,
+          "end": 2.2,
+          "estimated": false
+        },
+        {
+          "text": "Atlas",
+          "start": 2.2,
+          "end": 2.48,
+          "estimated": false
+        },
+        {
+          "text": "ba",
+          "start": 2.48,
+          "end": 2.84,
+          "estimated": false
+        },
+        {
+          "text": "chiều,",
+          "start": 2.84,
+          "end": 3.24,
+          "estimated": false
+        },
+        {
+          "text": "bật",
+          "start": 3.74,
+          "end": 3.86,
+          "estimated": false
+        },
+        {
+          "text": "vị",
+          "start": 3.86,
+          "end": 4.04,
+          "estimated": false
+        },
+        {
+          "text": "trí",
+          "start": 4.04,
+          "end": 4.42,
+          "estimated": false
+        },
+        {
+          "text": "và",
+          "start": 4.42,
+          "end": 4.58,
+          "estimated": false
+        },
+        {
+          "text": "khám",
+          "start": 4.58,
+          "end": 4.88,
+          "estimated": false
+        },
+        {
+          "text": "phá",
+          "start": 4.88,
+          "end": 5.2,
+          "estimated": false
+        },
+        {
+          "text": "trong",
+          "start": 5.2,
+          "end": 5.48,
+          "estimated": false
+        },
+        {
+          "text": "bán",
+          "start": 5.48,
+          "end": 5.72,
+          "estimated": false
+        },
+        {
+          "text": "kính",
+          "start": 5.72,
+          "end": 5.96,
+          "estimated": false
+        },
+        {
+          "text": "ba",
+          "start": 5.96,
+          "end": 6.24,
+          "estimated": false
+        },
+        {
+          "text": "ki",
+          "start": 6.24,
+          "end": 6.42,
+          "estimated": false
+        },
+        {
+          "text": "lô",
+          "start": 6.42,
+          "end": 6.62,
+          "estimated": false
+        },
+        {
+          "text": "mét.",
+          "start": 6.62,
+          "end": 6.78,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "web": 0.44,
+        "điện thoại": 1.0,
+        "Atlas ba chiều": 2.2,
+        "bật vị trí": 3.74,
+        "bán kính": 5.48,
+        "ba ki lô mét": 5.96
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Trên web hay điện thoại, mở Atlas ba chiều, bật vị trí và khám phá trong bán kính ba ki lô mét.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "notification",
+      "index": 7,
+      "sceneStart": 46,
+      "sceneEnd": 52,
+      "start": 46.3,
+      "offset": 0.3,
+      "duration": 4.706604,
+      "end": 51.006604,
+      "text": "Gợi ý điểm đến hiện trên thông báo chờ. Chạm để xem thông tin và đường đi.",
+      "file": "vo-120/notification.wav",
+      "words": [
+        {
+          "text": "Gợi",
+          "start": 0.3,
+          "end": 0.54,
+          "estimated": false
+        },
+        {
+          "text": "ý",
+          "start": 0.54,
+          "end": 0.64,
+          "estimated": false
+        },
+        {
+          "text": "điểm",
+          "start": 0.64,
+          "end": 0.92,
+          "estimated": false
+        },
+        {
+          "text": "đến",
+          "start": 0.92,
+          "end": 1.08,
+          "estimated": false
+        },
+        {
+          "text": "hiện",
+          "start": 1.08,
+          "end": 1.26,
+          "estimated": false
+        },
+        {
+          "text": "trên",
+          "start": 1.26,
+          "end": 1.54,
+          "estimated": false
+        },
+        {
+          "text": "thông",
+          "start": 1.54,
+          "end": 1.76,
+          "estimated": false
+        },
+        {
+          "text": "báo",
+          "start": 1.76,
+          "end": 2.02,
+          "estimated": false
+        },
+        {
+          "text": "chờ.",
+          "start": 2.02,
+          "end": 2.48,
+          "estimated": false
+        },
+        {
+          "text": "Chạm",
+          "start": 2.84,
+          "end": 3.26,
+          "estimated": false
+        },
+        {
+          "text": "để",
+          "start": 3.26,
+          "end": 3.38,
+          "estimated": false
+        },
+        {
+          "text": "xem",
+          "start": 3.38,
+          "end": 3.62,
+          "estimated": false
+        },
+        {
+          "text": "thông",
+          "start": 3.62,
+          "end": 3.92,
+          "estimated": false
+        },
+        {
+          "text": "tin",
+          "start": 3.92,
+          "end": 4.16,
+          "estimated": false
+        },
+        {
+          "text": "và",
+          "start": 4.16,
+          "end": 4.4,
+          "estimated": false
+        },
+        {
+          "text": "đường",
+          "start": 4.4,
+          "end": 4.66,
+          "estimated": false
+        },
+        {
+          "text": "đi.",
+          "start": 4.66,
+          "end": 4.88,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "thông báo chờ": 1.54,
+        "Chạm": 2.84,
+        "thông tin": 3.62,
+        "đường đi": 4.4
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Gợi ý điểm đến hiện trên thông báo chờ. Chạm để xem thông tin và đường đi.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "challenge",
+      "index": 8,
+      "sceneStart": 52,
+      "sceneEnd": 58,
+      "start": 52.223312,
+      "offset": 0.223313,
+      "duration": 5.553375,
+      "end": 57.776688,
+      "text": "Đến nơi, check-in và hoàn thành thử thách để tích điểm kinh nghiệm, lên cấp mỗi ngày.",
+      "file": "vo-120/challenge.wav",
+      "words": [
+        {
+          "text": "Đến",
+          "start": 0.2233,
+          "end": 0.3833,
+          "estimated": false
+        },
+        {
+          "text": "nơi,",
+          "start": 0.3833,
+          "end": 0.7633,
+          "estimated": false
+        },
+        {
+          "text": "check-in",
+          "start": 0.7633,
+          "end": 1.5633,
+          "estimated": true
+        },
+        {
+          "text": "và",
+          "start": 1.5633,
+          "end": 1.7633,
+          "estimated": false
+        },
+        {
+          "text": "hoàn",
+          "start": 1.7633,
+          "end": 2.0033,
+          "estimated": false
+        },
+        {
+          "text": "thành",
+          "start": 2.0033,
+          "end": 2.2433,
+          "estimated": false
+        },
+        {
+          "text": "thử",
+          "start": 2.2433,
+          "end": 2.4433,
+          "estimated": false
+        },
+        {
+          "text": "thách",
+          "start": 2.4433,
+          "end": 2.7433,
+          "estimated": false
+        },
+        {
+          "text": "để",
+          "start": 2.7433,
+          "end": 3.1233,
+          "estimated": false
+        },
+        {
+          "text": "tích",
+          "start": 3.1233,
+          "end": 3.3633,
+          "estimated": false
+        },
+        {
+          "text": "điểm",
+          "start": 3.3633,
+          "end": 3.6233,
+          "estimated": false
+        },
+        {
+          "text": "kinh",
+          "start": 3.6233,
+          "end": 3.7833,
+          "estimated": false
+        },
+        {
+          "text": "nghiệm,",
+          "start": 3.7833,
+          "end": 4.3633,
+          "estimated": false
+        },
+        {
+          "text": "lên",
+          "start": 4.4033,
+          "end": 4.8433,
+          "estimated": false
+        },
+        {
+          "text": "cấp",
+          "start": 4.8433,
+          "end": 5.1233,
+          "estimated": false
+        },
+        {
+          "text": "mỗi",
+          "start": 5.1233,
+          "end": 5.3833,
+          "estimated": false
+        },
+        {
+          "text": "ngày.",
+          "start": 5.3833,
+          "end": 5.5833,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "check-in": 0.7633,
+        "thử thách": 2.2433,
+        "điểm kinh nghiệm": 3.3633,
+        "lên cấp": 4.4033
+      },
+      "alignmentMatch": 0.941,
+      "recognized": "Đến nơi, check -in và hoàn thành thử thách để tích điểm kinh nghiệm, lên cấp mỗi ngày.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "pricing",
+      "index": 9,
+      "sceneStart": 58,
+      "sceneEnd": 65,
+      "start": 58.3,
+      "offset": 0.3,
+      "duration": 5.884896,
+      "end": 64.184896,
+      "text": "Ba gói cho từng nhu cầu. Free có năm lượt mỗi ngày. Premium mở không giới hạn thử thách.",
+      "file": "vo-120/pricing.wav",
+      "words": [
+        {
+          "text": "Ba",
+          "start": 0.3,
+          "end": 0.48,
+          "estimated": false
+        },
+        {
+          "text": "gói",
+          "start": 0.48,
+          "end": 0.84,
+          "estimated": false
+        },
+        {
+          "text": "cho",
+          "start": 0.84,
+          "end": 0.98,
+          "estimated": false
+        },
+        {
+          "text": "từng",
+          "start": 0.98,
+          "end": 1.22,
+          "estimated": false
+        },
+        {
+          "text": "nhu",
+          "start": 1.22,
+          "end": 1.5,
+          "estimated": false
+        },
+        {
+          "text": "cầu.",
+          "start": 1.5,
+          "end": 1.76,
+          "estimated": false
+        },
+        {
+          "text": "Free",
+          "start": 2.02,
+          "end": 2.48,
+          "estimated": false
+        },
+        {
+          "text": "có",
+          "start": 2.48,
+          "end": 2.68,
+          "estimated": false
+        },
+        {
+          "text": "năm",
+          "start": 2.68,
+          "end": 2.86,
+          "estimated": false
+        },
+        {
+          "text": "lượt",
+          "start": 2.86,
+          "end": 3.18,
+          "estimated": false
+        },
+        {
+          "text": "mỗi",
+          "start": 3.18,
+          "end": 3.4,
+          "estimated": false
+        },
+        {
+          "text": "ngày.",
+          "start": 3.4,
+          "end": 3.62,
+          "estimated": false
+        },
+        {
+          "text": "Premium",
+          "start": 4.14,
+          "end": 4.62,
+          "estimated": false
+        },
+        {
+          "text": "mở",
+          "start": 4.62,
+          "end": 5.0,
+          "estimated": false
+        },
+        {
+          "text": "không",
+          "start": 5.0,
+          "end": 5.22,
+          "estimated": false
+        },
+        {
+          "text": "giới",
+          "start": 5.22,
+          "end": 5.5,
+          "estimated": false
+        },
+        {
+          "text": "hạn",
+          "start": 5.5,
+          "end": 5.72,
+          "estimated": false
+        },
+        {
+          "text": "thử",
+          "start": 5.72,
+          "end": 5.94,
+          "estimated": false
+        },
+        {
+          "text": "thách.",
+          "start": 5.94,
+          "end": 6.16,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "Ba gói": 0.3,
+        "Free": 2.02,
+        "năm lượt": 2.68,
+        "Premium": 4.14,
+        "không giới hạn": 5.0
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Ba gói cho từng nhu cầu. Free có năm lượt mỗi ngày. Premium mở không giới hạn thử thách.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "voucher",
+      "index": 10,
+      "sceneStart": 65,
+      "sceneEnd": 70,
+      "start": 65.3,
+      "offset": 0.3,
+      "duration": 4.397437,
+      "end": 69.697437,
+      "text": "Điểm XP có thể đổi voucher ưu đãi cho những trải nghiệm tiếp theo.",
+      "file": "vo-120/voucher.wav",
+      "words": [
+        {
+          "text": "Điểm",
+          "start": 0.3,
+          "end": 0.5,
+          "estimated": false
+        },
+        {
+          "text": "XP",
+          "start": 0.5,
+          "end": 0.88,
+          "estimated": false
+        },
+        {
+          "text": "có",
+          "start": 0.88,
+          "end": 1.32,
+          "estimated": false
+        },
+        {
+          "text": "thể",
+          "start": 1.32,
+          "end": 1.52,
+          "estimated": false
+        },
+        {
+          "text": "đổi",
+          "start": 1.52,
+          "end": 1.8,
+          "estimated": false
+        },
+        {
+          "text": "voucher",
+          "start": 1.8,
+          "end": 2.42,
+          "estimated": false
+        },
+        {
+          "text": "ưu",
+          "start": 2.42,
+          "end": 2.66,
+          "estimated": false
+        },
+        {
+          "text": "đãi",
+          "start": 2.66,
+          "end": 2.98,
+          "estimated": false
+        },
+        {
+          "text": "cho",
+          "start": 2.98,
+          "end": 3.16,
+          "estimated": false
+        },
+        {
+          "text": "những",
+          "start": 3.16,
+          "end": 3.34,
+          "estimated": false
+        },
+        {
+          "text": "trải",
+          "start": 3.34,
+          "end": 3.7,
+          "estimated": false
+        },
+        {
+          "text": "nghiệm",
+          "start": 3.7,
+          "end": 4.02,
+          "estimated": false
+        },
+        {
+          "text": "tiếp",
+          "start": 4.02,
+          "end": 4.26,
+          "estimated": false
+        },
+        {
+          "text": "theo.",
+          "start": 4.26,
+          "end": 4.56,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "Điểm XP": 0.3,
+        "đổi voucher": 1.52,
+        "ưu đãi": 2.42
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Điểm XP có thể đổi voucher ưu đãi cho những trải nghiệm tiếp Theo.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "family",
+      "index": 11,
+      "sceneStart": 70,
+      "sceneEnd": 77,
+      "start": 70.3,
+      "offset": 0.3,
+      "duration": 5.691875,
+      "end": 75.991875,
+      "text": "Với Premium Family, cả nhà cùng khám phá, mở khóa lịch trình do AI đề xuất.",
+      "file": "vo-120/family.wav",
+      "words": [
+        {
+          "text": "Với",
+          "start": 0.3,
+          "end": 0.66,
+          "estimated": false
+        },
+        {
+          "text": "Premium",
+          "start": 0.66,
+          "end": 1.08,
+          "estimated": false
+        },
+        {
+          "text": "Family,",
+          "start": 1.08,
+          "end": 1.72,
+          "estimated": false
+        },
+        {
+          "text": "cả",
+          "start": 2.06,
+          "end": 2.3,
+          "estimated": false
+        },
+        {
+          "text": "nhà",
+          "start": 2.3,
+          "end": 2.56,
+          "estimated": false
+        },
+        {
+          "text": "cùng",
+          "start": 2.56,
+          "end": 2.78,
+          "estimated": false
+        },
+        {
+          "text": "khám",
+          "start": 2.78,
+          "end": 3.06,
+          "estimated": false
+        },
+        {
+          "text": "phá,",
+          "start": 3.06,
+          "end": 3.46,
+          "estimated": false
+        },
+        {
+          "text": "mở",
+          "start": 3.84,
+          "end": 4.0,
+          "estimated": false
+        },
+        {
+          "text": "khóa",
+          "start": 4.0,
+          "end": 4.28,
+          "estimated": false
+        },
+        {
+          "text": "lịch",
+          "start": 4.28,
+          "end": 4.42,
+          "estimated": false
+        },
+        {
+          "text": "trình",
+          "start": 4.42,
+          "end": 4.72,
+          "estimated": false
+        },
+        {
+          "text": "do",
+          "start": 4.72,
+          "end": 5.02,
+          "estimated": false
+        },
+        {
+          "text": "AI",
+          "start": 5.02,
+          "end": 5.38,
+          "estimated": false
+        },
+        {
+          "text": "đề",
+          "start": 5.38,
+          "end": 5.72,
+          "estimated": false
+        },
+        {
+          "text": "xuất.",
+          "start": 5.72,
+          "end": 5.96,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "Premium Family": 0.66,
+        "cả nhà": 2.06,
+        "lịch trình": 4.28
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Với Premium Family, cả nhà cùng khám phá, mở khóa lịch trình do AI đề xuất.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "planner",
+      "index": 12,
+      "sceneStart": 77,
+      "sceneEnd": 83,
+      "start": 77.3,
+      "offset": 0.3,
+      "duration": 4.824021,
+      "end": 82.124021,
+      "text": "Chọn bán kính, thời gian và ngân sách; AI sắp xếp lộ trình chi tiết.",
+      "file": "vo-120/planner.wav",
+      "words": [
+        {
+          "text": "Chọn",
+          "start": 0.3,
+          "end": 0.48,
+          "estimated": false
+        },
+        {
+          "text": "bán",
+          "start": 0.48,
+          "end": 0.72,
+          "estimated": false
+        },
+        {
+          "text": "kính,",
+          "start": 0.72,
+          "end": 1.0,
+          "estimated": false
+        },
+        {
+          "text": "thời",
+          "start": 1.28,
+          "end": 1.74,
+          "estimated": false
+        },
+        {
+          "text": "gian",
+          "start": 1.74,
+          "end": 2.06,
+          "estimated": false
+        },
+        {
+          "text": "và",
+          "start": 2.06,
+          "end": 2.24,
+          "estimated": false
+        },
+        {
+          "text": "ngân",
+          "start": 2.24,
+          "end": 2.48,
+          "estimated": false
+        },
+        {
+          "text": "sách;",
+          "start": 2.48,
+          "end": 2.8,
+          "estimated": false
+        },
+        {
+          "text": "AI",
+          "start": 3.2,
+          "end": 3.5,
+          "estimated": false
+        },
+        {
+          "text": "sắp",
+          "start": 3.5,
+          "end": 3.92,
+          "estimated": false
+        },
+        {
+          "text": "xếp",
+          "start": 3.92,
+          "end": 4.14,
+          "estimated": false
+        },
+        {
+          "text": "lộ",
+          "start": 4.14,
+          "end": 4.34,
+          "estimated": false
+        },
+        {
+          "text": "trình",
+          "start": 4.34,
+          "end": 4.6,
+          "estimated": false
+        },
+        {
+          "text": "chi",
+          "start": 4.6,
+          "end": 4.78,
+          "estimated": false
+        },
+        {
+          "text": "tiết.",
+          "start": 4.78,
+          "end": 5.08,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "bán kính": 0.48,
+        "thời gian": 1.28,
+        "ngân sách": 2.24,
+        "AI sắp xếp": 3.2,
+        "chi tiết": 4.6
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Hãy chọn bán kính, thời gian và ngân sách, AI sắp xếp lộ trình chi tiết.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "titles",
+      "index": 13,
+      "sceneStart": 83,
+      "sceneEnd": 90,
+      "start": 83.275469,
+      "offset": 0.275469,
+      "duration": 6.449063,
+      "end": 89.724531,
+      "text": "Ghé thêm địa điểm, lưu ảnh và sưu tập danh hiệu: Nhà Lãng Du, Nhà Du Mục, Nhà Thám Hiểm.",
+      "file": "vo-120/titles.wav",
+      "words": [
+        {
+          "text": "Ghé",
+          "start": 0.2755,
+          "end": 0.4755,
+          "estimated": false
+        },
+        {
+          "text": "thêm",
+          "start": 0.4955,
+          "end": 0.7755,
+          "estimated": false
+        },
+        {
+          "text": "địa",
+          "start": 0.7755,
+          "end": 0.9955,
+          "estimated": false
+        },
+        {
+          "text": "điểm,",
+          "start": 0.9955,
+          "end": 1.2755,
+          "estimated": false
+        },
+        {
+          "text": "lưu",
+          "start": 1.5355,
+          "end": 1.8755,
+          "estimated": false
+        },
+        {
+          "text": "ảnh",
+          "start": 1.8755,
+          "end": 2.1355,
+          "estimated": false
+        },
+        {
+          "text": "và",
+          "start": 2.1355,
+          "end": 2.3355,
+          "estimated": false
+        },
+        {
+          "text": "sưu",
+          "start": 2.3355,
+          "end": 2.6355,
+          "estimated": false
+        },
+        {
+          "text": "tập",
+          "start": 2.5155,
+          "end": 2.7755,
+          "estimated": false
+        },
+        {
+          "text": "danh",
+          "start": 2.7755,
+          "end": 3.0755,
+          "estimated": false
+        },
+        {
+          "text": "hiệu:",
+          "start": 3.0755,
+          "end": 3.2955,
+          "estimated": false
+        },
+        {
+          "text": "Nhà",
+          "start": 3.6555,
+          "end": 3.8755,
+          "estimated": false
+        },
+        {
+          "text": "Lãng",
+          "start": 3.8755,
+          "end": 4.2155,
+          "estimated": false
+        },
+        {
+          "text": "Du,",
+          "start": 4.2155,
+          "end": 4.3955,
+          "estimated": false
+        },
+        {
+          "text": "Nhà",
+          "start": 4.7555,
+          "end": 5.0555,
+          "estimated": false
+        },
+        {
+          "text": "Du",
+          "start": 5.0555,
+          "end": 5.2355,
+          "estimated": false
+        },
+        {
+          "text": "Mục,",
+          "start": 5.2355,
+          "end": 5.5155,
+          "estimated": false
+        },
+        {
+          "text": "Nhà",
+          "start": 5.7355,
+          "end": 5.8555,
+          "estimated": false
+        },
+        {
+          "text": "Thám",
+          "start": 5.8555,
+          "end": 6.1355,
+          "estimated": false
+        },
+        {
+          "text": "Hiểm.",
+          "start": 6.1355,
+          "end": 6.4555,
+          "estimated": false
+        }
+      ],
+      "alignmentMatch": 1.0,
+      "recognized": "giới thêm địa điểm, lưu ảnh và su tập danh hiệu, nhà lãng du, nhà du mục, nhà thám hiểm.",
+      "alignmentModel": "Whisper small without prompt + independent base anchors",
+      "cues": {
+        "địa điểm": 0.7755,
+        "lưu ảnh": 1.5355,
+        "danh hiệu": 2.7755,
+        "Nhà Lãng Du": 3.6555,
+        "Nhà Du Mục": 4.7555,
+        "Nhà Thám Hiểm": 5.7355
+      }
+    },
+    {
+      "id": "journey",
+      "index": 14,
+      "sceneStart": 90,
+      "sceneEnd": 96,
+      "start": 90.3,
+      "offset": 0.3,
+      "duration": 4.790521,
+      "end": 95.090521,
+      "text": "Lưu ảnh, nơi đã đến và quãng đường đã đi vào hành trình của riêng bạn.",
+      "file": "vo-120/journey.wav",
+      "words": [
+        {
+          "text": "Lưu",
+          "start": 0.3,
+          "end": 0.58,
+          "estimated": false
+        },
+        {
+          "text": "ảnh,",
+          "start": 0.58,
+          "end": 0.86,
+          "estimated": false
+        },
+        {
+          "text": "nơi",
+          "start": 1.1,
+          "end": 1.42,
+          "estimated": false
+        },
+        {
+          "text": "đã",
+          "start": 1.42,
+          "end": 1.6,
+          "estimated": false
+        },
+        {
+          "text": "đến",
+          "start": 1.6,
+          "end": 1.88,
+          "estimated": false
+        },
+        {
+          "text": "và",
+          "start": 1.88,
+          "end": 2.12,
+          "estimated": false
+        },
+        {
+          "text": "quãng",
+          "start": 2.12,
+          "end": 2.44,
+          "estimated": false
+        },
+        {
+          "text": "đường",
+          "start": 2.44,
+          "end": 2.72,
+          "estimated": false
+        },
+        {
+          "text": "đã",
+          "start": 2.72,
+          "end": 3.18,
+          "estimated": false
+        },
+        {
+          "text": "đi",
+          "start": 3.18,
+          "end": 3.4,
+          "estimated": false
+        },
+        {
+          "text": "vào",
+          "start": 3.4,
+          "end": 3.6,
+          "estimated": false
+        },
+        {
+          "text": "hành",
+          "start": 3.6,
+          "end": 3.86,
+          "estimated": false
+        },
+        {
+          "text": "trình",
+          "start": 3.86,
+          "end": 4.14,
+          "estimated": false
+        },
+        {
+          "text": "của",
+          "start": 4.14,
+          "end": 4.34,
+          "estimated": false
+        },
+        {
+          "text": "riêng",
+          "start": 4.34,
+          "end": 4.68,
+          "estimated": false
+        },
+        {
+          "text": "bạn.",
+          "start": 4.68,
+          "end": 4.86,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "Lưu ảnh": 0.3,
+        "nơi đã đến": 1.1,
+        "quãng đường": 2.12,
+        "hành trình": 3.6
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Lưu ảnh, nơi đã đến và quãng đường đã đi vào hành trình của riêng bạn.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "timeline",
+      "index": 15,
+      "sceneStart": 96,
+      "sceneEnd": 104,
+      "start": 96.288865,
+      "offset": 0.288865,
+      "duration": 7.422271,
+      "end": 103.711135,
+      "text": "TimelineMap kết hợp bản đồ và ảnh, dựng lại chuyến đi thành video kỷ niệm của riêng bạn.",
+      "file": "vo-120/timeline.wav",
+      "words": [
+        {
+          "text": "TimelineMap",
+          "start": 1.9489,
+          "end": 2.5489,
+          "estimated": false
+        },
+        {
+          "text": "kết",
+          "start": 2.5489,
+          "end": 2.7889,
+          "estimated": false
+        },
+        {
+          "text": "hợp",
+          "start": 2.7889,
+          "end": 3.1089,
+          "estimated": false
+        },
+        {
+          "text": "bản",
+          "start": 3.1089,
+          "end": 3.2689,
+          "estimated": false
+        },
+        {
+          "text": "đồ",
+          "start": 3.2689,
+          "end": 3.5689,
+          "estimated": false
+        },
+        {
+          "text": "và",
+          "start": 3.5689,
+          "end": 3.7489,
+          "estimated": false
+        },
+        {
+          "text": "ảnh,",
+          "start": 3.7489,
+          "end": 4.0489,
+          "estimated": false
+        },
+        {
+          "text": "dựng",
+          "start": 4.4489,
+          "end": 4.7489,
+          "estimated": false
+        },
+        {
+          "text": "lại",
+          "start": 4.7489,
+          "end": 4.9489,
+          "estimated": false
+        },
+        {
+          "text": "chuyến",
+          "start": 4.9489,
+          "end": 5.2489,
+          "estimated": false
+        },
+        {
+          "text": "đi",
+          "start": 5.2489,
+          "end": 5.4289,
+          "estimated": false
+        },
+        {
+          "text": "thành",
+          "start": 5.4289,
+          "end": 5.6689,
+          "estimated": false
+        },
+        {
+          "text": "video",
+          "start": 5.6689,
+          "end": 6.1089,
+          "estimated": false
+        },
+        {
+          "text": "kỷ",
+          "start": 6.1089,
+          "end": 6.5289,
+          "estimated": false
+        },
+        {
+          "text": "niệm",
+          "start": 6.5289,
+          "end": 6.8489,
+          "estimated": false
+        },
+        {
+          "text": "của",
+          "start": 6.8489,
+          "end": 7.0089,
+          "estimated": false
+        },
+        {
+          "text": "riêng",
+          "start": 7.0089,
+          "end": 7.3489,
+          "estimated": false
+        },
+        {
+          "text": "bạn.",
+          "start": 7.3489,
+          "end": 7.5489,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "TimelineMap": 1.9489,
+        "bản đồ": 3.1089,
+        "và ảnh": 3.5689,
+        "dựng lại chuyến đi": 4.4489,
+        "video kỷ niệm": 5.6689,
+        "của riêng bạn": 6.8489
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "TimelineMap kết hợp bản đồ và ảnh, dựng lại chuyến đi thành video kỷ niệm của riêng bạn.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "permissions",
+      "index": 16,
+      "sceneStart": 104,
+      "sceneEnd": 113,
+      "start": 104.3,
+      "offset": 0.3,
+      "duration": 8.250521,
+      "end": 112.550521,
+      "text": "Bạn chủ động đồng ý chính sách, cấp quyền vị trí, camera và chọn ảnh muốn tải lên. Ứng dụng chỉ nhận ảnh bạn chọn.",
+      "file": "vo-120/permissions.wav",
+      "words": [
+        {
+          "text": "Bạn",
+          "start": 0.3,
+          "end": 0.48,
+          "estimated": false
+        },
+        {
+          "text": "chủ",
+          "start": 0.48,
+          "end": 0.76,
+          "estimated": false
+        },
+        {
+          "text": "động",
+          "start": 0.76,
+          "end": 0.96,
+          "estimated": false
+        },
+        {
+          "text": "đồng",
+          "start": 0.96,
+          "end": 1.2,
+          "estimated": false
+        },
+        {
+          "text": "ý",
+          "start": 1.2,
+          "end": 1.42,
+          "estimated": false
+        },
+        {
+          "text": "chính",
+          "start": 1.42,
+          "end": 1.64,
+          "estimated": false
+        },
+        {
+          "text": "sách,",
+          "start": 1.64,
+          "end": 1.98,
+          "estimated": false
+        },
+        {
+          "text": "cấp",
+          "start": 2.4,
+          "end": 2.54,
+          "estimated": false
+        },
+        {
+          "text": "quyền",
+          "start": 2.54,
+          "end": 2.82,
+          "estimated": false
+        },
+        {
+          "text": "vị",
+          "start": 2.82,
+          "end": 3.0,
+          "estimated": false
+        },
+        {
+          "text": "trí,",
+          "start": 3.0,
+          "end": 3.42,
+          "estimated": false
+        },
+        {
+          "text": "camera",
+          "start": 3.84,
+          "end": 4.2,
+          "estimated": false
+        },
+        {
+          "text": "và",
+          "start": 4.2,
+          "end": 4.9,
+          "estimated": false
+        },
+        {
+          "text": "chọn",
+          "start": 4.9,
+          "end": 5.26,
+          "estimated": false
+        },
+        {
+          "text": "ảnh",
+          "start": 5.26,
+          "end": 5.52,
+          "estimated": false
+        },
+        {
+          "text": "muốn",
+          "start": 5.52,
+          "end": 5.7,
+          "estimated": false
+        },
+        {
+          "text": "tải",
+          "start": 5.7,
+          "end": 6.08,
+          "estimated": false
+        },
+        {
+          "text": "lên.",
+          "start": 6.08,
+          "end": 6.36,
+          "estimated": false
+        },
+        {
+          "text": "Ứng",
+          "start": 6.6,
+          "end": 6.86,
+          "estimated": false
+        },
+        {
+          "text": "dụng",
+          "start": 6.86,
+          "end": 7.2,
+          "estimated": false
+        },
+        {
+          "text": "chỉ",
+          "start": 7.2,
+          "end": 7.38,
+          "estimated": false
+        },
+        {
+          "text": "nhận",
+          "start": 7.38,
+          "end": 7.66,
+          "estimated": false
+        },
+        {
+          "text": "ảnh",
+          "start": 7.66,
+          "end": 7.92,
+          "estimated": false
+        },
+        {
+          "text": "bạn",
+          "start": 7.92,
+          "end": 8.08,
+          "estimated": false
+        },
+        {
+          "text": "chọn.",
+          "start": 8.08,
+          "end": 8.46,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "đồng ý chính sách": 0.96,
+        "vị trí": 2.82,
+        "camera": 3.84,
+        "chọn ảnh": 4.9,
+        "chỉ nhận ảnh bạn chọn": 7.2
+      },
+      "alignmentMatch": 1.0,
+      "recognized": "Bạn chủ động đồng ý chính sách, cấp quyền vị trí, camera và chọn ảnh muốn tải lên. ứng dụng chỉ nhận ảnh bạn chọn.",
+      "alignmentModel": "Whisper small"
+    },
+    {
+      "id": "outro",
+      "index": 17,
+      "sceneStart": 113,
+      "sceneEnd": 120,
+      "start": 113.3,
+      "offset": 0.3,
+      "duration": 5.17175,
+      "end": 118.47175,
+      "text": "Thám Văn. Khám phá Sài Gòn qua từng câu chuyện. Chạm để hiểu di sản Việt.",
+      "file": "vo-120/outro.wav",
+      "words": [
+        {
+          "text": "Thám",
+          "start": 0.3,
+          "end": 0.52,
+          "estimated": false
+        },
+        {
+          "text": "Văn.",
+          "start": 0.52,
+          "end": 1.06,
+          "estimated": false
+        },
+        {
+          "text": "Khám",
+          "start": 1.2,
+          "end": 1.68,
+          "estimated": false
+        },
+        {
+          "text": "phá",
+          "start": 1.68,
+          "end": 1.98,
+          "estimated": false
+        },
+        {
+          "text": "Sài",
+          "start": 1.98,
+          "end": 2.22,
+          "estimated": false
+        },
+        {
+          "text": "Gòn",
+          "start": 2.22,
+          "end": 2.5,
+          "estimated": false
+        },
+        {
+          "text": "qua",
+          "start": 2.5,
+          "end": 2.64,
+          "estimated": false
+        },
+        {
+          "text": "từng",
+          "start": 2.64,
+          "end": 2.86,
+          "estimated": true
+        },
+        {
+          "text": "câu",
+          "start": 2.86,
+          "end": 3.18,
+          "estimated": false
+        },
+        {
+          "text": "chuyện.",
+          "start": 3.18,
+          "end": 3.5,
+          "estimated": false
+        },
+        {
+          "text": "Chạm",
+          "start": 3.82,
+          "end": 4.28,
+          "estimated": false
+        },
+        {
+          "text": "để",
+          "start": 4.28,
+          "end": 4.42,
+          "estimated": false
+        },
+        {
+          "text": "hiểu",
+          "start": 4.42,
+          "end": 4.7,
+          "estimated": false
+        },
+        {
+          "text": "di",
+          "start": 4.7,
+          "end": 4.86,
+          "estimated": false
+        },
+        {
+          "text": "sản",
+          "start": 4.86,
+          "end": 5.14,
+          "estimated": false
+        },
+        {
+          "text": "Việt.",
+          "start": 5.14,
+          "end": 5.34,
+          "estimated": false
+        }
+      ],
+      "cues": {
+        "Thám Văn": 0.3,
+        "Khám phá Sài Gòn": 1.2,
+        "Chạm để hiểu": 3.82
+      },
+      "alignmentMatch": 0.938,
+      "recognized": "Thám Văn. Khám phá Sài Gòn qua ừng câu chuyện. Chạm để hiểu di sản Việt.",
+      "alignmentModel": "Whisper small"
+    }
+  ]
+}

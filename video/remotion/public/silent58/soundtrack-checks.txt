@@ -1,0 +1,8 @@
+Source: D:/thamvan-moi/video/remotion/public/music.wav
+Provenance: video/make_music.py synthesizes instrumental plucked strings, pad, bass, and light percussion; no voice.
+Original duration: 97.700 seconds, PCM 16-bit stereo, 44100 Hz.
+Output: soundtrack.m4a, 58.000 seconds, AAC stereo, 48000 Hz, 192 kb/s target.
+Processing: trim 0–58 sec; volume 0.8; fade in 0–0.6 sec; fade out 55.6–58 sec.
+Checks: full FFmpeg decode passed; duration and stereo assertions passed; no detected silence >=0.4 sec at -50 dB.
+Decoded sample peak: -5.5 dBFS; true peak: -5.1 dBTP; integrated loudness: -22.6 LUFS; LRA: 2.1 LU.
+No source files modified. No external music or services used.
