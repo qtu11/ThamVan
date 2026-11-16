@@ -1,5 +1,5 @@
 'use client';
-import { useRef, useState, useSyncExternalStore } from 'react';
+import { useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
@@ -13,7 +13,6 @@ import {
   X,
   Footprints,
   Pencil,
-  Award,
   Check,
   Sparkles,
 } from 'lucide-react';
@@ -22,6 +21,13 @@ import { locales, textFor } from '@/lib/types';
 import { t, localeName, dateFormat } from '@/lib/i18n';
 import { copy } from '@/lib/locale-copy';
 import { levelForXp, totalEarnedXp } from '@/lib/xp';
+import {
+  EQUIPPED_TITLE_EVENT,
+  EQUIPPED_TITLE_STORAGE_KEY,
+  evaluateAllExplorerTitles,
+  resolveActiveExplorerTitle,
+} from '@/lib/explorer-titles';
+import { ExplorerTitlesBrowser, ExplorerTitlesSpotlight } from './explorer-titles';
 import { api, Status, Submit, errorText } from './ui';
 import { useDiscoveryPreferences } from './discovery';
 import { HumanCheck } from './human-check';
@@ -40,45 +46,12 @@ function subscribeGuestName(callback: () => void) {
   };
 }
 
-function rankForLevel(level: number, locale: Locale) {
-  const c = (vi: string, en: string, zh: string) => copy(locale, vi, en, zh);
-  if (level >= 10) {
-    return {
-      title: c('Giám Tuyển Thực Địa', 'Chief Field Curator', '首席实地策展人'),
-      desc: c(
-        'Học giả am tường từng lớp ký ức, kiến trúc và tư liệu Sài Gòn.',
-        'Veteran researcher fluent in Saigon architectural and cultural archives.',
-        '熟稔西贡建筑脉络与城市记忆文献的资深策展人。',
-      ),
-    };
-  }
-  if (level >= 6) {
-    return {
-      title: c('Biên Khảo Di Sản', 'Heritage Researcher', '遗产考据者'),
-      desc: c(
-        'Người ghi chép bền bỉ với nhiều chặng thực địa và thử thách đã hoàn tất.',
-        'Dedicated field researcher with verified walks and completed challenges.',
-        '持续记录城市遗迹并完成多项实地考据挑战的探索者。',
-      ),
-    };
-  }
-  if (level >= 3) {
-    return {
-      title: c('Người Đọc Phố', 'Street Archivist', '街巷档案人'),
-      desc: c(
-        'Đã quen thuộc với các khu phố lịch sử và tư liệu di sản tại Sài Gòn.',
-        'Familiar with Saigon historic quarters and archival field records.',
-        '熟悉西贡历史街区与城市档案线索的同行者。',
-      ),
-    };
-  }
-  return {
-    title: c('Người Chép Ký Ức', 'Memory Chronicler', '城市记忆记录者'),
-    desc: c(
-      'Cộng tác viên đồng hành ghi dấu ký ức, công trình và nếp sống đô thị Sài Gòn.',
-      'Field chronicler documenting Saigon landmarks, architecture, and living heritage.',
-      '记录西贡城市地标、建筑与生活印记的同行记录者。',
-    ),
+function subscribeEquippedTitle(callback: () => void) {
+  window.addEventListener('storage', callback);
+  window.addEventListener(EQUIPPED_TITLE_EVENT, callback);
+  return () => {
+    window.removeEventListener('storage', callback);
+    window.removeEventListener(EQUIPPED_TITLE_EVENT, callback);
   };
 }
 
@@ -125,6 +98,17 @@ export function ExplorerProfileHeader({
     },
     () => '',
   );
+  const storedEquippedTitleId = useSyncExternalStore(
+    subscribeEquippedTitle,
+    () => {
+      try {
+        return localStorage.getItem(EQUIPPED_TITLE_STORAGE_KEY) || '';
+      } catch {
+        return '';
+      }
+    },
+    () => '',
+  );
   const [viewerNameOverride, setViewerNameOverride] = useState<string | null>(null);
   const fallbackName = c('Khách khám phá', 'Guest Explorer', '探索访客');
   const defaultName = viewer
@@ -133,12 +117,49 @@ export function ExplorerProfileHeader({
   const [draftName, setDraftName] = useState(defaultName);
   const xp = totalEarnedXp(progress);
   const xpState = levelForXp(xp);
-  const rank = rankForLevel(xpState.level, locale);
 
   const earnedBadges = challenges.filter((ch) =>
     progress.some((p) => p.challenge_id === ch.id && p.completed_at),
   );
-  const totalTitlesCount = 1 + earnedBadges.length;
+
+  const evaluatedTitles = useMemo(() => {
+    const topicCounts: Partial<Record<Kind, number>> = {};
+    let uniqueTopics = 0;
+    for (const item of topicTotals) {
+      topicCounts[item.kind] = item.done;
+      if (item.done > 0) uniqueTopics += 1;
+    }
+    return evaluateAllExplorerTitles(
+      {
+        xp,
+        level: xpState.level,
+        completedCount,
+        savedCount,
+        visitedCount,
+        topicCounts,
+        uniqueTopics,
+      },
+      locale,
+    );
+  }, [xp, xpState.level, completedCount, savedCount, visitedCount, topicTotals, locale]);
+
+  const activeTitle = useMemo(
+    () => resolveActiveExplorerTitle(evaluatedTitles, storedEquippedTitleId),
+    [evaluatedTitles, storedEquippedTitleId],
+  );
+  const unlockedTitlesCount = useMemo(
+    () => evaluatedTitles.filter((item) => item.unlocked).length,
+    [evaluatedTitles],
+  );
+
+  function equipTitle(id: string) {
+    try {
+      localStorage.setItem(EQUIPPED_TITLE_STORAGE_KEY, id);
+      window.dispatchEvent(new Event(EQUIPPED_TITLE_EVENT));
+    } catch {
+      // Ignore unavailable storage
+    }
+  }
 
   const visitedItems = savedRecords
     .filter((s) => s.visited_at)
@@ -237,7 +258,9 @@ export function ExplorerProfileHeader({
           </div>
           <div className="explorer-title-block">
             <h1>{defaultName}</h1>
-            <p className="explorer-rank">{rank.title}</p>
+            <p className="explorer-rank">
+              {activeTitle.title} · {activeTitle.tierLabel} ({activeTitle.difficultyLabel})
+            </p>
           </div>
         </div>
 
@@ -345,10 +368,17 @@ export function ExplorerProfileHeader({
                 : c('Đã lưu hành trình', 'Saved', '已保存')}
           </span>
         </div>
-        <div className="explorer-stat-card">
-          <strong>{totalTitlesCount}</strong>
+        <button
+          type="button"
+          className="explorer-stat-card explorer-stat-btn"
+          onClick={() => handleTabSelect('titles')}
+        >
+          <strong>
+            {unlockedTitlesCount}
+            <small className="explorer-stat-sub">/{evaluatedTitles.length}</small>
+          </strong>
           <span>{c('Danh hiệu', 'Titles', '头衔')}</span>
-        </div>
+        </button>
         <div className="explorer-stat-card explorer-stat-xp">
           <strong>
             <Sparkles size={16} />
@@ -382,25 +412,14 @@ export function ExplorerProfileHeader({
       </div>
 
       {activeTab === 'titles' && (
-        <div className="explorer-topics-card">
-          <div className="explorer-title-badge-row">
-            <Award size={22} />
-            <div>
-              <strong>{rank.title}</strong>
-              <p>{rank.desc}</p>
-            </div>
-          </div>
-          {earnedBadges.length > 0 &&
-            earnedBadges.map((ch) => (
-              <div key={ch.id} className="explorer-title-badge-row">
-                <Sparkles size={20} />
-                <div>
-                  <strong>{ch.badge}</strong>
-                  <p>{textFor(ch.translations, locale).title}</p>
-                </div>
-              </div>
-            ))}
-        </div>
+        <ExplorerTitlesBrowser
+          locale={locale}
+          titles={evaluatedTitles}
+          activeTitle={activeTitle}
+          equippedId={activeTitle.id}
+          onEquip={equipTitle}
+          earnedBadges={earnedBadges}
+        />
       )}
 
       {activeTab === 'history' && (
@@ -445,9 +464,18 @@ export function ExplorerProfileHeader({
         </div>
       )}
 
-      {/* Cultural Topics Learned (Real Distribution) */}
+      {/* Cultural Topics Learned & Title Carousel */}
       {activeTab === 'overview' && (
         <>
+          <ExplorerTitlesSpotlight
+            locale={locale}
+            titles={evaluatedTitles}
+            activeTitle={activeTitle}
+            equippedId={activeTitle.id}
+            onEquip={equipTitle}
+            onOpenAll={() => handleTabSelect('titles')}
+          />
+
           {topicTotals.length > 0 && (
             <section className="explorer-section">
               <h2 className="explorer-section-title">
