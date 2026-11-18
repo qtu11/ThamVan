@@ -316,7 +316,7 @@ export function CameraExplorer({
         const response = await fetch('/api/recognize', {
           method: 'POST',
           body: form,
-          signal: AbortSignal.any([current.signal, AbortSignal.timeout(60_000)]),
+          signal: AbortSignal.any([current.signal, AbortSignal.timeout(65_000)]),
         });
         const data = await response.json().catch(() => ({ error: 'error' }));
         if (current.signal.aborted) return;

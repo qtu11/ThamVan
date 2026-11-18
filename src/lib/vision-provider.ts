@@ -26,9 +26,13 @@ export async function callVision<T>(options: {
   image: Buffer;
   locale: Locale;
   signal: AbortSignal;
+  maxTokens?: number;
 }) {
   const config = visionConfig();
   if (!config) fail('visionUnavailable', 503);
+  const maxTokens = options.maxTokens
+    ? Math.min(config.maxTokens, options.maxTokens)
+    : config.maxTokens;
   let response: Response;
   try {
     response = await fetch(config.endpoint, {
@@ -39,7 +43,7 @@ export async function callVision<T>(options: {
       headers: { Authorization: `Bearer ${config.key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: config.model,
-        max_tokens: config.maxTokens,
+        max_tokens: maxTokens,
         temperature: 0.2,
         ...providerThinkingOptions(config.endpoint, config.model),
         response_format: { type: 'json_object' },

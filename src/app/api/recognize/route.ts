@@ -75,11 +75,11 @@ export const POST = route(async (request) => {
   if (quota.error) fail('error', 500);
   if (!quota.data) fail('rateLimit', 429);
   // One shared deadline covers both calls and response-body reads within maxDuration = 60.
-  const signal = AbortSignal.any([request.signal, AbortSignal.timeout(54000)]);
+  const signal = AbortSignal.any([request.signal, AbortSignal.timeout(55000)]);
   // Real street address + named places around the device, looked up while the model reads the image.
   // Bounded and fail-soft: a slow map service must never cost the visitor their analysis.
   const contextPromise = location
-    ? placeContext(location, AbortSignal.any([signal, AbortSignal.timeout(6000)])).catch(() => null)
+    ? placeContext(location, AbortSignal.any([signal, AbortSignal.timeout(4000)])).catch(() => null)
     : Promise.resolve(null);
   return ok(
     await analyzeRecognition({

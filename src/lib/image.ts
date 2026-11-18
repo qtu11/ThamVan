@@ -8,6 +8,6 @@ export async function normalizeRecognitionImage(bytes: Uint8Array) {
   })
     .rotate()
     .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
-    .jpeg({ quality: 85 })
+    .jpeg({ quality: 80 })
     .toBuffer();
 }

@@ -1,0 +1,20 @@
+{
+  "url": "https://jpymihiwzoyijdsxcbdm.supabase.co/storage/v1/object/public/promo-videos/tham-van-58s-tuong-tac.mp4",
+  "localFile": "video/THAM_VAN_58S_TUONG_TAC.mp4",
+  "videoSha256": "d9032dce162d3cc12db8d9660aba58f85b3ad9fd1f7553989bcd8d134f26965d",
+  "videoBytes": 20777248,
+  "publicationConfirmed": true,
+  "encoder": "ReportLab QR encoder",
+  "errorCorrection": "M",
+  "qrVersion": 6,
+  "modules": 41,
+  "quietZoneModules": 4,
+  "modulePixels": 29,
+  "width": 1421,
+  "height": 1421,
+  "foreground": "#114436",
+  "background": "#ffffff",
+  "embeddedLogo": false,
+  "losslessPng": true,
+  "publicationManifest": "video-58s-public.json"
+}

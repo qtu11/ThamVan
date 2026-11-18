@@ -1,0 +1,32 @@
+{
+  "url": "https://jpymihiwzoyijdsxcbdm.supabase.co/storage/v1/object/public/promo-videos/tham-van-gioi-thieu-2-phut-v2.mp4",
+  "videoSha256": "c4f45a67b4187ba0fee9e33987fa3178ccb95d448ef9977770c844f9860425a5",
+  "encoder": "ReportLab QR encoder",
+  "errorCorrection": "M",
+  "qrVersion": 7,
+  "modules": 45,
+  "quietZoneModules": 4,
+  "modulePixels": 26,
+  "width": 1378,
+  "height": 1378,
+  "foreground": "#114436",
+  "background": "#ffffff",
+  "embeddedLogo": false,
+  "losslessPng": true,
+  "decoder": "jsQR 1.4.0",
+  "decoded": {
+    "THAM_VAN_VIDEO_QR.png": {
+      "url": "https://jpymihiwzoyijdsxcbdm.supabase.co/storage/v1/object/public/promo-videos/tham-van-gioi-thieu-2-phut-v2.mp4",
+      "width": 1378,
+      "height": 1378,
+      "exactMatch": true
+    },
+    "THAM_VAN_VIDEO_QR.svg": {
+      "url": "https://jpymihiwzoyijdsxcbdm.supabase.co/storage/v1/object/public/promo-videos/tham-van-gioi-thieu-2-phut-v2.mp4",
+      "width": 1378,
+      "height": 1378,
+      "exactMatch": true
+    }
+  },
+  "independentDecodePassed": true
+}

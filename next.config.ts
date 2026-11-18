@@ -3,6 +3,20 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   outputFileTracingIncludes: { '/api/recognize': ['./prompts/**/*'] },
   experimental: { serverActions: { bodySizeLimit: '1mb' } },
+  webpack(config, { dev }) {
+    if (dev) {
+      // Avoid Windows PackFileCacheStrategy EOF/empty-file errors during rapid HMR restarts.
+      config.cache = { type: 'memory' };
+    } else if (
+      config.cache &&
+      typeof config.cache === 'object' &&
+      config.cache.type === 'filesystem'
+    ) {
+      // Store uncompressed build packs cleanly to prevent partial gzip EOF failures on Windows.
+      config.cache.compression = false;
+    }
+    return config;
+  },
   async headers() {
     return [
       {

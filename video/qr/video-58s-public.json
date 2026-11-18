@@ -1,0 +1,40 @@
+{
+  "localFile": "video\\THAM_VAN_58S_TUONG_TAC.mp4",
+  "sha256": "d9032dce162d3cc12db8d9660aba58f85b3ad9fd1f7553989bcd8d134f26965d",
+  "bytes": 20777248,
+  "seconds": 58.005,
+  "video": "h264",
+  "width": 1920,
+  "height": 1080,
+  "audio": "aac",
+  "atoms": [
+    [
+      "ftyp",
+      0,
+      32
+    ],
+    [
+      "moov",
+      32,
+      63719
+    ],
+    [
+      "free",
+      63751,
+      8
+    ],
+    [
+      "mdat",
+      63759,
+      20713489
+    ]
+  ],
+  "url": "https://jpymihiwzoyijdsxcbdm.supabase.co/storage/v1/object/public/promo-videos/tham-van-58s-tuong-tac.mp4",
+  "bucket": "promo-videos",
+  "path": "tham-van-58s-tuong-tac.mp4",
+  "publishedAt": "2026-11-16T11:47:30.105Z",
+  "anonymousPublicAccessVerified": true,
+  "streamingRangesVerified": true,
+  "remoteSha256Verified": true,
+  "contentType": "video/mp4"
+}

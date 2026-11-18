@@ -137,7 +137,7 @@ export function retrieveRecognitionPlaces(
   catalog: Heritage[],
   clues: ImageClues,
   location: DeviceLocation | null,
-  limit = 32,
+  limit = 14,
 ) {
   const hints = [...clues.visibleText, ...clues.searchHints].map(normalizeSearch).filter(Boolean);
   const ranked = catalog
@@ -190,22 +190,25 @@ export function recognitionCatalogContext(
   locale: Locale,
   location: DeviceLocation | null,
 ) {
-  return entries.map((entry) => ({
-    id: entry.id,
-    name: entry.name,
-    aliases: (entry.aliases || []).slice(0, 8),
-    address: entry.address || '',
-    category: entry.category || entry.kind,
-    summary: textFor(entry.translations, locale).summary.slice(0, 900),
-    detail: textFor(entry.translations, locale).detail.slice(0, 900),
-    sources: entry.sources.slice(0, 3),
-    distanceMeters:
-      location && entry.latitude !== null && entry.longitude !== null && entry.hasGps !== false
-        ? Math.round(
-            distanceKm(location, { latitude: entry.latitude, longitude: entry.longitude }) * 1000,
-          )
-        : null,
-  }));
+  return entries.map((entry, index) => {
+    const tr = textFor(entry.translations, locale);
+    const rich = index < 6;
+    return {
+      id: entry.id,
+      name: entry.name,
+      aliases: (entry.aliases || []).slice(0, 4),
+      address: entry.address || '',
+      category: entry.category || entry.kind,
+      summary: tr.summary.slice(0, rich ? 240 : 140),
+      ...(rich && tr.detail ? { detail: tr.detail.slice(0, 280) } : {}),
+      distanceMeters:
+        location && entry.latitude !== null && entry.longitude !== null && entry.hasGps !== false
+          ? Math.round(
+              distanceKm(location, { latitude: entry.latitude, longitude: entry.longitude }) * 1000,
+            )
+          : null,
+    };
+  });
 }
 
 export function finalizeRecognition(
